@@ -1,0 +1,656 @@
+{
+  "schema_version": 2,
+  "date": "2026-10-04",
+  "purpose": "Strict offline IOP .text coverage and metadata entry-zero provisional candidate experiment. No module code executed.",
+  "guards": {
+    "language_id": "MIPS:LE:32:default",
+    "compiler_spec": "default",
+    "raw_elf": "ELF32LE ET=0xff80 EM_MIPS; SHA pinned per corpus; unique executable .text PROGBITS at ELF address zero; .iopmod SHT_IOPMOD; declared text size equals .text size",
+    "ghidra_text": "initialized executable .text block at base zero with the same size and SHA-256 as raw ELF .text",
+    "candidate_only": "raw .iopmod entry_address exactly zero; computed body inside raw .text; body address set equals the union of existing instruction-unit addresses exactly; no saved body overlap; no disassembly"
+  },
+  "scripts": {
+    "CreateIopEntryCandidates.java": {
+      "path": "tools/ghidra/experimental/CreateIopEntryCandidates.java",
+      "sha256": "5f3c012db5ee4b4c3869ffb527f8bf53dd505d87c27e93589b4fd8ebd7e288a8"
+    },
+    "ExportIopCoverage.java": {
+      "path": "tools/ghidra/experimental/ExportIopCoverage.java",
+      "sha256": "8218203032c4f9b2338c3ad8fde427ae080d4a742e9783f44d3517c43535c4db"
+    }
+  },
+  "coverage": {
+    "result": "24/24 strict read-only profile checks passed on fresh copied project",
+    "historical_saved_function_count": 2241,
+    "historical_entry_and_body_bytes_match": true,
+    "total_text_bytes": 506336,
+    "instruction_bytes": 488344,
+    "function_owned_instruction_bytes": 469428,
+    "unowned_instruction_bytes": 18916,
+    "defined_data_bytes": 2260,
+    "undefined_bytes": 15732,
+    "modules": [
+      {
+        "program": "CDVDFSV.irx",
+        "executable_sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 22624,
+        "text_sha256": "7506480569b4c865337871052725476124ffb504e4ee66b7c6fe90a9b9d643f7",
+        "iopmod_entry_address": 216,
+        "receipt_sha256": "60c669784b00f51c605fdf23f4a894f1a9a50fb09ea8cf829415dfe19e932533"
+      },
+      {
+        "program": "CDVDMAN.irx",
+        "executable_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 40944,
+        "text_sha256": "70c10b097bd07285660508e5c1db604d64f721851fb88c4ce00e919735ec4999",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "c5eeaf98ce0e6a92d89e79d301efc915d437d9d36ae899072ba4d5a30f9c21c2"
+      },
+      {
+        "program": "EESYNC.irx",
+        "executable_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 640,
+        "text_sha256": "6278b3ad197397217a6f3d5948579d1fe2e418fd270cc682c768e491d936530a",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "bf35c46bad10fd648a1b6ce88b131519bee69308f2c3572a21899d707e9d5b0b"
+      },
+      {
+        "program": "FILEIO.irx",
+        "executable_sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 10736,
+        "text_sha256": "017df3bb12c5602b2752bfe9cb6c98884568b81616413fa5f78cc9ec4cf0343e",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "bcb065d4db481a7c602a788bc7f25cd9a830c96c6e8af0583ad3cfb3b67cb85f"
+      },
+      {
+        "program": "IOMAN.irx",
+        "executable_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 7776,
+        "text_sha256": "036670b9948d8052a5c0adbde01fcbb14ff55bd4e0ea5911e67aa3f3b8614f80",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "2a36fccc49b1fe036d17595aea53527a6be074f5621b0506d4f96b6ad6d0234a"
+      },
+      {
+        "program": "LGDEV.IRX",
+        "executable_sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 176,
+        "text_size": 40064,
+        "text_sha256": "86693c76ebbe7506d959017547dc79cc87580252d364924fa28e79c2d768f9cd",
+        "iopmod_entry_address": 232,
+        "receipt_sha256": "a96bd9b0823cd56232483682f8d4bb8278d2574517a693efbdf79ddac7fa9fd0"
+      },
+      {
+        "program": "LIBSD.IRX",
+        "executable_sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 176,
+        "text_size": 18496,
+        "text_sha256": "394f8466b9781c6fd7cce442a398c6f9e3bbe050e1c0c278fd41e19eb3aefadc",
+        "iopmod_entry_address": 176,
+        "receipt_sha256": "c1359680a92dd511c50b1dfff71884ca2a2edb0a4302730cc977eb496fa346a9"
+      },
+      {
+        "program": "LOADCORE.irx",
+        "executable_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 7568,
+        "text_sha256": "f70015a489983b1ad173d4cc78f8aa80863ddd9a0ea93b3e7bd197792fa8bc71",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "dbdaf5acd0b1c6e5b138362f15194b1149ad0ca538f0aeb003376d3d7edf4584"
+      },
+      {
+        "program": "LOADFILE.irx",
+        "executable_sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 7168,
+        "text_sha256": "fce5270d164896056e704739bf4b5545fd9476ac33396ed9af7de1c1a616ba40",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "aaa4e5040bd1652e8ae102d9513b3b4c8d350f9d2d58ad05f18c37b28de5320c"
+      },
+      {
+        "program": "MCMAN.IRX",
+        "executable_sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 72272,
+        "text_sha256": "509f1f93f78f3c6050475ec1c611b67be65b55d98238ef195274c101ce9ae216",
+        "iopmod_entry_address": 376,
+        "receipt_sha256": "4f47d3c0389f6d620fcb0509acae5c2d1269ac973ef26ca87d1ad2389ab7a597"
+      },
+      {
+        "program": "MCSERV.IRX",
+        "executable_sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 4704,
+        "text_sha256": "5e251ee45ee75b6da1763d5b1b41d45c0e9244918790768f69e521e772b09a17",
+        "iopmod_entry_address": 88,
+        "receipt_sha256": "3d080ad8390b23ad8bb1f614ee18143a0035f62c6b8113eff2f562caf47eec00"
+      },
+      {
+        "program": "MODLOAD.irx",
+        "executable_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 176,
+        "text_size": 12896,
+        "text_sha256": "1424cd6e68a67fa8716e2f3346a4791dfa1f126f16bbe8b6bff24725387699cd",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "92af1a7b71d3d901e57249b857cfd71cf3d61ebf29b1d7fd9535df1e2a70193f"
+      },
+      {
+        "program": "PADMAN.IRX",
+        "executable_sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 32192,
+        "text_sha256": "ce8029ed16fc5bed03cc089f31ab1ea012c34a8c8981f3e11ea0f4ffc334fa70",
+        "iopmod_entry_address": 12836,
+        "receipt_sha256": "e32aa1f7eccda56da35a1ad96a79f1d1e164a74359b392585b16061ce8f9533f"
+      },
+      {
+        "program": "ROMDRV.irx",
+        "executable_sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 2128,
+        "text_sha256": "490c9ada961721d515aafd358883b51dd2685bd3a0f4ae766a1e62104c48a7e9",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "7d82494144095f3061817d98b31b377341442090479477e19112d7e7c03aaaae"
+      },
+      {
+        "program": "SDRDRV.IRX",
+        "executable_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 4400,
+        "text_sha256": "22e10494dc10c9daf83ac0e60fec60bdc3a3fc78c9a9918e5ee85e377614d706",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "d17fc9952942efc6ad72145287076be87ed5f8e7ae1f05781093ac4d96ccf176"
+      },
+      {
+        "program": "SIFCMD.irx",
+        "executable_sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 176,
+        "text_size": 6960,
+        "text_sha256": "c5e96b44acaa0c176a2055bddc104f65fbd3fbd6a28b02de3c17ebe580ca1f72",
+        "iopmod_entry_address": 208,
+        "receipt_sha256": "47d812f794633962c46fe7ffdd7de045383913363aba82f6acfdf3ef7300ba31"
+      },
+      {
+        "program": "SIFMAN.irx",
+        "executable_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 4160,
+        "text_sha256": "e80d4f7e1bc96132141e2a2d6ba0bb6e34af753eaafe2c5ad687deb2f27ea0c4",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "c477d995b23452cc57391b43093ca81226af23be67083d51b0b0d2d7aee410c7"
+      },
+      {
+        "program": "SIO2MAN.IRX",
+        "executable_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 3856,
+        "text_sha256": "b52fd2e75c54b62de663d397d058d6928d9cb3d45a6cc8385b35a3ea06cbc9e7",
+        "iopmod_entry_address": 1588,
+        "receipt_sha256": "fb69ff279a322355a6ef48fd0b41fac77953de20aa3f3646be83f1fc7fad8656"
+      },
+      {
+        "program": "STDIO.irx",
+        "executable_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 1856,
+        "text_sha256": "8e4f1fea7b44483c5638ac925616e9f568f22b70535df9d873a8667e8c3c8b92",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "3b73148bb0aaeb6da56c3c54a9cd0901631dcda99afdad5445ccf90ae83afe18"
+      },
+      {
+        "program": "STREAM.IRX",
+        "executable_sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 141632,
+        "text_sha256": "39c3ee6885ed2a1ce5366dd7d2958b671681b8c0be39582fd2ca1a80cdf77f20",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "fcd90e62f819f0c7d656b09634d4d84dc66d689fd0d96a3effa32e7c3b63fcd4"
+      },
+      {
+        "program": "SYSCLIB.irx",
+        "executable_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 6400,
+        "text_sha256": "28b40a8606e632db3c0e658419841d247572ab19c2e3213b3f330465ac30e261",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "0a1c1b75a32744c8925eaef55676738c0cb2a475760c6051dade05d2ad6291c7"
+      },
+      {
+        "program": "THREADMAN.irx",
+        "executable_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 176,
+        "text_size": 27808,
+        "text_sha256": "be754feffdaddfc279ed4fc0e988cf45ac97bc47756d306f471f14f4b17565c9",
+        "iopmod_entry_address": 16,
+        "receipt_sha256": "8e4616d9777dd40eff443f4e78f6744efa4ab7c4efd96cc92ecbb9b0e333f418"
+      },
+      {
+        "program": "TIMEMANI.irx",
+        "executable_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 3760,
+        "text_sha256": "630194a90f3e8dbd6aad58fd054dd6bed23a2b5692703cdb44cf649b731e7d97",
+        "iopmod_entry_address": 0,
+        "receipt_sha256": "81fa3c840245c91c3d684cf9fdb4309e6a2a955b39ae1641ea3e61aa4d0be887"
+      },
+      {
+        "program": "USBD.IRX",
+        "executable_sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255",
+        "language": "MIPS:LE:32:default",
+        "compiler_spec": "default",
+        "text_address": 0,
+        "text_file_offset": 160,
+        "text_size": 25296,
+        "text_sha256": "7090b9dc4d73270ebbe9b600af6df45f6a51de01604249579d06f1157bdfa2ca",
+        "iopmod_entry_address": 19652,
+        "receipt_sha256": "1162e07afbb3cd2a3dc73d3528618d7db11faf1ec404760b30517bca552dbe3b"
+      }
+    ]
+  },
+  "candidates": {
+    "result": "13/13 metadata entry-zero candidates on fresh copied project; each body equals existing decoded instruction addresses exactly",
+    "total_candidate_body_bytes": 3832,
+    "candidates": [
+      {
+        "program": "CDVDMAN.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 148,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 159,
+        "after_function_count": 160,
+        "receipt_sha256": "d929b8303dbbf6a6254834ab267f25d444949e1e338b87c68d4b25f81c40ea4b"
+      },
+      {
+        "program": "EESYNC.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 128,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 10,
+        "after_function_count": 11,
+        "receipt_sha256": "f71857b256181450ca5a276a928bd3354ab5e0b7f29adaa9eef91f22b98b05af"
+      },
+      {
+        "program": "FILEIO.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 248,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 118,
+        "after_function_count": 119,
+        "receipt_sha256": "db6ebb59f98e0c568592c6e747c1ca3f37de8febb429f1d2df2c71d4690b759a"
+      },
+      {
+        "program": "IOMAN.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 184,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 57,
+        "after_function_count": 58,
+        "receipt_sha256": "81231b9dbf80af2684ec832ea5858f1670f35a337a8f01568381efe06694478b"
+      },
+      {
+        "program": "LOADCORE.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 1628,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 37,
+        "after_function_count": 38,
+        "receipt_sha256": "4ea8d49a5ae2d3edf2a5a290d86ab69526afd1529d8f47a92a35e0d28614b08e"
+      },
+      {
+        "program": "LOADFILE.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 200,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 64,
+        "after_function_count": 65,
+        "receipt_sha256": "278d628e3540fc55de6dbc0713e8ac789256ed19702f681b2be17b67165230e0"
+      },
+      {
+        "program": "MODLOAD.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 228,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 106,
+        "after_function_count": 107,
+        "receipt_sha256": "fb86def383070e1eff366ae265cc650fb587bb7f059fcf780afc26c49753f094"
+      },
+      {
+        "program": "ROMDRV.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 100,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 14,
+        "after_function_count": 15,
+        "receipt_sha256": "ef9a4a000cb92efda6decdeacc86a8e340ce81938cb2782b7e93d2c3c4ac7d92"
+      },
+      {
+        "program": "SDRDRV.IRX",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 636,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 55,
+        "after_function_count": 56,
+        "receipt_sha256": "3734070bfa1f62fba47049a33a84c7e7d5daff0fe429a248f2d9d8efc9ed95c8"
+      },
+      {
+        "program": "SIFMAN.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 140,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 28,
+        "after_function_count": 29,
+        "receipt_sha256": "c2d8dbfd60df05e11fcbf80427418107b237942a9fab2589727e1e31fcfc1cd7"
+      },
+      {
+        "program": "STDIO.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 32,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 17,
+        "after_function_count": 18,
+        "receipt_sha256": "8b7a37463759f6b2dc95dc65b318a3c9270eadaad4d7a2b4f2b70ce3d4029dd3"
+      },
+      {
+        "program": "SYSCLIB.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 32,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 23,
+        "after_function_count": 24,
+        "receipt_sha256": "cfdbb30882b93f4a7ff2006c8338de0e3cef92b465202fef1b4572bd3380d3d0"
+      },
+      {
+        "program": "TIMEMANI.irx",
+        "status": "created_guarded_provisional_candidate",
+        "entry": 0,
+        "candidate_body_bytes": 128,
+        "body_exactly_equals_existing_instruction_addresses": true,
+        "uncovered_ranges": [],
+        "instruction_addresses_outside_body": [],
+        "before_function_count": 19,
+        "after_function_count": 20,
+        "receipt_sha256": "669617ffb0ae29f7335edf091124b4e4dfba21021f2d22eff29d4f2f78e6f5f0"
+      }
+    ],
+    "negative_controls": [
+      {
+        "name": "candidate moved-text-base",
+        "result": "rejected_profile_guard",
+        "guard_error": "Ghidra .text is not executable, base-zero, exact-size/hash raw ELF .text",
+        "created_candidate": false,
+        "fresh_copy": true
+      },
+      {
+        "name": "coverage moved-text-base",
+        "result": "rejected before output file creation",
+        "output_created": false,
+        "fresh_copy": true
+      },
+      {
+        "name": "historic wrong-input identity",
+        "result": "rejected_input_identity",
+        "note": "Preserved from earlier script revision"
+      }
+    ],
+    "exact_address_set_validation": {
+      "result": "13/13 fresh exact-run receipts report equality with both difference sets empty",
+      "total_candidate_body_bytes": 3832,
+      "jev_verify": {
+        "verified": 3,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "jev_review": {
+        "action": "escalate",
+        "safe_to_apply": 0.4,
+        "disposition": "retain escalation; no approval"
+      }
+    }
+  },
+  "c_output": {
+    "location": ".scratch/mesh/codex-audit/iop-entry-recovery/strict-exact-decomp/",
+    "module_count": 13,
+    "module_manifests": [
+      {
+        "program": "CDVDMAN.irx",
+        "inventory_count": 160,
+        "processed": 160,
+        "generated": 160,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "161084c22312a553bd9f7940057e2a1341e84d9e70376781605e8950331ed2ca"
+      },
+      {
+        "program": "EESYNC.irx",
+        "inventory_count": 11,
+        "processed": 11,
+        "generated": 11,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "98f46e7893f5fbc6dedd79dca525bea5f6667d638b93b00ba1ac1dc5d1679b4f"
+      },
+      {
+        "program": "FILEIO.irx",
+        "inventory_count": 119,
+        "processed": 119,
+        "generated": 119,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "0c9e21d50267e5c9bd7af61f44891e0f6cc493630d3722fbd54d8a2bc1cb9e58"
+      },
+      {
+        "program": "IOMAN.irx",
+        "inventory_count": 58,
+        "processed": 58,
+        "generated": 58,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "7bc822c51702eb2ae1f7c3ad90d5b4bdd68ec3674879cce13871f7e53802a1ec"
+      },
+      {
+        "program": "LOADCORE.irx",
+        "inventory_count": 38,
+        "processed": 38,
+        "generated": 38,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "139d766c949d908aca4cca030f770e256ed3a7c5860be71fff93f29512a539c6"
+      },
+      {
+        "program": "LOADFILE.irx",
+        "inventory_count": 65,
+        "processed": 65,
+        "generated": 65,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "5aa4715719aafc8cdfd2a6ef18623f933a893c863ba7b33fc258bb665b2bfcd4"
+      },
+      {
+        "program": "MODLOAD.irx",
+        "inventory_count": 107,
+        "processed": 107,
+        "generated": 107,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "d64f63fe615ad24f2e3d99dbdd08026803991501ebf6a85ba36cbc81ecac8078"
+      },
+      {
+        "program": "ROMDRV.irx",
+        "inventory_count": 15,
+        "processed": 15,
+        "generated": 15,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "dbfa937c3023664939f448c4bf7c114513d47659fb4d5d1eb9dbe190b298f2bf"
+      },
+      {
+        "program": "SDRDRV.IRX",
+        "inventory_count": 56,
+        "processed": 56,
+        "generated": 56,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "3c018669cea67f966440bde9862cbe145b1d554394c19d9a6074681d0a2a7b9f"
+      },
+      {
+        "program": "SIFMAN.irx",
+        "inventory_count": 29,
+        "processed": 29,
+        "generated": 29,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "2f3682ad4fb7ca9f984b9b1cf5a8052d69ea5862eef411963c8348dd2323a6a0"
+      },
+      {
+        "program": "STDIO.irx",
+        "inventory_count": 18,
+        "processed": 18,
+        "generated": 18,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "b55bdb1f9110e1192685e1505e84686757c2b7158a2de01417b6197332c29444"
+      },
+      {
+        "program": "SYSCLIB.irx",
+        "inventory_count": 24,
+        "processed": 24,
+        "generated": 24,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "843f69c9fdbb89e1cf6b9225aa3406e98a4bf2e4ba5f3a3a894270f059b994dc"
+      },
+      {
+        "program": "TIMEMANI.irx",
+        "inventory_count": 20,
+        "processed": 20,
+        "generated": 20,
+        "failed": 0,
+        "status": "generated",
+        "manifest_sha256": "cf0bc6eb0f1b415b8cd8d7f05da0634d28b799d093442ce9db19088f6743f736"
+      }
+    ],
+    "generated_total": 720,
+    "failed_total": 0,
+    "claim_limit": "Scratch C exports of Ghidra-saved functions from candidate-bearing project only; not recovered source or proof of function identity, invocation, semantics, or completeness."
+  },
+  "judgment": {
+    "jev_review_action": "escalate",
+    "safe_to_apply": 0.4,
+    "disposition": "Keep scripts experimental; Jev review was not approval. Deterministic raw/hash/layout/body guards and isolated controls support only the bounded static claim."
+  },
+  "claim_limits": [
+    "ELF entry metadata does not establish runtime invocation; saved listing has no code reference to address zero.",
+    "CFG body is a provisional extent from existing decoded units; original function identity/boundaries remain unproved.",
+    "No runtime load address, relocation/GP behavior, semantics, or whole-game completeness is asserted."
+  ]
+}

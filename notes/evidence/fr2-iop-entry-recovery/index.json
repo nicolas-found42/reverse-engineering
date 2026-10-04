@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "scope": "IOP entry-zero static listing and provisional candidate recovery",
+  "readme": "README.md",
+  "strict_summary": "strict-validation-summary.json",
+  "judgment_receipts": "jev-results.json",
+  "receipts": {
+    "historical_read_only_coverage": ".scratch/mesh/codex-audit/iop-entry-recovery/coverage/",
+    "historical_candidate_runs": ".scratch/mesh/codex-audit/iop-entry-recovery/candidates-final/",
+    "strict_coverage": ".scratch/mesh/codex-audit/iop-entry-recovery/strict-coverage/",
+    "strict_candidates": ".scratch/mesh/codex-audit/iop-entry-recovery/strict-candidates/",
+    "negative_controls": ".scratch/mesh/codex-audit/iop-entry-recovery/guard-tests/",
+    "candidate_c_output": ".scratch/mesh/codex-audit/iop-entry-recovery/strict-decomp/",
+    "strict_exact_candidates": ".scratch/mesh/codex-audit/iop-entry-recovery/strict-exact-candidates/",
+    "strict_exact_candidate_c_output": ".scratch/mesh/codex-audit/iop-entry-recovery/strict-exact-decomp/"
+  },
+  "scripts": [
+    "tools/ghidra/experimental/ExportIopCoverage.java",
+    "tools/ghidra/experimental/CreateIopEntryCandidates.java"
+  ],
+  "status": "experimental; no original function identity, extent, runtime invocation, or whole-game completeness claim",
+  "strict_jev_receipt": "strict-jev-results.json",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 8346,
+      "sha256": "6e70cdd373704cda818bd64a93e33c99228c69587b9f37bf701e64e4ff948558"
+    },
+    {
+      "path": "jev-results.json",
+      "bytes": 5227,
+      "sha256": "7b52e6e43217be7d4c5fa0f6e96292cf93a6458952c3819cab5f04a3c123b0f3"
+    },
+    {
+      "path": "root-entry-verification.json",
+      "bytes": 3958,
+      "sha256": "311b197d9d9d8d966d44b4135802d2bd39d610c93182aa95e355976ef44518ab"
+    },
+    {
+      "path": "root-validation.json",
+      "bytes": 10668,
+      "sha256": "761e58dfe1a53494f426ac758be3688ddb14772b13a242d94ac399e8ec4b4c08"
+    },
+    {
+      "path": "strict-jev-results.json",
+      "bytes": 4581,
+      "sha256": "0850578690342ebfa82b2d7377d2a0a001c6a0b77235d92a223cf5cc3b8905a0"
+    },
+    {
+      "path": "strict-validation-summary.json",
+      "bytes": 26704,
+      "sha256": "e061edf3d5913c3194e53ed20cfcf3a99a9860e9ef39b9c2b79ac280d041d133"
+    }
+  ],
+  "source_pins": [
+    {
+      "path": "tools/ghidra/experimental/ExportIopCoverage.java",
+      "sha256": "8218203032c4f9b2338c3ad8fde427ae080d4a742e9783f44d3517c43535c4db"
+    },
+    {
+      "path": "tools/ghidra/experimental/CreateIopEntryCandidates.java",
+      "sha256": "5f3c012db5ee4b4c3869ffb527f8bf53dd505d87c27e93589b4fd8ebd7e288a8"
+    }
+  ],
+  "root_validation": "root-validation.json"
+}

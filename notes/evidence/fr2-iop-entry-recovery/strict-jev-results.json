@@ -1,0 +1,185 @@
+{
+  "schema_version": 1,
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "strict_guard_review": {
+    "tool": "jev_review",
+    "action": "escalate",
+    "composite": 0.76325,
+    "safe_to_apply": 0.4,
+    "reason_codes": [
+      "confidence_below_review",
+      "safe_to_apply_below_review"
+    ],
+    "files": {
+      "tools/ghidra/experimental/CreateIopEntryCandidates.java": {
+        "action": "escalate",
+        "safe_to_apply": 0.4,
+        "scores": {
+          "correctness": {
+            "score": 1.85,
+            "confidence": 0.78
+          },
+          "spec_match": {
+            "score": 1.92,
+            "confidence": 0.88
+          },
+          "test_gap": {
+            "score": 0.98,
+            "confidence": 0.46
+          },
+          "blast_radius": {
+            "score": 0.57,
+            "confidence": 0.14
+          }
+        },
+        "limiting_rubric": "blast_radius"
+      },
+      "tools/ghidra/experimental/ExportIopCoverage.java": {
+        "action": "escalate",
+        "safe_to_apply": 0.57,
+        "scores": {
+          "correctness": {
+            "score": 1.65,
+            "confidence": 0.47
+          },
+          "spec_match": {
+            "score": 1.25,
+            "confidence": 0.2
+          },
+          "test_gap": {
+            "score": 0.76,
+            "confidence": 0.23
+          },
+          "blast_radius": {
+            "score": 1.01,
+            "confidence": 0.01
+          }
+        },
+        "limiting_rubric": "blast_radius"
+      }
+    },
+    "usage": {
+      "input_tokens": 13629,
+      "output_tokens": 186
+    },
+    "disposition": "Retain escalation; the experiment remains in the experimental scripts path. Do not treat this as an approval. Deterministic guards, full 24-module coverage and candidate runs, and fresh base-shift rejection are the evidence for the bounded result."
+  },
+  "claim_verification": {
+    "tool": "jev_verify",
+    "summary": {
+      "verified": 5,
+      "contradicted": 0,
+      "unsupported": 0,
+      "needs_review": 1
+    },
+    "claims": [
+      {
+        "id": "claim0",
+        "verdict": "verified",
+        "confidence": 0.97,
+        "action": "auto"
+      },
+      {
+        "id": "claim1",
+        "verdict": "verified",
+        "confidence": 1.0,
+        "action": "auto"
+      },
+      {
+        "id": "claim2",
+        "verdict": "verified",
+        "confidence": 0.95,
+        "action": "auto"
+      },
+      {
+        "id": "claim3",
+        "verdict": "verified",
+        "confidence": 0.91,
+        "action": "auto"
+      },
+      {
+        "id": "claim4",
+        "verdict": "verified",
+        "confidence": 0.64,
+        "action": "review",
+        "note": "Candidate C export plus no-identity/runtime claims were supported but below the automatic-confidence threshold."
+      }
+    ],
+    "usage": {
+      "input_tokens": 2659,
+      "output_tokens": 581
+    }
+  },
+  "type_safe_docs_read": [
+    "https://docs.typesafe.ai/llms.txt",
+    "https://docs.typesafe.ai/introduction/coding-agents",
+    "https://docs.typesafe.ai/concepts/system-one"
+  ],
+  "final_exact_set_guard": {
+    "review": {
+      "tool": "jev_review",
+      "action": "escalate",
+      "composite": 0.86,
+      "safe_to_apply": 0.4,
+      "reason_codes": [
+        "confidence_below_review",
+        "safe_to_apply_below_review"
+      ],
+      "scores": {
+        "correctness": {
+          "score": 1.87,
+          "confidence": 0.81
+        },
+        "spec_match": {
+          "score": 1.93,
+          "confidence": 0.89
+        },
+        "test_gap": {
+          "score": 0.81,
+          "confidence": 0.37
+        },
+        "blast_radius": {
+          "score": 0.57,
+          "confidence": 0.14
+        }
+      },
+      "limiting_rubric": "blast_radius",
+      "usage": {
+        "input_tokens": 6635,
+        "output_tokens": 79
+      },
+      "disposition": "Escalation retained; this experimental script is not approved by Jev."
+    },
+    "verification": {
+      "tool": "jev_verify",
+      "summary": {
+        "verified": 3,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "claims": [
+        {
+          "id": "claim0",
+          "verdict": "verified",
+          "confidence": 0.97
+        },
+        {
+          "id": "claim1",
+          "verdict": "verified",
+          "confidence": 1.0
+        },
+        {
+          "id": "claim2",
+          "verdict": "verified",
+          "confidence": 0.98
+        }
+      ],
+      "usage": {
+        "input_tokens": 1671,
+        "output_tokens": 318
+      }
+    }
+  }
+}
