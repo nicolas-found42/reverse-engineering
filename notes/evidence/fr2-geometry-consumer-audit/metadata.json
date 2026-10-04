@@ -1,0 +1,567 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only offline static trace from FUN_0011ed90 geometry-section parsing into one named-object VU0 transform path; no game routine, emulator, renderer, or UI executed.",
+  "source_provenance": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "static_export": {
+      "path": ".scratch/evidence/static-export.json",
+      "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+      "functions": 3446,
+      "ghidra_version": "12.1.3"
+    },
+    "section_parser": {
+      "path": "tools/ps2_sections.py",
+      "sha256": "837be19ffe5819584845d2fe2dd2d5562f98470009c1f3573e8f46ffeb7f3d6d"
+    },
+    "section_chain_result": {
+      "path": "notes/evidence/fr2-static-recovery/results/sections.json",
+      "sha256": "502dc555456f0b7a71dbf8a140f89671093f9ed1a1b0f0ec52d13e486897f528",
+      "exact_eof_models": 56
+    },
+    "narrow_function_exports": {
+      "0011ed90": {
+        "path": ".scratch/mesh/codex-root/decompile-candidates-01/functions/0011ed90.c",
+        "sha256": "8cedf6847f21090b17e082d4c2a2d423cc2d57d08c392db6d7dc9125bb5d87cc"
+      },
+      "0012d4b8": {
+        "path": ".scratch/mesh/codex-root/decompile-candidates-01/functions/0012d4b8.c",
+        "sha256": "87efb37aa5e8fe70c09f5c0e2e9ce86fe6b2ea5956b1f2b70540c341972ab34a"
+      },
+      "00113aa8": {
+        "path": ".scratch/mesh/codex-root/decompile-candidates-01/functions/00113aa8.c",
+        "sha256": "2c32a0775537459f4d055c7cca1fba9731a2b2ab6fc2ca0943c5d0d76aed8cfa"
+      }
+    }
+  },
+  "loader_facts": {
+    "function": "FUN_0011ed90",
+    "table_stride": "0x34",
+    "record_count_fields": [
+      "+0x1c:u16",
+      "+0x28:u16"
+    ],
+    "header_fields": {
+      "flags": "+0:u16",
+      "count": "+2:u16",
+      "third": "+4:u16"
+    },
+    "payload_plane_rules": [
+      {
+        "condition": "always",
+        "stride_bytes": 6
+      },
+      {
+        "condition": "flags & 0x800",
+        "stride_bytes": 20
+      },
+      {
+        "condition": "always",
+        "stride_bytes": 4
+      },
+      {
+        "condition": "third != 0xffff",
+        "stride_bytes": 4
+      },
+      {
+        "condition": "flags & 0x40",
+        "stride_bytes": 4
+      },
+      {
+        "condition": "flags & 0x80",
+        "stride_bytes": 4
+      }
+    ],
+    "plane_alignment": 16,
+    "instruction_spans": [
+      "0011ee90-0011eea8",
+      "0011ef38-0011eff8",
+      "0011f044-0011f108"
+    ],
+    "important_limit": "No recovered semantic name for any of these planes."
+  },
+  "corpus_anchor": {
+    "path": "games/ford-racing-2/extracted/files/3DDATA/CARS/49COUPE.PS2;1",
+    "sha256": "62e3de6688791e6af88d65bebe7156ee2d1f1ec83911316cafddf3173259f381",
+    "bytes": 1146656,
+    "geometry_table": {
+      "offset": 933940,
+      "count": 39,
+      "stride": 52,
+      "end": 935968
+    },
+    "header_start": 935968,
+    "payload_start": 938880,
+    "next_section": 1143232,
+    "first_header": {
+      "offset": 935968,
+      "flags": "0xc008",
+      "count": 64,
+      "third": 0
+    },
+    "first_header_spans": [
+      {
+        "offset": 938880,
+        "count": 64,
+        "stride": 6,
+        "bytes": 384
+      },
+      {
+        "offset": 939264,
+        "count": 64,
+        "stride": 4,
+        "bytes": 256
+      },
+      {
+        "offset": 939520,
+        "count": 64,
+        "stride": 4,
+        "bytes": 256
+      }
+    ]
+  },
+  "negative_controls": {
+    "method": "Mutated only a bytearray in memory, then reparsed with the unchanged tools/ps2_sections.py; original asset bytes were not written.",
+    "cases": [
+      {
+        "mutation": "first header count +1",
+        "rejected": true,
+        "error_type": "Incomplete",
+        "message": "later-section header is outside the measured 17-word profile"
+      },
+      {
+        "mutation": "toggle first header flag 0x40",
+        "rejected": true,
+        "error_type": "Incomplete",
+        "message": "later-section header is outside the measured 17-word profile"
+      },
+      {
+        "mutation": "toggle first header flag 0x800",
+        "rejected": true,
+        "error_type": "Invalid",
+        "message": "four-byte geometry plane at 0x10b710 (+102912) exceeds 1146656 bytes"
+      },
+      {
+        "mutation": "first header third halfword = 0xffff",
+        "rejected": true,
+        "error_type": "Incomplete",
+        "message": "later-section header is outside the measured 17-word profile"
+      }
+    ]
+  },
+  "consumer_trace": {
+    "asset_loader": "FUN_0012d4b8",
+    "load_call": "0012d568 -> FUN_0011ed90",
+    "parsed_root_storage": "context +0x188",
+    "named_lookups": [
+      {
+        "callsite": "0012d57c",
+        "name_address": "0x28f270",
+        "name": "SKYDOME"
+      },
+      {
+        "callsite": "0012d590",
+        "name_address": "0x253128",
+        "name": "MINI_SKYDOME"
+      }
+    ],
+    "object_float_callsite": "FUN_0012d4b8 decomp lines 455-468: object from *(iVar36+8), FUN_00121590(**object), then fields +0x18,+0x0c,+0x10,+0x14 passed to FUN_00113aa8; another analogous object list appears at lines 474-482.",
+    "matrix_helper_purpose": "FUN_00113aa8 writes packed values to output words 0..15; exact mathematical convention is not claimed here.",
+    "vu_helper": {
+      "function": "FUN_00113aa8",
+      "vcallms_immediate": "0x4d",
+      "byte_vma": "0x268",
+      "mapping_source": "Previously verified overlay VU0 static evidence; immediate*8.",
+      "instruction_sites": [
+        "00113ae8 vcallms 0x4d",
+        "00113b20 vcallms 0x4d",
+        "00113b58 vcallms 0x4d"
+      ]
+    },
+    "output_shape": "FUN_00113aa8 stores 16 float words through output pointer at words +0..+15; exact transform use at runtime not claimed.",
+    "bound": "This connects parsed named-object float processing to VU0 transform math, not a particular 0x34 plane to a VU1/VIF draw packet."
+  },
+  "jgrep": [
+    {
+      "query": "advances through flag-selected geometry planes by reading record counts and aligning each payload to 16 bytes",
+      "receipt": ".scratch/mesh/codex-geometry/consumer-audit-01/jgrep-geometry-parser-01.json",
+      "exit": 0,
+      "matches": 1,
+      "top_probability": 0.91
+    },
+    {
+      "query": "uses the named parsed track object and its float fields to build transforms with VU math",
+      "receipt": ".scratch/mesh/codex-geometry/consumer-audit-01/jgrep-model-vu-link-01.json",
+      "exit": 0,
+      "matches": 1,
+      "top_probability": 0.84
+    },
+    {
+      "query": "calls a VU microprogram for scalar angles and writes packed matrix components in twelve output words",
+      "receipt": ".scratch/mesh/codex-geometry/consumer-audit-01/jgrep-vu-matrix-helper-01.json",
+      "exit": 1,
+      "matches": 0
+    },
+    {
+      "query": "passes scalar angles to vcallms and stores packed matrix components in twelve output words",
+      "receipt": ".scratch/mesh/codex-geometry/consumer-audit-01/jgrep-vu-matrix-helper-02.json",
+      "exit": 1,
+      "matches": 0
+    },
+    {
+      "query": "reads parsed geometry arrays and writes a VIF DMA packet for the renderer",
+      "receipt": ".scratch/mesh/codex-geometry/consumer-audit-01/jgrep-draw-packet-link-01.json",
+      "exit": 1,
+      "matches": 0
+    }
+  ],
+  "jev": {
+    "receipt": "notes/evidence/fr2-geometry-consumer-audit/jev-consumer-link-verify-01.json",
+    "summary": {
+      "verified": 4,
+      "contradicted": 0,
+      "unsupported": 0,
+      "needs_review": 0
+    },
+    "usage": {
+      "input_tokens": 3359,
+      "output_tokens": 623
+    },
+    "disposition": "Jev verified bounded source statements. Its negative/silence judgment is advisory only; instruction inspection defines remaining unknowns.",
+    "receipts": [
+      {
+        "receipt": "notes/evidence/fr2-geometry-consumer-audit/jev-consumer-link-verify-01.json",
+        "summary": {
+          "verified": 4,
+          "contradicted": 0,
+          "unsupported": 0,
+          "needs_review": 0
+        },
+        "usage": {
+          "input_tokens": 3359,
+          "output_tokens": 623
+        }
+      },
+      {
+        "receipt": "notes/evidence/fr2-geometry-consumer-audit/jev-object-float-trace-verify-01.json",
+        "summary": {
+          "verified": 3,
+          "contradicted": 0,
+          "unsupported": 0,
+          "needs_review": 0
+        },
+        "usage": {
+          "input_tokens": 2326,
+          "output_tokens": 428
+        }
+      }
+    ]
+  },
+  "falsifiable_next_candidate": {
+    "candidate": "Trace a specific FUN_0011ed90 0x34-table payload plane to a direct consumer read. Use exact section offsets, machine instructions and a bounded consumer-derived check before assigning any vertex/index/texture label.",
+    "currently_unproven": [
+      "semantics of six-byte and four-byte geometry planes",
+      "vertex/index relationships",
+      "texture-reference ranges",
+      "VIF1/VU1 submission",
+      "VU0-derived output finiteness or runtime equivalence"
+    ]
+  },
+  "completed_candidate": {
+    "candidate": "Trace values resolved through FUN_00124cb8 to serialized 0x34 group pointer fields and then to an actual consumer read. For the sample header, independently mutate a count/flag/sentinel and require its measured next-section boundary to shift consistently; do not assign vertex/index meaning until a consumer's field accesses support it.",
+    "currently_unproven": [
+      "vertex stride or attribute semantics",
+      "index bounds against vertex counts",
+      "finite-float vertex ranges",
+      "texture-reference fields",
+      "specific per-plane consumer pointer",
+      "submission to VIF1/VU1"
+    ]
+  },
+  "root_cursor_correction": {
+    "status": "corrected; prior map omitted accumulated cursor increments",
+    "serialized_offsets": [
+      8,
+      12,
+      16,
+      20
+    ],
+    "runtime_offsets": [
+      12,
+      16,
+      20,
+      24
+    ],
+    "current_result": "root-correction/corrected-corpus.json",
+    "producer_anchor": "root-correction/corrected-anchor.json",
+    "original_snapshots": "superseded-field-map-01",
+    "original_receipts_preserved": true,
+    "jev_disposition": "r075 verified two mutually incompatible maps at low confidence; deterministic cursor arithmetic contradicts old map and proves corrected map; no unchanged question retried"
+  },
+  "superseded_bounded_float_verifier": {
+    "module": {
+      "path": "tools/verify_object_floats.py",
+      "sha256": "0bfe4f17639bde0fc9a8f22addfe5291d069e4c00cf753a24d8458f60f87877b"
+    },
+    "tests": {
+      "path": "tools/test_verify_object_floats.py",
+      "sha256": "f2a32db563fc1bea3db904eb114ec6e50aee99284a0e5208ada2774cbc376f54",
+      "command": "cd tools && ../.scratch/modern-re-research/sdk-venv/bin/python -m unittest test_verify_object_floats -v && pyright verify_object_floats.py test_verify_object_floats.py",
+      "outcome": "4 focused tests passed; pyright 0 errors, 0 warnings, 0 informations"
+    },
+    "corpus_result": {
+      "path": "notes/evidence/fr2-geometry-consumer-audit/object-float-corpus-result-01.json",
+      "sha256": "98eb9b330512d6e0a2ed375197e4cb08ada370a057f5bae00c35bd6be065f03f",
+      "scratch_original": ".scratch/evidence/object-float-verification-03/20261004T132723Z-3bf3432f9ecc42a2beb030b6393ddf42/result.json",
+      "status": "pass",
+      "models_expected": 56,
+      "models_checked": 56,
+      "models_exact_eof": 56,
+      "profile_counts": {
+        "loader68": 54,
+        "measured_legacy60": 2
+      },
+      "rows": 28453,
+      "fields_checked": 113812,
+      "finite": 113812,
+      "nan": 0,
+      "positive_infinity": 0,
+      "negative_infinity": 0,
+      "nonfinite": 0,
+      "failures": [],
+      "unsupported": []
+    },
+    "superseded_verbose_result": {
+      "path": ".scratch/evidence/object-float-verification-01/20261004T132327Z-882af01e173040ed8b420efca9cf625b/result.json",
+      "sha256": "10b57b0062454fd60639b2cd29093a63c2c9e61d2f79fb1f355de4f64678dee7",
+      "disposition": "Same corpus measurements, superseded because the initial receipt redundantly retained every span summary; compact per-file receipt copied above."
+    },
+    "jev": {
+      "receipt": "notes/evidence/fr2-geometry-consumer-audit/jev-object-float-verifier-01.json",
+      "sha256": "619ded27a2a8276dc291b4322359fedbf100aea86f9723f4f12c4a69367416ab",
+      "summary": {
+        "verified": 4,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "disposition": "Advisory claim check; code, synthetic tests, and parser-bound corpus result are the deterministic evidence."
+    },
+    "jgrep": {
+      "query": "reports per-file aggregate counts of finite, NaN, and infinite values from bounded parser-derived row spans",
+      "receipt": ".scratch/mesh/codex-geometry/object-trace-02/jgrep-finite-field-verifier-02.json",
+      "exit": 0,
+      "matches": 2,
+      "top_probability": 0.8
+    },
+    "scope": {
+      "fields": [
+        {
+          "source_offset": "0x04",
+          "runtime_offset": "0x0c"
+        },
+        {
+          "source_offset": "0x08",
+          "runtime_offset": "0x10"
+        },
+        {
+          "source_offset": "0x0c",
+          "runtime_offset": "0x14"
+        },
+        {
+          "source_offset": "0x10",
+          "runtime_offset": "0x18"
+        }
+      ],
+      "serialized_stride_bytes": 32,
+      "checks_parser_exact_eof_for_all_models": true,
+      "semantics_not_inferred": [
+        "geometry plane labels",
+        "coordinate axes",
+        "angle units",
+        "renderer submission",
+        "VU0 output values"
+      ]
+    },
+    "dependencies": {
+      "tools/ps2_sections.py": "837be19ffe5819584845d2fe2dd2d5562f98470009c1f3573e8f46ffeb7f3d6d",
+      "tools/verify_sections.py": "603769a4285ca1371dc7c1ab903c523e150a612c74887e97fae0ab89be9bbd98",
+      "tools/corpus_binding.py": "3994fb6a63a5789e6a3753aa108b2c1add706921cf6f40e833d26d9ca0e0eabc",
+      "tools/evidence_common.py": "52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20",
+      "tools/test_ps2_sections.py": "f2fbaad23639255425454160c174633a7ff8ddd10956c038c293df84c703217b",
+      "tools/test_ps2_textures.py": "cd3356417c1fa7a2fc2216b176291c6f7c7ef73857d9b6e989b5860ca4e9aace"
+    },
+    "superseded_compact_result": {
+      "path": "notes/evidence/fr2-geometry-consumer-audit/object-float-corpus-result-pre-final-01.json",
+      "sha256": "9afe32fb17fe2dd589d9c9d8b2fd2f40acc4394393650fa5850698c0064d2a9c",
+      "disposition": "Earlier compact pass; superseded by the final rerun after the unsupported-profile status guard was added."
+    },
+    "status": "superseded: incorrect serialized field mapping; passing tests and Jev did not prove loader cursor arithmetic"
+  },
+  "superseded_object_float_provenance_supplement": {
+    "path": "notes/evidence/fr2-geometry-consumer-audit/superseded-field-map-01/object-float-provenance-01.md",
+    "sha256": "01e3e77cf8a9b1ac2af245bdf2023bbb2ef54d6d9c9be8b1a76dfe3c3992a8c3",
+    "scope": "Static source-row writer to transform caller correspondence; no game routine executed.",
+    "source_addresses": {
+      "per_name_expansion_writer": "FUN_0011ed90, instructions 0011f950-0011f9dc",
+      "object_row_consumer": "FUN_0012d4b8, instructions 0012dd44-0012dd88",
+      "matrix_helper": "FUN_00113aa8; nonzero scalar input routes through VU0 byte VMA 0x268; output words 12-15 receive three direct scalars and 1.0",
+      "constructor_return_distinction": "FUN_00121590 result replaces grid-cell pointer, while subsequent float loads use saved original row pointer s0",
+      "root_name_id_path": [
+        "FUN_00123908",
+        "FUN_00124cb8",
+        "FUN_001213d8"
+      ]
+    },
+    "serialized_mapping": {
+      "source_stride_bytes": 32,
+      "runtime_stride_bytes": 36,
+      "fields": [
+        {
+          "source_offset": "0x04",
+          "runtime_offset": "0x0c",
+          "copy_sites": [
+            "0011f970",
+            "0011f980"
+          ]
+        },
+        {
+          "source_offset": "0x08",
+          "runtime_offset": "0x10",
+          "copy_sites": [
+            "0011f990",
+            "0011f9a0"
+          ]
+        },
+        {
+          "source_offset": "0x0c",
+          "runtime_offset": "0x14",
+          "copy_sites": [
+            "0011f9a8",
+            "0011f9b4"
+          ]
+        },
+        {
+          "source_offset": "0x10",
+          "runtime_offset": "0x18",
+          "copy_sites": [
+            "0011f9b8",
+            "0011f9c0"
+          ]
+        }
+      ]
+    },
+    "corpus_check": {
+      "asset": "games/ford-racing-2/extracted/files/3DDATA/TRACKS/Fukuoka.PS2;1",
+      "asset_sha256": "3dae1e8ff73ec00a97a88136d3a96976cd4db005d9326cc83972962a960428ec",
+      "name_index": 1224,
+      "name": "FUKUOKA_CUT_UP",
+      "parsed_span": {
+        "offset": 5428020,
+        "exclusive_end": 5467156,
+        "count": 1223,
+        "source_stride": 32,
+        "size": 39136
+      },
+      "binary32_fields_checked": 4892,
+      "nonfinite_fields": 0,
+      "exact_float_word_ranges": {
+        "source+0x04/runtime+0x0c": {
+          "min_bits": "0x0000ffff",
+          "max_bits": "0x0000ffff",
+          "value": "9.183409485952689e-41"
+        },
+        "source+0x08/runtime+0x10": {
+          "min": -1472.0,
+          "max": 1472.0
+        },
+        "source+0x0c/runtime+0x14": {
+          "min": 0.0,
+          "max": 0.0
+        },
+        "source+0x10/runtime+0x18": {
+          "min": -896.0,
+          "max": 832.0
+        }
+      },
+      "dynamic_load_not_claimed": true
+    },
+    "jev": {
+      "receipt": "notes/evidence/fr2-geometry-consumer-audit/jev-object-provenance-verify-02.json",
+      "sha256": "03f0858131198ccfdc1eb2827179ea6f89c57fbe4712b7a5fe55bfca41e0337e",
+      "summary": {
+        "verified": 5,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "disposition": "Advisory judgment; machine-instruction evidence and explicit unresolved semantics govern."
+    },
+    "jgrep": [
+      {
+        "query": "copies each serialized object placement record into a larger runtime record",
+        "scratch_receipt": ".scratch/mesh/codex-geometry/object-trace-02/jgrep-expanded-object-records.json",
+        "exit": 0,
+        "matches": 1,
+        "top_probability": 0.74
+      },
+      {
+        "query": "uses four object fields to build a translated rotation matrix",
+        "scratch_receipt": ".scratch/mesh/codex-geometry/object-trace-02/jgrep-transform-inputs.json",
+        "exit": 0,
+        "matches": 1,
+        "top_probability": 0.72
+      }
+    ],
+    "limits": [
+      "Does not identify geometry-plane semantics, coordinate axes, angle units, or a draw packet.",
+      "Does not execute the game, VU microprogram, emulator, renderer, or UI.",
+      "Finite inputs do not establish finite VU0-derived outputs or runtime equivalence."
+    ],
+    "status": "superseded: incorrect field mapping and field ranges; original document in superseded-field-map-01; current document is corrected"
+  },
+  "bounded_float_verifier": {
+    "status": "corrected and independently checked",
+    "module": {
+      "path": "tools/verify_object_floats.py",
+      "sha256": "6bc6d76721d82da2ea7f48de5124ab7b5336c7ebde24527d698c42187ee5b42b"
+    },
+    "tests": {
+      "path": "tools/test_verify_object_floats.py",
+      "sha256": "fdd35a6e1893b9cedd8a9548f62e84c088949b4ecb57f98505d4ba588bc92924",
+      "focused_passed": 5,
+      "full_suite_passed": 270,
+      "full_suite_seconds": 43.054,
+      "receipt": "root-correction/full-python-suite.log"
+    },
+    "corpus_result": {
+      "path": "root-correction/corrected-corpus.json",
+      "sha256": "b9ccaeb1d1ab49e3442e3d1d124d0b50c89033a61ea27cd3b13aa4bc568e3782",
+      "models": 56,
+      "rows": 28453,
+      "fields_checked": 113812,
+      "nonfinite": 0
+    },
+    "scope": {
+      "serialized_offsets": [
+        8,
+        12,
+        16,
+        20
+      ],
+      "runtime_offsets": [
+        12,
+        16,
+        20,
+        24
+      ],
+      "source_stride": 32,
+      "runtime_stride": 36,
+      "interpretation": "binary32 input finiteness only; axes, angle units, mesh semantics and VU outputs unproved"
+    },
+    "producer_consumer_provenance": {
+      "path": "object-float-provenance-01.md",
+      "sha256": "887eee0057041386abcdd8a2ffb29d2ac9915dfc00c01de32db2c75b031b7bbe"
+    },
+    "judgment_disposition": "r075 verified two mutually incompatible maps at low confidence; deterministic cursor arithmetic contradicts old map and proves corrected map; no unchanged question retried"
+  }
+}

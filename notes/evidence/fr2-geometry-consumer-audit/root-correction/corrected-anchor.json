@@ -1,0 +1,93 @@
+{
+  "source_sha256": "3dae1e8ff73ec00a97a88136d3a96976cd4db005d9326cc83972962a960428ec",
+  "record_index": 1224,
+  "span": {
+    "offset": 5428020,
+    "count": 1223,
+    "stride": 32,
+    "size": 39136,
+    "end": 5467156
+  },
+  "corrected_anchor": {
+    "span": {
+      "offset": 5428020,
+      "exclusive_end": 5467156,
+      "count": 1223,
+      "stride": 32,
+      "size": 39136
+    },
+    "rows": 1223,
+    "fields_checked": 4892,
+    "finite": 4892,
+    "nan": 0,
+    "positive_infinity": 0,
+    "negative_infinity": 0,
+    "nonfinite": 0,
+    "fields": [
+      {
+        "source_offset": 8,
+        "runtime_offset": 12,
+        "values_checked": 1223,
+        "finite": 1223,
+        "nan": 0,
+        "positive_infinity": 0,
+        "negative_infinity": 0,
+        "nonfinite": 0,
+        "finite_min": -1472.0,
+        "finite_max": 1472.0,
+        "anomaly_preview": [],
+        "anomaly_preview_truncated": false
+      },
+      {
+        "source_offset": 12,
+        "runtime_offset": 16,
+        "values_checked": 1223,
+        "finite": 1223,
+        "nan": 0,
+        "positive_infinity": 0,
+        "negative_infinity": 0,
+        "nonfinite": 0,
+        "finite_min": 0.0,
+        "finite_max": 0.0,
+        "anomaly_preview": [],
+        "anomaly_preview_truncated": false
+      },
+      {
+        "source_offset": 16,
+        "runtime_offset": 20,
+        "values_checked": 1223,
+        "finite": 1223,
+        "nan": 0,
+        "positive_infinity": 0,
+        "negative_infinity": 0,
+        "nonfinite": 0,
+        "finite_min": -896.0,
+        "finite_max": 832.0,
+        "anomaly_preview": [],
+        "anomaly_preview_truncated": false
+      },
+      {
+        "source_offset": 20,
+        "runtime_offset": 24,
+        "values_checked": 1223,
+        "finite": 1223,
+        "nan": 0,
+        "positive_infinity": 0,
+        "negative_infinity": 0,
+        "nonfinite": 0,
+        "finite_min": 0.0,
+        "finite_max": 0.0,
+        "anomaly_preview": [],
+        "anomaly_preview_truncated": false
+      }
+    ]
+  },
+  "negative_control": {
+    "mutation": "first row serialized+0x14 quietNaN",
+    "nonfinite": 1,
+    "failures": [
+      "1 non-finite mapped float fields in serialized row span at 0x52d334"
+    ],
+    "original_unchanged_sha256": "3dae1e8ff73ec00a97a88136d3a96976cd4db005d9326cc83972962a960428ec"
+  }
+}

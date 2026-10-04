@@ -1,0 +1,32 @@
+{
+  "args": {
+    "claims": [
+      "check_model calls ps2_sections.parse, obtains each record's parser-derived expanded_24 span, and validates that every measured span has 32-byte rows and stays within the file bounds.",
+      "The verifier checks only little-endian binary32 values at serialized offsets +0x04, +0x08, +0x0c, and +0x10, classifies NaNs and signed infinities from exponent/fraction bits, and ignores adjacent unmapped fields.",
+      "Corpus mode binds files to the archive baseline, applies the two explicitly SHA-bound measured legacy profiles, and checked all 56 model files to exact EOF.",
+      "In the recorded corpus run, 28,453 parser-derived rows yielded 113,812 mapped binary32 values; all were finite, with zero NaN or positive/negative infinity."
+    ],
+    "evidence": [
+      {
+        "id": "verifier-source",
+        "text": "tools/verify_object_floats.py: check_model calls ps2_sections.parse(data, later_profile), takes [record['expanded_24'] for record in parsed['later']['records']], then calls inspect_span. _validate_span requires stride == 0x20, size == count*0x20, end == offset+size, and offset/size within len(data). inspect_span unpacks '<I' at only source offsets 4,8,12,16 and classifies exponent 0xff as NaN or signed infinity; other words are counted finite."
+      },
+      {
+        "id": "synthetic-tests",
+        "text": "tools/test_verify_object_floats.py focused run: 4 tests passed. Tests inject qNaN, +Inf, and -Inf separately at each of four checked offsets and expect a failure; an adjacent unmapped NaN remains ignored; malformed, wrong-stride, inconsistent-end and out-of-bounds spans raise Invalid."
+      },
+      {
+        "id": "corpus-result",
+        "text": "Recorded result .scratch/evidence/object-float-verification-02/20261004T132435Z-5852bf3144f5488ab03c1bbbb15ef201/result.json: status pass; models_expected=56, models_checked=56, models_exact_eof=56; profiles loader68=54 and measured_legacy60=2; rows=28453; fields_checked=113812; finite=113812; NaN=0, positive infinity=0, negative infinity=0; failures=[]; unsupported=[]."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"check_model calls ps2_sections.parse, obtains each record's parser-derived expanded_24 span, and validates that every measured span has 32-byte rows and stays within the file bounds.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"verifier-source\",\n      \"same_subject\": 0.8\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The verifier checks only little-endian binary32 values at serialized offsets +0x04, +0x08, +0x0c, and +0x10, classifies NaNs and signed infinities from exponent/fraction bits, and ignores adjacent unmapped fields.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"verifier-source\",\n      \"same_subject\": 0.83\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Corpus mode binds files to the archive baseline, applies the two explicitly SHA-bound measured legacy profiles, and checked all 56 model files to exact EOF.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.08,\n        \"says_nothing\": 0.03,\n        \"supports\": 0.89\n      },\n      \"confidence\": 0.83,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.93\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"In the recorded corpus run, 28,453 parser-derived rows yielded 113,812 mapped binary32 values; all were finite, with zero NaN or positive/negative infinity.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"supports\": 1,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.97\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2307,\n    \"output_tokens\": 455\n  }\n}"
+      }
+    ]
+  }
+}
