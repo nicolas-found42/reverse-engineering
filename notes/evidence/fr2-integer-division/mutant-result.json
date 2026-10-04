@@ -1,0 +1,41 @@
+{
+  "compiler_argv": [
+    "clang++",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fsanitize=undefined",
+    "-fno-sanitize-recover=all",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-div-native-01/mutant",
+    "-isystem",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/integer_division_probe.cpp",
+    "-o",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-div-native-01/mutant/division-probe"
+  ],
+  "compile_stderr": "",
+  "returncode": 1,
+  "stderr": "",
+  "details": {
+    "names": [
+      "DIV",
+      "DIVU",
+      "DIV1",
+      "DIVU1"
+    ],
+    "checks": [
+      600600,
+      600600,
+      600600,
+      600600
+    ],
+    "mismatches": [
+      600600,
+      600600,
+      600600,
+      600600
+    ]
+  }
+}

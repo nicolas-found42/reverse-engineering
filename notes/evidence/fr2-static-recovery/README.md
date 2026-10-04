@@ -1,10 +1,20 @@
 # Ford Racing 2 static code recovery
 
-This evidence records continued recovery of the unchanged PAL executable and its IOP and VU code. It provides reproducible parsers, pseudocode export checks, physical byte coverage, and preserved Jev judgments. The game is not fully decompiled: function discovery and types remain provisional, the IOP runtime relocation model is unverified, and there is no build or whole-game behavioral equivalence result.
+This evidence records continued recovery of the unchanged PAL executable and its IOP and VU code. It provides reproducible parsers, pseudocode export checks, physical byte coverage, and preserved Jev judgments. The game is not fully decompiled: function discovery and types remain provisional, actual IOP allocation and linking remain unknown, and no linked game build or whole-game behavioral equivalence result is established.
 
 The input executable is `games/ford-racing-2/extracted/SLES_517.05`, SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. All work was static and offline after fetching tool research. Full generated game C, assembly, binaries, and Ghidra projects remain in ignored local scratch. This directory preserves metadata and judgments rather than those dumps.
 
-## Verified results and remaining limits
+The latest integrated checkpoint is recorded in [the combined recovery bundle](../fr2-combined-recovery/README.md). A fresh copied project exports 3,838 C artifacts with no decompiler API failures and 606 warning comments. This includes one explicitly provisional 72-byte leaf; the prior 3,837 artifacts are unchanged by that addition. The listed physical instruction inventory covers 941,916 bytes. The independent PS2Recomp translator emits 4,746 function units and a registration unit; all units compile into a local archive after three bounded translator repairs. Nothing in that archive was linked into or executed as a game.
+
+The combined address accounting represents 1,227,700 physical address bytes through Ghidra instructions or translator instruction comments. The remaining EE gaps contain 1,483 zero-valued words (5,932 bytes); this does not classify them as padding. VU regions are accounted separately. Comment/address presence does not prove correct semantics, original function boundaries, reachability, or executable game coverage. The immutable checks and exact input identities are in the combined bundle.
+
+The later [IOP relocation model](iop/relocation-model.md) applies 24,783 observed relocations to synthetic load images for all 24 measured modules. It agrees with the pinned public SDK arithmetic and strict corpus profile, but establishes neither the game's loader revision nor its runtime addresses. [Exact-version SDK annotations](../fr2-iop-api-catalog/README.md) supply 436 provisional names for 748 import stubs; 312 remain unresolved. These are candidate API names, not recovered original symbols.
+
+A later [four-patch experimental translator variant](../fr2-fpu-static-audit/root-integration/README.md) adds bounded conversion, signed-zero min/max, and square-root repairs. All 4,746 regenerated function units and registration compile into a separately validated archive, and the full Python suite passes 252 tests. Its FPU patch review remains escalated; general EE floating-point rules and hardware behavior are unproved. [The integer-division matrix](../fr2-integer-division/README.md) and [FPU compare/branch audit](../fr2-fpu-control-audit/README.md) record additional bounded source checks. [The IOP gap audit](../fr2-iop-recovery-gap/README.md) identifies 13 metadata-defined entry starts absent from the prior saved inventories, which require separate listing/body-range recovery.
+
+## Historical baseline results and remaining limits
+
+The rows below preserve the earlier baseline measurements. Subsequent counts and repairs are reported above and in their separate immutable bundles; baseline result files are not rewritten.
 
 | Area | Measured result | What remains unresolved |
 | --- | --- | --- |

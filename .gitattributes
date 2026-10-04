@@ -1,6 +1,7 @@
 # Unified-diff context lines include a required prefix before blank source lines.
 tools/ghidra/experimental/*.patch whitespace=-blank-at-eol
 tools/recomp/*.patch whitespace=-blank-at-eol,-blank-at-eof
+tools/recomp/experimental/*.patch whitespace=-blank-at-eol,-blank-at-eof
 # Preserve the upstream license's Markdown hard line break verbatim.
 tools/recomp/LICENSE whitespace=-blank-at-eol
 # Preserve the failed compiler's complete output, including its final blank line.

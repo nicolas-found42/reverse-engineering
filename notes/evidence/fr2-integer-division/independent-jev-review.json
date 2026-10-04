@@ -1,0 +1,57 @@
+{
+  "tool": "jev_review",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "action": "escalate",
+  "composite": 0.8645833333333334,
+  "safe_to_apply": 0.41,
+  "reason_codes": [
+    "confidence_below_review",
+    "safe_to_apply_below_review",
+    "safe_to_apply_below_auto_accept",
+    "confidence_below_auto_accept"
+  ],
+  "per_file": [
+    {
+      "path": "tools/recomp/verify_integer_division.py",
+      "action": "escalate",
+      "composite": 0.8572500000000001,
+      "safe_to_apply": 0.42,
+      "limiting_rubric": "blast_radius",
+      "scores": {
+        "correctness": {"score": 1.8, "confidence": 0.69},
+        "spec_match": {"score": 1.72, "confidence": 0.58},
+        "test_gap": {"score": 0.35, "confidence": 0.47},
+        "blast_radius": {"score": 0.46, "confidence": 0.32}
+      }
+    },
+    {
+      "path": "tools/recomp/integer_division_probe.cpp",
+      "action": "escalate",
+      "composite": 0.8452500000000001,
+      "safe_to_apply": 0.41,
+      "limiting_rubric": "test_gap",
+      "scores": {
+        "correctness": {"score": 1.71, "confidence": 0.57},
+        "spec_match": {"score": 1.69, "confidence": 0.54},
+        "test_gap": {"score": 0.35, "confidence": 0.48},
+        "blast_radius": {"score": 0.32, "confidence": 0.52}
+      }
+    },
+    {
+      "path": "tools/test_recomp_integer_division.py",
+      "action": "review",
+      "composite": 0.89125,
+      "safe_to_apply": 0.55,
+      "limiting_rubric": "correctness",
+      "scores": {
+        "correctness": {"score": 1.76, "confidence": 0.65},
+        "spec_match": {"score": 1.78, "confidence": 0.67},
+        "test_gap": {"score": 0.2, "confidence": 0.7},
+        "blast_radius": {"score": 0.17, "confidence": 0.74}
+      }
+    }
+  ],
+  "usage": {"input_tokens": 2971, "output_tokens": 277},
+  "disposition": "Preserve escalation; no retry for approval."
+}

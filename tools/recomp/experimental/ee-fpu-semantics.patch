@@ -1,0 +1,111 @@
+--- a/ps2xRuntime/include/ps2_runtime_macros.h
++++ b/ps2xRuntime/include/ps2_runtime_macros.h
+@@ -13,6 +13,7 @@
+ #endif
+ 
+ #include "ps2_runtime.h"
++#include "ee_fpu_experimental_helpers.h"
+ 
+ static inline int32_t Ps2ExtractEpi32(__m128i v, int index)
+ {
+@@ -609,7 +610,7 @@
+ #define FPU_SUB_S(a, b) ((float)(a) - (float)(b))
+ #define FPU_MUL_S(a, b) ((float)(a) * (float)(b))
+ #define FPU_DIV_S(a, b) ((float)(a) / (float)(b))
+-#define FPU_SQRT_S(a) sqrtf((float)(a))
++#define FPU_SQRT_S(a) Ps2FpuSqrtS((float)(a), ctx->fcr31)
+ #define FPU_ABS_S(a) fabsf((float)(a))
+ #define FPU_MOV_S(a) ((float)(a))
+ #define FPU_NEG_S(a) (-(float)(a))
+@@ -623,7 +624,7 @@
+ #define FPU_FLOOR_W_S(a) ((int32_t)floorf((float)(a)))
+ #define FPU_CVT_S_W(a) ((float)(int32_t)(a))
+ #define FPU_CVT_S_L(a) ((float)(int64_t)(a))
+-#define FPU_CVT_W_S(a) ((int32_t)nearbyintf((float)(a)))
++#define FPU_CVT_W_S(a) Ps2FpuCvtWS((float)(a))
+ #define FPU_CVT_L_S(a) ((int64_t)(float)(a))
+ #define FPU_C_F_S(a, b) (0)
+ #define FPU_C_UN_S(a, b) (isnan((float)(a)) || isnan((float)(b)))
+--- /dev/null
++++ b/ps2xRuntime/include/ee_fpu_experimental_helpers.h
+@@ -0,0 +1,66 @@
++// SPDX-License-Identifier: GPL-3.0-or-later
++#ifndef HERMES_EXPERIMENTAL_EE_FPU_HELPERS_H
++#define HERMES_EXPERIMENTAL_EE_FPU_HELPERS_H
++
++#include <cmath>
++#include <cstdint>
++#include <cstring>
++#include <algorithm>
++
++// Experimental, manual-derived helpers for three bounded EE FPU cases.
++// They do not model EE custom arithmetic rounding, unsupported operands,
++// or all FCR31 behavior. See README.md in this directory.
++static inline int32_t Ps2FpuCvtWS(float value)
++{
++    uint32_t bits;
++    std::memcpy(&bits, &value, sizeof(bits));
++    if ((bits & 0x7f800000u) > 0x4e800000u)
++        return (bits & 0x80000000u) ? INT32_MIN : INT32_MAX;
++    // The exponent guard guarantees |value| < 2^31, so this cast is defined.
++    return static_cast<int32_t>(value);
++}
++
++static inline float Ps2FpuMinS(float fs, float ft)
++{
++    if (fs == 0.0f && ft == 0.0f)
++        return (std::signbit(fs) || std::signbit(ft)) ? -0.0f : 0.0f;
++    return fs <= ft ? fs : ft;
++}
++
++static inline float Ps2FpuMaxS(float fs, float ft)
++{
++    if (fs == 0.0f && ft == 0.0f)
++        return (std::signbit(fs) && std::signbit(ft)) ? -0.0f : 0.0f;
++    return fs >= ft ? fs : ft;
++}
++
++static inline float Ps2FpuSqrtS(float value, uint32_t &fcr31)
++{
++    uint32_t bits;
++    std::memcpy(&bits, &value, sizeof(bits));
++    const uint32_t magnitude = bits & 0x7fffffffu;
++    const uint32_t exponent = bits & 0x7f800000u;
++    const uint32_t fraction = bits & 0x007fffffu;
++
++    // NaN, infinity and denormal inputs are outside the documented data model;
++    // retain the old host path for them in this experimental change.
++    if (exponent == 0x7f800000u || (exponent == 0 && fraction != 0))
++        return sqrtf(value);
++
++    // SQRT.S sets I based on this instruction and explicitly clears D. Preserve
++    // every other cause, sticky, condition, and control bit.
++    fcr31 &= ~0x00030000u;
++    if (magnitude == 0)
++        return value; // preserve both signed zeros
++    if (bits & 0x80000000u)
++    {
++        fcr31 |= 0x00020000u | 0x00000040u; // I cause and sticky I
++        bits &= 0x7fffffffu;
++        float absolute;
++        std::memcpy(&absolute, &bits, sizeof(absolute));
++        return sqrtf(absolute);
++    }
++    return sqrtf(value);
++}
++
++#endif
+--- a/ps2xRecomp/src/lib/fpu_translator.cpp
++++ b/ps2xRecomp/src/lib/fpu_translator.cpp
+@@ -92,9 +92,9 @@
+             case COP1_S_MSUBA:
+                 return fmt::format("FPU_SET_ACC(ctx, FPU_SUB_S(ctx->f_acc, FPU_MUL_S(ctx->f[{}], ctx->f[{}])));", fs, ft);
+             case COP1_S_MAX:
+-                return fmt::format("ctx->f[{}] = std::max(ctx->f[{}], ctx->f[{}]);", fd, fs, ft);
++                return fmt::format("{{ ctx->f[{}] = Ps2FpuMaxS(ctx->f[{}], ctx->f[{}]); ctx->fcr31 &= ~0x0000c000u; }}", fd, fs, ft);
+             case COP1_S_MIN:
+-                return fmt::format("ctx->f[{}] = std::min(ctx->f[{}], ctx->f[{}]);", fd, fs, ft);
++                return fmt::format("{{ ctx->f[{}] = Ps2FpuMinS(ctx->f[{}], ctx->f[{}]); ctx->fcr31 &= ~0x0000c000u; }}", fd, fs, ft);
+             case COP1_S_C_F:
+                 return fmt::format("ctx->fcr31 &= ~0x800000;");
+             case COP1_S_C_UN:

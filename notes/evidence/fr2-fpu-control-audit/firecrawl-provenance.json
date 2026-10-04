@@ -1,0 +1,29 @@
+{
+  "sources": [
+    {
+      "kind": "scrape",
+      "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+      "status": 200,
+      "content_type": "application/pdf",
+      "firecrawl_scrape_id": "01a106d7-4bc9-73ac-a7dc-86c4a4b8d1e0",
+      "receipt": ".scratch/mesh/codex-audit/fpu-control-audit/sony-insns-scrape.json",
+      "receipt_sha256": "dbf6135598bdf33c24b08ee9a5fc7deb8b899dc322c2ad5e813c24697f1985ec",
+      "interpreted_as": "SCE-authored Sony EE Core Instruction Set Manual v6.0; third-party host."
+    },
+    {
+      "kind": "scrape",
+      "url": "https://raw.githubusercontent.com/PCSX2/pcsx2/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/FPU.cpp",
+      "status": 200,
+      "content_type": "text/plain; charset=utf-8",
+      "firecrawl_scrape_id": "01a106d8-a874-741d-a75c-19fa4b0de33d",
+      "receipt": ".scratch/mesh/codex-audit/fpu-control-audit/pcsx2-fpu-scrape.json",
+      "receipt_sha256": "cf2f2a90d0f3abd92e2c607a473acd622f100f7e7204535b716f05b896aadb8d",
+      "interpreted_as": "Pinned software comparator, not hardware oracle."
+    }
+  ],
+  "helper": ".scratch/mesh/codex-root/firecrawl_fetch.py",
+  "saved_markdown_sha256": {
+    "sony": "2ab22178161d024a29b83cf7e9609a03697680f6ebee04acaf09d281b96d492b",
+    "pcsx2": "204dcb290f9f56e9112622ab313ef12d2192eda5b43d24efcf2dbc8ca3fa7344"
+  }
+}

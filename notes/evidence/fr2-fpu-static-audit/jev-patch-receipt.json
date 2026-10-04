@@ -1,0 +1,40 @@
+{
+  "tool": "mcp__jev__jev_verify",
+  "arguments": {
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "claims": [
+      "Ps2FpuCvtWS checks the binary32 biased-exponent field before casting, saturates signs when the field exceeds 0x9d, and therefore avoids an out-of-range signed float-to-integer conversion for its in-range branch.",
+      "Ps2FpuMinS and Ps2FpuMaxS produce Sony's signed-zero result table for all four zero-sign pairs, and the emitted snippets clear only the O/U cause bits.",
+      "Ps2FpuSqrtS preserves signed zeros, maps negative normal finite inputs through sqrtf(abs(x)), sets I and sticky I, clears I/D cause bits, and leaves unrelated FCR31 bits unchanged.",
+      "The experimental sqrt helper is not a proof of bit-exact EE rounding for arbitrary non-perfect-square inputs."
+    ],
+    "evidence": [
+      {
+        "id": "experimental-helper-and-emitter",
+        "text": "Ps2FpuCvtWS extracts `bits & 0x7f800000u`; if greater than `0x4e800000u`, it returns sign-dependent INT32_MAX/MIN; otherwise it casts value to int32_t. Ps2FpuMinS returns -0 if either input is negative zero when both compare equal to zero; otherwise fs<=ft ? fs : ft. Ps2FpuMaxS returns -0 only if both zero operands have negative sign; otherwise fs>=ft ? fs : ft. The emitted MIN/MAX format strings clear `ctx->fcr31 &= ~0x0000c000u`. Ps2FpuSqrtS returns original sqrtf host path for exponent-255 and denormal operands; for supported finite inputs it clears only mask 0x00030000, preserves zero unchanged, handles negative inputs by sqrtf(abs(value)), ORs 0x00020000 and 0x40, and otherwise uses sqrtf(value)."
+      },
+      {
+        "id": "sony-instruction-set-manual-v6-pages-356-376",
+        "text": "Sony EE Core Instruction Set Manual v6.0: printed p.356 says CVT.W.S rounds toward zero and clamps if the biased exponent exceeds 0x9d: positive to 0x7fffffff, negative to 0x80000000. Printed p.365 gives MIN.S selection and clears O/U flags. Printed p.376 says SQRT.S returns sqrt(abs(x)) for negative inputs, sets I/SI, preserves signed zero, and D cause is cleared."
+      },
+      {
+        "id": "sony-user-manual-signed-zero-table",
+        "text": "Sony EE Core User's Manual v6.0 printed p.163: Max(+0,+0)=+0, Max(+0,-0)=+0, Max(-0,+0)=+0, Max(-0,-0)=-0; Min(+0,+0)=+0, Min(+0,-0)=-0, Min(-0,+0)=-0, Min(-0,-0)=-0."
+      },
+      {
+        "id": "reference-scope",
+        "text": "The experimental package README says the probe checks exact roots (including sqrt(-4)); it does not prove EE-specific square-root rounding for arbitrary values. The helper uses host sqrtf and makes no hardware equivalence claim."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"Ps2FpuCvtWS checks the binary32 biased-exponent field before casting, saturates signs when the field exceeds 0x9d, and therefore avoids an out-of-range signed float-to-integer conversion for its in-range branch.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 0.95,\n        \"contradicts\": 0.05\n      },\n      \"confidence\": 0.92,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"experimental-helper-and-emitter\",\n      \"same_subject\": 0.68\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"Ps2FpuMinS and Ps2FpuMaxS produce Sony's signed-zero result table for all four zero-sign pairs, and the emitted snippets clear only the O/U cause bits.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 0.89,\n        \"contradicts\": 0.11\n      },\n      \"confidence\": 0.83,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-user-manual-signed-zero-table\",\n      \"same_subject\": 0.52\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Ps2FpuSqrtS preserves signed zeros, maps negative normal finite inputs through sqrtf(abs(x)), sets I and sticky I, clears I/D cause bits, and leaves unrelated FCR31 bits unchanged.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"supports\": 0.91,\n        \"contradicts\": 0.08\n      },\n      \"confidence\": 0.86,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-instruction-set-manual-v6-pages-356-376\",\n      \"same_subject\": 0.47\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The experimental sqrt helper is not a proof of bit-exact EE rounding for arbitrary non-perfect-square inputs.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 1,\n        \"contradicts\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"reference-scope\",\n      \"same_subject\": 0.58\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2604,\n    \"output_tokens\": 616\n  }\n}"
+      }
+    ]
+  },
+  "disposition": "Four claims verified, zero contradicted or unsupported, zero escalated for human review. Review assessed support and stated limitations, not hardware fidelity."
+}

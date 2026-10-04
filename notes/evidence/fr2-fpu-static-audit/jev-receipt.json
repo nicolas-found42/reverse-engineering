@@ -1,0 +1,35 @@
+{
+  "tool": "mcp__jev__jev_verify",
+  "arguments": {
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "claims": [
+      "The pinned PS2Recomp CVT.W.S translation uses nearbyintf and therefore rounds fractional finite inputs to nearest under the default host rounding mode, whereas Sony specifies truncation toward zero and saturation when the biased exponent exceeds 0x9d.",
+      "The pinned MIN.S/MAX.S translations use std::min/std::max, while Sony's signed-zero table requires MIN(+0,-0)=-0 and MAX(-0,+0)=+0.",
+      "The pinned SQRT.S translation calls sqrtf directly, while Sony specifies sqrt(negative x)=sqrt(abs(x)) and sets the I/SI flags; sqrt(-0) remains -0."
+    ],
+    "evidence": [
+      {
+        "id": "pinned-runtime-and-translator",
+        "text": "PS2Recomp is pinned at c5a9d02573410a2085a4b4b831b0b68ba3515440. ps2_runtime_macros.h defines FPU_CVT_W_S(a) as ((int32_t)nearbyintf((float)(a))) and FPU_SQRT_S(a) as sqrtf((float)(a)). fpu_translator.cpp emits std::min(ctx->f[fs],ctx->f[ft]) for MIN.S, std::max(...) for MAX.S, and FPU_SQRT_S(ctx->f[fs]) for SQRT.S."
+      },
+      {
+        "id": "sony-instruction-set-manual-p356-376",
+        "text": "Sony EE Core Instruction Set Manual v6.0, printed p.356, states CVT.W.S rounds toward 0; when the biased exponent exceeds 0x9d it clamps positive values to 0x7fffffff and negative values to 0x80000000. Printed p.376 states SQRT.S of negative input stores SQRT(ABS(input)), sets Flag I and SI; the operation sets Flag D to 0; signed zero is preserved."
+      },
+      {
+        "id": "sony-users-manual-p163",
+        "text": "Sony EE Core User's Manual v6.0, printed p.163 signed-zero table: Max(-0,+0) returns +0; Min(+0,-0) returns -0. The same table says Max(-0,-0)=-0 and Min(+0,+0)=+0."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 3,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The pinned PS2Recomp CVT.W.S translation uses nearbyintf and therefore rounds fractional finite inputs to nearest under the default host rounding mode, whereas Sony specifies truncation toward zero and saturation when the biased exponent exceeds 0x9d.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-instruction-set-manual-p356-376\",\n      \"same_subject\": 0.67\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The pinned MIN.S/MAX.S translations use std::min/std::max, while Sony's signed-zero table requires MIN(+0,-0)=-0 and MAX(-0,+0)=+0.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.97,\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.94,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-users-manual-p163\",\n      \"same_subject\": 0.45\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"The pinned SQRT.S translation calls sqrtf directly, while Sony specifies sqrt(negative x)=sqrt(abs(x)) and sets the I/SI flags; sqrt(-0) remains -0.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.96,\n        \"contradicts\": 0.04,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.93,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-instruction-set-manual-p356-376\",\n      \"same_subject\": 0.47\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1982,\n    \"output_tokens\": 454\n  }\n}"
+      }
+    ]
+  },
+  "disposition": "Three claims verified and auto-accepted at confidence 0.93-0.99. This Jev pass checked text support only; it does not establish hardware equivalence."
+}

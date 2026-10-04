@@ -17,12 +17,16 @@ Each stage claims only what it measured, keeps an unresolved list, and gets Jev 
 | Name tree and section boundary | Done (56/56) | `verify_model.py`; loader `FUN_00123908` |
 | Texture library section | Done for formats 1 and 3 at level 0 (1856 of 2370 images); 56/56 sections end where the next section's record count begins | `verify_textures.py`, `ps2_container.py`, `tools/test_ps2_textures.py`; two images viewed |
 | Format 4 (4-bit) pixels, 45 images under 16 pixels, mip pixels, palette table entries | Not decoded | Listed in the verifier's `unresolved` |
-| Table of 0x34-byte records after the textures | Count and fit verified; meaning not recovered | Next step, from `FUN_0011ed90` |
-| Later loaders (0x70-byte records with floats), geometry and VU1 data | Not started | |
-| Stage 1 chain to end of file | Open | Needs the later sections translated |
+| Table of 0x34-byte records after the textures | Serialized traversal recovered and bounds checked; rendering meaning remains partial | `tools/ps2_sections.py`; [section-chain evidence](../fr2-static-recovery/results/sections.json) |
+| Later loaders (0x70-byte records with floats), geometry and VU1 data | Section boundaries and recursive serialized lengths recovered; vertex/index/render semantics remain unresolved | Eight VU chunks have exact byte reassembly and static VIF upload matches; this does not establish geometry semantics |
+| Stage 1 chain to end of file | Done for the bounded 56-file corpus | 54 files use the loader-derived 68-byte header; two exact-hash legacy profiles use 60 bytes, without evidence that the current executable selects that profile |
+| Stage 2 geometry invariants | Open | Full vertex/index/texture-reference semantics and the requested cross-file checks remain incomplete |
+| Stage 3 render preview | Open | No new owner-observed render result is established by static source recovery |
 
 ## Next steps, in order
 
-1. Translate the 0x34-byte record table and each following loop of `FUN_0011ed90`, one section at a time; extend the walker only when the loader text supports it.
-2. After each section, check the chain on all 56 files and add negative tests.
-3. Resolve the 4-bit pixel layout against the loader's GS upload code, not by guessing from images.
+1. Connect the recovered serialized geometry sections to their VU and renderer consumers using the saved instruction stream, then derive vertex/index/texture-reference invariants with explicit rejection cases.
+2. Keep exact EOF and profile guards on all 56 model files while adding semantic extraction; retain the two legacy-profile limits.
+3. Resolve the remaining 4-bit pixel and mip/palette layouts against the loader's GS upload code.
+
+The owner subsequently expanded the goal to full game decompilation. [The static recovery bundle](../fr2-static-recovery/README.md) and [combined checkpoint](../fr2-combined-recovery/README.md) track the broader EE/IOP/VU work. That expansion does not turn the geometry or render stages into completed work.

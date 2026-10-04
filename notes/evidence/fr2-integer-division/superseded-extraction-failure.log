@@ -1,0 +1,42 @@
+test_existing_output_survives_before_source_is_read (tools.test_recomp_integer_division.DivisionGuards.test_existing_output_survives_before_source_is_read) ... ok
+test_missing_case_is_rejected (tools.test_recomp_integer_division.DivisionGuards.test_missing_case_is_rejected) ... ok
+test_missing_checkout_never_creates_output (tools.test_recomp_integer_division.DivisionGuards.test_missing_checkout_never_creates_output) ... ok
+test_dependency_drift_fails_before_output_creation (tools.test_recomp_integer_division.DivisionPinnedTest.test_dependency_drift_fails_before_output_creation) ... ok
+test_extraction_uses_actual_register_reads_and_both_banks (tools.test_recomp_integer_division.DivisionPinnedTest.test_extraction_uses_actual_register_reads_and_both_banks) ... ERROR
+test_synthetic_matrix_and_corrupted_quotients (tools.test_recomp_integer_division.DivisionPinnedTest.test_synthetic_matrix_and_corrupted_quotients) ... ERROR
+
+======================================================================
+ERROR: test_extraction_uses_actual_register_reads_and_both_banks (tools.test_recomp_integer_division.DivisionPinnedTest.test_extraction_uses_actual_register_reads_and_both_banks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_recomp_integer_division.py", line 41, in test_extraction_uses_actual_register_reads_and_both_banks
+    header, templates = verifier.extracted_header(verifier.pinned_sources(UPSTREAM))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_integer_division.py", line 80, in extracted_header
+    "DIV": extract_case(sources[SPECIAL], "SPECIAL_DIV", ["rt", "rs"]),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_integer_division.py", line 62, in extract_case
+    raise ValueError(f"division literal template absent: {marker}")
+ValueError: division literal template absent: SPECIAL_DIV
+
+======================================================================
+ERROR: test_synthetic_matrix_and_corrupted_quotients (tools.test_recomp_integer_division.DivisionPinnedTest.test_synthetic_matrix_and_corrupted_quotients)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_recomp_integer_division.py", line 59, in test_synthetic_matrix_and_corrupted_quotients
+    result = verifier.verify(UPSTREAM, Path(td) / "out", DEPENDENCY)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_integer_division.py", line 101, in verify
+    header, templates = extracted_header(sources)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_integer_division.py", line 80, in extracted_header
+    "DIV": extract_case(sources[SPECIAL], "SPECIAL_DIV", ["rt", "rs"]),
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_integer_division.py", line 62, in extract_case
+    raise ValueError(f"division literal template absent: {marker}")
+ValueError: division literal template absent: SPECIAL_DIV
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.038s
+
+FAILED (errors=2)

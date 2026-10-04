@@ -1,0 +1,95 @@
+{
+  "status": "pass",
+  "scope": "actual pristine and patched synthetic emitter templates; no game routine, emulator, or hardware",
+  "source": {
+    "commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "source_sha256": {
+      "ps2xRecomp/src/lib/fpu_translator.cpp": "8675ddde6b708dd2d06a680f7d62b41c286776fee3340d530b56271fdc281726",
+      "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e"
+    },
+    "exact_baseline_templates": {
+      "macro_cvt": "#define FPU_CVT_W_S(a) ((int32_t)nearbyintf((float)(a)))",
+      "macro_sqrt": "#define FPU_SQRT_S(a) sqrtf((float)(a))",
+      "emit_cvt": "return fmt::format(\"{{ int32_t tmp = FPU_CVT_W_S(ctx->f[{}]); std::memcpy(&ctx->f[{}], &tmp, sizeof(tmp)); }}\", fs, fd);",
+      "emit_sqrt": "return fmt::format(\"ctx->f[{}] = FPU_SQRT_S(ctx->f[{}]);\", fd, fs);",
+      "emit_min": "return fmt::format(\"ctx->f[{}] = std::min(ctx->f[{}], ctx->f[{}]);\", fd, fs, ft);",
+      "emit_max": "return fmt::format(\"ctx->f[{}] = std::max(ctx->f[{}], ctx->f[{}]);\", fd, fs, ft);"
+    }
+  },
+  "patch": {
+    "patch_sha256": "c25899e99c4f57ed6e26cb7d721f36f975701b5039c18e259e5648af06209c1f",
+    "patch_apply_exit": 0,
+    "patched_file_sha256": {
+      "ps2xRuntime/include/ee_fpu_experimental_helpers.h": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf",
+      "ps2xRuntime/include/ps2_runtime_macros.h": "487e7528ce9de850f6cdd6bba57f75dd996f857c0dff2a0e4434276e06368a42",
+      "ps2xRecomp/src/lib/fpu_translator.cpp": "98c253124ddcc83684c220673b384ba5bd258129135ee57dd8c5db86dd048b0c"
+    },
+    "exact_experimental_templates": {
+      "macro_cvt": "#define FPU_CVT_W_S(a) Ps2FpuCvtWS((float)(a))",
+      "macro_sqrt": "#define FPU_SQRT_S(a) Ps2FpuSqrtS((float)(a), ctx->fcr31)",
+      "emit_cvt": "return fmt::format(\"{{ int32_t tmp = FPU_CVT_W_S(ctx->f[{}]); std::memcpy(&ctx->f[{}], &tmp, sizeof(tmp)); }}\", fs, fd);",
+      "emit_sqrt": "return fmt::format(\"ctx->f[{}] = FPU_SQRT_S(ctx->f[{}]);\", fd, fs);",
+      "emit_min": "return fmt::format(\"{{ ctx->f[{}] = Ps2FpuMinS(ctx->f[{}], ctx->f[{}]); ctx->fcr31 &= ~0x0000c000u; }}\", fd, fs, ft);",
+      "emit_max": "return fmt::format(\"{{ ctx->f[{}] = Ps2FpuMaxS(ctx->f[{}], ctx->f[{}]); ctx->fcr31 &= ~0x0000c000u; }}\", fd, fs, ft);"
+    },
+    "patch_stdout": "patching file 'ps2xRuntime/include/ps2_runtime_macros.h'\npatching file 'ps2xRuntime/include/ee_fpu_experimental_helpers.h'\npatching file 'ps2xRecomp/src/lib/fpu_translator.cpp'\n"
+  },
+  "probe": {
+    "compiler": "clang++",
+    "compile_command": [
+      "clang++",
+      "-std=c++17",
+      "-O1",
+      "-g",
+      "-fsanitize=undefined,float-cast-overflow",
+      "-fno-sanitize-recover=all",
+      "/var/folders/vj/z460ltg56p122lsl4_s8pd140000gp/T/ee-fpu-actual-template-vmk1nl1q/actual_template_probe.cpp",
+      "-o",
+      "/var/folders/vj/z460ltg56p122lsl4_s8pd140000gp/T/ee-fpu-actual-template-vmk1nl1q/probe"
+    ],
+    "compile_exit": 0,
+    "run_exit": 0,
+    "stdout": "PASS: exact pristine/patched emitter templates; bounded manual-derived controls\n",
+    "stderr": "",
+    "compiled_source_sha256": "63d0724b21088963c982a2248c2703059bebc34ed0ede7f39f4c683a38ef2f18",
+    "compiled_candidate_helper_sha256": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf",
+    "baseline_templates_compiled": [
+      "macro_cvt",
+      "macro_sqrt",
+      "emit_cvt",
+      "emit_sqrt",
+      "emit_min",
+      "emit_max"
+    ],
+    "candidate_templates_compiled": [
+      "macro_cvt",
+      "macro_sqrt",
+      "emit_cvt",
+      "emit_sqrt",
+      "emit_min",
+      "emit_max"
+    ]
+  },
+  "dependencies": {
+    "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "compiler_path": "/usr/bin/clang++",
+    "compiler_driver_sha256": "12bed4523661307059b879b9b54e77a73176e9d27d27a0e40363271d8f0668ba",
+    "python": "3.14.7",
+    "verified_package_hashes": {
+      "tools/recomp/experimental/ee-fpu-semantics.patch": "c25899e99c4f57ed6e26cb7d721f36f975701b5039c18e259e5648af06209c1f",
+      "tools/recomp/experimental/ee_fpu_helpers.hpp": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf",
+      "tools/recomp/experimental/probe.cpp": "2a23298de4c677300891435e7a904ad37945d2ea67760e4d2df5d025046e3c24",
+      "tools/recomp/experimental/verify_ee_fpu_experiment.py": "5d85d67b4099b5db60a7d24da7f22c6cbb54379d8ef3a02c760b532b2382b0e4",
+      "tools/recomp/experimental/README.md": "d5f0c7e51727f2fd1f2ff7cca985a0a7290ebc2f247b88aeced38339f1085e3e",
+      "tools/test_recomp_fpu_experimental.py": "482922eb944d6db12016052b99744da1436e3d7cc95de56383f60d408c71bfcb",
+      "notes/evidence/fr2-fpu-static-audit/README.md": "6b3a6ef87d338af0cb144b368a53808ca407244d6777b9bddab439ca36b82e25",
+      "notes/evidence/fr2-fpu-static-audit/metadata.json": "6d367dddc8ff66fd2f7e40ddab1413c8131e55720ac9bc1ee1b0e5f76dfa3f1a",
+      "notes/evidence/fr2-fpu-static-audit/jev-receipt.json": "bdeeda85bf066300662778521766c14e8b6aca09d9783daccb27e5548b41adac",
+      "notes/evidence/fr2-fpu-static-audit/jev-patch-receipt.json": "ef4427212b593cf1383864f47a3e258c470b012a2fefb30114975bc44e820e8f",
+      "notes/evidence/fr2-fpu-static-audit/r067-fpu-manual-verification.json": "319d347e21cdab5bec6947112526e64af2477f6781074a7715ee97fa5f9bb87e",
+      "notes/evidence/fr2-fpu-static-audit/validation-superseded-independent-probe.json": "fd1788e2a62f62231de9a4aec2c80852f822b52e3c8ab19c8ee0b4e154a5a21f",
+      ".scratch/mesh/codex-fpu-audit-01/inventory.json": "637e91c53f8b8b5977eb4778c28e8b2179aff2b9ebbfb8696454c46d17239bda",
+      "notes/evidence/fr2-fpu-static-audit/actual-template-validation-superseded-02.json": "c92a40d655c9b2cbbed706412be4f91e5516d98a2316ff61970700f72a8aa50a"
+    }
+  }
+}

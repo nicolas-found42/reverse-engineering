@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "scope": "Static review of EE COP1 C.EQ.S/C.LT.S/C.LE.S, BC1F/T/FL/TL, CFC1 and CTC1 handling; no game execution, emulator, or hardware.",
+  "ps2recomp": {
+    "commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "source_sha256": {
+      "ps2xRecomp/src/lib/fpu_translator.cpp": "8675ddde6b708dd2d06a680f7d62b41c286776fee3340d530b56271fdc281726",
+      "ps2xRecomp/src/lib/control_flow_emitter.cpp": "44c0204441106b033a6897bfd52e6e6ce551a6d64a12a7004518a76d657eea07",
+      "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e"
+    }
+  },
+  "inventory": {
+    "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/inventory.json",
+    "sha256": "1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "functions": 3837,
+    "instruction_occurrences": {
+      "C.EQ.S": 112,
+      "C.LT.S": 734,
+      "C.LE.S": 425,
+      "BC1F": 578,
+      "BC1T": 174,
+      "BC1FL": 334,
+      "BC1TL": 175,
+      "CFC1": 0,
+      "CTC1": 0
+    },
+    "unique_instruction_addresses": true
+  },
+  "primary_manual": {
+    "title": "Sony EE Core Instruction Set Manual v6.0",
+    "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+    "printed_pages": {
+      "BC1F": 345,
+      "BC1FL": 346,
+      "BC1T": 347,
+      "BC1TL": 348,
+      "C.EQ.S": 349,
+      "C.LE.S": 351,
+      "C.LT.S": 352,
+      "CFC1": 353,
+      "CTC1": 354
+    },
+    "host_note": "The PDF is an SCE-authored manual served from a third-party mirror; the manual labels itself SCE Confidential."
+  },
+  "software_comparator": {
+    "title": "PCSX2 FPU.cpp",
+    "commit": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+    "url": "https://raw.githubusercontent.com/PCSX2/pcsx2/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/FPU.cpp",
+    "scope": "Independent software comparison, not silicon validation."
+  },
+  "findings": {
+    "compare_condition_bit": "Matches for finite supported numeric operands and signed zero; C and unrelated FCR31 bits are set/cleared as expected from inspected templates.",
+    "branch_condition_and_likely_delay": "Inspected source matches BC1F/T condition tests and BC1FL/TL delay-slot annulment described by the manual.",
+    "cfc1_fcr31": "Sign extension matches the manual.",
+    "ctc1_reserved_bits": "Unresolved: translator masks with 0x0183ffff; no CTC1 occurrence in measured corpus, and the manual text inspected does not specify reserved-bit write behavior.",
+    "cfc1_fcr0": "Bounded out-of-corpus field mismatch: pinned translator emits zero for FCR0, omitting documented implementation bits 15:8 = 0x2E. The revision byte is not specified numerically, so no full FCR0 value (including a claim of 0x2E00) is established. The saved inventory contains no CFC1."
+  },
+  "limitations": [
+    "No NaN behavior claim; Sony manual says the EE FPU does not support NaN.",
+    "PCSX2 is a software comparator, not a hardware oracle.",
+    "Counts are from saved function inventory instruction entries; there were no duplicate instruction addresses among these COP1 mnemonics.",
+    "No semantic equivalence claim for complete FPU behavior or generated game code.",
+    "The Sony User Manual specifies FCR0 implementation field 0x2E but not the specific silicon revision byte; this finding does not determine the entire runtime FCR0 value."
+  ],
+  "primary_user_manual": {
+    "title": "Sony EE Core User's Manual v6.0",
+    "publisher": "Sony Computer Entertainment Inc.",
+    "url": "https://docs.alexrp.com/mips/ee.pdf",
+    "printed_page": 158,
+    "section": "8.3.1 Implementation and Revision Register (FCR0)",
+    "table": "Table 8-1 Implementation/Revision Register Fields",
+    "fields": {
+      "reserved_31_16": "fixed zero",
+      "implementation_15_8": "initial value 0x2E",
+      "revision_7_0": "major/minor revision number; numeric revision unspecified"
+    },
+    "host_note": "SCE-authored manual hosted on a third-party mirror; manual labels itself SCE Confidential."
+  }
+}

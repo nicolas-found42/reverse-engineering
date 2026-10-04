@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "scope": "static source guard and synthetic reference probe; no game routine, emulator, or hardware",
+  "source": {
+    "commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "source_sha256": {
+      "ps2xRecomp/src/lib/fpu_translator.cpp": "8675ddde6b708dd2d06a680f7d62b41c286776fee3340d530b56271fdc281726",
+      "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e"
+    },
+    "exact_baseline_templates": {
+      "baseline_macro_cvt": "#define FPU_CVT_W_S(a) ((int32_t)nearbyintf((float)(a)))",
+      "baseline_macro_sqrt": "#define FPU_SQRT_S(a) sqrtf((float)(a))",
+      "baseline_emit_sqrt": "return fmt::format(\"ctx->f[{}] = FPU_SQRT_S(ctx->f[{}]);\", fd, fs);",
+      "baseline_emit_min": "return fmt::format(\"ctx->f[{}] = std::min(ctx->f[{}], ctx->f[{}]);\", fd, fs, ft);",
+      "baseline_emit_max": "return fmt::format(\"ctx->f[{}] = std::max(ctx->f[{}], ctx->f[{}]);\", fd, fs, ft);"
+    }
+  },
+  "patch": {
+    "patch_sha256": "918697028a1aeef8c76dea2e9cf57275f422d358884b31bd211230a267f3a582",
+    "patch_apply_exit": 0,
+    "patched_helper_sha256": "e2d0119d0b185df1292caae8624c7aa528de4a4469874d7ce2785f9179d305d0",
+    "patched_emitter_sha256": "98c253124ddcc83684c220673b384ba5bd258129135ee57dd8c5db86dd048b0c",
+    "patched_macro_sha256": "487e7528ce9de850f6cdd6bba57f75dd996f857c0dff2a0e4434276e06368a42",
+    "exact_experimental_templates": {
+      "macro_cvt": "#define FPU_CVT_W_S(a) Ps2FpuCvtWS((float)(a))",
+      "macro_sqrt": "#define FPU_SQRT_S(a) Ps2FpuSqrtS((float)(a), ctx->fcr31)",
+      "emit_min": "return fmt::format(\"{{ ctx->f[{}] = Ps2FpuMinS(ctx->f[{}], ctx->f[{}]); ctx->fcr31 &= ~0x0000c000u; }}\", fd, fs, ft);",
+      "emit_max": "return fmt::format(\"{{ ctx->f[{}] = Ps2FpuMaxS(ctx->f[{}], ctx->f[{}]); ctx->fcr31 &= ~0x0000c000u; }}\", fd, fs, ft);"
+    },
+    "patch_stdout": "patching file 'ps2xRuntime/include/ps2_runtime_macros.h'\npatching file 'ps2xRuntime/include/ee_fpu_experimental_helpers.h'\npatching file 'ps2xRecomp/src/lib/fpu_translator.cpp'\n"
+  },
+  "probe": {
+    "compiler": "clang++",
+    "compile_command": [
+      "clang++",
+      "-std=c++17",
+      "-O1",
+      "-g",
+      "-fsanitize=undefined,float-cast-overflow",
+      "-fno-sanitize-recover=all",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/experimental",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/experimental/probe.cpp",
+      "-o",
+      "/var/folders/vj/z460ltg56p122lsl4_s8pd140000gp/T/ee-fpu-probe-1eqgpcz9/probe"
+    ],
+    "compile_exit": 0,
+    "run_exit": 0,
+    "stdout": "PASS: experimental EE FPU helpers; manual-derived bounded cases only\n",
+    "stderr": ""
+  },
+  "dependencies": {
+    "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "probe_uses_only_standard_cpp_and_ubsan": true
+  }
+}
