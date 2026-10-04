@@ -1,0 +1,13 @@
+# Game media and extracted assets are local research inputs; do not publish them.
+games/**/*.bin
+games/**/*.iso
+games/**/extracted/
+
+# Ghidra workspace files are generated locally.
+ghidra-project/
+
+# Local scratch files, downloaded tools, logs, and Python cache.
+.scratch/
+**/__pycache__/
+*.py[cod]
+.DS_Store

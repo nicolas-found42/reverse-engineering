@@ -1,0 +1,98 @@
+openjdk version "27" 2026-09-15
+OpenJDK Runtime Environment Homebrew (build 27)
+OpenJDK 64-Bit Server VM Homebrew (build 27, mixed mode)
+INFO  Using log config file: jar:file:/Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /Users/Nicolas/Library/ghidra/ghidra_12.1.3_PUBLIC/application.log (LoggingInitialization)  
+INFO  Loading user preferences: /Users/Nicolas/Library/ghidra/ghidra_12.1.3_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (1794 ms) (ClassSearcher)  
+WARNING: Final field name in class ghidra.util.charset.CharsetInfo has been mutated reflectively by class com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2 in unnamed module @2b48a640 (file:/Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Framework/Generic/lib/gson-2.13.2.jar)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (6188 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+INFO  HEADLESS Script Paths:
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/PDB/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Processors/DATA/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/FileFormats/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/BSim/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/BytePatterns/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Processors/Atmel/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Processors/PIC/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Debug/Debugger/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/WildcardAssembler/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/Decompiler/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/PyGhidra/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/Base/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/FunctionID/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Processors/8051/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/VersionTracking/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Processors/JVM/ghidra_scripts
+    /Users/Nicolas/.hermes/profiles/coder/cache/scratch/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /Users/Nicolas/Documents/github/hermes/reverse-engineering/ghidra-project/fr2 (HeadlessAnalyzer)  
+INFO  Opening project: /Users/Nicolas/Documents/github/hermes/reverse-engineering/ghidra-project/fr2 (HeadlessProject)  
+INFO  REPORT: Processing project file: /SLES_517.05 (HeadlessAnalyzer)  
+INFO  ANALYZING all memory and code: /SLES_517.05 (HeadlessAnalyzer)  
+ERROR os/mac_arm_64/decompile does not exist (see GettingStarted.md, 'Building Native Components') (DecompileProcessFactory)  
+INFO  Packed database cache: /var/tmp/Nicolas-ghidra/packed-db-cache (PackedDatabaseCache)  
+INFO  Applied data type archive: generic_clib (ApplyDataArchiveAnalyzer)  
+INFO  -----------------------------------------------------
+    ASCII Strings                              2.024 secs
+    Apply Data Archives                        1.588 secs
+    Basic Constant Reference Analyzer         38.421 secs
+    Call Convention ID                         0.099 secs
+    Call-Fixup Installer                       0.062 secs
+    Create Address Tables                      2.132 secs
+    Create Address Tables - One Time           0.569 secs
+    Create Function                            0.208 secs
+    Data Reference                             2.321 secs
+    Decompiler Switch Analysis                 2.800 secs
+    Demangler GNU                              2.390 secs
+    Disassemble Entry Points                   0.243 secs
+    Embedded Media                             0.159 secs
+    External Entry References                  0.001 secs
+    External Symbol Resolver                   0.143 secs
+    Function ID                                0.127 secs
+    GCC Exception Handlers                     0.092 secs
+    Non-Returning Functions - Discovered       4.841 secs
+    Non-Returning Functions - Known            0.106 secs
+    Reference                                  2.379 secs
+    Shared Return Calls                        2.186 secs
+    Stack                                     17.887 secs
+    Subroutine References                      1.770 secs
+-----------------------------------------------------
+     Total Time   82 secs
+-----------------------------------------------------
+ (AutoAnalysisManager)  
+INFO  REPORT: Analysis succeeded for file: /SLES_517.05 (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: export_report.py  (HeadlessAnalyzer)  
+ERROR REPORT SCRIPT ERROR: export_report.py : Ghidra was not started with PyGhidra. Python is not available (HeadlessAnalyzer) ghidra.app.script.GhidraScriptLoadException: Ghidra was not started with PyGhidra. Python is not available
+	at ghidra.pyghidra.PyGhidraScriptProvider.getScriptInstance(PyGhidraScriptProvider.java:75)
+	at ghidra.app.util.headless.HeadlessAnalyzer.runScriptsList(HeadlessAnalyzer.java:915)
+	at ghidra.app.util.headless.HeadlessAnalyzer.analyzeProgram(HeadlessAnalyzer.java:1085)
+	at ghidra.app.util.headless.HeadlessAnalyzer.processFileNoImport(HeadlessAnalyzer.java:1183)
+	at ghidra.app.util.headless.HeadlessAnalyzer.processFolderNoImport(HeadlessAnalyzer.java:1355)
+	at ghidra.app.util.headless.HeadlessAnalyzer.processNoImport(HeadlessAnalyzer.java:1384)
+	at ghidra.app.util.headless.HeadlessAnalyzer.processLocal(HeadlessAnalyzer.java:449)
+	at ghidra.app.util.headless.AnalyzeHeadless.launch(AnalyzeHeadless.java:199)
+	at ghidra.GhidraLauncher.launch(GhidraLauncher.java:81)
+	at ghidra.Ghidra.main(Ghidra.java:54)
+ 
+INFO  ANALYZING changes made by post scripts: /SLES_517.05 (HeadlessAnalyzer)  
+INFO  REPORT: Post-analysis succeeded for file: /SLES_517.05 (HeadlessAnalyzer)  
+INFO  REPORT: Save succeeded for processed file: /SLES_517.05 (HeadlessAnalyzer)  
