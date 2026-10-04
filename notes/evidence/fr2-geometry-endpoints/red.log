@@ -1,0 +1,20 @@
+E
+======================================================================
+ERROR: test_verify_geometry_bounds (unittest.loader._FailedTest.test_verify_geometry_bounds)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_verify_geometry_bounds
+Traceback (most recent call last):
+  File "/Users/Nicolas/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/unittest/loader.py", line 396, in _find_test_path
+    module = self._get_module_from_name(name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/unittest/loader.py", line 339, in _get_module_from_name
+    __import__(name)
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_verify_geometry_bounds.py", line 6, in <module>
+    import verify_geometry_bounds as bounds
+ModuleNotFoundError: No module named 'verify_geometry_bounds'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
