@@ -11,3 +11,28 @@ ghidra-project/
 **/__pycache__/
 *.py[cod]
 .DS_Store
+
+# Tool caches and local environments.
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.pyright/
+.venv/
+venv/
+
+# Secrets and local config (research scripts read keys from the environment).
+.env
+.env.*
+!.env.example
+
+# Ghidra project files if one is ever created outside ghidra-project/.
+*.gpr
+*.rep/
+*.lock
+*.lock~
+
+# Other game media formats and dumps.
+games/**/*.img
+games/**/*.elf
+*.sav
+*.mcd
