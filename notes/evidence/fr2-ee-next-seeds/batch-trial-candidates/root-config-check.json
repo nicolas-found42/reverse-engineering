@@ -1,0 +1,71 @@
+{
+ "schema_version": 1,
+ "status": "pass",
+ "config_sha256": "bfe7c8cfe1419cbbf7d52fa3a913e752ea34d4fd4553ca4ca0d02afdedb69d34",
+ "checker_sha256": "4689015c40443f694dd536844a31ad52d104b79622460f799e4cfc28537abeca",
+ "seed_count": 6,
+ "words_checked": 124,
+ "seeds": [
+  {
+   "entry": "00101b58",
+   "words": 90,
+   "edges": {
+    "conditional": 6,
+    "return": 1,
+    "conditional_likely": 2
+   },
+   "next_state": "undefined",
+   "decoded_words": 90
+  },
+  {
+   "entry": "001034e8",
+   "words": 17,
+   "edges": {
+    "call": 1,
+    "return": 1
+   },
+   "next_state": "undefined",
+   "decoded_words": 0
+  },
+  {
+   "entry": "00105c30",
+   "words": 2,
+   "edges": {
+    "return": 1
+   },
+   "next_state": "undefined",
+   "decoded_words": 0
+  },
+  {
+   "entry": "001080b8",
+   "words": 11,
+   "edges": {
+    "conditional_likely": 1,
+    "return": 1,
+    "unconditional_branch": 1
+   },
+   "next_state": "undefined",
+   "decoded_words": 11
+  },
+  {
+   "entry": "0010a710",
+   "words": 2,
+   "edges": {
+    "return": 1
+   },
+   "next_state": "batch_entry",
+   "decoded_words": 0
+  },
+  {
+   "entry": "0010a718",
+   "words": 2,
+   "edges": {
+    "return": 1
+   },
+   "next_state": "undefined",
+   "decoded_words": 0
+  }
+ ],
+ "incoming_sites": 0,
+ "scope": "Independent raw-byte re-derivation of every seed in the batch config plus a rescan of all decoded addresses for direct calls into the seeds. Structural union only; no identity, feasibility, execution or call-closure claim beyond the listed callee states."
+}
