@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "provider": "openrouter",
+  "model": "typesafe/jev-1.13",
+  "calls": [
+    {
+      "tool": "jev_screen",
+      "purpose": "Screen the pinned raylib upstream license and CMake source before dependency use.",
+      "input": "raylib LICENSE and CMakeLists.txt excerpts, 2857 chars",
+      "result": {
+        "probabilities": {
+          "injection": 0.03,
+          "substance": 0.98,
+          "relevance": 0.95
+        },
+        "thresholds": {
+          "block_at": 0.75,
+          "review_at": 0.25
+        },
+        "recommendation": {
+          "action": "pass",
+          "reason": "no signals above thresholds"
+        },
+        "usage": {
+          "input_tokens": 1318,
+          "output_tokens": 57
+        }
+      }
+    },
+    {
+      "tool": "jev_review",
+      "purpose": "Review the temporary isolated CMake link-check wrapper.",
+      "result": {
+        "truncated": false,
+        "safe_to_apply": 0.09,
+        "scores": {
+          "correctness": {
+            "score": 1.11,
+            "confidence": 0.3,
+            "probabilities": {
+              "0": 0.18,
+              "1": 0.53,
+              "2": 0.29
+            }
+          },
+          "spec_match": {
+            "score": 1.6,
+            "confidence": 0.41,
+            "probabilities": {
+              "0": 0.01,
+              "1": 0.37,
+              "2": 0.62
+            }
+          },
+          "test_gap": {
+            "score": 1.87,
+            "confidence": 0.81,
+            "probabilities": {
+              "0": 0.01,
+              "1": 0.1,
+              "2": 0.89
+            }
+          },
+          "blast_radius": {
+            "score": 0.44,
+            "confidence": 0.34,
+            "probabilities": {
+              "0": 0.67,
+              "1": 0.22,
+              "2": 0.11
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.58875,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ],
+        "usage": {
+          "input_tokens": 2318,
+          "output_tokens": 79
+        }
+      }
+    },
+    {
+      "tool": "jev_verify",
+      "purpose": "Verify six bounded link result/provenance claims.",
+      "result": {
+        "summary": {
+          "verified": 6,
+          "contradicted": 0,
+          "unsupported": 0,
+          "needs_review": 0
+        },
+        "claims": [
+          {
+            "id": "claim0",
+            "verdict": "verified",
+            "confidence": 1.0,
+            "action": "auto"
+          },
+          {
+            "id": "claim1",
+            "verdict": "verified",
+            "confidence": 1.0,
+            "action": "auto"
+          },
+          {
+            "id": "claim2",
+            "verdict": "verified",
+            "confidence": 0.98,
+            "action": "auto"
+          },
+          {
+            "id": "claim3",
+            "verdict": "verified",
+            "confidence": 0.99,
+            "action": "auto"
+          },
+          {
+            "id": "claim4",
+            "verdict": "verified",
+            "confidence": 1.0,
+            "action": "auto"
+          },
+          {
+            "id": "claim5",
+            "verdict": "verified",
+            "confidence": 1.0,
+            "action": "auto"
+          }
+        ],
+        "usage": {
+          "input_tokens": 10623,
+          "output_tokens": 707
+        }
+      }
+    }
+  ],
+  "disposition": "The source screen passed and all six bounded factual claims verified. The CMake wrapper review escalated due low confidence; it is retained as unresolved review signal and not represented as approval. The build/link log and object/link inspection are the operational evidence.",
+  "evidence_paths": {
+    "result": "result.json",
+    "log": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02.log",
+    "wrapper": ".scratch/mesh/codex-audit/headless-link-build-02/src-generated-registration/CMakeLists.txt"
+  }
+}

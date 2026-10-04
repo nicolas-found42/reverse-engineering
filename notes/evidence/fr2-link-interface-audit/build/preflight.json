@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only preflight toward a link-only runtime build; no dependencies installed or downloaded; no source patch, link, runtime, emulator, GUI, or game execution.",
+  "preflight": {
+    "cmake_version_command": {
+      "argv": [
+        "cmake",
+        "--version"
+      ],
+      "exit_code": 127,
+      "stderr": "zsh:1: command not found: cmake"
+    },
+    "pkg_config_available": false,
+    "local_raylib_source_in_recomp_deps": false,
+    "raylib_header_or_library_found_in_searched_project_and_homebrew_locations": false,
+    "brew_installed_packages": {
+      "cmake": null,
+      "raylib": null
+    },
+    "existing_generated_object_architecture": {
+      ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-00.o": {
+        "format": "Mach-O 64-bit object arm64",
+        "sha256": "9d4c0c14ed6fd55c999b07b7cc17970d55ab0e5c69118e8e2518d1f894555fcf"
+      },
+      ".scratch/mesh/codex-root/recomp-registration-fpu-01.o": {
+        "format": "Mach-O 64-bit object arm64",
+        "sha256": "2c0babdb53ffbb5c5133e60a4fb41cbf50d0ed57adfd599f677d67568e44fb9a"
+      }
+    }
+  },
+  "runtime_syntax_check": {
+    "argv": "clang++ -std=c++20 -DUSE_SSE2NEON -I .scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include -I .scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src -I .scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xIOP/include -I .scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/src/lib/Kernel -fsyntax-only .scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/src/lib/ps2_runtime.cpp",
+    "exit_code": 1,
+    "diagnostic": "ps2xRuntime/include/ps2_host_backend.h:3:10: fatal error: 'raylib.h' file not found",
+    "scope": "-fsyntax-only; no object output"
+  },
+  "jgrep": {
+    "query": "configures and links a runtime-only headless executable without graphics or GUI dependencies",
+    "scope": "ps2xRuntime/CMakeLists.txt ps2xRuntime/cmake ps2xRuntime/src .",
+    "result": "0 hits / 3326 chunks, exit 0"
+  },
+  "plan": {
+    "configure": "Use local CMake and local raylib sources with FetchContent disconnected; PS2X_BUILD_RUNTIME=ON, app targets/recompiler/tests/studio off, PS2X_ENABLE_DEBUG_UI=OFF, PS2X_ENABLE_FFMPEG=OFF.",
+    "link": "Add all 17 existing Mach-O arm64 generated object files (including registration object) as external objects to ps2EntryRunner, then build/link only; do not launch.",
+    "reason_for_objects": "Generated archive references PS2Runtime methods while runtime code references generated table globals; direct object inclusion avoids relying on static-archive scan ordering.",
+    "claim_limit": "Would establish only matched macOS arm64 compile/link compatibility, not game semantics or runnable completeness."
+  }
+}

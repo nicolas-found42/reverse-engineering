@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "source_screening": [
+    {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Screen concise source/build excerpts before using them as evidence in a static link-interface audit.",
+      "probabilities": {"injection": 0.04, "substance": 0.98, "relevance": 0.92},
+      "recommendation": {"action": "pass", "reason": "no signals above thresholds"},
+      "thresholds": {"block_at": 0.75, "review_at": 0.25},
+      "usage": {"input_tokens": 936, "output_tokens": 57}
+    },
+    {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Screen the source excerpt that establishes generated-table and executable-link integration.",
+      "probabilities": {"injection": 0.02, "substance": 0.97, "relevance": 0.94},
+      "recommendation": {"action": "pass", "reason": "no signals above thresholds"},
+      "thresholds": {"block_at": 0.75, "review_at": 0.25},
+      "usage": {"input_tokens": 775, "output_tokens": 57}
+    }
+  ],
+  "verification_calls": [
+    {
+      "tool": "jev_verify",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "auto_accept": 0.8,
+      "subject_at": 0.5,
+      "summary": {"verified": 5, "contradicted": 0, "unsupported": 0, "needs_review": 0},
+      "results": [
+        {"claim": "Archive contains 4,746 distinct generated function definitions/references; 4,767 undefined names reduce to 21 external names (18 PS2Runtime, 3 Darwin ABI) after self-resolution.", "verdict": "verified", "confidence": 1, "action": "auto", "support": 1},
+        {"claim": "All 18 remaining PS2Runtime methods are declared and defined in the pinned clone.", "verdict": "verified", "confidence": 0.99, "action": "auto", "support": 1},
+        {"claim": "Build cache disabled runtime; saved compile/archive evidence does not prove linking.", "verdict": "verified", "confidence": 1, "action": "auto", "support": 1},
+        {"claim": "Runtime CMake target requires raylib, default desktop FFmpeg, and ps2_iop; no dedicated headless target is present in inspected configuration.", "verdict": "verified", "confidence": 1, "action": "auto", "support": 1},
+        {"claim": "Fallback syscall and import-stub paths remain semantic/runtime limitations rather than missing link symbols.", "verdict": "verified", "confidence": 1, "action": "auto", "support": 1}
+      ],
+      "usage": {"input_tokens": 3441, "output_tokens": 627}
+    },
+    {
+      "tool": "jev_verify",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "auto_accept": 0.8,
+      "subject_at": 0.5,
+      "summary": {"verified": 2, "contradicted": 0, "unsupported": 0, "needs_review": 0},
+      "results": [
+        {"claim": "Registration table globals are present in the generated archive but current CMake does not link the generated artifact into the game runner.", "verdict": "verified", "confidence": 0.99, "action": "auto", "support": 1},
+        {"claim": "Repeated helper symbol copies are weak definitions, not proof of a strong duplicate-definition error.", "verdict": "verified", "confidence": 1, "action": "auto", "support": 1}
+      ],
+      "usage": {"input_tokens": 1514, "output_tokens": 232}
+    }
+  ],
+  "evidence_disposition": "Bounded source and metadata checks only. Jev outputs are advisory evidence checks; the symbol-set comparison, exact source inspection, and CMake configuration are directly retained and qualify the conclusions."
+}
