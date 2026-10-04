@@ -1,0 +1,172 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T214745Z-3f4d655a325741ac93f5a9ba9ded7f0a",
+  "check": "holdout-gap-method",
+  "command": [
+    "tools/holdout_gap_method.py",
+    "--export-dir",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--fraction",
+    "0.5",
+    "--seed",
+    "2",
+    "--without-callers",
+    "--work-dir",
+    ".scratch/mesh/codex-audit/frontier-3845-01/holdout-g2-2",
+    "--output",
+    ".scratch/evidence/holdout-gap-method"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/inventory.json": {
+      "bytes": 53647638,
+      "sha256": "5df11681a4c52a47db73c018551d400c250ac6b08a7638527f2fc2dbe62246d1"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/coverage.json": {
+      "bytes": 949491,
+      "sha256": "4f8865b7703efd339b2c48742883789204eabd3b0560f8c1a0d70741f6eef227"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "fraction": 0.5,
+    "seed": 2,
+    "without_callers": true,
+    "seeds_generated": 1340,
+    "guard_accepted": 874,
+    "tiers_all_candidates": {
+      "A": 620,
+      "B": 215,
+      "C": 39
+    },
+    "score": {
+      "held_out": 734,
+      "recovered": {
+        "exact": 640,
+        "start_only": 0,
+        "missed": 94
+      },
+      "inside_held_spans": {
+        "candidates": 641,
+        "exact": 640,
+        "start_only": 0,
+        "false_start": 1
+      },
+      "straddling": 0,
+      "by_tier": {
+        "A": {
+          "candidates": 599,
+          "exact": 598,
+          "start_only": 0,
+          "false_start": 1
+        },
+        "B": {
+          "candidates": 38,
+          "exact": 38,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "C": {
+          "candidates": 4,
+          "exact": 4,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "by_evidence": {
+        "frame+layout": {
+          "candidates": 339,
+          "exact": 338,
+          "start_only": 0,
+          "false_start": 1
+        },
+        "frame+layout+reference": {
+          "candidates": 130,
+          "exact": 130,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "frame+reference": {
+          "candidates": 120,
+          "exact": 120,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "reference": {
+          "candidates": 3,
+          "exact": 3,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "frame": {
+          "candidates": 35,
+          "exact": 35,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "layout+reference": {
+          "candidates": 10,
+          "exact": 10,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "layout": {
+          "candidates": 4,
+          "exact": 4,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "by_frame": {
+        "frame_consistent": {
+          "candidates": 256,
+          "exact": 255,
+          "start_only": 0,
+          "false_start": 1
+        },
+        "leaf_consistent": {
+          "candidates": 260,
+          "exact": 260,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "no_return": {
+          "candidates": 108,
+          "exact": 108,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "leaf_with_sp_use": {
+          "candidates": 17,
+          "exact": 17,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "exact_precision": 0.9984399375975039,
+      "exact_recall": 0.8719346049046321
+    },
+    "claim_limits": [
+      "Ground truth is the saved functions, themselves provisional structural candidates.",
+      "Only contiguous saved functions can be held out; split bodies are not tested.",
+      "Held-out bytes are marked undefined; real gaps are partly decoded unowned instructions.",
+      "Recall and precision measure agreement with saved functions, not original boundaries."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 2849,
+      "sha256": "56e80d49c30bc55f62243e4d4b7adb849b8dd4f2b712ab415790e5e6953486cd"
+    }
+  }
+}

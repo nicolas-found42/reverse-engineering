@@ -1,0 +1,4 @@
+iteration 0 failure: IllegalStateException: PRE_CHECK_FAILURES 1 SEED_FAILURE 00123cc0: reference into the interior of 00123cc0 from outside the span at 00123cf0 from 00252e58 type DATA
+iteration 1 failure: IllegalStateException: DECODER_FLOW_FAILURES 2 SEED_FAILURE 001796b0: Ghidra direct-call fallthrough/delay-slot address differs at 00179788 fall=null expected=00179790 insn=jal 0x00105888 | SEED_FAILU
+iteration 2 failure: IllegalStateException: unresolved outgoing callee was created/claimed at 0020fa68
+no seed identified in the failure; stopping

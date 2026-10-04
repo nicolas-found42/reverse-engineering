@@ -62,6 +62,7 @@ Each bundle records one isolated transaction on a byte-identical Ghidra project 
 | 4,718 | [`batch-r3-candidates`](batch-r3-candidates/README.md) | 176 |
 | 5,130 | [`batch-g1-candidates`](batch-g1-candidates/README.md) | 412 |
 | 5,243 | [`batch-g2-candidates`](batch-g2-candidates/README.md) | 113 |
+| 5,454 | [`batch-g3-candidates`](batch-g3-candidates/README.md) | 211 |
 
 The three large batches add PS2Recomp function-table entries that were not saved functions. Their evidence per seed is table membership plus raw-word CFG validation; where available, direct JAL callers and non-call (address-taken) references into the entry are recorded and verified unchanged. In 96 saved functions' decompiled output (64, 26 and 6 across the three batches) address-of-label stores and pointer labels are now printed with the new function symbols (many are table-initializer functions storing code addresses), which is consistent with these being address-taken code but does not identify them. The V5 guard reviews escalated; see each bundle's `jev-review-*` receipts and root dispositions.
 
