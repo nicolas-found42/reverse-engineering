@@ -1,0 +1,10 @@
+{
+  "attempt": "reconciliation command 01",
+  "status": "failed before report creation",
+  "failure": "AssertionError: caller graph changed unexpectedly at 00201610",
+  "initial_assumption_error": "The script incorrectly expected the new e70 function to appear in callers of 00201610 and 00201720. Those are callees already reached by the prior 00200de0 candidate and their caller sets should remain unchanged.",
+  "followup_read_only_observation": "Graph diff shows only two expected callee-set additions: 00200e70 added as callee of 001fbfb8 and 001fc118. The new candidate caller list is those two functions and its callee list is empty.",
+  "script_snapshot": "reconcile_3843_3844-attempt01.py",
+  "script_sha256": "7aeaab23d38f01810051e15feb5c7a7c504c848292e1e7de489bd2dc5d1eed0d",
+  "project_mutated": false
+}

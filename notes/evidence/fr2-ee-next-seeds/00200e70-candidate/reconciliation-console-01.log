@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/ee-00200e70-candidate-01/reconcile_3843_3844.py", line 65, in <module>
+    if new_callers!=expected_callers:fail(f'caller graph changed unexpectedly at {entry}')
+                                     ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/ee-00200e70-candidate-01/reconcile_3843_3844.py", line 12, in fail
+    def fail(msg):raise AssertionError(msg)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: caller graph changed unexpectedly at 00201610

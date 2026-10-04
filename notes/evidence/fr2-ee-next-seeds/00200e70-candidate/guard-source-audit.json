@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "status": "PASS_SOURCE_ONLY_GUARD_AUDIT",
+  "checks": [
+    {
+      "check": "3843 baseline manifest/inventory/coverage pins",
+      "passed": true,
+      "detail": {
+        "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+        "inventory_sha256": "41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716",
+        "coverage_sha256": "5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44",
+        "manifest_sha256": "3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8",
+        "inventory_count": 3843,
+        "manifest_processed_count": 3843,
+        "source_sha256": "e6fc814e6a413aa48150f170953f540565d5c469389603597850de7a454a62c8"
+      }
+    },
+    {
+      "check": "3843 manifest/export counts",
+      "passed": true,
+      "detail": {
+        "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+        "inventory_sha256": "41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716",
+        "coverage_sha256": "5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44",
+        "manifest_sha256": "3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8",
+        "inventory_count": 3843,
+        "manifest_processed_count": 3843,
+        "source_sha256": "e6fc814e6a413aa48150f170953f540565d5c469389603597850de7a454a62c8"
+      }
+    },
+    {
+      "check": "fresh proposal project copy is exact and unopened",
+      "passed": true,
+      "detail": {
+        "source": "ghidra-project/codex-audit-ee-00200de0-proposal-01",
+        "copy": "ghidra-project/codex-audit-ee-00200e70-proposal-01",
+        "files": 9
+      }
+    },
+    {
+      "check": "raw preflight fully matches 696-byte maximum span",
+      "passed": true,
+      "detail": {
+        "path": ".scratch/mesh/codex-root/recomp-fpu-01/sub_00200E70_0x200e70.cpp",
+        "source_rows": 174,
+        "interval_word_count": 174,
+        "comment_rows_contiguous": true,
+        "all_comment_words_match_raw_elf": true,
+        "zero_word_addresses": [
+          "00201124"
+        ]
+      }
+    },
+    {
+      "check": "CFG has exactly 173 contiguous body words through 00201120",
+      "passed": true,
+      "detail": {
+        "count": 173,
+        "last": "00201120"
+      }
+    },
+    {
+      "check": "terminal zero is outside body and pinned as unvisited 00201124",
+      "passed": true,
+      "detail": [
+        {
+          "address": "00201124",
+          "word": "00000000"
+        }
+      ]
+    },
+    {
+      "check": "four saved references are raw-ELF-backed direct JALs to entry",
+      "passed": true,
+      "detail": [
+        {
+          "caller": "001fbfb8",
+          "site": "001fc008",
+          "inventory_bytes": "9c03080c",
+          "loaded_bytes_hex": "9c03080c",
+          "elf_file_offset": "000fd008",
+          "elf_bytes_hex": "9c03080c",
+          "raw_word": "0c08039c",
+          "decoded_opcode": 3,
+          "decoded_target": "00200e70",
+          "raw_matches_inventory": true,
+          "raw_jal_targets_candidate": true
+        },
+        {
+          "caller": "001fbfb8",
+          "site": "001fc02c",
+          "inventory_bytes": "9c03080c",
+          "loaded_bytes_hex": "9c03080c",
+          "elf_file_offset": "000fd02c",
+          "elf_bytes_hex": "9c03080c",
+          "raw_word": "0c08039c",
+          "decoded_opcode": 3,
+          "decoded_target": "00200e70",
+          "raw_matches_inventory": true,
+          "raw_jal_targets_candidate": true
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc174",
+          "inventory_bytes": "9c03080c",
+          "loaded_bytes_hex": "9c03080c",
+          "elf_file_offset": "000fd174",
+          "elf_bytes_hex": "9c03080c",
+          "raw_word": "0c08039c",
+          "decoded_opcode": 3,
+          "decoded_target": "00200e70",
+          "raw_matches_inventory": true,
+          "raw_jal_targets_candidate": true
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc1dc",
+          "inventory_bytes": "9c03080c",
+          "loaded_bytes_hex": "9c03080c",
+          "elf_file_offset": "000fd1dc",
+          "elf_bytes_hex": "9c03080c",
+          "raw_word": "0c08039c",
+          "decoded_opcode": 3,
+          "decoded_target": "00200e70",
+          "raw_matches_inventory": true,
+          "raw_jal_targets_candidate": true
+        }
+      ]
+    },
+    {
+      "check": "complete baseline interval reference scan has only the four entry calls",
+      "passed": true,
+      "detail": [
+        {
+          "caller": "001fbfb8",
+          "site": "001fc008",
+          "instruction_text": "jal 0x00200e70",
+          "bytes": "9c03080c",
+          "type": "UNCONDITIONAL_CALL",
+          "target": "00200e70"
+        },
+        {
+          "caller": "001fbfb8",
+          "site": "001fc02c",
+          "instruction_text": "jal 0x00200e70",
+          "bytes": "9c03080c",
+          "type": "UNCONDITIONAL_CALL",
+          "target": "00200e70"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc174",
+          "instruction_text": "jal 0x00200e70",
+          "bytes": "9c03080c",
+          "type": "UNCONDITIONAL_CALL",
+          "target": "00200e70"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc1dc",
+          "instruction_text": "jal 0x00200e70",
+          "bytes": "9c03080c",
+          "type": "UNCONDITIONAL_CALL",
+          "target": "00200e70"
+        }
+      ]
+    },
+    {
+      "check": "terminal byte range is undefined in the pinned 3843 coverage",
+      "passed": true,
+      "detail": {
+        "entry_exists": false,
+        "defined_instruction_count_in_interval": 0,
+        "undefined_byte_count_in_interval": 696
+      }
+    },
+    {
+      "check": "source pin MANIFEST_SHA",
+      "passed": true,
+      "detail": {
+        "source": "3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8",
+        "expected": "3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8"
+      }
+    },
+    {
+      "check": "source pin INVENTORY_SHA",
+      "passed": true,
+      "detail": {
+        "source": "41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716",
+        "expected": "41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716"
+      }
+    },
+    {
+      "check": "source pin COVERAGE_SHA",
+      "passed": true,
+      "detail": {
+        "source": "5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44",
+        "expected": "5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44"
+      }
+    },
+    {
+      "check": "source pin EXE_SHA",
+      "passed": true,
+      "detail": {
+        "source": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+        "expected": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+      }
+    },
+    {
+      "check": "source pin WINDOW_SHA",
+      "passed": true,
+      "detail": {
+        "source": "9e1d5d1fed414999b4224049a3f654ab2f2503ca1488429fb3b4566d0c791d0c",
+        "expected": "9e1d5d1fed414999b4224049a3f654ab2f2503ca1488429fb3b4566d0c791d0c"
+      }
+    },
+    {
+      "check": "guard bounds/body/ref constants match preflight",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "guard explicitly keeps terminal zero unowned and excludes it from body",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "guard encodes exact reference sites and caller ownership",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "guard includes old function/instruction/data/memory and decoder-flow guards",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "no stale 3842/de0 candidate pins remain",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "check_count": 19,
+  "passed_count": 19,
+  "guard_source": ".scratch/mesh/codex-audit/ee-00200e70-cfg-3843-01/guard-proposal/CreateEeClosureCandidate00200e70V1.java",
+  "guard_source_sha256": "846d590519f58c3444679ce7afcfe007a15949dcebb61e37697ffb6c3da3cf96",
+  "preflight_sha256": "68dfe161e9bd108b9fb6e25bc3f8c20e671ede62024b3f35b7164b612f39dea0",
+  "project_copy_manifest_sha256": "513c3738a6ebae7b307b540dab11c0084d809d0a56451badaaabf5dc839cbd6c",
+  "scope": "Static textual/pin checks only. Java source was not compiled, executed, or used to open/mutate the proposal project."
+}
