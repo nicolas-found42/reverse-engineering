@@ -35,3 +35,9 @@ A first rule picked one role per function by priority. Jev's batch classifier, g
 ## Not established
 
 STREAM's RPC thread registers `ProcessEECommand` (id `0x12345`), which handles one command. The main EE request path polls a shared `StreamBuffer` of 0x224-byte records. No EE call site was mapped to an IOP handler name, and no type was recovered for the shared record. Only 6 STREAM functions and 1 LGDEV function reference strings by relocation, so string-derived names are rare. LGDEV has no names in its symbol table; none are claimed. The nine stock Sony modules were not annotated.
+
+## Review record
+
+`jev_gate` on the change returned **escalate** (safe_to_apply 0.17; limiting rubric: test gap; composite 0.56). Six of seven claim checks verified. The seventh, a deliberate overclaim that the IOP work recovers variable and struct types, was contradicted at 0.99, which is the correct answer and the other reason for the escalation. The guard claim went to review (0.68).
+
+Negative controls for the V2 guard's new arguments, each on a fresh project copy: `negative-control-wrong-exe-pin.json` (rejected, "pinned executable identity mismatch") and `negative-control-wrong-language.json` (rejected, "program language differs from the pinned language"). The real rename-target rejection described above is the third. The drift checks have no deliberately failing run.
