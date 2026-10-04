@@ -35,6 +35,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
     private final Set<String> COMPUTED_CALLS = new TreeSet<>(), DELAY_BREAKS = new TreeSet<>();
     private String TAIL_REF_TYPE = "UNCONDITIONAL_JUMP";
     private final List<SeedCfg> SEEDS = new ArrayList<>();
+    private final Map<String,String> TAIL_FLOW = new TreeMap<>();
 
     private static final class SeedCfg {
         String entry, windowSha, nextState; long start, end, firstWord, delayWord, nextWord; int words, bytes, likely;
@@ -176,6 +177,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
         for (SeedCfg s : SEEDS) {
             Set<String> callees = new TreeSet<>(s.known); callees.addAll(s.batch);
             for (String t : callees) { expCalled.get(s.entry).add(t); expCallers.get(t).add(s.entry); }
+            for (Map.Entry<String,String> tj : s.tails.entrySet()) if ("CALL_TERMINATOR".equals(TAIL_FLOW.get(tj.getKey()))) { expCalled.get(s.entry).add(tj.getValue()); expCallers.get(tj.getValue()).add(s.entry); }
             for (JsonObject inc : s.incoming) if (!inc.get("owner_entry").isJsonNull()) { String o = inc.get("owner_entry").getAsString(); expCalled.get(o).add(s.entry); expCallers.get(s.entry).add(o); }
         }
         Map<String,Set<String>> afterCalled = calledGraph(), afterCallers = callerGraph();
@@ -247,7 +249,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
         } finally { currentProgram.endTransaction(tx, commit); }
         JsonArray summary = new JsonArray();
         for (SeedCfg s : SEEDS) { Function p = fm.getFunctionAt(at(s.start)); req(p != null && p.getName().equals("candidate_ee_" + s.entry) && p.getBody().getNumAddresses() == s.bytes, "candidate absent or altered after transaction commit: " + s.entry);
-            JsonObject o = new JsonObject(); o.addProperty("entry", s.entry); o.addProperty("words", s.words); o.addProperty("decoded_preexisting_words", s.decoded.size()); o.addProperty("incoming_sites", s.incoming.size()); o.addProperty("next_state", s.nextState); JsonArray orr = new JsonArray(); for (String k : s.preOther) orr.add(k); o.add("non_call_references_into_entry", orr); summary.add(o); }
+            JsonObject o = new JsonObject(); o.addProperty("entry", s.entry); o.addProperty("words", s.words); o.addProperty("decoded_preexisting_words", s.decoded.size()); o.addProperty("incoming_sites", s.incoming.size()); o.addProperty("next_state", s.nextState); JsonArray orr = new JsonArray(); for (String k : s.preOther) orr.add(k); o.add("non_call_references_into_entry", orr); JsonObject tf = new JsonObject(); for (Map.Entry<String,String> tj : s.tails.entrySet()) tf.addProperty(tj.getKey(), tj.getValue() + "|" + TAIL_FLOW.getOrDefault(tj.getKey(), "?")); o.add("tail_jumps_with_flow_type", tf); summary.add(o); }
         out.add("seeds", summary);
     }
     public void run() throws Exception {
@@ -439,7 +441,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
         Set<String> out=new TreeSet<>();
         for(JsonElement e:cfg.getAsJsonArray("edges")) {
             JsonObject x=e.getAsJsonObject(); String k=x.get("kind").getAsString(); if(k.equals("return")||k.equals("computed_call"))continue;
-            String type=(k.equals("call"))?"UNCONDITIONAL_CALL":x.has("tail_jump")?TAIL_REF_TYPE:(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
+            String type=(k.equals("call"))?"UNCONDITIONAL_CALL":x.has("tail_jump")?TAIL_FLOW.getOrDefault(x.get("site").getAsString(),TAIL_REF_TYPE):(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
             out.add(x.get("site").getAsString()+"|"+x.get("target").getAsString()+"|"+type+"|DEFAULT");
         }
         return out;
@@ -454,12 +456,15 @@ public class CreateEeCandidateV5 extends GhidraScript {
                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra conditional target differs from raw-word target at "+hex(pc));
                 req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra conditional fallthrough/delay-slot address differs at "+hex(pc));
             } else if(kind.equals("unconditional_branch")||kind.equals("jump")) {
-                req(actual.isJump()&&!actual.isConditional()&&!actual.isComputed()&&targets.length==1,"Ghidra does not classify raw direct jump consistently at "+hex(pc));
+                if(edge.has("tail_jump")) {
+                    String fts=actual.toString(); req(((fts.equals("UNCONDITIONAL_JUMP")&&actual.isJump())||(fts.equals("CALL_TERMINATOR")&&actual.isTerminal()))&&!actual.isConditional()&&!actual.isComputed()&&targets.length==1&&targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra does not classify raw tail jump consistently at "+hex(pc)+" flow="+actual+" targets="+Arrays.toString(targets)+" insn="+ins); TAIL_FLOW.put(hex(pc),fts);
+                } else
+                req(actual.isJump()&&!actual.isConditional()&&!actual.isComputed()&&targets.length==1,"Ghidra does not classify raw direct jump consistently at "+hex(pc)+" flow="+actual+" targets="+Arrays.toString(targets)+" insn="+ins);
                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra direct-jump target differs from raw-word target at "+hex(pc));
             } else if(kind.equals("call")) {
                 req(actual.isCall()&&!actual.isComputed()&&targets.length==1,"Ghidra does not classify raw direct call consistently at "+hex(pc));
                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra direct-call target differs from raw-word target at "+hex(pc));
-                req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra direct-call fallthrough/delay-slot address differs at "+hex(pc));
+                req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra direct-call fallthrough/delay-slot address differs at "+hex(pc)+" fall="+ins.getFallThrough()+" expected="+edge.get("fallthrough").getAsString()+" insn="+ins);
             } else if(kind.equals("computed_call")) {
                 req(actual.isCall()&&actual.isComputed()&&targets.length==0,"Ghidra does not classify raw computed call consistently at "+hex(pc));
                 req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra computed-call fallthrough/delay-slot address differs at "+hex(pc));

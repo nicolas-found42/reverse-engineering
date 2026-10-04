@@ -46,7 +46,7 @@ while changed:
  import bisect
  starts=sorted(spanmap);keys=[x[0] for x in starts]
  incoming={s:[] for s in walks};bad=None
- for pc in sorted(p for p in decoded if 0x100000<=p<0x217bd4):
+ for pc in sorted(p for p in decoded if 0x100000<=p<0x217bd4 and p%4==0):
   w=get(pc);op=w>>26
   if op in(1,4,5,6,7,20,21,22,23) or (op in(16,17,18,19) and ((w>>21)&31)==8):
    if op==1 and ((w>>16)&31) not in(0,1,2,3,16,17,18,19):continue

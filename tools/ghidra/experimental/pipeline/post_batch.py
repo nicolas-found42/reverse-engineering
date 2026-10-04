@@ -58,8 +58,12 @@ check('unresolved callees remain uncreated and are not claimed by any function',
 ref_deltas=[];graph_deltas=[]
 exp_called={e:set(f['callees']) for e,f in ((e,bf[e]) for e in bf)};exp_callers={e:set(bf[e]['callers']) for e in bf}
 for s in S:exp_called[s['entry']]=set();exp_callers[s['entry']]=set()
+txr={r['entry']:r for r in json.loads(TXR.read_text())['seeds']}
 for s in S:
  for t in set(s['known_callees'])|set(s['batch_callees']):exp_called[s['entry']].add(t);exp_callers[t].add(s['entry'])
+ for site,v in txr[s['entry']].get('tail_jumps_with_flow_type',{}).items():
+  tgt,flow=v.split('|')
+  if flow=='CALL_TERMINATOR':exp_called[s['entry']].add(tgt);exp_callers[tgt].add(s['entry'])
  for i in s['incoming']:
   if i['owner_entry']:exp_called[i['owner_entry']].add(s['entry']);exp_callers[s['entry']].add(i['owner_entry'])
 for e,old in bf.items():
@@ -81,8 +85,12 @@ for srow in tx_res['seeds']:
   frm,to,typ,src=k.split('|');other.append({'from':frm,'to':to,'type':typ,'source':src})
 fn_of={addr(i['address']):e for e,f in bf.items() for i in f['instructions']}
 exp_refs=sorted([{'caller':i['owner_entry'],'site':i['site'],'to':s['entry'],'type':'UNCONDITIONAL_CALL'} for s in S for i in s['incoming'] if i['owner_kind']=='saved']+[{'caller':fn_of[addr(o['from'])],'site':o['from'],'to':o['to'],'type':o['type']} for o in other if addr(o['from']) in fn_of],key=lambda x:(x['caller'],x['site'],x['to']))
-got=sorted(({'caller':d['caller'],'site':d['site'],'to':[r['to'] for r in d['new'] if r.get('function')][0],'type':[r['type'] for r in d['new'] if r.get('function')][0]} for d in ref_deltas),key=lambda x:(x['caller'],x['site'],x['to']))
-ok=exp_refs==got and all(len(d['old'])==len(d['new']) and all(('function' not in a) and a['to']==b['to'] and a['type']==b['type'] for a,b in zip(d['old'],d['new'])) and all((r.get('function')==r['to']) if r.get('function') else True for r in d['new']) for d in ref_deltas)
+got=[]
+for d in ref_deltas:
+ for a_,b_ in zip(d['old'],d['new']):
+  if a_!=b_:got.append({'caller':d['caller'],'site':d['site'],'to':b_['to'],'type':b_['type']})
+got=sorted(got,key=lambda x:(x['caller'],x['site'],x['to']))
+ok=exp_refs==got and all(len(d['old'])==len(d['new']) and all(a_==b_ or (('function' not in a_) and a_['to']==b_['to'] and a_['type']==b_['type'] and b_.get('function')==b_['to'] and b_['to'] in ent) for a_,b_ in zip(d['old'],d['new'])) for d in ref_deltas)
 check('only the pinned call-site references and the guard-recorded non-call references to seed entries gain the new function annotation',ok,{'expected':len(exp_refs),'actual':len(got),'non_call_refs_recorded':len(other)})
 check('call-graph deltas equal the config prediction for every old and new function',True,{'old_functions_with_graph_change':len(graph_deltas)})
 oldc,newc=BASE/'decompilation/functions',NEW/'decompilation/functions';be={r['entry']:r for r in bm['functions']};ne={r['entry']:r for r in nm['functions']}

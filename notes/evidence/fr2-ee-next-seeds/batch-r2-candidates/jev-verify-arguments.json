@@ -1,0 +1,12 @@
+{
+ "tool": "jev_verify",
+ "note": "claims exact; evidence was one prose summary of the preserved config, checker, transaction, reconciliation and verifier files",
+ "claims": [
+  "196 functions created in one V5 transaction (4346->4542) after three seeds with calls to a non-returning function were excluded.",
+  "6,543 words (5,209 pre-decoded, 1,334 new); coverage deltas as listed.",
+  "4 seeds with a direct JAL; 169 of 196 with non-call references into the entry (249); rest PS2Recomp table + CFG.",
+  "82 computed calls, 73 branch-likely, 2 delay BREAKs, 22 tail jumps (21 CALL_TERMINATOR adding call-graph edges, 1 UNCONDITIONAL_JUMP); call-graph model matched Ghidra; no unresolved call target.",
+  "Reconciliation 16/16; 26 old C outputs changed only by label, re-wrap and undefined-type retyping (126); verifier pass; warnings 609->613.",
+  "No identity/behavior/reachability claim."
+ ]
+}

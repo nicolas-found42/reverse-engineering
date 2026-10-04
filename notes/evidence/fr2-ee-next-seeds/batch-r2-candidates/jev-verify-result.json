@@ -1,0 +1,53 @@
+{
+ "tool": "jev_verify",
+ "model": "typesafe/jev-1.13",
+ "summary": {
+  "verified": 5,
+  "contradicted": 0,
+  "unsupported": 1,
+  "needs_review": 2
+ },
+ "results": [
+  {
+   "id": "claim0",
+   "confidence": 0.89
+  },
+  {
+   "id": "claim1",
+   "supports": 0.89,
+   "contradicts": 0.11,
+   "confidence": 0.83
+  },
+  {
+   "id": "claim2",
+   "supports": 0.87,
+   "contradicts": 0.12,
+   "confidence": 0.81
+  },
+  {
+   "id": "claim3",
+   "confidence": 0.98
+  },
+  {
+   "id": "claim4",
+   "supports": 0.76,
+   "contradicts": 0.24,
+   "confidence": 0.63,
+   "action": "review"
+  },
+  {
+   "id": "claim5",
+   "verdict": "unsupported",
+   "supports": 0.34,
+   "says_nothing": 0.46,
+   "contradicts": 0.2,
+   "confidence": 0.18,
+   "action": "review"
+  }
+ ],
+ "usage": {
+  "input_tokens": 2950,
+  "output_tokens": 374
+ },
+ "root_disposition": "claim5 is a scope limitation with no cited evidence; Jev marked it unsupported (same_subject 0.21). It is a stated limit, not a verified result, and is listed as unresolved by Jev. claim4 (compound, 0.63) is covered by the deterministic reconciliation (16/16) and root rehash. Neither retried."
+}
