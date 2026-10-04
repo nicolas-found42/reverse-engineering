@@ -11,7 +11,7 @@ import argparse
 import collections
 from pathlib import Path
 
-from corpus_contract import corpus_identity
+from corpus_binding import Baseline
 from evidence_common import Incomplete, Invalid, write_result
 from ptg_profile import MAX_BYTES, HeaderRelationError, classify
 
@@ -24,15 +24,13 @@ def read_bounded(path: Path) -> bytes:
 
 
 def check_corpus(game: Path) -> dict:
-    files = game / "extracted" / "files"
-    if not files.is_dir():
-        raise Incomplete(f"corpus files directory missing: {files}")
-    provenance = corpus_identity(game)
+    baseline = Baseline(game)
+    expected = baseline.entries(".ptg;1")
     entries, failures, profiles, violations = [], [], collections.Counter(), 0
-    for path in sorted(files.rglob("*.ptg;1")):
-        name = path.relative_to(files).as_posix()
+    for entry in expected:
+        name = entry.path.lstrip("/")
         try:
-            result = classify(read_bounded(path))
+            result = classify(entry.load())
         except HeaderRelationError as exc:
             violations += 1
             failures.append(f"{name}: {exc}")
@@ -42,17 +40,22 @@ def check_corpus(game: Path) -> dict:
             continue
         profiles[result["profile"]] += 1
         entries.append({"path": name, **result})
-    if not entries and not failures:
-        raise Incomplete("no .ptg files found in the corpus")
     return {
-        "provenance": provenance,
-        "files": len(entries) + len(failures),
+        "provenance": baseline.provenance,
+        "files": len(expected),
         "profiles": dict(sorted(profiles.items())),
         "header_relation_violations": violations,
         "file_results": entries,
         "claim_limits": "Structure only: no palette, tile-pointer or pixel-color decoding is claimed.",
         "failures": failures,
     }
+
+
+def check_file(data: bytes) -> dict:
+    result = classify(data)
+    if result["profile"] == "single_unsupported":
+        raise Incomplete(f"single-tile file is outside the supported profiles: {result['diagnostic']}", result)
+    return result
 
 
 def main():
@@ -67,7 +70,7 @@ def main():
             raise Incomplete(f"{args.family} needs 1 input; supplied {len(args.inputs)}")
         if args.family == "corpus":
             return check_corpus(args.inputs[0])
-        return classify(read_bounded(args.inputs[0]))
+        return check_file(read_bounded(args.inputs[0]))
 
     return write_result(args.output, "ptg:" + args.family, run, [] if args.family == "corpus" else args.inputs)
 

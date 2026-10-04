@@ -226,14 +226,16 @@ def model(data: bytes) -> dict:
     offsets = roots.copy()
     pos = 8 + root_count * 4
     groups = []
-    while pos < min(offsets):
+    lowest = min(offsets)  # running minimum: recomputing it per group made parsing quadratic
+    while pos < lowest:
         (size,) = words(data, pos, 1, "group count")
         require(
-            size <= (min(offsets) - pos - 4) // 4, "group crosses string-pool boundary"
+            size <= (lowest - pos - 4) // 4, "group crosses string-pool boundary"
         )
         names = list(words(data, pos + 4, size, "group names"))
         groups.append({"span": [pos, pos + 4 + size * 4], "offsets": names})
         offsets.extend(names)
+        lowest = min([lowest, *names])
         pos += 4 + size * 4
     require(pos == min(offsets), "name-tree boundary does not equal string-pool start")
     names = []

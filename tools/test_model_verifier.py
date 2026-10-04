@@ -6,6 +6,7 @@ import struct
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 
 TOOLS = Path(__file__).resolve().parent
@@ -25,12 +26,13 @@ class ModelVerifier(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
 
-    def command(self, *args):
+    def command(self, *args, timeout=None):
         out = self.root / "results"
         p = subprocess.run(
             [sys.executable, str(TOOLS / "verify_model.py"), *map(str, args), "--output", str(out)],
             capture_output=True,
             text=True,
+            timeout=timeout,
         )
         reports = sorted(out.glob("*/result.json"), key=lambda r: r.stat().st_mtime_ns)
         self.assertTrue(reports, p.stderr)
@@ -83,6 +85,23 @@ class ModelVerifier(unittest.TestCase):
         code, result = self.command("file", big)
         self.assertEqual((code, result["status"]), (1, "fail"))
         self.assertTrue(any("exceeds" in d for d in result["diagnostics"]))
+
+    def test_many_groups_are_parsed_in_linear_time(self):
+        groups = 30_000
+        pool = 12 + 8 * groups
+        data = bytearray(struct.pack("<3I", 0, 1, pool))
+        for i in range(groups):
+            data += struct.pack("<2I", 1, pool + 2 * (i + 1))
+        data += b"A\0" * (groups + 1)
+        data += bytes(-len(data) % 16)
+        started = time.monotonic()
+        try:
+            code, result = self.command("file", self.file(bytes(data)), timeout=4)
+        except subprocess.TimeoutExpired:
+            self.fail("parsing 30,000 groups did not finish within 4 seconds (quadratic?)")
+        self.assertLess(time.monotonic() - started, 4)
+        self.assertEqual(code, 1)  # the leading field was left at 0, so the new boundary check rejects it
+        self.assertTrue(any("leading u32 0 differs" in d for d in result["diagnostics"]), result["diagnostics"])
 
     def test_missing_input_is_incomplete(self):
         code, result = self.command("file", self.root / "absent.ps2")

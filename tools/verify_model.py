@@ -10,7 +10,7 @@ import argparse
 import collections
 from pathlib import Path
 
-from corpus_contract import corpus_identity
+from corpus_binding import Baseline
 from evidence_common import Incomplete, Invalid, sha256, write_result
 from format_contracts import model
 
@@ -52,26 +52,21 @@ def check_model(data: bytes) -> dict:
 
 
 def check_corpus(game: Path) -> dict:
-    files = game / "extracted" / "files"
-    if not files.is_dir():
-        raise Incomplete(f"corpus files directory missing: {files}")
-    provenance = corpus_identity(game)
-    paths = [p for p in sorted(files.rglob("*")) if p.is_file() and p.name.lower().endswith(".ps2;1")]
-    if not paths:
-        raise Incomplete("no .ps2 models found in the corpus")
+    baseline = Baseline(game)
+    expected = baseline.entries(".ps2;1")
     entries, failures, pads = [], [], collections.Counter()
-    for path in paths:
-        name = path.relative_to(files).as_posix()
+    for entry in expected:
+        name = entry.path.lstrip("/")
         try:
-            result = check_model(read_bounded(path))
+            result = check_model(entry.load())
         except Invalid as exc:
             failures.append(f"{name}: {exc}")
             continue
         pads[result["pad_length"]] += 1
         entries.append({"path": name, **result})
     return {
-        "provenance": provenance,
-        "models": len(paths),
+        "provenance": baseline.provenance,
+        "models": len(expected),
         "leading_equals_pool_end": len(entries),
         "zero_padding": len(entries),
         "pad_lengths": dict(sorted(pads.items())),

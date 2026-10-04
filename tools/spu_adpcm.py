@@ -25,6 +25,8 @@ FLAG_END_MARKER = 7
 # (k0, k1) in 1/64 units
 FILTERS = ((0, 0), (60, 0), (115, -52), (98, -55), (122, -60))
 MAX_BYTES = 128 * 1024 * 1024
+MAX_DECODE_BYTES = 1024 * 1024  # a decoded span costs tens of bytes per sample; real spans are at most 80 KB
+MAX_CHANNELS = 16
 
 
 class AdpcmError(ValueError):
@@ -37,7 +39,6 @@ class Structure:
     invalid_filter: int
     invalid_shift: int
     invalid_flags: int
-    end_blocks: int
     first_block_zero: bool
     last_flags: int
 
@@ -51,19 +52,17 @@ def structure(buf: bytes) -> Structure:
     if len(buf) > MAX_BYTES:
         raise AdpcmError("stream exceeds bounded size")
     n = len(buf) // BLOCK
-    invalid_filter = invalid_shift = invalid_flags = ends = 0
+    invalid_filter = invalid_shift = invalid_flags = 0
     for i in range(n):
         head, flags = buf[i * BLOCK], buf[i * BLOCK + 1]
         invalid_filter += (head >> 4) >= len(FILTERS)
         invalid_shift += (head & 0xF) > 12
         invalid_flags += flags > 7
-        ends += flags & FLAG_END
     return Structure(
         n,
         invalid_filter,
         invalid_shift,
         invalid_flags,
-        ends,
         buf[:BLOCK] == bytes(BLOCK),
         buf[-BLOCK + 1],
     )
@@ -96,10 +95,18 @@ def decode(buf: bytes) -> list[int]:
     return out
 
 
+def validate_layout(channels: int, interleave: int) -> None:
+    if not 1 <= channels <= MAX_CHANNELS:
+        raise AdpcmError(f"channel count {channels} is outside 1..{MAX_CHANNELS}")
+    if interleave < BLOCK or interleave % BLOCK:
+        raise AdpcmError(f"interleave {interleave} must be a positive multiple of {BLOCK} bytes")
+
+
 def deinterleave(buf: bytes, channels: int, interleave: int) -> list[bytes]:
     """Split interleaved channel blocks (`interleave` bytes per channel turn)."""
-    if channels < 1 or interleave < BLOCK or interleave % BLOCK:
-        raise AdpcmError("bad channel/interleave parameters")
+    validate_layout(channels, interleave)
+    if not buf:
+        raise AdpcmError("empty payload")
     turn = channels * interleave
     if len(buf) % turn:
         raise AdpcmError(f"length {len(buf)} not a whole number of {turn}-byte interleave turns")

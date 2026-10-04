@@ -6,6 +6,8 @@ hardware ADPCM block structure and that a reference decoder yields sane PCM. It 
 playback or in-game correctness claim.
 """
 
+from __future__ import annotations
+
 import argparse
 from pathlib import Path
 import shutil
@@ -14,7 +16,7 @@ import subprocess
 import tempfile
 
 import spu_adpcm as adpcm
-from corpus_contract import corpus_identity
+from corpus_binding import Baseline
 from evidence_common import Incomplete, Invalid, sha256, write_result
 from format_contracts import bank
 
@@ -44,6 +46,7 @@ class FfmpegOracle:
         self.version = banner.splitlines()[0] if banner else "unknown"
         self.counts = {"span": [0, 0], "music": [0, 0]}  # [compared, equal]
         self.mismatches: list[str] = []
+        self.skipped: list[str] = []
 
     def decode(self, blob: bytes, rate: int) -> list[int]:
         head = (
@@ -53,10 +56,14 @@ class FfmpegOracle:
         with tempfile.TemporaryDirectory() as temp:
             path = Path(temp) / "span.vag"
             path.write_bytes(head + blob)
-            run = subprocess.run(
-                [self.exe, "-v", "error", "-nostdin", "-i", str(path), "-f", "s16le", "-acodec", "pcm_s16le", "-"],
-                capture_output=True,
-            )
+            try:
+                run = subprocess.run(
+                    [self.exe, "-v", "error", "-nostdin", "-i", str(path), "-f", "s16le", "-acodec", "pcm_s16le", "-"],
+                    capture_output=True,
+                    timeout=60,
+                )
+            except subprocess.TimeoutExpired as exc:
+                raise Invalid("ffmpeg did not finish decoding a span within 60 seconds") from exc
         if run.returncode:
             raise Invalid(f"ffmpeg could not decode the span: {run.stderr.decode(errors='replace')[:200]}")
         return list(struct.unpack(f"<{len(run.stdout) // 2}h", run.stdout))
@@ -78,6 +85,7 @@ class FfmpegOracle:
             "exact_equal": self.counts["span"][1],
             "music_excerpts_compared": self.counts["music"][0],
             "music_excerpts_equal": self.counts["music"][1],
+            "spans_skipped_over_decode_bound": self.skipped,
         }
 
     def finish(self, details: dict) -> dict:
@@ -101,9 +109,24 @@ def violations(s: adpcm.Structure) -> list[str]:
     return found
 
 
-def terminator(span: bytes) -> str:
-    last, before = span[-15], span[-31] if len(span) >= 32 else None
-    return "1,7" if (before, last) == (1, 7) else str(last)
+MARKER_FILLER = bytes([0x77]) * 14
+
+
+def end_blocks(span: bytes) -> list[int]:
+    return [i for i in range(len(span) // adpcm.BLOCK) if span[i * adpcm.BLOCK + 1] & adpcm.FLAG_END]
+
+
+def terminator(span: bytes) -> str | None:
+    """The measured terminator class, or None. Only these two classes occur in the corpus:
+    a single final end-bit block flagged 3, or a flag-1 block followed by a flag-7 end marker with 0x77 filler."""
+    blocks = len(span) // adpcm.BLOCK
+    flags = [span[i * adpcm.BLOCK + 1] for i in range(blocks)]
+    ends = end_blocks(span)
+    if ends == [blocks - 1] and flags[-1] == 3:
+        return "3"
+    if blocks >= 2 and ends == [blocks - 2, blocks - 1] and flags[-2:] == [1, 7] and span[-14:] == MARKER_FILLER:
+        return "1,7"
+    return None
 
 
 def check_bank(msh: bytes, msb: bytes, oracle: FfmpegOracle | None = None, label: str = "") -> dict:
@@ -118,8 +141,12 @@ def check_bank(msh: bytes, msb: bytes, oracle: FfmpegOracle | None = None, label
             failures.append(f"descriptor {i}: sample span length {len(span)}: {exc} (multiple of 16 required)")
             continue
         problems = violations(s)
-        if not s.last_flags & adpcm.FLAG_END:
-            problems.append(f"end flag missing on last block (flags {s.last_flags})")
+        kind = terminator(span)
+        if kind is None:
+            problems.append(
+                f"end flags outside the measured terminator classes (final flag 3, or a flag-1 block then a flag-7 "
+                f"marker with 0x77 filler); end bits at blocks {end_blocks(span)[:4]} of {s.blocks}, final block flags {s.last_flags}"
+            )
         if not s.first_block_zero:
             problems.append("first block is not all zero")
         entry = {
@@ -128,10 +155,14 @@ def check_bank(msh: bytes, msb: bytes, oracle: FfmpegOracle | None = None, label
             "rate": d["rate"],
             "blocks": s.blocks,
             "last_flags": s.last_flags,
-            "terminator": terminator(span),
+            "terminator": kind,
         }
         if problems:
             failures.extend(f"descriptor {i}: {p}" for p in problems)
+        elif len(span) > adpcm.MAX_DECODE_BYTES:
+            entry["decode_skipped"] = f"span of {len(span)} bytes exceeds the {adpcm.MAX_DECODE_BYTES} byte decode bound; structure checked only"
+            if oracle:
+                oracle.skipped.append(f"{label}descriptor {i}")
         else:
             pcm = adpcm.decode(span)
             if oracle:
@@ -144,6 +175,7 @@ def check_bank(msh: bytes, msb: bytes, oracle: FfmpegOracle | None = None, label
         spans.append(entry)
     return {
         "descriptors": spans,
+        "decode_skipped_spans": sum("decode_skipped" in entry for entry in spans),
         "payload_codec_evidence": "PS-ADPCM block structure",
         "claim_limits": CLAIM_LIMITS,
         "failures": failures,
@@ -154,6 +186,11 @@ def check_stream(header: bytes, payload: bytes, oracle: FfmpegOracle | None = No
     fields = adpcm.mih_fields(header)
     channels, interleave = fields["channels"], fields["interleave"]
     failures, details = [], {"mih": fields, "claim_limits": CLAIM_LIMITS}
+    try:
+        adpcm.validate_layout(channels, interleave)
+    except adpcm.AdpcmError as exc:
+        details["failures"] = [f"stream parameters: {exc}"]
+        return details
     try:
         streams = adpcm.deinterleave(payload, channels, interleave)
     except adpcm.AdpcmError as exc:
@@ -189,38 +226,42 @@ def check_stream(header: bytes, payload: bytes, oracle: FfmpegOracle | None = No
 
 
 def check_corpus(game: Path, oracle: FfmpegOracle | None = None) -> dict:
-    files = game / "extracted" / "files"
-    if not files.is_dir():
-        raise Incomplete(f"corpus files directory missing: {files}")
-    provenance = corpus_identity(game)
-    banks, streams, failures, classes = [], [], [], {}
-    for msb in sorted(files.rglob("*.msb;1")):
-        msh = msb.with_name(msb.name.replace(".msb;1", ".msh;1"))
-        if not msh.exists():
-            failures.append(f"{msb.name}: no paired .msh")
+    baseline = Baseline(game)
+    bank_pairs, unpaired_banks = baseline.pairs(".msh;1", ".msb;1")
+    stream_pairs, unpaired_streams = baseline.pairs(".mih;1", ".mib;1")
+    if not bank_pairs and not stream_pairs:
+        raise Incomplete("no .msb/.mib audio found in the archive baseline")
+    banks, streams, classes = [], [], {}
+    failures = [f"{path}: no partner in the archive baseline" for path in unpaired_banks + unpaired_streams]
+    for msh, msb in bank_pairs:
+        try:
+            header, payload = msh.load(), msb.load()
+            result = check_bank(header, payload, oracle, msb.name + " ")
+        except Invalid as exc:
+            failures.append(f"{msb.name}: {exc}")
             continue
-        result = check_bank(read_bounded(msh), read_bounded(msb), oracle, msb.name + " ")
         failures.extend(f"{msb.name}: {f}" for f in result["failures"])
         for d in result["descriptors"]:
-            classes[d["terminator"]] = classes.get(d["terminator"], 0) + 1
-        banks.append({"path": msb.relative_to(files).as_posix(), "descriptors": result["descriptors"]})
-    for mib in sorted(files.rglob("*.mib;1")):
-        mih = mib.with_name(mib.name.replace(".mib;1", ".mih;1"))
-        if not mih.exists():
-            failures.append(f"{mib.name}: no paired .mih")
+            if d["terminator"]:
+                classes[d["terminator"]] = classes.get(d["terminator"], 0) + 1
+        banks.append({"path": msb.path.lstrip("/"), "descriptors": result["descriptors"]})
+    for mih, mib in stream_pairs:
+        try:
+            header, payload = mih.load(), mib.load()
+            result = check_stream(header, payload, oracle, mib.name + " ")
+        except Invalid as exc:
+            failures.append(f"{mib.name}: {exc}")
             continue
-        result = check_stream(read_bounded(mih), read_bounded(mib), oracle, mib.name + " ")
         failures.extend(f"{mib.name}: {f}" for f in result["failures"])
-        streams.append({"path": mib.relative_to(files).as_posix(), **{k: v for k, v in result.items() if k != "failures"}})
-    if not banks and not streams:
-        raise Incomplete("no .msb/.mib audio found in the corpus")
+        streams.append({"path": mib.path.lstrip("/"), **{k: v for k, v in result.items() if k != "failures"}})
     clips = [d["clip_fraction"] for b in banks for d in b["descriptors"] if "clip_fraction" in d]
     details = {
-        "provenance": provenance,
+        "provenance": baseline.provenance,
         "banks": len(banks),
         "bank_descriptors": sum(len(b["descriptors"]) for b in banks),
         "streams": len(streams),
         "terminator_classes": dict(sorted(classes.items())),
+        "decode_skipped_spans": sum(sum("decode_skipped" in d for d in b["descriptors"]) for b in banks),
         "max_bank_clip_fraction": max(clips, default=0.0),
         "bank_results": banks,
         "stream_results": streams,

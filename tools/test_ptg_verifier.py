@@ -126,12 +126,12 @@ class PtgVerifier(unittest.TestCase):
         self.assertEqual(result["details"]["profile"], "tiled_header_only")
         self.assertTrue(any("layout" in u for u in result["details"]["unresolved"]))
 
-    def test_single_tile_file_outside_the_sprite_contract_is_listed_not_failed(self):
+    def test_single_tile_file_outside_the_sprite_contract_is_incomplete_in_file_mode(self):
         header = struct.pack("<8I", 1, 1, 1, 32, 32, 28, 28, 1) + bytes(300)
         code, result = self.command("file", self.file(header))
-        self.assertEqual((code, result["status"]), (0, "pass"), result["diagnostics"])
+        self.assertEqual((code, result["status"]), (2, "incomplete"))
+        self.assertTrue(any("sprite" in d for d in result["diagnostics"]), result["diagnostics"])
         self.assertEqual(result["details"]["profile"], "single_unsupported")
-        self.assertIn("sprite", result["details"]["diagnostic"])
 
     def test_missing_input_is_incomplete(self):
         code, result = self.command("file", self.root / "absent.ptg")

@@ -25,6 +25,12 @@ def sample(blocks=3, tail_flags=3):
     return b"".join(body)
 
 
+def marker_sample(blocks=5):
+    """Zero first block, data, a flag-1 block, then the flag-7 end marker with 0x77 filler."""
+    body = [bytes(16)] + [block() for _ in range(blocks - 3)] + [block(flags=1), bytes([0, 7]) + bytes([0x77]) * 14]
+    return b"".join(body)
+
+
 def bank_files(samples, rate=22050):
     descriptors, start = b"", 0
     for s in samples:
@@ -68,11 +74,12 @@ class AudioVerifier(unittest.TestCase):
         return self.write("b.msh", msh), self.write("b.msb", msb)
 
     def test_valid_bank_passes_and_reports_each_span(self):
-        code, result = self.command("bank", *self.bank([sample(4), sample(6, tail_flags=7)]))
+        code, result = self.command("bank", *self.bank([sample(4), marker_sample(6)]))
         self.assertEqual((code, result["status"]), (0, "pass"), result["diagnostics"])
         spans = result["details"]["descriptors"]
         self.assertEqual([s["blocks"] for s in spans], [4, 6])
         self.assertEqual([s["last_flags"] for s in spans], [3, 7])
+        self.assertEqual([s["terminator"] for s in spans], ["3", "1,7"])
         self.assertTrue(all(len(s["pcm_sha256"]) == 64 for s in spans))
         self.assertIn("no playback", result["details"]["claim_limits"])
 
@@ -86,6 +93,59 @@ class AudioVerifier(unittest.TestCase):
         code, result = self.command("bank", *self.bank([sample(4, tail_flags=0)]))
         self.assertEqual((code, result["status"]), (1, "fail"))
         self.assertTrue(any("end flag" in d for d in result["diagnostics"]))
+
+    def test_end_flags_outside_the_measured_classes_fail(self):
+        mid = bytearray(sample(6))
+        mid[16 * 2 + 1] = 1  # end flag on a middle block
+        lone7 = sample(4, tail_flags=7)  # final flag 7 without a preceding flag-1 block
+        lone1 = sample(4, tail_flags=1)
+        bad_filler = bytearray(marker_sample(6))
+        bad_filler[-1] = 0x00  # marker data is no longer the constant 0x77 filler
+        for label, span in (("mid", bytes(mid)), ("lone7", lone7), ("lone1", lone1), ("filler", bytes(bad_filler))):
+            code, result = self.command("bank", *self.bank([span]))
+            self.assertEqual((code, result["status"]), (1, "fail"), label)
+            self.assertTrue(any("measured terminator classes" in d for d in result["diagnostics"]), (label, result["diagnostics"]))
+        self.assertTrue(any("end bits at blocks" in d for d in result["diagnostics"]), result["diagnostics"])
+
+    def test_span_above_the_decode_bound_is_checked_but_decoding_is_skipped_visibly(self):
+        blocks = spu_adpcm.MAX_DECODE_BYTES // 16 + 1
+        big = bytes(16) + block() * (blocks - 2) + block(flags=3)
+        code, result = self.command("bank", *self.bank([big]))
+        self.assertEqual((code, result["status"]), (0, "pass"), result["diagnostics"])
+        span = result["details"]["descriptors"][0]
+        self.assertIn("decode bound", span["decode_skipped"])
+        self.assertEqual(result["details"]["decode_skipped_spans"], 1)
+        self.assertNotIn("pcm_sha256", span)
+
+    def test_hostile_stream_headers_fail_cleanly(self):
+        cases = (
+            (5_000_000, 32, b"", "stream parameters"),
+            (0, 32, block() * 4, "stream parameters"),
+            (2, 0, block() * 4, "stream parameters"),
+            (2, 24, block() * 4, "stream parameters"),
+            (2, 32, b"", "empty payload"),
+        )
+        for channels, interleave, payload, wanted in cases:
+            header = struct.pack("<16I", 64, 0, channels, 44100, interleave, 1, *([0] * 10))
+            code, result = self.command("stream", self.write("h.mih", header), self.write("h.mib", payload))
+            self.assertEqual((code, result["status"]), (1, "fail"), (channels, interleave))
+            self.assertTrue(any(wanted in d for d in result["diagnostics"]), (channels, interleave, result["diagnostics"]))
+            self.assertFalse(any("not whole interleave turns: channel" in d for d in result["diagnostics"]), result["diagnostics"])
+
+    def test_oracle_disagreement_fails(self):
+        fake = self.root / "bin"
+        fake.mkdir()
+        script = fake / "ffmpeg"
+        script.write_text(
+            f"#!{sys.executable}\nimport sys\n"
+            "if '-version' in sys.argv:\n    print('ffmpeg version fake'); raise SystemExit(0)\n"
+            "sys.stdout.buffer.write((1).to_bytes(2, 'little', signed=True) * 28 * 3)\n"
+        )
+        script.chmod(0o755)
+        code, result = self.command("bank", *self.bank([sample(4)]), "--oracle", "ffmpeg", env={"PATH": str(fake)})
+        self.assertEqual((code, result["status"]), (1, "fail"))
+        self.assertTrue(any("differs from ffmpeg" in d for d in result["diagnostics"]), result["diagnostics"])
+        self.assertEqual(result["details"]["oracle"]["exact_equal"], 0)
 
     def test_span_not_multiple_of_block_fails(self):
         code, result = self.command("bank", *self.bank([sample(4) + b"\0" * 5]))
@@ -133,7 +193,7 @@ class AudioVerifier(unittest.TestCase):
         self.assertEqual((code, result["status"]), (2, "incomplete"))
         self.assertTrue(any("ffmpeg" in d for d in result["diagnostics"]))
 
-    def test_oversized_input_is_rejected_before_reading(self):
+    def test_oversized_input_is_rejected(self):
         msh, _ = bank_files([sample(4)])
         huge = self.root / "huge.msb"
         with huge.open("wb") as stream:  # sparse: occupies no real disk space
@@ -225,6 +285,12 @@ class SpuAdpcm(unittest.TestCase):
         for blob in (b"", bytes(15), bytes([0x50, 0]) + bytes(14)):
             with self.assertRaises(spu_adpcm.AdpcmError):
                 spu_adpcm.decode(blob)
+
+    def test_deinterleave_rejects_empty_payload_and_unbounded_channels(self):
+        with self.assertRaises(spu_adpcm.AdpcmError):
+            spu_adpcm.deinterleave(b"", 2, 16)
+        with self.assertRaises(spu_adpcm.AdpcmError):
+            spu_adpcm.deinterleave(bytes(32), spu_adpcm.MAX_CHANNELS + 1, 16)
 
     def test_deinterleave_splits_channels_by_turn(self):
         a, b = bytes([1]) * 16, bytes([2]) * 16
