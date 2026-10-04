@@ -8,6 +8,7 @@ from unittest.mock import patch
 
 from evidence_common import Invalid
 from test_ps2_irx import minimal_elf
+from test_ps2_irx_relocations import build_irx
 import ps2_irx_crosswalk as subject
 
 
@@ -20,6 +21,17 @@ def module(*, importing=False, library=b"demo", version=0x101,
     else:
         text += struct.pack("<" + "I" * (len(targets) + 1), *targets, 0)
     return minimal_elf(text.ljust(0x100, b"\0"))
+
+
+def relocatable_module(*, importing=False, pointer_relocations=(20, 24), tail_target=0x80):
+    text = struct.pack("<III8s", 0x41E00000 if importing else 0x41C00000,
+                       0, 0x101, b"demo")
+    text += (struct.pack("<IIII", 0x03E00008, 0x24000000, 0, 0) if importing
+             else struct.pack("<III", 0, tail_target, 0))
+    words = struct.unpack("<64I", text.ljust(0x100, b"\0"))
+    return build_irx(words=words,
+                     text_relocations=() if importing else tuple((at, 2) for at in pointer_relocations),
+                     bss_relocations=(), load_memory_size=0x100, module_text=0x100, module_bss=0)
 
 
 class CrosswalkTests(unittest.TestCase):
@@ -97,6 +109,36 @@ class CrosswalkTests(unittest.TestCase):
 
             with patch.object(subject, "verify_corpus", side_effect=mutate), self.assertRaises(Invalid):
                 subject.corpus(root, inventory, boundaries)
+
+    def test_relocated_zero_export_is_pointer_and_unrelocated_zero_terminates(self):
+        inputs = [("consumer", relocatable_module(importing=True)),
+                  ("provider", relocatable_module())]
+        self.assertEqual(subject.crosswalk(inputs)["export_entries"], 0)
+        result = subject.crosswalk(inputs, synthetic_load_base=0x1000)
+        self.assertEqual(result["export_entries"], 2)
+        self.assertEqual(result["counts"]["unique_candidate"], 1)
+        self.assertEqual(result["edges"][0]["candidates"][0]["relative_target"], 0)
+        self.assertTrue(result["edges"][0]["candidates"][0]["pointer_relocation_verified"])
+
+    def test_relocation_view_requires_nonzero_base_and_preserves_input(self):
+        raw = relocatable_module()
+        original = bytes(raw)
+        with self.assertRaises(Invalid):
+            subject.crosswalk([("provider", raw)], synthetic_load_base=0)
+        first = subject.crosswalk([("provider", raw)], synthetic_load_base=0x1000)
+        second = subject.crosswalk([("provider", raw)], synthetic_load_base=0x100000)
+        self.assertEqual(first["export_entries"], second["export_entries"])
+        self.assertEqual(raw, original)
+
+    def test_wrapped_export_pointer_cannot_become_a_false_terminator(self):
+        with self.assertRaises(Invalid):
+            subject.crosswalk([("provider", relocatable_module(tail_target=0xFFFFF000))],
+                              synthetic_load_base=0x1000)
+
+    def test_unrelocated_nonzero_export_pointer_is_rejected_in_relocation_view(self):
+        with self.assertRaises(Invalid):
+            subject.crosswalk([("provider", relocatable_module(pointer_relocations=(20,)))],
+                              synthetic_load_base=0x1000)
 
 
 if __name__ == "__main__":

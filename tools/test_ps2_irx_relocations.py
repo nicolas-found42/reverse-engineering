@@ -33,7 +33,7 @@ def build_irx(*, words=None, text_relocations=None, bss_relocations=None,
     while len(data) < 160:
         data.append(0)
     load_offset = len(data)
-    load = struct.pack("<4I", *words)
+    load = struct.pack("<" + "I" * len(words), *words)
     data.extend(load)
     text_rel_offset = len(data)
     data.extend(b"".join(struct.pack("<II", off, typ) for off, typ in text_relocations))
@@ -60,7 +60,7 @@ def build_irx(*, words=None, text_relocations=None, bss_relocations=None,
                          link, info, align, entsize)
     sh(1, ".iopmod", ps2_irx.SHT_IOPMOD, 0, 0, metadata_offset, len(module), align=4)
     sh(2, ".text", 1, 6, 0, load_offset, len(load), align=16)
-    sh(3, ".bss", 8, 3, 16, 0, 16, align=16)
+    sh(3, ".bss", 8, 3, module_text + module_data, 0, module_bss, align=16)
     sh(4, ".rel.text", 9, 0, 0, text_rel_offset, 8 * len(text_relocations), link=6, info=2, entsize=8)
     sh(5, ".rel.bss", 9, 0, 0, bss_rel_offset, 8 * len(bss_relocations), link=6, info=3, entsize=8)
     sh(6, ".symtab", 2, 0, 0, symtab_offset, 0, link=7, info=1, align=4, entsize=16)
