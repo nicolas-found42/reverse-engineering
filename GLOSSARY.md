@@ -105,3 +105,19 @@ _Avoid_: Recovered function
 **Evidence class**:
 One independent static check a gap-fill candidate passes: stack-frame consistency, boundary layout, or a static reference to its entry. A tier counts classes; it does not establish identity or behavior.
 _Avoid_: Confidence, score
+
+**gp context**:
+The value the Ghidra project holds for the `gp` register. With it set, the decompiler shows a global-pointer-relative access as an absolute address; without it, as an offset name such as `uGpffff9118`. For the EE executable it is `0x295d70`, the value the entry routine loads and `.reginfo` records.
+_Avoid_: Global pointer fix
+
+**Small-data global**:
+A variable in `.sdata` or `.sbss`, reached by a load or store whose base is `gp`. Its access width and kind (float load, signed byte load) are the static evidence for a data type. An address used as an array or structure base gets no type.
+_Avoid_: Variable, field
+
+**Literal pool**:
+The `.lit4` block of float constants. The ELF marks it writable; the project marks its items constant only because no saved function writes any of them. Unsaved code could still write.
+_Avoid_: Constants table
+
+**Reference site**:
+A word in an IOP module that holds an address, listed in the module's relocation table: a pointer, a jump target, or the high half of a `lui`/`addiu` pair. It gives the target exactly, with no data-flow guess.
+_Avoid_: Xref, link

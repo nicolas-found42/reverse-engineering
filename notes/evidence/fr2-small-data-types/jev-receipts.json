@@ -1,0 +1,48 @@
+{
+ "tool": "jev_decide",
+ "decisions": [
+  {
+   "what": "first approach for .lit4",
+   "selected": "float_type_and_readonly",
+   "confidence": 0.98,
+   "outcome": "block write flag cleared; measured: no inlining (superseded)"
+  },
+  {
+   "what": "mechanism after attempt 1 measured ineffective",
+   "selected": "data_mutability_constant",
+   "probabilities": {
+    "data_mutability_constant": 0.97,
+    "mutability_and_block_flag": 0.01
+   },
+   "outcome": "per-data constant mutability applied (872 items)"
+  },
+  {
+   "what": "next EE type/signature work after gp",
+   "selected": "small_data_types",
+   "probabilities": {
+    "small_data_types": 0.75,
+    "variadic_signatures": 0.17,
+    "names_from_strings": 0.07,
+    "stop_c_move_to_d": 0.01
+   },
+   "confidence": 0.7
+  }
+ ],
+ "verify": {
+  "tool": "jev_verify",
+  "verified": [
+   "transaction applied 1023/0 conflicts/872 constant (0.99)",
+   "pool tokens 1072 -> 4 and constants appear as numbers (0.89)",
+   "exporter options alone change 26 of 5454 (0.99)"
+  ],
+  "contradicted_as_planned": [
+   "pool proven never written at runtime (0.24 review, contradicted)",
+   "block write flag made decompiler inline (0.98)",
+   "every small-data global now typed (0.57 review)"
+  ],
+  "contradicted_against_the_author": [
+   "\"the 662 changed functions all name a planned address\" (0.79 review): the evidence tests the naming only for the 46 outside the plan list; the 616 are in the plan list by gp-access instruction evidence. Restated in README.",
+   "\"removed 125 undefined tokens, warnings roughly unchanged\" (0.91): arithmetic from the quality file is 23267-23142=125 and 781-780=1; Jev disagrees without a reason given; the measurement stands and the disagreement is recorded."
+  ]
+ }
+}
