@@ -1,0 +1,32 @@
+{
+  "arguments": {
+    "claims": [
+      "In the saved static caller FUN_001ce288, each loop iteration calls FUN_00128ca0 before FUN_001288b0; if another outer iteration follows, the next 00128ca0 comes after the preceding iteration's 001288b0 call.",
+      "In FUN_001288b0, a nonzero count at record+0x1c or record+0x28 enters a loop that calls FUN_00128e88; this is conditional on the count and is not guaranteed on every iteration.",
+      "When FUN_00128e88 is called, it appends STMOD 0 and STCYCL 4/4 after its geometry UNPACK packet commands and before its MSCNT, so these explicit command words occur earlier in the shared output buffer than a subsequent outer loop's V4-32 builder.",
+      "The conditional source trace does not prove the next V4-32 transfer has effective MODE=0 and CL/WL=4/4 because FUN_0010f8f8 between iterations emits a computed DMA tag/reference whose transferred contents and TTE effects are not fully reconstructed."
+    ],
+    "evidence": [
+      {
+        "id": "outer-builder-order",
+        "text": "Saved FUN_001ce288.c has loop body calls in order: FUN_00128ca0(auStack_c0); FUN_001335f8; FUN_00133a90; FUN_001288b0(...); FUN_00129bc0; FUN_00126e28; then increments iVar7 and repeats while iVar7<iVar6."
+      },
+      {
+        "id": "conditional-geometry-calls",
+        "text": "Saved FUN_001288b0.c: `if (*(short *)(iVar3 + 0x1c) != 0)` loops `uVar12` times and calls FUN_00128e88; later `if (*(short *)(iVar3 + 0x28) != 0)` loops `uVar12` times and calls FUN_00128e88."
+      },
+      {
+        "id": "writer-and-preamble",
+        "text": "Saved FUN_00128e88.c emits geometry packet data then stores STMOD 0, STCYCL 4/4, MSCNT, BASE, OFFSET at the advancing shared output cursor. Saved FUN_0010f8f8.c, called before the V4-32 sequence in FUN_00128ca0.c, includes a computed 64-bit DMA-tag word and qword 0x4e; the tag's exact referenced contents/TTE effects are not established in these excerpts."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"In the saved static caller FUN_001ce288, each loop iteration calls FUN_00128ca0 before FUN_001288b0; if another outer iteration follows, the next 00128ca0 comes after the preceding iteration's 001288b0 call.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"outer-builder-order\",\n      \"same_subject\": 0.84\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"In FUN_001288b0, a nonzero count at record+0x1c or record+0x28 enters a loop that calls FUN_00128e88; this is conditional on the count and is not guaranteed on every iteration.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"conditional-geometry-calls\",\n      \"same_subject\": 0.81\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"When FUN_00128e88 is called, it appends STMOD 0 and STCYCL 4/4 after its geometry UNPACK packet commands and before its MSCNT, so these explicit command words occur earlier in the shared output buffer than a subsequent outer loop's V4-32 builder.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.88,\n        \"contradicts\": 0.05,\n        \"says_nothing\": 0.07\n      },\n      \"confidence\": 0.83,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"writer-and-preamble\",\n      \"same_subject\": 0.57\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The conditional source trace does not prove the next V4-32 transfer has effective MODE=0 and CL/WL=4/4 because FUN_0010f8f8 between iterations emits a computed DMA tag/reference whose transferred contents and TTE effects are not fully reconstructed.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.98,\n        \"contradicts\": 0.01,\n        \"says_nothing\": 0.01\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"writer-and-preamble\",\n      \"same_subject\": 0.51\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2383,\n    \"output_tokens\": 482\n  }\n}"
+      }
+    ]
+  }
+}

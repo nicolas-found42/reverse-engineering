@@ -1,0 +1,64 @@
+{
+  "schema": "fr2-geometry-vu-consumer-validation-v1",
+  "validation_method": "One-off read-only Python cross-check of raw instruction anchors against .scratch/evidence/static-export.json, of VU pair addresses/bytes against overlay-5.bin, and of direct-call literal hits in the saved 3446-function inventory/decompilation. No game routine, emulator, or UI was executed.",
+  "source_inputs": {
+    "static_export": {
+      "path": ".scratch/evidence/static-export.json",
+      "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+    },
+    "overlay5_bin": {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.bin",
+      "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+    },
+    "saved_FUN_00128e88_C": {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00128e88.c",
+      "sha256": "db45fd58871c3e44f227855cae71c6b3e9715e394c923d830c6a0520bdb3aae6",
+      "relevant_lines": "28-91"
+    },
+    "saved_static_export_source_hashes": "See anchors.json sources for each relevant saved C export SHA-256."
+  },
+  "checks": [
+    {
+      "id": "overlay5_selected_pairs",
+      "result": "pass",
+      "count": 7,
+      "mismatches": 0,
+      "detail": "Pair-to-file-offset calculation uses pair_index*8; virtual address is 0x2800+pair_index*8. Raw words and bytes match all seven anchors in anchors.json."
+    },
+    {
+      "id": "cnt_qwc_raw_instruction_anchors",
+      "result": "pass",
+      "count": 49,
+      "mismatches": 0,
+      "detail": "All forty-nine stored instruction addresses/text/bytes match static-export.json, covering selector value choice, V4-32 command, five payload qwords including uVar14 lane Z, CNT QWC calculation, subsequent REF append, render-loop call order, producer output arguments, four scratchpad stores, and packet reloads."
+    },
+    {
+      "id": "preamble_instruction_anchors",
+      "result": "pass",
+      "count": 31,
+      "mismatches": 0,
+      "detail": "The 31 instruction-anchor objects in fr2-geometry-vif-preamble/selected-evidence.json match static-export.json. The earlier 0010f9f0 discrepancy snapshot remains preserved as superseded; the current row is corrected to `lw a2,0x8(v1)` bytes 0800668c. Other geometry bundle anchor counts are validated separately by the parent checker."
+    },
+    {
+      "id": "inline_cnt_qwc",
+      "result": "pass",
+      "detail": "Saved FUN_00128e88 C lines 43-84 write V4-32 command plus exactly five 16-byte payload qwords; lines 85-91 compute and patch QWC before the next param_3 REF. The QWC span is 16-byte CNT tag plus 80 payload bytes, giving ceil(96/16)-1 = 5."
+    },
+    {
+      "id": "jev_disposition",
+      "result": "review-retained",
+      "detail": "The first Jev receipt verified raw XTOP/ILW linkage, left uVar14-to-vi03 unsupported, and did not support an XGKICK-output-pointer label. Subsequent raw writer anchors resolve the earlier REF-alignment question, but the original verdict remains preserved without a favorable Jev retry; runtime TOPS/MODE/cycle remains open."
+    },
+    {
+      "id": "prior_tail_to_next_header_state_scan",
+      "result": "pass-static-bounded",
+      "count": 276,
+      "detail": "Breadth-first direct-call closure from 001ce288 contains 276 saved functions. Exact token scans of saved C identify 0x5000000 and 0x1000404 only in 00128e88. Nearby 0x50 command words in 0010f8f8, 00129428, and 001297b8 are DIRECT packet commands; the report is limited to explicit saved-word construction and one visible append order, not runtime state or unmodeled dynamic/indirect effects."
+    }
+  ],
+  "limits": [
+    "Static writer order does not establish executed VIF command order or hardware state.",
+    "Actual TOPS captured by the continuation and caller-specific VIF MODE/cycle state remain unproved.",
+    "The selected data-memory base has no semantic object, plane, geometry, or output-buffer label."
+  ]
+}

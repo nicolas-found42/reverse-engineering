@@ -1,0 +1,43 @@
+{
+  "tool": "jev_verify",
+  "args": {
+    "claims": [
+      "FUN_0010f8f8 writes a VIF FLUSHA and DIRECT(2) preamble, then one two-qword packed GIF packet containing a GIFtag for one A+D register write to GS register 0x4e (ZBUF_1); its computed qword is register data, not a DMA REF tag.",
+      "FUN_0010f8f8 separately initializes a DMA CNT tag header and patches its QWC from the bytes appended after that header.",
+      "CHCR value 0x145 written by FUN_0021b5b0 sets VIF1 DMA chain mode, TTE, and STR; TTE is bit 6 and means the DMA tag upper words are transferred to VIF.",
+      "Initialization path FUN_0022dbb8 -> FUN_0022fc90 -> FUN_001124c0 emits VIF BASE=0x388 and OFFSET=0 in the DMA tag upper words, then an MSCAL command in one-QW payload, and submits it through VIF1 TADR/CHCR.",
+      "The initialization packet proves these BASE/OFFSET commands precede its own MSCAL command, but does not alone prove they are temporally active for later rendering packets or MSCNT consumers."
+    ],
+    "evidence": [
+      {
+        "id": "function-instructions",
+        "text": "Exact saved static-export.json instructions for FUN_0010f8f8: 0010f8f8 lw a3,-0x6de0(gp); 0010f900 lw a2,-0x6ee4(gp); 0010f918 sw zero,0x4(t1); 0010f91c addiu v0,t1,8; 0010f930 lhu a0,0x27a(a1); 0010f93c ori t5,t5,0x8001; 0010f944 li t6,0xe; 0010f948 dsll32 a0,a0,0x10; 0010f94c sltiu a2,a2,1; 0010f950 sw t0,0x0(v0) where t0=0x13000000; 0010f980 sw t2,0x0(v0) where t2=0x50000002; 0010f9a4 sd t5 (0x1000000000008001); 0010f9b8 sd t6 (0xe); 0010f968 lhu v1,0x26c(a1); 0010f98c dsra v1,v1,0x18; 0010f994 or a0,a0,v1; 0010f998 or a0,a0,a2 after 0010f964 dsll32 a2,a2,0; 0010f9cc sd a0; 0010f970 lw v0 cursor; 0010f96c li t4,0x4e; 0010f9e0 sd t4; 0010f9f8 and a1,a2,t3; 0010f9fc lw a0,0xc(v1); 0010f9f0 lw v0,0(v1); 0010fa00 and v0,v0,t3; 0010fa04 subu v0,v0,a1; 0010fa08 addiu v0,v0,0xf; 0010fa0c srl v0,v0,4; 0010fa10 addiu v0,v0,-1; 0010fa14 or a0,a0,v0; 0010fa1c sw a0,0(a2)."
+      },
+      {
+        "id": "sdk-definitions",
+        "text": "Pinned PS2SDK dma_tags.h defines DMA_TAG_CNT=1, DMA_TAG_END=7; DMATAG places ID at bits28-30. SDK gif_tags.h defines GIF_REG_AD=0x0e. SDK gs_gp.h defines GS_REG_ZBUF_1=0x4e and GS_SET_ZBUF(ZBA,ZSM,ZMSK) packs ZBA low9, ZSM at bit24, ZMSK at bit32. SDK dma_registers.h defines DMA_SET_CHCR with TTE at bit6 and STR at bit8."
+      },
+      {
+        "id": "init-chain-c",
+        "text": "Saved decompilation FUN_0022dbb8 calls FUN_0022fc90. FUN_0022fc90 calls FUN_001124c0 after VIF tables/buffers setup. FUN_001124c0 writes a DMA tag with *puVar2=0x70000001, puVar2[1]=0, puVar2[2]=0x3000388, puVar2[3]=0x02000000; then one-qword payload puVar2[4]=uGpffff920c|0x14000000 and words 5-7 zero; then calls FUN_0021b5b0. FUN_0021b5b0 writes REG_DMAC_1_VIF1_QWC=0, REG_DMAC_1_VIF1_TADR=puVar1[1]&0xfffffff, REG_DMAC_1_VIF1_CHCR=0x145. The DMA tag is END, QWC=1, with VIF BASE 0x388 and OFFSET 0 in its upper words; MSCAL is in following payload."
+      }
+    ]
+  },
+  "result": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "provider": "openrouter",
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "summary": {"verified": 4, "contradicted": 0, "unsupported": 1, "needs_review": 3},
+    "results": [
+      {"id": "claim0", "verdict": "verified", "probabilities": {"contradicts": 0.28, "says_nothing": 0.03, "supports": 0.69}, "confidence": 0.54, "action": "review", "supporting_evidence": "function-instructions", "same_subject": 0.46},
+      {"id": "claim1", "verdict": "unsupported", "probabilities": {"contradicts": 0.4, "supports": 0.11, "says_nothing": 0.49}, "confidence": 0.23, "action": "review", "supporting_evidence": null, "same_subject": 0.15},
+      {"id": "claim2", "verdict": "verified", "probabilities": {"contradicts": 0.01, "says_nothing": 0, "supports": 0.99}, "confidence": 0.97, "action": "auto", "supporting_evidence": "sdk-definitions", "same_subject": 0.66},
+      {"id": "claim3", "verdict": "verified", "probabilities": {"contradicts": 0.04, "says_nothing": 0, "supports": 0.96}, "confidence": 0.93, "action": "auto", "supporting_evidence": "init-chain-c", "same_subject": 0.75},
+      {"id": "claim4", "verdict": "verified", "probabilities": {"contradicts": 0.01, "supports": 0.64, "says_nothing": 0.35}, "confidence": 0.46, "action": "review", "supporting_evidence": "init-chain-c", "same_subject": 0.22}
+    ],
+    "usage": {"input_tokens": 3468, "output_tokens": 588}
+  },
+  "disposition": "Preserved without re-asking. Claims 0, 1, and 4 remain Jev review/unsupported signals. Independent deterministic instruction and encoding inspection resolves claim 0; claim 1 is directly established by the instruction sequence and tag patch. Claim 4 is retained as a limitation rather than a positive claim of state persistence."
+}

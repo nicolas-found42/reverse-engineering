@@ -1,0 +1,63 @@
+{
+  "tool": "jev_verify",
+  "exact_args": {
+    "claims": [
+      "In overlay-5 pair 215 at address 0x2eb8, XTOP writes the TOP value into vi01; the following ILW.Z vi03,3(vi01) at pair 221 reads the Z component of VU data-memory quadword TOP+3 into vi03.",
+      "If VIF has processed FUN_00128e88's V4-32 command 0x6c058000 with the selected payload and the relevant TOPS state is the one later latched by MSCNT, the selected uVar14 value 0x208 or 0x2c8 is the Z lane loaded into vi03 and then used as the base for VU data-memory loads at offsets 0, 2, and 1.",
+      "The static evidence proves that uVar14 0x208/0x2c8 is an XGKICK output-buffer pointer."
+    ],
+    "evidence": [
+      {"id":"raw-overlay5","text":"Overlay-5 section .data starts at 0x2800; each VU pair is 8 bytes. Raw bytes at pair215/address 0x2eb8 are bc060180ff020000 and decode as `nop xtop vi01`. Raw bytes at pair221/address 0x2ee8 are 03084308ff020000 and decode as `nop ilw.z vi03,3(vi01)z`. Subsequent pairs: pair230/address 0x2f30 is `nop[i] loi 768`; pair236/address 0x2f60 is `nop move.w vf15w,vf00w`; pair238/address 0x2f70 is `add.xyz vf15xyz,vf15xyz,vf10xyz`; pair239-... continue arithmetic. XGKICK instructions in this overlay are at addresses 0x2a50 (vi11), 0x2b70 (vi08), and 0x2e38 (vi11), all before pair213's E stop at 0x2ea8. No XGKICK occurs after pair215 in this saved overlay."},
+      {"id":"packetwriter","text":"Saved static FUN_00128e88 C writes a V4-32 command word 0x6c058000 (NUM=5, address 0, TOPS-relative), writes vector payload including selected uVar14 as the third 32-bit lane of a 16-byte payload row described in the handoff, then appends its geometry packets and tail. The selected uVar14 is 0x208 if global uGpffff9218 is zero, else 0x2c8. Tail order is STMOD=0, STCYCL=4/4, MSCNT, then BASE (0x3aa or 0x388) and OFFSET=0."},
+      {"id":"vif-semantics","text":"Pinned PCSX2 VIF source `Vif_Codes.cpp` has MSCNT call `vuExecMicro(idx,-1,false)`. Pinned source's VIF execMicro path latches TOP from current TOPS before updating TOPS from DBF/BASE/OFFSET. VIF V4-32 command 0x6c058000 is TOPS-relative address zero; the V4-32 direct unpack path writes vector lanes according to current MODE/cycle/mask state. The task evidence does not establish actual runtime TOPS or whether every caller path preserves the expected MODE/cycle."}
+    ],
+    "subject_at": 0.55
+  },
+  "full_tool_result": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "provider": "openrouter",
+    "auto_accept": 0.8,
+    "subject_at": 0.55,
+    "summary": {"verified": 1, "contradicted": 0, "unsupported": 2, "needs_review": 2},
+    "results": [
+      {
+        "id": "claim0",
+        "claim": "In overlay-5 pair 215 at address 0x2eb8, XTOP writes the TOP value into vi01; the following ILW.Z vi03,3(vi01) at pair 221 reads the Z component of VU data-memory quadword TOP+3 into vi03.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0.01, "supports": 0.92, "contradicts": 0.07},
+        "confidence": 0.88,
+        "action": "auto",
+        "supporting_evidence": "raw-overlay5",
+        "same_subject": 0.86
+      },
+      {
+        "id": "claim1",
+        "claim": "If VIF has processed FUN_00128e88's V4-32 command 0x6c058000 with the selected payload and the relevant TOPS state is the one later latched by MSCNT, the selected uVar14 value 0x208 or 0x2c8 is the Z lane loaded into vi03 and then used as the base for VU data-memory loads at offsets 0, 2, and 1.",
+        "verdict": "unsupported",
+        "probabilities": {"says_nothing": 0.48, "supports": 0.17, "contradicts": 0.35},
+        "confidence": 0.22,
+        "action": "review",
+        "supporting_evidence": "packetwriter",
+        "same_subject": 0.19
+      },
+      {
+        "id": "claim2",
+        "claim": "The static evidence proves that uVar14 0x208/0x2c8 is an XGKICK output-buffer pointer.",
+        "verdict": "unsupported",
+        "relation_verdict": "contradicted",
+        "probabilities": {"says_nothing": 0.27, "supports": 0.02, "contradicts": 0.71},
+        "confidence": 0.56,
+        "action": "review",
+        "supporting_evidence": null,
+        "same_subject": 0.44
+      }
+    ],
+    "usage": {"input_tokens": 2224, "output_tokens": 356}
+  },
+  "disposition": {
+    "claim0": "Retained as verified; exact binary and disassembly anchors agree.",
+    "claim1": "Retained as unsupported from the original verification evidence. Subsequent raw writer anchors independently establish the five-qword inline CNT layout and show the later REF begins after qword 4; do not rerun the unchanged Jev request for a favorable verdict. The remaining runtime TOPS and MODE/cycle state is conditional.",
+    "claim2": "Retained as unsupported with contradiction relation; the overlay contains no XGKICK after the resumed sequence, and its earlier XGKICKs use vi11/vi08."
+  }
+}

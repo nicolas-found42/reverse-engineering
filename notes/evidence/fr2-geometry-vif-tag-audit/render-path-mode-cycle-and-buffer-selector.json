@@ -1,0 +1,221 @@
+{
+  "schema": 1,
+  "bundle": "fr2-geometry-vif-tag-audit",
+  "supplement": "render-path-mode-cycle-and-buffer-selector",
+  "scope": "Static CPU-side packet construction order and bounded VIF state words; no runtime VIF/VU or DMA execution claim.",
+  "source_pins": {
+    "static_export": {
+      "path": ".scratch/evidence/static-export.json",
+      "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+      "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "generated_c": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/",
+    "pcsx2_commit": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+    "pcsx2_vif_unpack": {
+      "path": ".scratch/mesh/codex-root/Vif_Unpack.cpp-pinned.txt",
+      "sha256": "5c1fb5c6517b83b34f23dddf6931981831465b7cf2844d9217df563c48ae97de"
+    },
+    "pcsx2_vif_codes": {
+      "path": ".scratch/mesh/codex-root/Vif_Codes.cpp-pinned.txt",
+      "sha256": "ba028ed1cb9d6546eb641412664cb398fcee4f7eddad70a9f31472f492f1f09c"
+    }
+  },
+  "source_files": {
+    "001ce288.c": "6dc72fda5b92f3f441eb73d4028d63b9d2f9db129e53e805060851d6ad085ba4",
+    "001288b0.c": "9e7d1c5ae7b1660549e3625a206eeee600268ce3b9c1e54ba72b73db27ed8764",
+    "00128ca0.c": "631551ebd2d0b25da4721fdc3b38c26f3af998e41feff47edcf6ec4d4545ac59",
+    "00128e88.c": "db45fd58871c3e44f227855cae71c6b3e9715e394c923d830c6a0520bdb3aae6",
+    "00126c18.c": "d0278281022bc4c0fba7ea129fc733980d422ef1d85832f5b1c022dc5cfb4934",
+    "00112630.c": "735088f809cf8559732c9e6281a155f7df4a6889017a1fe2641518f3071d743d",
+    "001129d8.c": "f549a66e22cb73e5f82314a53098677fa83861e10a810f6206ebe1b571e65017",
+    "00127c00.c": "82ef70163bb9c2ee57ca0625a7c9e9916ba1e1608bc6321caa1e1575929eaee9",
+    "00128518.c": "5e2471f3d77edd17052bcf7939bd8abfdae9b813003f20ab73884822092c0e7b",
+    "00115560.c": "b0179444cbab130501bd40a9f31523f8fcb9fd2ce9f4ff3626effde516712f55",
+    "00115518.c": "852865c1978054549a215a245e8384f0ea7121df4adbd10bf8b2f53b8575f218",
+    "0010fa70.c": "b139a196ba0a30af68badfdc33fb4fa3c671ec41e192ecddc64488cd66c8fc8c",
+    "0010fa20.c": "9a1c1c1fe430eea603e4316c71871bcf435d8254725a3d9d74d2b7fd7a775cdd",
+    "001124c0.c": "9aa16bae77d325f91a3aaf9f15b40373f02aa0fc17f1b000c331bcfa39e9de3a",
+    "0022fda8.c": "c4e305f7bfa3ae97efea713f31f82d5d7557185b8ec6291f3268448f19453628",
+    "00129bf8.c": "21a1ccd16577f19b6982aeb961f6d7fa3cb4fb8425f00460ac74e6954387f1ad",
+    "0021c3e0.c": "b05af5de7f7b699179ff0496c42a3a2dfccf484b40f6ce8b0f6c367b5e9f56d1",
+    "0021cc88.c": "916a0a11419827307eb77353ccfaf5afca25dc07eb66311ed30b6c209b5ac803",
+    "0021ced0.c": "f5ecf27bfcf4632cb625d84479ac72890024621c69e89c3f26b3d3ac93da5431",
+    "00228908.c": "35bada713fafa3c43e4a30171b78ebd0db4085e1ec93b56f7cd6da52daa50b11"
+  },
+  "raw_instruction_anchors": {
+    "001ce288": [
+      {"address":"001ce48c","text":"jal 0x00128ca0","bytes":"28a3040c","meaning":"matrix packet helper call; delay slot at 001ce490 is nop"},
+      {"address":"001ce4b8","text":"jal 0x001288b0","bytes":"2ca2040c","meaning":"geometry packet helper follows 00128ca0 in the loop body"}
+    ],
+    "00128ca0": [
+      {"address":"00128cac","text":"move a1,s0","bytes":"2d280002","meaning":"param_1 pointer passed to local shuffle helper"},
+      {"address":"00128cec","text":"lui t2,0x6c08","bytes":"086c0a3c","meaning":"forms V4-32 NUM=8 command word 0x6c080000"},
+      {"address":"00128d24","text":"lq a2,0x0(s0)","bytes":"0000067a","meaning":"first source vector at param_1+0"},
+      {"address":"00128d60","text":"lq v1,0x10(s0)","bytes":"1000037a","meaning":"second source vector at param_1+0x10"},
+      {"address":"00128d78","text":"lq v1,0x20(s0)","bytes":"2000037a","meaning":"third source vector at param_1+0x20"},
+      {"address":"00128d90","text":"lq v1,0x30(s0)","bytes":"3000037a","meaning":"fourth source vector at param_1+0x30"},
+      {"address":"00128cfc","text":"addiu a3,a3,0x3020","bytes":"2030e724","meaning":"forms scratchpad base 0x70003020"},
+      {"address":"00128da8","text":"lq v1,0x140(a3)","bytes":"4001e378","meaning":"first scratchpad vector from 0x70003160"},
+      {"address":"00128dc0","text":"lq v1,0x150(a3)","bytes":"5001e378","meaning":"second scratchpad vector from 0x70003170"},
+      {"address":"00128dd8","text":"lq v1,0x160(a3)","bytes":"6001e378","meaning":"third scratchpad vector from 0x70003180"},
+      {"address":"00128df0","text":"lq v1,0x170(a3)","bytes":"7001e378","meaning":"fourth scratchpad vector from 0x70003190"}
+    ],
+    "00126c18": [
+      {"address":"00126d38","text":"jal 0x00127c00","bytes":"009f040c","meaning":"calls scratchpad-value producer"},
+      {"address":"00126d3c","text":"li a0,0x1","bytes":"01000424","meaning":"delay slot supplies param_1=1"}
+    ],
+    "00128e88": [
+      {"address":"00128ed4","text":"lui t6,0x6c05","bytes":"056c0e3c","meaning":"forms V4-32 NUM=5 TOPS-relative address-zero command with next ori"},
+      {"address":"00128edc","text":"ori t6,t6,0x8000","bytes":"0080ce35","meaning":"completes command word 0x6c058000"},
+      {"address":"00128eec","text":"li t9,0x2c8","bytes":"c8021924","meaning":"initial alternate uVar14 value"},
+      {"address":"00128f2c","text":"li t0,0x208","bytes":"08020824","meaning":"zero-selector alternate uVar14 value"},
+      {"address":"001292e0","text":"lui t0,0x500","bytes":"0005083c","meaning":"forms STMOD word 0x05000000"},
+      {"address":"001292e8","text":"lui a1,0x100","bytes":"0001053c","meaning":"starts STCYCL word construction"},
+      {"address":"001292ec","text":"ori a1,a1,0x404","bytes":"0404a534","meaning":"completes STCYCL word 0x01000404"},
+      {"address":"001292f0","text":"lui t1,0x1700","bytes":"0017093c","meaning":"forms MSCNT word 0x17000000"},
+      {"address":"00129308","text":"lui a3,0x300","bytes":"0003073c","meaning":"BASE 0x03000000 base register construction"},
+      {"address":"00129310","text":"lui a2,0x300","bytes":"0003063c","meaning":"alternate BASE 0x03000000 register construction"},
+      {"address":"00129314","text":"ori a3,a3,0x388","bytes":"8803e734","meaning":"BASE candidate 0x03000388"},
+      {"address":"00129318","text":"ori a2,a2,0x3aa","bytes":"aa03c634","meaning":"BASE candidate 0x030003aa"},
+      {"address":"001293a8","text":"movz a2,a3,v1","bytes":"0a30e300","meaning":"selects BASE candidate using global state"},
+      {"address":"001293b0","text":"sw v1,-0x6de4(gp)","bytes":"1c9283af","meaning":"toggles BASE selector after selection"},
+      {"address":"001293b4","text":"sw a0,-0x6de8(gp)","bytes":"189284af","meaning":"toggles separate uVar14 selector"},
+      {"address":"00129320","text":"lui t2,0x200","bytes":"00020a3c","meaning":"forms OFFSET word 0x02000000"}
+    ]
+  },
+  "render_path": {
+    "caller": "001ce288",
+    "loop_order": [
+      "After FUN_00126c18(4) returns nonzero, call FUN_00128ca0(matrix_buffer).",
+      "Then call FUN_001288b0(...), which calls FUN_00128e88 for each selected record.",
+      "Increment loop counter and repeat, subject to a clamped 1..4 loop count."
+    ],
+    "matrix_packet": {
+      "function": "00128ca0",
+      "command_word": "0x6c080000",
+      "decode": {
+        "opcode": "V4-32 UNPACK",
+        "count": 8,
+        "immediate_address": "0",
+        "mask_bit": 0
+      },
+      "payload": {
+        "first_four_vectors": "copies four consecutive 16-byte chunks from param_1 at offsets 0, 0x10, 0x20, and 0x30",
+        "last_four_vectors": "loads four 16-byte values from EE scratchpad addresses 0x70003160, 0x70003170, 0x70003180, and 0x70003190",
+        "scratchpad_provenance": "In the 001ce288 path, 00126c18(4) calls 00127c00(1) before 00128ca0. The nonzero branch of 00127c00 calls 00128518 with output pointers 0x70003160, 0x700031e0, and 0x70003220; 00128518 calls 00115560, which writes four 16-byte result vectors to 0x70003160..0x7000319f. This establishes producer-to-packet source addresses, not semantic names for the vectors.",
+        "local_transform_note": "00128ca0 also calls 00115518 to fill local auStack_50, which is not subsequently read in the saved 00128ca0 pseudocode; it is not the source of the four scratchpad vectors."
+      },
+      "prefix_calls": [
+        "0010fa70(0,0,0,0): updates helper globals only",
+        "0010f8f8(): appends FLUSHA plus DIRECT(2) and a GS A+D packet, per the parent packet audit",
+        "0010fa20(0x14,0): updates helper global only"
+      ]
+    },
+    "preceding_geometry_tail": {
+      "function": "00128e88",
+      "emitted_order": [
+        "STMOD word 0x05000000 (mode=0)",
+        "STCYCL word 0x01000404 (CL=4, WL=4)",
+        "MSCNT 0x17000000",
+        "BASE word selected from uGpffff921c",
+        "OFFSET 0x02000000"
+      ],
+      "caller": "001288b0"
+    },
+    "intermediate_writers": {
+      "bounded_review": [
+        "00126c18(4) and its 00112630 path append FLUSHA/DIRECT and GS A+D writes; optional 001129d8 also appends GIF/GS state.",
+        "00129a40, reached after 001288b0, starts a CNT packet with FLUSHA and delegates to helpers that append GS packet data.",
+        "0010fa70 and 0010fa20 update helper globals; 00127c00 computes/stores CPU-side and scratchpad values, including the four 0x70003160..0x7000319f vectors used by the next matrix packet.",
+        "In the 001ce288 static direct-callee closure, only 00128e88 writes literal STMOD 0x05000000 and STCYCL 0x01000404."
+      ],
+      "interpretation_limit": "This is static append order through the visible direct-call graph and shared packet cursor, not proof of DMA scheduling, VIF execution timing, VU consumption, or no unresolved indirect call effects."
+    }
+  },
+  "bounded_derived_result": {
+    "statement": "If this visible append order is executed as one ordered VIF stream, the prior geometry tail leaves mode=0 and cycle CL=WL=4 when the next iteration's 0x6c080000 matrix UNPACK is processed.",
+    "consequence": "Pinned PCSX2 VIF source maps mode=0 unmasked data components to direct destination writes; CL=WL=4 takes the full-data cycle path. The matrix packet preserves the four caller-provided vectors and four precomputed scratchpad vectors in their emitted order. This is a bounded packet-to-VU-memory data-flow claim, not a claim that all eight values came from param_1; it does not establish VU routine meaning or game runtime state.",
+    "unresolved": [
+      "actual DMA launch/consumption order and queue boundaries",
+      "mask/control state if command semantics beyond the decoded unmasked command matter",
+      "what the matrix values mean to the VU program",
+      "whether any unresolved indirect call modifies VIF state"
+    ]
+  },
+  "buffer_selectors": {
+    "globals": {
+      "uGpffff9218": "selects uVar14 as 0x208 when zero, otherwise 0x2c8; uVar14 is data in the V4-32 TOPS-relative payload and also contributes to a later V4-8 command immediate; it is not the V4-32 UNPACK destination",
+      "uGpffff921c": "selects tail BASE: 0x3aa when zero, otherwise 0x388; toggled at each 00128e88 call"
+    },
+    "reset_sites": [
+      "001124c0",
+      "0022fda8"
+    ],
+    "other_static_reference_functions": [
+      "001124c0",
+      "00128e88",
+      "00129bf8",
+      "0021c3e0",
+      "0021cc88",
+      "0021ced0",
+      "00228908",
+      "0022fda8"
+    ],
+    "closure_check": {
+      "001ce288": {
+        "direct_callee_closure_function_count": 276,
+        "includes": [
+          "00128e88"
+        ],
+        "excludes": [
+          "001124c0",
+          "00129bf8",
+          "0021c3e0",
+          "0021cc88",
+          "0021ced0",
+          "00228908",
+          "0022fda8"
+        ]
+      },
+      "001288b0": {
+        "direct_callee_closure_function_count": 18,
+        "includes": [
+          "00128e88"
+        ],
+        "excludes": [
+          "00129bf8",
+          "0021c3e0",
+          "0021cc88",
+          "0021ced0",
+          "00228908"
+        ]
+      }
+    },
+    "conditional_sequence": "If both globals reach the loop equal (for example after a reset), paired toggles keep them equal in the 00128e88-only closure: state 0 sets uVar14=0x208 and BASE=0x3aa; state 1 sets uVar14=0x2c8 and BASE=0x388; each group flips to the other state. These values have distinct packet roles; no header-buffer equivalence is inferred.",
+    "limit": "Other static paths write one or both globals, and the temporal reachability of reset before this loop is not proven here; no process-global equality claim."
+  },
+  "prior_rejected_hypotheses": [
+    "The computed qword from 0010f8f8 is not a dynamic DMA REF descriptor; it is the data qword in the GS A+D write to ZBUF_1.",
+    "The initialization BASE/OFFSET before its own MSCAL is not proven to remain the active TOP-relative context for the later geometry consumer."
+  ],
+  "jgrep": {
+    "query1": "appends an unpacked matrix payload, then appends geometry packets and a state-changing tail before beginning the next rendering-loop iteration",
+    "query1_exit_status": 1,
+    "query1_wrapper_output": "[]; 0 hits / 12 chunks (0 cached); exit 1 means none",
+    "query2": "toggles two separate global buffer selectors after emitting the VIF MSCNT, BASE, and OFFSET commands",
+    "query2_exit_status": 0,
+    "query2_hits": [
+      "00128e88.c start 181 end 207 score 0.76"
+    ],
+    "conclusion": "jgrep is a locator only; exact conclusions were checked against source excerpts and pinned VIF behavior."
+  },
+  "jev": {
+    "attempted_receipt": "receipts/jev-mode-cycle-selector-path.json",
+    "disposition": "The verification tool invocation was attempted with exact claims and evidence, but wrapper serialization failed after the tool call because btoa was unavailable; the complete result could not be captured. It was not retried. This is a receipt gap, not a favorable or negative Jev disposition.",
+    "earlier_receipts_preserved": [
+      "receipts/jev-verify-initial.json",
+      "receipts/jev-screen-sdk.json"
+    ],
+    "earlier_judgment_warning": "Root's r087 VIF-state review found the broad game MODE/cycle/TOP overclaim unsupported; that disposition remains unchanged."
+  }
+}

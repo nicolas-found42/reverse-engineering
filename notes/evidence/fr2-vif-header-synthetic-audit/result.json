@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "status": "observed_public_parser_fragmentation_limit",
+  "public_revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "source_pins": [
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/src/lib/ps2_memory.cpp",
+      "sha256": "4bae084dfa6ea30479af5efde70c61927a4fe5a49216d99c3db76297db4ac22a",
+      "pristine_and_library_build_source_equal": true
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/src/lib/ps2_vif1_interpreter.cpp",
+      "sha256": "4090662ca7029c6563444e69ac184cf1396efdf672d179dd8e9d617fe856c4a5",
+      "pristine_and_library_build_source_equal": true
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/ps2_memory.h",
+      "sha256": "9bba23a767b3ea0e3d7af5cf864b20aa730eb8ce4e07c005668ceb761527c770",
+      "pristine_and_library_build_source_equal": true
+    }
+  ],
+  "probe_source_sha256": "4dbc9bf081226a9e367893db56d48fcddce72e89cb28ad6d53f789279b785f0a",
+  "runner_sha256": "073ca4c49580bfb2593b85efc79a0dd765b7415b86c32c78156578809a4ebec3",
+  "compile": {
+    "command": [
+      "clang++",
+      "-std=c++20",
+      "-O1",
+      "-mmacosx-version-min=26.4",
+      "-DUSE_SSE2NEON",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/src",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/vif-header-synthetic-01/probe.cpp",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+      "-framework",
+      "OpenGL",
+      "-framework",
+      "Cocoa",
+      "-framework",
+      "IOKit",
+      "-framework",
+      "CoreFoundation",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/vif-header-synthetic-01/probe"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libraries": [
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+        "sha256": "923592007bb581846a7659ed3459d43b5a92fdc421f2732d3098262ca8912015"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+        "sha256": "a3f193a7cf8036fa2be98be51f6f4a218e4d0cda02bb45be3e1760a8a600e4df"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+        "sha256": "c5658b264fe8d23fd6046151fb9c111fff0f7f493a531f37a2c239b34541db05"
+      }
+    ]
+  },
+  "binary_preflight": {
+    "binary_sha256": "a96ca4ca51dd527a508dae918ea0560e109be1d510607fbb5bcea18dde7d68bb",
+    "guest_names_checked_absent": 4746,
+    "guest_registration_display_audio_symbols_absent": true,
+    "symbol_log_sha256": "f16736ae39ac57bf631af5d5ab1c1aad12c3a2dbe5731f2b500bb985cbaa2bfb",
+    "review": "PS2Memory constructor/initialize only allocate/reset memory; authored PS2Memory read/write, VIF parser and deferred three-tag DMA path only. No VU program, GIF drawing command or original game data."
+  },
+  "process": {
+    "command": [
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/vif-header-synthetic-01/probe"
+    ],
+    "exit_code": 0,
+    "stderr_bytes": 0,
+    "stdout_sha256": "da255c98e49e3b8c40762a59e54f846d5cb45425157feb998d5fe1cf2c12e70c",
+    "counts": {
+      "contiguous_cases": 1024,
+      "fragmented_unchanged_memory_cases": 3072,
+      "TTE_chain_cases": 1024,
+      "TTE_cleared_negative_cases": 1024,
+      "TOP_flag_negative_different": 1023,
+      "TOP_flag_base_zero_equivalent": 1,
+      "one_byte_golden_negative_cases": 1024,
+      "VU_callbacks": 0
+    }
+  },
+  "mapping": "Five authored qwords contain u32 labels 1..20; direct unmasked V4-32 at offset0 with MODE0 and CYCLE4/4 writes qword q to (TOPS+q)&1023. Qword3.Z is label15. Whole16384-byte VU data memory compared, untouched bytes A5.",
+  "input_profiles": [
+    "One contiguous 88-byte NOP+UNPACK+80-byte payload buffer",
+    "8-byte prefix then one80-byte payload buffer",
+    "8-byte prefix then five16-byte payload buffers",
+    "8-byte prefix then twenty4-byte payload buffers",
+    "Authored CNT5\u2192REF1\u2192END0 DMA chain, with tag upper NOP+UNPACK, data labels and zero REF, TTE enabled"
+  ],
+  "Jev_disposition": "r096 pre-execution gate escalation (safe_to_apply0.14, composite0.62625) and three unsupported claims preserved. Evidence then included public source excerpts, while probe was in diff only and no execution existed. Manual bounded execution followed source, binary and library checks; no production change. A different result-backed verification can assess observations.",
+  "limits": [
+    "Observed public software, not GS/VIF hardware conformance or original-game state. All labels, DMA tags and TOPS inputs authored; no original routines/payload or runner linked/executed.",
+    "Fragmented direct parser entry loses this UNPACK; tested TTE DMA chain concatenates tag upper bytes and payload and passes. This does not establish that original game chains suffer fragmentation.",
+    "One V4-32 command, fixed unmasked MODE0/CYCLE4/4, TOPS0..1023 only; no general VIF format/mask/mode/scheduling correctness claim.",
+    "The existing linked runtime archive came from a four-EE-patch experiment tree; all tested public VIF/memory files match pristine exactly."
+  ]
+}

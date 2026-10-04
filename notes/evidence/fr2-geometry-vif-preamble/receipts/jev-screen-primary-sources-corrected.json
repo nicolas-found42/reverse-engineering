@@ -1,0 +1,14 @@
+{
+  "arguments": {
+    "purpose": "Screen external primary technical documentation and pinned emulator-source excerpts before using their VU/VIF control-flow semantics.",
+    "text": "Sony Computer Entertainment, VU User\u2019s Manual Version 6.0, \u00a73.4, Figure 3-19: The E bit marks the end of a micro subroutine. One E-bit delay instruction executes; afterward execution stops and TPC stores the address of the following instruction. XTOP cannot be placed in the delay slot.\n\nPinned PCSX2 commit 81526d4dc7cc70e4ae75abb35a789417456c6d43, Vif_Codes.cpp: VIF1 execMicro sets TOP = TOPS & 0x3ff, then updates TOPS according to DBF, BASE, OFFSET. `vifCode_MSCNT` calls `vuExecMicro(idx, -1, false)`. `vifCode_Offset` clears DBF and sets TOPS=BASE; `vifCode_Base` writes BASE; `vifCode_STMod` writes MODE; `vifCode_STCycl` writes CL/WL.\n\nRaw overlay-5 pairs: pair 213 at 0x2ea8 is E-marked nop, pair 214 at 0x2eb0 is a nop delay slot, pair 215 at 0x2eb8 is `xtop vi01`.\n\nStatic FUN_00128e88 output-buffer stores advance the shared cursor. The tail order is STMOD 0; STCYCL 4/4; MSCNT; BASE 0x3aa or 0x388; OFFSET 0. The BASE/OFFSET stores occur after MSCNT."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.05,\n    \"substance\": 0.98,\n    \"relevance\": 0.95\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 886,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "method": "Python assertions over saved binary byte offsets and saved Ghidra C store-order/call-order tokens; no routine execution.",
+  "overlay_pair_checks": [
+    {
+      "pair": 213,
+      "address": "0x2ea8",
+      "file_offset": "0x6a8",
+      "raw_bytes": "3c030080ff020040",
+      "matches_expected": true
+    },
+    {
+      "pair": 214,
+      "address": "0x2eb0",
+      "file_offset": "0x6b0",
+      "raw_bytes": "3c030080ff020000",
+      "matches_expected": true
+    },
+    {
+      "pair": 215,
+      "address": "0x2eb8",
+      "file_offset": "0x6b8",
+      "raw_bytes": "bc060180ff020000",
+      "matches_expected": true
+    }
+  ],
+  "fun_00128e88_store_order_positions": {
+    "\\*puVar2 = 0x5000000;": 5326,
+    "\\*puVar2 = 0x1000404;": 5706,
+    "\\*puVar2 = 0x17000000;": 5807,
+    "uVar11 = 0x30003aa;": 5909,
+    "uVar11 = 0x3000388;": 5959,
+    "\\*puVar2 = 0x2000000;": 6167
+  },
+  "fun_001ce288_packet_call_order": "00128ca0 precedes 001288b0 in source text",
+  "fun_001288b0_group_checks": "Both +0x1c and +0x28 count predicates are present and calls to 00128e88 are in the respective loops.",
+  "fun_0010f8f8_state_literal_scan": {
+    "searched": [
+      "0x1000103",
+      "0x1000404",
+      "0x5000000",
+      "0x30003aa",
+      "0x3000388",
+      "0x2000000",
+      "0x17000000"
+    ],
+    "matches": []
+  },
+  "assertions_passed": true
+}

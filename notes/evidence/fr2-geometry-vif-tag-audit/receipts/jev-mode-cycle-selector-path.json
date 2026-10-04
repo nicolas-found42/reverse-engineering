@@ -1,0 +1,40 @@
+{
+  "tool": "mcp__jev__jev_verify",
+  "exact_args": {
+    "claims": [
+      "Within the statically recovered 001ce288 loop, each iteration calls 00128ca0 before 001288b0; 001288b0 emits geometry through 00128e88, whose tail appends STMOD immediate 0 and STCYCL immediate 0x0404 before the next visible loop iteration.",
+      "The 00128ca0 VIF command 0x6c080000 is an eight-element V4-32 UNPACK with immediate address zero and no mask bit; if the preceding VIF state remains in STMOD 0 and STCYCL 4/4, the pinned PCSX2 implementation treats every component as data and takes the full write path, consistent with unchanged word values for this packet.",
+      "uGpffff9218 selects the 00128e88 header destination between 0x208 and 0x2c8, while uGpffff921c selects tail BASE 0x3aa or 0x388; 00128e88 toggles both, and initialization clears both, but other functions also write these globals so this is not a global invariant."
+    ],
+    "evidence": [
+      {
+        "id": "render-loop",
+        "text": "001ce288.c: within its do loop, after FUN_00126c18(4) returns nonzero, it calls FUN_00128ca0(auStack_c0), then computes values and calls FUN_001288b0(...), then increments iVar7 and loops. The static direct-callee closure contains 276 functions."
+      },
+      {
+        "id": "matrix-packet",
+        "text": "00128ca0.c calls FUN_0010fa70(0,0,0,0), FUN_0010f8f8(), FUN_0010fa20(0x14,0), then stores 0x6c080000 and copies eight 16-byte chunks from param_1 at byte offsets 0,16,32,48,64,80,96,112 into the packet before finalizing its CNT tag."
+      },
+      {
+        "id": "geometry-tail",
+        "text": "001288b0.c calls FUN_00128e88 for each record. 00128e88.c appends 0x05000000 (STMOD immediate 0), then 0x01000404 (STCYCL, encoded CL=4 WL=4), then 0x17000000 (MSCNT), selects BASE 0x030003aa if uGpffff921c==0 else 0x03000388, and toggles both uGpffff921c and uGpffff9218."
+      },
+      {
+        "id": "vif-unpack",
+        "text": "Pinned PCSX2 commit 81526d4, Vif_Unpack.cpp lines 22-58: writeXYZW initializes mask selector n=0 unless doMask; for selector 0 and mode other than 1,2,3, the default branch assigns dest=data. Lines 221-231 calculate unpack size; with WL=4 and CL=4, WL<=CL selects the full-size path. Lines 233-235 only add TOPS when command bit15 is set; 0x6c080000 has immediate address zero."
+      },
+      {
+        "id": "vif-registers",
+        "text": "Pinned PCSX2 Vif_Codes.cpp lines 674-685 sets CL to code low byte and WL to code byte 1 from STCYCL. Lines 708-717 sets mode from STMOD code & 3. Thus 0x01000404 sets CL=4/WL=4 and 0x05000000 sets mode=0."
+      },
+      {
+        "id": "selectors",
+        "text": "001124c0.c and 0022fda8.c each set uGpffff9218=0 and uGpffff921c=0. Search of all 3837 saved generated function C files finds those names in eight functions: 001124c0, 00128e88, 00129bf8, 0021c3e0, 0021cc88, 0021ced0, 00228908, 0022fda8. The 001ce288 static direct-call closure includes 00128e88 but not the other seven."
+      }
+    ]
+  },
+  "result": {
+    "availability": "unavailable",
+    "reason": "The nested Jev call completed, but the surrounding exec script raised ReferenceError: btoa is not defined while trying to persist its result; the result value was not emitted or retained. No retry was made."
+  }
+}

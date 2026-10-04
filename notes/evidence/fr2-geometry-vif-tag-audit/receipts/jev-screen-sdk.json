@@ -1,0 +1,15 @@
+{
+  "tool": "jev_screen",
+  "args": {
+    "text": "PS2SDK dma_registers.h documents DMA_SET_CHCR(DIR, MODE, ASP, TTE, TIE, STR, TAG) and defines TTE at bit 6, STR at bit 8. PS2SDK dma_tags.h defines DMA_TAG_END as 7, DMA_TAG_CNT as 1, and describes END as QWC then end; CNT as QWC then next tag. PS2SDK gif_tags.h defines GIF_REG_AD as 0x0e. PS2SDK gs_gp.h defines GS_REG_ZBUF_1 as 0x4e, and GS_SET_ZBUF packs ZBA into bits 0-8, ZSM at 24, and ZMSK at 32.",
+    "purpose": "Use the official PS2SDK definitions to interpret static packet fields in a game reverse-engineering audit."
+  },
+  "result": {
+    "model": "typesafe/jev-1.13",
+    "provider": "openrouter",
+    "probabilities": {"injection": 0.02, "substance": 0.98, "relevance": 0.95},
+    "thresholds": {"block_at": 0.75, "review_at": 0.25},
+    "recommendation": {"action": "pass", "reason": "no signals above thresholds"},
+    "usage": {"input_tokens": 676, "output_tokens": 57}
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "schema": "fr2-geometry-vu-consumer-anchors-v1",
+  "scope": "Static overlay-5 instruction linkage only; no execution or global VIF state claim.",
+  "sources": {
+    "overlay5_bin_scratch_path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.bin",
+    "overlay5_bin_sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c",
+    "overlay5_disassembly_scratch_path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5-disassemble.stdout",
+    "overlay5_disassembly_sha256": "238c0c15af277ddcc8cfc15a0111d6de8dd884b53151cfc27865ad1b75ed0e8a",
+    "overlay5_assembly_scratch_path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.s",
+    "overlay5_assembly_sha256": "f5e195d23ec624026e31caae2c31d7af6cce10ec36158632f8624eeb640499d5",
+    "FUN_00128e88_saved_c_scratch_path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00128e88.c",
+    "FUN_00128e88_saved_c_sha256": "db45fd58871c3e44f227855cae71c6b3e9715e394c923d830c6a0520bdb3aae6",
+    "FUN_001ce288_saved_c_sha256": "6dc72fda5b92f3f441eb73d4028d63b9d2f9db129e53e805060851d6ad085ba4",
+    "FUN_00126c18_saved_c_sha256": "d0278281022bc4c0fba7ea129fc733980d422ef1d85832f5b1c022dc5cfb4934",
+    "FUN_001288b0_saved_c_sha256": "9e7d1c5ae7b1660549e3625a206eeee600268ce3b9c1e54ba72b73db27ed8764",
+    "FUN_00128ca0_saved_c_sha256": "631551ebd2d0b25da4721fdc3b38c26f3af998e41feff47edcf6ec4d4545ac59",
+    "FUN_00127c00_saved_c_sha256": "82ef70163bb9c2ee57ca0625a7c9e9916ba1e1608bc6321caa1e1575929eaee9",
+    "FUN_00128518_saved_c_sha256": "5e2471f3d77edd17052bcf7939bd8abfdae9b813003f20ab73884822092c0e7b",
+    "FUN_00115560_saved_c_sha256": "b0179444cbab130501bd40a9f31523f8fcb9fd2ce9f4ff3626effde516712f55",
+    "FUN_00129428_saved_c_sha256": "5663afade6ed05882a6096911877ac45eb56c70ecfc08438fd5cc240c12700e0",
+    "FUN_001297b8_saved_c_sha256": "77acbbc5c52ab64cff11113541c6423d99ad2eec578b3fc616311d4bdf071ea4",
+    "FUN_0010fa70_saved_c_sha256": "b139a196ba0a30af68badfdc33fb4fa3c671ec41e192ecddc64488cd66c8fc8c",
+    "FUN_0010fa20_saved_c_sha256": "9a1c1c1fe430eea603e4316c71871bcf435d8254725a3d9d74d2b7fd7a775cdd",
+    "FUN_0010f8f8_saved_c_sha256": "a25a5f01733663727f887478c7cde8fc0a80f7cb7e968aa7a60595b0ac83c991"
+  },
+  "overlay_mapping": {
+    "section_base": "0x2800",
+    "pair_size_bytes": 8,
+    "address_formula": "0x2800 + 8 * pair_index",
+    "anchors": [
+      {"pair": 213, "address": "0x2ea8", "raw_bytes": "3c030080ff020040", "instruction": "nop[e] ; nop", "role": "E stop marker"},
+      {"pair": 214, "address": "0x2eb0", "raw_bytes": "3c030080ff020000", "instruction": "nop ; nop", "role": "one-pair delay instruction"},
+      {"pair": 215, "address": "0x2eb8", "raw_bytes": "bc060180ff020000", "instruction": "nop ; xtop vi01", "role": "continuation TOP capture"},
+      {"pair": 221, "address": "0x2ee8", "raw_bytes": "03084308ff020000", "instruction": "nop ; ilw.z vi03,3(vi01)z", "role": "loads VU data-memory TOP+3.z into vi03"},
+      {"pair": 228, "address": "0x2f20", "raw_bytes": "0018ef01ff020000", "instruction": "nop ; lq vf15,0(vi03)", "role": "vector load based on vi03"},
+      {"pair": 229, "address": "0x2f28", "raw_bytes": "0218ec01ff020000", "instruction": "nop ; lq vf12,2(vi03)", "role": "vector load based on vi03"},
+      {"pair": 237, "address": "0x2f68", "raw_bytes": "01182608994acf01", "instruction": "muly.xyz vf10xyz,vf09xyz,vf15y ; ilw.w vi06,1(vi03)w", "role": "word load based on vi03; parallel lower-pipe operation is retained"}
+    ],
+    "xgkick_instructions": [
+      {"address": "0x2a50", "instruction": "xgkick vi11", "relative_to_pair213": "before"},
+      {"address": "0x2b70", "instruction": "xgkick vi08", "relative_to_pair213": "before"},
+      {"address": "0x2e38", "instruction": "xgkick vi11", "relative_to_pair213": "before"}
+    ],
+    "xgkick_after_pair215_in_saved_overlay": false
+  },
+  "conditional_link": {
+    "V4_32_command": "0x6c058000: V4-32, NUM=5, address zero with TOPS-relative addressing",
+    "packet_writer_selector": "FUN_00128e88 selects uVar14 as 0x208 when uGpffff9218 is zero, otherwise 0x2c8; this value appears in the packet payload, not as the V4-32 command address.",
+    "conditional_inference": "If the saved packet-lane mapping is processed by the expected VIF mode/cycle and the TOP captured by XTOP is the same base used for this TOPS-relative unpack, TOP+3.z can supply uVar14 to vi03.",
+    "limitations": [
+      "Actual DMA/VIF execution and caller-specific MODE, cycle, and TOPS state are not established.",
+      "The five inline V4-32 qwords precede the later REF. The later REF payload's own VIF command/data alignment and interpretation remain unresolved.",
+      "No semantic label is assigned to data-memory addresses 0x208 or 0x2c8.",
+      "No XGKICK-output-buffer relationship is supported by the post-E continuation in overlay 5."
+    ]
+  },
+  "inline_cnt_layout": {
+    "layout": [
+      {"qword": 0, "contents": "param_5 (16-byte value)"},
+      {"qword": 1, "contents": "param_8 low byte repeated in four lanes"},
+      {"qword": 2, "contents": "64-bit GIF-tag field followed by 64-bit literal 0x412"},
+      {"qword": 3, "contents": "[count, 0, uVar14, 0]"},
+      {"qword": 4, "contents": "param_6 (16-byte value)"}
+    ],
+    "qwc_calculation": "CNT tag is 16 bytes; five payload qwords are 80 bytes; the writer computes ceil((write_cursor - tag_start)/16) - 1 = ceil(96/16)-1 = 5 before appending the param_3 REF.",
+    "raw_packet_instruction_anchors": [
+      {"address": "00128ec8", "text": "lw s0,-0x6de8(gp)", "bytes": "1892908f", "role": "loads the separate uVar14 selector"},
+      {"address": "00128eec", "text": "li t9,0x2c8", "bytes": "c8021924", "role": "default uVar14 candidate"},
+      {"address": "00128f2c", "text": "li t0,0x208", "bytes": "08020824", "role": "alternate uVar14 candidate"},
+      {"address": "00128f40", "text": "movz t9,t0,s0", "bytes": "0ac81001", "role": "selects uVar14 when selector is zero"},
+      {"address": "00128f64", "text": "sw t6,0x0(v0)", "bytes": "00004eac", "role": "stores V4-32 command 0x6c058000"},
+      {"address": "00128f98", "text": "sq t7,0x0(v0)", "bytes": "00004f7c", "role": "stores payload qword 0 from param_5"},
+      {"address": "00128fc0", "text": "sq t0,0x0(v0)", "bytes": "0000487c", "role": "stores payload qword 1 with repeated param_8 byte lanes"},
+      {"address": "00128fec", "text": "sd t3,0x0(v0)", "bytes": "00004bfc", "role": "writes first 64-bit half of payload qword 2 (GIF tag)"},
+      {"address": "00129014", "text": "sd s1,0x0(v1)", "bytes": "000071fc", "role": "writes second 64-bit half of payload qword 2 (0x412)"},
+      {"address": "00129030", "text": "sw a0,0x0(v0)", "bytes": "000044ac", "role": "writes payload qword 3 lane X (count)"},
+      {"address": "00129044", "text": "sw zero,0x0(v0)", "bytes": "000040ac", "role": "writes payload qword 3 lane Y (zero)"},
+      {"address": "00129058", "text": "sw t9,0x0(v0)", "bytes": "000059ac", "role": "writes payload qword 3 lane Z (selected uVar14)"},
+      {"address": "0012906c", "text": "sw zero,0x0(v0)", "bytes": "000040ac", "role": "writes payload qword 3 lane W (zero)"},
+      {"address": "00129080", "text": "sq t2,0x0(v0)", "bytes": "00004a7c", "role": "stores payload qword 4 from param_6"},
+      {"address": "00129090", "text": "lw t0,0x8(v1)", "bytes": "0800688c", "role": "loads CNT tag-field pointer from writer context"},
+      {"address": "00129094", "text": "lw v0,0x0(v1)", "bytes": "0000628c", "role": "loads current write cursor"},
+      {"address": "001290a4", "text": "subu v0,v0,a3", "bytes": "23104700", "role": "subtracts masked tag start from masked cursor"},
+      {"address": "001290ac", "text": "srl v0,v0,0x4", "bytes": "02110200", "role": "converts rounded byte span to qword count"},
+      {"address": "001290b8", "text": "sw a0,0x0(t0)", "bytes": "000004ad", "role": "patches CNT tag QWC before the first param_3 REF record"},
+      {"address": "001290c4", "text": "sw t4,0x0(v0)", "bytes": "00004cac", "role": "begins the subsequent param_3 REF record"}
+    ],
+    "source_mapping": "The five payload-qword sequence is from saved FUN_00128e88 C (SHA-256 db45fd58871c3e44f227855cae71c6b3e9715e394c923d830c6a0520bdb3aae6); QWC patch and subsequent REF start are pinned by the raw instruction anchors above."
+  },
+  "render_append_state_path": {
+    "outer_call_order": [
+      {"address":"001ce47c","text":"jal 0x00126c18","bytes":"069b040c","delay_slot":"001ce480 li a0,0x4 / 04000424","meaning":"per-iteration CPU/scratchpad prep"},
+      {"address":"001ce48c","text":"jal 0x00128ca0","bytes":"28a3040c","meaning":"appends V4-32 matrix packet"},
+      {"address":"001ce4b8","text":"jal 0x001288b0","bytes":"2ca2040c","meaning":"then appends geometry packet(s)"}
+    ],
+    "nested_packet_calls": [
+      {"function":"001288b0","address":"001288f0","text":"jal 0x00129428","bytes":"0aa5040c","call":"00129428","meaning":"appends FLUSHA plus DIRECT(12) and GIF/GS data"},
+      {"function":"001288b0","address":"001289e8","text":"jal 0x001297b8","bytes":"eea5040c","call":"001297b8","meaning":"appends FLUSHA plus DIRECT(1 or 5) and GIF/GS data before 00128e88"},
+      {"function":"001288b0","address":"00128ad8","text":"jal 0x00128e88","bytes":"a2a3040c","call":"00128e88","meaning":"appends a geometry V4-32 header"},
+      {"function":"001288b0","address":"00128ae4","text":"jal 0x00121420","bytes":"0885040c","meaning":"advances to the next serialized record between repeated geometry writers"},
+      {"function":"001288b0","address":"00128aec","text":"bgtz s1,0x00128a08","bytes":"c6ff201e","meaning":"loops to the next geometry writer when record count remains"}
+    ],
+    "state_command_scan": {
+      "direct_call_closure_from_001ce288_functions": 276,
+      "exact_STMOD_word_literal_0x5000000_hits": ["00128e88"],
+      "exact_STCYCL_word_literal_0x1000404_hits": ["00128e88"],
+      "other_0x50_commands_seen": "0010f8f8, 00129428, and 001297b8 emit FLUSHA/DIRECT packets (DIRECT immediate 2, 12, or conditional 1/5) followed by GIF/GS data; those DIRECT command values are not STMOD.",
+      "bounded_conclusion": "In the saved direct-call path, no explicit STMOD or STCYCL word is appended between a previous geometry tail and the next iteration's matrix packet or following geometry header. Within repeated records, each 00128e88 tail is followed by a record-advance call and loop before the next 00128e88 header; the direct-call scan finds no intervening explicit STMOD/STCYCL writer. If that append order is consumed as one ordered VIF stream, MODE=0 and CL=WL=4 from the previous tail remain the explicit settings at the next header.",
+      "limits": ["This is not runtime DMA/VIF ordering proof.", "The first iteration inherits unknown state.", "The scan is over saved direct-call C exports and does not rule out unmodeled indirect effects or runtime mutation outside this path."]
+    }
+  },
+  "scratchpad_producer_path": {
+    "conditional_path": "001ce288 calls 00126c18(4); its param=4 branch calls 00127c00(1); the nonzero branch of 00127c00 calls 00128518; 00128518 tail-jumps to 00115560.",
+    "raw_EE_anchors": [
+      {"address":"00126d38","text":"jal 0x00127c00","bytes":"009f040c","meaning":"producer call inside 00126c18(4)"},
+      {"address":"00126d3c","text":"li a0,0x1","bytes":"01000424","meaning":"delay slot passes nonzero selector to 00127c00"},
+      {"address":"00127d00","text":"addiu s1,v0,0x3120","bytes":"20315124","meaning":"forms base 0x70003120"},
+      {"address":"00127d30","text":"addiu a2,s1,0x100","bytes":"00012626","meaning":"forms output address 0x70003220"},
+      {"address":"00127d54","text":"addiu a0,s1,0x40","bytes":"40002426","meaning":"forms output address 0x70003160"},
+      {"address":"00127d58","text":"addiu a1,s1,0xc0","bytes":"c0002526","meaning":"forms output address 0x700031e0"},
+      {"address":"00127d68","text":"jal 0x00128518","bytes":"46a1040c","meaning":"calls vector producer with the three output addresses"},
+      {"address":"00128544","text":"move s1,a2","bytes":"2d88c000","meaning":"captures third output argument in saved register"},
+      {"address":"00128548","text":"move s0,a1","bytes":"2d80a000","meaning":"captures second output argument in saved register"},
+      {"address":"0012857c","text":"move s2,a0","bytes":"2d908000","meaning":"captures first output argument 0x70003160"},
+      {"address":"00128744","text":"j 0x00115560","bytes":"58550408","meaning":"tail-calls final four-vector writer"},
+      {"address":"001155c0","text":"sqc2 vf8,0x30(a0)","bytes":"300088f8","meaning":"stores 16 bytes at output base + 0x30"},
+      {"address":"001155c4","text":"sqc2 vf7,0x0(a0)","bytes":"000087f8","meaning":"stores 16 bytes at output base"},
+      {"address":"001155c8","text":"sqc2 vf6,0x10(a0)","bytes":"100086f8","meaning":"stores 16 bytes at output base + 0x10"},
+      {"address":"001155d0","text":"sqc2 vf4,0x20(a0)","bytes":"200084f8","meaning":"delay-slot store at output base + 0x20"},
+      {"address":"00128cf4","text":"lui a3,0x7000","bytes":"0070073c","meaning":"forms scratchpad base high half"},
+      {"address":"00128cfc","text":"addiu a3,a3,0x3020","bytes":"2030e724","meaning":"forms scratchpad base 0x70003020"},
+      {"address":"00128da8","text":"lq v1,0x140(a3)","bytes":"4001e378","meaning":"with a3=0x70003020, reloads producer result 0x70003160"},
+      {"address":"00128dc0","text":"lq v1,0x150(a3)","bytes":"5001e378","meaning":"reloads producer result 0x70003170"},
+      {"address":"00128dd8","text":"lq v1,0x160(a3)","bytes":"6001e378","meaning":"reloads producer result 0x70003180"},
+      {"address":"00128df0","text":"lq v1,0x170(a3)","bytes":"7001e378","meaning":"reloads producer result 0x70003190"}
+    ],
+    "interpretation_limit": "These stores and reloads establish four 16-byte producer-to-packet source addresses. They do not assign matrix, camera, projection, or coordinate semantics to the vectors."
+  }
+}

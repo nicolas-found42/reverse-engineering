@@ -1,0 +1,41 @@
+{
+  "note": "Raw jgrep JSON outputs, including snippets, remain in ignored scratch. These durable summaries omit source bodies.",
+  "runs": [
+    {
+      "argv": ["jgrep", "--json", "starts or configures a DMA transfer using the shared VIF packet buffer, tag address, CHCR, TADR, or STR flag", "34 selected function exports containing puGpffff9220"],
+      "exit_code": 0,
+      "summary": "34 hits / 102 chunks",
+      "raw_receipt": ".scratch/mesh/codex-root/geometry-vif-tag-audit/jgrep/dma-submission.json",
+      "raw_receipt_sha256": "78f53b39a6022edfe681aae6de5fb8a011b3eca3f7f5ef96e37e013c200f69e1",
+      "disposition": "Too broad to identify a unique submitter; followed by a narrower query and exact static callgraph/instruction inspection."
+    },
+    {
+      "argv": ["jgrep", "--json", "enables DMAC tag transfer (TTE) or VIF DMA tag payload forwarding for the packet chain", "same 34 selected function exports"],
+      "exit_code": 1,
+      "summary": "0 hits / 102 chunks",
+      "raw_receipt": ".scratch/mesh/codex-root/geometry-vif-tag-audit/jgrep/tag-transfer-enable.json",
+      "raw_receipt_sha256": "58aba1506af0270d11fecf8c08e30016973ee71193e7252f959f78c0a2ce2268",
+      "disposition": "No match; not evidence that TTE is absent. Exact CHCR value and SDK bit formula establish the flag instead."
+    },
+    {
+      "argv": ["jgrep", "--json", "writes VIF BASE or OFFSET commands before launching a microprogram with MSCAL or MSCNT", "same 34 selected function exports"],
+      "exit_code": 1,
+      "summary": "0 hits / 102 chunks",
+      "raw_receipt": ".scratch/mesh/codex-root/geometry-vif-tag-audit/jgrep/earlier-vif-top-state.json",
+      "raw_receipt_sha256": "e8fcd67793af10c2431d403c1940ab47a5a5ab34c421b0c862c2f45fb8719e73",
+      "disposition": "No match in the selected buffer writers. The init builder was found through exact callgraph and instruction extraction; absence of a semantic match was not treated as negative evidence."
+    },
+    {
+      "argv": ["jgrep", "--json", "starts a VIF1 DMA chain by writing the VIF1 TADR and CHCR registers after finishing the current command buffer", ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/0021b2a8.c", ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/0021b5b0.c", ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/001130f8.c", ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/001124c0.c"],
+      "exit_code": 0,
+      "summary": "3 hits / 5 chunks",
+      "matches": [
+        {"file": "001130f8.c", "lines": "1-58", "p": 0.82},
+        {"file": "0021b2a8.c", "lines": "1-60", "p": 0.81},
+        {"file": "0021b5b0.c", "lines": "1-23", "p": 0.79}
+      ],
+      "raw_receipt": ".scratch/mesh/codex-root/geometry-vif-tag-audit/jgrep/submit-candidates-02.json",
+      "raw_receipt_sha256": "7b04ed8560b72a7374df81ff2937b69897ec8e6adc1c86ebc492afe687686ea3"
+    }
+  ]
+}
