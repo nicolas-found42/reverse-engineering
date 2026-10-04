@@ -12,8 +12,8 @@ Each stage claims only what its check measured, keeps an unresolved list, and re
 | --- | --- | --- | --- |
 | D1 EE byte accounting | Every executable byte is owned by a saved function or classified by structure | `tools/verify_text_denominator.py`: classes sum exactly to the unlisted bytes; function-owned and data controls; exact agreement with the Ghidra coverage export per section | Measured; see below |
 | D2 EE function boundaries | Each added function has at least two independent static evidence classes | `tools/verify_text_references.py`, `tools/gap_seeds.py`, `tools/verify_gap_candidates.py` plus the batch guard in `tools/ghidra/experimental/pipeline/` | Batch g1 added 412 functions (tier A); tiers B and C held |
-| D3 Decompilation quality | Signatures and call arity are consistent; warnings and failures are counted against controls | Not yet built | Open |
-| D4 IOP | Every import and export of the 24 modules is resolved or listed as unresolved with a reason | `tools/ps2_irx_catalog.py` (436 of 748 stubs named; 312 unresolved, mostly SDK minor-version mismatch) | Open |
+| D3 Decompilation quality | Signatures and call arity are consistent; warnings and failures are counted against controls | `tools/verify_decompilation_quality.py` (counts) with guarded changes: [gp context](../fr2-gp-context/README.md) (13,609 offset names → 0) and [small-data types](../fr2-small-data-types/README.md) (1,023 types, 872 constants). Arity mismatches (3,940) and 23,142 undefined-type tokens remain | Partly measured |
+| D4 IOP | Every import and export of the 24 modules is resolved or listed as unresolved with a reason | `tools/ps2_irx_catalog.py` (436 of 748 stubs named; 312 unresolved, mostly SDK minor-version mismatch). The game module STREAM.IRX carries its own symbol tables: [all 71 of its stubs are named](../fr2-iop-game-modules/README.md), 211 procedures cross-checked, 32 of 32 catalog candidates confirmed | Partly measured (2 of 24 modules profiled) |
 | D5 VU | Each VU program has an entry map from its MSCAL callers | Eight chunks reassemble byte-exact; entry mapping partial | Open |
 | D6 Asset consumers | Each loaded asset type is tied to the code that consumes it | Geometry stage 2 and the open fog areas of issue #1 | Open |
 
@@ -30,3 +30,11 @@ Batch [g1](../fr2-ee-next-seeds/batch-g1-candidates/README.md) added 412 gap-fil
 ## What this bar does not establish
 
 A class, an anchor or a tier is evidence about byte structure and references. It does not establish function identity, original names or types, runtime reachability, VU semantics, IOP runtime linking, or that any code behaves as the original does.
+
+## D3 and D4 results (this pass)
+
+The EE executable's gp value was never set, so 13,609 global-pointer-relative operands in 1,871 functions printed as offset names; one guarded transaction fixed all of them (reconciliation 6 of 6). A second guarded transaction typed 1,023 small-data globals from their access patterns and made 872 literal-pool constants show as numbers (5 of 5). Both records contain failures found along the way, including a check that passed for the wrong reason and a transaction whose first form had no effect. Jev's review gate escalated both changes; the escalations are recorded in their bundles.
+
+The two IOP game modules were profiled: STREAM.IRX is `multi_streamer` v6.2 with intact symbol tables (211 procedure names matched against two independent sources); LGDEV.IRX is a stripped wheel driver. Plate comments were applied to 211 and 114 functions.
+
+Open in D3/D4: 3,940 call-arity mismatches (mostly variadic report calls and wrapper functions), 23,142 undefined-type tokens, 709 integer-or-pointer small-data words, 22 of 24 IOP modules unprofiled, EE-to-IOP name transfer.
