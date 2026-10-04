@@ -1,0 +1,31 @@
+# Next EE function-seed crosswalk
+
+The first section below records a **historical, read-only scan** of the reopened 3,841-function Ghidra export against the original ELF and pinned PS2Recomp function-source tree. The requested priority category—**nonzero, defined but unowned instruction entries with exact saved direct incoming calls**—had no matches in that snapshot. Across 32,788 unowned decoded instruction addresses and 13,839 saved unconditional-call references, there are zero call targets in the unowned-instruction set that also began a PS2Recomp generated interval. The 3,838-function baseline contributed zero direct saved calls to then-missing entry addresses.
+
+Three weaker follow-up leads exist. All are in `.text`, have nonzero first words, and have exact saved direct callers from the newly added provisional functions at `001fbfb8` and `001fc118`. All three targets are **undefined in Ghidra**, rather than defined/unowned, and none has a baseline function caller. Their PS2Recomp interval comments are contiguous, start exactly at the call target, and every commented raw instruction word matches the original ELF:
+
+| Target | Saved callers/sites | PS2Recomp interval | Words / bytes | First word |
+|---|---|---|---:|---|
+| `00200d10` | `001fbfb8:001fc018`; `001fc118:001fc18c`, `001fc1fc` | `[00200d10, 00200de0)` | 52 / 208 | `27bdffd0` |
+| `00200de0` | `001fbfb8:001fc04c`; `001fc118:001fc210` | `[00200de0, 00200e70)` | 36 / 144 | `27bdffe0` |
+| `00200e70` | `001fbfb8:001fc008`, `001fc02c`; `001fc118:001fc174`, `001fc1dc` | `[00200e70, 00201128)` | 174 / 696 | `0080382d` |
+
+At the time of that scan these were evidence-backed leads, not recovered functions. Every listed callsite belonged to a provisional caller, so no target had an independently established incoming caller. Jev Find ranked `00200e70` first at `0.50` but gave only partial existence confidence `0.53`; Jev Rerank favored `00200d10` at `0.62`, then `00200e70` at `0.56` and `00200de0` at `0.41`. Those rankings were advisory.
+
+The exact historical input and source pins, callsites, interval-file hashes, scan counts, and raw-word crosswalk checks are in [next-seeds.json](next-seeds.json). The source-only PS2Recomp search receipts remain in scratch: `jgrep-function-intervals.json` (hit `ps2xRecomp/src/lib/function_emitter.cpp:71–130`, SHA-256 `02317983878b82f066990b3b511e7012c3101be73e737276edc060a27b7f475f`) and `jgrep-function-entry-discovery.json` (hit `ps2xRecomp/src/lib/elf_parser.cpp:1612–1671`, SHA-256 `f530fb125e9e2bca6b81b80e79c6f42a2ba108405e1f35151c8bb5cc396c7d43`). The historical scan script and full output are in `.scratch/mesh/codex-audit/next-seeds-01/`; its first report had an integer/string address comparison bug, preserved as `scan-result-attempt01-bug-failed.json`, and was corrected before the durable 3841 result.
+
+The generator source is PS2Recomp base revision `c5a9d02573410a2085a4b4b831b0b68ba3515440` with the recorded working-tree patch hash in the JSON. jgrep located its fallback entry scanner, which adds starts from direct JALs and other address heuristics, and its emitter's interval comment. Therefore the boundary listing is a second tool's static hypothesis, not fully independent evidence of function identity; the exact per-word ELF comparisons validate only that the emitted instruction comments correspond to the bytes. This does not prove PS2Recomp semantic equivalence, correct original function identities, runtime reachability, or whole-game completeness.
+
+Jev Find and Rerank disagreed on the top historical fallback target. Jev Verify's broad batch had two contradicted claims and two review flags; those outcomes remain preserved. A focused follow-up verified all three core fallback facts with no review flags. The original broader batch and focused receipts are in [`jev/`](jev/). The first jgrep command failed to search files under a hidden `.scratch` path; that exact failed invocation and its observed output are preserved in scratch beside the successful source receipts.
+
+
+## Follow-up: provisional `00200d10` closure
+
+The candidate was subsequently added in one guarded transaction to a fresh copy of the 3841 project, producing a reopened 3842-function export. See [00200d10-preflight.md](00200d10-preflight.md) for the bounded CFG and transaction evidence. The final reconciliation has **17 checks**. The root's independent validation is `.scratch/mesh/codex-root/root-ee-3842-validation-01.json` (SHA-256 `fe8d595d173df212e30e79ce3cc655d3cee226a225d23cce0b70f70f2ffa4939`): it recomputed 7,683 C artifact hashes, confirmed the three expected caller-label substitutions, preserved prior function names/bodies/instruction text and bytes plus memory/string inventories, and matched all 51 new words to the ELF. These checks support only the documented static candidate; they do not establish identity or semantics.
+
+The first read-only CFG report for `00200d10` had SHA-256 `773d149608167f900e8980002a3dbcd41fc7bfb6ab3487eb2d73946a5715a428`. The report was corrected after finding that the scratch traversal treated unconditional `beq $zero,$zero` at `00200d70` as having a fallthrough. The corrected report is the one cited in the preflight below; the first JSON was overwritten and could not be recovered from the workspace search. No Ghidra project data was changed during that CFG-only correction. The later guarded Ghidra candidate transaction is documented separately.
+
+
+The refreshed 3842 crosswalk and current read-only follow-on proposals are in [next-seeds-3842.md](next-seeds-3842.md). They do not meet the original defined/unowned-target priority category and do not justify a new Ghidra mutation without a separate guard review.
+
+Bounded results are now saved here: [reconciliation](00200d10-reconciliation.json), [root validation](root-3842-validation.json), [verifier summary](3842-verifier-summary.json), and [exact command record](00200d10-commands.md). The generated C, full instruction inventories, original ELF and Ghidra projects remain in ignored local storage. The root recovered both historical gate invocation/result pairs; the preflight explains the unresolved older source argument and the incorrect historical gate tests-count.

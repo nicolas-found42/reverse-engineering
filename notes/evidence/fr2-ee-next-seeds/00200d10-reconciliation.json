@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "status": "PASS_RECONCILIATION",
+  "scope": "One provisional static candidate on an isolated copy. This checks inventory, listing bytes, C artifacts, coverage, and preserved metadata; it does not prove source identity, semantic correctness, runtime reachability, or whole-game completeness.",
+  "pins": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "baseline_manifest_sha256": "93ec7a633c9602c53613700e5cb31b403dde10a3c54dbd7f63185562dc6bcf76",
+    "baseline_inventory_sha256": "c72cf614099d5cea5aafb1a5e85606df0fe3165b43f628bc7f6bb25780468389",
+    "baseline_coverage_sha256": "4e3e7afb40e4f3c25b8dd69eb3444d6c1246829ea1a75e31a11c352058f4d221",
+    "candidate_manifest_sha256": "c571939e2acc3dd7c30f8195f7b3a5132924992a9a1746ef59b21c279c6f5e5c",
+    "candidate_inventory_sha256": "5fb12ad397252a5e716bb1db41884f4a06914e743af05adf05b8bc6aef2de048",
+    "candidate_coverage_sha256": "39e07d14cc8fb1ea359254e1667b0a172e26b88ca38d30971f0acf033977c076"
+  },
+  "counts": {
+    "baseline_functions": 3841,
+    "candidate_functions": 3842,
+    "baseline_generated": 3841,
+    "candidate_generated": 3842,
+    "candidate_failed": 0,
+    "new_target_instructions": 51,
+    "new_target_body_bytes": 204
+  },
+  "added_entries": [
+    "00200d10"
+  ],
+  "missing_entries": [],
+  "changed_old_c_artifact_entries": [
+    "001fbfb8",
+    "001fc118"
+  ],
+  "expected_changed_old_c_artifact_entries": [
+    "001fbfb8",
+    "001fc118"
+  ],
+  "graph_deltas": [
+    {
+      "entry": "001fbfb8",
+      "callers_added": [],
+      "callers_removed": [],
+      "callees_added": [
+        "00200d10"
+      ],
+      "callees_removed": []
+    },
+    {
+      "entry": "001fc118",
+      "callers_added": [],
+      "callers_removed": [],
+      "callees_added": [
+        "00200d10"
+      ],
+      "callees_removed": []
+    },
+    {
+      "entry": "001fc4e0",
+      "callers_added": [
+        "00200d10"
+      ],
+      "callers_removed": [],
+      "callees_added": [],
+      "callees_removed": []
+    }
+  ],
+  "reference_mismatch_entries": [],
+  "identity_body_mismatch_entries": [],
+  "instruction_mismatch_entries": [],
+  "manifest_identity_mismatch_entries": [],
+  "call_label_substitution_counts": {
+    "001fbfb8": 1,
+    "001fc118": 2
+  },
+  "c_diff_mismatch_entries": [],
+  "text_coverage_deltas": {
+    "instruction_count": [
+      247919,
+      247970
+    ],
+    "instruction_bytes": [
+      991676,
+      991880
+    ],
+    "function_instruction_bytes": [
+      860524,
+      860728
+    ],
+    "undefined_bytes": [
+      154130,
+      153926
+    ]
+  },
+  "checks": {
+    "baseline_3841_inventory_and_new_3842_export": true,
+    "only_00200d10_entry_added": true,
+    "all_old_entry_names_body_sizes_and_blocks_preserved": true,
+    "all_old_instruction_addresses_text_and_bytes_preserved": true,
+    "all_old_callgraph_changes_are_only_expected_edges": true,
+    "old_reference_target_and_type_sets_unchanged": true,
+    "all_old_manifest_identities_and_artifact_sizes_preserved": true,
+    "only_the_two_expected_old_caller_c_artifacts_changed": true,
+    "old_c_differences_are_only_expected_call_label_substitutions": true,
+    "new_candidate_decompilation_succeeded": true,
+    "candidate_instruction_set_is_exactly_51_words": true,
+    "candidate_caller_and_reference_sites_are_exact": true,
+    "memory_block_inventory_unchanged": true,
+    "defined_strings_unchanged": true,
+    "only_expected_text_coverage_bytes_added": true,
+    "non_text_coverage_unchanged": true,
+    "candidate_gap_word_remains_zero_unowned": true
+  }
+}
