@@ -1,0 +1,97 @@
+{
+  "seed": "002018d8",
+  "span": {
+    "start": "002018d8",
+    "end_exclusive": "00201a44",
+    "bytes": 364,
+    "sha256": "a2ee3c487eb891a09444bfc985631d24ef08691227844a268a7bec00294f9219"
+  },
+  "reachable_count": 91,
+  "span_words": 91,
+  "gap_words": [],
+  "next_word": "00000000",
+  "next_word_state": "undefined",
+  "edges": [
+    {
+      "site": "00201920",
+      "word": "19800025",
+      "kind": "conditional",
+      "delay": "00201924",
+      "target": "002019b8",
+      "fallthrough": "00201928"
+    },
+    {
+      "site": "002019a8",
+      "word": "14e0ffe3",
+      "kind": "conditional",
+      "delay": "002019ac",
+      "target": "00201938",
+      "fallthrough": "002019b0"
+    },
+    {
+      "site": "002019b0",
+      "word": "10000002",
+      "kind": "unconditional_branch",
+      "delay": "002019b4",
+      "target": "002019bc"
+    },
+    {
+      "site": "002019bc",
+      "word": "0c07c980",
+      "kind": "call",
+      "delay": "002019c0",
+      "target": "001f2600",
+      "fallthrough": "002019c4"
+    },
+    {
+      "site": "00201a14",
+      "word": "10400006",
+      "kind": "conditional",
+      "delay": "00201a18",
+      "target": "00201a30",
+      "fallthrough": "00201a1c"
+    },
+    {
+      "site": "00201a28",
+      "word": "0807c992",
+      "kind": "jump",
+      "delay": "00201a2c",
+      "target": "001f2648",
+      "tail_jump": true
+    },
+    {
+      "site": "00201a3c",
+      "word": "03e00008",
+      "kind": "return",
+      "delay": "00201a40"
+    }
+  ],
+  "edge_counts": {
+    "call": 1,
+    "conditional": 3,
+    "jump": 1,
+    "return": 1,
+    "unconditional_branch": 1
+  },
+  "computed_calls": [],
+  "tail_jumps": {
+    "00201a28": "001f2648"
+  },
+  "delay_breaks": [],
+  "calls": [
+    {
+      "site": "002019bc",
+      "target": "001f2600",
+      "saved_entry": true
+    }
+  ],
+  "returns": [
+    "00201a3c"
+  ],
+  "rejects": [],
+  "zero_words_reached": [
+    "002019b4",
+    "002019c0"
+  ],
+  "scope": "Structural union walk; not feasible execution, identity, or exact original boundaries."
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "entry": "002018d8",
+  "start": "002018d8",
+  "end": "00201a44",
+  "words": 91,
+  "bytes": 364,
+  "window_sha256": "a2ee3c487eb891a09444bfc985631d24ef08691227844a268a7bec00294f9219",
+  "first_word": "27bdffc0",
+  "delay_word": "27bd0040",
+  "next_word": "00000000",
+  "baseline": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "manifest_sha256": "2f1e31a28d106a080ccb045b315ce48c9843080e6e61cde7d25099568f2efdd1",
+    "inventory_sha256": "7b835bf4889df7fded290cde48b1b0195bf29dd64d79372ba40bb7ab8eecc541",
+    "coverage_sha256": "2bd0c7172d9253018692aa2b44d8efa488c302755b38321fc8503bbb91d0a522",
+    "inventory_count": 3861
+  },
+  "expected_calls": {
+    "002019bc": "001f2600"
+  },
+  "known_callees": [
+    "001f2600"
+  ],
+  "unresolved_callees": [],
+  "zero_words": [
+    "002019b4",
+    "002019c0"
+  ],
+  "likely_count": 0,
+  "computed_calls": [],
+  "tail_jumps": {
+    "00201a28": "001f2648"
+  },
+  "delay_breaks": [],
+  "next_word_function_entry": false,
+  "incoming": [
+    {
+      "site": "001fcf34",
+      "owner_entry": "001fce10",
+      "owner_name": "candidate_ee_001fce10",
+      "owner_symbol_source": "ANALYSIS"
+    }
+  ]
+}
