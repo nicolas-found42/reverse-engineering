@@ -357,7 +357,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
         int op=(int)(w>>>26), rs=(int)((w>>>21)&31), rt=(int)((w>>>16)&31), fn=(int)(w&63);
         if(op==0 && fn==8 && w==0x03e00008L)return "return";
         if(op==0 && fn==8)return "computed_jump"; if(op==0 && fn==9)return "computed_call";
-        if(op==0 && (fn==12||fn==13||fn==48||fn==49||fn==50||fn==51||fn==52||fn==54))return "unsupported_trap";
+        if(op==0 && (fn==13||fn==48||fn==49||fn==50||fn==51||fn==52||fn==54))return "unsupported_trap";
         if(op==0 && (fn==32||fn==34||fn==44||fn==46))return "unsupported_trap";
         if(op==8||op==24)return "unsupported_trap"; // ADDI and DADDI may take overflow exceptions.
         if(op==2)return "jump"; if(op==3)return "call";

@@ -15,7 +15,7 @@ def dec(pc,w):
  if op==0:
   if fn==8:return('return' if w==0x03e00008 else 'computed_jump',None,None)
   if fn==9:return('computed_call',None,pc+8)
-  if fn in(12,13,48,49,50,51,52,54):return('trap',None,None)
+  if fn in(13,48,49,50,51,52,54):return('trap',None,None)
   if fn in(32,34,44,46):return('arithmetic_trap',None,pc+4)
  if op in(8,24):return('arithmetic_trap',None,pc+4)
  if op==2:return('jump',((pc+4)&0xf0000000)|((w&0x3ffffff)<<2),None)

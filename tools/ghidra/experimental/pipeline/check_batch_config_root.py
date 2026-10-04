@@ -17,7 +17,7 @@ def flow(x):
  if op==0 and fn==8 and x==0x03e00008:return 'return'
  if op==0 and fn==8:return 'computed_jump'
  if op==0 and fn==9:return 'computed_call'
- if op==0 and fn in (12,13,48,49,50,51,52,54,32,34,44,46):return 'unsupported_trap'
+ if op==0 and fn in (13,48,49,50,51,52,54,32,34,44,46):return 'unsupported_trap'
  if op in (8,24):return 'unsupported_trap'
  if op==2:return 'jump'
  if op==3:return 'call'
