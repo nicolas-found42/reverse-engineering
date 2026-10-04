@@ -172,6 +172,36 @@ class EvidenceCommands(unittest.TestCase):
         self.command("verify_formats.py", "archive", hdr, self.root / "missing")
         self.assertEqual(len(list((self.root / "results").glob("*/result.json"))), 3)
 
+    def test_corpus_reports_finder_metadata_but_still_fails_other_extras(self):
+        game = TOOLS.parent / "games" / "ford-racing-2"
+        if not (game / "extracted" / "FILES.HDR").exists():
+            self.skipTest("real corpus integration; absent corpus is `incomplete` for the milestone")
+        mirror = self.root / "mirror"
+        mirror.mkdir()
+        for path in game.rglob("*"):
+            target = mirror / path.relative_to(game)
+            if path.is_dir():
+                target.mkdir(parents=True, exist_ok=True)
+            elif path.name != ".DS_Store":
+                target.symlink_to(path)
+        files = mirror / "extracted" / "files"
+        (files / ".DS_Store").write_bytes(b"\0Bud1")
+        (files / "3DDATA").mkdir(exist_ok=True)
+        (files / "3DDATA" / ".DS_Store").write_bytes(b"\0Bud1\1")
+
+        code, result = self.command("verify_formats.py", "corpus", mirror)
+        self.assertEqual((code, result["status"]), (0, "pass"), result["diagnostics"])
+        ignored = result["details"]["ignored_os_metadata"]
+        self.assertEqual(
+            sorted(entry["path"] for entry in ignored), [".DS_Store", "3DDATA/.DS_Store"]
+        )
+        self.assertTrue(all(len(entry["sha256"]) == 64 for entry in ignored))
+
+        (files / "notes.txt").write_bytes(b"not part of the archive")
+        code, result = self.command("verify_formats.py", "corpus", mirror)
+        self.assertEqual((code, result["status"]), (1, "fail"))
+        self.assertIn("extraction path missing or additional: notes.txt", result["diagnostics"])
+
     def test_static_inventory_beyond_200_and_missing_evidence(self):
         executable = self.write("executable", b"ELF fixture")
         functions = [

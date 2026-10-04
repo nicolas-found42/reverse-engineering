@@ -31,6 +31,9 @@ BASELINE = {
 }
 
 
+OS_METADATA_NAME = ".DS_Store"
+
+
 def corpus_identity(game: Path) -> dict:
     identities = {name: identity(game / name) for name in BASELINE}
     for name, (size, digest) in BASELINE.items():
@@ -62,7 +65,15 @@ def coverage(game: Path, manifest: Path) -> dict:
     }
     if result["counts"] != expected_counts:
         failures.append(f"archive counts differ: {result['counts']}")
-    discovered = sorted(p for p in files.rglob("*") if p.is_file())
+    on_disk = sorted(p for p in files.rglob("*") if p.is_file())
+    # Finder writes these into any browsed folder; they are never archive members.
+    # Only this exact basename is excluded, and every exclusion stays in the result.
+    ignored = [
+        {"path": p.relative_to(files).as_posix(), **identity(p)}
+        for p in on_disk
+        if p.name == OS_METADATA_NAME
+    ]
+    discovered = [p for p in on_disk if p.name != OS_METADATA_NAME]
     actual_paths = {p.relative_to(files).as_posix(): p for p in discovered}
     expected_paths = {f["path"].lstrip("/"): f for f in result["files"]}
     for path in sorted(actual_paths.keys() ^ expected_paths.keys()):
@@ -159,6 +170,7 @@ def coverage(game: Path, manifest: Path) -> dict:
             **{k: len(v) for k, v in families.items()},
             "discovered_files": len(discovered),
         },
+        "ignored_os_metadata": ignored,
         "unsupported_ptg": sum(p["status"] == "unsupported" for p in families["ptg"]),
         "failures": failures,
     }
