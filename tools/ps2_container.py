@@ -97,6 +97,8 @@ def parse(data: bytes) -> dict:
             raise Invalid(f"texture {i}: unknown format {fmt}")
         if mips > MAX_MIPS or width > MAX_DIM or height > MAX_DIM:
             raise Invalid(f"texture {i}: mips {mips} or size {width}x{height} outside the measured profile")
+        if mips >= min(width, height).bit_length():
+            raise Invalid(f"texture {i}: {mips} mips exceed the {min(width, height).bit_length() - 1} halvings a {width}x{height} image supports")
         if fmt in (3, 4) and palette_index >= total:
             raise Invalid(f"texture {i}: palette index {palette_index} outside the {total}-entry table")
         pos += 0x40 + 0x10 * mips

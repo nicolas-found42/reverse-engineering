@@ -159,6 +159,16 @@ class Parser(unittest.TestCase):
             with self.assertRaises(Invalid, msg=label):
                 ps2_container.parse(container([bad]))
 
+    def test_mip_chains_longer_than_the_image_can_halve_are_rejected(self):
+        for label, bad in (
+            ("1x1 with one mip", item("A", 1, 1, 1, mips=1)),
+            ("16x2 with two mips (second level has zero height)", item("A", 1, 16, 2, mips=2)),
+        ):
+            with self.assertRaises(Invalid, msg=label):
+                ps2_container.parse(container([bad]))
+        parsed = ps2_container.parse(container([item("A", 1, 4, 4, mips=2)]))
+        self.assertEqual([(lv["width"], lv["height"]) for lv in parsed["textures"]["items"][0]["levels"]], [(4, 4), (2, 2), (1, 1)])
+
     def test_items_without_image_data_are_outside_the_measured_profile(self):
         with self.assertRaises(Invalid):
             ps2_container.parse(container([item("A", 3, 16, 16, flags=0x101)]))

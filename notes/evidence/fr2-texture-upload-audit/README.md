@@ -106,3 +106,7 @@ a descriptor and byte-count relationship. The decoder verified above still
 covers level zero; full mip record address semantics and pixel decoding remain
 open. The prior 54-file uppercase-glob result and incomplete abbreviated Jev
 receipt remain explicitly historical.
+
+## Later source change (PR review)
+
+The hashes pinned in `source-pins.json` describe the sources as audited. After that, code review noted that `tools/ps2_container.py` accepted mip counts larger than an image can halve (a 1x1 texture with one mip produced a zero-byte level). The parser now rejects such descriptors, and `tools/test_ps2_textures.py` gained a regression test. Current SHA-256: `ps2_container.py` `d6782d76949eff05aa214b7d35bd5f1722a3109596bd765a2c55153923d331d0`, `test_ps2_textures.py` `7aa29e342cf1905d42e13185ad27294deacec0f2f3ad0583a815703397a5548d`. The real-corpus integration test (56 models, 2,370 textures, all level-0 images decoded) and the 25 texture and texture-index tests passed on the changed code, so no corpus texture used an over-long mip chain. The pins above were left as the audited record.
