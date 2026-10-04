@@ -1,0 +1,660 @@
+{
+  "scope": "Static dispatch and instruction provenance; no original routine, emulator, DMA schedule, or VU program was executed.",
+  "inputs": {
+    "executable": {
+      "path": "games/ford-racing-2/extracted/SLES_517.05",
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "saved_static_export": {
+      "path": ".scratch/evidence/static-export.json",
+      "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+    },
+    "vu_roundtrip": {
+      "path": ".scratch/evidence/vu/20261004T094238Z-ec2560e7f3d84f40a1f7ecc9a9ea5e91/result.json",
+      "sha256": "07188697e89c03e36f5975005febe45a5a599c6b2212a0df9a7102d5aca16d18",
+      "status": "pass"
+    },
+    "overlay_5_assembly": {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.s",
+      "sha256": "f5e195d23ec624026e31caae2c31d7af6cce10ec36158632f8624eeb640499d5"
+    },
+    "overlay_5_binary": {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.bin",
+      "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+    },
+    "overlay_6_assembly": {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-6.s",
+      "sha256": "c19e1aff3bffba716e30e59e117a6266a4049d20f3c03781d6adc0b972745940"
+    },
+    "rejected_scale_experiment": {
+      "path": ".scratch/mesh/codex-root/geometry-peraxis-scale-discovery-02.json",
+      "sha256": "4c3b5ea0b909d4406cf967028d0ffd84284d313da5ea3945afddbd228104989c"
+    }
+  },
+  "ee_dispatch_instructions": [
+    {
+      "entry": "0022fc90",
+      "name": "FUN_0022fc90",
+      "callers": [
+        "0022dbb8"
+      ],
+      "callees": [
+        "0010d0b0",
+        "0022fd48",
+        "0020c7fc",
+        "00230180",
+        "001124c0",
+        "0022fda8",
+        "0022ff78"
+      ],
+      "selected_instructions": [
+        {
+          "address": "0022fcac",
+          "text": "jal 0x0022fd48",
+          "bytes": "52bf080c",
+          "references": [
+            {
+              "to": "0022fd48",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "0022fd48"
+            }
+          ]
+        },
+        {
+          "address": "0022fd28",
+          "text": "jal 0x0022fda8",
+          "bytes": "6abf080c",
+          "references": [
+            {
+              "to": "0022fda8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "0022fda8"
+            }
+          ]
+        },
+        {
+          "address": "0022fd40",
+          "text": "j 0x001124c0",
+          "bytes": "30490408",
+          "references": [
+            {
+              "to": "001124c0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001124c0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "entry": "0022fd48",
+      "name": "FUN_0022fd48",
+      "callers": [
+        "0022fc90"
+      ],
+      "callees": [
+        "001f4138",
+        "001f4468",
+        "001f4708"
+      ],
+      "selected_instructions": [
+        {
+          "address": "0022fd54",
+          "text": "jal 0x001f4138",
+          "bytes": "4ed0070c",
+          "references": [
+            {
+              "to": "001f4138",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001f4138"
+            }
+          ]
+        },
+        {
+          "address": "0022fd58",
+          "text": "_li a0,0x1",
+          "bytes": "01000424",
+          "references": []
+        },
+        {
+          "address": "0022fd6c",
+          "text": "addiu v0,v0,0x7be0",
+          "bytes": "e07b4224",
+          "references": []
+        },
+        {
+          "address": "0022fd80",
+          "text": "jal 0x001f4468",
+          "bytes": "1ad1070c",
+          "references": [
+            {
+              "to": "001f4468",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001f4468"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "entry": "0022fda8",
+      "name": "FUN_0022fda8",
+      "callers": [
+        "0022fc90"
+      ],
+      "callees": [],
+      "selected_instructions": [
+        {
+          "address": "0022fdc0",
+          "text": "addiu v0,v0,0xd0",
+          "bytes": "d0004224",
+          "references": []
+        },
+        {
+          "address": "0022fdc4",
+          "text": "addiu v1,v1,0x2e60",
+          "bytes": "602e6324",
+          "references": []
+        },
+        {
+          "address": "0022fdd8",
+          "text": "srl v0,v0,0x3",
+          "bytes": "c2100200",
+          "references": []
+        },
+        {
+          "address": "0022fdec",
+          "text": "sw zero,-0x6de8(gp)",
+          "bytes": "189280af",
+          "references": []
+        }
+      ]
+    },
+    {
+      "entry": "001124c0",
+      "name": "FUN_001124c0",
+      "callers": [
+        "0022fc90"
+      ],
+      "callees": [
+        "0021b5b0",
+        "001ea330",
+        "001132b8",
+        "0021b680"
+      ],
+      "selected_instructions": [
+        {
+          "address": "00112514",
+          "text": "lui t2,0x1400",
+          "bytes": "00140a3c",
+          "references": []
+        },
+        {
+          "address": "00112530",
+          "text": "lw v1,-0x6df4(gp)",
+          "bytes": "0c92838f",
+          "references": []
+        },
+        {
+          "address": "00112538",
+          "text": "or v1,v1,t2",
+          "bytes": "25186a00",
+          "references": []
+        },
+        {
+          "address": "00112540",
+          "text": "sw v1,0x0(t1)",
+          "bytes": "000023ad",
+          "references": []
+        },
+        {
+          "address": "00112550",
+          "text": "jal 0x0021b5b0",
+          "bytes": "6c6d080c",
+          "references": [
+            {
+              "to": "0021b5b0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "0021b5b0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "entry": "00128ca0",
+      "name": "FUN_00128ca0",
+      "callers": [
+        "001ce288"
+      ],
+      "callees": [
+        "0010fa70",
+        "0010f8f8",
+        "00115518",
+        "0010fa20"
+      ],
+      "selected_instructions": [
+        {
+          "address": "00128d0c",
+          "text": "lui t3,0x1400",
+          "bytes": "00140b3c",
+          "references": []
+        },
+        {
+          "address": "00128e08",
+          "text": "lw v0,-0x6dec(gp)",
+          "bytes": "1492828f",
+          "references": []
+        },
+        {
+          "address": "00128e10",
+          "text": "or v0,v0,t3",
+          "bytes": "25104b00",
+          "references": []
+        },
+        {
+          "address": "00128e14",
+          "text": "sw v0,0x0(v1)",
+          "bytes": "000062ac",
+          "references": []
+        },
+        {
+          "address": "00128e20",
+          "text": "lw a0,-0x6de0(gp)",
+          "bytes": "2092848f",
+          "references": []
+        }
+      ]
+    },
+    {
+      "entry": "001ce288",
+      "name": "FUN_001ce288",
+      "callers": [
+        "001cf848"
+      ],
+      "callees": [
+        "0011cf68",
+        "001335f8",
+        "00126e28",
+        "0011cac8",
+        "00126c18",
+        "00133a90",
+        "00133b08",
+        "00128ca0",
+        "00129bc0",
+        "00112dc8",
+        "002047e8",
+        "00127798",
+        "00204e10",
+        "00113aa8",
+        "001288b0",
+        "0011ca88",
+        "00132310",
+        "0011caa0"
+      ],
+      "selected_instructions": [
+        {
+          "address": "001ce47c",
+          "text": "jal 0x00126c18",
+          "bytes": "069b040c",
+          "references": [
+            {
+              "to": "00126c18",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "00126c18"
+            }
+          ]
+        },
+        {
+          "address": "001ce484",
+          "text": "beq v0,zero,0x001ce4d0",
+          "bytes": "12004010",
+          "references": [
+            {
+              "to": "001ce4d0",
+              "type": "CONDITIONAL_JUMP",
+              "function": "001ce288"
+            }
+          ]
+        },
+        {
+          "address": "001ce488",
+          "text": "_addiu a0,sp,0x20",
+          "bytes": "2000a427",
+          "references": []
+        },
+        {
+          "address": "001ce48c",
+          "text": "jal 0x00128ca0",
+          "bytes": "28a3040c",
+          "references": [
+            {
+              "to": "00128ca0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "00128ca0"
+            }
+          ]
+        },
+        {
+          "address": "001ce4b8",
+          "text": "jal 0x001288b0",
+          "bytes": "2ca2040c",
+          "references": [
+            {
+              "to": "001288b0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001288b0"
+            }
+          ]
+        },
+        {
+          "address": "001ce4bc",
+          "text": "_addiu a2,sp,0x70",
+          "bytes": "7000a627",
+          "references": []
+        }
+      ]
+    }
+  ],
+  "mscaltime_address_map": {
+    "vif_command_word": "0x140005cc",
+    "mscaltime_immediate": "0x5cc",
+    "vu_microinstruction_pair_bytes": 8,
+    "computed_vu_byte_address": "0x2e60",
+    "overlay_index": 5,
+    "overlay_vu_byte_range": [
+      "0x2800",
+      "0x3000"
+    ],
+    "overlay_local_byte_offset": "0x660",
+    "elf_file_offset": "0x11ba78",
+    "raw_elf_bytes_16": "00000110ff0200007c0be181ff020000",
+    "extracted_overlay_bytes_16": "00000110ff0200007c0be181ff020000",
+    "raw_bytes_equal": true,
+    "overlay_vu_address": "0x2800",
+    "overlay_sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+  },
+  "vu_instruction_excerpt": [
+    {
+      "vu_byte_address": "0x2e60",
+      "overlay_index": 5,
+      "local_pair": 204,
+      "assembly": "nop \tiaddiu vi01,vi00,0"
+    },
+    {
+      "vu_byte_address": "0x2e68",
+      "overlay_index": 5,
+      "local_pair": 205,
+      "assembly": "nop \tlqi.xyzw vf01xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2e70",
+      "overlay_index": 5,
+      "local_pair": 206,
+      "assembly": "nop \tlqi.xyzw vf02xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2e78",
+      "overlay_index": 5,
+      "local_pair": 207,
+      "assembly": "nop \tlqi.xyzw vf03xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2e80",
+      "overlay_index": 5,
+      "local_pair": 208,
+      "assembly": "nop \tlqi.xyzw vf04xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2e88",
+      "overlay_index": 5,
+      "local_pair": 209,
+      "assembly": "nop \tlqi.xyzw vf05xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2e90",
+      "overlay_index": 5,
+      "local_pair": 210,
+      "assembly": "nop \tlqi.xyzw vf06xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2e98",
+      "overlay_index": 5,
+      "local_pair": 211,
+      "assembly": "nop \tlqi.xyzw vf07xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2ea0",
+      "overlay_index": 5,
+      "local_pair": 212,
+      "assembly": "nop \tlqi.xyzw vf08xyzw,(vi01++)"
+    },
+    {
+      "vu_byte_address": "0x2eb8",
+      "overlay_index": 5,
+      "local_pair": 215,
+      "assembly": "nop \txtop vi01"
+    },
+    {
+      "vu_byte_address": "0x2ed8",
+      "overlay_index": 5,
+      "local_pair": 219,
+      "assembly": "nop \tlq.xyzw vf31xyzw,2(vi01)"
+    },
+    {
+      "vu_byte_address": "0x2ee0",
+      "overlay_index": 5,
+      "local_pair": 220,
+      "assembly": "nop \tilw.x vi02,3(vi01)x"
+    },
+    {
+      "vu_byte_address": "0x2ee8",
+      "overlay_index": 5,
+      "local_pair": 221,
+      "assembly": "nop \tilw.z vi03,3(vi01)z"
+    },
+    {
+      "vu_byte_address": "0x2ef8",
+      "overlay_index": 5,
+      "local_pair": 223,
+      "assembly": "nop \tlq.xyzw vf09xyzw,0(vi01)"
+    },
+    {
+      "vu_byte_address": "0x2f00",
+      "overlay_index": 5,
+      "local_pair": 224,
+      "assembly": "nop \tlq.xyzw vf30xyzw,1(vi01)"
+    },
+    {
+      "vu_byte_address": "0x2f10",
+      "overlay_index": 5,
+      "local_pair": 226,
+      "assembly": "nop \tlq.xyzw vf20xyzw,4(vi01)"
+    },
+    {
+      "vu_byte_address": "0x2f20",
+      "overlay_index": 5,
+      "local_pair": 228,
+      "assembly": "nop \tlq.xyzw vf15xyzw,0(vi03)"
+    },
+    {
+      "vu_byte_address": "0x2f28",
+      "overlay_index": 5,
+      "local_pair": 229,
+      "assembly": "nop \tlq.xyzw vf12xyzw,2(vi03)"
+    },
+    {
+      "vu_byte_address": "0x2f30",
+      "overlay_index": 5,
+      "local_pair": 230,
+      "assembly": "nop[i] \tloi 768"
+    },
+    {
+      "vu_byte_address": "0x2f38",
+      "overlay_index": 5,
+      "local_pair": 231,
+      "assembly": "subi.xyz vf15xyz,vf15xyz,i \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f40",
+      "overlay_index": 5,
+      "local_pair": 232,
+      "assembly": "mul.xyz vf15xyz,vf15xyz,vf20xyz \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f48",
+      "overlay_index": 5,
+      "local_pair": 233,
+      "assembly": "addw.z vf12z,vf00z,vf00w \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f50",
+      "overlay_index": 5,
+      "local_pair": 234,
+      "assembly": "nop[i] \tloi 6144"
+    },
+    {
+      "vu_byte_address": "0x2f58",
+      "overlay_index": 5,
+      "local_pair": 235,
+      "assembly": "subi.xy vf12xy,vf12xy,i \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f60",
+      "overlay_index": 5,
+      "local_pair": 236,
+      "assembly": "nop \tmove.w vf15w,vf00w"
+    },
+    {
+      "vu_byte_address": "0x2f68",
+      "overlay_index": 5,
+      "local_pair": 237,
+      "assembly": "muly.xyz vf10xyz,vf09xyz,vf15y \tilw.w vi06,1(vi03)w"
+    },
+    {
+      "vu_byte_address": "0x2f70",
+      "overlay_index": 5,
+      "local_pair": 238,
+      "assembly": "add.xyz vf15xyz,vf15xyz,vf10xyz \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f78",
+      "overlay_index": 5,
+      "local_pair": 239,
+      "assembly": "mulax.xyzw accxyzw,vf01xyzw,vf15x \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f80",
+      "overlay_index": 5,
+      "local_pair": 240,
+      "assembly": "madday.xyzw accxyzw,vf02xyzw,vf00y \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f88",
+      "overlay_index": 5,
+      "local_pair": 241,
+      "assembly": "maddaz.xyzw accxyzw,vf03xyzw,vf15z \tnop"
+    },
+    {
+      "vu_byte_address": "0x2f90",
+      "overlay_index": 5,
+      "local_pair": 242,
+      "assembly": "maddw.xyzw vf16xyzw,vf04xyzw,vf00w \tnop"
+    },
+    {
+      "vu_byte_address": "0x2fb0",
+      "overlay_index": 5,
+      "local_pair": 246,
+      "assembly": "mulax.xyzw accxyzw,vf05xyzw,vf16x \tnop"
+    },
+    {
+      "vu_byte_address": "0x2fb8",
+      "overlay_index": 5,
+      "local_pair": 247,
+      "assembly": "madday.xyzw accxyzw,vf06xyzw,vf16y \tnop"
+    },
+    {
+      "vu_byte_address": "0x2fc0",
+      "overlay_index": 5,
+      "local_pair": 248,
+      "assembly": "maddaz.xyzw accxyzw,vf07xyzw,vf16z \tnop"
+    },
+    {
+      "vu_byte_address": "0x2fc8",
+      "overlay_index": 5,
+      "local_pair": 249,
+      "assembly": "maddw.xyzw vf17xyzw,vf08xyzw,vf00w \tnop"
+    },
+    {
+      "vu_byte_address": "0x2fd0",
+      "overlay_index": 5,
+      "local_pair": 250,
+      "assembly": "nop \tdiv q,vf00w,vf17w"
+    },
+    {
+      "vu_byte_address": "0x2fd8",
+      "overlay_index": 5,
+      "local_pair": 251,
+      "assembly": "nop \tiaddiu vi09,vi06,0x7fff"
+    },
+    {
+      "vu_byte_address": "0x2fe0",
+      "overlay_index": 5,
+      "local_pair": 252,
+      "assembly": "nop \tmfir.w vf16w,vi09"
+    },
+    {
+      "vu_byte_address": "0x2fe8",
+      "overlay_index": 5,
+      "local_pair": 253,
+      "assembly": "nop \twaitq"
+    },
+    {
+      "vu_byte_address": "0x2ff0",
+      "overlay_index": 5,
+      "local_pair": 254,
+      "assembly": "mulq.xyz vf17xyz,vf17xyz,q \tnop"
+    },
+    {
+      "vu_byte_address": "0x2ff8",
+      "overlay_index": 5,
+      "local_pair": 255,
+      "assembly": "mulq.xyz vf12xyz,vf12xyz,q \tnop"
+    },
+    {
+      "vu_byte_address": "0x3000",
+      "overlay_index": 6,
+      "local_pair": 0,
+      "assembly": "ftoi4.xyz vf16xyz,vf17xyz \tnop"
+    }
+  ],
+  "rejected_normalization_hypothesis": {
+    "path": "notes/evidence/fr2-geometry-vu-dispatch/rejected-scale-experiment.json",
+    "sha256": "4c3b5ea0b909d4406cf967028d0ffd84284d313da5ea3945afddbd228104989c",
+    "groups": 16018,
+    "outside_one_step": 1051,
+    "within_one_step": 14967,
+    "scope": "Rejected exploratory max-absolute-bound / 16384 hypothesis; one-step fit is not VU dataflow proof."
+  },
+  "jgrep": [
+    {
+      "query": "selects or starts a VU microprogram by writing MSCAL or MSCALF VIF commands or configuring a VIF DMA chain",
+      "scope": "tools/",
+      "exit_code": 1,
+      "matches": 0
+    },
+    {
+      "query": "writes a DMA channel TADR QWC and CHCR registers to start a VIF upload",
+      "scope": "tools/",
+      "exit_code": 1,
+      "matches": 0
+    }
+  ],
+  "limits": [
+    "The MSCAL command and address are constructed in a static packet-building path; branch/path reachability at runtime and DMA completion are not observed.",
+    "Overlay mapping and raw byte equality establish where the entry instruction bytes reside, not what the entry routine semantically computes for a specific asset.",
+    "DIV Q, MULQ and FTOI4 are recorded as disassembled instruction provenance only; no hardware-equivalence, coordinate units, or global scale is claimed.",
+    "The root per-axis max-absolute-bound / 16384 fit is explicitly rejected by 1051 of 16018 nonempty groups outside endpoint bounds under its own one-step criterion."
+  ],
+  "jgrep_status_receipt": "jgrep-negative-search-status.json"
+}

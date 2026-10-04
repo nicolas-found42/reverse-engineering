@@ -1,0 +1,115 @@
+{
+  "schema": "fr2-geometry-vu-dispatch/v1",
+  "scope": "Static EE packet construction, VU overlay mapping, and instruction provenance only; no original game or VU routine execution.",
+  "executable": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "language": "r5900:LE:32:default"
+  },
+  "saved_static_export": {
+    "path": ".scratch/evidence/static-export.json",
+    "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+  },
+  "vu_roundtrip": {
+    "path": ".scratch/evidence/vu/20261004T094238Z-ec2560e7f3d84f40a1f7ecc9a9ea5e91/result.json",
+    "sha256": "07188697e89c03e36f5975005febe45a5a599c6b2212a0df9a7102d5aca16d18",
+    "status": "pass",
+    "overlay_count": 8,
+    "instruction_pairs": 1698,
+    "overlay_5": {
+      "vu_byte_address": "0x2800",
+      "size": 2048,
+      "source_section": ".vutext",
+      "source_file_offset": "0x11b418",
+      "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+    },
+    "overlay_6": {
+      "vu_byte_address": "0x3000",
+      "size": 176,
+      "instruction_pairs": 22,
+      "sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8"
+    }
+  },
+  "entry_mapping": {
+    "ee_builder": "FUN_00128ca0",
+    "global_written_by": "FUN_0022fda8",
+    "global_offset_from_gp": "-0x6dec",
+    "global_value": "0x5cc",
+    "vif_command_word": "0x140005cc",
+    "command": "MSCAL",
+    "vif_command_definition_source": "PS2SDK common/include/vif_codes.h at commit ac92a9f657d2e531dd8f060250b07f2a5ac6dea5; see the pinned Firecrawl and Jev receipts in ../fr2-geometry-vif-contract/",
+    "vu_instruction_pair_bytes": 8,
+    "vu_byte_address": "0x2e60",
+    "overlay_index": 5,
+    "overlay_local_offset": "0x660",
+    "overlay_local_pair": 204,
+    "executable_file_offset": "0x11ba78",
+    "raw_executable_bytes_16": "00000110ff0200007c0be181ff020000",
+    "extracted_overlay_bytes_16": "00000110ff0200007c0be181ff020000",
+    "bytes_equal": true
+  },
+  "instruction_provenance": {
+    "overlay_5_assembly": {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.s",
+      "sha256": "f5e195d23ec624026e31caae2c31d7af6cce10ec36158632f8624eeb640499d5"
+    },
+    "overlay_5_binary": {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.bin",
+      "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+    },
+    "overlay_6_assembly": {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-6.s",
+      "sha256": "c19e1aff3bffba716e30e59e117a6266a4049d20f3c03781d6adc0b972745940"
+    },
+    "excerpt": "static-trace.json"
+  },
+  "screened_sdk_evidence": {
+    "source": "PS2SDK common/include/vif_codes.h, commit ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "firecrawl_receipt": "../fr2-geometry-vif-contract/firecrawl-ps2sdk-headers.json",
+    "firecrawl_receipt_sha256": "fa0960dd6e071dea5cc4ce3c4edc197eda5ec9fff2a99b1e377fb7915c3f8f05",
+    "jev_screen_receipt": "../fr2-geometry-vif-contract/jev-ps2sdk-screen.json",
+    "jev_screen_receipt_sha256": "14c8951bd793124bc2167fdc8cbdd6299e0a44045e71275c6e6bf7ccf2a65376"
+  },
+  "jev_claim_receipt": {
+    "path": "jev-vu-dispatch-claims.json",
+    "claims": 6,
+    "verified": 6,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 1,
+    "review_claim": "MSCAL address 0x5cc to VU byte address/overlay/source offset mapping",
+    "review_confidence": 0.76,
+    "disposition": "Retained; independently checked with exact address arithmetic and executable-to-overlay byte equality. No Jev retry."
+  },
+  "jgrep": [
+    {
+      "command": "jgrep --json \"selects or starts a VU microprogram by writing MSCAL or MSCALF VIF commands or configuring a VIF DMA chain\" tools/",
+      "exit_code": 1,
+      "matches": 0
+    },
+    {
+      "command": "jgrep --json \"writes a DMA channel TADR QWC and CHCR registers to start a VIF upload\" tools/",
+      "exit_code": 1,
+      "matches": 0
+    }
+  ],
+  "rejected_scale_experiment": {
+    "path": "rejected-scale-experiment.json",
+    "sha256": "4c3b5ea0b909d4406cf967028d0ffd84284d313da5ea3945afddbd228104989c",
+    "nonempty_groups": 16018,
+    "within_one_step": 14967,
+    "outside_one_step": 1051,
+    "hypothesis": "per-axis max-absolute-bound / 16384",
+    "disposition": "Rejected as unsupported by VU dataflow and contradicted by the endpoint-bound counterexamples."
+  },
+  "limitations": [
+    "The per-object MSCAL packet builder is statically guarded; runtime branch execution and DMA completion are unknown.",
+    "The precise linkage between the VIF UNPACK destinations in the earlier bundle and TOP-relative loads at this VU entry is unproved.",
+    "The role of the LOI constants, component semantics, axis order, units, serialized-coordinate scaling, and final renderer remain unknown.",
+    "Instruction op names are preserved as extracted disassembly; there is no claim of silicon-equivalent arithmetic output."
+  ],
+  "jgrep_status_receipt": {
+    "path": "jgrep-negative-search-status.json",
+    "sha256": "dec71cb776814cdee66c3e03b5753538ed413a6e43f9a4764e1a21af7d2783d4"
+  }
+}

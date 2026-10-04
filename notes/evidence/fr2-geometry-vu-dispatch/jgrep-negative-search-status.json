@@ -1,0 +1,24 @@
+{
+  "schema": "jgrep-negative-search-status/v1",
+  "status_reconciliation_only": true,
+  "queries": [
+    {
+      "arguments": [
+        "--json",
+        "selects or starts a VU microprogram by writing MSCAL or MSCALF VIF commands or configuring a VIF DMA chain",
+        "tools/"
+      ],
+      "exit_code": 1,
+      "stdout": "[]\n0 hits / 1212 chunks (1181 cached) \u00b7 19009 tokens \u00b7 $0.0008 \u00b7 0.4s\n"
+    },
+    {
+      "arguments": [
+        "--json",
+        "writes a DMA channel TADR QWC and CHCR registers to start a VIF upload",
+        "tools/"
+      ],
+      "exit_code": 1,
+      "stdout": "[]\n0 hits / 1212 chunks (1181 cached) \u00b7 18699 tokens \u00b7 $0.0008 \u00b7 0.3s\n"
+    }
+  ]
+}
