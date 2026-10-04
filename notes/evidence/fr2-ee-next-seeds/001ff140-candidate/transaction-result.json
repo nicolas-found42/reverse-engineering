@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "config_sha256": "5297ad4c0b863451f27eb1a1fed0c2368319aff9b1a15886aa96305f16af42f3",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "baseline_manifest_sha256": "0ead9b900b4175f97889bb6ed4a378670b17fba1ccbad30bae366ba3312e9ffa",
+  "baseline_inventory_sha256": "ddc4dc06304e47125f870e17957bf12f21c14cd3db38059946335465860fc4e6",
+  "baseline_coverage_sha256": "d5c3bfa2dd39e3b6a19cc432285db0fa7842f9b3f1cee7b4815a5e79c76b5332",
+  "language": "r5900:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "entry": "001ff140",
+  "status": "created_single_bounded_candidate",
+  "cfg": {
+    "instruction_count_including_delay_slots": 75,
+    "body_end_inclusive": "001ff268",
+    "instruction_addresses": [
+      "001ff140",
+      "001ff144",
+      "001ff148",
+      "001ff14c",
+      "001ff150",
+      "001ff154",
+      "001ff158",
+      "001ff15c",
+      "001ff160",
+      "001ff164",
+      "001ff168",
+      "001ff16c",
+      "001ff170",
+      "001ff174",
+      "001ff178",
+      "001ff17c",
+      "001ff180",
+      "001ff184",
+      "001ff188",
+      "001ff18c",
+      "001ff190",
+      "001ff194",
+      "001ff198",
+      "001ff19c",
+      "001ff1a0",
+      "001ff1a4",
+      "001ff1a8",
+      "001ff1ac",
+      "001ff1b0",
+      "001ff1b4",
+      "001ff1b8",
+      "001ff1bc",
+      "001ff1c0",
+      "001ff1c4",
+      "001ff1c8",
+      "001ff1cc",
+      "001ff1d0",
+      "001ff1d4",
+      "001ff1d8",
+      "001ff1dc",
+      "001ff1e0",
+      "001ff1e4",
+      "001ff1e8",
+      "001ff1ec",
+      "001ff1f0",
+      "001ff1f4",
+      "001ff1f8",
+      "001ff1fc",
+      "001ff200",
+      "001ff204",
+      "001ff208",
+      "001ff20c",
+      "001ff210",
+      "001ff214",
+      "001ff218",
+      "001ff21c",
+      "001ff220",
+      "001ff224",
+      "001ff228",
+      "001ff22c",
+      "001ff230",
+      "001ff234",
+      "001ff238",
+      "001ff23c",
+      "001ff240",
+      "001ff244",
+      "001ff248",
+      "001ff24c",
+      "001ff250",
+      "001ff254",
+      "001ff258",
+      "001ff25c",
+      "001ff260",
+      "001ff264",
+      "001ff268"
+    ],
+    "edges": [
+      {
+        "site": "001ff170",
+        "kind": "call",
+        "target": "00200388",
+        "fallthrough": "001ff178"
+      },
+      {
+        "site": "001ff17c",
+        "kind": "call",
+        "target": "00200040",
+        "fallthrough": "001ff184"
+      },
+      {
+        "site": "001ff190",
+        "kind": "conditional",
+        "target": "001ff1b0",
+        "fallthrough": "001ff198"
+      },
+      {
+        "site": "001ff1b0",
+        "kind": "call",
+        "target": "00200148",
+        "fallthrough": "001ff1b8"
+      },
+      {
+        "site": "001ff1b8",
+        "kind": "call",
+        "target": "00200408",
+        "fallthrough": "001ff1c0"
+      },
+      {
+        "site": "001ff1a0",
+        "kind": "call",
+        "target": "001fc4a8",
+        "fallthrough": "001ff1a8"
+      },
+      {
+        "site": "001ff1c4",
+        "kind": "call",
+        "target": "001fef28",
+        "fallthrough": "001ff1cc"
+      },
+      {
+        "site": "001ff1a8",
+        "kind": "unconditional_branch",
+        "target": "001ff248"
+      },
+      {
+        "site": "001ff1d8",
+        "kind": "conditional",
+        "target": "001ff1f4",
+        "fallthrough": "001ff1e0"
+      },
+      {
+        "site": "001ff1e4",
+        "kind": "call",
+        "target": "001fc4e0",
+        "fallthrough": "001ff1ec"
+      },
+      {
+        "site": "001ff1ec",
+        "kind": "unconditional_branch",
+        "target": "001ff248"
+      },
+      {
+        "site": "001ff264",
+        "kind": "return"
+      }
+    ],
+    "branch_likely_scope": "For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution."
+  },
+  "call_graph_limit": "known callees [001fc4a8, 001fc4e0, 00200040, 00200148, 00200388]; unresolved callees left uncreated [001fef28, 00200408]",
+  "incoming_references": [
+    {
+      "to": "001ff140",
+      "from": "001ff2a0",
+      "type": "UNCONDITIONAL_CALL",
+      "source": "DEFAULT"
+    }
+  ],
+  "body_bytes": 300,
+  "body_interval_bytes": 300,
+  "excluded_next_word": "001ff26c",
+  "excluded_next_word_hex": "00000000",
+  "function_count_after": 3848,
+  "old_function_snapshot_preserved": true,
+  "initialized_memory_preserved": true,
+  "defined_data_preserved": true,
+  "scope": "Static provisional candidate only. No original function identity, semantics, runtime reachability, or whole-game completeness is established."
+}
