@@ -1,0 +1,268 @@
+{
+  "schema_version": 1,
+  "issue": "https://github.com/nicolas-found42/reverse-engineering/issues/2",
+  "baseline": "f20add331e6226bdf6308bbd52bcc70d107c44ff",
+  "checks": {
+    "static": {
+      "status": "pass",
+      "original_result_identity": {
+        "bytes": 107023,
+        "sha256": "2fbc54947bed08c076e8c6d98c18f316343eac533256283e218b75d978945104"
+      },
+      "original_report_identity": {
+        "bytes": 98071,
+        "sha256": "af6769c34ef437f7829e845b444a685298cf81e14d9e7cb9dd609605b7a3edeb"
+      },
+      "public_result": "static-result.json",
+      "public_report": "static-report.md"
+    },
+    "runtime": {
+      "status": "pass",
+      "original_result_identity": {
+        "bytes": 6991,
+        "sha256": "4c6159485b0e2c1d7ec0aa5187ef6b7476d2f1fb9d0e54e72dd84d6ea517bf9d"
+      },
+      "original_report_identity": {
+        "bytes": 5360,
+        "sha256": "88bdaa521e7ee24f57f972f8ff4af4a4cf513f883f5ea04529e043cb0ad7850b"
+      },
+      "public_result": "runtime-result.json",
+      "public_report": "runtime-report.md"
+    },
+    "formats": {
+      "status": "pass",
+      "original_result_identity": {
+        "bytes": 4078777,
+        "sha256": "d200fc9b3948147ffdfcb516acaf461f2d4a93af9045229d4f1181d7cb96dcdb"
+      },
+      "original_report_identity": {
+        "bytes": 3777874,
+        "sha256": "09c7649358314ded2ffffad5eabf40a703cd8fabf7e0ed88001082a84a929d42"
+      },
+      "public_result": "formats-result.json",
+      "public_report": "formats-report.md"
+    }
+  },
+  "public_artifacts": {
+    "static-result.json": {
+      "bytes": 107023,
+      "sha256": "2fbc54947bed08c076e8c6d98c18f316343eac533256283e218b75d978945104"
+    },
+    "jgrep-errors.log": {
+      "bytes": 65,
+      "sha256": "82a67dac92b7fdba8452d9e1171fed67a5f14c422e7fb453a783ea1ae131bd7e"
+    },
+    "jgrep-evidence.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tableJudgment.json": {
+      "bytes": 41810,
+      "sha256": "acb10d10c8bf9aeadd762bc74db5c62ffc549b8fdfda873956ba9d741e706a08"
+    },
+    "jgrep-errors.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "screen.json": {
+      "bytes": 571,
+      "sha256": "c977f4f509b5915452f9d97ae6368dedb0b3c4845196f197f3857d2f7e39d039"
+    },
+    "bpScreen.json": {
+      "bytes": 7390,
+      "sha256": "19f1b6ddb217135746ef5d053fcc248e5797a3dd8efab7be4a094a1d23283224"
+    },
+    "capture-result.json": {
+      "bytes": 2372,
+      "sha256": "8ae71b1de5043e2125e3b60014aff335c800ec072064ab41b36106d855fb40f2"
+    },
+    "issue-2.md": {
+      "bytes": 37910,
+      "sha256": "e37a4fc45ead7139d073d345717eb4aa89bf49a556c84c1ab4c61476135c4a4d"
+    },
+    "functions.tsv": {
+      "bytes": 87966,
+      "sha256": "c53419152bc0fbb661b03c7114e97255f1136330e7963379291ab77da2ce69a2"
+    },
+    "completion-reviewed-judgment-dispositions.json": {
+      "bytes": 2351,
+      "sha256": "414cf8ea99944039cc173e507cb0a099dd141a369772d2c219e4981f11e1bf41"
+    },
+    "runtime-captures.json": {
+      "bytes": 19599,
+      "sha256": "44a69c5b667f613390a355a4afa4933a7dcd6534aa36e3953638fc52629ddb8c"
+    },
+    "standards-review.md": {
+      "bytes": 2718,
+      "sha256": "ed164f208adf08ae415ad7aabaa7d97725830f3d39bbcbf171ecc7dcb61eae34"
+    },
+    "completion-gate.json": {
+      "bytes": 106829,
+      "sha256": "c3f7be696d5a6426b1f42b735469d64ba4b52d696b9d5a12246277cea3738f61"
+    },
+    "runtime-report.md": {
+      "bytes": 1404,
+      "sha256": "27810866e509e890786770824a5e52329d57aa78a780e805b4fdeb11f37fd4dc"
+    },
+    "typecheck.log": {
+      "bytes": 37,
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    "table-correlation.json": {
+      "bytes": 1134,
+      "sha256": "6377fe18f725ec8a23b74d4c2e1e59fa0b5b72ca679fc55ce9443870a9ab3490"
+    },
+    "reasoner-review.json": {
+      "bytes": 7498,
+      "sha256": "47d49cae4c4a0510b9f43ca93d660f670ef623e4180930a660889ba0513fd40c"
+    },
+    "runtime-result.json": {
+      "bytes": 6911,
+      "sha256": "2e5d00422ef02e27947cc481ac763f0029d43668f68554a80b26225714efecfd"
+    },
+    "initial-loader-map.json": {
+      "bytes": 37318,
+      "sha256": "5a85e970586d5e87f8c749cf5c0f2b9ff58053e6324285f8f678a0f9c71d1ca6"
+    },
+    "README.md": {
+      "bytes": 13338,
+      "sha256": "61bdecc94e1e2acd30484d516f617f1d76306ff5be3224e930ff25c366d7d403"
+    },
+    "formats-report.md": {
+      "bytes": 55409,
+      "sha256": "8b3c46ddb5613a9b7ebfc3db7b0021d9c759298e60c56c4774b163288c68fda8"
+    },
+    "debuggerScreen.json": {
+      "bytes": 918,
+      "sha256": "b3e519d9fdf19c4b052fe9efd3690194b117451af4d259b8284768796e850c5e"
+    },
+    "validation.json": {
+      "bytes": 3952,
+      "sha256": "a5ba9eaeca3393ae1e6655f6e6d889703723cfc9c4bab799f994ebea9b9d023f"
+    },
+    "static-report.md": {
+      "bytes": 1436,
+      "sha256": "38953e1a9c99f5104422358172c70b77fc301dd54d7e108bd90455ac58db5d1a"
+    },
+    "spec-review.md": {
+      "bytes": 2325,
+      "sha256": "6cc5475be37f3c2a143d97f4bc68bc75767c67267826351b294e02a8eb35c01c"
+    },
+    "tests.log": {
+      "bytes": 114,
+      "sha256": "2f6952fe205c29a888f45f12ac161278856fe4388ef3ad64b77aad1344f0dabc"
+    },
+    "formats-result.json": {
+      "bytes": 4078718,
+      "sha256": "823064da0b69c0dd81c9c81ec86b487d952829e1cbc5bec98ac63fc0b2d0f4cd"
+    },
+    "registerScreen.json": {
+      "bytes": 5601,
+      "sha256": "7fc075daedd1b8e4e1c78430d7104b0b3b3b2b918fbac8c0d2f50693e4fb4b6d"
+    },
+    "jgrep-evidence.log": {
+      "bytes": 65,
+      "sha256": "ceb49e7e97e10c892d4e34a5829c61c54c67e774d8ad9a10664c394e16ddca3c"
+    },
+    "completion-reviewed-index.json": {
+      "bytes": 8482,
+      "sha256": "1332a551be4fa6b7abadf532b6768971ed2bc7113ffcc649726948a6c8c791b4"
+    },
+    "pineScreen.json": {
+      "bytes": 23528,
+      "sha256": "75e11b8174924a0b091e4857b13c24893f45d651a6e12648636ad38031d6f12a"
+    },
+    "gate-operational-error.json": {
+      "bytes": 217213,
+      "sha256": "0d715f04fe4d5faf3e770cf6afc70478750d8e116ed86506ffe910e7f973ff22"
+    },
+    "loaderJudgment.json": {
+      "bytes": 27327,
+      "sha256": "7a822b24a2d9e8bb673bd7d3b1e97ce84dd0e4ff2dd6e0633f9c61f8be5b614c"
+    },
+    "completion-reasoner-review.json": {
+      "bytes": 16688,
+      "sha256": "78414da4cca48e402612b22861d958f99f521982a17d1c433c8f60306c25983a"
+    },
+    "jgrep-review.json": {
+      "bytes": 656,
+      "sha256": "f1bc825e844299bed87c3d699be7e89e8b25f52bc2b4b0eabf5d0900c4ba2d6e"
+    },
+    "restoration-check.json": {
+      "bytes": 325,
+      "sha256": "45c728cdc7eb35c6a2f4875f5dc2de23557f6e2acc0386541f547ce6219fec9a"
+    },
+    "judgment-dispositions.json": {
+      "bytes": 3016,
+      "sha256": "ce49009b6d0dc6de521b4e8b68469c39a1716e37b8bf48d718ef67ff5aa0eac6"
+    },
+    "loader-map.json": {
+      "bytes": 98819,
+      "sha256": "f683444fb54efb7bd9b82830821b03e14b098985162bbdd07201b26368b633ce"
+    },
+    "loader-instructions.json": {
+      "bytes": 513500,
+      "sha256": "b2dc31401eab52d6cf8f86f6d7eaf892ef79562972e582118adde31a06d57fb8"
+    }
+  },
+  "runtime_mode": "offline replay of real unattended debugger captures; not headless",
+  "copy_policy": "Public result copies redact emulator/firmware paths. Reports are derived readable summaries. Original result/report identities and public copy identities are distinct; binary artifacts stay local.",
+  "capture": {
+    "status": "pass",
+    "fresh_capture": true,
+    "original_result_identity": {
+      "bytes": 2571,
+      "sha256": "a688c35fd607445b7924d15cd9e0d428c67d8f10e0d01b053b549e47d9f48003"
+    },
+    "manifest_identity": {
+      "bytes": 19599,
+      "sha256": "44a69c5b667f613390a355a4afa4933a7dcd6534aa36e3953638fc52629ddb8c"
+    },
+    "public_result": "capture-result.json",
+    "public_manifest": "runtime-captures.json",
+    "window_behavior": "debugger windows opened; unattended capture is not headless"
+  },
+  "integration": {
+    "status": "pass",
+    "basis": "All three real verifiers pass; the separate successful fresh capture result binds exactly the replayed manifest and same corpus."
+  },
+  "provenance": {
+    "profile": "fr2-pal-sles-517.05",
+    "sources": {
+      "ford-racing-2.bin": {
+        "bytes": 678667248,
+        "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+      },
+      "ford-racing-2.cue": {
+        "bytes": 79,
+        "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+      },
+      "extracted/SLES_517.05": {
+        "bytes": 1662804,
+        "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+      },
+      "extracted/FILES.HDR": {
+        "bytes": 29428,
+        "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+      },
+      "extracted/FILES.DAT": {
+        "bytes": 334641152,
+        "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+      }
+    },
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+  },
+  "completion_review": {
+    "jev_gate": "escalate",
+    "jev_gate_identity": {
+      "bytes": 106829,
+      "sha256": "c3f7be696d5a6426b1f42b735469d64ba4b52d696b9d5a12246277cea3738f61"
+    },
+    "independent_reasoner": "accepted within stated bounds",
+    "reasoner_review_identity": {
+      "bytes": 16688,
+      "sha256": "78414da4cca48e402612b22861d958f99f521982a17d1c433c8f60306c25983a"
+    },
+    "milestone_status": "all required observations/checks and completion claims established; no automatic gate approval"
+  }
+}

@@ -6,46 +6,28 @@ Layout (validated on gear0):
   then a 1024-byte table region (idx<<24 | 0xE3E3E3 entries) — role TBD
   then the image: rows of w bytes + (stride-w) 0xDD pad bytes, h rows.
 """
-import struct
 import sys
 from pathlib import Path
+
+from format_contracts import sprite
 
 ROOT = Path(__file__).resolve().parent.parent
 FILES = ROOT / "games/ford-racing-2/extracted/files"
 OUT = ROOT / "notes/ptg-renders"
 
 
-def render(path: Path) -> tuple[int, int]:
+def render(path: Path):
     data = path.read_bytes()
-    count, a, b, stride, cell, w, h, one = struct.unpack_from("<8I", data, 0)
-    # table: 256 x u32 entries of form (idx<<24 | 0xE3E3E3); find its start and end.
-    table_start = None
-    for i in range(0x20, min(len(data) - 4, 0x400)):
-        if data[i : i + 3] == b"\xe3\xe3\xe3":
-            table_start = i
-            break
-    if table_start is None:
-        raise ValueError("no e3 table found")
-    img_start = table_start + 1024
-    if img_start + h * stride > len(data):
-        raise ValueError(f"image region exceeds file: need {img_start + h*stride}, have {len(data)}, table at 0x{table_start:x}")
-    rows = []
-    for r in range(h):
-        o = img_start + r * stride
-        rows.append(data[o : o + w])
-    # check padding bytes are DD
-    pad_ok = True
-    for r in range(h):
-        o = img_start + r * stride + w
-        pad = data[o : o + (stride - w)]
-        if len(pad) and not all(x == 0xDD for x in pad):
-            pad_ok = False
-            break
-    return (w, h), rows, pad_ok, (count, stride, cell, hex(table_start), hex(img_start))
+    parsed = sprite(data)
+    w, h, stride = parsed['width'], parsed['height'], parsed['stride']
+    start = parsed['payload_span'][0]
+    rows = [data[start + row * stride:start + row * stride + w] for row in range(h)]
+    return (w, h), rows, True, (parsed['header'][0], stride, parsed['header'][4],
+                               hex(parsed['table_span'][0]), hex(start))
 
 
 def write_png(rows, w, h, out: Path) -> None:
-    from PIL import Image
+    from PIL import Image  # pyright: ignore[reportMissingImports] — optional legacy PNG dependency
 
     img = Image.new("L", (w, h), 0)
     px = img.load()

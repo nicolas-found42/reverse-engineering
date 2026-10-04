@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T054623Z-76bebf006c9c494183888c5adee1a80f",
+  "check": "runtime",
+  "command": [
+    "tools/verify_runtime.py",
+    "--captures",
+    ".scratch/evidence/captures/capture-070130502b3f4c228bfdca3e2bbca221/captures.json",
+    "--pcsx2-executable",
+    "<local-pcsx2-executable>",
+    "--firmware",
+    "<local-firmware>"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    ".scratch/evidence/captures/capture-070130502b3f4c228bfdca3e2bbca221/captures.json": {
+      "bytes": 19599,
+      "sha256": "44a69c5b667f613390a355a4afa4933a7dcd6534aa36e3953638fc52629ddb8c"
+    },
+    "games/ford-racing-2/extracted/FILES.HDR": {
+      "bytes": 29428,
+      "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+    },
+    "games/ford-racing-2/extracted/FILES.DAT": {
+      "bytes": 334641152,
+      "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "comparisons": [
+      {
+        "event_id": "raw-1",
+        "branch": "raw",
+        "record_id": 311,
+        "path": "/FONTS/fontbase.dat;1",
+        "guest_address": 3767936,
+        "host_address": "not used: savestate eeMemory.bin indexes are guest offsets",
+        "bytes": 1032,
+        "sha256": "4d11203d78dda69ed9a7b615cfcda867f1cf979f36765470c20eaef34f1f5da7",
+        "memory_identity": {
+          "bytes": 33554432,
+          "sha256": "b389c3c1a6e9d040d45caabc47ab56e4af4ee4e815e95550dc2ec8b1082a560d"
+        },
+        "capture_procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+        "captured_at": "2026-10-04T05:31:40.270606+00:00"
+      },
+      {
+        "event_id": "zlib-1",
+        "branch": "zlib",
+        "record_id": 830,
+        "path": "/GRAPHICS/LOADING/LOGO_EMP.ptg;1",
+        "guest_address": 7638656,
+        "host_address": "not used: savestate eeMemory.bin indexes are guest offsets",
+        "bytes": 332320,
+        "sha256": "afaa4c5ab9c8dc81529f5300de568b8b8d8dc499fd9e9fa9c11e7fa6ed9f9c18",
+        "memory_identity": {
+          "bytes": 33554432,
+          "sha256": "e9edeaf14d5e1b3195e0012fdc1d09774e60028f9ffc69cfbb651724d039ccdd"
+        },
+        "capture_procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+        "captured_at": "2026-10-04T05:31:52.803684+00:00"
+      },
+      {
+        "event_id": "raw-2",
+        "branch": "raw",
+        "record_id": 311,
+        "path": "/FONTS/fontbase.dat;1",
+        "guest_address": 3767936,
+        "host_address": "not used: savestate eeMemory.bin indexes are guest offsets",
+        "bytes": 1032,
+        "sha256": "4d11203d78dda69ed9a7b615cfcda867f1cf979f36765470c20eaef34f1f5da7",
+        "memory_identity": {
+          "bytes": 33554432,
+          "sha256": "154a930efc1b94bb55be84718c4879552da9cde251ae68de0c2afb0d91c23856"
+        },
+        "capture_procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+        "captured_at": "2026-10-04T05:32:04.343378+00:00"
+      },
+      {
+        "event_id": "zlib-2",
+        "branch": "zlib",
+        "record_id": 830,
+        "path": "/GRAPHICS/LOADING/LOGO_EMP.ptg;1",
+        "guest_address": 7638656,
+        "host_address": "not used: savestate eeMemory.bin indexes are guest offsets",
+        "bytes": 332320,
+        "sha256": "afaa4c5ab9c8dc81529f5300de568b8b8d8dc499fd9e9fa9c11e7fa6ed9f9c18",
+        "memory_identity": {
+          "bytes": 33554432,
+          "sha256": "e35798ecc7fa45cf2f791028eb2275334ece4bc8ea7a33a4b538c494b4ea9e08"
+        },
+        "capture_procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+        "captured_at": "2026-10-04T05:32:21.850725+00:00"
+      }
+    ],
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "synthetic": false,
+    "verification_mode": "offline_replay",
+    "fresh_capture": false,
+    "milestone_eligible": false,
+    "evidence_eligible": true,
+    "limitations": "Validates recorded evidence. Does not launch or freshly observe the game."
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 5360,
+      "sha256": "88bdaa521e7ee24f57f972f8ff4af4a4cf513f883f5ea04529e043cb0ad7850b"
+    }
+  }
+}

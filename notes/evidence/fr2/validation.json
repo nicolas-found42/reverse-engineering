@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "suite": {
+    "command": [
+      ".scratch/modern-re-research/sdk-venv/bin/python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tools",
+      "-p",
+      "test_*.py"
+    ],
+    "python": "3.12.14",
+    "exit_status": 0,
+    "tests": 15,
+    "committed_evidence_cli_tests": 10,
+    "preexisting_untracked_research_tests": 5,
+    "log": "tests.log",
+    "log_identity": {
+      "bytes": 114,
+      "sha256": "2f6952fe205c29a888f45f12ac161278856fe4388ef3ad64b77aad1344f0dabc"
+    }
+  },
+  "typecheck": {
+    "tool": "pyright",
+    "changed_python_files": [
+      "tools/capture_runtime.py",
+      "tools/corpus_contract.py",
+      "tools/evidence_common.py",
+      "tools/extract_tree.py",
+      "tools/format_contracts.py",
+      "tools/judgment_contract.py",
+      "tools/msh_verify.py",
+      "tools/pcsx2_pine.py",
+      "tools/ps2_pairs2.py",
+      "tools/ptg_render.py",
+      "tools/test_evidence_pipeline.py",
+      "tools/verify_formats.py",
+      "tools/verify_runtime.py",
+      "tools/verify_static.py"
+    ],
+    "exit_status": 0,
+    "errors": 0,
+    "warnings": 0,
+    "log": "typecheck.log",
+    "log_identity": {
+      "bytes": 37,
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    "limitation": "The optional legacy Pillow import has a narrow missing-import suppression; evidence verifiers have no Pillow dependency."
+  },
+  "source_files": {
+    "tools/capture_runtime.py": {
+      "bytes": 18166,
+      "sha256": "a98b618fb551ae1cb1e93af5b2d699a5bebeff2a22c96d3594980d4a8fd44481"
+    },
+    "tools/corpus_contract.py": {
+      "bytes": 6523,
+      "sha256": "c4aa7bfe0e9b25f6fb6a5594c51d29ef9b63ab14779376e78ea85a90a77193a9"
+    },
+    "tools/evidence_common.py": {
+      "bytes": 2971,
+      "sha256": "52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20"
+    },
+    "tools/extract_tree.py": {
+      "bytes": 3885,
+      "sha256": "5b56d35a276756bace617b7f88e06b71bdeffa33e3c95927a9efa2a85f57b29e"
+    },
+    "tools/format_contracts.py": {
+      "bytes": 11578,
+      "sha256": "eb95b24431cd5a2d925fb3cb420c8b1f44bd77e63aef59c0fa90cac886466fcb"
+    },
+    "tools/gear_pixels.json": {
+      "bytes": 1405,
+      "sha256": "961737d8a0ea656cf13d16f4dd55665e08cdce06f86e043fc58300c22afaad70"
+    },
+    "tools/ghidra/ExportEvidence.java": {
+      "bytes": 5324,
+      "sha256": "69409f8d03a4f82466538e3871a0f9a6cbed5be2af384404cb301a6c1b1b0484"
+    },
+    "tools/judgment_contract.py": {
+      "bytes": 2117,
+      "sha256": "2e9fc358205bf7570829cacb96b221d11e3e88147c7e1ce32b8f6034a0a9ff06"
+    },
+    "tools/msh_verify.py": {
+      "bytes": 2197,
+      "sha256": "eebe6a704f13356bee5130c660a41e20f97ce3ab761d992b7c60365307b072a2"
+    },
+    "tools/pcsx2_pine.py": {
+      "bytes": 5229,
+      "sha256": "ad53408d12fbd4d6474059c832f41f8838d3823579e41b13ca73c6782a1387b9"
+    },
+    "tools/ps2_pairs2.py": {
+      "bytes": 1447,
+      "sha256": "fa4a01acc678c80e3a58520d93abbc2fc9d32cc4b5cde254a7acf107892ff3f3"
+    },
+    "tools/ptg_render.py": {
+      "bytes": 1928,
+      "sha256": "3efc07026c51d7ed17351bd7ef84e9f9c56ad898653501821dc22dc0c8e06f1b"
+    },
+    "tools/test_evidence_pipeline.py": {
+      "bytes": 21469,
+      "sha256": "ea237649157854c55d7dbfd4a36b885adc1fe9b9b24d50df150b72ed12f6acb7"
+    },
+    "tools/verify_formats.py": {
+      "bytes": 1669,
+      "sha256": "f7c94e9e310401db239527a477bdc29b36b98984e6c7da0f4dc45ed2c3463871"
+    },
+    "tools/verify_runtime.py": {
+      "bytes": 15288,
+      "sha256": "9f109209974997af8f0a8cfce0de52f04cf9a71fbed8e0c528909eb3c4d124de"
+    },
+    "tools/verify_static.py": {
+      "bytes": 7819,
+      "sha256": "d8b1a7142f9f70b848f917b92cbfae940fc2404c2d67cc9a1e6d23584720f394"
+    }
+  },
+  "test_scope": "Synthetic public CLI fixtures cover status/report/exit behavior and malformed/missing evidence. Real corpus/captures are separately recorded integration results."
+}

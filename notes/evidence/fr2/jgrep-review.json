@@ -1,0 +1,18 @@
+{
+  "version": "0.6.0",
+  "scope": "Staged source-code diff in an alternate index excluding generated public evidence; original reviewed diff retained locally. Scan occurred before the final partial-result preservation fix. No jgrep judgment is used as automatic acceptance.",
+  "queries": [
+    {
+      "description": "catches an error and silently ignores it",
+      "exit_status": 1,
+      "result": "jgrep-errors.json",
+      "usage": "jgrep-errors.log"
+    },
+    {
+      "description": "returns success despite missing required evidence",
+      "exit_status": 1,
+      "result": "jgrep-evidence.json",
+      "usage": "jgrep-evidence.log"
+    }
+  ]
+}

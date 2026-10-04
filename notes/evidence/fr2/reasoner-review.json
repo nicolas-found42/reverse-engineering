@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_static_reasoner_review",
+  "issue": "https://github.com/nicolas-found42/reverse-engineering/issues/2",
+  "fixed_point": "f20add331e6226bdf6308bbd52bcc70d107c44ff",
+  "reviewer": {
+    "agent": "/root/spec_review",
+    "model": "GPT-6"
+  },
+  "inputs": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+    "loader_map_sha256": "5a85e970586d5e87f8c749cf5c0f2b9ff58053e6324285f8f678a0f9c71d1ca6",
+    "clean_runtime_captures_sha256": "1b5efb0b0ae8f62117f39ae4f054435a14bf8b9aef1e76cfbc353daf7f175b85",
+    "clean_runtime_events_sha256": "87263f059e46991d10f6d338e76bb043cb9e99a7ebe6e4d239cdcd998a906003",
+    "jeV_audits": [
+      {
+        "path": ".scratch/evidence/loaderJudgment.json",
+        "sha256": "7a822b24a2d9e8bb673bd7d3b1e97ce84dd0e4ff2dd6e0633f9c61f8be5b614c",
+        "model": "typesafe/jev-1.13",
+        "provider": "openrouter",
+        "usage": {
+          "input_tokens": 18887,
+          "output_tokens": 878
+        }
+      },
+      {
+        "path": ".scratch/evidence/tableJudgment.json",
+        "sha256": "acb10d10c8bf9aeadd762bc74db5c62ffc549b8fdfda873956ba9d741e706a08",
+        "model": "typesafe/jev-1.13",
+        "provider": "openrouter",
+        "usage": {
+          "input_tokens": 18385,
+          "output_tokens": 219
+        }
+      }
+    ]
+  },
+  "limitations": [
+    "The Ghidra export records instructions and direct references but the native decompiler was unavailable; conclusions derive from full bounded instruction bodies, call edges and measured runtime evidence.",
+    "Live PCSX2 evidence is limited to this PAL executable/corpus and the captured raw/zlib assets. The runtime branch PCs expose asynchronous alternatives to the mapped synchronous loader routines."
+  ],
+  "stages": [
+    {
+      "stage": "initialization",
+      "claim": "Initializes archive tables: references files.dat/files.hdr, reads segment count and table, then a separate record count, and builds 28-byte runtime entries.",
+      "verdict": "accepted",
+      "primary_function": "001061f8",
+      "rationale": "The full 576-byte routine opens files.dat (0x2502a8, calls 0x00107798/0x001f7580 at 0x00106228\u20130x0010623c), then files.hdr (0x2502f0 at 0x00106270\u20130x00106290). It reads the HDR through 0x00107778, initializes 20-byte runtime segment rows at 0x00293c00 with paired count/first values at offsets +0x10/+0x0c (loop 0x00106328\u20130x00106350), reads a separate record count at 0x0010635c, and constructs records on a 0x1c stride at 0x00106398\u20130x001063e4. These accesses support the complete claim; the name tails/source-level types remain unknown."
+    },
+    {
+      "stage": "lookup",
+      "claim": "Traverses path components using segment count/first values, computes record stride 28 as ((index<<3)-index)<<2, distinguishes file sentinel -1 from directory segment index, and returns chunk/length fields.",
+      "verdict": "accepted",
+      "primary_function": "00107268",
+      "rationale": "The full 484-byte routine splits path components on backslash (0x001072a8\u20130x001072f8), reads the segment row\u2019s first/count fields (0x00293c0c/0x00293c10 at 0x00107378 and 0x001073b8), multiplies each record index by 28 via (i*8-i)*4 (0x001073c4\u20130x001073cc), and compares record names through 0x0020db20 at 0x001073d0. It tests record +0x10 against -1 at 0x001073ec; file results return +4 and +8 at 0x001072d8/0x001072e8. For non-file rows, that same +0x10 value is used as the next segment index. This directly answers the second Jev audit\u2019s relation-level doubt: its same_subject=0.37 did not establish a contrary relation, and the address-level operations support the claim."
+    },
+    {
+      "stage": "chunk_read",
+      "claim": "Passes chunk-addressed start, chunk count, and destination to a CD read function, and waits for read/sync/error checks. Callers round byte sizes with shifts by 11.",
+      "verdict": "accepted",
+      "primary_function": "00107fd0",
+      "rationale": "The full 224-byte routine validates arguments, calls the CD read target 0x001f7fc8 with the provided destination at 0x0010805c, then checks sync 0x001f77a8 and error 0x001f8240 at 0x00108070\u20130x00108088. Callers 0x001061f8 and 0x001067f8 round sizes with +0x7ff followed by >>11 (0x001062ac\u20130x001062bc; 0x00106904\u20130x00106920) and pass chunk counts to this routine."
+    },
+    {
+      "stage": "raw_transfer",
+      "claim": "Raw loader rounds size to sectors, allocates a buffer, reads archive chunks into it, stores original logical length in an optional output structure, and returns the buffer.",
+      "verdict": "accepted",
+      "primary_function": "001067f8",
+      "rationale": "The full 488-byte function fetches the record, allocates/chooses a destination using its size, calls 0x001ee928 to read into it (0x001068a8\u20130x001068b0), and stores the buffer and logical length in the optional output structure (0x001068b8\u20130x001068d0). The uncompressed path rounds its byte length to sectors and invokes 0x00107fd0 (0x00106904\u20130x00106984). The real dispatcher\u2019s alternate asynchronous raw entry 0x001069f0 is the observed branch PC in all clean captures; add this as a distinct alternative to the map rather than relabeling 0x001067f8."
+    },
+    {
+      "stage": "decompression",
+      "claim": "Compressed loader reads the first word as output length, allocates output, skips four input bytes, initializes a 44-byte stream, calls the inflate-like routine, then finalizes and returns output.",
+      "verdict": "accepted",
+      "primary_function": "00106c48",
+      "rationale": "The full 672-byte function checks mode and path, gets the archive record, allocates output, reads its declared size, initializes a 0x2c-byte stream, and invokes the inflate routine 0x00101ea8 before finalization/return (notably 0x00106c48 function body around 0x00106dfc\u20130x00106e9c; related stream setup is at 0x00106e04\u20130x00106e18). The real dispatcher\u2019s alternate asynchronous zlib entry 0x00106ef8 is the observed branch PC in all clean captures; keep both identities visible. Runtime record 830\u2019s extracted 332,320-byte result corroborates the output-size behavior."
+    },
+    {
+      "stage": "consumption",
+      "claim": "Consumer calls loader with compressed flag, stores returned buffer, passes it to subsequent functions, and then reads structure fields from the processed buffer. Full asset semantics remain unresolved.",
+      "verdict": "accepted",
+      "primary_function": "0011ed90",
+      "rationale": "The full 6,196-byte consumer calls the loader at 0x0011ee00 after setting a2=1 at 0x0011edf0, then continues parsing and building structures from the returned buffer. The clean capture also observes the separate caller 0x0022abf8 calling 0x00107ce0 with a2=1 at 0x0022ac60 and then passing the result through 0x0022acc8. The map should preserve that real caller/return site as a separate correlation; the claim correctly leaves full asset semantics unresolved."
+    }
+  ],
+  "corpus_correlation_recommendation": "The clean archive table correlation was regenerated from raw-1-entry.p2s, an unattended debugger capture whose process opened windows; all 48 segment pairs and 1,037 parsed records were independently compared against HDR-derived rows, and the result is bound into the static map."
+}

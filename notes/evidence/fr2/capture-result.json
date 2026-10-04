@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T053123Z-545f85ae3a36467f9459cca08467f065",
+  "check": "capture",
+  "command": [
+    "tools/capture_runtime.py",
+    "--firmware",
+    "<local-firmware>"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "<local-pcsx2-executable>": {
+      "bytes": 17250752,
+      "sha256": "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d"
+    },
+    "/Users/Nicolas/Library/Application Support/PCSX2/inis/PCSX2.ini": {
+      "bytes": 13700,
+      "sha256": "719cdd694f53b345578134ffa1fdd5a2c879d4b9ae1c30a721e1b97c322acf8a"
+    },
+    "<local-firmware>": {
+      "bytes": 4194304,
+      "sha256": "f4c948e61a291d4b3f92a141e550cf8357204287a31ff784caccbedaef910c9d"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "manifest": ".scratch/evidence/captures/capture-070130502b3f4c228bfdca3e2bbca221/captures.json",
+    "manifest_identity": {
+      "bytes": 19599,
+      "sha256": "44a69c5b667f613390a355a4afa4933a7dcd6534aa36e3953638fc52629ddb8c"
+    },
+    "events": 4,
+    "fresh_capture": true,
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "next_check": "verify_runtime.py --captures <manifest> --pcsx2-executable <emulator> --firmware <firmware>"
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 1392,
+      "sha256": "283b8e11e990383c418350df099c61cbd26da01c9f4387c18d09a9fe5666a53c"
+    }
+  }
+}

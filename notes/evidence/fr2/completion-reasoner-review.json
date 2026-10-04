@@ -1,0 +1,150 @@
+{
+  "schema_version": 1,
+  "review_kind": "independent_completion_reasoner_review",
+  "reviewer": {
+    "agent": "/root/spec_review",
+    "model": "GPT-6.1 (independent reasoner)",
+    "method": "Manual source and artifact inspection; no emulator launched and no test rerun."
+  },
+  "gate": {
+    "path": ".scratch/evidence/completion-gate.json",
+    "sha256": "c3f7be696d5a6426b1f42b735469d64ba4b52d696b9d5a12246277cea3738f61",
+    "bytes": 106829,
+    "model": "typesafe/jev-1.13",
+    "provider": "openrouter",
+    "action": "escalate",
+    "result": {
+      "claims_verified": 6,
+      "claims_contradicted": 0,
+      "claims_unsupported": 0,
+      "claims_needing_review": 3,
+      "composite": 0.6906666666666667,
+      "composite_floor": 0.7,
+      "safe_to_apply": 0.19,
+      "input_tokens": 30042,
+      "output_tokens": 789
+    },
+    "interpretation": "This review is separate human-style reasoning evidence. It does not alter, override, or represent the Jev gate as auto-approved or passed. The gate remains escalated."
+  },
+  "prior_operational_error": {
+    "path": ".scratch/evidence/gate-operational-error.json",
+    "sha256": "0d715f04fe4d5faf3e770cf6afc70478750d8e116ed86506ffe910e7f973ff22",
+    "disposition": "Retained separately as an oversized-request API 400; the valid gate artifact above is the only semantic gate result reviewed here."
+  },
+  "review_scope": {
+    "specification": "Issue #2; baseline f20add331e6226bdf6308bbd52bcc70d107c44ff.",
+    "gate_request_sha256": "See the full gate artifact identity above; its args include the complete request, six source diffs, sixteen evidence items, test transcript, and six claims.",
+    "source_inputs": [
+      {"path":"tools/capture_runtime.py","sha256":"a98b618fb551ae1cb1e93af5b2d699a5bebeff2a22c96d3594980d4a8fd44481"},
+      {"path":"tools/evidence_common.py","sha256":"52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20"},
+      {"path":"tools/format_contracts.py","sha256":"eb95b24431cd5a2d925fb3cb420c8b1f44bd77e63aef59c0fa90cac886466fcb"},
+      {"path":"tools/judgment_contract.py","sha256":"2e9fc358205bf7570829cacb96b221d11e3e88147c7e1ce32b8f6034a0a9ff06"},
+      {"path":"tools/verify_runtime.py","sha256":"9f109209974997af8f0a8cfce0de52f04cf9a71fbed8e0c528909eb3c4d124de"},
+      {"path":"tools/verify_static.py","sha256":"d8b1a7142f9f70b848f917b92cbfae940fc2404c2d67cc9a1e6d23584720f394"}
+    ],
+    "evidence_inputs": [
+      {"path":"notes/evidence/fr2/static-result.json","sha256":"2fbc54947bed08c076e8c6d98c18f316343eac533256283e218b75d978945104"},
+      {"path":"notes/evidence/fr2/runtime-result.json","sha256":"2e5d00422ef02e27947cc481ac763f0029d43668f68554a80b26225714efecfd"},
+      {"path":"notes/evidence/fr2/formats-result.json","sha256":"823064da0b69c0dd81c9c81ec86b487d952829e1cbc5bec98ac63fc0b2d0f4cd"},
+      {"path":"notes/evidence/fr2/tests.log","sha256":"2f6952fe205c29a888f45f12ac161278856fe4388ef3ad64b77aad1344f0dabc"},
+      {"path":"notes/evidence/fr2/typecheck.log","sha256":"6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"},
+      {"path":"notes/evidence/fr2/runtime-captures.json","sha256":"44a69c5b667f613390a355a4afa4933a7dcd6534aa36e3953638fc52629ddb8c"},
+      {"path":"notes/evidence/fr2/capture-result.json","sha256":"8ae71b1de5043e2125e3b60014aff335c800ec072064ab41b36106d855fb40f2"},
+      {"path":"notes/evidence/fr2/loader-map.json","sha256":"f683444fb54efb7bd9b82830821b03e14b098985162bbdd07201b26368b633ce"},
+      {"path":"notes/evidence/fr2/reasoner-review.json","sha256":"47d49cae4c4a0510b9f43ca93d660f670ef623e4180930a660889ba0513fd40c"},
+      {"path":"notes/evidence/fr2/table-correlation.json","sha256":"6377fe18f725ec8a23b74d4c2e1e59fa0b5b72ca679fc55ce9443870a9ab3490"},
+      {"path":"notes/evidence/fr2/judgment-dispositions.json","sha256":"414cf8ea99944039cc173e507cb0a099dd141a369772d2c219e4981f11e1bf41"},
+      {"path":"notes/evidence/fr2/restoration-check.json","sha256":"45c728cdc7eb35c6a2f4875f5dc2de23557f6e2acc0386541f547ce6219fec9a"},
+      {"path":"notes/evidence/fr2/index.json","sha256":"1332a551be4fa6b7abadf532b6768971ed2bc7113ffcc649726948a6c8c791b4"},
+      {"path":"notes/evidence/fr2/spec-review.md","sha256":"6cc5475be37f3c2a143d97f4bc68bc75767c67267826351b294e02a8eb35c01c"},
+      {"path":"notes/evidence/fr2/standards-review.md","sha256":"ed164f208adf08ae415ad7aabaa7d97725830f3d39bbcbf171ecc7dcb61eae34"}
+    ],
+    "identity_note": "SHA-256 values identify the exact local bytes inspected. The complete gate SHA binds the embedded full diffs and evidence input texts; the public artifact index and local original results provide additional provenance."
+  },
+  "claim_reviews": [
+    {
+      "claim": "The real read-only Ghidra export contains all 3446 saved functions, with instruction-backed loader evidence; static verification passes.",
+      "verdict": "accepted",
+      "rationale": "The static result binds the 40,434,144-byte export by SHA-256, records exactly 3,446 functions, and passes with no diagnostics. The export is read-only and the loader map binds its export and executable identities. The map includes complete relevant instruction bodies and caller evidence; a separate reasoner review adjudicates the loader claims, and the clean archive-table comparison supports the runtime structure correlation.",
+      "limits": "Acceptance is bounded to the saved executable/export, cited routines, and measured corpus. Function labels and source-level types remain tentative; no native decompilation or complete source recovery is claimed."
+    },
+    {
+      "claim": "Four real debugger capture events cover raw record 311 (1032 bytes) and zlib record 830 (332320 bytes), each repeated from a separate cold boot. The complete logical output matches independent archive extraction. These unattended captures opened debugger windows and are not headless.",
+      "verdict": "accepted",
+      "rationale": "The capture metadata records four events across two cold-boot repeats, branch addresses and returns, guest output addresses, byte lengths, and output digests. The offline runtime result compares every event's full output against the independently extracted record and reports pass. The source explicitly requires --allow-debugger-windows, and the public README correctly calls these unattended debugger captures rather than headless. The restoration check confirms exact preference restoration, no task breakpoint file or lock, and zero remaining PCSX2 processes.",
+      "limits": "The cleanup artifact verifies the successful final restoration check, not every interruption mode. No process-failure injection suite was run. Capture is build/OS-specific and an external forced kill can interrupt cleanup as documented."
+    },
+    {
+      "claim": "Offline runtime verification passes but reports fresh_capture false and milestone_eligible false; the evidence index separately binds the successful fresh-capture result to exactly the replayed manifest and same corpus.",
+      "verdict": "accepted",
+      "rationale": "The runtime result is an offline replay of immutable capture records and records false for freshness and milestone eligibility while allowing evidence eligibility. The public index separately records a fresh capture result with status pass and binds its manifest identity to the runtime verifier input and corpus identity. The verifier checks complete saved memory/output, state transitions, code bytes against ELF load segments, repeats, and source/tool/firmware identities.",
+      "limits": "Offline replay cannot itself establish that a capture is fresh. Freshness is supplied by the separate capture provenance and index binding; acceptance depends on those exact identity links remaining valid."
+    },
+    {
+      "claim": "Real format verification accounts for 48 segments, 1037 records, 990 files, 604 zlib, 386 raw, 27 bank pairs, 56 model trees, all eight gear regressions and 548 PTG files (16 supported and 532 explicitly unsupported). Unknown audio/geometry/table meanings remain unresolved.",
+      "verdict": "accepted",
+      "rationale": "The full formats result is bound to the PAL SLES-517.05 source/corpus hashes and reports pass. Its complete accounting and per-file outcomes support the stated counts; all 990 extracted outputs are compared by full hash with independent extraction and by path/length/classification with the historical manifest. Unsupported PTG files are individually retained with diagnostics. Contracts preserve unknown fields and explicitly avoid claims about audio codecs, model geometry, or the table's semantic role.",
+      "limits": "These strict bounded profiles describe this measured corpus; unrecognized payloads classified as raw are profile behavior, not universal codec identification. Passing corpus checks do not resolve the remaining format semantics."
+    },
+    {
+      "claim": "The full local suite passed 15 tests in the existing SDK environment, including ten evidence CLI tests; pyright checked every changed Python file with zero errors.",
+      "verdict": "accepted",
+      "rationale": "The retained transcript shows 15 dots, 15 tests completed successfully, and Pyright reporting zero errors, warnings, or informations. The README identifies the existing Python 3.12.14 SDK virtual environment and the exact check commands. The ten evidence-pipeline tests cover report/status/exit behavior, malformed format inputs, full outputs and repeats, stale identities, incomplete and contradictory judgment cases, and export binding. Five pre-existing research tests account for the difference between the ten targeted tests and total 15.",
+      "limits": "I inspected the recorded transcript and test sources/results but did not independently rerun the suite in this bounded review. Tests are finite fixtures, not fuzzing or exhaustive coverage; this justifies Jev's uncertainty as a caution but does not contradict the reported run."
+    },
+    {
+      "claim": "All required loader claims are accepted through retained Jev decisions and independent full-body reasoner review. Original non-auto actions and distributions are preserved; no non-auto judgment is represented as automatic approval. All three real verifiers pass.",
+      "verdict": "accepted",
+      "rationale": "The public loader map binds the complete export, Jev audit inputs/results, independent reasoner review, and clean archive-table correlation by identity. Required instructions and full async routine bodies plus actual callers are present. The separate judgment disposition ledger corrects the original inaccurate headless premise without changing the original audit bytes; original review/non-auto actions and distributions remain visible. Static, runtime, and format result artifacts each report pass.",
+      "limits": "Jev's original audits remain advisory and include review actions. This independent review does not convert those into Jev approvals or an automatic pass; unresolved names/types and the bounded nature of the instruction/corpus evidence remain as stated."
+    }
+  ],
+  "file_reviews": [
+    {
+      "path": "tools/capture_runtime.py",
+      "verdict": "accepted",
+      "rationale": "The bounded capture flow validates the target emulator/profile, requires explicit debugger-window consent, checks for an active instance, takes an ownership lock, snapshots preferences/breakpoints/save-slot state, captures conditional breakpoint states and full outputs, and restores state in finally after its owned emulator process exits. The four event artifacts support the actual two record paths, raw/zlib branches, repeat boots, and exact output equality.",
+      "limits": "The check-before-lock ordering leaves a narrow race with an unrelated PCSX2 launch, and exceptional restore failures or forced termination are not covered by injected-failure tests. The documentation describes the forced-kill limitation; the final restoration check verifies the successful path. These are test/operational limits, not an observed failure in the retained capture."
+    },
+    {
+      "path": "tools/evidence_common.py",
+      "verdict": "accepted",
+      "rationale": "It hashes complete inputs in streaming chunks, creates a unique immutable run directory, initializes result status as incomplete, promotes only to pass/fail after the action returns, and records diagnostics/artifact identities. Missing prerequisites stay incomplete; invalid input and I/O/shape failures become fail.",
+      "limits": "The output location is caller-controlled and ordinary filesystem permissions are assumed; this helper does not provide tamper-proof storage or cross-process transactional guarantees."
+    },
+    {
+      "path": "tools/format_contracts.py",
+      "verdict": "accepted",
+      "rationale": "The parser enforces explicit bounds before unpacking, exact record/segment partitioning, cycle/reachability and safe-path constraints, nonoverlapping data spans, bounded zlib output and EOF, exact bank descriptor coverage, model-name boundaries, and sprite table/row/padding checks. Unknown fields are retained. The corpus report applies these contracts across the complete measured corpus and compares independent extraction hashes.",
+      "limits": "Profiles are intentionally narrow. Raw is a fallback classification when a measured zlib signature is absent; model geometry and payload semantics are not inferred. The suite uses targeted negative cases rather than broad fuzz/property testing."
+    },
+    {
+      "path": "tools/judgment_contract.py",
+      "verdict": "accepted",
+      "rationale": "The gate contract validates exact probability fields/distributions, verdict/action consistency, source and audit identities, and required claim coverage. Invalid/API-error or contradictory outcomes cannot pass. Review outcomes require bound independent reasoner disposition, while non-auto provenance is retained; no threshold change or retry was used to force acceptance.",
+      "limits": "Threshold values are policy inputs, not empirically calibrated by this issue. The tested gate fixtures establish behavior for covered cases but do not prove all adversarial model responses are handled. The valid completion gate itself remains escalated."
+    },
+    {
+      "path": "tools/verify_runtime.py",
+      "verdict": "accepted",
+      "rationale": "Offline replay validates capture schema/identities, source/tool/firmware/corpus provenance, branch and return states, executable code bytes, full output ranges and hashes, and independent repeats. It explicitly refuses to label replay fresh or milestone-eligible, binds eligible evidence to a distinct fresh-capture result, and preserves partial comparisons when evidence is incomplete or fails. Negative CLI fixtures cover stale identity, wrong record, short/changed output, host address use, missing branch/repeat, and mutation.",
+      "limits": "Offline verification necessarily trusts capture provenance and cannot independently recreate the emulator event. Full firmware, executable, memory, and savestates remain local and require those files for verification; public metadata alone is insufficient."
+    },
+    {
+      "path": "tools/verify_static.py",
+      "verdict": "accepted",
+      "rationale": "The verifier binds the saved export and executable digests, validates the complete function inventory and instruction references, enforces six required loader stages and their cited evidence, and binds Jev/reasoner/table-correlation inputs. Missing/contradictory required dispositions fail or remain incomplete rather than being promoted to pass. The real result reports 3446 exported functions and pass.",
+      "limits": "It checks bounded instruction-level evidence and consistent claims, not decompiler correctness, complete recovered source, or general semantics outside the cited routines and measured corpus. Synthetic passes are explicitly ineligible."
+    }
+  ],
+  "overall_reasoner_disposition": {
+    "verdict": "accepted",
+    "summary": "I found no supported claim contradicted by the inspected source and full result artifacts. All six claims and six central source files are accepted within their stated bounds and limitations.",
+    "open_limits": [
+      "Jev gate action remains escalate; its .6907 composite is below the .7 floor and its .19 safe_to_apply score is not an approval.",
+      "No new test execution or emulator launch was performed for this review.",
+      "The capture failure-injection/race concerns and finite fixture coverage remain limits, not verified regressions.",
+      "Issue completion claims are bounded to the identified PAL corpus, emulator build, executable, and available local evidence."
+    ]
+  }
+}

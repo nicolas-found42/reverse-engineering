@@ -1,0 +1,713 @@
+{
+  "schema_version": 1,
+  "origin": "pcsx2-live",
+  "provenance": {
+    "profile": "fr2-pal-sles-517.05",
+    "sources": {
+      "ford-racing-2.bin": {
+        "bytes": 678667248,
+        "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+      },
+      "ford-racing-2.cue": {
+        "bytes": 79,
+        "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+      },
+      "extracted/SLES_517.05": {
+        "bytes": 1662804,
+        "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+      },
+      "extracted/FILES.HDR": {
+        "bytes": 29428,
+        "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+      },
+      "extracted/FILES.DAT": {
+        "bytes": 334641152,
+        "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+      }
+    },
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+  },
+  "executable_identity": {
+    "bytes": 1662804,
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "archive_identity": {
+    "header": {
+      "bytes": 29428,
+      "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+    },
+    "data": {
+      "bytes": 334641152,
+      "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+    }
+  },
+  "tools": {
+    "pcsx2": "v2.6.3",
+    "pcsx2_executable": {
+      "bytes": 17250752,
+      "sha256": "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d"
+    }
+  },
+  "firmware_identity": {
+    "bytes": 4194304,
+    "sha256": "f4c948e61a291d4b3f92a141e550cf8357204287a31ff784caccbedaef910c9d"
+  },
+  "captures": [
+    {
+      "event_id": "raw-1",
+      "branch": "raw",
+      "record_id": 311,
+      "path": "/FONTS/fontbase.dat;1",
+      "memory": "raw-1.ee.bin",
+      "memory_identity": {
+        "bytes": 33554432,
+        "sha256": "b389c3c1a6e9d040d45caabc47ab56e4af4ee4e815e95550dc2ec8b1082a560d"
+      },
+      "savestate": "raw-1-exit.p2s",
+      "savestate_identity": {
+        "bytes": 1060523,
+        "sha256": "02e5c732571d1784e6788819b9ed61943b9a00ccac5676b258dcd77881552407"
+      },
+      "entry_savestate": {
+        "path": "raw-1-entry.p2s",
+        "identity": {
+          "bytes": 1059144,
+          "sha256": "4f6a09597c17a5a0020d74a31f6c2dde05e2a4cd6f9a276b0e3592466996fba5"
+        }
+      },
+      "branch_savestate": {
+        "path": "raw-1-branch.p2s",
+        "identity": {
+          "bytes": 1059151,
+          "sha256": "bda0e872d2f11826bae0788655717b93abd4abb107fa0c4e8fea2123316babc3"
+        }
+      },
+      "entry": {
+        "pc": 1080544,
+        "registers": {
+          "zero": 0,
+          "at": 2682272,
+          "v0": 1032,
+          "v1": 1032,
+          "a0": 2635144,
+          "a1": 0,
+          "a2": 0,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 0,
+          "t3": 32570070,
+          "t4": 2682126,
+          "t5": 4294967295,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 2635144,
+          "s1": 2635168,
+          "s2": 0,
+          "s3": 0,
+          "s4": 0,
+          "s5": 2376704,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570352,
+          "s8": 0,
+          "ra": 2285588
+        }
+      },
+      "branch_observation": {
+        "pc": 1075696,
+        "registers": {
+          "zero": 0,
+          "at": 2682272,
+          "v0": 2301776,
+          "v1": 2301795,
+          "a0": 2635144,
+          "a1": 0,
+          "a2": 0,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 29793,
+          "t3": 32570070,
+          "t4": 2682126,
+          "t5": 4294967295,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 2635144,
+          "s1": 2635168,
+          "s2": 0,
+          "s3": 0,
+          "s4": 0,
+          "s5": 2376704,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570352,
+          "s8": 0,
+          "ra": 2285588
+        }
+      },
+      "exit": {
+        "pc": 2285588,
+        "registers": {
+          "zero": 0,
+          "at": 1112014848,
+          "v0": 3767936,
+          "v1": 38,
+          "a0": 19,
+          "a1": 3510952,
+          "a2": 4,
+          "a3": 68,
+          "t0": 0,
+          "t1": 2684491536,
+          "t2": 64,
+          "t3": 2684491456,
+          "t4": 540603072,
+          "t5": 2684354560,
+          "t6": 4,
+          "t7": 31,
+          "s0": 2635144,
+          "s1": 2635168,
+          "s2": 0,
+          "s3": 0,
+          "s4": 0,
+          "s5": 2376704,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570352,
+          "s8": 0,
+          "ra": 2285588
+        }
+      },
+      "output": {
+        "guest_address": 3767936,
+        "bytes": 1032,
+        "sha256": "4d11203d78dda69ed9a7b615cfcda867f1cf979f36765470c20eaef34f1f5da7"
+      },
+      "code": [
+        {
+          "guest_address": 1080544,
+          "bytes_hex": "b0ffbd271000b2ff2d90800001000424"
+        },
+        {
+          "guest_address": 1075696,
+          "bytes_hex": "b0febd271001b0ff2d8080001801b1ff"
+        },
+        {
+          "guest_address": 2285588,
+          "bytes_hex": "60a9858fac0003248000043c5ca982af"
+        }
+      ],
+      "captured_at": "2026-10-04T05:31:40.270606+00:00",
+      "procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+      "before_consumption": true,
+      "mutations": []
+    },
+    {
+      "event_id": "zlib-1",
+      "branch": "zlib",
+      "record_id": 830,
+      "path": "/GRAPHICS/LOADING/LOGO_EMP.ptg;1",
+      "memory": "zlib-1.ee.bin",
+      "memory_identity": {
+        "bytes": 33554432,
+        "sha256": "e9edeaf14d5e1b3195e0012fdc1d09774e60028f9ffc69cfbb651724d039ccdd"
+      },
+      "savestate": "zlib-1-exit.p2s",
+      "savestate_identity": {
+        "bytes": 1275779,
+        "sha256": "06908325cf96392894844bf0fbab4c8040c68c5acce0aa55cc68001df9df092b"
+      },
+      "entry_savestate": {
+        "path": "zlib-1-entry.p2s",
+        "identity": {
+          "bytes": 1238799,
+          "sha256": "458e4725e15bdf41c506a5096987c37f91ace1438dc689c73939f9c22dd41f6e"
+        }
+      },
+      "branch_savestate": {
+        "path": "zlib-1-branch.p2s",
+        "identity": {
+          "bytes": 1238788,
+          "sha256": "b713d193ec743f74cebb0e993365c5eeea1e0c4186882c235e14db47ed78827d"
+        }
+      },
+      "entry": {
+        "pc": 1080544,
+        "registers": {
+          "zero": 0,
+          "at": 1065353216,
+          "v0": 2,
+          "v1": 1,
+          "a0": 3767952,
+          "a1": 0,
+          "a2": 1,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 0,
+          "t3": 0,
+          "t4": 16,
+          "t5": 0,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 3767856,
+          "s1": 1,
+          "s2": 2301520,
+          "s3": 9,
+          "s4": 1,
+          "s5": 0,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570448,
+          "s8": 0,
+          "ra": 2272360
+        }
+      },
+      "branch_observation": {
+        "pc": 1076984,
+        "registers": {
+          "zero": 0,
+          "at": 1065353216,
+          "v0": 2301776,
+          "v1": 2301806,
+          "a0": 3767952,
+          "a1": 0,
+          "a2": 0,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 16843009,
+          "t3": 0,
+          "t4": 16,
+          "t5": 0,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 3767856,
+          "s1": 1,
+          "s2": 2301520,
+          "s3": 9,
+          "s4": 1,
+          "s5": 0,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570448,
+          "s8": 0,
+          "ra": 2272360
+        }
+      },
+      "exit": {
+        "pc": 2272360,
+        "registers": {
+          "zero": 0,
+          "at": 1112014848,
+          "v0": 7638656,
+          "v1": 100,
+          "a0": 0,
+          "a1": 0,
+          "a2": 0,
+          "a3": 2147483647,
+          "t0": 2296840,
+          "t1": 3768024,
+          "t2": 0,
+          "t3": 2296856,
+          "t4": 540603072,
+          "t5": 2684354560,
+          "t6": 4,
+          "t7": 31,
+          "s0": 3767856,
+          "s1": 1,
+          "s2": 2301520,
+          "s3": 9,
+          "s4": 1,
+          "s5": 0,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570448,
+          "s8": 0,
+          "ra": 2272360
+        }
+      },
+      "output": {
+        "guest_address": 7638656,
+        "bytes": 332320,
+        "sha256": "afaa4c5ab9c8dc81529f5300de568b8b8d8dc499fd9e9fa9c11e7fa6ed9f9c18"
+      },
+      "code": [
+        {
+          "guest_address": 1080544,
+          "bytes_hex": "b0ffbd271000b2ff2d90800001000424"
+        },
+        {
+          "guest_address": 1076984,
+          "bytes_hex": "70febd27800003247001b6ff2db0c000"
+        },
+        {
+          "guest_address": 2272360,
+          "bytes_hex": "2d20000232ab080c400002ae04000224"
+        }
+      ],
+      "captured_at": "2026-10-04T05:31:52.803684+00:00",
+      "procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+      "before_consumption": true,
+      "mutations": []
+    },
+    {
+      "event_id": "raw-2",
+      "branch": "raw",
+      "record_id": 311,
+      "path": "/FONTS/fontbase.dat;1",
+      "memory": "raw-2.ee.bin",
+      "memory_identity": {
+        "bytes": 33554432,
+        "sha256": "154a930efc1b94bb55be84718c4879552da9cde251ae68de0c2afb0d91c23856"
+      },
+      "savestate": "raw-2-exit.p2s",
+      "savestate_identity": {
+        "bytes": 1060533,
+        "sha256": "3a8b3e748d42fa1da40e3a8b7db5b2a196b9bf9d940bbc0dd5f4160eeb747ab2"
+      },
+      "entry_savestate": {
+        "path": "raw-2-entry.p2s",
+        "identity": {
+          "bytes": 1059145,
+          "sha256": "ac1159f3604c533f1139af9110b4d8f08a9bf563670c814c2f3672c862c1e31b"
+        }
+      },
+      "branch_savestate": {
+        "path": "raw-2-branch.p2s",
+        "identity": {
+          "bytes": 1059153,
+          "sha256": "31f3bc2f1e8e763ba42dee60ad1098fe81069f85a06d3c195722bd1dd0b97e18"
+        }
+      },
+      "entry": {
+        "pc": 1080544,
+        "registers": {
+          "zero": 0,
+          "at": 2682272,
+          "v0": 1032,
+          "v1": 1032,
+          "a0": 2635144,
+          "a1": 0,
+          "a2": 0,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 0,
+          "t3": 32570070,
+          "t4": 2682126,
+          "t5": 4294967295,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 2635144,
+          "s1": 2635168,
+          "s2": 0,
+          "s3": 0,
+          "s4": 0,
+          "s5": 2376704,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570352,
+          "s8": 0,
+          "ra": 2285588
+        }
+      },
+      "branch_observation": {
+        "pc": 1075696,
+        "registers": {
+          "zero": 0,
+          "at": 2682272,
+          "v0": 2301776,
+          "v1": 2301795,
+          "a0": 2635144,
+          "a1": 0,
+          "a2": 0,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 29793,
+          "t3": 32570070,
+          "t4": 2682126,
+          "t5": 4294967295,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 2635144,
+          "s1": 2635168,
+          "s2": 0,
+          "s3": 0,
+          "s4": 0,
+          "s5": 2376704,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570352,
+          "s8": 0,
+          "ra": 2285588
+        }
+      },
+      "exit": {
+        "pc": 2285588,
+        "registers": {
+          "zero": 0,
+          "at": 1112014848,
+          "v0": 3767936,
+          "v1": 38,
+          "a0": 19,
+          "a1": 3510952,
+          "a2": 4,
+          "a3": 68,
+          "t0": 0,
+          "t1": 2684491536,
+          "t2": 64,
+          "t3": 2684491456,
+          "t4": 540603072,
+          "t5": 2684354560,
+          "t6": 4,
+          "t7": 31,
+          "s0": 2635144,
+          "s1": 2635168,
+          "s2": 0,
+          "s3": 0,
+          "s4": 0,
+          "s5": 2376704,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570352,
+          "s8": 0,
+          "ra": 2285588
+        }
+      },
+      "output": {
+        "guest_address": 3767936,
+        "bytes": 1032,
+        "sha256": "4d11203d78dda69ed9a7b615cfcda867f1cf979f36765470c20eaef34f1f5da7"
+      },
+      "code": [
+        {
+          "guest_address": 1080544,
+          "bytes_hex": "b0ffbd271000b2ff2d90800001000424"
+        },
+        {
+          "guest_address": 1075696,
+          "bytes_hex": "b0febd271001b0ff2d8080001801b1ff"
+        },
+        {
+          "guest_address": 2285588,
+          "bytes_hex": "60a9858fac0003248000043c5ca982af"
+        }
+      ],
+      "captured_at": "2026-10-04T05:32:04.343378+00:00",
+      "procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+      "before_consumption": true,
+      "mutations": []
+    },
+    {
+      "event_id": "zlib-2",
+      "branch": "zlib",
+      "record_id": 830,
+      "path": "/GRAPHICS/LOADING/LOGO_EMP.ptg;1",
+      "memory": "zlib-2.ee.bin",
+      "memory_identity": {
+        "bytes": 33554432,
+        "sha256": "e35798ecc7fa45cf2f791028eb2275334ece4bc8ea7a33a4b538c494b4ea9e08"
+      },
+      "savestate": "zlib-2-exit.p2s",
+      "savestate_identity": {
+        "bytes": 1275776,
+        "sha256": "8922d4970ad02adee343be3a39dd255fd38cecbe94efa119c1cf599ac24fd40e"
+      },
+      "entry_savestate": {
+        "path": "zlib-2-entry.p2s",
+        "identity": {
+          "bytes": 1238800,
+          "sha256": "427509b106194986c6224202def6f3d881283e0eba9188e3e7a11463c06f86a4"
+        }
+      },
+      "branch_savestate": {
+        "path": "zlib-2-branch.p2s",
+        "identity": {
+          "bytes": 1238789,
+          "sha256": "6f8941d1b9b6e8b504efaf2d9d7aa350a68b8e9c1325c5c5ffbe3bf8281620b9"
+        }
+      },
+      "entry": {
+        "pc": 1080544,
+        "registers": {
+          "zero": 0,
+          "at": 1065353216,
+          "v0": 2,
+          "v1": 1,
+          "a0": 3767952,
+          "a1": 0,
+          "a2": 1,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 0,
+          "t3": 0,
+          "t4": 16,
+          "t5": 0,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 3767856,
+          "s1": 1,
+          "s2": 2301520,
+          "s3": 9,
+          "s4": 1,
+          "s5": 0,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570448,
+          "s8": 0,
+          "ra": 2272360
+        }
+      },
+      "branch_observation": {
+        "pc": 1076984,
+        "registers": {
+          "zero": 0,
+          "at": 1065353216,
+          "v0": 2301776,
+          "v1": 2301806,
+          "a0": 3767952,
+          "a1": 0,
+          "a2": 0,
+          "a3": 0,
+          "t0": 0,
+          "t1": 0,
+          "t2": 16843009,
+          "t3": 0,
+          "t4": 16,
+          "t5": 0,
+          "t6": 2147483648,
+          "t7": 31,
+          "s0": 3767856,
+          "s1": 1,
+          "s2": 2301520,
+          "s3": 9,
+          "s4": 1,
+          "s5": 0,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570448,
+          "s8": 0,
+          "ra": 2272360
+        }
+      },
+      "exit": {
+        "pc": 2272360,
+        "registers": {
+          "zero": 0,
+          "at": 1112014848,
+          "v0": 7638656,
+          "v1": 100,
+          "a0": 0,
+          "a1": 0,
+          "a2": 0,
+          "a3": 2147483647,
+          "t0": 2296840,
+          "t1": 3768024,
+          "t2": 0,
+          "t3": 2296856,
+          "t4": 540603072,
+          "t5": 2684354560,
+          "t6": 4,
+          "t7": 31,
+          "s0": 3767856,
+          "s1": 1,
+          "s2": 2301520,
+          "s3": 9,
+          "s4": 1,
+          "s5": 0,
+          "s6": 0,
+          "s7": 0,
+          "t8": 2147619264,
+          "t9": 122592,
+          "k0": 1879247891,
+          "k1": 0,
+          "gp": 2710896,
+          "sp": 32570448,
+          "s8": 0,
+          "ra": 2272360
+        }
+      },
+      "output": {
+        "guest_address": 7638656,
+        "bytes": 332320,
+        "sha256": "afaa4c5ab9c8dc81529f5300de568b8b8d8dc499fd9e9fa9c11e7fa6ed9f9c18"
+      },
+      "code": [
+        {
+          "guest_address": 1080544,
+          "bytes_hex": "b0ffbd271000b2ff2d90800001000424"
+        },
+        {
+          "guest_address": 1076984,
+          "bytes_hex": "70febd27800003247001b6ff2db0c000"
+        },
+        {
+          "guest_address": 2272360,
+          "bytes_hex": "2d20000232ab080c400002ae04000224"
+        }
+      ],
+      "captured_at": "2026-10-04T05:32:21.850725+00:00",
+      "procedure": "Separate cold boot for each repeat. PCSX2 -nogui, null renderer, patches and cheats disabled, automatic saved conditional dispatch breakpoint. PINE paused status and ELF code present before savestate. Restart from entry snapshot to selected branch breakpoint, then from branch snapshot to caller ra. Save complete EE states with PINE opcode 9; confirm independent PINE memory reads against saved bytes. No memory writes or output transformations.",
+      "before_consumption": true,
+      "mutations": []
+    }
+  ]
+}

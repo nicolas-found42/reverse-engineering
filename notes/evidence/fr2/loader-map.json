@@ -1,0 +1,3980 @@
+{
+  "schema_version": 1,
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "provenance": {
+    "profile": "fr2-pal-sles-517.05",
+    "sources": {
+      "ford-racing-2.bin": {
+        "bytes": 678667248,
+        "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+      },
+      "ford-racing-2.cue": {
+        "bytes": 79,
+        "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+      },
+      "extracted/SLES_517.05": {
+        "bytes": 1662804,
+        "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+      },
+      "extracted/FILES.HDR": {
+        "bytes": 29428,
+        "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+      },
+      "extracted/FILES.DAT": {
+        "bytes": 334641152,
+        "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+      }
+    },
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+  },
+  "stages": [
+    {
+      "stage": "initialization",
+      "tentative_name": "initialization_candidate",
+      "claim": "Initializes archive tables: references files.dat/files.hdr, reads segment count and table, then a separate record count, and builds 28-byte runtime entries.",
+      "correlation": "HDR u32 segment count at 0, 48 pairs at 4, record count at 388, 1037 records at 392; names can contain unknown tail bytes.",
+      "disposition": "accepted",
+      "alternatives": "Function names and exact source types remain tentative; supported behavior is bounded to the cited instructions and this corpus.",
+      "evidence": [
+        {
+          "function": "001061f8",
+          "address": "00106228",
+          "bytes": "e61d040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010622c",
+          "bytes": "a8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106230",
+          "bytes": "2da04000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106234",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106238",
+          "bytes": "60dd070c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010623c",
+          "bytes": "07008526"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106240",
+          "bytes": "09004014"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106244",
+          "bytes": "0000b78f"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106248",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010624c",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106250",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106254",
+          "bytes": "d802c624"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106258",
+          "bytes": "2d388002"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010625c",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106260",
+          "bytes": "1a010524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106268",
+          "bytes": "4034040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010626c",
+          "bytes": "2d208002"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106270",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106274",
+          "bytes": "f0028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106278",
+          "bytes": "e61d040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010627c",
+          "bytes": "02000524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106280",
+          "bytes": "2da04000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106284",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106288",
+          "bytes": "60dd070c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010628c",
+          "bytes": "07008526"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106290",
+          "bytes": "65004010"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106294",
+          "bytes": "0400a48f"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106298",
+          "bytes": "de1d040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010629c",
+          "bytes": "0000b18f"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062a0",
+          "bytes": "80000524"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062a4",
+          "bytes": "2d804000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062a8",
+          "bytes": "3c881100"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062ac",
+          "bytes": "ff070326"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062b0",
+          "bytes": "0000022a"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062b4",
+          "bytes": "0b806200"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062b8",
+          "bytes": "c3821000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062bc",
+          "bytes": "c0221000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062c0",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062c4",
+          "bytes": "3c801000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062c8",
+          "bytes": "3e201000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062cc",
+          "bytes": "2db04000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062d0",
+          "bytes": "3e281100"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062d4",
+          "bytes": "2d30c002"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062d8",
+          "bytes": "f41f040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062dc",
+          "bytes": "0400d026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062e0",
+          "bytes": "0000c78e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062e4",
+          "bytes": "0001e228"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062e8",
+          "bytes": "aca887af"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062ec",
+          "bytes": "08004014"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062f0",
+          "bytes": "2d20e000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062f4",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062f8",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062fc",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106300",
+          "bytes": "0003c624"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106304",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106308",
+          "bytes": "3c010524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106310",
+          "bytes": "12008058"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106314",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106318",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010631c",
+          "bytes": "2d888000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106320",
+          "bytes": "01000524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106324",
+          "bytes": "003c4424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106328",
+          "bytes": "000080ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010632c",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106330",
+          "bytes": "040080ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106334",
+          "bytes": "ffff3126"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106338",
+          "bytes": "080085ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010633c",
+          "bytes": "fcff038e"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106340",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106344",
+          "bytes": "100083ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106348",
+          "bytes": "fcff028e"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010634c",
+          "bytes": "0c0082ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106350",
+          "bytes": "f5ff2016"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106354",
+          "bytes": "14008424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106358",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010635c",
+          "bytes": "fcff078e"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106360",
+          "bytes": "6004e228"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106364",
+          "bytes": "08004014"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106368",
+          "bytes": "b0a887af"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010636c",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106370",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106374",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106378",
+          "bytes": "0003c624"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010637c",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106380",
+          "bytes": "4c010524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106388",
+          "bytes": "1800e018"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010638c",
+          "bytes": "2d880000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106390",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106394",
+          "bytes": "2d980000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106398",
+          "bytes": "00505524"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010639c",
+          "bytes": "1800b226"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063a0",
+          "bytes": "21207502"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063a4",
+          "bytes": "1c007326"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063a8",
+          "bytes": "2d280002"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063ac",
+          "bytes": "fe37080c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063b0",
+          "bytes": "14001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063b4",
+          "bytes": "fcff038e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063b8",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063bc",
+          "bytes": "b0a8848f"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063c0",
+          "bytes": "f8ff43ae"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063c4",
+          "bytes": "01003126"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063c8",
+          "bytes": "2a202402"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063cc",
+          "bytes": "fcff028e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063d0",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063d4",
+          "bytes": "2110e202"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063d8",
+          "bytes": "fcff42ae"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063dc",
+          "bytes": "fcff038e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063e0",
+          "bytes": "000043ae"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063e4",
+          "bytes": "eeff8014"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063e8",
+          "bytes": "1c005226"
+        }
+      ],
+      "judgment": {
+        "id": "claim0",
+        "claim": "Initializes archive tables: references files.dat/files.hdr, reads segment count and table, then a separate record count, and builds 28-byte runtime entries.",
+        "verdict": "verified",
+        "probabilities": {
+          "contradicts": 0.11,
+          "says_nothing": 0.4,
+          "supports": 0.49
+        },
+        "confidence": 0.24,
+        "action": "review",
+        "supporting_evidence": "initialization",
+        "same_subject": 0.33
+      },
+      "acceptance_basis": "retained Jev output plus independent reasoner review; non-auto output remains non-auto"
+    },
+    {
+      "stage": "lookup",
+      "tentative_name": "lookup_candidate",
+      "claim": "Traverses path components using segment count/first values, computes record stride 28 as ((index<<3)-index)<<2, distinguishes file sentinel -1 from directory segment index, and returns chunk/length fields.",
+      "correlation": "Archive type at record+16, chunk at +20, stored length at +24; runtime table copies those offsets and adds FILES.DAT disc LBA to chunk.",
+      "disposition": "accepted",
+      "alternatives": "Function names and exact source types remain tentative; supported behavior is bounded to the cited instructions and this corpus.",
+      "evidence": [
+        {
+          "function": "00107268",
+          "address": "00107368",
+          "bytes": "001e0300"
+        },
+        {
+          "function": "00107268",
+          "address": "0010736c",
+          "bytes": "21104400"
+        },
+        {
+          "function": "00107268",
+          "address": "00107370",
+          "bytes": "01004426"
+        },
+        {
+          "function": "00107268",
+          "address": "00107374",
+          "bytes": "031e0300"
+        },
+        {
+          "function": "00107268",
+          "address": "00107378",
+          "bytes": "1000458c"
+        },
+        {
+          "function": "00107268",
+          "address": "0010737c",
+          "bytes": "5c006338"
+        },
+        {
+          "function": "00107268",
+          "address": "00107380",
+          "bytes": "2d980000"
+        },
+        {
+          "function": "00107268",
+          "address": "00107384",
+          "bytes": "0a908300"
+        },
+        {
+          "function": "00107268",
+          "address": "00107388",
+          "bytes": "2000a010"
+        },
+        {
+          "function": "00107268",
+          "address": "0010738c",
+          "bytes": "0000c0a0"
+        },
+        {
+          "function": "00107268",
+          "address": "00107390",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "00107268",
+          "address": "00107394",
+          "bytes": "2900033c"
+        },
+        {
+          "function": "00107268",
+          "address": "00107398",
+          "bytes": "003c5624"
+        },
+        {
+          "function": "00107268",
+          "address": "0010739c",
+          "bytes": "00507424"
+        },
+        {
+          "function": "00107268",
+          "address": "001073a0",
+          "bytes": "0c00d726"
+        },
+        {
+          "function": "00107268",
+          "address": "001073a4",
+          "bytes": "2180be02"
+        },
+        {
+          "function": "00107268",
+          "address": "001073a8",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00107268",
+          "address": "001073ac",
+          "bytes": "80801000"
+        },
+        {
+          "function": "00107268",
+          "address": "001073b0",
+          "bytes": "21101702"
+        },
+        {
+          "function": "00107268",
+          "address": "001073b4",
+          "bytes": "21801602"
+        },
+        {
+          "function": "00107268",
+          "address": "001073b8",
+          "bytes": "0000438c"
+        },
+        {
+          "function": "00107268",
+          "address": "001073bc",
+          "bytes": "21187300"
+        },
+        {
+          "function": "00107268",
+          "address": "001073c0",
+          "bytes": "01007326"
+        },
+        {
+          "function": "00107268",
+          "address": "001073c4",
+          "bytes": "c0100300"
+        },
+        {
+          "function": "00107268",
+          "address": "001073c8",
+          "bytes": "23104300"
+        },
+        {
+          "function": "00107268",
+          "address": "001073cc",
+          "bytes": "80880200"
+        },
+        {
+          "function": "00107268",
+          "address": "001073d0",
+          "bytes": "c836080c"
+        },
+        {
+          "function": "00107268",
+          "address": "001073d4",
+          "bytes": "21283402"
+        },
+        {
+          "function": "00107268",
+          "address": "001073d8",
+          "bytes": "09004054"
+        },
+        {
+          "function": "00107268",
+          "address": "001073dc",
+          "bytes": "1000028e"
+        },
+        {
+          "function": "00107268",
+          "address": "001073e0",
+          "bytes": "10002326"
+        },
+        {
+          "function": "00107268",
+          "address": "001073e4",
+          "bytes": "ffff0524"
+        },
+        {
+          "function": "00107268",
+          "address": "001073e8",
+          "bytes": "21107400"
+        },
+        {
+          "function": "00107268",
+          "address": "001073ec",
+          "bytes": "0000428c"
+        },
+        {
+          "function": "00107268",
+          "address": "001073f0",
+          "bytes": "b7ff4510"
+        },
+        {
+          "function": "00107268",
+          "address": "001073f4",
+          "bytes": "2df04000"
+        },
+        {
+          "function": "00107268",
+          "address": "001073f8",
+          "bytes": "05000010"
+        },
+        {
+          "function": "00107268",
+          "address": "001073fc",
+          "bytes": "00004492"
+        }
+      ],
+      "judgment": {
+        "id": "claim1",
+        "claim": "Traverses path components using segment count/first values, computes record stride 28 as ((index<<3)-index)<<2, distinguishes file sentinel -1 from directory segment index, and returns chunk/length fields.",
+        "verdict": "verified",
+        "probabilities": {
+          "contradicts": 0.1,
+          "says_nothing": 0.13,
+          "supports": 0.77
+        },
+        "confidence": 0.65,
+        "action": "review",
+        "supporting_evidence": "lookup",
+        "same_subject": 0.36
+      },
+      "acceptance_basis": "retained Jev output plus independent reasoner review; non-auto output remains non-auto"
+    },
+    {
+      "stage": "chunk_read",
+      "tentative_name": "chunk_read_candidate",
+      "claim": "Passes chunk-addressed start, chunk count, and destination to a CD read function, and waits for read/sync/error checks. Callers round byte sizes with shifts by 11.",
+      "correlation": "2048 bytes per chunk; archive chunk is relative to FILES.DAT; initializer adds base disc LBA. cdRead function identity remains tentative.",
+      "disposition": "accepted",
+      "alternatives": "Function names and exact source types remain tentative; supported behavior is bounded to the cited instructions and this corpus.",
+      "evidence": [
+        {
+          "function": "00107fd0",
+          "address": "00108050",
+          "bytes": "2d204002"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108054",
+          "bytes": "2d280002"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108058",
+          "bytes": "a8a88727"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010805c",
+          "bytes": "f2df070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108060",
+          "bytes": "2d306002"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108064",
+          "bytes": "01000324"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108068",
+          "bytes": "f7ff4314"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010806c",
+          "bytes": "2d200000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108070",
+          "bytes": "eadd070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108074",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108078",
+          "bytes": "f3ff4014"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010807c",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108080",
+          "bytes": "90e0070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108084",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108088",
+          "bytes": "efff4014"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010808c",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108090",
+          "bytes": "2d200000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108094",
+          "bytes": "78ab070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108098",
+          "bytes": "708f80af"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010809c",
+          "bytes": "0000b0df"
+        }
+      ],
+      "judgment": {
+        "id": "claim2",
+        "claim": "Passes chunk-addressed start, chunk count, and destination to a CD read function, and waits for read/sync/error checks. Callers round byte sizes with shifts by 11.",
+        "verdict": "verified",
+        "probabilities": {
+          "contradicts": 0.02,
+          "says_nothing": 0.11,
+          "supports": 0.87
+        },
+        "confidence": 0.81,
+        "action": "auto",
+        "supporting_evidence": "chunk_read",
+        "same_subject": 0.54
+      },
+      "acceptance_basis": "retained Jev output plus independent reasoner review; non-auto output remains non-auto"
+    },
+    {
+      "stage": "raw_transfer",
+      "tentative_name": "raw_transfer_candidate",
+      "claim": "Raw loader rounds size to sectors, allocates a buffer, reads archive chunks into it, stores original logical length in an optional output structure, and returns the buffer.",
+      "correlation": "Archive stored bytes is logical raw length; sector-rounded transfer may include subsequent padding, which is excluded from comparison.",
+      "disposition": "accepted",
+      "alternatives": "Function names and exact source types remain tentative; supported behavior is bounded to the cited instructions and this corpus.",
+      "evidence": [
+        {
+          "function": "001067f8",
+          "address": "00106904",
+          "bytes": "0400428e"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106908",
+          "bytes": "ff074324"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010690c",
+          "bytes": "fe0f4224"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106910",
+          "bytes": "00006428"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106914",
+          "bytes": "0b184400"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106918",
+          "bytes": "c31a0300"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010691c",
+          "bytes": "0e00a012"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106920",
+          "bytes": "c08a0300"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106924",
+          "bytes": "788f828f"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106928",
+          "bytes": "0c004014"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010692c",
+          "bytes": "2d288002"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106930",
+          "bytes": "007d222a"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106934",
+          "bytes": "09004014"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106938",
+          "bytes": "fff90234"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010693c",
+          "bytes": "2a105100"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106940",
+          "bytes": "06004014"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106944",
+          "bytes": "01000224"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106948",
+          "bytes": "748f908f"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010694c",
+          "bytes": "06000010"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106950",
+          "bytes": "788f82af"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106958",
+          "bytes": "2d288002"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010695c",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106960",
+          "bytes": "2d202002"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106964",
+          "bytes": "2d804000"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106968",
+          "bytes": "2d202002"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010696c",
+          "bytes": "ff072326"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106970",
+          "bytes": "0000222a"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106974",
+          "bytes": "0000458e"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106978",
+          "bytes": "0b206200"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010697c",
+          "bytes": "2d300002"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106980",
+          "bytes": "c3220400"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106984",
+          "bytes": "f41f040c"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106988",
+          "bytes": "2d208000"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010698c",
+          "bytes": "06006052"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106990",
+          "bytes": "0c0040ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106994",
+          "bytes": "0400428e"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106998",
+          "bytes": "000070ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010699c",
+          "bytes": "080062ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069a0",
+          "bytes": "040070ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069a4",
+          "bytes": "0c0040ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069a8",
+          "bytes": "07000010"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069ac",
+          "bytes": "2d100002"
+        },
+        {
+          "function": "001069f0",
+          "address": "001069f0",
+          "bytes": "b0febd27"
+        },
+        {
+          "function": "001069f0",
+          "address": "001069f4",
+          "bytes": "1001b0ff"
+        },
+        {
+          "function": "001069f0",
+          "address": "001069f8",
+          "bytes": "2d808000"
+        },
+        {
+          "function": "001069f0",
+          "address": "001069fc",
+          "bytes": "1801b1ff"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a00",
+          "bytes": "2001b2ff"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a04",
+          "bytes": "2d90c000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a08",
+          "bytes": "2801b3ff"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a0c",
+          "bytes": "2d98a000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a10",
+          "bytes": "3001b4ff"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a14",
+          "bytes": "03001424"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a18",
+          "bytes": "3801b5ff"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a1c",
+          "bytes": "4001bfff"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a20",
+          "bytes": "ec1f040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a24",
+          "bytes": "2da8e000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a28",
+          "bytes": "02000324"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a2c",
+          "bytes": "0aa06200"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a30",
+          "bytes": "2d106000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a34",
+          "bytes": "0100843a"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a38",
+          "bytes": "0b108402"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a3c",
+          "bytes": "1a004314"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a40",
+          "bytes": "2d88a003"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a44",
+          "bytes": "2500053c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a48",
+          "bytes": "2d300002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a4c",
+          "bytes": "4803a524"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a50",
+          "bytes": "7836080c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a54",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a58",
+          "bytes": "0700a527"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a5c",
+          "bytes": "0000a280"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a60",
+          "bytes": "2f004010"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a64",
+          "bytes": "0000a390"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a68",
+          "bytes": "00160300"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a6c",
+          "bytes": "03160200"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a70",
+          "bytes": "2900033c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a74",
+          "bytes": "21186200"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a78",
+          "bytes": "91d06390"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a7c",
+          "bytes": "2d204000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a80",
+          "bytes": "e0ff4224"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a84",
+          "bytes": "02006330"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a88",
+          "bytes": "0b204300"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a8c",
+          "bytes": "0000a4a0"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a90",
+          "bytes": "0100a524"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a94",
+          "bytes": "0000a290"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a98",
+          "bytes": "f3ff4014"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106a9c",
+          "bytes": "2d184000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106aa0",
+          "bytes": "20000010"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106aa4",
+          "bytes": "2d288002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106aa8",
+          "bytes": "2500053c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106aac",
+          "bytes": "2d300002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ab0",
+          "bytes": "5803a524"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ab4",
+          "bytes": "7836080c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ab8",
+          "bytes": "2d202002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106abc",
+          "bytes": "2d282002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ac0",
+          "bytes": "0000a280"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ac4",
+          "bytes": "16004010"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ac8",
+          "bytes": "0000a390"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106acc",
+          "bytes": "5c000724"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ad0",
+          "bytes": "2f000624"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ad4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ad8",
+          "bytes": "00160300"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106adc",
+          "bytes": "03160200"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ae0",
+          "bytes": "2d184000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ae4",
+          "bytes": "04004714"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ae8",
+          "bytes": "20004424"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106aec",
+          "bytes": "08000010"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106af0",
+          "bytes": "0000a6a0"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106af8",
+          "bytes": "2900013c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106afc",
+          "bytes": "21082200"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b00",
+          "bytes": "91d02290"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b04",
+          "bytes": "01004230"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b08",
+          "bytes": "0b188200"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b0c",
+          "bytes": "0000a3a0"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b10",
+          "bytes": "0100a524"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b14",
+          "bytes": "0000a280"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b18",
+          "bytes": "efff4014"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b1c",
+          "bytes": "0000a390"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b20",
+          "bytes": "2d288002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b24",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b28",
+          "bytes": "0001a627"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b2c",
+          "bytes": "081f040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b30",
+          "bytes": "0401a727"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b34",
+          "bytes": "0401a58f"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b38",
+          "bytes": "0900a014"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b3c",
+          "bytes": "8000442a"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b40",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b44",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b48",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b4c",
+          "bytes": "6804c624"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b50",
+          "bytes": "bb050524"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b54",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b58",
+          "bytes": "2d38a003"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b60",
+          "bytes": "7f00a524"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b64",
+          "bytes": "80000224"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b68",
+          "bytes": "80ff0324"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b6c",
+          "bytes": "0b904400"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b70",
+          "bytes": "0d00a012"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b74",
+          "bytes": "2420a300"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b78",
+          "bytes": "788f828f"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b7c",
+          "bytes": "0a004014"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b80",
+          "bytes": "007d8228"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b84",
+          "bytes": "08004014"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b88",
+          "bytes": "fff90234"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b8c",
+          "bytes": "2a104400"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b90",
+          "bytes": "05004014"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b94",
+          "bytes": "01000224"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b98",
+          "bytes": "748f908f"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106b9c",
+          "bytes": "05000010"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ba0",
+          "bytes": "788f82af"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106ba8",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bac",
+          "bytes": "2d284002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bb0",
+          "bytes": "2d804000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bb4",
+          "bytes": "04006012"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bb8",
+          "bytes": "0401a28f"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bbc",
+          "bytes": "000070ae"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bc0",
+          "bytes": "080062ae"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bc4",
+          "bytes": "040070ae"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bc8",
+          "bytes": "6236040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bcc",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bd0",
+          "bytes": "2d280002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bd4",
+          "bytes": "0001a78f"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bd8",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bdc",
+          "bytes": "0401a88f"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106be0",
+          "bytes": "cc34040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106be4",
+          "bytes": "2d308002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106be8",
+          "bytes": "05000010"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bec",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bf0",
+          "bytes": "6603050c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bf4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bf8",
+          "bytes": "a6a8070c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106bfc",
+          "bytes": "2d200000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c00",
+          "bytes": "4e35040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c04",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c08",
+          "bytes": "f9ff4010"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c0c",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c10",
+          "bytes": "5835040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c14",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c18",
+          "bytes": "6236040c"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c1c",
+          "bytes": "00000000"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c20",
+          "bytes": "1801b1df"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c24",
+          "bytes": "2d100002"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c28",
+          "bytes": "2001b2df"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c2c",
+          "bytes": "1001b0df"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c30",
+          "bytes": "2801b3df"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c34",
+          "bytes": "3001b4df"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c38",
+          "bytes": "3801b5df"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c3c",
+          "bytes": "4001bfdf"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c40",
+          "bytes": "0800e003"
+        },
+        {
+          "function": "001069f0",
+          "address": "00106c44",
+          "bytes": "5001bd27"
+        }
+      ],
+      "judgment": {
+        "id": "claim3",
+        "claim": "Raw loader rounds size to sectors, allocates a buffer, reads archive chunks into it, stores original logical length in an optional output structure, and returns the buffer.",
+        "verdict": "verified",
+        "probabilities": {
+          "contradicts": 0.02,
+          "says_nothing": 0.08,
+          "supports": 0.9
+        },
+        "confidence": 0.85,
+        "action": "auto",
+        "supporting_evidence": "raw_transfer",
+        "same_subject": 0.39
+      },
+      "acceptance_basis": "retained Jev output plus independent reasoner review; non-auto output remains non-auto"
+    },
+    {
+      "stage": "decompression",
+      "tentative_name": "decompression_candidate",
+      "claim": "Compressed loader reads the first word as output length, allocates output, skips four input bytes, initializes a 44-byte stream, calls the inflate-like routine, then finalizes and returns output.",
+      "correlation": "Measured wrapper is little-endian u32 output length followed by a terminated zlib stream. Codec identity is supported by stream instructions and embedded inflate version, not the string alone.",
+      "disposition": "accepted",
+      "alternatives": "Function names and exact source types remain tentative; supported behavior is bounded to the cited instructions and this corpus.",
+      "evidence": [
+        {
+          "function": "00106c48",
+          "address": "00106df4",
+          "bytes": "0000f68e"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106df8",
+          "bytes": "2d28c003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106dfc",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e00",
+          "bytes": "2d20c002"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e04",
+          "bytes": "2c000624"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e08",
+          "bytes": "2da84000"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e0c",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e10",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e14",
+          "bytes": "a009040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e18",
+          "bytes": "00ed4524"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e1c",
+          "bytes": "fcff0326"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e20",
+          "bytes": "2a00023c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e24",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e28",
+          "bytes": "84ca4224"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e2c",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e30",
+          "bytes": "0800a3af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e34",
+          "bytes": "0000a2af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e38",
+          "bytes": "0400b5af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e3c",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e40",
+          "bytes": "1000b6af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e44",
+          "bytes": "07000010"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e48",
+          "bytes": "21987002"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e50",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e54",
+          "bytes": "0000b7af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e58",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e5c",
+          "bytes": "0800b0af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e60",
+          "bytes": "21987002"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e64",
+          "bytes": "2a107202"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e68",
+          "bytes": "cbff4014"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e6c",
+          "bytes": "3400a48f"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e70",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e74",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e78",
+          "bytes": "04000524"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e7c",
+          "bytes": "3e09040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e80",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106ef8",
+          "bytes": "70febd27"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106efc",
+          "bytes": "80000324"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f00",
+          "bytes": "7001b6ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f04",
+          "bytes": "2db0c000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f08",
+          "bytes": "8000c22a"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f0c",
+          "bytes": "4001b0ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f10",
+          "bytes": "4801b1ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f14",
+          "bytes": "03001124"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f18",
+          "bytes": "7801b7ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f1c",
+          "bytes": "2db8a000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f20",
+          "bytes": "8001beff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f24",
+          "bytes": "2df08000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f28",
+          "bytes": "5001b2ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f2c",
+          "bytes": "5801b3ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f30",
+          "bytes": "6001b4ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f34",
+          "bytes": "6801b5ff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f38",
+          "bytes": "8801bfff"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f3c",
+          "bytes": "ec1f040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f40",
+          "bytes": "0bb06200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f44",
+          "bytes": "02000424"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f48",
+          "bytes": "0a888200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f4c",
+          "bytes": "2d108000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f50",
+          "bytes": "0100233a"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f54",
+          "bytes": "0b102302"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f58",
+          "bytes": "1b004414"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f5c",
+          "bytes": "2d80a003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f60",
+          "bytes": "2500053c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f64",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f68",
+          "bytes": "4803a524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f6c",
+          "bytes": "7836080c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f70",
+          "bytes": "2d30c003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f74",
+          "bytes": "0700a527"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f78",
+          "bytes": "0000a280"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f7c",
+          "bytes": "30004010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f80",
+          "bytes": "0000a390"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f84",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f88",
+          "bytes": "00160300"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f8c",
+          "bytes": "03160200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f90",
+          "bytes": "2900033c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f94",
+          "bytes": "21186200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f98",
+          "bytes": "91d06390"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106f9c",
+          "bytes": "2d204000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fa0",
+          "bytes": "e0ff4224"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fa4",
+          "bytes": "02006330"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fa8",
+          "bytes": "0b204300"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fac",
+          "bytes": "0000a4a0"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fb0",
+          "bytes": "0100a524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fb4",
+          "bytes": "0000a290"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fb8",
+          "bytes": "f3ff4014"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fbc",
+          "bytes": "2d184000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fc0",
+          "bytes": "20000010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fc4",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fc8",
+          "bytes": "2500053c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fcc",
+          "bytes": "2d200002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fd0",
+          "bytes": "5803a524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fd4",
+          "bytes": "7836080c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fd8",
+          "bytes": "2d30c003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fdc",
+          "bytes": "2d280002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fe0",
+          "bytes": "0000a280"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fe4",
+          "bytes": "16004010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fe8",
+          "bytes": "0000a390"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106fec",
+          "bytes": "5c000724"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106ff0",
+          "bytes": "2f000624"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106ff4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106ff8",
+          "bytes": "00160300"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00106ffc",
+          "bytes": "03160200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107000",
+          "bytes": "2d184000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107004",
+          "bytes": "04004714"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107008",
+          "bytes": "20004424"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010700c",
+          "bytes": "08000010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107010",
+          "bytes": "0000a6a0"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107018",
+          "bytes": "2900013c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010701c",
+          "bytes": "21082200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107020",
+          "bytes": "91d02290"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107024",
+          "bytes": "01004230"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107028",
+          "bytes": "0b188200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010702c",
+          "bytes": "0000a3a0"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107030",
+          "bytes": "0100a524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107034",
+          "bytes": "0000a280"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107038",
+          "bytes": "efff4014"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010703c",
+          "bytes": "0000a390"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107040",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107044",
+          "bytes": "2d282002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107048",
+          "bytes": "3001a627"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010704c",
+          "bytes": "081f040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107050",
+          "bytes": "3401a727"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107054",
+          "bytes": "3401b28f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107058",
+          "bytes": "07004016"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010705c",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107060",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107064",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107068",
+          "bytes": "0005c624"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010706c",
+          "bytes": "fa060524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107070",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107074",
+          "bytes": "2d38a003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107078",
+          "bytes": "6236040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010707c",
+          "bytes": "2a00103c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107080",
+          "bytes": "7c8f80af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107084",
+          "bytes": "11000a3c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107088",
+          "bytes": "80ca1026"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010708c",
+          "bytes": "3001a78f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107090",
+          "bytes": "3401a88f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107094",
+          "bytes": "2d302002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107098",
+          "bytes": "b8804a25"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010709c",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070a0",
+          "bytes": "2d280002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070a4",
+          "bytes": "00800934"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070a8",
+          "bytes": "848f80af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070ac",
+          "bytes": "0c35040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070b0",
+          "bytes": "808f90af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070b4",
+          "bytes": "2d880000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070b8",
+          "bytes": "2da00000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070bc",
+          "bytes": "2da80000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070c0",
+          "bytes": "0001b327"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070c4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070c8",
+          "bytes": "848f828f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070cc",
+          "bytes": "0a004054"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070d0",
+          "bytes": "00801034"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070d4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070d8",
+          "bytes": "6603050c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070dc",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070e0",
+          "bytes": "a6a8070c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070e4",
+          "bytes": "2d200000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070e8",
+          "bytes": "848f838f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070ec",
+          "bytes": "faff6010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070f0",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070f4",
+          "bytes": "00801034"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070f8",
+          "bytes": "23185102"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001070fc",
+          "bytes": "21103002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107100",
+          "bytes": "848f80af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107104",
+          "bytes": "2a104202"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107108",
+          "bytes": "15002016"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010710c",
+          "bytes": "0b806200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107110",
+          "bytes": "808f828f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107114",
+          "bytes": "2d28c002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107118",
+          "bytes": "0000548c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010711c",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107120",
+          "bytes": "2d208002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107124",
+          "bytes": "2d206002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107128",
+          "bytes": "2da84000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010712c",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107130",
+          "bytes": "00ed4524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107134",
+          "bytes": "a009040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107138",
+          "bytes": "2c000624"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010713c",
+          "bytes": "808f838f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107140",
+          "bytes": "fcff0226"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107144",
+          "bytes": "0401b5af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107148",
+          "bytes": "04006324"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010714c",
+          "bytes": "0801a2af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107150",
+          "bytes": "0001a3af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107154",
+          "bytes": "05000010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107158",
+          "bytes": "1001b4af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107160",
+          "bytes": "808f828f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107164",
+          "bytes": "0801b0af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107168",
+          "bytes": "0001a2af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010716c",
+          "bytes": "21883002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107170",
+          "bytes": "2a103202"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107174",
+          "bytes": "14004010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107178",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010717c",
+          "bytes": "7c8f828f"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107180",
+          "bytes": "2a00053c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107184",
+          "bytes": "80caa524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107188",
+          "bytes": "2a00033c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010718c",
+          "bytes": "804a6324"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107190",
+          "bytes": "01004224"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107194",
+          "bytes": "03000424"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107198",
+          "bytes": "01004230"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010719c",
+          "bytes": "0a18a200"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071a0",
+          "bytes": "7c8f82af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071a4",
+          "bytes": "eeea040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071a8",
+          "bytes": "808f83af"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071ac",
+          "bytes": "6603050c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071b0",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071b4",
+          "bytes": "2d206002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071b8",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071bc",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071c0",
+          "bytes": "c1ff0010"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071c4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071c8",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071cc",
+          "bytes": "2d206002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071d0",
+          "bytes": "5835040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071d4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071d8",
+          "bytes": "2d206002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071dc",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071e0",
+          "bytes": "04000524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071e4",
+          "bytes": "01000324"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071e8",
+          "bytes": "07004310"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071ec",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071f0",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071f4",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071f8",
+          "bytes": "3005c624"
+        },
+        {
+          "function": "00106ef8",
+          "address": "001071fc",
+          "bytes": "2d38c003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107200",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107204",
+          "bytes": "7d070524"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107208",
+          "bytes": "3e09040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010720c",
+          "bytes": "2d206002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107210",
+          "bytes": "0400e012"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107214",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107218",
+          "bytes": "0800f4ae"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010721c",
+          "bytes": "0000f5ae"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107220",
+          "bytes": "0400f5ae"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107224",
+          "bytes": "6236040c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107228",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010722c",
+          "bytes": "78ab070c"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107230",
+          "bytes": "2d200000"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107234",
+          "bytes": "2d10a002"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107238",
+          "bytes": "4001b0df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010723c",
+          "bytes": "4801b1df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107240",
+          "bytes": "5001b2df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107244",
+          "bytes": "5801b3df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107248",
+          "bytes": "6001b4df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010724c",
+          "bytes": "6801b5df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107250",
+          "bytes": "7001b6df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107254",
+          "bytes": "7801b7df"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107258",
+          "bytes": "8001bedf"
+        },
+        {
+          "function": "00106ef8",
+          "address": "0010725c",
+          "bytes": "8801bfdf"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107260",
+          "bytes": "0800e003"
+        },
+        {
+          "function": "00106ef8",
+          "address": "00107264",
+          "bytes": "9001bd27"
+        }
+      ],
+      "judgment": {
+        "id": "claim4",
+        "claim": "Compressed loader reads the first word as output length, allocates output, skips four input bytes, initializes a 44-byte stream, calls the inflate-like routine, then finalizes and returns output.",
+        "verdict": "verified",
+        "probabilities": {
+          "contradicts": 0.08,
+          "says_nothing": 0.05,
+          "supports": 0.87
+        },
+        "confidence": 0.81,
+        "action": "auto",
+        "supporting_evidence": "decompression",
+        "same_subject": 0.41
+      },
+      "acceptance_basis": "retained Jev output plus independent reasoner review; non-auto output remains non-auto"
+    },
+    {
+      "stage": "consumption",
+      "tentative_name": "consumption_candidate",
+      "claim": "Consumer calls loader with compressed flag, stores returned buffer, passes it to subsequent functions, and then reads structure fields from the processed buffer. Full asset semantics remain unresolved.",
+      "correlation": "Return buffer remains available before 00123908 and 0022ba30 transformations. No claim of complete geometry recovery.",
+      "disposition": "accepted",
+      "alternatives": "Function names and exact source types remain tentative; supported behavior is bounded to the cited instructions and this corpus.",
+      "evidence": [
+        {
+          "function": "0011ed90",
+          "address": "0011ede8",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edec",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edf0",
+          "bytes": "01000624"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edf4",
+          "bytes": "2d380000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edf8",
+          "bytes": "2d400000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edfc",
+          "bytes": "2d480000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee00",
+          "bytes": "381f040c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee04",
+          "bytes": "2d500000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee08",
+          "bytes": "a893848f"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee0c",
+          "bytes": "08004014"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee10",
+          "bytes": "080082ac"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee14",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee18",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee1c",
+          "bytes": "f8278424"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee20",
+          "bytes": "5828c624"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee24",
+          "bytes": "9f010524"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee28",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee2c",
+          "bytes": "2d38a003"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee30",
+          "bytes": "428e040c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee34",
+          "bytes": "2d284000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee38",
+          "bytes": "a893848f"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee3c",
+          "bytes": "8cae080c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee40",
+          "bytes": "2d284000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee44",
+          "bytes": "a893838f"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee48",
+          "bytes": "2d884000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee4c",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee50",
+          "bytes": "0c0071ac"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee54",
+          "bytes": "04003126"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022abf8",
+          "bytes": "e0ffbd27"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022abfc",
+          "bytes": "01000224"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac00",
+          "bytes": "0000b0ff"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac04",
+          "bytes": "2d808000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac08",
+          "bytes": "0800b1ff"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac0c",
+          "bytes": "1000bfff"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac10",
+          "bytes": "4c00038e"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac14",
+          "bytes": "28006254"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac18",
+          "bytes": "0000b0df"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac1c",
+          "bytes": "3400118e"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac20",
+          "bytes": "09002312"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac24",
+          "bytes": "02000224"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac28",
+          "bytes": "15002212"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac2c",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac30",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac34",
+          "bytes": "2c00078e"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac38",
+          "bytes": "b80e8424"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac3c",
+          "bytes": "4010c624"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac40",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac44",
+          "bytes": "44020524"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac48",
+          "bytes": "2c00048e"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac4c",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac50",
+          "bytes": "01000624"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac54",
+          "bytes": "2d380000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac58",
+          "bytes": "2d400000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac5c",
+          "bytes": "2d480000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac60",
+          "bytes": "381f040c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac64",
+          "bytes": "2d500000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac68",
+          "bytes": "2d200002"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac6c",
+          "bytes": "32ab080c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac70",
+          "bytes": "400002ae"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac74",
+          "bytes": "04000224"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac78",
+          "bytes": "0e000010"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac7c",
+          "bytes": "4c0002ae"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac80",
+          "bytes": "a81d040c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac84",
+          "bytes": "2c00048e"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac88",
+          "bytes": "de1d040c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac8c",
+          "bytes": "2d204000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac90",
+          "bytes": "80000524"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac94",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac98",
+          "bytes": "2d204000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022ac9c",
+          "bytes": "2c00048e"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022aca0",
+          "bytes": "400002ae"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022aca4",
+          "bytes": "2015040c"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022aca8",
+          "bytes": "2d284000"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022acac",
+          "bytes": "4c0011ae"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022acb0",
+          "bytes": "480002ae"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022acb4",
+          "bytes": "0000b0df"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022acb8",
+          "bytes": "0800b1df"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022acbc",
+          "bytes": "1000bfdf"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022acc0",
+          "bytes": "0800e003"
+        },
+        {
+          "function": "0022abf8",
+          "address": "0022acc4",
+          "bytes": "2000bd27"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df80",
+          "bytes": "e0ffbd27"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df84",
+          "bytes": "0000b0ff"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df88",
+          "bytes": "2d808000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df8c",
+          "bytes": "0800b1ff"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df90",
+          "bytes": "1000bfff"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df94",
+          "bytes": "8a1d040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df98",
+          "bytes": "2d88a000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022df9c",
+          "bytes": "08004014"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfa0",
+          "bytes": "2d202002"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfa4",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfa8",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfac",
+          "bytes": "c00d8424"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfb0",
+          "bytes": "e80dc624"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfb4",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfb8",
+          "bytes": "6f000524"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfc0",
+          "bytes": "8a1d040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfc4",
+          "bytes": "00000000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfc8",
+          "bytes": "07004014"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfcc",
+          "bytes": "2d200002"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfd0",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfd4",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfd8",
+          "bytes": "c00d8424"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfdc",
+          "bytes": "e80dc624"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfe0",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfe4",
+          "bytes": "74000524"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfe8",
+          "bytes": "a81d040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dfec",
+          "bytes": "00000000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dff0",
+          "bytes": "2d200002"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dff4",
+          "bytes": "2d300000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dff8",
+          "bytes": "2d380000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022dffc",
+          "bytes": "2d400000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e000",
+          "bytes": "2d480000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e004",
+          "bytes": "2d500000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e008",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e00c",
+          "bytes": "381f040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e010",
+          "bytes": "60a982af"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e014",
+          "bytes": "60a9858f"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e018",
+          "bytes": "ac000324"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e01c",
+          "bytes": "8000043c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e020",
+          "bytes": "5ca982af"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e024",
+          "bytes": "1b00a300"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e028",
+          "bytes": "01006050"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e02c",
+          "bytes": "cd010000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e030",
+          "bytes": "12280000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e034",
+          "bytes": "0834040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e038",
+          "bytes": "60a985af"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e03c",
+          "bytes": "2d202002"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e040",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e044",
+          "bytes": "2d300000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e048",
+          "bytes": "2d380000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e04c",
+          "bytes": "2d400000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e050",
+          "bytes": "2d480000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e054",
+          "bytes": "2d500000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e058",
+          "bytes": "381f040c"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e05c",
+          "bytes": "2d804000"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e060",
+          "bytes": "2d200002"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e064",
+          "bytes": "0800b1df"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e068",
+          "bytes": "0000b0df"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e06c",
+          "bytes": "1000bfdf"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e070",
+          "bytes": "64a982af"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e074",
+          "bytes": "40340408"
+        },
+        {
+          "function": "0022df80",
+          "address": "0022e078",
+          "bytes": "2000bd27"
+        }
+      ],
+      "judgment": {
+        "id": "claim5",
+        "claim": "Consumer calls loader with compressed flag, stores returned buffer, passes it to subsequent functions, and then reads structure fields from the processed buffer. Full asset semantics remain unresolved.",
+        "verdict": "verified",
+        "probabilities": {
+          "contradicts": 0.01,
+          "says_nothing": 0.12,
+          "supports": 0.87
+        },
+        "confidence": 0.81,
+        "action": "auto",
+        "supporting_evidence": "consumption",
+        "same_subject": 0.41
+      },
+      "acceptance_basis": "retained Jev output plus independent reasoner review; non-auto output remains non-auto"
+    }
+  ],
+  "unresolved_references": [
+    {
+      "address": "0024fd48",
+      "value": " inflate 1.1.3 Copyright 1995-1998 Mark Adler ",
+      "references": []
+    }
+  ],
+  "export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+  "judgment_audits": [
+    {
+      "path": "loaderJudgment.json",
+      "identity": {
+        "bytes": 27327,
+        "sha256": "7a822b24a2d9e8bb673bd7d3b1e97ce84dd0e4ff2dd6e0633f9c61f8be5b614c"
+      }
+    },
+    {
+      "path": "tableJudgment.json",
+      "identity": {
+        "bytes": 41810,
+        "sha256": "acb10d10c8bf9aeadd762bc74db5c62ffc549b8fdfda873956ba9d741e706a08"
+      }
+    }
+  ],
+  "runtime_correlation": {
+    "path": "table-correlation.json",
+    "identity": {
+      "bytes": 1134,
+      "sha256": "6377fe18f725ec8a23b74d4c2e1e59fa0b5b72ca679fc55ce9443870a9ab3490"
+    }
+  },
+  "reasoner_review": {
+    "path": "reasoner-review.json",
+    "identity": {
+      "bytes": 7498,
+      "sha256": "47d49cae4c4a0510b9f43ca93d660f670ef623e4180930a660889ba0513fd40c"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "method": "All fields independently compared with FILES.HDR using clean unattended-debugger raw-1-entry.p2s; no guest mutations or game patches.",
+  "memory_sha256": "4f12a505310df8ff5fc09c25edf4dcf8da44f0658480a0541a34a16cb76682b4",
+  "segments": {
+    "guest_base": "00293c00",
+    "stride": 20,
+    "count": 48,
+    "matched_fields": "runtime +12 first and +16 count equal every HDR pair first/count",
+    "span_sha256": "6df6e6d9be8cdb1cb28f826fefb6687044cfa04a9e52b3a5f7ed258a32768880"
+  },
+  "records": {
+    "guest_base": "00295000",
+    "stride": 28,
+    "count": 1037,
+    "matched_fields": "all NUL-terminated names/type/length equal HDR; every chunk adds 125000 FILES.DAT base LBA; bytes after name NUL are not preserved",
+    "span_sha256": "4302992a1971ad003c40f59f02694dbe23184acd3c92faa575f2b7ef3b0ac0a1"
+  },
+  "record311": {
+    "path": "/FONTS/fontbase.dat;1",
+    "hdr_chunk": 52035,
+    "runtime_chunk": 177035,
+    "bytes": 1032,
+    "runtime_guest_record": "00297204"
+  },
+  "savestate_identity": {
+    "bytes": 1059143,
+    "sha256": "8ec72ec331ef6d0ccffd9f8eaef089c184a8244f77eb45d65912a8d77bc6b1b0"
+  }
+}

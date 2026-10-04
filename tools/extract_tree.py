@@ -2,8 +2,8 @@
 """Extract FILES.HDR/FILES.DAT into a full directory tree.
 
 Tree semantics (measured):
-  - HDR: u32 nseg; nseg x (u32 count, u32 first); records[first:first+count] = segment.
-  - Record: 28 bytes = [16B NUL-padded name][u32 type][u32 u1][u32 u2].
+  - HDR: u32 nseg; nseg x (u32 count, u32 first); u32 record_count; records[first:first+count] = segment.
+  - Record: 28 bytes = [16B bounded NUL-terminated name][u32 type][u32 u1][u32 u2].
   - type != 0xFFFFFFFF: the record is a DIRECTORY whose children are exactly the
     records in segment[type]. Names in segment 0 are the filesystem roots.
   - type == 0xFFFFFFFF: a FILE; u1 = start chunk (offset = u1*2048); u2 = stored bytes.
@@ -11,10 +11,9 @@ Tree semantics (measured):
     are a zlib header.
 """
 import hashlib
-import struct
-import sys
-import zlib
 from pathlib import Path
+
+from format_contracts import archive_header, decode_payload, require
 
 ROOT = Path(__file__).resolve().parent.parent
 EX = ROOT / "games/ford-racing-2/extracted"
@@ -22,54 +21,20 @@ OUT = EX / "files"
 MANIFEST = ROOT / "notes/extracted-manifest.tsv"
 TREE = ROOT / "notes/fs-tree.txt"
 
-NAME_START = 0x188
-REC = 28
 CHUNK = 2048
 DIRTYPE = 0xFFFFFFFF
 
 
 def parse_hdr(data: bytes):
-    nseg = struct.unpack_from("<I", data, 0)[0]
-    segs = [struct.unpack_from("<II", data, 4 + 8 * i) for i in range(nseg)]
-    recs = []
-    n = (len(data) - NAME_START) // REC
-    for i in range(n):
-        base = NAME_START + i * REC
-        rec = data[base : base + REC]
-        nul = rec.find(b"\x00")
-        name = rec[:nul].decode("ascii", "replace")
-        t, u1, u2 = struct.unpack("<3I", rec[16:28])
-        recs.append({"idx": i, "name": name, "type": t, "u1": u1, "u2": u2})
-    return nseg, segs, recs
+    parsed = archive_header(data)
+    return len(parsed['segments']), parsed['segments'], parsed['records']
 
 
 def build_paths(nseg, segs, recs):
-    """Assign a full path to every record. Returns dict idx -> path."""
-    # dir_for_segment: segment index -> dir record idx (dir whose type == seg)
-    dir_for_seg = {}
-    for r in recs:
-        if r["type"] != DIRTYPE:
-            dir_for_seg[r["type"]] = r["idx"]
-
-    paths = {}
-
-    def walk_segment(seg_idx: int, prefix: str):
-        first, count = segs[seg_idx][0], segs[seg_idx][1]
-        # note: stored as (first, count)? measured: pair=(count, first) → (segs[i][0]=count?)
-        # Determine at runtime: our parser stored (a,b) as unpacked from 8 bytes where a=count, b=first
-        # (verified: pair[0]=(11,0) → 11 records from 0). Keep that order.
-        count, first = segs[seg_idx]
-        for i in range(first, first + count):
-            if i >= len(recs):
-                continue
-            r = recs[i]
-            path = f"{prefix}/{r['name']}"
-            paths[i] = path
-            if r["type"] != DIRTYPE:
-                walk_segment(r["type"], path)
-
-    walk_segment(0, "")
-    return paths, dir_for_seg
+    """Paths already passed the structured header's partition/cycle/bounds checks."""
+    require(nseg == len(segs), 'segment count differs from parsed header')
+    return ({r['idx']: r['path'] for r in recs},
+            {r['type']: r['idx'] for r in recs if r['type'] != DIRTYPE})
 
 
 def main() -> None:
@@ -108,7 +73,6 @@ def main() -> None:
     # extract
     OUT.mkdir(parents=True, exist_ok=True)
     dat = (EX / "FILES.DAT").open("rb")
-    ZMAGIC = {0x01, 0x5E, 0x9C, 0xDA}
     stats = {"ok(zlib)": 0, "ok(raw)": 0}
     rows = []
     for i in sorted(paths):
@@ -120,19 +84,9 @@ def main() -> None:
         stored = r["u2"]
         dat.seek(off)
         blob = dat.read(stored)
-        out = b""
-        status = "?"
-        if len(blob) >= 6 and blob[4] == 0x78 and blob[5] in ZMAGIC:
-            (dlen,) = struct.unpack("<I", blob[:4])
-            try:
-                d = zlib.decompressobj()
-                out = d.decompress(blob[4:]) + d.flush()
-                status = "ok(zlib)" if (d.eof and len(out) == dlen) else f"size-mismatch(got={len(out)} want={dlen})"
-            except zlib.error as exc:
-                status = f"zlib-error: {exc}"
-        else:
-            out = blob
-            status = "ok(raw)"
+        require(len(blob) == stored, f'record {i}: short DAT read')
+        classification, out, _ = decode_payload(blob)
+        status = f'ok({classification})'
         stats[status] = stats.get(status, 0) + 1
         dest = OUT / path
         dest.parent.mkdir(parents=True, exist_ok=True)

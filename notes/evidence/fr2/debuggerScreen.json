@@ -1,0 +1,14 @@
+{
+  "args": {
+    "text": "PCSX2 official debugger documentation: To open debugger ensure Tools -> Show Advanced Settings is ticked, then Debug -> Open Debugger. R5900 layout targets EE, R3000 targets IOP. Expressions support guest register names and hex addresses.",
+    "purpose": "Locate supported debugger UI for local runtime capture."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.01,\n    \"substance\": 0.98,\n    \"relevance\": 0.93\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 561,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  }
+}

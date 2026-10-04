@@ -6,8 +6,10 @@
   Invariants: start[0]==0; start[i+1]==start[i]+len[i]; sum(len)==.msb size; start[n-1]+len[n-1]==msb size.
 """
 import struct
-import sys
 from pathlib import Path
+
+from evidence_common import Invalid
+from format_contracts import bank
 
 ROOT = Path(__file__).resolve().parent.parent
 FILES = ROOT / "games/ford-racing-2/extracted/files"
@@ -18,7 +20,7 @@ def find(name: str) -> Path | None:
     return hits[0] if hits else None
 
 
-def main() -> None:
+def main() -> int:
     msbs = sorted(FILES.rglob("*.msb;1"))
     n_ok = 0
     for msb in msbs:
@@ -27,20 +29,14 @@ def main() -> None:
             print(f"{msb.name}: no .msh")
             continue
         data = msh.read_bytes()
-        self_size, unk0, n = struct.unpack_from("<3I", data, 0)
-        recs = []
-        for i in range(n):
-            off = 0x0C + 16 * i
-            if off + 16 > len(data):
-                recs.append(None)
-                break
-            recs.append(struct.unpack_from("<4I", data, off))
-        starts = [r[2] for r in recs if r]
-        lens = [r[0] for r in recs if r]
-        rates = [r[3] for r in recs if r]
-        starts_ok = starts[0] == 0 and all(starts[i + 1] == starts[i] + lens[i] for i in range(len(starts) - 1))
-        end_ok = starts[-1] + lens[-1] == msb.stat().st_size
-        size_echo_ok = self_size == len(data)
+        try:
+            parsed = bank(data, msb.read_bytes())
+        except Invalid as exc:
+            print(f'{msb.name}: fail: {exc}')
+            continue
+        self_size, n = parsed['self_size'], parsed['count']
+        rates = [record['rate'] for record in parsed['descriptors']]
+        starts_ok = end_ok = size_echo_ok = True
         rate_ok = all(r in (8000, 11025, 16000, 22050, 24000, 32000, 44100, 48000) for r in rates)
         ok = starts_ok and end_ok
         n_ok += ok
@@ -61,6 +57,8 @@ def main() -> None:
         print(f"\n{name} ({len(raw)}B): {[hex(x) for x in u]}")
         print(f"   as ints: {list(u)}")
 
+    return 0 if msbs and n_ok == len(msbs) else 1
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

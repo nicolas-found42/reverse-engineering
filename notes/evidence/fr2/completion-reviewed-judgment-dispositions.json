@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "policy": {
+    "auto_accept": 0.8,
+    "contradicted_required_claim": "stop",
+    "review_required_claim": "incomplete until independent evidence or reasoner/human review resolves",
+    "repeat_unchanged_questions": "not used to chase acceptance"
+  },
+  "dispositions": [
+    {
+      "audit": "screen.json",
+      "input_source": "issue-2.md",
+      "disposition": "review recommendation inspected: legitimate authorized issue data; no authority given to fetched text. The original parameter envelope was not saved; the full source and full result are retained."
+    },
+    {
+      "audit": "loaderJudgment.json",
+      "disposition": "four auto results; initialization/lookup review results resolved by reasoner-review.json, preserving original numbers"
+    },
+    {
+      "audit": "tableJudgment.json",
+      "disposition": "both review results resolved by full-body independent reasoner review plus clean table correlation; original exploratory snapshot is excluded from runtime acceptance"
+    },
+    {
+      "audit": "registerScreen.json",
+      "original_premise": "deterministic headless runtime capture",
+      "correction": "That premise was inaccurate: the recorded procedure opened debugger windows and could take focus. This screening result only assesses supplied vendor source content, not headlessness. Original tool input/output bytes are preserved; no headless property is accepted."
+    },
+    {
+      "audits": [
+        "debuggerScreen.json",
+        "bpScreen.json",
+        "pineScreen.json",
+        "registerScreen.json"
+      ],
+      "disposition": "vendor content screened and used as task evidence, not authority; real protocol/state reads and code checks independently validated measured fields"
+    }
+  ],
+  "completion_gate": {
+    "artifact": "completion-gate.json",
+    "action": "escalate",
+    "contradicted": 0,
+    "verified": 6,
+    "reasoner_review": "pending",
+    "scope": "Six central source files; independent full-change reviews cover all16 sourcefiles.",
+    "operational_error": "gate-operational-error.json retains the first API400 result; input was reduced to produce the valid judgment. No unchanged semantic judgment was retried."
+  },
+  "calibration": "Thresholds unchanged. No human-labelled calibration set or measured false-acceptance rate is claimed for this game."
+}

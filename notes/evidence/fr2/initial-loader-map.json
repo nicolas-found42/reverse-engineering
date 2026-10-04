@@ -1,0 +1,1465 @@
+{
+  "schema_version": 1,
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "provenance": {
+    "profile": "fr2-pal-sles-517.05",
+    "sources": {
+      "ford-racing-2.bin": {
+        "bytes": 678667248,
+        "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+      },
+      "ford-racing-2.cue": {
+        "bytes": 79,
+        "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+      },
+      "extracted/SLES_517.05": {
+        "bytes": 1662804,
+        "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+      },
+      "extracted/FILES.HDR": {
+        "bytes": 29428,
+        "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+      },
+      "extracted/FILES.DAT": {
+        "bytes": 334641152,
+        "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+      }
+    },
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+  },
+  "stages": [
+    {
+      "stage": "initialization",
+      "tentative_name": "initialization_candidate",
+      "claim": "Initializes archive tables: references files.dat/files.hdr, reads segment count and table, then a separate record count, and builds 28-byte runtime entries.",
+      "correlation": "HDR u32 segment count at 0, 48 pairs at 4, record count at 388, 1037 records at 392; names can contain unknown tail bytes.",
+      "disposition": "unresolved",
+      "alternatives": "Symbol names are tentative; exact source types and asynchronous paths remain unresolved.",
+      "evidence": [
+        {
+          "function": "001061f8",
+          "address": "00106228",
+          "bytes": "e61d040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010622c",
+          "bytes": "a8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106230",
+          "bytes": "2da04000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106234",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106238",
+          "bytes": "60dd070c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010623c",
+          "bytes": "07008526"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106240",
+          "bytes": "09004014"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106244",
+          "bytes": "0000b78f"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106248",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010624c",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106250",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106254",
+          "bytes": "d802c624"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106258",
+          "bytes": "2d388002"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010625c",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106260",
+          "bytes": "1a010524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106268",
+          "bytes": "4034040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010626c",
+          "bytes": "2d208002"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106270",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106274",
+          "bytes": "f0028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106278",
+          "bytes": "e61d040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010627c",
+          "bytes": "02000524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106280",
+          "bytes": "2da04000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106284",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106288",
+          "bytes": "60dd070c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010628c",
+          "bytes": "07008526"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106290",
+          "bytes": "65004010"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106294",
+          "bytes": "0400a48f"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106298",
+          "bytes": "de1d040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010629c",
+          "bytes": "0000b18f"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062a0",
+          "bytes": "80000524"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062a4",
+          "bytes": "2d804000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062a8",
+          "bytes": "3c881100"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062ac",
+          "bytes": "ff070326"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062b0",
+          "bytes": "0000022a"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062b4",
+          "bytes": "0b806200"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062b8",
+          "bytes": "c3821000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062bc",
+          "bytes": "c0221000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062c0",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062c4",
+          "bytes": "3c801000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062c8",
+          "bytes": "3e201000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062cc",
+          "bytes": "2db04000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062d0",
+          "bytes": "3e281100"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062d4",
+          "bytes": "2d30c002"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062d8",
+          "bytes": "f41f040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062dc",
+          "bytes": "0400d026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062e0",
+          "bytes": "0000c78e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062e4",
+          "bytes": "0001e228"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062e8",
+          "bytes": "aca887af"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062ec",
+          "bytes": "08004014"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062f0",
+          "bytes": "2d20e000"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062f4",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062f8",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001062fc",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106300",
+          "bytes": "0003c624"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106304",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106308",
+          "bytes": "3c010524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106310",
+          "bytes": "12008058"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106314",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106318",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010631c",
+          "bytes": "2d888000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106320",
+          "bytes": "01000524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106324",
+          "bytes": "003c4424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106328",
+          "bytes": "000080ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010632c",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106330",
+          "bytes": "040080ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106334",
+          "bytes": "ffff3126"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106338",
+          "bytes": "080085ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010633c",
+          "bytes": "fcff038e"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106340",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106344",
+          "bytes": "100083ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106348",
+          "bytes": "fcff028e"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010634c",
+          "bytes": "0c0082ac"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106350",
+          "bytes": "f5ff2016"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106354",
+          "bytes": "14008424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106358",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010635c",
+          "bytes": "fcff078e"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106360",
+          "bytes": "6004e228"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106364",
+          "bytes": "08004014"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106368",
+          "bytes": "b0a887af"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010636c",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106370",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106374",
+          "bytes": "b8028424"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106378",
+          "bytes": "0003c624"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010637c",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106380",
+          "bytes": "4c010524"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106388",
+          "bytes": "1800e018"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010638c",
+          "bytes": "2d880000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106390",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106394",
+          "bytes": "2d980000"
+        },
+        {
+          "function": "001061f8",
+          "address": "00106398",
+          "bytes": "00505524"
+        },
+        {
+          "function": "001061f8",
+          "address": "0010639c",
+          "bytes": "1800b226"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063a0",
+          "bytes": "21207502"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063a4",
+          "bytes": "1c007326"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063a8",
+          "bytes": "2d280002"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063ac",
+          "bytes": "fe37080c"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063b0",
+          "bytes": "14001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063b4",
+          "bytes": "fcff038e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063b8",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063bc",
+          "bytes": "b0a8848f"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063c0",
+          "bytes": "f8ff43ae"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063c4",
+          "bytes": "01003126"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063c8",
+          "bytes": "2a202402"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063cc",
+          "bytes": "fcff028e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063d0",
+          "bytes": "04001026"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063d4",
+          "bytes": "2110e202"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063d8",
+          "bytes": "fcff42ae"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063dc",
+          "bytes": "fcff038e"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063e0",
+          "bytes": "000043ae"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063e4",
+          "bytes": "eeff8014"
+        },
+        {
+          "function": "001061f8",
+          "address": "001063e8",
+          "bytes": "1c005226"
+        }
+      ]
+    },
+    {
+      "stage": "lookup",
+      "tentative_name": "lookup_candidate",
+      "claim": "Traverses path components using segment count/first values, computes record stride 28 as ((index<<3)-index)<<2, distinguishes file sentinel -1 from directory segment index, and returns chunk/length fields.",
+      "correlation": "Archive type at record+16, chunk at +20, stored length at +24; runtime table copies those offsets and adds FILES.DAT disc LBA to chunk.",
+      "disposition": "unresolved",
+      "alternatives": "Symbol names are tentative; exact source types and asynchronous paths remain unresolved.",
+      "evidence": [
+        {
+          "function": "00107268",
+          "address": "00107368",
+          "bytes": "001e0300"
+        },
+        {
+          "function": "00107268",
+          "address": "0010736c",
+          "bytes": "21104400"
+        },
+        {
+          "function": "00107268",
+          "address": "00107370",
+          "bytes": "01004426"
+        },
+        {
+          "function": "00107268",
+          "address": "00107374",
+          "bytes": "031e0300"
+        },
+        {
+          "function": "00107268",
+          "address": "00107378",
+          "bytes": "1000458c"
+        },
+        {
+          "function": "00107268",
+          "address": "0010737c",
+          "bytes": "5c006338"
+        },
+        {
+          "function": "00107268",
+          "address": "00107380",
+          "bytes": "2d980000"
+        },
+        {
+          "function": "00107268",
+          "address": "00107384",
+          "bytes": "0a908300"
+        },
+        {
+          "function": "00107268",
+          "address": "00107388",
+          "bytes": "2000a010"
+        },
+        {
+          "function": "00107268",
+          "address": "0010738c",
+          "bytes": "0000c0a0"
+        },
+        {
+          "function": "00107268",
+          "address": "00107390",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "00107268",
+          "address": "00107394",
+          "bytes": "2900033c"
+        },
+        {
+          "function": "00107268",
+          "address": "00107398",
+          "bytes": "003c5624"
+        },
+        {
+          "function": "00107268",
+          "address": "0010739c",
+          "bytes": "00507424"
+        },
+        {
+          "function": "00107268",
+          "address": "001073a0",
+          "bytes": "0c00d726"
+        },
+        {
+          "function": "00107268",
+          "address": "001073a4",
+          "bytes": "2180be02"
+        },
+        {
+          "function": "00107268",
+          "address": "001073a8",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00107268",
+          "address": "001073ac",
+          "bytes": "80801000"
+        },
+        {
+          "function": "00107268",
+          "address": "001073b0",
+          "bytes": "21101702"
+        },
+        {
+          "function": "00107268",
+          "address": "001073b4",
+          "bytes": "21801602"
+        },
+        {
+          "function": "00107268",
+          "address": "001073b8",
+          "bytes": "0000438c"
+        },
+        {
+          "function": "00107268",
+          "address": "001073bc",
+          "bytes": "21187300"
+        },
+        {
+          "function": "00107268",
+          "address": "001073c0",
+          "bytes": "01007326"
+        },
+        {
+          "function": "00107268",
+          "address": "001073c4",
+          "bytes": "c0100300"
+        },
+        {
+          "function": "00107268",
+          "address": "001073c8",
+          "bytes": "23104300"
+        },
+        {
+          "function": "00107268",
+          "address": "001073cc",
+          "bytes": "80880200"
+        },
+        {
+          "function": "00107268",
+          "address": "001073d0",
+          "bytes": "c836080c"
+        },
+        {
+          "function": "00107268",
+          "address": "001073d4",
+          "bytes": "21283402"
+        },
+        {
+          "function": "00107268",
+          "address": "001073d8",
+          "bytes": "09004054"
+        },
+        {
+          "function": "00107268",
+          "address": "001073dc",
+          "bytes": "1000028e"
+        },
+        {
+          "function": "00107268",
+          "address": "001073e0",
+          "bytes": "10002326"
+        },
+        {
+          "function": "00107268",
+          "address": "001073e4",
+          "bytes": "ffff0524"
+        },
+        {
+          "function": "00107268",
+          "address": "001073e8",
+          "bytes": "21107400"
+        },
+        {
+          "function": "00107268",
+          "address": "001073ec",
+          "bytes": "0000428c"
+        },
+        {
+          "function": "00107268",
+          "address": "001073f0",
+          "bytes": "b7ff4510"
+        },
+        {
+          "function": "00107268",
+          "address": "001073f4",
+          "bytes": "2df04000"
+        },
+        {
+          "function": "00107268",
+          "address": "001073f8",
+          "bytes": "05000010"
+        },
+        {
+          "function": "00107268",
+          "address": "001073fc",
+          "bytes": "00004492"
+        }
+      ]
+    },
+    {
+      "stage": "chunk_read",
+      "tentative_name": "chunk_read_candidate",
+      "claim": "Passes chunk-addressed start, chunk count, and destination to a CD read function, and waits for read/sync/error checks. Callers round byte sizes with shifts by 11.",
+      "correlation": "2048 bytes per chunk; archive chunk is relative to FILES.DAT; initializer adds base disc LBA. cdRead function identity remains tentative.",
+      "disposition": "unresolved",
+      "alternatives": "Symbol names are tentative; exact source types and asynchronous paths remain unresolved.",
+      "evidence": [
+        {
+          "function": "00107fd0",
+          "address": "00108050",
+          "bytes": "2d204002"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108054",
+          "bytes": "2d280002"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108058",
+          "bytes": "a8a88727"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010805c",
+          "bytes": "f2df070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108060",
+          "bytes": "2d306002"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108064",
+          "bytes": "01000324"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108068",
+          "bytes": "f7ff4314"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010806c",
+          "bytes": "2d200000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108070",
+          "bytes": "eadd070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108074",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108078",
+          "bytes": "f3ff4014"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010807c",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108080",
+          "bytes": "90e0070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108084",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108088",
+          "bytes": "efff4014"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010808c",
+          "bytes": "00000000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108090",
+          "bytes": "2d200000"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108094",
+          "bytes": "78ab070c"
+        },
+        {
+          "function": "00107fd0",
+          "address": "00108098",
+          "bytes": "708f80af"
+        },
+        {
+          "function": "00107fd0",
+          "address": "0010809c",
+          "bytes": "0000b0df"
+        }
+      ]
+    },
+    {
+      "stage": "raw_transfer",
+      "tentative_name": "raw_transfer_candidate",
+      "claim": "Raw loader rounds size to sectors, allocates a buffer, reads archive chunks into it, stores original logical length in an optional output structure, and returns the buffer.",
+      "correlation": "Archive stored bytes is logical raw length; sector-rounded transfer may include subsequent padding, which is excluded from comparison.",
+      "disposition": "unresolved",
+      "alternatives": "Symbol names are tentative; exact source types and asynchronous paths remain unresolved.",
+      "evidence": [
+        {
+          "function": "001067f8",
+          "address": "00106904",
+          "bytes": "0400428e"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106908",
+          "bytes": "ff074324"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010690c",
+          "bytes": "fe0f4224"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106910",
+          "bytes": "00006428"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106914",
+          "bytes": "0b184400"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106918",
+          "bytes": "c31a0300"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010691c",
+          "bytes": "0e00a012"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106920",
+          "bytes": "c08a0300"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106924",
+          "bytes": "788f828f"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106928",
+          "bytes": "0c004014"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010692c",
+          "bytes": "2d288002"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106930",
+          "bytes": "007d222a"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106934",
+          "bytes": "09004014"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106938",
+          "bytes": "fff90234"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010693c",
+          "bytes": "2a105100"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106940",
+          "bytes": "06004014"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106944",
+          "bytes": "01000224"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106948",
+          "bytes": "748f908f"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010694c",
+          "bytes": "06000010"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106950",
+          "bytes": "788f82af"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106958",
+          "bytes": "2d288002"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010695c",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106960",
+          "bytes": "2d202002"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106964",
+          "bytes": "2d804000"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106968",
+          "bytes": "2d202002"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010696c",
+          "bytes": "ff072326"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106970",
+          "bytes": "0000222a"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106974",
+          "bytes": "0000458e"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106978",
+          "bytes": "0b206200"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010697c",
+          "bytes": "2d300002"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106980",
+          "bytes": "c3220400"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106984",
+          "bytes": "f41f040c"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106988",
+          "bytes": "2d208000"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010698c",
+          "bytes": "06006052"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106990",
+          "bytes": "0c0040ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106994",
+          "bytes": "0400428e"
+        },
+        {
+          "function": "001067f8",
+          "address": "00106998",
+          "bytes": "000070ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "0010699c",
+          "bytes": "080062ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069a0",
+          "bytes": "040070ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069a4",
+          "bytes": "0c0040ae"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069a8",
+          "bytes": "07000010"
+        },
+        {
+          "function": "001067f8",
+          "address": "001069ac",
+          "bytes": "2d100002"
+        }
+      ]
+    },
+    {
+      "stage": "decompression",
+      "tentative_name": "decompression_candidate",
+      "claim": "Compressed loader reads the first word as output length, allocates output, skips four input bytes, initializes a 44-byte stream, calls the inflate-like routine, then finalizes and returns output.",
+      "correlation": "Measured wrapper is little-endian u32 output length followed by a terminated zlib stream. Codec identity is supported by stream instructions and embedded inflate version, not the string alone.",
+      "disposition": "unresolved",
+      "alternatives": "Symbol names are tentative; exact source types and asynchronous paths remain unresolved.",
+      "evidence": [
+        {
+          "function": "00106c48",
+          "address": "00106df4",
+          "bytes": "0000f68e"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106df8",
+          "bytes": "2d28c003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106dfc",
+          "bytes": "2c34040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e00",
+          "bytes": "2d20c002"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e04",
+          "bytes": "2c000624"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e08",
+          "bytes": "2da84000"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e0c",
+          "bytes": "2900023c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e10",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e14",
+          "bytes": "a009040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e18",
+          "bytes": "00ed4524"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e1c",
+          "bytes": "fcff0326"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e20",
+          "bytes": "2a00023c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e24",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e28",
+          "bytes": "84ca4224"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e2c",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e30",
+          "bytes": "0800a3af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e34",
+          "bytes": "0000a2af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e38",
+          "bytes": "0400b5af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e3c",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e40",
+          "bytes": "1000b6af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e44",
+          "bytes": "07000010"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e48",
+          "bytes": "21987002"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e50",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e54",
+          "bytes": "0000b7af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e58",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e5c",
+          "bytes": "0800b0af"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e60",
+          "bytes": "21987002"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e64",
+          "bytes": "2a107202"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e68",
+          "bytes": "cbff4014"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e6c",
+          "bytes": "3400a48f"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e70",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e74",
+          "bytes": "aa07040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e78",
+          "bytes": "04000524"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e7c",
+          "bytes": "3e09040c"
+        },
+        {
+          "function": "00106c48",
+          "address": "00106e80",
+          "bytes": "2d20a003"
+        }
+      ]
+    },
+    {
+      "stage": "consumption",
+      "tentative_name": "consumption_candidate",
+      "claim": "Consumer calls loader with compressed flag, stores returned buffer, passes it to subsequent functions, and then reads structure fields from the processed buffer. Full asset semantics remain unresolved.",
+      "correlation": "Return buffer remains available before 00123908 and 0022ba30 transformations. No claim of complete geometry recovery.",
+      "disposition": "unresolved",
+      "alternatives": "Symbol names are tentative; exact source types and asynchronous paths remain unresolved.",
+      "evidence": [
+        {
+          "function": "0011ed90",
+          "address": "0011ede8",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edec",
+          "bytes": "2d20a003"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edf0",
+          "bytes": "01000624"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edf4",
+          "bytes": "2d380000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edf8",
+          "bytes": "2d400000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011edfc",
+          "bytes": "2d480000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee00",
+          "bytes": "381f040c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee04",
+          "bytes": "2d500000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee08",
+          "bytes": "a893848f"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee0c",
+          "bytes": "08004014"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee10",
+          "bytes": "080082ac"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee14",
+          "bytes": "2500043c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee18",
+          "bytes": "2500063c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee1c",
+          "bytes": "f8278424"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee20",
+          "bytes": "5828c624"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee24",
+          "bytes": "9f010524"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee28",
+          "bytes": "2216040c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee2c",
+          "bytes": "2d38a003"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee30",
+          "bytes": "428e040c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee34",
+          "bytes": "2d284000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee38",
+          "bytes": "a893848f"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee3c",
+          "bytes": "8cae080c"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee40",
+          "bytes": "2d284000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee44",
+          "bytes": "a893838f"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee48",
+          "bytes": "2d884000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee4c",
+          "bytes": "2d280000"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee50",
+          "bytes": "0c0071ac"
+        },
+        {
+          "function": "0011ed90",
+          "address": "0011ee54",
+          "bytes": "04003126"
+        }
+      ]
+    }
+  ],
+  "unresolved_references": [
+    {
+      "address": "0024fd48",
+      "value": " inflate 1.1.3 Copyright 1995-1998 Mark Adler ",
+      "references": []
+    }
+  ],
+  "export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+}
