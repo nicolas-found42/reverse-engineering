@@ -69,3 +69,13 @@ _Avoid_: Tile header
 **Tiled profile**:
 The layout of PTG files whose last header word is 0xDDDDDDDD: a pointer record and a 64-byte descriptor block per tile, then 1,024 bytes of pixels per tile.
 _Avoid_: Texture format
+
+## Textures
+
+**Texture library**:
+The section of a model file that follows the name tree: palette blocks, then each texture's name and descriptor, then the image planes. Its layout is taken from the executable's own loader.
+_Avoid_: Material table
+
+**Texture format**:
+The one-byte code in a texture descriptor. Format 1 is 32-bit RGBA stored linearly, format 3 is 8-bit indexed pixels in the PS2 graphics chip's block order with a 256-entry palette, and format 4 is 4-bit (pixel layout unresolved).
+_Avoid_: Pixel type

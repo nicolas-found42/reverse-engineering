@@ -6,9 +6,10 @@ New offline checks for the unchanged PAL corpus, each separate from the three mi
 python3 tools/verify_audio.py corpus games/ford-racing-2 --oracle ffmpeg
 python3 tools/verify_ptg.py corpus games/ford-racing-2
 python3 tools/verify_model.py corpus games/ford-racing-2
+python3 tools/verify_textures.py corpus games/ford-racing-2
 ```
 
-Single inputs: `verify_audio.py bank MSH MSB`, `stream MIH MIB`; `verify_ptg.py file PTG`; `verify_model.py file PS2`. All accept `--output`.
+Single inputs: `verify_audio.py bank MSH MSB`, `stream MIH MIB`; `verify_ptg.py file PTG`; `verify_model.py file PS2`; `verify_textures.py file PS2`. All accept `--output`.
 
 ## What is verified
 
@@ -17,6 +18,7 @@ Single inputs: `verify_audio.py bank MSH MSB`, `stream MIH MIB`; `verify_ptg.py 
 | Audio | All 305 bank sample spans and 20 music streams satisfy PS-ADPCM block structure; spans end with one flag-3 block (206) or a flag-1 block plus a flag-7 end marker with 0x77 filler (99, all in `speech.msb`); any other end-flag placement fails as outside the measured classes; music has two channels, 0x8000 interleave and a header turn count equal to the observed turns (20/20). The reference decoder equals ffmpeg 9.0.2 `adpcm_psx` sample for sample on all 305 spans and 40 music excerpts. | Bit-exactness with SPU2 hardware, playback, loop behavior, the meaning of the `.mih` second word |
 | PTG | Header relations on all 548 files; the 17 files with last word `0xDDDDDDDD` have size `1120 + 1104 × count`, per-tile pointer records whose floats are the covered fraction at the row-major position, and 64-byte descriptor blocks (ten words fixed at `0xDDDDDDDD`; five words constant within a file) | Palette, tile pointer values, descriptor constants, the 491 other multi-tile bodies |
 | Model | The first u32 equals the name-pool end offset in all 56 models, with zero padding to the next 16-byte boundary | Geometry and the later header |
+| Model textures | The texture-library section, translated from the game's loader, is walked in all 56 models (2,370 textures: format 1 ×350, format 3 ×1,551, format 4 ×469); it ends where a count of 0x34-byte records begins and that table fits in the file; 1,856 level-0 images decode (formats 1 and 3) and two were viewed as recognizable | Format-4 pixels, 45 images under 16 pixels, mip pixels, palette table entries, geometry |
 
 ## How corpus mode establishes completeness
 
@@ -35,4 +37,4 @@ Each corpus command first pins the executable, archive header and archive data, 
 
 Jev is advisory. Byte equality, the oracle, tests and the real corpus decide factual acceptance. Model-threshold reliability on game hypotheses is unmeasured.
 
-See [completion-matrix.md](completion-matrix.md) for the status of every area and the finish criteria.
+See [completion-matrix.md](completion-matrix.md) for the status of every area and the finish criteria, and [next-phase.md](next-phase.md) for the mesh/VU/render bar.

@@ -1,0 +1,66 @@
+{
+  "id": "d031-decide-mesh-method",
+  "purpose": "choose method for model container recovery (mesh phase)",
+  "tool": "jev_decide",
+  "server_package": "@jkudish/jev-mcp@0.13.0",
+  "arguments": {
+    "decision": "Which method should drive recovery of the .PS2 model container layout toward vertex and index data?",
+    "evidence": "User decision: extend the effort to mesh, VU and render reconstruction. Constraints: offline/static only (no debugger windows), claims bounded and falsifiable, milestone and prior verifiers unchanged.\nMeasured today from the executable's own code (saved Ghidra export): FUN_0011ed90 (6196 bytes, 1549 instructions) is the .ps2 model loader: sprintf '%s.ps2', load via the verified dispatch 00107ce0, then parse the buffer as a chain of sections. FUN_00123908 relocates the name tree: word0 is the byte offset of the next section, rounded up to 16 ((base+word0+15)&~15) on return; it walks 10 count-prefixed arrays adding the base to each entry. This independently matches my verified invariants (first u32 equals name-pool end offset in 56/56; zero pad to 16; 9 groups in every model). FUN_0022ba30 (1548 bytes) parses the next section: three counts then (n1+n2+n3) 12-byte entries and allocates 0x400 bytes per entry for the first count. Back in FUN_0011ed90: a count s6 then s6 records of 0x34 bytes, then more loops. Raw bytes alone (debug.ps2, 49COUPE.PS2) look like sparse memory-image structs with small counters and index runs, so blind layout guessing from bytes is slow.\nJev finds over loader chunks: pointer-relocation 'partial' 0.67, name-tree-walk 'absent' 0.21 (not in this function), float-field handling 'answered' 0.90.\nNo hardware or emulator oracle is available; an executable-derived parser is checkable by consuming every one of the 56 real model files exactly to EOF.",
+    "priorities": "Falsifiable results on all 56 real files; evidence from the game's own code rather than guesses; no windows or emulator focus; incremental deliverables with tests; bounded claims; keep unresolved items listed.",
+    "candidates": [
+      {
+        "id": "translate_section_parsers",
+        "description": "Read each section parser in the executable (name-tree relocator, section 2 parser, the 0x34-stride record loop and later loops), translate it into a Python section walker one section at a time, and require the chain to land exactly on end-of-file for all 56 models, with negative tests on malformed section counts."
+      },
+      {
+        "id": "emulate_loader_headless",
+        "description": "Run FUN_0011ed90 under a headless Ghidra pcode emulator with stubs for allocators and I/O against real files and record memory reads and writes."
+      },
+      {
+        "id": "blind_byte_layout_search",
+        "description": "Infer the vertex and index layout from byte statistics and visual plots of the model files without using the executable."
+      },
+      {
+        "id": "vu_microcode_first",
+        "description": "Start from the VU1 microprogram in .vutext and infer the vertex format from how it consumes data."
+      }
+    ],
+    "requirements": [
+      "Each step yields a check that can fail on real files (for example, a section chain that must end exactly at end-of-file).",
+      "The method needs no GUI, emulator window or focus change."
+    ]
+  },
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d031.json",
+  "args_sha256": "8fa73d234dc2eba8e4698380f9777a4e3720b94f8f5e0b56a175d19cee3661cf",
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/mesh/d031-evidence.txt",
+      "sha256": "b7379183bb94ffb7b8086a64c0fce7cee3c29dfdff394f1a802fe40ef73b97f4",
+      "bytes": 1488
+    },
+    {
+      "path": ".scratch/mesh/FUN_0011ed90.txt",
+      "sha256": "fc7b7606c1b72a4f7dddab4faf7b58f7964bc64f77ddc24f89ab7b47989cd88e",
+      "bytes": 43215
+    }
+  ],
+  "started_utc": "2026-10-04T07:32:07.768Z",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "seconds": 1.249,
+  "rpc_error": null,
+  "is_error": false,
+  "non_json_stdout_lines": [],
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"translate_section_parsers\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"translate_section_parsers\": 1,\n      \"blind_byte_layout_search\": 0,\n      \"vu_microcode_first\": 0,\n      \"ask_user\": 0,\n      \"emulate_loader_headless\": 0,\n      \"investigate\": 0,\n      \"none\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"translate_section_parsers\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"translate_section_parsers\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"emulate_loader_headless\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"emulate_loader_headless\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"blind_byte_layout_search\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"blind_byte_layout_search\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"vu_microcode_first\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"vu_microcode_first\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2432,\n    \"output_tokens\": 425\n  }\n}"
+      }
+    ]
+  }
+}

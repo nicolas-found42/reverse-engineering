@@ -21,6 +21,7 @@ Confidence figures are the `confidence` Jev reported; its auto/review decision a
 | Music | 20 streams: 2 channels, 0x8000 interleave, header turn count = observed turns (20/20), ADPCM-valid; 40 excerpts equal ffmpeg | verified behavior (auto, conf 0.87) | `d007–d010` | No end or loop flags exist in the streams |
 | Music | Meaning of the `.mih` second word | unresolved interpretation (auto, conf 0.87) | `d007`, `d010` | Not a loop flag position |
 | Models | First u32 equals the name-pool end offset (56/56); zero pad to 16 bytes | supported bounded profile (auto, conf 0.84) | `d014–d016`, `results/model-result.json` | Corrects the milestone's "leading count"; the milestone contract output is unchanged |
+| Models | Texture-library section: 56/56 walked, 2,370 textures, 1,856 level-0 images decoded (formats 1, 3), next-section record table fits 56/56 | supported bounded profile (auto, `d032` 0.95–1.0; decode-coverage sub-claim review 0.71, resolved by the corpus test) | `d032–d034`, `verify_textures.py` | Format 4, 45 images under 16 px, mips, geometry not decoded; patch review `d034` was `escalate` and is resolved by tests, a mutation test, fuzzing and jgrep |
 | Models | Geometry layout | unresolved interpretation (**rule**; Jev conf 0.66, review) | `d015` | Later header words are not a stable structure; only 16-bit index runs seen |
 | PTG | Eight gear sprites decode; uppercase R and N confirmed by the user | verified behavior (**rule**; Jev conf 0.81, review) | milestone | User confirmation is the ground truth |
 | PTG | Header relations hold on all 548 files | supported bounded profile (auto, conf 0.99) | `d011–d013`, `results/ptg-result.json` | Header only |
@@ -65,4 +66,4 @@ Status against these: criteria 1 and 3 are met; criterion 2 is met for audio, PT
 
 ## Scope decision
 
-The project owner chose to extend the effort to **mesh, VU and render reconstruction**. That phase needs its own measurable bar, which is not covered by the criteria above and is defined in `next-phase.md` when work on it starts.
+The project owner chose to extend the effort to **mesh, VU and render reconstruction**. That phase needs its own measurable bar, which is not covered by the criteria above and is defined in [next-phase.md](next-phase.md) (chosen with Jev, `d035`).
