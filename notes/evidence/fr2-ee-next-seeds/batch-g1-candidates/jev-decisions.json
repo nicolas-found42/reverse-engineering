@@ -1,0 +1,11 @@
+{
+ "note": "Decisions behind this batch. Probabilities are as returned; Jev advises and was not rerun to obtain a different answer.",
+ "seed_set_first_decision": {"tool": "jev_decide", "selected": "gather_more_evidence", "confidence": 0.23,
+  "probabilities": {"gather_more_evidence": 0.34, "apply_frame_checked_subset": 0.29, "apply_reference_anchored_only": 0.25, "apply_union_641": 0.07},
+  "disposition": "Low confidence. Built the tiering verifier (tools/verify_gap_candidates.py) instead of choosing one subset."},
+ "seed_set_second_decision": {"tool": "jev_decide", "selected": "apply_tier_a", "confidence": 0.74,
+  "probabilities": {"apply_tier_a": 0.79, "apply_nineteen_triple": 0.12, "hold_for_more_checks": 0.08, "apply_tier_a_and_b": 0.0},
+  "contradicted_requirements": [], "disposition": "Applied tier A (433 seeds, 412 created)."},
+ "candidate_patch_gate": {"tool": "jev_gate", "action": "escalate", "scope": "tools/verify_text_denominator.py, r5900_shape.py and tests",
+  "disposition": "Escalation retained. Root checks: new files only, plus two post-gate tests; the full suite and lint pass."}
+}

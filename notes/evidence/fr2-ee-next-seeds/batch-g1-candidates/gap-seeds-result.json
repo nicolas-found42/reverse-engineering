@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T212557Z-263ee660fe8746b19aec4c8bbd1aeadc",
+  "check": "gap-seeds",
+  "command": [
+    "tools/gap_seeds.py",
+    "--static-export",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-r3/export-4718/inventory.json",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--seeds-out",
+    "/private/tmp/claude-502/-Users-Nicolas-Documents-github-hermes-reverse-engineering/06a510a0-8efe-495f-8ec4-48ceff0ef27a/scratchpad/seeds/repro-union.json",
+    "--output",
+    ".scratch/evidence/gap-seeds"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-r3/export-4718/inventory.json": {
+      "bytes": 50684824,
+      "sha256": "8a229d713f7d4aaba5562980aeeb10a0d897b18697c2cf7ac7b862074492f156"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "rules": {
+      "span_start_prologue": 141,
+      "span_start_any": 260,
+      "reference_target": 381,
+      "after_return_in_span": 263,
+      "after_return_prologue": 82,
+      "prologue_anywhere": 585
+    },
+    "union": 1186,
+    "claim_limits": [
+      "Seeds are candidates for the guard walk, not functions."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 341,
+      "sha256": "ee171c1580906e8edad8b2e2c200a23cceb82d5e796466511ad0fedcd6ead5b4"
+    }
+  }
+}

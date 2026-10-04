@@ -1,0 +1,8217 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T212520Z-e8704fb708d648d4af4ca5b1ab54c943",
+  "check": "gap-candidates",
+  "command": [
+    "tools/verify_gap_candidates.py",
+    "--static-export",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-r3/export-4718/inventory.json",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--config",
+    "/private/tmp/claude-502/-Users-Nicolas-Documents-github-hermes-reverse-engineering/06a510a0-8efe-495f-8ec4-48ceff0ef27a/scratchpad/seeds/union-config.json",
+    "--output",
+    ".scratch/evidence/gap-candidates"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-r3/export-4718/inventory.json": {
+      "bytes": 50684824,
+      "sha256": "8a229d713f7d4aaba5562980aeeb10a0d897b18697c2cf7ac7b862074492f156"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "/private/tmp/claude-502/-Users-Nicolas-Documents-github-hermes-reverse-engineering/06a510a0-8efe-495f-8ec4-48ceff0ef27a/scratchpad/seeds/union-config.json": {
+      "bytes": 469027,
+      "sha256": "4abbff81feb0c573f24e86205ac58e9432f9666ca6066475ae8c09e656bd8937"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "candidates": [
+      {
+        "entry": "001004f0",
+        "bytes": 68,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00101008",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00101010",
+        "bytes": 76,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001010d0",
+        "bytes": 32,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001010f0",
+        "bytes": 32,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00101110",
+        "bytes": 132,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00101278",
+        "bytes": 120,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00101340",
+        "bytes": 140,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00101480",
+        "bytes": 68,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00101a18",
+        "bytes": 160,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00101cc0",
+        "bytes": 12,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00101d10",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001023b0",
+        "bytes": 324,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00102558",
+        "bytes": 208,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00102628",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00103530",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00105c38",
+        "bytes": 120,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00105d28",
+        "bytes": 120,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00105da0",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00106138",
+        "bytes": 36,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001079e8",
+        "bytes": 120,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00107a60",
+        "bytes": 32,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00107a80",
+        "bytes": 52,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00107ab8",
+        "bytes": 220,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00107b98",
+        "bytes": 132,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00107e98",
+        "bytes": 40,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00108c90",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00108c98",
+        "bytes": 188,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "00108d5c",
+        "bytes": 128,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00108de4",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00108e58",
+        "bytes": 76,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "00108efc",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00108f60",
+        "bytes": 132,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010a0a0",
+        "bytes": 732,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010a380",
+        "bytes": 692,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010a7e0",
+        "bytes": 72,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010a880",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010a8b0",
+        "bytes": 296,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010acd0",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010ad00",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010ad30",
+        "bytes": 28,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010ba38",
+        "bytes": 220,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010bd90",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010bdc0",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010cc68",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010d000",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0010d140",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010d148",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010d7c8",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0010daf0",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010db64",
+        "bytes": 144,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0010e528",
+        "bytes": 160,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010e5c8",
+        "bytes": 176,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010f4a0",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0010f4d0",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010f528",
+        "bytes": 56,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0010f5f0",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00110b38",
+        "bytes": 580,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00111f78",
+        "bytes": 96,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00111fd8",
+        "bytes": 164,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001123d8",
+        "bytes": 44,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00112fc0",
+        "bytes": 76,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00113010",
+        "bytes": 48,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001141d0",
+        "bytes": 232,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001142b8",
+        "bytes": 156,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00114468",
+        "bytes": 212,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001148a0",
+        "bytes": 32,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001148c0",
+        "bytes": 32,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001148e0",
+        "bytes": 32,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00114ae8",
+        "bytes": 120,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00115158",
+        "bytes": 40,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00115180",
+        "bytes": 40,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001151a8",
+        "bytes": 44,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00115268",
+        "bytes": 52,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00115378",
+        "bytes": 284,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001158a8",
+        "bytes": 128,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00117120",
+        "bytes": 440,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00117d78",
+        "bytes": 96,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00117e98",
+        "bytes": 236,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00117f88",
+        "bytes": 164,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00118030",
+        "bytes": 208,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00118100",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00118108",
+        "bytes": 156,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001181a8",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00118200",
+        "bytes": 220,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001183d0",
+        "bytes": 192,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00118490",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001184e8",
+        "bytes": 100,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "00118554",
+        "bytes": 96,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00118908",
+        "bytes": 212,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00118a68",
+        "bytes": 120,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00118ae0",
+        "bytes": 164,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011a114",
+        "bytes": 432,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0011a2cc",
+        "bytes": 200,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0011a484",
+        "bytes": 192,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0011aad8",
+        "bytes": 180,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011b400",
+        "bytes": 68,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011b448",
+        "bytes": 48,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011c338",
+        "bytes": 312,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0011c8d0",
+        "bytes": 408,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011cd88",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011cd90",
+        "bytes": 36,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011cdf0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011cdf8",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011cf40",
+        "bytes": 36,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0011cfc0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011d1c0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011d1c8",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0011d1d0",
+        "bytes": 104,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00121308",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00121360",
+        "bytes": 120,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00121b38",
+        "bytes": 392,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00121ff8",
+        "bytes": 176,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001236a8",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00123cc0",
+        "bytes": 596,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "reference"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00124c98",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00124d78",
+        "bytes": 232,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00125200",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001252d8",
+        "bytes": 192,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00125398",
+        "bytes": 192,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00125898",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00125c70",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00126348",
+        "bytes": 832,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00127108",
+        "bytes": 96,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00127168",
+        "bytes": 184,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00127328",
+        "bytes": 328,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001277b8",
+        "bytes": 84,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00127810",
+        "bytes": 236,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0012ad88",
+        "bytes": 352,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00132028",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00133958",
+        "bytes": 280,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00137118",
+        "bytes": 24,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00137ba0",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00137d38",
+        "bytes": 72,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00137e38",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00137e40",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013806c",
+        "bytes": 136,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001387b0",
+        "bytes": 476,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013a508",
+        "bytes": 236,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013a5f8",
+        "bytes": 272,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013a830",
+        "bytes": 600,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013adc8",
+        "bytes": 236,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [],
+        "tier": "C"
+      },
+      {
+        "entry": "0013aeb8",
+        "bytes": 240,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013afa8",
+        "bytes": 320,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013b0e8",
+        "bytes": 456,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013b2b0",
+        "bytes": 716,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013b584",
+        "bytes": 240,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013bb50",
+        "bytes": 76,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013bba0",
+        "bytes": 20,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013bc3c",
+        "bytes": 88,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013bd5c",
+        "bytes": 168,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013c364",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013c390",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013c408",
+        "bytes": 212,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013c4e4",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013c514",
+        "bytes": 148,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013c5c8",
+        "bytes": 208,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013c738",
+        "bytes": 192,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013c7fc",
+        "bytes": 88,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013caa4",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013cb78",
+        "bytes": 232,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013cc60",
+        "bytes": 120,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013ccd8",
+        "bytes": 120,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013cdac",
+        "bytes": 164,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ce50",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ce84",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013ceb4",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013cee4",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013cf38",
+        "bytes": 136,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013cfc0",
+        "bytes": 80,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013d010",
+        "bytes": 60,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013d120",
+        "bytes": 68,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013d16c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d19c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d1cc",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d1f8",
+        "bytes": 20,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d210",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d28c",
+        "bytes": 80,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d2e4",
+        "bytes": 80,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d338",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013d358",
+        "bytes": 84,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013d3b4",
+        "bytes": 80,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d408",
+        "bytes": 188,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d4cc",
+        "bytes": 128,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013d554",
+        "bytes": 180,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013d608",
+        "bytes": 108,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013d7f8",
+        "bytes": 64,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013da40",
+        "bytes": 132,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013dac8",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013dae8",
+        "bytes": 92,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013db48",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013dd50",
+        "bytes": 164,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013ddfc",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013de2c",
+        "bytes": 88,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013de8c",
+        "bytes": 108,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013df00",
+        "bytes": 52,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013df3c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013df6c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013df9c",
+        "bytes": 208,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e0a0",
+        "bytes": 112,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013e110",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013e144",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013e1b8",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013e494",
+        "bytes": 88,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e4f4",
+        "bytes": 88,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e554",
+        "bytes": 88,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e5b4",
+        "bytes": 88,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e63c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e66c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e69c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e6cc",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e828",
+        "bytes": 132,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e8bc",
+        "bytes": 128,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013e944",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013eb18",
+        "bytes": 152,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ebb0",
+        "bytes": 20,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ebd0",
+        "bytes": 172,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ecd8",
+        "bytes": 92,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ed50",
+        "bytes": 144,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ede0",
+        "bytes": 36,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013ee10",
+        "bytes": 156,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013eef0",
+        "bytes": 184,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013efa8",
+        "bytes": 184,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013f060",
+        "bytes": 224,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013f1a8",
+        "bytes": 196,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013f278",
+        "bytes": 176,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013f328",
+        "bytes": 212,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013f400",
+        "bytes": 180,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013f520",
+        "bytes": 112,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013f594",
+        "bytes": 108,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013f628",
+        "bytes": 200,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013f6f0",
+        "bytes": 56,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013f728",
+        "bytes": 120,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "0013f8d0",
+        "bytes": 12,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0013f8e0",
+        "bytes": 148,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013f97c",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0013f9ac",
+        "bytes": 40,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001405b0",
+        "bytes": 444,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "00140968",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00140ad0",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00140c60",
+        "bytes": 24,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00140eb8",
+        "bytes": 28,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00141210",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00142268",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001427b8",
+        "bytes": 124,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00142ae0",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00142b00",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00142c58",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00142c60",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00142c68",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00144638",
+        "bytes": 192,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001447d0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001458a8",
+        "bytes": 12,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00145a38",
+        "bytes": 196,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001495c0",
+        "bytes": 132,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00149704",
+        "bytes": 44,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0014992c",
+        "bytes": 44,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00149fc8",
+        "bytes": 48,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "00149ff8",
+        "bytes": 136,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0014b910",
+        "bytes": 136,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0014fbc0",
+        "bytes": 24,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00159760",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00159848",
+        "bytes": 292,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0015b0b0",
+        "bytes": 464,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0015b808",
+        "bytes": 196,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0015b8d0",
+        "bytes": 120,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0015e898",
+        "bytes": 52,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "reference"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0015f7b8",
+        "bytes": 24,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0015f7d0",
+        "bytes": 44,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0015f858",
+        "bytes": 84,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0015f8b0",
+        "bytes": 84,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00164488",
+        "bytes": 68,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00165140",
+        "bytes": 184,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001654a8",
+        "bytes": 164,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00165550",
+        "bytes": 56,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168338",
+        "bytes": 20,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00168678",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001686d0",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168728",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001687f0",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168840",
+        "bytes": 140,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001688d0",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00168910",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00168950",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00168990",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001689e0",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168a18",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168a50",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168a88",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168b10",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168b98",
+        "bytes": 152,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168c30",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00168d18",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00168d58",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00168d98",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001691c0",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00169218",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00169270",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00169448",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00169548",
+        "bytes": 128,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0016ae98",
+        "bytes": 364,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0016e908",
+        "bytes": 40,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0016e930",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0016f5b0",
+        "bytes": 1076,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0016f9e8",
+        "bytes": 2716,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0017048c",
+        "bytes": 508,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00170688",
+        "bytes": 172,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00170738",
+        "bytes": 520,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001710dc",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001711f0",
+        "bytes": 232,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001761e8",
+        "bytes": 280,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00176e70",
+        "bytes": 288,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00177790",
+        "bytes": 264,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00177f68",
+        "bytes": 36,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001784c0",
+        "bytes": 124,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001788f0",
+        "bytes": 324,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001796b0",
+        "bytes": 236,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001797a0",
+        "bytes": 240,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0017a288",
+        "bytes": 244,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0017a380",
+        "bytes": 264,
+        "frame": "frame_inconsistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0017ae78",
+        "bytes": 272,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0017cb80",
+        "bytes": 472,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0017e970",
+        "bytes": 84,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0017e9c8",
+        "bytes": 56,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0017eb98",
+        "bytes": 92,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0017ebf8",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0017ec70",
+        "bytes": 84,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [],
+        "tier": "C"
+      },
+      {
+        "entry": "0017ed00",
+        "bytes": 108,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001802e8",
+        "bytes": 140,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00180990",
+        "bytes": 52,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00180d10",
+        "bytes": 84,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00180ea8",
+        "bytes": 740,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001846c8",
+        "bytes": 420,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00184ac0",
+        "bytes": 32,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001880e0",
+        "bytes": 3020,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00188cb0",
+        "bytes": 1720,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0018bfa8",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0018fc30",
+        "bytes": 36,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0018fd18",
+        "bytes": 24,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00193f88",
+        "bytes": 312,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001983b8",
+        "bytes": 20,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001983d0",
+        "bytes": 188,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00198490",
+        "bytes": 20,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00198650",
+        "bytes": 284,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00198778",
+        "bytes": 28,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0019bd30",
+        "bytes": 676,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0019d2b0",
+        "bytes": 44,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0019d2e4",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0019f3e8",
+        "bytes": 76,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0019fbb0",
+        "bytes": 1112,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a0478",
+        "bytes": 452,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a2250",
+        "bytes": 52,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a2288",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a22b8",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a22e8",
+        "bytes": 132,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a29b0",
+        "bytes": 336,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a4d50",
+        "bytes": 356,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a4ff8",
+        "bytes": 160,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a51c8",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a5218",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a5308",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a5358",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a53a8",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a53f8",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a5448",
+        "bytes": 64,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a5488",
+        "bytes": 200,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a55a8",
+        "bytes": 272,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a5938",
+        "bytes": 80,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a5988",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a59c8",
+        "bytes": 68,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a7288",
+        "bytes": 828,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a83e0",
+        "bytes": 172,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001a8628",
+        "bytes": 32,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a87b0",
+        "bytes": 128,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001a9960",
+        "bytes": 268,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ab4b0",
+        "bytes": 788,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001adc78",
+        "bytes": 288,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001af7c8",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001afdfc",
+        "bytes": 76,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b0a48",
+        "bytes": 180,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b0db0",
+        "bytes": 480,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b0fd8",
+        "bytes": 52,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b1568",
+        "bytes": 168,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b19e8",
+        "bytes": 36,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001b2f30",
+        "bytes": 32,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b3eb0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b3eb8",
+        "bytes": 80,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b42c0",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b4f50",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001b8dc8",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b8df0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b8f70",
+        "bytes": 176,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001b9108",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b9580",
+        "bytes": 344,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001b96d8",
+        "bytes": 388,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ba610",
+        "bytes": 344,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ba848",
+        "bytes": 204,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ba9c0",
+        "bytes": 252,
+        "frame": "frame_inconsistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [],
+        "tier": "C"
+      },
+      {
+        "entry": "001baac0",
+        "bytes": 72,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001bab08",
+        "bytes": 48,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001bab38",
+        "bytes": 36,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001bab60",
+        "bytes": 48,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001bab90",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001bb2f0",
+        "bytes": 24,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001bb310",
+        "bytes": 28,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001bb334",
+        "bytes": 64,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001bb380",
+        "bytes": 60,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001bb3c8",
+        "bytes": 60,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001bb9b0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001bfe18",
+        "bytes": 40,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001c9ec0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001c9fe8",
+        "bytes": 128,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ca3c8",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ca3d8",
+        "bytes": 72,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ca420",
+        "bytes": 72,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ca4b0",
+        "bytes": 72,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ca4f8",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cafe0",
+        "bytes": 412,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cb180",
+        "bytes": 208,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cb9c0",
+        "bytes": 72,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cba08",
+        "bytes": 36,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cba78",
+        "bytes": 36,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cbb00",
+        "bytes": 36,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cc0d8",
+        "bytes": 164,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001cc180",
+        "bytes": 164,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001cc490",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cc498",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cc4a0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cc628",
+        "bytes": 196,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cc6f0",
+        "bytes": 36,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cc718",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001cc770",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001cc9e8",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cca40",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001cf2c8",
+        "bytes": 268,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001cf44c",
+        "bytes": 72,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001cf498",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001cf4d0",
+        "bytes": 60,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001d17c8",
+        "bytes": 56,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001d1844",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001d1880",
+        "bytes": 64,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001d18c0",
+        "bytes": 64,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001d3448",
+        "bytes": 28,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001d4ab0",
+        "bytes": 52,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001d5408",
+        "bytes": 20,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001d6b58",
+        "bytes": 1028,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001d7010",
+        "bytes": 60,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001d7050",
+        "bytes": 140,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001d7870",
+        "bytes": 24,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001d7d40",
+        "bytes": 28,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001da818",
+        "bytes": 24,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001dbe08",
+        "bytes": 52,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001dbfc8",
+        "bytes": 128,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001dd068",
+        "bytes": 32,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001dd138",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001dd2a0",
+        "bytes": 12,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001dfa40",
+        "bytes": 472,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001dfea8",
+        "bytes": 480,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e0088",
+        "bytes": 588,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e06d8",
+        "bytes": 296,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e0990",
+        "bytes": 248,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e0c80",
+        "bytes": 224,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e0d60",
+        "bytes": 44,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e0fb8",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e5614",
+        "bytes": 88,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001e76f0",
+        "bytes": 892,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e7be0",
+        "bytes": 44,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001e8138",
+        "bytes": 92,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001e8198",
+        "bytes": 216,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001e8fc8",
+        "bytes": 596,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eb220",
+        "bytes": 40,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eb360",
+        "bytes": 40,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eb388",
+        "bytes": 40,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eb7e0",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eb800",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eb820",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eb840",
+        "bytes": 32,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ebaa8",
+        "bytes": 124,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ece98",
+        "bytes": 344,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ed230",
+        "bytes": 140,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ed6f0",
+        "bytes": 144,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001edf50",
+        "bytes": 152,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001eee48",
+        "bytes": 884,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001ef1c0",
+        "bytes": 476,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ef548",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ef568",
+        "bytes": 428,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ef718",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ef738",
+        "bytes": 620,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001ef9a8",
+        "bytes": 288,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001efac8",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001efae8",
+        "bytes": 200,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001efbb0",
+        "bytes": 360,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001efd18",
+        "bytes": 344,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001efe70",
+        "bytes": 416,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0010",
+        "bytes": 572,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0250",
+        "bytes": 496,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0440",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0460",
+        "bytes": 408,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f05f8",
+        "bytes": 620,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0868",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f0888",
+        "bytes": 568,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0ac0",
+        "bytes": 568,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0cf8",
+        "bytes": 480,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f0ed8",
+        "bytes": 456,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f1198",
+        "bytes": 128,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f12b4",
+        "bytes": 236,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f13a0",
+        "bytes": 112,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f1410",
+        "bytes": 112,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f1480",
+        "bytes": 112,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f14f0",
+        "bytes": 124,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f1574",
+        "bytes": 120,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f19c0",
+        "bytes": 520,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f1bc8",
+        "bytes": 144,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f1c58",
+        "bytes": 160,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f1cf8",
+        "bytes": 144,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f1d88",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f1da8",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f2010",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2138",
+        "bytes": 28,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f215c",
+        "bytes": 36,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2180",
+        "bytes": 236,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2270",
+        "bytes": 220,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f2490",
+        "bytes": 40,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2740",
+        "bytes": 52,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f28e8",
+        "bytes": 56,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2a58",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2bb8",
+        "bytes": 112,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f2d08",
+        "bytes": 56,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2e70",
+        "bytes": 36,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f2f64",
+        "bytes": 44,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2f90",
+        "bytes": 36,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f2fb8",
+        "bytes": 36,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f3050",
+        "bytes": 28,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f3350",
+        "bytes": 24,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f374c",
+        "bytes": 8,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f3754",
+        "bytes": 92,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f37b0",
+        "bytes": 132,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f3848",
+        "bytes": 56,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f3998",
+        "bytes": 48,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4418",
+        "bytes": 56,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4450",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f44d0",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4548",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f45c0",
+        "bytes": 72,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4608",
+        "bytes": 124,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4688",
+        "bytes": 128,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4740",
+        "bytes": 52,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4810",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f48b8",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4908",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4938",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4968",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4978",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f49e8",
+        "bytes": 224,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4ac8",
+        "bytes": 364,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4d68",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4db8",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4de8",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4e18",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4e28",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f4eb8",
+        "bytes": 396,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f5048",
+        "bytes": 328,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f51b8",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5220",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5280",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f52e0",
+        "bytes": 384,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5460",
+        "bytes": 92,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f54e8",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5550",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f55b0",
+        "bytes": 16,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5610",
+        "bytes": 472,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f57e8",
+        "bytes": 92,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f58a0",
+        "bytes": 8,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5ba0",
+        "bytes": 128,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5e20",
+        "bytes": 160,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f5f20",
+        "bytes": 80,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f6068",
+        "bytes": 52,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f6158",
+        "bytes": 52,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f62b0",
+        "bytes": 284,
+        "frame": "leaf_with_sp_use",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "layout"
+        ],
+        "tier": "C"
+      },
+      {
+        "entry": "001f698c",
+        "bytes": 64,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f69d0",
+        "bytes": 204,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f6aa0",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f6b08",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f6bd8",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f6cd0",
+        "bytes": 92,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f6e90",
+        "bytes": 212,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f7138",
+        "bytes": 116,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f8530",
+        "bytes": 132,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f8888",
+        "bytes": 212,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f8c20",
+        "bytes": 64,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f8c60",
+        "bytes": 48,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f8c90",
+        "bytes": 184,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f8d48",
+        "bytes": 196,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f9748",
+        "bytes": 108,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001f9d68",
+        "bytes": 456,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001f9f30",
+        "bytes": 344,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fa088",
+        "bytes": 204,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fa158",
+        "bytes": 264,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fa3a0",
+        "bytes": 28,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fa400",
+        "bytes": 60,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fa490",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "001fa560",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001faa08",
+        "bytes": 508,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fbab0",
+        "bytes": 68,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fbaf8",
+        "bytes": 80,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fbb48",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fbd10",
+        "bytes": 12,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fbd70",
+        "bytes": 20,
+        "frame": "leaf_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fc538",
+        "bytes": 256,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "001fe000",
+        "bytes": 164,
+        "frame": "leaf_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00203138",
+        "bytes": 240,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "002032f8",
+        "bytes": 264,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00203400",
+        "bytes": 460,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00203978",
+        "bytes": 304,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00203b58",
+        "bytes": 304,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00203d38",
+        "bytes": 360,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "002041c8",
+        "bytes": 368,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00204338",
+        "bytes": 332,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00204488",
+        "bytes": 144,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00204518",
+        "bytes": 284,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00204638",
+        "bytes": 144,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "002046c8",
+        "bytes": 284,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020a580",
+        "bytes": 48,
+        "frame": "no_return",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020a5b0",
+        "bytes": 104,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0020a708",
+        "bytes": 32,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020b1e0",
+        "bytes": 440,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020b938",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020ca60",
+        "bytes": 92,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0020d538",
+        "bytes": 100,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020d668",
+        "bytes": 128,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020d7c0",
+        "bytes": 152,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020d8a0",
+        "bytes": 28,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "0020d958",
+        "bytes": 136,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "0020f660",
+        "bytes": 40,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00212160",
+        "bytes": 84,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00213970",
+        "bytes": 248,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00213a88",
+        "bytes": 28,
+        "frame": "no_return",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": false,
+        "evidence_classes": [
+          "frame"
+        ],
+        "tier": "B"
+      },
+      {
+        "entry": "00214590",
+        "bytes": 140,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00214958",
+        "bytes": 204,
+        "frame": "frame_consistent",
+        "after_boundary": true,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "layout",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00214a28",
+        "bytes": 244,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": false,
+        "referenced": true,
+        "evidence_classes": [
+          "frame",
+          "reference"
+        ],
+        "tier": "A"
+      },
+      {
+        "entry": "00215ce0",
+        "bytes": 112,
+        "frame": "frame_consistent",
+        "after_boundary": false,
+        "ends_at_boundary": true,
+        "referenced": false,
+        "evidence_classes": [
+          "frame",
+          "layout"
+        ],
+        "tier": "A"
+      }
+    ],
+    "summary": {
+      "candidates": 641,
+      "bytes": 101132,
+      "tiers": {
+        "A": 433,
+        "B": 173,
+        "C": 35
+      },
+      "frames": {
+        "frame_consistent": 373,
+        "leaf_consistent": 129,
+        "no_return": 101,
+        "leaf_with_sp_use": 36,
+        "frame_inconsistent": 2
+      }
+    },
+    "controls": {
+      "saved_functions": {
+        "no_return": 581,
+        "leaf_consistent": 1532,
+        "frame_consistent": 1348,
+        "leaf_with_sp_use": 206,
+        "frame_inconsistent": 3
+      }
+    },
+    "whole_game_decompiled": false,
+    "claim_limits": [
+      "A tier counts independent static evidence classes; it is not identity, behavior or runtime reachability.",
+      "The frame test passes for leaf code with no stack use and cannot confirm a boundary alone.",
+      "Layout evidence (after a return, ends at an entry) partly overlaps how seeds are generated.",
+      "Compare candidate frame shares with controls.saved_functions before trusting a tier."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 172183,
+      "sha256": "4e5609bc9271bef2771f27e34846e70288242179c81245beffcb63a1080d0c76"
+    }
+  }
+}

@@ -1,5 +1,7 @@
 # Ford Racing 2 reverse engineering: completion matrix and finish criteria
 
+> **Dated note (2026-10-04, later):** this matrix is a historical snapshot of milestone #2. The EE export now has 5,130 functions (the Static rows below say 3,446), the native macOS decompiler exists and C pseudocode is exported, and the staged bar for the owner's full-decompilation goal is in [decompilation-bar.md](decompilation-bar.md). Rows below are unchanged.
+
 State as of 2026-10-04 for the unchanged PAL SLES-517.05 corpus (corpus ID `e69a2afb…7dab`). Baseline: milestone #2 at commit `38d1574`. Everything below is offline and read-only; no emulator was started and no window opened in this continuation.
 
 Confidence figures are the `confidence` Jev reported; its auto/review decision also needs the top probability and margin to clear thresholds, so a figure near 0.85 can still be `auto`. Status classes come from `jev_classify` over atomic single-status findings (receipt `d019`, stable catalog, `manual_review` class, thresholds 0.85 / 0.50). Where Jev returned `review`, the class below was set by the catalog's own written precedence rules and is marked **rule**; the Jev result stays in the receipt and is not presented as automatic approval. An earlier pass over compound findings (`d018`) returned 10 of 16 `review`, which is why the findings were split; both receipts are kept.

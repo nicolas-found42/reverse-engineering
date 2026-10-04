@@ -79,3 +79,29 @@ _Avoid_: Material table
 **Texture format**:
 The one-byte code in a texture descriptor. Format 1 is 32-bit RGBA stored linearly, format 3 is 8-bit indexed pixels in the PS2 graphics chip's block order with a 256-entry palette, and format 4 is 4-bit (pixel layout unresolved).
 _Avoid_: Pixel type
+
+## Executable code
+
+**Saved function**:
+A function entry stored in the Ghidra project, with the instruction words it owns. Saved functions are provisional structural candidates, not recovered original functions.
+_Avoid_: Recovered function, decompiled function
+
+**Unlisted bytes**:
+Executable bytes that no saved function owns. They are the denominator for any claim of code coverage and are classified by structure only.
+_Avoid_: Dead code, missing code
+
+**Code-shaped span**:
+A run of unlisted bytes whose nonzero words all pass a field-level R5900 filter. The filter passes some data words too, so the class is measured against function-owned and data-section controls.
+_Avoid_: Code, undiscovered functions
+
+**Anchored span**:
+A code-shaped span with a static reference from owned code or data. A span reached only through anchored spans is reachable from them; the rest has no static reference at all.
+_Avoid_: Live span, reachable code
+
+**Gap-fill candidate**:
+A seed whose raw-word control-flow walk closes inside unlisted bytes and ends in a return or pinned tail jump. It becomes a saved function only through a guarded batch.
+_Avoid_: Recovered function
+
+**Evidence class**:
+One independent static check a gap-fill candidate passes: stack-frame consistency, boundary layout, or a static reference to its entry. A tier counts classes; it does not establish identity or behavior.
+_Avoid_: Confidence, score
