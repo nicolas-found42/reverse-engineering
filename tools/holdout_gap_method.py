@@ -71,8 +71,12 @@ def holdout_coverage(coverage: dict, held: list[tuple[int, int]]) -> dict:
     return {**coverage, 'blocks': blocks}
 
 
-def score_candidates(held: list[tuple[int, int]], rows: list[dict], tier_of: dict[str, str] | None = None) -> dict:
+def score_candidates(held: list[tuple[int, int]], rows: list[dict], tier_of: dict[str, str] | None = None,
+                     detail_of: dict[str, dict] | None = None) -> dict:
     tier_of = tier_of or {}
+    detail_of = detail_of or {}
+    by_evidence: dict[str, dict] = {}
+    by_frame: dict[str, dict] = {}
     truth = {(a, b) for a, b in held}
     starts = {a for a, _ in held}
     exact_truth, start_truth = set(), set()
@@ -96,11 +100,17 @@ def score_candidates(held: list[tuple[int, int]], rows: list[dict], tier_of: dic
                                 {'candidates': 0, 'exact': 0, 'start_only': 0, 'false_start': 0})
         tier['candidates'] += 1
         tier[kind] += 1
+        detail = detail_of.get(row['entry'])
+        if detail:
+            for table, key in ((by_evidence, '+'.join(detail['evidence_classes']) or 'none'), (by_frame, detail['frame'])):
+                cell = table.setdefault(key, {'candidates': 0, 'exact': 0, 'start_only': 0, 'false_start': 0})
+                cell['candidates'] += 1
+                cell[kind] += 1
     exact_starts = {a for a, _ in exact_truth}
     recovered = {'exact': len(exact_truth), 'start_only': len(start_truth - exact_starts)}
     recovered['missed'] = len(held) - recovered['exact'] - recovered['start_only']
     return {'held_out': len(held), 'recovered': recovered, 'inside_held_spans': inside, 'straddling': straddling,
-            'by_tier': tiers,
+            'by_tier': tiers, 'by_evidence': by_evidence, 'by_frame': by_frame,
             'exact_precision': inside['exact'] / inside['candidates'] if inside['candidates'] else None,
             'exact_recall': recovered['exact'] / len(held) if held else None}
 
@@ -121,7 +131,8 @@ def run_holdout(data: bytes, static: dict, coverage: dict, manifest: Path, *, fr
                     str(work / 'seeds.json'), str(work / 'report.json')], check=True, capture_output=True)
     config = json.loads((work / 'config.json').read_text())
     assessed = assess_candidates(data, reduced, config)
-    score = score_candidates(held, config['seeds'], {c['entry']: c['tier'] for c in assessed['candidates']})
+    score = score_candidates(held, config['seeds'], {c['entry']: c['tier'] for c in assessed['candidates']},
+                             {c['entry']: c for c in assessed['candidates']})
     return {'fraction': fraction, 'seed': seed, 'without_callers': without_callers, 'seeds_generated': len(seeds), 'guard_accepted': len(config['seeds']),
             'tiers_all_candidates': assessed['summary']['tiers'], 'score': score,
             'claim_limits': ['Ground truth is the saved functions, themselves provisional structural candidates.',

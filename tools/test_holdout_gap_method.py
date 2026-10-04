@@ -76,3 +76,16 @@ class ScoreTest(unittest.TestCase):
         self.assertEqual(score["by_tier"]["A"], {"candidates": 1, "exact": 1, "start_only": 0, "false_start": 0})
         self.assertAlmostEqual(score["exact_precision"], 1 / 3)
         self.assertAlmostEqual(score["exact_recall"], 1 / 3)
+
+
+class DetailScoreTest(unittest.TestCase):
+    def test_precision_is_split_by_evidence_classes_and_frame_category(self):
+        held = [(0x1000, 0x1010), (0x2000, 0x2020)]
+        rows = [{"entry": "00001000", "start": "00001000", "end": "00001010"},
+                {"entry": "00002000", "start": "00002000", "end": "00002010"}]
+        detail = {"00001000": {"evidence_classes": ["frame", "layout"], "frame": "frame_consistent"},
+                  "00002000": {"evidence_classes": ["frame"], "frame": "no_return"}}
+        score = score_candidates(held, rows, detail_of=detail)
+        self.assertEqual(score["by_evidence"]["frame+layout"]["exact"], 1)
+        self.assertEqual(score["by_evidence"]["frame"]["start_only"], 1)
+        self.assertEqual(score["by_frame"]["no_return"]["candidates"], 1)
