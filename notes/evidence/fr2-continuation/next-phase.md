@@ -20,6 +20,7 @@ Each stage claims only what it measured, keeps an unresolved list, and gets Jev 
 | Table of 0x34-byte records after the textures | Serialized traversal recovered and bounds checked; rendering meaning remains partial | `tools/ps2_sections.py`; [section-chain evidence](../fr2-static-recovery/results/sections.json) |
 | Later loaders (0x70-byte records with floats), geometry and VU1 data | Section boundaries and recursive serialized lengths recovered; vertex/index/render semantics remain unresolved | Eight VU chunks have exact byte reassembly and static VIF upload matches; this does not establish geometry semantics |
 | Stage 1 chain to end of file | Done for the bounded 56-file corpus | 54 files use the loader-derived 68-byte header; two exact-hash legacy profiles use 60 bytes, without evidence that the current executable selects that profile |
+| Mapped object-row floats | 113,812 finite input words across 56 models; corrected serialized offsets 8/12/16/20 | [producer/consumer correction](../fr2-geometry-consumer-audit/root-correction/README.md); mesh and VU output meaning unproved |
 | Stage 2 geometry invariants | Open | Full vertex/index/texture-reference semantics and the requested cross-file checks remain incomplete |
 | Stage 3 render preview | Open | No new owner-observed render result is established by static source recovery |
 
@@ -30,3 +31,5 @@ Each stage claims only what it measured, keeps an unresolved list, and gets Jev 
 3. Resolve the remaining 4-bit pixel and mip/palette layouts against the loader's GS upload code.
 
 The owner subsequently expanded the goal to full game decompilation. [The static recovery bundle](../fr2-static-recovery/README.md) and [combined checkpoint](../fr2-combined-recovery/README.md) track the broader EE/IOP/VU work. That expansion does not turn the geometry or render stages into completed work.
+
+The broader generated host executable now [links statically](../fr2-link-interface-audit/README.md) with 4,746 guest entry addresses. It has not been executed. The [IOP relocation-aware export crosswalk](../fr2-iop-relocated-exports/README.md) and [13 provisional metadata entries](../fr2-iop-entry-recovery/README.md) add bounded static recovery evidence; they do not complete source, geometry or runtime equivalence.
