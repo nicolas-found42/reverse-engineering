@@ -23,3 +23,5 @@ python3 tools/ps2_irx_crosswalk.py games/ford-racing-2/extracted \
 ```
 
 The export offsets now provide a larger, explicitly bounded Ghidra recovery backlog. Candidate matching does not establish callable semantics, original function boundaries, library registration, load order, or runtime binding. The 151 unmatched stubs do not prove absent runtime providers. Full generated module code and byte images remain ignored scratch artifacts.
+
+[Independent review](independent-review/README.md) verifies all 746 symbol-zero `R_MIPS_32` export-link sites in executable section 2 and passes 13 focused tests plus malformed-pointer/import controls. Its exact packed-version policy can omit providers accepted by the pinned loader's major-version matching; no runtime binding is claimed. Jev supports the extracted measurements, while its code review remains escalated (`safe_to_apply` 0.41). The original and independent judgments remain preserved.

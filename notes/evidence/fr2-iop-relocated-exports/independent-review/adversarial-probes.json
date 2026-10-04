@@ -1,0 +1,36 @@
+[
+  {
+    "case": "R32_zero_pointer_is_candidate",
+    "status": "accepted",
+    "export_entries": 2,
+    "candidate_targets": [
+      0
+    ]
+  },
+  {
+    "case": "genuine_zero_terminator_ends_table",
+    "status": "accepted",
+    "export_entries": 0,
+    "candidate_targets": []
+  },
+  {
+    "case": "unrelocated_pointer_after_relocated_zero_is_rejected",
+    "status": "rejected",
+    "error": "Invalid: observed export pointer lacks its R_MIPS_32 relocation"
+  },
+  {
+    "case": "non_R32_LO16_export_pointer_is_rejected",
+    "status": "rejected",
+    "error": "Invalid: observed export pointer lacks its R_MIPS_32 relocation"
+  },
+  {
+    "case": "wrapped_pointer_cannot_become_false_terminator",
+    "status": "rejected",
+    "error": "Invalid: relocated export pointer wrapped into a false null terminator"
+  },
+  {
+    "case": "relocated_import_stub_is_rejected",
+    "status": "rejected",
+    "error": "Invalid: invalid IOP import stub JR instruction 0x03e01008 for 'demo'"
+  }
+]
