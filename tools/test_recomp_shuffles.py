@@ -21,6 +21,18 @@ class ShuffleSourceGuardTest(unittest.TestCase):
                 verifier.verify(base / "upstream", output)
             self.assertFalse(output.exists())
 
+    def test_changed_or_missing_sse2neon_header_is_rejected_before_output_creation(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            base = Path(temporary)
+            output = base / "output"
+            (base / "dep").mkdir()
+            with self.assertRaisesRegex(ValueError, "pinned sse2neon dependency SHA-256 mismatch"):
+                verifier.verify(base / "upstream", output, sse2neon=base / "dep")
+            (base / "dep" / "sse2neon.h").write_text("// mutation")
+            with self.assertRaisesRegex(ValueError, "pinned sse2neon dependency SHA-256 mismatch"):
+                verifier.verify(base / "upstream", output, sse2neon=base / "dep")
+            self.assertFalse(output.exists())
+
 
 @unittest.skipUnless((UPSTREAM / verifier.MMI_PATH).is_file(),
                      "private pinned tool checkout is unavailable")

@@ -34,6 +34,9 @@ PATCH_SHA256 = "86837455a5a1ca60a12c3064966397c9d1b1d16514e939d1e5267da79e10cf31
 def digest(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
 
+# Same pinned header the packed-operation verifier enforces; a different one changes the intrinsic definitions under test.
+SSE2NEON_HASH = "78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed"
+
 
 def pinned_sources(upstream: Path) -> dict[str, str]:
     sources = {}
@@ -106,6 +109,10 @@ def extracted_header(sources: dict[str, str]) -> str:
 def verify(upstream: Path, output: Path, *, compiler: str = "clang++",
            sse2neon: Path | None = None) -> dict:
     # Verify all source before creating output or compiling extracted code.
+    if sse2neon is not None:
+        dependency = sse2neon / "sse2neon.h"
+        if not dependency.is_file() or digest(dependency.read_bytes()) != SSE2NEON_HASH:
+            raise ValueError("pinned sse2neon dependency SHA-256 mismatch")
     original = pinned_sources(upstream)
     candidate = corrected_sources(original)
     if output.exists():
