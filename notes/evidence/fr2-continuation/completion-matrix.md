@@ -50,19 +50,19 @@ Confidence figures are the `confidence` Jev reported; its auto/review decision a
 | Jev decisions retained; non-auto and API errors not presented as approval | Met, and extended | The milestone gate stays **escalate**; this continuation adds `jev/` receipts and dispositions |
 | Reviewable tooling, provenance index, all checks pass before closure | Met except publication | Work is committed locally; nothing is pushed and issue #2 is still open |
 
-Whether to close #2 is not decided here. The evidence supports closure; publication, the push and the closure itself need the user's go-ahead.
+Closure: at the project owner's direction the commits were pushed to `main` (`2ef0194`), the project map was reconciled with the native sub-issue relationship, and #2 was closed as completed with a comment that maps the evidence and states the Jev status. The closure rests on the executed checks, tests and independent review, not on a Jev approval: the milestone gate remains `escalate`.
 
 ## Finish criteria
 
 The user's stated standard is autonomous, evidence-backed work with Jev behind every semantic decision, with no debugger windows. Issue #2 states what "done" means for the milestone and lists audio decoding, mesh recovery, full PTG, and UI/text grammars as **separate investigations**. "The whole game is reverse engineered" is not a testable condition, so it is not used as a finish line.
 
-1. **Milestone #2 is complete when** all 12 acceptance criteria are evidenced (above), the three checks pass on the real corpus, and the tracker reflects it. The evidence is complete; the tracker steps await permission.
+1. **Milestone #2 is complete when** all 12 acceptance criteria are evidenced (above), the three checks pass on the real corpus, and the tracker reflects it. All three hold; #2 is closed.
 2. **A recovered area is complete when** it has (a) a separate executable check with a real-corpus pass, (b) negative and boundary tests, (c) a claim limited to what was measured, (d) at least one independent oracle or falsifier where one exists, (e) Jev claim checks with overclaims recorded as unsupported, and (f) its unresolved questions listed.
 3. **The ledger is complete when** every semantic decision has a receipt and a disposition, every `review`, `escalate` or operational failure has an independent resolution or stays flagged, and deterministic-only decisions are logged separately.
 4. **A broader effort is complete when** the user names the area and a measurable bar for it. Without that, the open areas above remain listed, not finished.
 
-Status against these: criteria 1 and 3 are met except publication and the independent reviewer step; criterion 2 is met for audio, PTG header level, and model boundaries; the unmeasured areas stay open.
+Status against these: criteria 1 and 3 are met; criterion 2 is met for audio, PTG header level, and model boundaries; the unmeasured areas stay open.
 
-## The one scope question
+## Scope decision
 
-Should the next phase stay with bounded, verifiable asset-format knowledge (the open items above: PTG palette and body layouts, model geometry layout, music loop semantics, UI/text grammars, EE/IOP/VU consumer mapping), or reach for mesh/VU/render reconstruction or whole-game decompilation? The first is testable with the current tools; the second needs a different bar and probably a native decompiler.
+The project owner chose to extend the effort to **mesh, VU and render reconstruction**. That phase needs its own measurable bar, which is not covered by the criteria above and is defined in `next-phase.md` when work on it starts.

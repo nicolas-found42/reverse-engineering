@@ -31,7 +31,7 @@ Each corpus command first pins the executable, archive header and archive data, 
 
 ## Jev record
 
-`jev/` holds one immutable receipt per decision (exact arguments, full result, evidence hashes, timing); `judgment-dispositions.json` records each result and what was done with it; `jev/INDEX.md` is the human index. Review and gate results that were not `auto` stay recorded as such. `index.json` carries SHA-256 for every file here and locates the original local results. `results/` holds the final audio, PTG and model results; earlier audio runs against the first decoder remain in the ignored scratch area.
+`jev/` holds one immutable receipt per decision (exact arguments, full result, evidence hashes, timing); `judgment-dispositions.json` records each result and what was done with it; `jev/INDEX.md` is the human index. Review and gate results that were not `auto` stay recorded as such. `index.json` carries SHA-256 for the results, receipts and dispositions (not for this README or the matrix, which describe them) and locates the original local results. `results/` holds the final audio, PTG and model results; earlier audio runs against the first decoder remain in the ignored scratch area.
 
 Jev is advisory. Byte equality, the oracle, tests and the real corpus decide factual acceptance. Model-threshold reliability on game hypotheses is unmeasured.
 
