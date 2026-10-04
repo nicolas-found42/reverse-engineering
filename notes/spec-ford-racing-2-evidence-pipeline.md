@@ -1,0 +1,269 @@
+## Summary
+
+The saved Ford Racing 2 R5900 analysis reached Ghidra's save step, but its Python report post-script failed because headless Ghidra was launched without PyGhidra. The existing exporter also lists only the first 200 functions. Researchers therefore lack a complete, inspectable static report and a demonstrated connection from archive records to actual loader output.
+
+This is the existing grouped execution specification: repair static reporting, verify loader behavior in PCSX2, and turn four bounded format hypotheses into executable contracts. Preserve the user-selected **separate static, runtime, and format checks**.
+
+## Impact
+
+- **Task affected:** tracing an asset from archive lookup through loading/decompression into memory, and checking whether measured format rules hold beyond successful examples.
+- **Severity:** an analysis/reporting blocker. No game outage, lost project, or lost asset data has been established; the logged program save succeeded.
+- **Recommended priority:** the next agreed research-execution milestone. Static reporting precedes runtime investigation; format contracts can progress independently.
+- **Occurrence:** one export-failure session is evidenced by the linked historical log. The failure was not freshly rerun during this issue refinement; no occurrence rate is claimed.
+- **Workaround:** inspect saved-program disassembly manually and use the existing exploratory asset scripts. They do not supply this milestone's complete evidence or failure-status contracts.
+- **Regression range:** unknown; no known-good report run or bisect exists. The execution agent should record the first successful exporter run and its exact environment.
+
+## Environment
+
+| Item | Evidence and limits |
+| --- | --- |
+| Baseline repository | Commit `f20add331e6226bdf6308bbd52bcc70d107c44ff`; source links below are pinned to it. |
+| Historical Ghidra run | Ghidra 12.1.3 and Homebrew OpenJDK 27 appear in the log. The log reports missing `os/mac_arm_64/decompile`; its precise macOS release and original command line were not captured. The log predates the 2026-10-03 handoff; exact run time is unknown. |
+| Saved-program configuration | Local handoff records Emotion Engine extension 2.1.37, language `r5900:LE:32:default`, project `fr2`, program `SLES_517.05`. Verify installed extension and saved-program identity before execution. |
+| Refinement checks, 2026-10-04 | macOS 26.4.1, arm64, Python 3.14.7. These describe the hash/count/script checks below, **not** the historical export-failure environment. |
+| Game profile | Local PAL PS2 CD, MODE2/2352, 288,549 sectors; exact input hashes and lengths are below. Other regions/versions and Windows/Linux execution are untested. |
+| Runtime setup | PCSX2 build, firmware availability, debugger configuration, game loading event, and breakpoint addresses are unknown. Discover/configure available local prerequisites, then record them; no emulator observation is claimed. |
+| Mode | Local real binary corpus. Fresh bank/model checks read actual extracted files; no mocked emulator evidence or synthetic output is presented as a game observation. |
+
+## Preconditions
+
+1. Use the baseline tools/source in this repository. Public evidence can be inspected without game media; real integration requires access to the same local game corpus and Ghidra project.
+2. The configured workspace uses `games/ford-racing-2/ford-racing-2.bin` with its matching CUE, and extracted `SLES_517.05`, `FILES.HDR`, `FILES.DAT`, and `files/` under `games/ford-racing-2/extracted/`. Preserve ISO version suffixes such as `;1` and case in extracted filenames.
+3. The saved project is `ghidra-project/fr2`; the recorded Ghidra installation is `.scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC`. The prior exporter is local and ignored by Git, at `.scratch/ghidra_scripts/export_report.py`. Its relevant source excerpt is included in Evidence so its truncation claim does not depend on that local file.
+4. Confirm the hashes below before comparing observations. A different input becomes a different corpus; do not silently substitute another region or install's assets.
+5. Use a compatible JDK and the R5900 extension. For the historical failure path, ordinary `analyzeHeadless` runs a Python post-script **without** PyGhidra. Check for active Ghidra users before touching project locks; the handoff's old process/lock status is not current evidence.
+6. Real runtime acceptance additionally needs PCSX2, locally available firmware and disc access. The execution agent should inspect and set up values already available on the machine. Unavailable required inputs produce `incomplete`, with the missing prerequisite identified; they cannot be replaced by synthetic fixtures.
+7. Original media, firmware, full memory captures, and extracted payloads remain local. The hashes and bounded textual evidence here are public; there are no downloadable game inputs attached to this issue.
+
+## Steps to reproduce
+
+**Current workflow and historical failure inspection (no game execution required):**
+
+1. Check out or inspect the pinned baseline commit.
+2. Read the saved log with:
+   ```sh
+   git show f20add331e6226bdf6308bbd52bcc70d107c44ff:notes/ghidra-report.txt
+   ```
+3. Locate the script execution and `REPORT SCRIPT ERROR` lines, then the later `Save succeeded` line. The observed terminal state is a saved analyzed program with a failed report export; it is not proof of a failed analysis/save.
+4. Compare the exporter excerpt in Evidence: `funcs[:200]` imposes a 200-entry listing limit. The actual total function count remains unknown until the saved inventory is read; no claim that this program has more than 200 functions is made.
+5. With the matching extracted corpus available, run the existing read-only exploratory checks:
+   ```sh
+   python3 tools/msh_verify.py
+   python3 tools/ps2_pairs2.py
+   ```
+   On 2026-10-04 these printed `chain+end verified: 27/27` and `terminator-verified: 56/56`. They demonstrate those existing successful invariants, not malformed-input coverage or this issue's proposed verification interfaces.
+
+**Minimal launch-mode failure probe (proposed; not executed during refinement):**
+
+1. With the stated Ghidra/JDK/R5900 prerequisites and no active users of the saved project, create `.scratch/issue-probe/ProbePython.py` containing:
+   ```python
+   # @category Analysis
+   print("python post-script reached")
+   ```
+2. From the repository root, use the recorded macOS JDK and Ghidra installation:
+   ```sh
+   JAVA_HOME=/opt/homebrew/opt/openjdk \
+     .scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/support/analyzeHeadless \
+     "$PWD/ghidra-project" fr2 -process SLES_517.05 \
+     -noanalysis -readOnly -scriptPath "$PWD/.scratch/issue-probe" \
+     -postScript ProbePython.py
+   ```
+   This command is for the recorded local macOS setup; other installations must supply their own compatible JDK and Ghidra paths. The flags suppress reanalysis and saving. This probe tests Python-provider launch mode, not exporter completeness.
+3. Inspect the post-script log for `Ghidra was not started with PyGhidra. Python is not available`. This is the predicted symptom based on the historical failure; a new run must be recorded as a new observation. A project lock, missing extension, or JDK error is a different prerequisite failure.
+
+There is **no established runtime reproduction sequence** yet. Selecting real game events and recording exact controls/state, asset record IDs, addresses, and repeat procedure is an implementation deliverable, not a fabricated repro step.
+
+## Expected behavior
+
+- The static check exposes the complete saved-program function inventory and inspectable loader evidence, or reports the precise reason it is incomplete.
+- The runtime check demonstrates one raw and one zlib loading path twice each, and compares full logical output with independent extraction for the same records.
+- The format check validates the declared archive, descriptor, model-tree, and gear-sprite profiles, reports all discovered inputs, and rejects malformed cases with useful diagnostics.
+- Each check is independently runnable with provenance and `pass`, `fail`, or `incomplete`; only `pass` exits successfully. All three must pass to complete this milestone.
+
+## Actual behavior
+
+- **Logged observation:** Python post-script loading failed; Ghidra later logged a successful save.
+- **Code-supported explanation:** the script is Python, ordinary headless launch did not provide PyGhidra, and its source caps function listing at 200. No new export run or complete function count was collected here.
+- **Fresh limited observations:** bank chains/end coverage passed for 27 pairs; model name-tree termination passed for 56 files; discovery found 990 extracted files, including 548 PTG files and eight gear inputs.
+- **Unestablished behavior:** loader function identities, raw/zlib runtime buffer equivalence, repeat captures, complete format contracts, and negative-case behavior remain work to perform. Existing script exit code 0 alone is not a milestone pass.
+- **Hypotheses:** archive/asset interpretations are supported only to the stated profile and checks. Leading model-count semantics, sound payload codecs, the sprite table's semantic role, and general PTG compatibility remain uncertain.
+
+## Evidence
+
+This is a nonvisual tooling/execution specification. **Screenshots are not applicable:** they would not establish Python-provider failure, exact buffer equivalence, or binary bounds. There are **zero new attachments**; the relevant text is visible here and existing source/log references are preserved.
+
+**Historical export/save log**, from the [pinned Ghidra log](https://github.com/nicolas-found42/reverse-engineering/blob/f20add331e6226bdf6308bbd52bcc70d107c44ff/notes/ghidra-report.txt#L83):
+
+```text
+INFO  REPORT: Execute script: export_report.py  (HeadlessAnalyzer)
+ERROR REPORT SCRIPT ERROR: export_report.py : Ghidra was not started with PyGhidra. Python is not available (HeadlessAnalyzer) ghidra.app.script.GhidraScriptLoadException: Ghidra was not started with PyGhidra. Python is not available
+INFO  REPORT: Save succeeded for processed file: /SLES_517.05 (HeadlessAnalyzer)
+```
+
+These are selected lines from one log, not a claim that they were consecutive. Its [separate native-component error](https://github.com/nicolas-found42/reverse-engineering/blob/f20add331e6226bdf6308bbd52bcc70d107c44ff/notes/ghidra-report.txt#L51) is:
+
+```text
+ERROR os/mac_arm_64/decompile does not exist (see GettingStarted.md, 'Building Native Components') (DecompileProcessFactory)
+```
+
+**Local exporter source inspection on 2026-10-04:** the ignored exporter file has SHA-256 `0a3421a99ddf9340990bca9f46b7b71053536163d4b0b835457c7545ee500ca4`. This exact excerpt establishes the listing limit; it does not establish this program's total function count:
+
+```python
+fm = PROG.getFunctionManager()
+funcs = list(fm.getFunctions(True))
+emit("\n=== FUNCTIONS: %d ===" % len(funcs))
+for f in funcs[:200]:
+    emit("  %s  %s  size=%d" % (f.getEntryPoint(), f.getName(), f.getBody().getNumAddresses()))
+```
+
+**Recorded extraction baseline**, from the [pinned extraction log](https://github.com/nicolas-found42/reverse-engineering/blob/f20add331e6226bdf6308bbd52bcc70d107c44ff/notes/extraction-log.txt#L1); extraction was not rerun for this refinement:
+
+```text
+segments: 48; records: 1037
+file records: 990; dir records: 47
+DAT size 334641152 = 163399.0 chunks exactly: True
+extracted zlib=604 raw=386 bad=0
+```
+
+**Fresh checks on 2026-10-04**, using the pinned [bank verifier](https://github.com/nicolas-found42/reverse-engineering/blob/f20add331e6226bdf6308bbd52bcc70d107c44ff/tools/msh_verify.py) and [model verifier](https://github.com/nicolas-found42/reverse-engineering/blob/f20add331e6226bdf6308bbd52bcc70d107c44ff/tools/ps2_pairs2.py):
+
+```text
+python3 tools/msh_verify.py
+chain+end verified: 27/27
+(exit 0)
+
+python3 tools/ps2_pairs2.py
+terminator-verified: 56/56
+(exit 0)
+
+Filesystem discovery: 990 files; 548 *.ptg;1 files; gear0 through gear7 present.
+```
+
+The bank output also includes, for example, `baya.msb;1` with `chain=True end=True rates_ok=False rates=[16000, 20000, 22050]`. The current code's acceptance calculation is `ok = starts_ok and end_ok`; the rate whitelist is diagnostic. These runs do not prove audio codecs, full meshes, robust failure statuses, or all PTG support. The eight gear meanings/pixel baselines are prior handoff/user-confirmed evidence; no new visual validation was performed.
+
+**Input identity measured on 2026-10-04:** SHA-256 was streamed over the complete local files, not inferred from the shortened manifest. Hashes identify the corpus; they do not authenticate a Redump entry or another region.
+
+| Input | Bytes | SHA-256 |
+| --- | ---: | --- |
+| Disc BIN | 678,667,248 | `ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d` |
+| Matching CUE | 79 | `c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6` |
+| SLES_517.05 | 1,662,804 | `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95` |
+| FILES.HDR | 29,428 | `f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d` |
+| FILES.DAT | 334,641,152 | `357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722` |
+
+Coverage gaps are explicit: no fresh Ghidra failure reproduction, no complete function inventory, no PCSX2 capture, no negative-input battery, and no new sprite rendering were collected while refining this ticket. Console/network behavior is not relevant to this local non-UI report.
+
+## Acceptance criteria
+
+- [ ] Three documented commands independently run the static, runtime, and format checks, each emitting a readable report plus a machine-readable `pass`/`fail`/`incomplete` result; only `pass` exits 0.
+- [ ] The static report's function count and entries match the saved Ghidra inventory without a 200-entry limit, including a synthetic fixture with relevant functions beyond entry 200.
+- [ ] Required loader stages have inspectable instruction/data references tied to guest addresses, archive records, source hashes, and clearly classified interpretations; unresolved required stages prevent a static pass.
+- [ ] The runtime report records real raw and zlib loading events and repeats both, with reproducible game state/actions, tool/firmware identities, code/overlay identity, record IDs, complete buffers, and explicit host/guest address distinction.
+- [ ] Each runtime capture's full output length/digest matches independent extraction of the same record, with any pre-comparison transformation documented and validated.
+- [ ] Runtime evidence verification rejects stale hashes, wrong record identity, omitted bytes/branch/repeat observations, and changed output; offline replay cannot stand in for a fresh capture.
+- [ ] The format report accounts for the complete corpus, including the recorded 48 segments/1,037 records/990 files/604 zlib/386 raw, 27 bank pairs, 56 model trees, eight required gear sprites, and all 548 discovered PTG files for these unchanged inputs. Other PTG profiles may be explicitly unsupported; they cannot be silently skipped.
+- [ ] The four declared profiles satisfy their stated invariants and have negative/boundary tests with useful diagnostics, bounded processing, and non-success status.
+- [ ] Unknown fields/semantics and unusual rate values are preserved; supported gear pixel results and uppercase R/N meanings remain regressions. Audio/geometry/full-PTG decoding is not implied.
+- [ ] Synthetic CI and real local integration results are reported separately. Missing prerequisites, skipped required integration, and absent required evidence produce `incomplete`; partial failures preserve prior successful evidence.
+- [ ] Jev decisions, evidence, full distributions, thresholds, usage, and dispositions are retained; contradictions stop acceptance and unresolved required claims remain incomplete. Non-auto judgments and API/protocol errors cannot be presented as automatic approval.
+- [ ] Public tooling/fixtures/reports and a local provenance-linked evidence index are reviewable; all three checks and required completion claims are satisfied before issue closure. Game payloads, firmware, credentials, and full captures remain excluded.
+
+## Scope and developer notes
+
+This is a refinement of the existing grouped milestone, linked as a native child of [project map #1](https://github.com/nicolas-found42/reverse-engineering/issues/1). Open and closed issue search found only this ticket and the map; no duplicate implementation ticket exists. Keep its current ownership, label, relationship, and unchecked completion state.
+
+### Solution
+
+Deliver a bounded evidence pipeline for this game's existing PAL PS2 corpus, with **three separate checks: static, runtime, and formats**. Each check can run independently, records its inputs and results, and fails clearly when required evidence is absent or inconsistent. The checks share provenance metadata so results from different executables, archive versions, or captures cannot be combined accidentally.
+
+First repair and expose the saved Ghidra analysis, then map archive lookup/read/decompression behavior, then capture one raw and one zlib-wrapped asset through real PCSX2 loading events. Compare the loader's output bytes with the independently extracted bytes. Turn four measured format families into executable parsing/validation contracts, using existing Python tools as the starting point. Use Jev extensively for semantic decisions and evidence checks, while deterministic parsers, hashes, bounds checks, and actual observations determine factual acceptance.
+
+This issue specifies work to perform; it does not claim the implementation or runtime experiments have already completed.
+
+### User Stories
+
+1. As a researcher, I want to resume the saved R5900 analysis, so that completed analysis work is preserved.
+2. As a researcher, I want the report exporter to run under the available Ghidra scripting environment, so that launch-mode setup does not prevent access to analysis results.
+3. As a researcher, I want the complete function inventory, so that interesting functions outside the first 200 entries remain discoverable.
+4. As a researcher, I want function addresses, bodies, callers, and call targets, so that I can trace behavior across routines.
+5. As a researcher, I want relevant string and data cross-references with enclosing functions, so that archive and decompression leads can be inspected in context.
+6. As a researcher, I want unresolved or missing references reported explicitly, so that an empty report is not mistaken for a proven absence of loader code.
+7. As a researcher, I want stable links between addresses and tentative names, so that interpretations can change without losing their underlying evidence.
+8. As a researcher, I want an archive-loader hypothesis map, so that file lookup, data reads, decompression, and buffer consumption can be distinguished.
+9. As a researcher, I want each loader interpretation tied to actual instructions and data accesses, so that a suggestive string alone cannot establish a function's purpose.
+10. As a researcher, I want the loader map compared with the measured archive record and chunk layout, so that static explanations account for the available bytes.
+11. As a researcher, I want PCSX2 setup to reuse available local inputs and configuration, so that I do not repeat setup the execution agent can perform.
+12. As a researcher, I want reproducible game-loading events and debugger locations, so that another run can revisit the same observations.
+13. As a researcher, I want a raw archive payload observed through a real game load, so that its runtime path is independently grounded.
+14. As a researcher, I want a zlib-wrapped archive payload observed through a real game load, so that decompression behavior is independently grounded.
+15. As a researcher, I want archive record identities, input spans, output buffers, and loader addresses captured together, so that a memory dump can be traced back to its asset.
+16. As a researcher, I want runtime output bytes compared with independently extracted bytes, so that plausible-looking memory is not treated as correct output.
+17. As a researcher, I want guest addresses distinguished from emulator host addresses, so that instrumentation cannot silently mix the two address spaces.
+18. As a researcher, I want code-overlay state and modified instructions recorded when relevant, so that symbols are not applied to overwritten code.
+19. As a researcher, I want executable archive structure definitions, so that segment boundaries, record types, file spans, and decompression lengths can be checked.
+20. As a researcher, I want executable sound-bank descriptor definitions, so that sample ranges and paired-bank boundaries can be checked without claiming the payload codec is known.
+21. As a researcher, I want executable model name-tree definitions, so that name offsets and the string-pool boundary can be checked without claiming full geometry recovery.
+22. As a researcher, I want executable sprite-layout definitions, so that dimensions, row bounds, table spans, and padding can be checked.
+23. As a researcher, I want unknown fields and unusual sample-rate values preserved, so that unsupported semantics are not invented or silently discarded.
+24. As a researcher, I want full discovered-input accounting for each format family, so that incompatible profiles and skipped files remain visible.
+25. As a researcher, I want malformed and truncated inputs rejected with useful diagnostics, so that validators test hypotheses beyond the successful corpus.
+26. As a researcher, I want the user-confirmed uppercase R and N gear meanings retained as regression evidence, so that visual interpretation does not drift.
+27. As a researcher, I want separate static, runtime, and format commands, so that each area can be investigated and verified independently.
+28. As a researcher, I want machine-readable results and meaningful exit statuses, so that automation can distinguish passing, failed, and incomplete work.
+29. As a researcher, I want input hashes and tool versions recorded, so that stale evidence is detected before it supports a claim.
+30. As a researcher, I want small synthetic fixtures that can run without game media, so that parser and evidence-contract regressions can be checked in ordinary automated tests.
+31. As a researcher, I want Jev decisions and complete probability distributions retained, so that semantic choices are auditable.
+32. As a researcher, I want unsupported, contradicted, malformed, or low-confidence judgments handled explicitly, so that repeated model calls cannot manufacture acceptance.
+33. As a researcher, I want AI-suggested names and pseudocode separated from verified behaviors, so that assistance does not become unearned authority.
+34. As a researcher, I want game media, firmware, extracted payloads, and full memory captures kept local, so that public deliverables contain tooling and reviewable metadata.
+35. As a researcher, I want completion demonstrated by all three checks and their evidence, so that a successful exporter alone does not close the milestone.
+36. As a future execution agent, I want a final account of confirmed behavior and remaining unknowns, so that later geometry, audio, or type-recovery work starts from a trustworthy state.
+
+### Implementation Decisions
+
+- **Execution order and scope:** static report repair and loader mapping precede runtime capture; formal format contracts can progress independently using the extracted corpus. Required runtime coverage is one raw asset and one zlib-wrapped asset, not exhaustive execution of every asset. All three required checks must pass before the milestone is complete.
+- **Three public verification interfaces:** provide independently runnable static, runtime, and format checks, with documented inputs and output locations. Each produces a machine-readable result with status `pass`, `fail`, or `incomplete`; only `pass` exits successfully. Missing prerequisites, omitted required inputs, unobserved runtime branches, and absent required evidence are `incomplete`, never success. A readable report accompanies each result. No single end-to-end command is required.
+- **Shared provenance contract:** evidence records identify a schema version, run identity, source disc/executable/archive hashes, corpus identity, tool versions, commands or capture procedure, and produced artifact digests. Use full cryptographic hashes for new evidence; do not use the existing shortened manifest digest as the only identity check. Changed inputs invalidate dependent reports and captures. Preserve previous successful outputs instead of overwriting them with partial failures.
+- **Ghidra exporter:** use Java GhidraScript with the existing processor extension and saved program. Export all functions, memory/section layout, relevant defined strings/data references, enclosing functions, caller/callee relationships, and disassembly/basic-block context needed for loader investigation. Resume without unnecessary full reanalysis. Check for live project users before removing any stale lock. Report missing native decompiler support separately; C pseudocode is not required for acceptance.
+- **Static loader map:** distinguish archive initialization, record lookup/path traversal, chunk-addressed reads, raw transfer, decompression, and downstream consumption. An accepted behavior needs instruction/data-reference evidence; naming alone is insufficient. Record byte offsets, guest addresses, evidence identifiers, confidence/disposition, and unresolved alternatives. Correlate with the measured segment table, 28-byte records, 2048-byte chunks, and decompression wrapper; do not force offsets to fit the hypothesis.
+- **Runtime capture:** use PCSX2's R5900 target for EE code and the appropriate target if an IOP step matters. Inspect existing local installation, configuration, disc inputs, and firmware prerequisites; set up what is available. Choose real loading events that exercise the two payload branches. Record how to reproduce the event, guest instruction locations, relevant registers, input/output spans, asset record identity, and the code bytes or overlay identity at the observed addresses. Provide a supported capture procedure rather than assuming an unverified remote-debugging API.
+- **Runtime comparison:** capture the complete logical output payload before downstream transformations, or document and validate a reversible transformation before comparison. Independently compute expected extracted bytes for the same archive record and compare full length and digest. Required evidence includes both branch observations and a repeat capture of each event with equivalent logical output; incidental addresses/timing may differ. Keep host/guest address translation explicit. Any code patch, stub, or debugger mutation must be recorded and restored before the acceptance capture.
+- **Runtime verification contract:** validate captured evidence independently of the live session. An offline replay validates recorded bytes and provenance; it does not count as a fresh game capture. A stale executable hash, incorrect asset identity, incomplete output span, digest mismatch, or missing branch must prevent a passing result.
+- **Executable format contracts:** retain Python as the initial implementation stack and refactor existing parsers/checkers into structured parse-and-validate interfaces. Definitions expose recognized fields, raw unknown values, byte ranges, constraints, cross-file relationships, and the limits of the supported profile. Kaitai or ImHex descriptions may supplement these contracts but are not mandatory dependencies.
+- **Archive profile:** validate declared segment ranges and record partitioning, fixed record/name bounds, directory references and cycles, file chunk/spans, short reads, decompression termination, and declared output lengths. Account for padding and unused data explicitly. Preserve raw versus zlib classification as a tested behavior. This milestone supports the measured disc profile; general archive-version support must not be implied.
+- **Sound-bank descriptor profile:** validate header/descriptor bounds, descriptor count, start/length chains, and final coverage of the paired bank. Preserve self-size, unknown words, and observed rate values. The prior script's conventional-rate whitelist is diagnostic only; unusual rates do not establish corruption or a codec without new evidence. Empty or malformed descriptor sets must be handled deliberately instead of failing through indexing errors.
+- **Model name-tree profile:** validate counts, in-range and terminated name offsets, repeated group lists, and the exact boundary between the list region and string pool. Preserve the leading count's uncertain semantics and remaining geometry bytes. Do not label the file fully decoded merely because its name tree parses.
+- **Sprite profile:** validate header bounds, dimensions relative to stride, the supported pattern-table span, row/payload bounds, and padding. The supported gear profile must reproduce the established pixel output. Discover and account for other PTG files; incompatible profiles remain explicitly unsupported and cannot be silently excluded to obtain a passing coverage report.
+- **Jev and AI roles:** call the appropriate Jev tool at every semantic selection, prioritization, reconciliation, model-extracted-field audit, hypothesis review, and completion judgment. Screen fetched external content before substantive use. Save evidence identifiers, inputs, model/provider, full distributions, usage, thresholds, actions, and the agent's disposition; exclude credentials and game payloads. Deterministic facts stay in code. Optional AI naming, pseudocode, or similarity assistance produces candidates and cannot replace the required instruction, runtime, or corpus evidence.
+- **Uncertainty handling:** a contradiction in a required completion claim stops acceptance; unsupported or low-confidence required claims remain unresolved until additional independent evidence or reasoner/human review resolves them. Malformed/API failures are operational failures. Do not lower thresholds or repeat unchanged questions to chase acceptance. Run actual checks before Jev's completion gate and disclose a non-accepting gate rather than marking it passed. Optional hypotheses may stay unresolved without falsifying already-established observations.
+- **Deliverables:** public tooling, synthetic fixtures, format-contract documentation, a static function/loader report, a runtime capture/comparison report, a full format-coverage report, and an evidence index linking the three results. Preserve local binary/capture artifacts outside version control; publish reproducible metadata and bounded evidence summaries sufficient to review each accepted claim.
+
+### Testing Decisions
+
+- **User-confirmed seams:** use separate static, runtime, and format checks. Test each at its highest public boundary and verify its externally observable result, diagnostics, artifacts, and exit status. Avoid tests that assert helper call order, private function names, or an implementation-shaped schema while failing to check behavior.
+- **Static check:** run the exporter against the saved R5900 program and compare its exported function count/entries to Ghidra's complete inventory. Every required reference result must either link to inspectable instructions/functions or state why it is unresolved. Test that a report-script failure, omitted functions, unresolved required loader evidence, or a stale input identity cannot produce success. A useful fixture places relevant functions beyond the original 200-entry truncation.
+- **Runtime check:** exercise one raw and one zlib asset through actual game loading events, and repeat both. Compare logical output to an independent extraction for the same records. The offline evidence verifier must reject stale executable/corpus identity, missing branch evidence, missing bytes, or changed output. Synthetic capture metadata and deliberately altered byte/digest fixtures cover verifier behavior without requiring the emulator in ordinary CI.
+- **Format check and existing prior art:** reuse the archive extractor's segment/extraction checks, the sound-bank descriptor chain/end checks, the model-tree string-pool terminator checks, and the sprite renderer/padding checks. Extend them through stable public validation contracts, rather than treating existing printed summaries as sufficient exit-status behavior.
+- **Baseline corpus accounting:** for the unchanged measured corpus, require 1,037 archive records partitioned by 48 segments, 990 extracted files with 604 zlib and 386 raw payloads, the recorded 27 sound-bank pairs, and 56 model name-tree files. Check discovered counts and hashes against the recorded baseline and explain differences. Do not silently replace an expected baseline with a smaller discovered set. For PTG, require the eight known gear sprites and enumerate every additional discovered file as supported or unsupported; full PTG-format generalization is not required.
+- **Positive regressions:** verify archive output lengths/digests against the existing manifest and independent reads; verify bank coverage and exact model-tree boundaries; preserve the confirmed uppercase R/N interpretation and decoded gear pixel results. Hash decoded pixel buffers rather than depending on PNG encoder bytes or scaling choices.
+- **Negative/boundary cases:** use small synthetic inputs and bounded local mutations for truncated headers/records, invalid counts, out-of-range offsets, directory cycles, oversized file spans, incomplete/corrupted zlib streams, output-length mismatches, empty/broken bank chains, unterminated/out-of-range model names, premature tree boundaries, invalid sprite dimensions/strides, truncated table/rows, and incorrect padding. Require useful errors, bounded processing, and non-success status; do not submit mutated files to public services.
+- **Judgment tests:** retain positive, contradicted, unsupported, low-confidence, blocked-intake, and malformed/API-failure cases. Verify that expected test labels never enter model state, that blocked intake is not consumed, and that a confidence flag or protocol error cannot be converted into automatic acceptance. The existing documentation smoke battery is prior art for failure handling, not calibration on PS2 code. Treat model-threshold reliability on game hypotheses as unmeasured.
+- **Two test environments:** synthetic contract tests run without the disc, firmware, or Ghidra project; local integration checks use those real inputs. A skipped integration requirement must be `incomplete` for this milestone, even when CI's synthetic tests pass. Record actual commands, versions, input identities, coverage, and results with the completion evidence.
+
+### Out of Scope
+
+Whole-game source recovery, byte-identical recompilation, a playable native port, a new R5900/VU emulator backend, a Frida R5900 port, training an AI decompiler, and broad claims about AI performance on this game are outside this milestone. Native macOS decompiler construction and richer pseudocode can be follow-up work; current disassembly is sufficient for the required static evidence.
+
+Full mesh/animation/rendering recovery, all VU microprogram semantics, unverified music/audio payload codec decoding, and complete UI/text grammar recovery are also separate investigations. Sound-bank descriptor validation does not require audio decoding; model name-tree validation does not require mesh reconstruction. Cross-binary matching is optional until a suitable comparison corpus exists. Supporting every PTG variant or another disc region/version is not required.
+
+Do not publish game media, firmware, extracted payloads, full memory captures, credentials, or private machine configuration. The work must not be declared complete merely because an exporter runs, synthetic tests pass, an optional hypothesis sounds plausible, or Jev returns a confident label.
+
+### Source leads and unresolved information
+
+The implementation starting points include the pinned [archive parser](https://github.com/nicolas-found42/reverse-engineering/blob/f20add331e6226bdf6308bbd52bcc70d107c44ff/tools/extract_tree.py) and [sprite renderer](https://github.com/nicolas-found42/reverse-engineering/blob/f20add331e6226bdf6308bbd52bcc70d107c44ff/tools/ptg_render.py), in addition to the bank/model tools above. Code inspection explains existing assumptions; it does not prove runtime causality.
+
+Primary method references: [Ghidra SLEIGH](https://ghidra.re/ghidra_docs/languages/html/sleigh.html), [Emotion Engine extension](https://github.com/chaoticgd/ghidra-emotionengine-reloaded), [PCSX2 debugger](https://pcsx2.net/docs/advanced/debugger/), [Kaitai](https://doc.kaitai.io/user_guide.html), and [ImHex](https://github.com/WerWolv/ImHex). Architecture limits are exemplified by [LLM4Decompile's x86 Linux setup](https://arxiv.org/abs/2403.05286) and [CFG2VEC's generic cross-architecture dataset](https://arxiv.org/abs/2301.02723); these are not estimates of FR2 correctness.
+
+The local handoff/research remain supplementary context; the public requirements, bounded evidence, inputs, and completion criteria are in this issue. Runtime events, target record choices, addresses, installed PCSX2/firmware identities, and actual failure-status behavior are intentionally unmeasured implementation outputs. Establish them through the static-to-runtime investigation and real integration checks; do not invent them to complete the issue fields.
+
+This revision does not implement the pipeline or fix the export failure. Integration execution requires the matching local inputs; an agent without them must report `incomplete`, even if its synthetic tests pass.
