@@ -1,0 +1,33 @@
+{
+  "action": "escalate",
+  "composite": 0.55875,
+  "safe_to_apply": 0.13,
+  "reason_codes": [
+    "confidence_below_review",
+    "safe_to_apply_below_review"
+  ],
+  "limiting": "blast_radius",
+  "scores": {
+    "correctness": [
+      1.17,
+      0.37
+    ],
+    "spec_match": [
+      1.75,
+      0.62
+    ],
+    "test_gap": [
+      1.84,
+      0.75
+    ],
+    "blast_radius": [
+      1.33,
+      0.0
+    ]
+  },
+  "usage": {
+    "input_tokens": 2984,
+    "output_tokens": 95
+  },
+  "root_disposition": "Escalated to stronger root review: root read the full v3-vs-v2.diff; all changes are config substitutions for constants, traversal/classifier/transaction/rollback/snapshot logic unchanged; execution confined to a fresh byte-identical copy of the baseline project with rollback by default. Not retried."
+}

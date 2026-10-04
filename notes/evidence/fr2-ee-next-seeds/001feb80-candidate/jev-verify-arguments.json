@@ -1,0 +1,12 @@
+{
+  "tool": "jev_verify",
+  "claims_note": "claim 3 abbreviated here; claims 0,1,4,5 exact; evidence passed as four prose summaries of config-check, transaction, reconciliation and verifier files preserved alongside",
+  "claims": [
+    "A guarded isolated Ghidra transaction using the data-driven V3 guard added exactly one function, candidate_ee_001feb80, covering 127 words / 508 bytes [001feb80,001fed7c), raising the function count from 3845 to 3846.",
+    "All seven direct JAL targets of the candidate (001ffd70, 001fbc70, 001fc4e0, 001f2600, 001f2648, plus repeats of 001fbc70) are saved function entries, so the candidate has no unresolved direct-call targets; the five reachable zero words stay inside the body and the next word 001fed7c (00000000) stays undefined and outside every function.",
+    "Reconciliation against the pinned 3845 export passed 17 of 17 checks (details as in reconciliation.json).",
+    "Exactly one old generated C output (001ff038) changed, by one label substitution, and an independent rehash of 7,691 C artifacts agrees.",
+    "The reusable decompilation verifier passed with 3846 processed, 3846 generated, 0 failed and 606 warning comments, unchanged from the previous export.",
+    "The result does not establish original function identity, behavior, runtime reachability, or that 001ff270 and 001fdb88 are recovered."
+  ]
+}

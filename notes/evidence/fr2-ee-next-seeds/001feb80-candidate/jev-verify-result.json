@@ -1,0 +1,57 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "summary": {
+    "verified": 6,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 1
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "verdict": "verified",
+      "supports": 1.0,
+      "confidence": 1.0
+    },
+    {
+      "id": "claim1",
+      "verdict": "verified",
+      "supports": 0.86,
+      "contradicts": 0.1,
+      "confidence": 0.8
+    },
+    {
+      "id": "claim2",
+      "verdict": "verified",
+      "supports": 0.99,
+      "confidence": 0.99
+    },
+    {
+      "id": "claim3",
+      "verdict": "verified",
+      "supports": 1.0,
+      "confidence": 0.99
+    },
+    {
+      "id": "claim4",
+      "verdict": "verified",
+      "supports": 0.84,
+      "contradicts": 0.07,
+      "says_nothing": 0.09,
+      "confidence": 0.76,
+      "action": "review"
+    },
+    {
+      "id": "claim5",
+      "verdict": "verified",
+      "supports": 0.91,
+      "confidence": 0.87
+    }
+  ],
+  "usage": {
+    "input_tokens": 3846,
+    "output_tokens": 714
+  },
+  "root_disposition": "claim4 flagged review (0.76): the supplied evidence stated 606 for this export but not the prior export; the prior 3845 export count of 606 is recorded in the 001ff038 bundle verifier summary, so the unchanged claim holds. Not retried."
+}
