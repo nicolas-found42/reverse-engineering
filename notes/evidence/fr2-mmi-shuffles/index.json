@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "claim_limit": "Bounded static and synthetic validation only; whole game source recovery and equivalence remain unproved.",
+  "sources": [
+    {
+      "path": "tools/recomp/shuffle-lanes.patch",
+      "bytes": 1832,
+      "sha256": "86837455a5a1ca60a12c3064966397c9d1b1d16514e939d1e5267da79e10cf31"
+    },
+    {
+      "path": "tools/recomp/shuffle_probe.cpp",
+      "bytes": 1654,
+      "sha256": "acbe8a654ccf995346f7ef2cf0c86090bad25b9c12d54f20cb94efced0af19cb"
+    },
+    {
+      "path": "tools/recomp/verify_shuffles.py",
+      "bytes": 8462,
+      "sha256": "cf7ddc01c0a5e56a51183ef0a571a3089febf498899f146128b3337c1d66ee0a"
+    },
+    {
+      "path": "tools/test_recomp_shuffles.py",
+      "bytes": 2124,
+      "sha256": "ac1199c3294e5ee4465a81d632754ad41c299aed49b6b0b92e855c23d6bfd426"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/README.md",
+      "bytes": 2897,
+      "sha256": "f04714df20091b56683d58a5be43710c5d9dd59ba2f1f5ac9c4053681c86ce93"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/baseline-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/baseline-run.log",
+      "bytes": 76,
+      "sha256": "aa4531e221291ccfdc28a4f050b33cb28267ce4958560bf7dcd3d1267b074395"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/candidate-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/candidate-run.log",
+      "bytes": 60,
+      "sha256": "8c970c22850952b9795482b97b599ad81174fdecfb619c3086025bba0667df47"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/guard-tests.log",
+      "bytes": 102,
+      "sha256": "d094b1bd2c8318c96097f80c50da282add5b2972970a77046de8db6c8935f6ca"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/independent-jev-review.json",
+      "bytes": 5558,
+      "sha256": "cc80400a247c52b81d50f30becbbbe61bde72d4dd21912bbc02ec89ee6621da7"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/jev-results.json",
+      "bytes": 5611,
+      "sha256": "9737db274ab24fbdb546b61d4a8aa3c68b1bca57f8154b8cbfe4bd81b17ca6a4"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/native-probe-result.json",
+      "bytes": 3575,
+      "sha256": "975899d903da8cbce2f8cdace986bd39b3f983566423084a8ca1d44d1fbbc5f7"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/pyright.log",
+      "bytes": 37,
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/source-provenance.json",
+      "bytes": 2007,
+      "sha256": "2169b263c76e897526b8341b8401a932a2b8b830379694a00ba7918a7581b9ef"
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/superseded-third-party-warning-build.log",
+      "bytes": 1121,
+      "sha256": "1c70ae6f7a5dc11f64f716f9f3e28cbab637c8775dc26dc8eb31efaebdabdad8"
+    }
+  ]
+}

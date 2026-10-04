@@ -1,0 +1,70 @@
+{
+  "source": "https://docs.alexrp.com/mips/ee_insns.pdf",
+  "calls": [
+    {
+      "tool": "firecrawl_scrape",
+      "arguments": {
+        "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+        "formats": ["markdown", "summary", "query"],
+        "parsers": ["pdf"],
+        "pdfOptions": {"maxPages": 320},
+        "queryOptions": {
+          "mode": "directQuote",
+          "prompt": "Find the Sony EE instruction operation definitions and exact per-lane assignments for PCPYLD, PCPYUD, PCPYH, PEXTLW, PEXTUW, PEXTLH, PEXTLB, PAND, POR, PNOR, PXOR, PSUBB, and PSUBW. Return exact relevant passages with page numbers only. Also identify whether any definition specifies writing zero or preserving data when destination is register zero."
+        },
+        "maxAge": 0,
+        "onlyMainContent": true
+      },
+      "result_metadata": {
+        "success": true,
+        "scrapeId": "01a106a5-d23a-7111-96d3-49042f2668a4",
+        "http_status": 200,
+        "pages_fetched": 320,
+        "pdf_total_pages": 408,
+        "credits_used": 324,
+        "warning": "The page was too long to process in full; Firecrawl warned that the answer was generated from the first part of the document after trimming. I did not use this broad extraction as decisive operation evidence."
+      }
+    },
+    {
+      "tool": "firecrawl_scrape",
+      "arguments": {
+        "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+        "formats": ["query"],
+        "parsers": ["pdf"],
+        "pdfOptions": {"maxPages": 250},
+        "queryOptions": {
+          "mode": "directQuote",
+          "prompt": "Quote only the Operation section for PCPYLD, PCPYUD, PCPYH from the EE Core instruction manual and report printed page numbers. Include the exact source bit ranges assigned to each destination bit range. If any definition cannot be found, state that explicitly."
+        },
+        "maxAge": 0
+      },
+      "result_metadata": {
+        "success": true,
+        "scrapeId": "01a106a8-4abe-73fc-a080-7d6ac90b2634",
+        "http_status": 200,
+        "pages_fetched": 250,
+        "pdf_total_pages": 408,
+        "credits_used": 254,
+        "warning": "The page was too long to process in full; the answer was generated from the first part only. I treated it as a locator and cross-checked against the manual and pinned PCSX2 source."
+      }
+    },
+    {
+      "tool": "firecrawl_search",
+      "arguments": {
+        "query": "site:studylib.net/doc/28989088/ee-insns PEXTLW PEXTUW PEXTLH PEXTLB operation GPR[rd]",
+        "sources": ["web"],
+        "includeDomains": ["studylib.net"],
+        "limit": 3,
+        "categories": ["pdf"],
+        "domainTools": false
+      },
+      "result_metadata": {
+        "success": true,
+        "id": "01a106ab-4abf-762d-81b0-1aa8d327063f",
+        "credits_used": 0,
+        "web_results": 0
+      }
+    }
+  ],
+  "note": "Firecrawl fetch summaries are not treated as evidence on their own. The manual's operation text and figures were checked directly through source-page access, and compared with pinned PCSX2 code and synthetic outputs."
+}

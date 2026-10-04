@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/mmi_shuffle_probe.py", line 63, in <module>
+    if c.returncode:raise RuntimeError(c.stderr)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: In file included from /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/mmi-shuffle-01/baseline.cpp:5:
+/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src/sse2neon.h:9445:60: error: unused parameter 'bound' [-Werror,-Wunused-parameter]
+ 9445 | static uint16_t _sse2neon_aggregate_equal_ordered_8x16(int bound,
+      |                                                            ^
+/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src/sse2neon.h:9619:60: error: unused parameter 'bound' [-Werror,-Wunused-parameter]
+ 9619 | static uint16_t _sse2neon_aggregate_equal_ordered_16x8(int bound,
+      |                                                            ^
+2 errors generated.
+

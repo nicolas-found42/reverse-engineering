@@ -1,0 +1,72 @@
+[
+  {
+    "receipt": "r055-mmi-translator-source-screen",
+    "full_receipt_path": ".scratch/mesh/codex-root/jev/r055-mmi-translator-source-screen.json",
+    "full_receipt_sha256": "c25ea816843388e2a1e1819a345712800b3a90619c0b63ddf6a842dc43e60c9b",
+    "arguments_sha256": "56be9f3e8dd6b8fd16b508105546ac2777a29eb6f559e38704b88645b9d705cd",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.2,\n    \"substance\": 0.99,\n    \"relevance\": 0.96\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 11123,\n    \"output_tokens\": 57\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "receipt": "r056-pcsx2-mmi-reference-screen",
+    "full_receipt_path": ".scratch/mesh/codex-root/jev/r056-pcsx2-mmi-reference-screen.json",
+    "full_receipt_sha256": "47ed18afb5907e8d87d7e331cac5e2551c129dfab4a0d4632b48875e3cc1883b",
+    "arguments_sha256": "17d06e0f015c2b100a8bacbb1431b03d5cc67ece7b5e54b9e6c661ed3cacea85",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.58,\n    \"substance\": 0.98,\n    \"relevance\": 0.92\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"review\",\n    \"reason\": \"injection probability 0.58 >= review threshold 0.25\"\n  },\n  \"usage\": {\n    \"input_tokens\": 2800,\n    \"output_tokens\": 57\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "receipt": "r057-ee-shuffle-search-screen",
+    "full_receipt_path": ".scratch/mesh/codex-root/jev/r057-ee-shuffle-search-screen.json",
+    "full_receipt_sha256": "141f3e15ff8468d2136c0f7af9483e203c024b1a7b89039d237d3e8548cbfa10",
+    "arguments_sha256": "44d55eff4a6ff556bb4ae352ca210ea83a6fab487e72f577e2648b4cdbaf1015",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.14,\n    \"substance\": 0.94,\n    \"relevance\": 0.75\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 2882,\n    \"output_tokens\": 57\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "receipt": "r058-ee-shuffle-focused-search-screen",
+    "full_receipt_path": ".scratch/mesh/codex-root/jev/r058-ee-shuffle-focused-search-screen.json",
+    "full_receipt_sha256": "5cf598c6536f0d93366e7f6d201904a89768f3f4f166e6c0e2caa3cb981635a6",
+    "arguments_sha256": "b71c612ad4183f06075de805c7469766b504ff5da6d2ce7097f16ec0ebdf3f66",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.11,\n    \"substance\": 0.89,\n    \"relevance\": 0.92\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 1199,\n    \"output_tokens\": 57\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "receipt": "r059-shuffle-lane-patch-review",
+    "full_receipt_path": ".scratch/mesh/codex-root/jev/r059-shuffle-lane-patch-review.json",
+    "full_receipt_sha256": "2f63d2ab8c1a6c6da071d59afe415b864fcb84e7845eb0bb8bf0baaa0fc85b50",
+    "arguments_sha256": "d024abeb65dbc823d6fbc12c097f0017aa221dc10df958ee6d5f3cfca9a99610",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"tool\": \"jev_review\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"truncated\": false,\n  \"safe_to_apply\": 0.53,\n  \"scores\": {\n    \"correctness\": {\n      \"score\": 1.88,\n      \"confidence\": 0.83,\n      \"probabilities\": {\n        \"0\": 0.03,\n        \"1\": 0.06,\n        \"2\": 0.91\n      }\n    },\n    \"spec_match\": {\n      \"score\": 1.58,\n      \"confidence\": 0.36,\n      \"probabilities\": {\n        \"0\": 0.01,\n        \"1\": 0.41,\n        \"2\": 0.58\n      }\n    },\n    \"test_gap\": {\n      \"score\": 0.58,\n      \"confidence\": 0.25,\n      \"probabilities\": {\n        \"0\": 0.46,\n        \"1\": 0.5,\n        \"2\": 0.04\n      }\n    },\n    \"blast_radius\": {\n      \"score\": 1.46,\n      \"confidence\": 0.19,\n      \"probabilities\": {\n        \"0\": 0.06,\n        \"1\": 0.41,\n        \"2\": 0.53\n      }\n    }\n  },\n  \"weights\": {\n    \"correctness\": 0.4,\n    \"spec_match\": 0.3,\n    \"test_gap\": 0.15,\n    \"blast_radius\": 0.15\n  },\n  \"thresholds\": {\n    \"auto_accept\": 0.8,\n    \"review_at\": 0.5,\n    \"composite_floor\": 0.7\n  },\n  \"action\": \"escalate\",\n  \"composite\": 0.76,\n  \"reason_codes\": [\n    \"confidence_below_review\"\n  ],\n  \"limiting_rubrics\": [\n    \"blast_radius\"\n  ],\n  \"usage\": {\n    \"input_tokens\": 5697,\n    \"output_tokens\": 79\n  }\n}"
+        }
+      ]
+    }
+  }
+]

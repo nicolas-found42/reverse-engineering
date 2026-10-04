@@ -1,0 +1,19 @@
+{
+  "tool": "jev_gate",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "action": "escalate",
+  "review": {
+    "action": "escalate",
+    "composite": 0.67675,
+    "safe_to_apply": 0.16,
+    "limiting_rubric": "test_gap"
+  },
+  "verification": {
+    "action": "escalate",
+    "verified": 2,
+    "unsupported": 3,
+    "needs_review": 5
+  },
+  "note": "Summary of the first scratch gate from the original translator audit turn; retained as a superseded disposition. It was followed by a more complete emitted-template test and a later gate, but remains recorded as an escalation."
+}

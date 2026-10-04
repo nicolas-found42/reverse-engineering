@@ -1,0 +1,183 @@
+{
+  "schema_version": 1,
+  "status": "structurally-supported-leaf-candidate-boundary-unconfirmed",
+  "date": "2026-10-04",
+  "executable": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "section": {
+    "name": ".user_section_uncommon",
+    "virtual_address": "0022a180",
+    "file_offset": "0012b180",
+    "flags": 6,
+    "allocated": true,
+    "executable": true,
+    "span_start": "0022a180",
+    "span_end_exclusive": "0022a1c8",
+    "byte_count": 72,
+    "bytes_sha256": "c5a281fb5648f92c515ee4e524f9b7b6514add1f3d162237ca78c54094b0f7a9",
+    "nonzero_word_count": 18
+  },
+  "saved_listing": {
+    "instructions_already_defined": 18,
+    "global_instruction_count_before_after": [
+      268374,
+      268374
+    ],
+    "function_owned": false,
+    "instructions": [
+      {
+        "address": "0022a180",
+        "bytes": "f0ffbd27",
+        "instruction": "addiu sp,sp,-0x10"
+      },
+      {
+        "address": "0022a184",
+        "bytes": "0000a4af",
+        "instruction": "sw a0,0x0(sp)"
+      },
+      {
+        "address": "0022a188",
+        "bytes": "0100a393",
+        "instruction": "lbu v1,0x1(sp)"
+      },
+      {
+        "address": "0022a18c",
+        "bytes": "0200a293",
+        "instruction": "lbu v0,0x2(sp)"
+      },
+      {
+        "address": "0022a190",
+        "bytes": "0000a593",
+        "instruction": "lbu a1,0x0(sp)"
+      },
+      {
+        "address": "0022a194",
+        "bytes": "c2180300",
+        "instruction": "srl v1,v1,0x3"
+      },
+      {
+        "address": "0022a198",
+        "bytes": "0300a493",
+        "instruction": "lbu a0,0x3(sp)"
+      },
+      {
+        "address": "0022a19c",
+        "bytes": "40190300",
+        "instruction": "sll v1,v1,0x5"
+      },
+      {
+        "address": "0022a1a0",
+        "bytes": "c2100200",
+        "instruction": "srl v0,v0,0x3"
+      },
+      {
+        "address": "0022a1a4",
+        "bytes": "c2280500",
+        "instruction": "srl a1,a1,0x3"
+      },
+      {
+        "address": "0022a1a8",
+        "bytes": "25104300",
+        "instruction": "or v0,v0,v1"
+      },
+      {
+        "address": "0022a1ac",
+        "bytes": "802a0500",
+        "instruction": "sll a1,a1,0xa"
+      },
+      {
+        "address": "0022a1b0",
+        "bytes": "2b200400",
+        "instruction": "sltu a0,zero,a0"
+      },
+      {
+        "address": "0022a1b4",
+        "bytes": "25104500",
+        "instruction": "or v0,v0,a1"
+      },
+      {
+        "address": "0022a1b8",
+        "bytes": "c0230400",
+        "instruction": "sll a0,a0,0xf"
+      },
+      {
+        "address": "0022a1bc",
+        "bytes": "25104400",
+        "instruction": "or v0,v0,a0"
+      },
+      {
+        "address": "0022a1c0",
+        "bytes": "0800e003",
+        "instruction": "jr ra"
+      },
+      {
+        "address": "0022a1c4",
+        "bytes": "1000bd27",
+        "instruction": "_addiu sp,sp,0x10"
+      }
+    ],
+    "ghidra_reference_to_start": [
+      {
+        "from": "_elfSectionHeaders::00000264",
+        "type": "DATA",
+        "source": "IMPORTED"
+      }
+    ],
+    "reference_disposition": "One imported DATA reference from `_elfSectionHeaders::00000264` to the section start; it is loader metadata, not a code-call edge. The other 17 instruction starts have no Ghidra incoming references."
+  },
+  "raw_reference_audit": {
+    "scope": "All allocated file-backed ELF sections; pointer patterns scanned every byte, code targets from 4-byte-aligned instruction words in executable sections.",
+    "aligned_pointer_hits": [],
+    "unaligned_pointer_patterns": [
+      {
+        "section": ".user_section_init",
+        "va": "0022ce62",
+        "file_offset": "0012de62",
+        "value": "0022a1c3",
+        "aligned": false
+      },
+      {
+        "section": ".user_section_init",
+        "va": "0022ceaa",
+        "file_offset": "0012deaa",
+        "value": "0022a1a3",
+        "aligned": false
+      }
+    ],
+    "direct_jal_or_jalx_targets": [],
+    "conditional_branch_targets": [],
+    "unaligned_pattern_disposition": "The two byte patterns at .user_section_init VA 0x0022ce62 -> 0x0022a1c3 and VA 0x0022ceaa -> 0x0022a1a3 begin two bytes inside aligned executable instruction words and cross instruction boundaries; they are not aligned file-backed pointers."
+  },
+  "structure": "The range begins at an executable ELF section boundary with addiu sp,sp,-16; stores a0; loads bytes at stack offsets 0..3; combines channel fields by shifts/OR; jr ra at +0x40; addiu sp,sp,16 in the delay slot.",
+  "semantic_hypothesis": {
+    "label": "ARGB1555-style pack from four input bytes",
+    "formula": "((b2 >> 3) & 31) | (((b1 >> 3) & 31) << 5) | (((b0 >> 3) & 31) << 10) | ((b3 != 0) << 15)",
+    "status": "instruction-derived hypothesis, not a recovered symbol or proven caller contract"
+  },
+  "jev": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "summary": {
+      "verified": 4,
+      "contradicted": 1,
+      "unsupported": 0,
+      "needs_review": 0
+    },
+    "checked": [
+      "raw bytes match 18 decoded R5900 instructions and ELF map",
+      "balanced stack and jr/return delay",
+      "plausible ARGB1555 byte packing",
+      "no aligned pointer/direct JAL/JALX/conditional target found",
+      "negative control: evidence does not prove runtime invocation or exact original boundary"
+    ]
+  },
+  "failed_probe_disposition": "Initial attempt to decode the span failed closed because the bytes were already decoded in the saved listing, though unowned. The corrected inspection was read-only and confirmed all 18 existing instructions; no function was created.",
+  "claim_limits": "A strong function-shaped leaf candidate, not direct-call evidence. The section boundary, balanced frame, fixed return, and packing operations support a provisional boundary hypothesis; imported ELF section metadata is the only Ghidra incoming reference. Runtime invocation, original symbol/name, renderer use, and exact original function extent remain unproven.",
+  "source_receipts": {
+    "union_report": ".scratch/mesh/codex-root/recovery-union-01.json",
+    "ghidra_read_only_decode": ".scratch/mesh/codex-helpers/leaf-raw-decode-20261004.json",
+    "inspect_script": ".scratch/mesh/codex-helpers/InspectLeafCandidate.java"
+  }
+}

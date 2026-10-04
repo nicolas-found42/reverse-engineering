@@ -1,0 +1,53 @@
+{
+  "status": "pass",
+  "upstream_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "input_sha256": {
+    "ps2xRecomp/src/lib/instruction_translator.cpp": "b24105265f6d6f14c48bb72e5066877e0b3e1ffe439ddd0331e0d297004bd226",
+    "ps2xRecomp/src/lib/special_translator.cpp": "98adc0305effdd57ca34ea029070f117379bd7e78c9f8944a8e9276c8c7bd3cd"
+  },
+  "exception_flow_source_sha256": {
+    "ps2xRecomp/src/lib/function_emitter.cpp": "a0dc4503e18abd010fa008f2e5b03b16ed9d05434435ff49725a72c11102ba84",
+    "ps2xRecomp/src/lib/control_flow_emitter.cpp": "44c0204441106b033a6897bfd52e6e6ce551a6d64a12a7004518a76d657eea07",
+    "ps2xRuntime/src/lib/ps2_runtime.cpp": "77cd184f2e70eacfd5ea584ec95829553e3deeead0a19c04e4b0970dd7c6c9ee"
+  },
+  "candidate_sha256": {
+    "ps2xRecomp/src/lib/instruction_translator.cpp": "d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7",
+    "ps2xRecomp/src/lib/special_translator.cpp": "86a554b9172db6857b64a3ed05599d0b245bab4819dacfce082cd3eec87d753c"
+  },
+  "candidate_template_tests": "PASS extracted candidate translator templates: 9 normal/overflow/delay-slot/caller controls",
+  "caller_exception_propagation": "PASS: pinned callee dispatch returns false when exception vector differs from call fallthrough; emitted caller returns on false",
+  "baseline_ubsan_negative_controls": {
+    "dadd": {
+      "returncode": -6,
+      "ubsan_detected": true,
+      "diagnostic": "<temporary-build-dir>/upstream_templates.cpp:19:158: runtime error: signed integer overflow: 9223372036854775807 + 1 cannot be represented in type 'int64_t' (aka 'long long')\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior <temporary-build-dir>/upstream_templates.cpp:19:158"
+    },
+    "dsub": {
+      "returncode": -6,
+      "ubsan_detected": true,
+      "diagnostic": "<temporary-build-dir>/upstream_templates.cpp:20:158: runtime error: signed integer overflow: -9223372036854775808 - 1 cannot be represented in type 'int64_t' (aka 'long long')\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior <temporary-build-dir>/upstream_templates.cpp:20:158"
+    },
+    "daddi": {
+      "returncode": -6,
+      "ubsan_detected": true,
+      "diagnostic": "<temporary-build-dir>/upstream_templates.cpp:17:162: runtime error: signed integer overflow: 9223372036854775807 + 1 cannot be represented in type 'int64_t' (aka 'long long')\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior <temporary-build-dir>/upstream_templates.cpp:17:162"
+    },
+    "daddiu": {
+      "returncode": -6,
+      "ubsan_detected": true,
+      "diagnostic": "<temporary-build-dir>/upstream_templates.cpp:18:113: runtime error: signed integer overflow: 9223372036854775807 + 1 cannot be represented in type 'int64_t' (aka 'long long')\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior <temporary-build-dir>/upstream_templates.cpp:18:113"
+    }
+  },
+  "baseline_safe_control": "baseline completed",
+  "independent_reference": "PASS pairs=289 randomized=100000 ADDI_zero_cases=3",
+  "isolated_files": [
+    "ps2xRecomp/src/lib/instruction_translator.cpp",
+    "ps2xRecomp/src/lib/special_translator.cpp"
+  ],
+  "patch_sha256": "339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006",
+  "limitations": [
+    "Only two translator files are staged and patched; no full project or game source is generated.",
+    "Synthetic register/runtime support is used. ADD32_OV and SUB32_OV are defined in the harness for the scalar ADDI/SUB checks; full runtime composition requires the separate defined-overflow patch.",
+    "No original game routine or emulator is executed."
+  ]
+}

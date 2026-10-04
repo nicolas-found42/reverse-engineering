@@ -1,0 +1,22 @@
+{
+  "source_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "patches": {
+    "tools/recomp/defined-overflow.patch": "3b14131ae25ff79ec204e4bc0b0de383b19d43d7cd71bb1407802a6b793ca31e",
+    "tools/recomp/translator-semantics.patch": "339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006",
+    "tools/recomp/shuffle-lanes.patch": "86837455a5a1ca60a12c3064966397c9d1b1d16514e939d1e5267da79e10cf31"
+  },
+  "sources": {
+    "ps2xRuntime/include/ps2_runtime_macros.h": "180b12c3230dafa29ed618fea3f754c67e9500341b426e5fde1f61d8f3be929b",
+    "ps2xRecomp/src/lib/instruction_translator.cpp": "d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7",
+    "ps2xRecomp/src/lib/special_translator.cpp": "86a554b9172db6857b64a3ed05599d0b245bab4819dacfce082cd3eec87d753c",
+    "ps2xRecomp/src/lib/mmi_translation_helpers.cpp": "e0b82fa9b78f526ca3ec96ad430816b5d9c6e60ce47f16127eed6d212a8ba080"
+  },
+  "binary": {
+    "path": ".scratch/mesh/codex-root/recomp-fixed-build-01/ps2xRecomp/ps2_recomp",
+    "sha256": "607683848d2c51e8702e5740e0fde693537619d4bf768d39037b7f4e15474710"
+  },
+  "configuration": {
+    "path": ".scratch/mesh/codex-root/recomp-fixed-01.toml",
+    "sha256": "c0b8f2144511cffb8629a0334ff77568dd36d0a4e5c5cf158b9c96cf843c3cd1"
+  }
+}

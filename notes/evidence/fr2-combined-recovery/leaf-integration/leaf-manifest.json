@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "status": "provisional-static-candidate",
+  "program": "SLES_517.05",
+  "language": "r5900:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "native_decompiler_path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/os/mac_arm_64/decompile",
+  "native_decompiler_sha256": "cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "script_sha256": "d13f621b353092f00309f8a423ba9183893bdf3cf4815a88470daf6696dc7c47",
+  "source_basis_sha256": "9c60c34dba5d57e9ef956a1a9559323ab58c12a8a65adadbc4d854ee10f15a21",
+  "baseline_manifest_sha256": "39302b3579c4c88f688a962fc794a6f9c6d652730c4f09794e7a40b29001192e",
+  "original_entry_count": 3837,
+  "inventory_entry_count_after": 3838,
+  "candidate_entry": "0022a180",
+  "candidate_name": "candidate_leaf_0022a180",
+  "candidate_source_type": "ANALYSIS",
+  "candidate_body_start": "0022a180",
+  "candidate_body_end_inclusive": "0022a1c7",
+  "candidate_body_bytes": 72,
+  "candidate_is_original_identity": false,
+  "candidate_runtime_reachability": "unproved; no direct call/branch or aligned file-backed pointer found; one imported ELF-section-header DATA reference targets the section start",
+  "section_file_mapping_verified": true,
+  "elf_section": {
+    "name": ".user_section_uncommon",
+    "type": 1,
+    "flags": 6,
+    "address": "22a180",
+    "file_offset": "12b180",
+    "size": "27f4"
+  },
+  "pal_file_offset": "0012b180",
+  "pal_raw_span_hex": "f0ffbd270000a4af0100a3930200a2930000a593c21803000300a49340190300c2100200c228050025104300802a05002b20040025104500c0230400251044000800e0031000bd27",
+  "pal_span_sha256": "c5a281fb5648f92c515ee4e524f9b7b6514add1f3d162237ca78c54094b0f7a9",
+  "preexisting_listing_instruction_count": 268403,
+  "post_candidate_listing_instruction_count": 268403,
+  "instruction_listing_unchanged": true,
+  "defined_data_units_unchanged": true,
+  "initialized_memory_sha256_before": "4ab510286f2f70e755d98a1d8ece0e6456d5a91c194ffc16a516266c4577d858",
+  "initialized_memory_sha256_after": "4ab510286f2f70e755d98a1d8ece0e6456d5a91c194ffc16a516266c4577d858",
+  "candidate_instructions": [
+    {
+      "address": "0022a180",
+      "instruction": "addiu sp,sp,-0x10",
+      "bytes": "f0ffbd27"
+    },
+    {
+      "address": "0022a184",
+      "instruction": "sw a0,0x0(sp)",
+      "bytes": "0000a4af"
+    },
+    {
+      "address": "0022a188",
+      "instruction": "lbu v1,0x1(sp)",
+      "bytes": "0100a393"
+    },
+    {
+      "address": "0022a18c",
+      "instruction": "lbu v0,0x2(sp)",
+      "bytes": "0200a293"
+    },
+    {
+      "address": "0022a190",
+      "instruction": "lbu a1,0x0(sp)",
+      "bytes": "0000a593"
+    },
+    {
+      "address": "0022a194",
+      "instruction": "srl v1,v1,0x3",
+      "bytes": "c2180300"
+    },
+    {
+      "address": "0022a198",
+      "instruction": "lbu a0,0x3(sp)",
+      "bytes": "0300a493"
+    },
+    {
+      "address": "0022a19c",
+      "instruction": "sll v1,v1,0x5",
+      "bytes": "40190300"
+    },
+    {
+      "address": "0022a1a0",
+      "instruction": "srl v0,v0,0x3",
+      "bytes": "c2100200"
+    },
+    {
+      "address": "0022a1a4",
+      "instruction": "srl a1,a1,0x3",
+      "bytes": "c2280500"
+    },
+    {
+      "address": "0022a1a8",
+      "instruction": "or v0,v0,v1",
+      "bytes": "25104300"
+    },
+    {
+      "address": "0022a1ac",
+      "instruction": "sll a1,a1,0xa",
+      "bytes": "802a0500"
+    },
+    {
+      "address": "0022a1b0",
+      "instruction": "sltu a0,zero,a0",
+      "bytes": "2b200400"
+    },
+    {
+      "address": "0022a1b4",
+      "instruction": "or v0,v0,a1",
+      "bytes": "25104500"
+    },
+    {
+      "address": "0022a1b8",
+      "instruction": "sll a0,a0,0xf",
+      "bytes": "c0230400"
+    },
+    {
+      "address": "0022a1bc",
+      "instruction": "or v0,v0,a0",
+      "bytes": "25104400"
+    },
+    {
+      "address": "0022a1c0",
+      "instruction": "jr ra",
+      "bytes": "0800e003"
+    },
+    {
+      "address": "0022a1c4",
+      "instruction": "_addiu sp,sp,0x10",
+      "bytes": "1000bd27"
+    }
+  ],
+  "neighbor_owners_before": {
+    "0022a1c8": "0022a1c8",
+    "0022a1cc": "0022a1c8"
+  },
+  "neighbor_owners_after": {
+    "0022a180": "0022a180",
+    "0022a1c8": "0022a1c8",
+    "0022a1cc": "0022a1c8"
+  },
+  "incoming_entry_reference": {
+    "references": [
+      {
+        "from": "_elfSectionHeaders::00000264",
+        "type": "DATA",
+        "source": "IMPORTED"
+      }
+    ]
+  },
+  "original_function_bodies_unchanged": true,
+  "original_entry_set_unchanged_except_candidate_addition": true,
+  "candidate_c_sha256": "2475bc5f1b389431e7fa2f6f9a6193a9381482b67476eb164080bf228957328f",
+  "candidate_c_bytes": 251,
+  "claim_limits": "Provisional entry/body hypothesis only; not an original symbol/name, call-site recovery, runtime-use claim, renderer contract, or whole-game source equivalence."
+}

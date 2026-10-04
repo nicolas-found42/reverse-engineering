@@ -1,0 +1,7 @@
+# jgrep calls
+
+- `jgrep --json "translates packed-register instructions by interleaving or combining source vector lanes" .scratch/mesh/codex-root/PS2Recomp/ps2xRecomp/src/lib/mmi_translation_helpers.cpp .scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/ps2_runtime_macros.h` — 13 hits / 96 chunks; output copied to `jgrep-interleave.json`. It located several SIMD helper blocks but did not establish correctness.
+- `jgrep --json "writes the bitwise combination of two vector registers to a destination register while honoring the zero register" .scratch/mesh/codex-root/PS2Recomp/ps2xRecomp/src/lib/mmi_translation_helpers.cpp .scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/ps2_runtime_macros.h` — 0 hits / 96 chunks; output in `jgrep-logic.json`.
+- `jgrep --json "subtracts vector lanes with wraparound modulo lane width" .scratch/mesh/codex-root/PS2Recomp/ps2xRecomp/src/lib/mmi_translation_helpers.cpp .scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/ps2_runtime_macros.h` — 0 hits / 96 chunks; output in `jgrep-subtract.json`.
+
+The two no-hit results are not evidence of absence or correctness; exact identifier reads and source comparisons were used afterward. An initial shell command used zsh's readonly special variable `status` and stopped after the first query; it produced no second result. The two subsequent calls above ran cleanly, returning exit 1 for no matches as documented by jgrep.

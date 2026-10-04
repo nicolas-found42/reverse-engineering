@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "claim_limit": "Bounded static and synthetic validation only; whole game source recovery and equivalence remain unproved.",
+  "sources": [
+    {
+      "path": "tools/recomp/defined-overflow.patch",
+      "bytes": 2880,
+      "sha256": "3b14131ae25ff79ec204e4bc0b0de383b19d43d7cd71bb1407802a6b793ca31e"
+    },
+    {
+      "path": "tools/recomp/translator-semantics.patch",
+      "bytes": 5612,
+      "sha256": "339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006"
+    },
+    {
+      "path": "tools/recomp/shuffle-lanes.patch",
+      "bytes": 1832,
+      "sha256": "86837455a5a1ca60a12c3064966397c9d1b1d16514e939d1e5267da79e10cf31"
+    },
+    {
+      "path": "tools/verify_recompilation.py",
+      "bytes": 9180,
+      "sha256": "005fb7831cbb269c7e3d0ce27b3e2585d25fd9a0426229a88e5f5243f1834846"
+    },
+    {
+      "path": "tools/ghidra/experimental/CreateProvisionalLeafCandidate.java",
+      "bytes": 19306,
+      "sha256": "d13f621b353092f00309f8a423ba9183893bdf3cf4815a88470daf6696dc7c47"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "notes/evidence/fr2-combined-recovery/README.md",
+      "bytes": 5243,
+      "sha256": "1a31f75e56a2cd063c95244d31599c508f788ded1517595f06b70e21616237cf"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/archive-validation.json",
+      "bytes": 5302,
+      "sha256": "52240c3a2e364e03153812dbbb21de6abb2ae7b7c17dc1a63ce9e952f895d678"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/artifact-validation.json",
+      "bytes": 1814011,
+      "sha256": "dbf041ae5e487021390155d5f18910a4360ccf3eb71ebcfe2ab1b55e9bf10802"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/full-python-tests-216.log",
+      "bytes": 317,
+      "sha256": "4c38dc31fe127980c9f155d39cef1e422fdb21beaa32c71cf958cd5d67c605e9"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/full-python-tests-prior-leaf.log",
+      "bytes": 303,
+      "sha256": "3a6a171eea5693f57a7bd1e8ba6e41593344299d0c3bf7e4ed89a80e8a757606"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/generated-source-comparison.json",
+      "bytes": 27051,
+      "sha256": "7ae5d6bfed983e22cdb163aa2b435c09a6cc1ef02fa34eec22c03af1334a93d8"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/address-union.json",
+      "bytes": 332616,
+      "sha256": "51e97ffcd3766d934cd39902b9d3d05bf273d9e6c1ebdc6ad6c7b44308fc0ae6"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/artifact-validation.json",
+      "bytes": 82322,
+      "sha256": "6c33ccf7413b06aac2f4a03cc904425399f66de3f86431c504426153ac4586db"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/c-comparison.json",
+      "bytes": 440,
+      "sha256": "b5f7ce96a75f4fec10dffea02ba3a6bddfc6d648ff2885a3d2acd3285d2c233c"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/code-inventory-validation.json",
+      "bytes": 356151,
+      "sha256": "a609de024dc6ffbb629901409c88598ab15c07f16a53f19bae4fc8570b73bfe4"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/command.json",
+      "bytes": 2313,
+      "sha256": "8567bbaa88926c361b63a36670374e014c44aee3741d5ea1175dc61830760be5"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/leaf-manifest.json",
+      "bytes": 4985,
+      "sha256": "266ec9eec093601d2536e6f7c39d35ad095d38067a68788a95f9473a62a52607"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/private-input-provenance.json",
+      "bytes": 1323,
+      "sha256": "4736e68861ed30489bc05c52604cdf9b4c1e3b8cf0a1386bc6f5d6db5568eacf"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/recomp-artifact-validation.json",
+      "bytes": 1814021,
+      "sha256": "5275b2e4a6567c62179cbf0cf3b7aee671343fb9f58469b94fe6e013b67e28f7"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/leaf-integration/root-jev-verification.json",
+      "bytes": 7493,
+      "sha256": "fa85a7e5cdbbd2c20ff53c945d460b6450498539067d80f21d8f3681901cad02"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/object-compilation.json",
+      "bytes": 28275,
+      "sha256": "752d6bed58ca18239de04cb9744b2d330e183ab90b76501a9989305277ff391b"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/private-input-provenance.json",
+      "bytes": 1971,
+      "sha256": "bdb732ece82af0c0ce6fc332b25d5d911e548dc50031ae880d156f5353049323"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/pyright-path-operational-failure.log",
+      "bytes": 83,
+      "sha256": "8c8a5968f3e8f19761620dbd2164e91d4fb53e7b447f2618d65f9ada2d4d9ba6"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/pyright-promoted-final.log",
+      "bytes": 37,
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/pyright-promoted.log",
+      "bytes": 37,
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/registration-compilation.json",
+      "bytes": 1360,
+      "sha256": "c70b64b5dc5f58203ae856c5cad5b62d179b6e538e0328e0d951a41daddfc47b"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/root-jev-verification.json",
+      "bytes": 22241,
+      "sha256": "493237d2a93d2611f30d46280666effa8c6ec648ea6e8bbecf5d1e54e48bbda5"
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/source-provenance.json",
+      "bytes": 1266,
+      "sha256": "b1e7715c77b6792c2a45ac3ed2233a0610f55fba7eaa60075dadb27be4657dcc"
+    }
+  ]
+}

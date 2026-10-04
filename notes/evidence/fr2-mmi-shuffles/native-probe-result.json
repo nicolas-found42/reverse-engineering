@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "input_sha256": {
+    "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e",
+    "ps2xRecomp/src/lib/mmi_translation_helpers.cpp": "1402bdb9f81923a8c91c7fa790399a2563ebc5f7cd0c899b7c29cb7c6bafc5ee"
+  },
+  "candidate_sha256": {
+    "ps2xRuntime/include/ps2_runtime_macros.h": "7371e263413510abba35291b9842609d33bfb8860ec9810edafe8a6379078530",
+    "ps2xRecomp/src/lib/mmi_translation_helpers.cpp": "e0b82fa9b78f526ca3ec96ad430816b5d9c6e60ce47f16127eed6d212a8ba080"
+  },
+  "patch_sha256": "86837455a5a1ca60a12c3064966397c9d1b1d16514e939d1e5267da79e10cf31",
+  "probe_sha256": "acbe8a654ccf995346f7ef2cf0c86090bad25b9c12d54f20cb94efced0af19cb",
+  "sse2neon_header_sha256": "78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed",
+  "operations": [
+    "PEXEW",
+    "PEXCW",
+    "PROT3W template",
+    "PROT3W macro"
+  ],
+  "results": [
+    {
+      "mode": "baseline",
+      "command": [
+        "clang++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=undefined",
+        "-I",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/mmi-shuffle-promoted-01/baseline",
+        "-DUSE_SSE2NEON",
+        "-isystem",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/shuffle_probe.cpp",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/mmi-shuffle-promoted-01/baseline/probe"
+      ],
+      "returncode": 1,
+      "details": {
+        "checks": [
+          40016,
+          40016,
+          40016,
+          40016
+        ],
+        "mismatches": [
+          20008,
+          20008,
+          20004,
+          20004
+        ]
+      },
+      "extracted_source_sha256": "51e9389b8ecdbc647afe8f0febcb1bd8a14933bc13dd257ce181e8ebe9992258",
+      "run_log_sha256": "aa4531e221291ccfdc28a4f050b33cb28267ce4958560bf7dcd3d1267b074395"
+    },
+    {
+      "mode": "candidate",
+      "command": [
+        "clang++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-fsanitize=undefined",
+        "-I",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/mmi-shuffle-promoted-01/candidate",
+        "-DUSE_SSE2NEON",
+        "-isystem",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/shuffle_probe.cpp",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/mmi-shuffle-promoted-01/candidate/probe"
+      ],
+      "returncode": 0,
+      "details": {
+        "checks": [
+          40016,
+          40016,
+          40016,
+          40016
+        ],
+        "mismatches": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "extracted_source_sha256": "8f1490abfef7933556ec07813bcd9fe4eff0668c8d552ac10e3665e8a9b91463",
+      "run_log_sha256": "8c970c22850952b9795482b97b599ad81174fdecfb619c3086025bba0667df47"
+    }
+  ],
+  "claim_limit": "Synthetic lane mappings, aliasing, and zero-register semantics only. No game routine executes; complete translator and game equivalence remain unproved."
+}

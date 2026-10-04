@@ -1,0 +1,4 @@
+Command: clang++ -target x86_64-apple-macos12 -std=c++20 -Wall -Wextra -Wno-unused-parameter -Werror -fsyntax-only -isysroot <macOS SDK> -I<PS2Recomp ps2xRecomp/include> -I<PS2Recomp ps2xRuntime/include> -I<fmt include> <scratch instruction_translator.cpp>
+Command: same flags and include roots for <scratch special_translator.cpp>
+Result: both translation units passed syntax checking. -Wno-unused-parameter suppresses an unchanged upstream warning in instruction_translator.cpp; edited code is compiled with all other -Wall -Wextra warnings treated as errors.
+A host ARM-target syntax attempt failed inside upstream x86-only immintrin.h inclusion; the supported x86_64 target syntax checks above passed.

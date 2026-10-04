@@ -1,0 +1,42 @@
+{
+  "arguments": {
+    "claims": [
+      "For 128-bit PEXEW, output words low-to-high are source [2,1,0,3].",
+      "For 128-bit PEXCW, output words low-to-high are source [0,2,1,3].",
+      "For 128-bit PROT3W, output words low-to-high are source [1,2,0,3].",
+      "The candidate _MM_SHUFFLE selectors encode the mappings using selector argument order (z,y,x,w) with destination lanes selecting (w,x,y,z).",
+      "The mmi-shuffle-03 probe covers rd==rt, rt==0, rd==0, four basis vectors and 10,000 deterministic random inputs, for three helpers plus PS2_PROT3W macro; candidate mismatches are zero in all groups.",
+      "The probe proves full emulator or game behavior."
+    ],
+    "evidence": [
+      {
+        "id": "manual",
+        "text": "Sony EE manual explicitly assigns PEXEW source lanes [2,1,0,3], PEXCW [0,2,1,3], PROT3W [1,2,0,3] to destination lanes low-to-high, at pages 201,199,260. https://docs.alexrp.com/mips/ee_insns.pdf"
+      },
+      {
+        "id": "intel",
+        "text": "Intel SDM PSHUFD: each two-bit immediate field selects the source doubleword for a destination lane; 128-bit form operates on four low-lane doublewords. https://www.intel.com/content/dam/develop/external/us/en/documents/319433-024-697869.pdf"
+      },
+      {
+        "id": "pcsx2",
+        "text": "Pinned PCSX2 MMI.cpp source independently assigns PEXEW [2,1,0,3], PEXCW [0,2,1,3], PROT3W [1,2,0,3], and uses early return on Rd=0. https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/MMI.cpp"
+      },
+      {
+        "id": "probe",
+        "text": "mmi-shuffle-03/result.json: four test groups x 40016 checks each; baseline mismatches [20008,20008,20004,20004], candidate mismatches [0,0,0,0]. Inputs include basis patterns and 10,000 MT19937 values, crossed with modes rd==rt, separate rd/rt, rt==0, rd==0. Tests three generated helpers and PS2_PROT3W macro wrapper, using SSE2NEON, UBSan. Receipt explicitly says synthetic lane mapping only, no game routine executed, no complete translator/game equivalence."
+      },
+      {
+        "id": "selectors",
+        "text": "Candidate selectors: PEXEW _MM_SHUFFLE(3,0,1,2); PEXCW _MM_SHUFFLE(3,1,2,0); PROT3W _MM_SHUFFLE(3,0,2,1). In the Intel intrinsic convention _MM_SHUFFLE(z,y,x,w) forms immediate fields such that output lanes 0..3 select input lanes w,x,y,z."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 5,\n    \"contradicted\": 1,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"For 128-bit PEXEW, output words low-to-high are source [2,1,0,3].\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"manual\",\n      \"same_subject\": 0.57\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"For 128-bit PEXCW, output words low-to-high are source [0,2,1,3].\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"manual\",\n      \"same_subject\": 0.59\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"For 128-bit PROT3W, output words low-to-high are source [1,2,0,3].\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"manual\",\n      \"same_subject\": 0.64\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The candidate _MM_SHUFFLE selectors encode the mappings using selector argument order (z,y,x,w) with destination lanes selecting (w,x,y,z).\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.01,\n        \"says_nothing\": 0,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"selectors\",\n      \"same_subject\": 0.53\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"The mmi-shuffle-03 probe covers rd==rt, rt==0, rd==0, four basis vectors and 10,000 deterministic random inputs, for three helpers plus PS2_PROT3W macro; candidate mismatches are zero in all groups.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.09,\n        \"says_nothing\": 0.01,\n        \"supports\": 0.9\n      },\n      \"confidence\": 0.85,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"probe\",\n      \"same_subject\": 0.91\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"The probe proves full emulator or game behavior.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"contradicts\": 1,\n        \"says_nothing\": 0,\n        \"supports\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"probe\",\n      \"same_subject\": 0.83\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 3272,\n    \"output_tokens\": 731\n  }\n}"
+      }
+    ]
+  }
+}

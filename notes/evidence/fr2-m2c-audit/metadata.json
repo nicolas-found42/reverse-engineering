@@ -1,0 +1,49 @@
+{
+  "m2c_repository": "https://github.com/matt-kempster/m2c",
+  "m2c_commit": "708d2d2cb2698f091a92492b328f73b24209f72d",
+  "m2c_commit_subject": "Emit a C comment when warning about missing return (#364)",
+  "target": "mipsee-gcc-c",
+  "input": "synthetic.s only; no game code",
+  "input_sha256": "dc6a779ea1a65e522e5beedbf9ab094d12dfac621606f95b7728428cb97bccc5",
+  "baseline_output_sha256": "b3ff078262cbe96390662bb85d105d9f49dc652bd992601d9a8d3fee6450acbe",
+  "cases": [
+    {
+      "case": "vector-pointer",
+      "arguments": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/m2c/m2c.py",
+        "-t",
+        "mipsee-gcc-c",
+        "--no-cache",
+        "--valid-syntax",
+        "--stop-on-error",
+        "--context",
+        ".scratch/mesh/codex-root/m2c-pointer-audit/context-probes/vector-pointer/context.h",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/m2c-pointer-audit/synthetic.s"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "b3ff078262cbe96390662bb85d105d9f49dc652bd992601d9a8d3fee6450acbe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "case": "byte-pointer",
+      "arguments": [
+        "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/m2c/m2c.py",
+        "-t",
+        "mipsee-gcc-c",
+        "--no-cache",
+        "--valid-syntax",
+        "--stop-on-error",
+        "--context",
+        ".scratch/mesh/codex-root/m2c-pointer-audit/context-probes/byte-pointer/context.h",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/m2c-pointer-audit/synthetic.s"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "08f3046b9f1312288784b897e205ca80bd2eb8c131ca303bff1a408a4617c09e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "interpretation": "Vector-pointer context matches baseline byte-for-byte and preserves the 256-byte C step mismatch. Byte-pointer context produces 16-byte pointer steps, but outputs scalar byte dereferences for lq/sq and is not a semantics-preserving fix.",
+  "jev_disposition": "4 verified; 1 needs review. The byte-pointer full-width assertion has a low-confidence Jev review disposition; manual output inspection shows unary * of u8* accesses one byte and store through u8* writes one byte. Retain review rather than treating Jev as proof."
+}
