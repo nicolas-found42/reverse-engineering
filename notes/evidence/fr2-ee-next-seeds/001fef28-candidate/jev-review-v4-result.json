@@ -1,0 +1,33 @@
+{
+  "action": "escalate",
+  "composite": 0.549,
+  "safe_to_apply": 0.09,
+  "reason_codes": [
+    "confidence_below_review",
+    "safe_to_apply_below_review"
+  ],
+  "limiting": "blast_radius",
+  "scores": {
+    "correctness": [
+      1.02,
+      0.73
+    ],
+    "spec_match": [
+      1.73,
+      0.6
+    ],
+    "test_gap": [
+      1.77,
+      0.66
+    ],
+    "blast_radius": [
+      1.09,
+      0.27
+    ]
+  },
+  "usage": {
+    "input_tokens": 2527,
+    "output_tokens": 79
+  },
+  "root_disposition": "Escalated to stronger root review: root re-read every hunk and the traversal/delay-slot/next-word logic (no defect found); new shapes are config-pinned and re-derived by an independent checker; execution only on byte-identical disposable project copies with rollback by default, so failures are informative and non-persistent. Not retried."
+}

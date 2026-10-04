@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "config_sha256": "deab6865e10a4cf5d552420017f4bbefecf6bd513ce10f3678b7fb38515f3235",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "baseline_manifest_sha256": "8b334e97aa686738547bd1d4a0bb9beb534fa6d76052886d1701f9441acdde59",
+  "baseline_inventory_sha256": "28878b418822ce6b53022830d9d69727e7ceda3a19f20e340a27c1ae60a4cabe",
+  "baseline_coverage_sha256": "239c5bee548a4d3050f2cc2ae49c90848a767acc7f3161c68929c5f17407fc6e",
+  "language": "r5900:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "entry": "001fef28",
+  "status": "created_single_bounded_candidate",
+  "cfg": {
+    "instruction_count_including_delay_slots": 68,
+    "body_end_inclusive": "001ff034",
+    "instruction_addresses": [
+      "001fef28",
+      "001fef2c",
+      "001fef30",
+      "001fef34",
+      "001fef38",
+      "001fef3c",
+      "001fef40",
+      "001fef44",
+      "001fef48",
+      "001fef4c",
+      "001fef50",
+      "001fef54",
+      "001fef58",
+      "001fef5c",
+      "001fef60",
+      "001fef64",
+      "001fef68",
+      "001fef6c",
+      "001fef70",
+      "001fef74",
+      "001fef78",
+      "001fef7c",
+      "001fef80",
+      "001fef84",
+      "001fef88",
+      "001fef8c",
+      "001fef90",
+      "001fef94",
+      "001fef98",
+      "001fef9c",
+      "001fefa0",
+      "001fefa4",
+      "001fefa8",
+      "001fefac",
+      "001fefb0",
+      "001fefb4",
+      "001fefb8",
+      "001fefbc",
+      "001fefc0",
+      "001fefc4",
+      "001fefc8",
+      "001fefcc",
+      "001fefd0",
+      "001fefd4",
+      "001fefd8",
+      "001fefdc",
+      "001fefe0",
+      "001fefe4",
+      "001fefe8",
+      "001fefec",
+      "001feff0",
+      "001feff4",
+      "001feff8",
+      "001feffc",
+      "001ff000",
+      "001ff004",
+      "001ff008",
+      "001ff00c",
+      "001ff010",
+      "001ff014",
+      "001ff018",
+      "001ff01c",
+      "001ff020",
+      "001ff024",
+      "001ff028",
+      "001ff02c",
+      "001ff030",
+      "001ff034"
+    ],
+    "edges": [
+      {
+        "site": "001fef70",
+        "kind": "call",
+        "target": "001ffec8",
+        "fallthrough": "001fef78"
+      },
+      {
+        "site": "001fef7c",
+        "kind": "conditional",
+        "target": "001fefdc",
+        "fallthrough": "001fef84"
+      },
+      {
+        "site": "001fefdc",
+        "kind": "unconditional_branch",
+        "target": "001ff000"
+      },
+      {
+        "site": "001fef84",
+        "kind": "conditional",
+        "target": "001fef9c",
+        "fallthrough": "001fef8c"
+      },
+      {
+        "site": "001ff000",
+        "kind": "conditional",
+        "target": "001fef70",
+        "fallthrough": "001ff008"
+      },
+      {
+        "site": "001fef9c",
+        "kind": "conditional_likely",
+        "target": "001feffc",
+        "fallthrough": "001fefa4",
+        "not_taken_annuls_delay_slot": true
+      },
+      {
+        "site": "001fef8c",
+        "kind": "conditional",
+        "target": "001fefb0",
+        "fallthrough": "001fef94"
+      },
+      {
+        "site": "001fefb0",
+        "kind": "call",
+        "target": "00200040",
+        "fallthrough": "001fefb8"
+      },
+      {
+        "site": "001fef94",
+        "kind": "unconditional_branch",
+        "target": "001feffc"
+      },
+      {
+        "site": "001fefa8",
+        "kind": "unconditional_branch",
+        "target": "001ff000"
+      },
+      {
+        "site": "001fefc0",
+        "kind": "conditional",
+        "target": "001fefe4",
+        "fallthrough": "001fefc8"
+      },
+      {
+        "site": "001fefc8",
+        "kind": "conditional",
+        "target": "001fefe8",
+        "fallthrough": "001fefd0"
+      },
+      {
+        "site": "001fefe8",
+        "kind": "call",
+        "target": "001fc4a8",
+        "fallthrough": "001feff0"
+      },
+      {
+        "site": "001fefd4",
+        "kind": "call",
+        "target": "00200148",
+        "fallthrough": "001fefdc"
+      },
+      {
+        "site": "001feff4",
+        "kind": "unconditional_branch",
+        "target": "001ff00c"
+      },
+      {
+        "site": "001ff030",
+        "kind": "return"
+      }
+    ],
+    "delay_breaks": [],
+    "branch_likely_scope": "For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution."
+  },
+  "call_graph_limit": "known callees [001fc4a8, 00200040, 00200148]; unresolved callees left uncreated [001ffec8]",
+  "incoming_references": [
+    {
+      "to": "001fef28",
+      "from": "001ff32c",
+      "type": "UNCONDITIONAL_CALL",
+      "source": "DEFAULT"
+    },
+    {
+      "to": "001fef28",
+      "from": "001ff1c4",
+      "type": "UNCONDITIONAL_CALL",
+      "source": "DEFAULT"
+    }
+  ],
+  "body_bytes": 272,
+  "body_interval_bytes": 272,
+  "excluded_next_word": "001ff038",
+  "excluded_next_word_hex": "27bdffa0",
+  "function_count_after": 3855,
+  "old_function_snapshot_preserved": true,
+  "initialized_memory_preserved": true,
+  "defined_data_preserved": true,
+  "scope": "Static provisional candidate only. No original function identity, semantics, runtime reachability, or whole-game completeness is established."
+}

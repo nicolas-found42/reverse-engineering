@@ -1,0 +1,51 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "summary": {
+    "verified": 6,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 3
+  },
+  "results": [
+    {
+      "id": "claim0 (five additions and reconciliation)",
+      "supports": 0.65,
+      "contradicts": 0.33,
+      "confidence": 0.48,
+      "action": "review"
+    },
+    {
+      "id": "claim1 (next word is a saved entry)",
+      "confidence": 0.97
+    },
+    {
+      "id": "claim2 (001fce10 break)",
+      "supports": 0.73,
+      "contradicts": 0.16,
+      "says_nothing": 0.11,
+      "confidence": 0.6,
+      "action": "review"
+    },
+    {
+      "id": "claim3 (tail J)",
+      "confidence": 0.93
+    },
+    {
+      "id": "claim4 (old C, rehash, verifier)",
+      "supports": 0.82,
+      "contradicts": 0.15,
+      "confidence": 0.73,
+      "action": "review"
+    },
+    {
+      "id": "claim5 (limits)",
+      "confidence": 1.0
+    }
+  ],
+  "usage": {
+    "input_tokens": 3530,
+    "output_tokens": 370
+  },
+  "root_disposition": "Three review flags. claim0 and claim4 are compound claims over five seeds at low confidence; each component is covered by the deterministic per-seed reconciliation (18,17,19,17,17 of N checks), the root rehash and the verifier results in each bundle. claim2 as submitted contained a wording error (it said three unresolved call targets then listed two distinct ones); the correct figures are in config.json: three call sites, two distinct unresolved targets 001fd060 and 002018d8, one saved callee. No claim was retried."
+}

@@ -1,0 +1,66 @@
+- * Experimental data-driven single-seed EE candidate guard (V3). Seed identity, pins and expected
++ * Experimental data-driven single-seed EE candidate guard (V4: adds pinned computed calls, tail J to saved entries,
++ * BREAK in a branch-likely delay slot, and a next word that is a saved function entry). Seed identity, pins and expected
+-public class CreateEeCandidateV3 extends GhidraScript {
++public class CreateEeCandidateV4 extends GhidraScript {
++    private final Set<String> COMPUTED_CALLS = new TreeSet<>(), DELAY_BREAKS = new TreeSet<>();
++    private final Map<String,String> TAIL_JUMPS = new TreeMap<>();
++    private boolean NEXT_IS_ENTRY, TAIL_IN_CALLGRAPH; private String TAIL_REF_TYPE = "UNCONDITIONAL_JUMP";
++        if (c.has("computed_calls")) for (JsonElement e : c.getAsJsonArray("computed_calls")) COMPUTED_CALLS.add(e.getAsString());
++        if (c.has("delay_breaks")) for (JsonElement e : c.getAsJsonArray("delay_breaks")) DELAY_BREAKS.add(e.getAsString());
++        if (c.has("tail_jumps")) for (Map.Entry<String,JsonElement> e : c.getAsJsonObject("tail_jumps").entrySet()) TAIL_JUMPS.put(e.getKey(), e.getValue().getAsString());
++        NEXT_IS_ENTRY = c.has("next_word_function_entry") && c.get("next_word_function_entry").getAsBoolean();
++        TAIL_IN_CALLGRAPH = c.has("tail_jump_in_callgraph") && c.get("tail_jump_in_callgraph").getAsBoolean();
++        if (c.has("tail_jump_ref_type")) TAIL_REF_TYPE = c.get("tail_jump_ref_type").getAsString();
++    private boolean nextWordOk() {
++        FunctionManager fm=currentProgram.getFunctionManager(); Address a=at(END);
++        if(NEXT_IS_ENTRY){Function f=fm.getFunctionContaining(a);return f!=null&&f.getEntryPoint().equals(a)&&currentProgram.getListing().getInstructionAt(a)!=null;}
++        return currentProgram.getListing().getInstructionAt(a)==null&&currentProgram.getListing().getDefinedDataContaining(a)==null&&fm.getFunctionContaining(a)==null;
++    }
+-        TreeMap<Long,Boolean> seen=new TreeMap<>(); ArrayDeque<Node> q=new ArrayDeque<>(); q.add(new Node(START,false)); JsonArray edges=new JsonArray();
++        TreeMap<Long,Boolean> seen=new TreeMap<>(); ArrayDeque<Node> q=new ArrayDeque<>(); q.add(new Node(START,false)); JsonArray edges=new JsonArray(); JsonArray breaks=new JsonArray();
+-            if(n.delay){req(k.equals("linear"),"control transfer in delay slot at "+hex(n.pc));continue;}
+-            long target=((n.pc+4)&0xf0000000L)|((w&0x03ffffffL)<<2), fall=n.pc+8;
++            if(n.delay){
++                if(k.equals("unsupported_trap")&&(w>>>26)==0&&(w&63)==13&&DELAY_BREAKS.contains(hex(n.pc))&&flowKind(wordAt(raw,n.pc-4)).equals("conditional_likely")){breaks.add(hex(n.pc));continue;}
++                req(k.equals("linear"),"control transfer in delay slot at "+hex(n.pc));continue;}
++            boolean tail=false; long target=((n.pc+4)&0xf0000000L)|((w&0x03ffffffL)<<2), fall=n.pc+8;
+-            if(k.equals("computed_call")||k.equals("computed_jump")||k.equals("unsupported_trap"))throw new IllegalStateException("unsupported computed/trap transfer at "+hex(n.pc)+" kind="+k);
++            if(k.equals("computed_call"))req(COMPUTED_CALLS.contains(hex(n.pc)),"computed call is not pinned in the config at "+hex(n.pc));
++            if(k.equals("computed_jump")||k.equals("unsupported_trap")||k.equals("unsupported_encoding"))throw new IllegalStateException("unsupported computed/trap transfer at "+hex(n.pc)+" kind="+k);
+-            else if(k.equals("call")){q.add(new Node(n.pc+4,true));q.add(new Node(fall,false));}
+-            else if(k.equals("jump")){q.add(new Node(n.pc+4,true));q.add(new Node(target,false));}
++            else if(k.equals("call")||k.equals("computed_call")){q.add(new Node(n.pc+4,true));q.add(new Node(fall,false));}
++            else if(k.equals("jump")){q.add(new Node(n.pc+4,true));if(target>=START&&target<END)q.add(new Node(target,false));else{req(hex(target).equals(TAIL_JUMPS.get(hex(n.pc))),"J leaves the span and is not a pinned tail jump at "+hex(n.pc));tail=true;}}
+-            JsonObject e=new JsonObject();e.addProperty("site",hex(n.pc));e.addProperty("kind",k);
++            JsonObject e=new JsonObject();e.addProperty("site",hex(n.pc));e.addProperty("kind",k);if(tail)e.addProperty("tail_jump",true);
+-            if(k.equals("conditional")||k.equals("conditional_likely")||k.equals("call"))e.addProperty("fallthrough",hex(fall));
++            if(k.equals("conditional")||k.equals("conditional_likely")||k.equals("call")||k.equals("computed_call"))e.addProperty("fallthrough",hex(fall));
+-        JsonObject out=new JsonObject();out.addProperty("instruction_count_including_delay_slots",seen.size());out.addProperty("body_end_inclusive",hex(seen.lastKey()));out.add("instruction_addresses",addresses);out.add("edges",edges);out.addProperty("branch_likely_scope","For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution.");return out;
++        JsonObject out=new JsonObject();out.addProperty("instruction_count_including_delay_slots",seen.size());out.addProperty("body_end_inclusive",hex(seen.lastKey()));out.add("instruction_addresses",addresses);out.add("edges",edges);out.add("delay_breaks",breaks);out.addProperty("branch_likely_scope","For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution.");return out;
+-            req(!kind.equals("jump"),"direct J transfer is not covered by this guard's call-graph model: "+edge);
++
++        Set<String> ccalls=new TreeSet<>(); Map<String,String> tails=new TreeMap<>();
++        for(JsonElement e:cfg.getAsJsonArray("edges")){JsonObject edge=e.getAsJsonObject();String kind=edge.get("kind").getAsString();
++            if(kind.equals("computed_call"))ccalls.add(edge.get("site").getAsString());
++            if(edge.has("tail_jump"))tails.put(edge.get("site").getAsString(),edge.get("target").getAsString());}
++        Set<String> found=new TreeSet<>(); for(JsonElement e:cfg.getAsJsonArray("delay_breaks"))found.add(e.getAsString());
++        req(ccalls.equals(COMPUTED_CALLS),"computed call sites differ from the pinned profile: "+ccalls);
++        req(tails.equals(TAIL_JUMPS),"tail jump sites/targets differ from the pinned profile: "+tails);
++        req(found.equals(DELAY_BREAKS),"delay-slot BREAK sites differ from the pinned profile: "+found);
++        for(String t:tails.values()){Function tf=currentProgram.getFunctionManager().getFunctionAt(at(Long.parseUnsignedLong(t,16)));req(tf!=null,"tail jump target is not a saved function entry: "+t);}
+-            JsonObject x=e.getAsJsonObject(); String k=x.get("kind").getAsString(); if(k.equals("return"))continue;
+-            String type=(k.equals("call"))?"UNCONDITIONAL_CALL":(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
++            JsonObject x=e.getAsJsonObject(); String k=x.get("kind").getAsString(); if(k.equals("return")||k.equals("computed_call"))continue;
++            String type=(k.equals("call"))?"UNCONDITIONAL_CALL":x.has("tail_jump")?TAIL_REF_TYPE:(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
+-        Set<String> expectedKnownCallees=new TreeSet<>(KNOWN_CALLEES);
++        Set<String> expectedKnownCallees=new TreeSet<>(KNOWN_CALLEES); if(TAIL_IN_CALLGRAPH)expectedKnownCallees.addAll(TAIL_JUMPS.values());
++            } else if(kind.equals("computed_call")) {
++                req(actual.isCall()&&actual.isComputed()&&targets.length==0,"Ghidra does not classify raw computed call consistently at "+hex(pc));
++                req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra computed-call fallthrough/delay-slot address differs at "+hex(pc));
+-        req(currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null&&fm.getFunctionContaining(at(END))==null,"next word after the span is already listed or owned");
++        req(nextWordOk(),"next word after the span is not in its pinned baseline state (undefined, or a saved function entry)");
+-            req(fm.getFunctionCount()==INVENTORY_COUNT+1,"function count did not increase by exactly one");req(fm.getFunctionContaining(at(END))==null&&currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null,"next word after the span entered a function or listing");checkReferenceAndCallGraphDeltas(beforeRefs,beforeCalled,beforeCallers,cfg);commit=true;
++            req(fm.getFunctionCount()==INVENTORY_COUNT+1,"function count did not increase by exactly one");req(nextWordOk()&&(!NEXT_IS_ENTRY||fm.getFunctionContaining(at(END)).getBody().getMinAddress().equals(at(END))),"next word after the span entered the candidate or changed state");checkReferenceAndCallGraphDeltas(beforeRefs,beforeCalled,beforeCallers,cfg);commit=true;
+-            AddressSet body=decodeAndCreate(elf,raw,cfg,instructions,data,memory,functions,refsBefore,calledBefore,callersBefore,refs);req(currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null&&currentProgram.getFunctionManager().getFunctionContaining(at(END))==null,"next word after the span must remain unowned and undecoded");
++            AddressSet body=decodeAndCreate(elf,raw,cfg,instructions,data,memory,functions,refsBefore,calledBefore,callersBefore,refs);req(nextWordOk(),"next word after the span must keep its pinned state");
