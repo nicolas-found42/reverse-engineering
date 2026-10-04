@@ -1,0 +1,12 @@
+{
+ "tool": "jev_verify",
+ "note": "claims exact; evidence was one prose summary of the preserved config, checker, transaction, reconciliation and verifier files. The summary mis-described the independent checker figures (it cited the earlier 681-seed pre-iteration scan); the authoritative figures are in root-config-check.json for the final 477-seed config.",
+ "claims": [
+  "477 functions created in one V5 transaction (3869->4346) after guard rejections named seeds that were excluded.",
+  "394 of 477 seeds have non-call references into the entry (808 in total); one seed has a direct JAL; evidence is PS2Recomp table + CFG + address-taken references.",
+  "4,803 words (2,708 pre-decoded, 2,095 new); coverage deltas as listed.",
+  "Reconciliation 16/16.",
+  "64 old C outputs changed only by label substitution, re-wrap, undefined->typed retyping (587), auto-variable prefix renames (16), pointer-label renames (2); verifier pass; warnings 607->609.",
+  "Not call-closed (8 unresolved targets); no identity/behavior/reachability claim."
+ ]
+}

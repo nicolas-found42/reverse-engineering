@@ -85,13 +85,15 @@ public class CreateEeCandidateV5 extends GhidraScript {
         for (SeedCfg s : SEEDS) for (String b : s.batch) req(all.contains(b), "batch callee is not a seed of this batch: " + b);
         for (int i = 0; i < SEEDS.size(); i++) for (int j = i + 1; j < SEEDS.size(); j++) req(SEEDS.get(i).end <= SEEDS.get(j).start || SEEDS.get(j).end <= SEEDS.get(i).start, "seed spans overlap: " + SEEDS.get(i).entry + " " + SEEDS.get(j).entry);
     }
+    private long T0 = System.currentTimeMillis();
+    private void phase(String name) { println("PHASE " + name + " t+" + (System.currentTimeMillis() - T0) / 1000 + "s"); }
     private boolean liveInstruction(long pc) { return currentProgram.getListing().getInstructionAt(at(pc)) != null; }
     private boolean nextWordOk(SeedCfg c) {
         FunctionManager fm = currentProgram.getFunctionManager(); Address a = at(c.end); Listing l = currentProgram.getListing();
         switch (c.nextState) {
             case "undefined": return l.getInstructionAt(a) == null && l.getDefinedDataContaining(a) == null && fm.getFunctionContaining(a) == null;
             case "unowned_instruction": return l.getInstructionAt(a) != null && fm.getFunctionContaining(a) == null;
-            case "function_entry": case "batch_entry": { Function f = fm.getFunctionAt(a); return f != null && f.getBody().getMinAddress().equals(a) && l.getInstructionAt(a) != null; }
+            case "function_entry": case "batch_entry": { Function f = fm.getFunctionAt(a); return f != null && f.getEntryPoint().equals(a) && l.getInstructionAt(a) != null; }
             default: return false;
         }
     }
@@ -215,7 +217,11 @@ public class CreateEeCandidateV5 extends GhidraScript {
                     req(i != null && i.getLength() == 4 && bytes(a, 4).equals(HexFormat.of().formatHex(fb)) && Arrays.equals(fb, Arrays.copyOfRange(s.raw, Math.toIntExact(pc - START), Math.toIntExact(pc - START + 4))), "decoded/raw ELF bytes mismatch at " + hex(pc));
                 }
             }
-            for (SeedCfg s : SEEDS) { use(s); checkDecoderFlow(s.cfg); }
+            phase("disassembly");
+            List<String> flowFailures = new ArrayList<>();
+            for (SeedCfg s : SEEDS) { use(s); try { checkDecoderFlow(s.cfg); } catch (Exception e) { flowFailures.add("SEED_FAILURE " + s.entry + ": " + e.getMessage()); } }
+            req(flowFailures.isEmpty(), "DECODER_FLOW_FAILURES " + flowFailures.size() + " " + String.join(" | ", flowFailures.subList(0, Math.min(flowFailures.size(), 400))));
+            phase("decoder-flow");
             for (SeedCfg s : SEEDS) {
                 use(s); Address start = at(START);
                 AddressSet expected = new AddressSet(); for (JsonElement a : s.cfg.getAsJsonArray("instruction_addresses")) { Address ia = at(Long.parseUnsignedLong(a.getAsString(), 16)); expected.addRange(ia, ia.add(3)); }
@@ -227,7 +233,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
                 Function made = fm.getFunctionAt(start);
                 req(made != null && made.getName().equals("candidate_ee_" + ENTRY) && made.getSymbol().getSource() == SourceType.ANALYSIS && made.getBody().equals(expected), "created candidate identity/body differs for " + ENTRY);
             }
-            Map<String,String> now = instructionSnapshot();
+            phase("functions-created"); Map<String,String> now = instructionSnapshot(); phase("instruction-snapshot");
             for (String a : beforeInstructions.keySet()) req(Objects.equals(now.get(a), beforeInstructions.get(a)), "old instruction bytes changed at " + a);
             Set<String> added = new TreeSet<>(now.keySet()); added.removeAll(beforeInstructions.keySet());
             Set<String> expectedAdded = new TreeSet<>(); for (long pc : newWords) expectedAdded.add(hex(pc));
@@ -236,7 +242,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
             Map<String,String> fnow = functionSnapshot(); for (Map.Entry<String,String> e : beforeFunctions.entrySet()) req(Objects.equals(fnow.get(e.getKey()), e.getValue()), "old function name/source/body changed at " + e.getKey());
             req(fm.getFunctionCount() == INVENTORY_COUNT + SEEDS.size(), "function count did not increase by exactly the batch size");
             for (SeedCfg s : SEEDS) req(nextWordOk(s), "next word after " + s.entry + " is not in its pinned state after creation");
-            checkBatchDeltas(beforeRefs, beforeCalled, beforeCallers);
+            phase("state-checks"); checkBatchDeltas(beforeRefs, beforeCalled, beforeCallers); phase("batch-deltas");
             commit = true;
         } finally { currentProgram.endTransaction(tx, commit); }
         JsonArray summary = new JsonArray();
@@ -254,9 +260,13 @@ public class CreateEeCandidateV5 extends GhidraScript {
             req(EXE_SHA.equals(sha(elf)) && EXE_SHA.equals(currentProgram.getExecutableSHA256()), "pinned executable identity mismatch"); req(MANIFEST_SHA.equals(sha(mb)), "baseline manifest hash mismatch"); req(INVENTORY_SHA.equals(sha(ib)), "baseline inventory hash mismatch"); req(COVERAGE_SHA.equals(sha(cb)), "baseline coverage hash mismatch"); req(LANGUAGE.equals(currentProgram.getLanguageID().toString()), "program is not R5900 little-endian");
             JsonObject manifest = JsonParser.parseString(new String(mb, StandardCharsets.UTF_8)).getAsJsonObject(), inventory = JsonParser.parseString(new String(ib, StandardCharsets.UTF_8)).getAsJsonObject(), coverage = JsonParser.parseString(new String(cb, StandardCharsets.UTF_8)).getAsJsonObject();
             MemoryBlock text = currentProgram.getMemory().getBlock(at(TEXT_VA)); req(text != null && text.getName().equals(".text") && text.isInitialized() && text.isExecute() && text.getStart().getOffset() == TEXT_VA && text.getSize() == TEXT_SIZE, "loaded .text block differs from exact ELF map");
-            checkBaseline(manifest, inventory); checkCoverageStates(coverage);
+            phase("config-and-pins"); checkBaseline(manifest, inventory); phase("baseline"); checkCoverageStates(coverage); phase("coverage-states");
             Map<String,String> functions = functionSnapshot(), instructions = instructionSnapshot(), data = dataSnapshot(); String memory = memoryHash(); Set<String> refsBefore = referenceSnapshot(); Map<String,Set<String>> calledBefore = calledGraph(), callersBefore = callerGraph();
-            for (SeedCfg s : SEEDS) preSeed(s, elf);
+            phase("snapshots");
+            List<String> failures = new ArrayList<>();
+            for (SeedCfg s : SEEDS) { try { preSeed(s, elf); } catch (Exception e) { failures.add("SEED_FAILURE " + s.entry + ": " + e.getMessage()); } }
+            req(failures.isEmpty(), "PRE_CHECK_FAILURES " + failures.size() + " " + String.join(" | ", failures.subList(0, Math.min(failures.size(), 400))));
+            phase("pre-seed-checks");
             runBatch(elf, sha(cfgb), instructions, data, memory, functions, refsBefore, calledBefore, callersBefore, out);
             out.addProperty("status", "created_batch_bounded_candidates"); out.addProperty("function_count_after", currentProgram.getFunctionManager().getFunctionCount()); out.addProperty("old_function_snapshot_preserved", true); out.addProperty("initialized_memory_preserved", true); out.addProperty("defined_data_preserved", true);
             out.addProperty("scope", "Static provisional candidates only. No original function identity, semantics, runtime reachability, or whole-game completeness is established.");

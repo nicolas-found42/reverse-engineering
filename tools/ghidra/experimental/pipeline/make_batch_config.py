@@ -9,6 +9,8 @@ seedlib.load(export);R=Path.cwd();exp=R/export
 elf_p=R/'games/ford-racing-2/extracted/SLES_517.05';elf=elf_p.read_bytes();sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 get=seedlib.get;inv=seedlib.inv;owned=seedlib.owned;entries=seedlib.entries;unowned=seedlib.unowned
 seeds=json.loads(Path(seeds_p).read_text())
+excl=set(json.loads(Path(sys.argv[5]).read_text())) if len(sys.argv)>5 else set()
+seeds=[x for x in seeds if x not in excl]
 dropped={}
 walks={}
 for s in seeds:
@@ -21,6 +23,7 @@ for s in seeds:
  elif c['next_word_state'] not in('undefined','unowned_instruction') and c['next_word_state']!='owned '+c['span']['end_exclusive']:why='next '+c['next_word_state']
  elif f'{end-8:08x}' not in c['returns'] or max(c['returns'])!=f'{end-8:08x}' or get(end-8)!=0x03e00008:why='terminal return'
  elif any(e['kind']=='jump' and not e.get('tail_jump') and not (int(c['span']['start'],16)<=int(e['target'],16)<end) for e in c['edges']):why='J leaves span'
+ if not why and any(e['kind']=='call' and e['target']==c['span']['start'] for e in c['edges']):why='self-call (unsupported)'
  if why:dropped[s]=why;continue
  walks[s]=c
 def spans(ws):return sorted((int(c['span']['start'],16),int(c['span']['end_exclusive'],16),s) for s,c in ws.items())
@@ -45,6 +48,13 @@ while changed:
  incoming={s:[] for s in walks};bad=None
  for pc in sorted(p for p in decoded if 0x100000<=p<0x217bd4):
   w=get(pc);op=w>>26
+  if op in(1,4,5,6,7,20,21,22,23) or (op in(16,17,18,19) and ((w>>21)&31)==8):
+   if op==1 and ((w>>16)&31) not in(0,1,2,3,16,17,18,19):continue
+   imm=struct.unpack('<h',struct.pack('<H',w&0xffff))[0];t=pc+4+imm*4;i=bisect.bisect_right(keys,t)-1
+   if i>=0:
+    a,b,s2=starts[i]
+    if a<=t<b and not (a<=pc<b):bad=(s2,f'branch from outside {pc:08x} into {t:08x}');break
+   continue
   if op not in(2,3):continue
   t=((pc+4)&0xf0000000)|((w&0x3ffffff)<<2)
   i=bisect.bisect_right(keys,t)-1

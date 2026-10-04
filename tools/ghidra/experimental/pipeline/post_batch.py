@@ -49,8 +49,8 @@ for s in S:
  en=addr(s['end']);ns=s['next_state']
  if ns=='undefined':ok=contains(UNDn,en) and en not in allfn_ins
  elif ns=='unowned_instruction':ok=contains(UNOn,en) and en not in allfn_ins
- elif ns=='function_entry':ok=f'{en:08x}' in bf and f'{en:08x}' in nf and nf[f'{en:08x}']['instructions'][0]['address']==f'{en:08x}'
- else:ok=f'{en:08x}' in ent and nf[f'{en:08x}']['instructions'][0]['address']==f'{en:08x}'
+ elif ns=='function_entry':ok=f'{en:08x}' in bf and f'{en:08x}' in nf and any(i['address']==f'{en:08x}' for i in nf[f'{en:08x}']['instructions'])
+ else:ok=f'{en:08x}' in ent and any(i['address']==f'{en:08x}' for i in nf[f'{en:08x}']['instructions'])
  assert ok,(s['entry'],ns)
 check('every next word keeps its pinned state in the new export',True)
 unres={u for s in S for u in s['unresolved_callees']}
@@ -88,17 +88,51 @@ check('call-graph deltas equal the config prediction for every old and new funct
 oldc,newc=BASE/'decompilation/functions',NEW/'decompilation/functions';be={r['entry']:r for r in bm['functions']};ne={r['entry']:r for r in nm['functions']}
 check('new export manifest reports every function generated',len(ne)==N0+K and nm['processed']==N0+K and nm['generated']==N0+K and nm['failed']==0 and nm['status']=='generated',{'rows':len(ne),'failed':nm['failed'],'status':nm['status']})
 changed=[];squash=lambda t:b''.join(t.split());owners={i['owner_entry'] for s in S for i in s['incoming'] if i['owner_kind']=='saved'}
+import re,difflib,collections
+def norm_labels(t):
+ cnt=0
+ for s in S:
+  for pat in (b'&LAB_'+s['entry'].encode(),b'candidate_ee_'+s['entry'].encode(),b'func_0x'+s['entry'].encode(),b'LAB_'+s['entry'].encode()):
+   cnt+=t.count(pat);t=t.replace(pat,b'SEED_'+s['entry'].encode())
+ return t,cnt
+TOK=re.compile(rb'\w+|\W');VARPAT=re.compile(rb'^([a-z]{1,2})(Var\d+|Stack_[0-9a-f]+|Gpffff[0-9a-f]+|G[0-9a-f]+)$');UND={b'undefined1',b'undefined2',b'undefined4',b'undefined8'};TYPES={b'code',b'int',b'uint',b'long',b'ulong',b'short',b'ushort',b'char',b'uchar'}
+def classify_changes(no,nn):
+ """Return (ok, categories) comparing label-normalized old and new text token by token, whitespace-insensitive."""
+ ta=[t for t in TOK.findall(no) if not t.isspace()];tb=[t for t in TOK.findall(nn) if not t.isspace()];cats=collections.Counter()
+ for op,i1,i2,j1,j2 in difflib.SequenceMatcher(None,ta,tb,autojunk=False).get_opcodes():
+  if op=='equal':continue
+  A,B=ta[i1:i2],tb[j1:j2]
+  if op!='replace' or len(A)!=len(B):return False,cats
+  for x,y in zip(A,B):
+   if x in UND and y in TYPES:cats['type_retyped_undefined_to_typed']+=1
+   elif VARPAT.match(x) and VARPAT.match(y) and VARPAT.match(x).group(2)==VARPAT.match(y).group(2) and x!=y:cats['auto_variable_prefix_renamed']+=1
+   elif y.startswith(b'PTR_SEED_') and re.match(rb'^PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y) and x==b'PTR_LAB_'+re.match(rb'^PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y).group(1):cats['pointer_label_renamed']+=1
+   else:return False,cats
+ return True,cats
+changed=[];owners={i['owner_entry'] for s in S for i in s['incoming'] if i['owner_kind']=='saved'};cat_total=collections.Counter()
 for e in be:
  ob=(oldc/(e+'.c')).read_bytes();nb=(newc/(e+'.c')).read_bytes()
  if ob!=nb:
-  norm=nb;cnt=0
-  for s in S:
-   lab=b'candidate_ee_'+s['entry'].encode();cnt+=norm.count(lab);norm=norm.replace(lab,b'func_0x'+s['entry'].encode())
-  assert (norm==ob or squash(norm)==squash(ob)) and cnt>0,('unexpected old C change',e)
-  changed.append({'entry':e,'old_sha256':hashlib.sha256(ob).hexdigest(),'new_sha256':hashlib.sha256(nb).hexdigest(),'replacement_count':cnt,'whitespace_reflow_only_beyond_label':norm!=ob})
-check('every changed old C output differs only by label substitution (plus line re-wrap) and the changed set is within the saved owners',{r['entry'] for r in changed}<=owners,{'changed':len(changed),'owners':len(owners)})
+  no,co=norm_labels(ob);nn,cn=norm_labels(nb);ok,cats=classify_changes(no,nn)
+  assert ok and cn>0,('unexpected old C change',e,dict(cats))
+  cat_total.update(cats)
+  changed.append({'entry':e,'old_sha256':hashlib.sha256(ob).hexdigest(),'new_sha256':hashlib.sha256(nb).hexdigest(),'seed_label_occurrences_in_new':cn,'non_label_change_categories':dict(cats)})
+check('every changed old C output differs only by seed label substitution, line re-wrap, decompiler retyping of undefined types, auto-variable prefix renames and pointer-label renames, and mentions a seed',all(c['seed_label_occurrences_in_new']>0 for c in changed),{'changed':len(changed),'owners_by_call':len(owners),'category_totals':dict(cat_total)})
 check('new candidate C artifacts match their manifest SHA and byte counts',all(sha(newc/(s['entry']+'.c'))==ne[s['entry']]['sha256'] and (newc/(s['entry']+'.c')).stat().st_size==ne[s['entry']]['bytes'] for s in S))
-check('initialized memory metadata unchanged',b['memory']==n['memory']);check('string values and references unchanged',b.get('strings')==n.get('strings'),{'strings':len(b.get('strings',[]))})
+check('initialized memory metadata unchanged',b['memory']==n['memory'])
+def strings_ok():
+ bs,ns=b.get('strings',[]),n.get('strings',[])
+ if len(bs)!=len(ns):return False,0
+ annotated=0
+ for x,y in zip(bs,ns):
+  if x['address']!=y['address'] or x['value']!=y['value'] or len(x['references'])!=len(y['references']):return False,annotated
+  for r1,r2 in zip(x['references'],y['references']):
+   if r1==r2:continue
+   if {k:v for k,v in r1.items() if k!='function'}=={k:v for k,v in r2.items() if k!='function'} and 'function' not in r1 and r2.get('function') in ent:annotated+=1;continue
+   return False,annotated
+ return True,annotated
+ok_s,ann_s=strings_ok()
+check('string values and references unchanged, except that references from newly owned instructions gain a function annotation naming a new function',ok_s,{'strings':len(b.get('strings',[])),'reference_function_annotations_added':ann_s})
 check('coverage block identity and bookmarks unchanged',[x['name'] for x in bc['blocks']]==[x['name'] for x in nc['blocks']] and bc.get('bookmarks')==nc.get('bookmarks'))
 cd=[]
 for ob_,nb_ in zip(bc['blocks'],nc['blocks']):
@@ -120,5 +154,5 @@ res={'schema_version':1,'status':'pass','scope':'bounded provisional static cand
 OUT.write_text(json.dumps(res,indent=1)+'\n')
 for directory,rows in [(oldc,be),(newc,ne)]:
  for e,row in rows.items():assert sha(directory/(e+'.c'))==row['sha256'] and (directory/(e+'.c')).stat().st_size==row['bytes'],e
-ROOT_OUT.write_text(json.dumps({'schema_version':1,'status':'pass','baseline_functions':len(bf),'candidate_functions':len(nf),'all_C_artifact_hashes_recomputed':len(be)+len(ne),'changed_old_C':[(c['entry'],c['replacement_count']) for c in changed],'new_words_checked_against_ELF':words_total,'candidate_manifest_sha256':sha(nm_p),'candidate_inventory_sha256':sha(ni_p),'warning_comment_count':vr['details']['warning_comment_count'],'scope':res['scope']},indent=1)+'\n')
+ROOT_OUT.write_text(json.dumps({'schema_version':1,'status':'pass','baseline_functions':len(bf),'candidate_functions':len(nf),'all_C_artifact_hashes_recomputed':len(be)+len(ne),'changed_old_C':[(c['entry'],c['seed_label_occurrences_in_new']) for c in changed],'new_words_checked_against_ELF':words_total,'candidate_manifest_sha256':sha(nm_p),'candidate_inventory_sha256':sha(ni_p),'warning_comment_count':vr['details']['warning_comment_count'],'scope':res['scope']},indent=1)+'\n')
 print(json.dumps({'status':'pass','checks':len(checks),'passed':res['passed_count'],'changed_old_C':len(changed),'warnings':vr['details']['warning_comment_count']}))

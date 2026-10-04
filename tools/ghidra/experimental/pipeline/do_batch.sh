@@ -4,7 +4,8 @@
 set -e
 cd /Users/Nicolas/Documents/github/hermes/reverse-engineering
 NAME=$1;SEEDS=$2;PREV=$3;BASE=$4;D=.scratch/mesh/codex-audit/frontier-3845-01;S=$D/batch-$NAME;mkdir -p $S/run
-python3 $D/make_batch_config.py $BASE $S/config.json $SEEDS $S/config-report.json | cut -c1-400
+EXC=""; [ -f $S/exclude.json ] && EXC=$S/exclude.json
+python3 $D/make_batch_config.py $BASE $S/config.json $SEEDS $S/config-report.json $EXC | cut -c1-400
 python3 .scratch/mesh/codex-root/check_batch_config_root.py $S/config.json $BASE $S/root-config-check.json > /dev/null && echo CONFIG_CHECK_PASS
 NEWP=codex-audit-ee-batch-$NAME-proposal-01
 if [ ! -e ghidra-project/$NEWP ]; then (cd ghidra-project && find $PREV -type f | sort | xargs shasum -a 256 > ../$S/source-project-sha.txt && cp -R $PREV $NEWP); fi

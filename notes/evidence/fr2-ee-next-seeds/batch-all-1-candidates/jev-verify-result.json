@@ -1,0 +1,43 @@
+{
+ "tool": "jev_verify",
+ "model": "typesafe/jev-1.13",
+ "summary": {
+  "verified": 6,
+  "contradicted": 0,
+  "unsupported": 0,
+  "needs_review": 0
+ },
+ "results": [
+  {
+   "id": "claim0",
+   "confidence": 0.97
+  },
+  {
+   "id": "claim1",
+   "confidence": 0.95
+  },
+  {
+   "id": "claim2",
+   "supports": 0.93,
+   "contradicts": 0.07,
+   "confidence": 0.89
+  },
+  {
+   "id": "claim3",
+   "confidence": 0.99
+  },
+  {
+   "id": "claim4",
+   "confidence": 0.99
+  },
+  {
+   "id": "claim5",
+   "confidence": 0.97
+  }
+ ],
+ "usage": {
+  "input_tokens": 2898,
+  "output_tokens": 370
+ },
+ "root_disposition": "no review flags; see the note in jev-verify-arguments.json about the checker figures cited in the evidence summary"
+}

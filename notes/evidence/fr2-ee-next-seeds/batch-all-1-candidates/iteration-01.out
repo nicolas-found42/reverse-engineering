@@ -1,0 +1,11 @@
+{"config": ".scratch/mesh/codex-audit/frontier-3845-01/batch-all-1/config.json", "config_sha256": "b978fcae5c09199cb766f85a545f8b4ca1b16a0ec824aa30f4d95014d179a4a4", "seed_count": 477, "seeds": ["0010a720", "0010ee10", "0010ff98", "00110b28", "00112320", "00112328", "00113c30", "00114358", "00117300", "00117308", "001174c8", "00117778", "00118e28", "00118f38", "00118f48", "00119310", "00119318", "
+CONFIG_CHECK_PASS
+COPY_IDENTICAL
+exit=0
+created_batch_bounded_candidates None 4346
+{"status": "pass", "result": ".scratch/evidence/decompilation/20261004T190415Z-4b4c80f035b64f2f99df0e81e7526b27/result.json", "diagnostics": []}
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/post_batch.py", line 104, in <module>
+    assert squash(no2)==squash(nn) and cn>0,('unexpected old C change',e);retype=True
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ('unexpected old C change', '0015ec30')

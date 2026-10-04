@@ -32,7 +32,7 @@ def dec(pc,w):
   if rt in(8,9,10,11,12,14):return('trap',None,None)
   if rt not in(0,1,2,3,16,17,18,19):return('unsupported',None,None)
   return('conditional_likely' if rt in(2,3,18,19) else 'conditional',bt(pc,w),pc+8)
- if op in(16,17,18,19) and rs==8:return('cop_branch_likely' if rt&2 else 'cop_branch',bt(pc,w),pc+8)
+ if op in(16,17,18,19) and rs==8:return('conditional_likely' if rt&2 else 'conditional',bt(pc,w),pc+8)
  return('linear',None,pc+4)
 
 def walk(seed_hex,LIMIT=0x2000):

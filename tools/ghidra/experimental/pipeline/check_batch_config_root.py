@@ -98,6 +98,14 @@ for a,b in UNO:decoded.update(range(a&~3 if a%4==0 else a-(a%4),b+1,4))
 keys=[x[0] for x in spans];inc={e:[] for e in seeds}
 for pc in sorted(p for p in decoded if 0x100000<=p<0x217bd4 and p%4==0):
  x=w(pc)
+ op_=x>>26
+ if op_ in(1,4,5,6,7,20,21,22,23) or (op_ in(16,17,18,19) and ((x>>21)&31)==8):
+  if op_==1 and ((x>>16)&31) not in(0,1,2,3,16,17,18,19):continue
+  imm=struct.unpack('<h',struct.pack('<H',x&0xffff))[0];t=pc+4+imm*4;i=bisect.bisect_right(keys,t)-1
+  if i>=0:
+   a,b,e=spans[i]
+   assert not(a<=t<b and not(a<=pc<b)),('branch from outside into a seed',hex(pc),hex(t))
+  continue
  if x>>26 not in(2,3):continue
  t=((pc+4)&0xf0000000)|((x&0x3ffffff)<<2);i=bisect.bisect_right(keys,t)-1
  if i<0:continue
