@@ -1,0 +1,158 @@
+{
+  "id": "d019-classify-atomic-findings",
+  "purpose": "re-classify as atomic single-status findings after d018 review results on compound items",
+  "tool": "jev_classify",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d019.json",
+  "args_sha256": "91f0f36bac431df6a348509f693c9ee6e54b989890a12a93934f115b09f159e4",
+  "arguments": {
+    "purpose": "Classify each reverse-engineering area of the Ford Racing 2 PS2 corpus by evidence status for a completion matrix",
+    "context": "Corpus: unchanged PAL SLES-517.05. Claims are limited to measured structure; semantics need separate evidence. User constraints: no debugger windows or focus stealing; milestone #2 evidence is bounded and issue #2 lists audio codec, mesh, full PTG and UI/text as separate investigations. Each item is one atomic finding with a single status; classify by that status.",
+    "classes": [
+      {
+        "id": "verified_behavior",
+        "description": "A behavior or fact checked against real observations or independent bytes/oracle on the real corpus, with a passing executable check and no known counterexample. Example: archive output SHA-256 equals independent extraction. Takes precedence over supported_bounded_profile only if the claim is about an observed behavior rather than a structural rule."
+      },
+      {
+        "id": "supported_bounded_profile",
+        "description": "A structural rule or contract verified on the exact corpus profile with negative tests, whose claims are explicitly limited (no semantics, no other regions). Example: header relations hold on all 548 PTG files. Use when the rule is structural and bounded, even if semantics are unknown."
+      },
+      {
+        "id": "unresolved_interpretation",
+        "description": "The data exists and is measured, but its meaning is not established; competing or no hypotheses survived testing. Example: palette location for tiled PTG files. Beats missing_observation when bytes are available and only meaning is missing."
+      },
+      {
+        "id": "missing_observation",
+        "description": "Establishing the fact needs a runtime or hardware observation that has not been made (e.g., a capture of a specific event). Beats missing_prerequisite when the only blocker is making the observation itself with tools already present."
+      },
+      {
+        "id": "missing_prerequisite",
+        "description": "Work is blocked by an absent tool, input, authorization or user decision that is not yet available (e.g., a windowless emulator mode, a native decompiler, a hardware oracle, or the user's scope decision)."
+      },
+      {
+        "id": "not_yet_probed",
+        "description": "No measurement has been made at all; neither structure nor meaning is known beyond file counts."
+      },
+      {
+        "id": "manual_review",
+        "description": "Genuinely ambiguous between classes; needs a human or independent reasoner."
+      }
+    ],
+    "items": [
+      {
+        "id": "archive_hash_equality",
+        "text": "Every one of the 990 extracted files has output length and SHA-256 equal to an independent archive read, and two real runtime loads match the same extraction."
+      },
+      {
+        "id": "static_inventory",
+        "text": "A complete 3446-function Ghidra export is inventoried with callers, callees, instruction bytes and string references, replayed as a passing static check."
+      },
+      {
+        "id": "static_loader_stage_map",
+        "text": "Six loader stages are tied to specific instruction bytes in the export and to runtime observations, with independent reasoner review accepting the claims."
+      },
+      {
+        "id": "static_no_decompiled_c",
+        "text": "No decompiled C exists because the native macOS decompiler is unavailable; pseudocode is not recovered."
+      },
+      {
+        "id": "runtime_two_assets",
+        "text": "Real PCSX2 observations exist for exactly two assets, one raw and one zlib, each repeated with matching outputs."
+      },
+      {
+        "id": "runtime_other_assets",
+        "text": "Loading events for other asset types or other game states have not been observed."
+      },
+      {
+        "id": "bank_chain",
+        "text": "All 27 sound-bank pairs have descriptor chains that cover the payload exactly."
+      },
+      {
+        "id": "bank_adpcm_structure",
+        "text": "All 305 bank sample spans satisfy PS-ADPCM block structure with zero violations, and the reference decoder equals ffmpeg's decoder sample for sample."
+      },
+      {
+        "id": "bank_hardware_exactness",
+        "text": "Whether the decoded audio is bit-exact with SPU2 hardware has no oracle and has not been established."
+      },
+      {
+        "id": "bank_playback_path",
+        "text": "How the game uploads and plays bank samples on the EE/IOP/SPU2 has not been observed."
+      },
+      {
+        "id": "music_structure",
+        "text": "All 20 music streams have two channels at 0x8000 interleave, a header turn count equal to the observed turns, and ADPCM-valid blocks, and 40 decoded excerpts equal ffmpeg."
+      },
+      {
+        "id": "music_mih_word1",
+        "text": "The meaning of the second header word of the .mih files is unknown; it is not a loop flag position."
+      },
+      {
+        "id": "model_name_pool_end",
+        "text": "The first u32 of all 56 models equals the name-pool end offset, with zero padding to a 16-byte boundary."
+      },
+      {
+        "id": "model_geometry_layout",
+        "text": "The layout of the geometry region after the name pool is unknown; the later header words are not a stable structure."
+      },
+      {
+        "id": "ptg_gear_pixels",
+        "text": "The supported sprite profile decodes the eight gear sprites and the user confirmed gear0 is uppercase R and gear1 uppercase N."
+      },
+      {
+        "id": "ptg_header_relations",
+        "text": "All 548 PTG files satisfy count == columns*rows, stride == cell and columns/rows == ceil(dimension/cell)."
+      },
+      {
+        "id": "ptg_dd_layout",
+        "text": "The 17 files with a 0xDDDDDDDD last word match an exact size formula and per-tile pointer records whose floats are row-major tile extents."
+      },
+      {
+        "id": "ptg_palette",
+        "text": "No palette has been located for tiled PTG files and their tile pointer values and descriptor constants have no known meaning."
+      },
+      {
+        "id": "ptg_other_tiled_body",
+        "text": "The body layout of the 491 header-only tiled PTG files is unmeasured beyond the header."
+      },
+      {
+        "id": "ui_text_grammar",
+        "text": "The 216 .dat, 45 .ui, 16 .cfg and 5 .mbf files have no measurement or recovered grammar."
+      },
+      {
+        "id": "consumers_unmapped",
+        "text": "The EE, IOP and VU code that consumes loaded sound, texture and model buffers has not been mapped."
+      },
+      {
+        "id": "windowless_capture",
+        "text": "A PCSX2 capture mode that opens no windows and takes no focus has not been built or verified; the current path opens debugger windows."
+      },
+      {
+        "id": "native_decompiler",
+        "text": "A native macOS Ghidra decompiler has not been built; it is not required by milestone #2."
+      },
+      {
+        "id": "broader_scope_decision",
+        "text": "The user has not stated whether the overall finish line includes mesh, VU and render reconstruction or whole-game decompilation."
+      }
+    ]
+  },
+  "evidence_files": [],
+  "started_utc": "2026-10-04T06:55:43.281Z",
+  "seconds": 0.891,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_classify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"summary\": {\n    \"items\": 24,\n    \"auto\": 16,\n    \"review\": 8,\n    \"invalid_response\": 0,\n    \"by_class\": {\n      \"verified_behavior\": 7,\n      \"missing_prerequisite\": 4,\n      \"missing_observation\": 3,\n      \"supported_bounded_profile\": 4,\n      \"unresolved_interpretation\": 3,\n      \"not_yet_probed\": 3\n    }\n  },\n  \"thresholds\": {\n    \"auto_accept\": 0.85,\n    \"minimum_margin\": 0.5\n  },\n  \"results\": [\n    {\n      \"id\": \"archive_hash_equality\",\n      \"classification\": \"verified_behavior\",\n      \"probabilities\": {\n        \"verified_behavior\": 1,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 1,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"static_inventory\",\n      \"classification\": \"verified_behavior\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.67,\n        \"supported_bounded_profile\": 0.27,\n        \"unresolved_interpretation\": 0.03,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.02,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.61,\n      \"margin\": 0.4,\n      \"top_probability\": 0.67,\n      \"decision\": \"review\"\n    },\n    {\n      \"id\": \"static_loader_stage_map\",\n      \"classification\": \"verified_behavior\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.99,\n        \"supported_bounded_profile\": 0.01,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.98,\n      \"margin\": 0.98,\n      \"top_probability\": 0.99,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"static_no_decompiled_c\",\n      \"classification\": \"missing_prerequisite\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.99,\n        \"not_yet_probed\": 0.01,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.99,\n      \"margin\": 0.98,\n      \"top_probability\": 0.99,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"runtime_two_assets\",\n      \"classification\": \"verified_behavior\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.97,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0.01,\n        \"missing_observation\": 0.02,\n        \"missing_prerequisite\": 0,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.96,\n      \"margin\": 0.95,\n      \"top_probability\": 0.97,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"runtime_other_assets\",\n      \"classification\": \"missing_observation\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0.93,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0.06,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.91,\n      \"margin\": 0.8700000000000001,\n      \"top_probability\": 0.93,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"bank_chain\",\n      \"classification\": \"supported_bounded_profile\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.05,\n        \"supported_bounded_profile\": 0.9,\n        \"unresolved_interpretation\": 0.02,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0.01,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.87,\n      \"margin\": 0.85,\n      \"top_probability\": 0.9,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"bank_adpcm_structure\",\n      \"classification\": \"verified_behavior\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.9,\n        \"supported_bounded_profile\": 0.1,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.88,\n      \"margin\": 0.8,\n      \"top_probability\": 0.9,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"bank_hardware_exactness\",\n      \"classification\": \"missing_observation\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0.02,\n        \"missing_observation\": 0.88,\n        \"missing_prerequisite\": 0.09,\n        \"not_yet_probed\": 0.01,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.85,\n      \"margin\": 0.79,\n      \"top_probability\": 0.88,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"bank_playback_path\",\n      \"classification\": \"missing_observation\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0.98,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0.01,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.96,\n      \"margin\": 0.97,\n      \"top_probability\": 0.98,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"music_structure\",\n      \"classification\": \"verified_behavior\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.9,\n        \"supported_bounded_profile\": 0.1,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.87,\n      \"margin\": 0.8,\n      \"top_probability\": 0.9,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"music_mih_word1\",\n      \"classification\": \"unresolved_interpretation\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.01,\n        \"supported_bounded_profile\": 0.08,\n        \"unresolved_interpretation\": 0.89,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.87,\n      \"margin\": 0.81,\n      \"top_probability\": 0.89,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"model_name_pool_end\",\n      \"classification\": \"supported_bounded_profile\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.03,\n        \"supported_bounded_profile\": 0.86,\n        \"unresolved_interpretation\": 0.08,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0.01,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.84,\n      \"margin\": 0.78,\n      \"top_probability\": 0.86,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"model_geometry_layout\",\n      \"classification\": \"unresolved_interpretation\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0.05,\n        \"unresolved_interpretation\": 0.7,\n        \"missing_observation\": 0.03,\n        \"missing_prerequisite\": 0.02,\n        \"not_yet_probed\": 0.16,\n        \"manual_review\": 0.04\n      },\n      \"confidence\": 0.66,\n      \"margin\": 0.5399999999999999,\n      \"top_probability\": 0.7,\n      \"decision\": \"review\"\n    },\n    {\n      \"id\": \"ptg_gear_pixels\",\n      \"classification\": \"verified_behavior\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.84,\n        \"supported_bounded_profile\": 0.1,\n        \"unresolved_interpretation\": 0.04,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.81,\n      \"margin\": 0.74,\n      \"top_probability\": 0.84,\n      \"decision\": \"review\"\n    },\n    {\n      \"id\": \"ptg_header_relations\",\n      \"classification\": \"supported_bounded_profile\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 1,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.99,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"ptg_dd_layout\",\n      \"classification\": \"supported_bounded_profile\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.07,\n        \"supported_bounded_profile\": 0.74,\n        \"unresolved_interpretation\": 0.17,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.69,\n      \"margin\": 0.57,\n      \"top_probability\": 0.74,\n      \"decision\": \"review\"\n    },\n    {\n      \"id\": \"ptg_palette\",\n      \"classification\": \"unresolved_interpretation\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0.54,\n        \"missing_observation\": 0.03,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0.41,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.46,\n      \"margin\": 0.13000000000000006,\n      \"top_probability\": 0.54,\n      \"decision\": \"review\"\n    },\n    {\n      \"id\": \"ptg_other_tiled_body\",\n      \"classification\": \"not_yet_probed\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0.05,\n        \"missing_observation\": 0.03,\n        \"missing_prerequisite\": 0.01,\n        \"not_yet_probed\": 0.91,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.88,\n      \"margin\": 0.86,\n      \"top_probability\": 0.91,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"ui_text_grammar\",\n      \"classification\": \"not_yet_probed\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0,\n        \"not_yet_probed\": 1,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.99,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"consumers_unmapped\",\n      \"classification\": \"not_yet_probed\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0.01,\n        \"missing_observation\": 0.19,\n        \"missing_prerequisite\": 0.15,\n        \"not_yet_probed\": 0.64,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.57,\n      \"margin\": 0.45,\n      \"top_probability\": 0.64,\n      \"decision\": \"review\"\n    },\n    {\n      \"id\": \"windowless_capture\",\n      \"classification\": \"missing_prerequisite\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0.2,\n        \"missing_prerequisite\": 0.79,\n        \"not_yet_probed\": 0.01,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.75,\n      \"margin\": 0.5900000000000001,\n      \"top_probability\": 0.79,\n      \"decision\": \"review\"\n    },\n    {\n      \"id\": \"native_decompiler\",\n      \"classification\": \"missing_prerequisite\",\n      \"probabilities\": {\n        \"verified_behavior\": 0.02,\n        \"supported_bounded_profile\": 0.02,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0,\n        \"missing_prerequisite\": 0.93,\n        \"not_yet_probed\": 0.02,\n        \"manual_review\": 0.01\n      },\n      \"confidence\": 0.91,\n      \"margin\": 0.91,\n      \"top_probability\": 0.93,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"broader_scope_decision\",\n      \"classification\": \"missing_prerequisite\",\n      \"probabilities\": {\n        \"verified_behavior\": 0,\n        \"supported_bounded_profile\": 0,\n        \"unresolved_interpretation\": 0,\n        \"missing_observation\": 0.01,\n        \"missing_prerequisite\": 0.67,\n        \"not_yet_probed\": 0.04,\n        \"manual_review\": 0.27\n      },\n      \"confidence\": 0.62,\n      \"margin\": 0.4,\n      \"top_probability\": 0.67,\n      \"decision\": \"review\"\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 3782,\n    \"output_tokens\": 1745\n  }\n}"
+      }
+    ]
+  }
+}

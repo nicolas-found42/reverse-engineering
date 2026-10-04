@@ -1,0 +1,73 @@
+{
+  "id": "d010-verify-oracle-claims",
+  "purpose": "verify final audio decoder claims vs oracle evidence",
+  "tool": "jev_verify",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d010.json",
+  "args_sha256": "86192a19987cbf14d77e73ab708dca1c09b1afb2fdaa68be18d631bfdeb915ad",
+  "arguments": {
+    "claims": [
+      "The decoder in spu_adpcm.py produces sample-for-sample identical output to ffmpeg's adpcm_psx decoder on all 305 sound-bank sample spans and on 40 decoded music-channel excerpts of the real corpus.",
+      "The first version of the decoder, using a +32 floor-rounded feedback term and decoding flag-7 filler blocks as data, disagreed with ffmpeg and matched on only 1 of 305 spans; this disagreement was investigated and the decoder was changed rather than the comparison relaxed.",
+      "Keeping the filter history unclipped (as ffmpeg does) is required for exact agreement: a clipped-history variant failed on exactly the 18 spans that contain full-scale samples while the unclipped-history decoder matched all 305.",
+      "The verifier states that agreement is with a software reference decoder and that no playback, loop-behavior, or in-game correctness claim is made.",
+      "All 38 tests pass and pyright reports zero errors on the changed files.",
+      "The decoder is bit-exact with the PlayStation 2 SPU2 hardware.",
+      "The music streams loop at the position given by the .mih header."
+    ],
+    "evidence": [
+      {
+        "id": "oracle-run-result",
+        "text": "{\"result_file\": \".scratch/evidence/audio/20261004T064158Z-056df37018f847458cb67c936658f575/result.json\", \"status\": \"pass\", \"diagnostics\": [], \"command\": [\"tools/verify_audio.py\", \"corpus\", \"games/ford-racing-2\", \"--oracle\", \"ffmpeg\"], \"oracle\": {\"tool\": \"ffmpeg\", \"version\": \"ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers\", \"spans_compared\": 305, \"exact_equal\": 305, \"music_excerpts_compared\": 40, \"music_excerpts_equal\": 40}, \"banks\": 27, \"bank_descriptors\": 305, \"streams\": 20, \"terminator_classes\": {\"1,7\": 99, \"3\": 206}, \"claim_limits\": \"Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.\"}"
+      },
+      {
+        "id": "mismatch-investigation",
+        "text": "Independent oracle experiment, 2026-10-04, ffmpeg 9.0.2 decoder adpcm_psx via VAGp container, real FR2 corpus (read-only).\n1) Initial decoder (feedback term (p1*k0+p2*k1+32)>>6 floor; flag-7 block data decoded normally): ffmpeg comparison over all 305 bank spans: lengths equal 305/305, exact sample equality 1/305, max abs diff 28672. First divergence in speech.msb span 2 at sample 56: first block with filter 2 (hdr 0x2c), mine -7 vs ffmpeg -6, then grows.\n2) Variant search on that span (10808 samples), 16 combinations of rounding term (0 or +32), division (floor >>6 vs truncate toward zero), clipping of history (clipped/raw), and shift implementation (sar vs div): differing samples: rnd=0+floor: 10352; rnd=32+floor: 10602; rnd=32+trunc: 10692; rnd=0+trunc: 28 (all four clip/shift variants identical). So truncation toward zero with NO rounding term reproduces ffmpeg except for 28 samples.\n3) The 28 samples are exactly the final block (indices 10780..10807). That block is 00 07 77 77 77 77 77 77 77 77 77 77 77 77 77 77 (header 0x00, flags 7, 14 data bytes 0x77), preceded by a flag-1 block. ffmpeg outputs 28 zeros there; my decoder decoded the 0x77 nibbles to 28672. The same [flag 1 block][00 07 7777..] pattern ends all 99 speech.msb spans; the other 206 spans end with one flag-3 block.\n4) No hardware/SPU2 oracle is available locally; ffmpeg is a widely used software implementation, not a hardware measurement. The EE/IOP do not decode ADPCM in software as far as inventoried.\n\nFollow-up measurement (2026-10-04): with arithmetic = truncation toward zero, no rounding constant, flag-7 block -> 28 zeros, history CLIPPED: 18 of 305 corpus spans differ from ffmpeg and 934 of 1876 samples of a synthetic every-filter/shift stress input differ; history UNCLIPPED (raw): 0 of 305 spans differ and 0 of 1876 stress samples differ. 18 corpus spans contain at least one full-scale sample in ffmpeg output."
+      },
+      {
+        "id": "test-and-types",
+        "text": "......................................\n----------------------------------------------------------------------\nRan 38 tests in 25.815s\n\nOK\ntests_exit=0\n\npyright: 0 errors, 0 warnings, 0 informations"
+      }
+    ],
+    "auto_accept": 0.8
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/oracle-run-summary.json",
+      "sha256": "6bd367e6097d95c0cdb2421e62a9109cfea2aa247ec7471b99988fe9ab2bed23",
+      "bytes": 756
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/oracle-variant-evidence.txt",
+      "sha256": "26632f65d7c07e76268b6e27e241c0fdcd023f46d14b81169ba546876e2bb6e1",
+      "bytes": 1497
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/tests-final3.log",
+      "sha256": "87c43142ae1e621b55a4b99960677a5d096520fffb2f3962f424f928155299df",
+      "bytes": 151
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/pyright-final3.log",
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332",
+      "bytes": 37
+    }
+  ],
+  "started_utc": "2026-10-04T06:42:38.813Z",
+  "seconds": 0.749,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 5,\n    \"contradicted\": 0,\n    \"unsupported\": 2,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The decoder in spu_adpcm.py produces sample-for-sample identical output to ffmpeg's adpcm_psx decoder on all 305 sound-bank sample spans and on 40 decoded music-channel excerpts of the real corpus.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"oracle-run-result\",\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The first version of the decoder, using a +32 floor-rounded feedback term and decoding flag-7 filler blocks as data, disagreed with ffmpeg and matched on only 1 of 305 spans; this disagreement was investigated and the decoder was changed rather than the comparison relaxed.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.06,\n        \"says_nothing\": 0,\n        \"supports\": 0.94\n      },\n      \"confidence\": 0.91,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"mismatch-investigation\",\n      \"same_subject\": 0.94\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Keeping the filter history unclipped (as ffmpeg does) is required for exact agreement: a clipped-history variant failed on exactly the 18 spans that contain full-scale samples while the unclipped-history decoder matched all 305.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"mismatch-investigation\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The verifier states that agreement is with a software reference decoder and that no playback, loop-behavior, or in-game correctness claim is made.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"oracle-run-result\",\n      \"same_subject\": 0.93\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"All 38 tests pass and pyright reports zero errors on the changed files.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"test-and-types\",\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"The decoder is bit-exact with the PlayStation 2 SPU2 hardware.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"contradicts\": 0.57,\n        \"says_nothing\": 0.43,\n        \"supports\": 0\n      },\n      \"confidence\": 0.36,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.08\n    },\n    {\n      \"id\": \"claim6\",\n      \"claim\": \"The music streams loop at the position given by the .mih header.\",\n      \"verdict\": \"unsupported\",\n      \"probabilities\": {\n        \"contradicts\": 0.12,\n        \"says_nothing\": 0.88,\n        \"supports\": 0\n      },\n      \"confidence\": 0.81,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.05\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 4137,\n    \"output_tokens\": 841\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "id": "d007-verify-audio-claims",
+  "purpose": "verify audio claims vs measured evidence",
+  "tool": "jev_verify",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d007.json",
+  "args_sha256": "c40c40f4671df3cfdabac7dcaa9f19df5cd257797b89b73c91d7865ffead1e3e",
+  "arguments": {
+    "claims": [
+      "All 305 sample spans in the 27 FR2 sound banks have lengths that are multiples of 16 bytes, begin with an all-zero block, end with a block whose end flag is set, and contain zero blocks violating the filter<=4, shift<=12, flags<=7 rules.",
+      "Bank sample spans fall into exactly two terminator classes: a single final block with flags 3 (206 spans) and a flag-1 block followed by a flag-7 block (99 spans).",
+      "In all 20 .mib music streams the .mih word at index 5 equals the number of 0x8000-byte-per-channel interleave turns, the two channels have identical block counts, and neither channel violates the ADPCM structure rules.",
+      "The reference decoder produces bounded output: the maximum fraction of full-scale samples in any bank span is below 0.0003 and in the decoded music excerpts is 0.",
+      "Control files (ps2, ptg, dat) violate the filter<=4 rule in 39 to 96 percent of 16-byte blocks, so the structure test discriminates ADPCM from unrelated data.",
+      "The real-corpus audio verification passes and the full suite of 32 tests passes.",
+      "The decoded audio has been verified to play correctly in the game and to sound correct to a listener.",
+      "The .mih word at index 1 has been identified as the loop start offset of the music streams."
+    ],
+    "evidence": [
+      {
+        "id": "corpus-result-summary",
+        "text": "{\"result_file\": \".scratch/evidence/audio/20261004T063451Z-2cc04b3e3dca41fe9235fe04d8d13051/result.json\", \"status\": \"pass\", \"diagnostics\": [], \"banks\": 27, \"bank_descriptors\": 305, \"streams\": 20, \"terminator_classes\": {\"1,7\": 99, \"3\": 206}, \"max_bank_clip_fraction\": 0.00025974025974025974, \"streams_turn_count_equals_mih_word5\": 20, \"streams_equal_channel_blocks\": 20, \"streams_total\": 20, \"stream_clip_fraction_max_excerpt\": 0.0, \"stream_flag_values_seen\": [0], \"stream_seconds_min_max\": [109.2, 288.7], \"mih_rate_values\": [44100], \"mih_channels\": [2], \"mih_interleave\": [32768], \"claim_limits\": \"Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.\", \"provenance_keys\": [\"profile\", \"sources\", \"corpus_id\"]}"
+      },
+      {
+        "id": "control-probe",
+        "text": "[{\"file\": \"debug.ps2;1\", \"filter_gt4_fraction\": 0.486}, {\"file\": \"misc.ps2;1\", \"filter_gt4_fraction\": 0.391}, {\"file\": \"Barsub.ptg;1\", \"filter_gt4_fraction\": 0.739}, {\"file\": \"BgArrow2.ptg;1\", \"filter_gt4_fraction\": 0.532}, {\"file\": \"Bgarrow1.ptg;1\", \"filter_gt4_fraction\": 0.446}, {\"file\": \"49couped.ptg;1\", \"filter_gt4_fraction\": 0.957}, {\"file\": \"49movied.ptg;1\", \"filter_gt4_fraction\": 0.857}, {\"file\": \"cobrad.ptg;1\", \"filter_gt4_fraction\": 0.946}, {\"file\": \"fontbase.dat;1\", \"filter_gt4_fraction\": 0.453}, {\"file\": \"fontdata.dat;1\", \"filter_gt4_fraction\": 0.547}, {\"file\": \"tlate_en.dat;1\", \"filter_gt4_fraction\": 0.415}, {\"file\": \"tlate_fr.dat;1\", \"filter_gt4_fraction\": 0.439}, {\"file\": \"tlate_gr.dat;1\", \"filter_gt4_fraction\": 0.406}, {\"file\": \"tlate_it.dat;1\", \"filter_gt4_fraction\": 0.408}]"
+      },
+      {
+        "id": "test-log",
+        "text": "................................\n----------------------------------------------------------------------\nRan 32 tests in 13.116s\n\nOK\ntests_exit=0\n"
+      }
+    ],
+    "auto_accept": 0.8
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/evidence-summary.json",
+      "sha256": "7f512823d35816aaff3bcc2e81116e17b384d26fa1a0e0daee0bf7eb15a07055",
+      "bytes": 864
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/controls.json",
+      "sha256": "fc4626398cdcb0c1e30848d45089abfbfb5adc0110267ba97ca173355985b4a8",
+      "bytes": 915
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/tests.log",
+      "sha256": "e1e1c4e7a75484798a8281c4009c884eb950ef5fc21fa13b71822a17a9d9f911",
+      "bytes": 145
+    }
+  ],
+  "started_utc": "2026-10-04T06:35:16.409Z",
+  "seconds": 0.977,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 5,\n    \"contradicted\": 0,\n    \"unsupported\": 3,\n    \"needs_review\": 3\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"All 305 sample spans in the 27 FR2 sound banks have lengths that are multiples of 16 bytes, begin with an all-zero block, end with a block whose end flag is set, and contain zero blocks violating the filter<=4, shift<=12, flags<=7 rules.\",\n      \"verdict\": \"unsupported\",\n      \"probabilities\": {\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0.75,\n        \"supports\": 0.22\n      },\n      \"confidence\": 0.63,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.27\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"Bank sample spans fall into exactly two terminator classes: a single final block with flags 3 (206 spans) and a flag-1 block followed by a flag-7 block (99 spans).\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.01,\n        \"says_nothing\": 0,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result-summary\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"In all 20 .mib music streams the .mih word at index 5 equals the number of 0x8000-byte-per-channel interleave turns, the two channels have identical block counts, and neither channel violates the ADPCM structure rules.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0.17,\n        \"supports\": 0.8\n      },\n      \"confidence\": 0.7,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"corpus-result-summary\",\n      \"same_subject\": 0.67\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The reference decoder produces bounded output: the maximum fraction of full-scale samples in any bank span is below 0.0003 and in the decoded music excerpts is 0.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result-summary\",\n      \"same_subject\": 0.94\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"Control files (ps2, ptg, dat) violate the filter<=4 rule in 39 to 96 percent of 16-byte blocks, so the structure test discriminates ADPCM from unrelated data.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0.01,\n        \"supports\": 0.96\n      },\n      \"confidence\": 0.94,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"control-probe\",\n      \"same_subject\": 0.92\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"The real-corpus audio verification passes and the full suite of 32 tests passes.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.04,\n        \"says_nothing\": 0.02,\n        \"supports\": 0.94\n      },\n      \"confidence\": 0.91,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"test-log\",\n      \"same_subject\": 0.86\n    },\n    {\n      \"id\": \"claim6\",\n      \"claim\": \"The decoded audio has been verified to play correctly in the game and to sound correct to a listener.\",\n      \"verdict\": \"unsupported\",\n      \"probabilities\": {\n        \"contradicts\": 0.47,\n        \"says_nothing\": 0.53,\n        \"supports\": 0\n      },\n      \"confidence\": 0.3,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.05\n    },\n    {\n      \"id\": \"claim7\",\n      \"claim\": \"The .mih word at index 1 has been identified as the loop start offset of the music streams.\",\n      \"verdict\": \"unsupported\",\n      \"probabilities\": {\n        \"contradicts\": 0.04,\n        \"says_nothing\": 0.96,\n        \"supports\": 0\n      },\n      \"confidence\": 0.94,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.04\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 4217,\n    \"output_tokens\": 915\n  }\n}"
+      }
+    ]
+  }
+}

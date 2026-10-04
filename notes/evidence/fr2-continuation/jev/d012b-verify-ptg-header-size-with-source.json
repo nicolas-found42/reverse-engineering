@@ -1,0 +1,45 @@
+{
+  "id": "d012b-verify-ptg-header-size-with-source",
+  "purpose": "claims 0,1 with verifier source and computed equalities (new evidence after d012 review)",
+  "tool": "jev_verify",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d012b.json",
+  "args_sha256": "7648f5edf98ce514a60b8479ce47966ae4f479e255f1f07137c8218b3c3c12d9",
+  "arguments": {
+    "claims": [
+      "In all 548 FR2 .ptg files the header satisfies count == columns*rows, stride == cell, columns == ceil(width/cell) and rows == ceil(height/cell), with zero violations.",
+      "The 17 .ptg files whose last header word is 0xDDDDDDDD all have sizes exactly equal to 1120 + 1104 times their tile count."
+    ],
+    "evidence": [
+      {
+        "id": "source-and-computed",
+        "text": "SOURCE of the header check run on every .ptg file by verify_ptg.py corpus (any failure raises HeaderRelationError, which the corpus command records as a failure and counts in header_relation_violations):\ndef header(data: bytes) -> dict:\n    if len(data) < HEADER:\n        raise HeaderRelationError(f\"truncated header: {len(data)} bytes\")\n    count, columns, rows, stride, cell, width, height, last = struct.unpack(\"<8I\", data[:HEADER])\n    if cell == 0 or width == 0 or height == 0:\n        raise HeaderRelationError(\"cell, width and height must be positive\")\n    if stride != cell:\n        raise HeaderRelationError(f\"stride {stride} differs from cell {cell}\")\n    if columns != -(-width // cell):\n        raise HeaderRelationError(f\"columns {columns} differ from ceil({width}/{cell})\")\n    if rows != -(-height // cell):\n        raise HeaderRelationError(f\"rows {rows} differ from ceil({height}/{cell})\")\n    if count != columns * rows:\n        raise HeaderRelationError(f\"count {count} differs from columns * rows = {columns * rows}\")\n    return {\"count\": count, \"columns\": columns, \"rows\": rows, \"cell\": cell, \"width\": width, \"height\": height, \"last\": last}\n\n\n\nSOURCE of the size check applied to every file whose last word is 0xDDDDDDDD (a mismatch raises Invalid and fails the corpus run):\n    if len(data) != BASE_SIZE + TILE_SIZE * count:\n\nCOMPUTED from the real-corpus result file:\n{\"tiled_dd_files\": 17, \"files_where_size_equals_1120_plus_1104_times_count\": 17, \"total_files_classified\": 548, \"files_failing_any_header_relation\": 0, \"corpus_run_status\": \"pass\", \"corpus_run_diagnostics\": [], \"per_file\": [[\"StartEU.ptg;1\", 332320, 300, 332320], [\"StartUS.ptg;1\", 332320, 300, 332320], [\"barbig.ptg;1\", 18784, 16, 18784], [\"posnscrn.ptg;1\", 89440, 80, 89440], [\"DolbyPro.ptg;1\", 332320, 300, 332320], [\"LOGO_EMP.ptg;1\", 332320, 300, 332320], [\"PCLEGLEU.ptg;1\", 332320, 300, 332320], [\"PCLEGLUS.ptg;1\", 332320, 300, 332320], [\"freq.ptg;1\", 332320, 300, 332320], [\"gotham.ptg;1\", 332320, 300, 332320], [\"loadEU.ptg;1\", 332320, 300, 332320], [\"loadUS.ptg;1\", 332320, 300, 332320], [\"logo_rw.ptg;1\", 332320, 300, 332320], [\"pslegleu.ptg;1\", 332320, 300, 332320], [\"psleglus.ptg;1\", 310240, 280, 310240], [\"xblegleu.ptg;1\", 332320, 300, 332320], [\"xbleglus.ptg;1\", 332320, 300, 332320]]}"
+      }
+    ],
+    "auto_accept": 0.8
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/ptg/header-size-evidence.txt",
+      "sha256": "dd48254cfb8301bf4f9e154eb81c27ceebe20154c7be2666dfe62a3b8d5c54b8",
+      "bytes": 2291
+    }
+  ],
+  "started_utc": "2026-10-04T06:49:53.402Z",
+  "seconds": 0.656,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 2,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"In all 548 FR2 .ptg files the header satisfies count == columns*rows, stride == cell, columns == ceil(width/cell) and rows == ceil(height/cell), with zero violations.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"says_nothing\": 0,\n        \"contradicts\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The 17 .ptg files whose last header word is 0xDDDDDDDD all have sizes exactly equal to 1120 + 1104 times their tile count.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.99,\n        \"says_nothing\": 0,\n        \"contradicts\": 0.01\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.97\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1876,\n    \"output_tokens\": 126\n  }\n}"
+      }
+    ]
+  }
+}

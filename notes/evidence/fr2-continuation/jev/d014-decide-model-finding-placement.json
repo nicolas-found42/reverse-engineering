@@ -1,0 +1,59 @@
+{
+  "id": "d014-decide-model-finding-placement",
+  "purpose": "placement of model leading-field finding",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d014.json",
+  "args_sha256": "f530a77677dc7d7017bd7752294b2e3f0f2662aeee7677781214362113c52995",
+  "arguments": {
+    "decision": "How should the finding that the model's leading u32 equals the name-pool end offset (56/56) be recorded relative to the milestone-#2 model contract?",
+    "evidence": "Offline measurements, real PAL corpus, 56 .ps2 model files (note: names are uppercase .PS2 in the corpus):\n- The first u32 of every model equals the end offset of its name pool (max name end) in 56/56 files. The milestone-#2 contract (format_contracts.model) reports it as leading_count with leading_count_semantics 'unresolved'; the old research note called it a count (e.g. 49COUPE 431, FORDGT 643).\n- The bytes between that offset and the next 16-byte boundary are all zero in 56/56 files (pad lengths 0..15); all 56 file sizes are multiples of 16.\n- The region at the 16-aligned offset is not a stable structure: its words (w1,w2,w3) = (1,4,0) in only 35 of 56 files; its first word matches no count of names, groups or roots. Later data contains 16-bit index runs and sequential words, i.e. unresolved mesh data.\n- The milestone-#2 results, hashes and README describe the field as an unresolved count and the corpus checks are bound to the current contract output.\n",
+    "priorities": "Do not alter or invalidate the reviewed milestone-#2 evidence and hashes. Keep each result immutable and independently runnable. Claim only what is measured; keep the unstable later structure and geometry as unresolved. Smallest public-seam change with negative tests.",
+    "candidates": [
+      {
+        "id": "new_verify_model_command",
+        "description": "Add a separate verify_model command that reuses format_contracts.model() for the existing name-tree checks and additionally asserts the leading u32 equals the name-pool end and that the pad to the next 16-byte boundary is zero and the size is a multiple of 16; reports geometry and later header words as unresolved; milestone contract and results untouched."
+      },
+      {
+        "id": "rename_in_existing_contract",
+        "description": "Edit format_contracts.model() to rename leading_count to name_pool_end and drop the unresolved note, changing the output the milestone evidence was bound to."
+      },
+      {
+        "id": "notes_only",
+        "description": "Write the finding in a notes file without executable verification."
+      },
+      {
+        "id": "decode_geometry_first",
+        "description": "Hold the finding until the geometry region after the pool is decoded."
+      }
+    ],
+    "requirements": [
+      "Existing milestone-#2 result files, hashes and claims remain valid and unmodified.",
+      "The recorded claim is limited to measured invariants and keeps geometry and the later header unresolved."
+    ]
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/model/findings.txt",
+      "sha256": "004a5064fde32d8b8d8346c511ed115a36f7defa5003cf261bdca053f83e52ed",
+      "bytes": 970
+    }
+  ],
+  "started_utc": "2026-10-04T06:51:33.897Z",
+  "seconds": 0.594,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"new_verify_model_command\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"decode_geometry_first\": 0,\n      \"notes_only\": 0,\n      \"rename_in_existing_contract\": 0,\n      \"new_verify_model_command\": 1,\n      \"ask_user\": 0,\n      \"investigate\": 0,\n      \"none\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"new_verify_model_command\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"new_verify_model_command\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"rename_in_existing_contract\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"rename_in_existing_contract\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"notes_only\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"notes_only\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"decode_geometry_first\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"decode_geometry_first\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2236,\n    \"output_tokens\": 425\n  }\n}"
+      }
+    ]
+  }
+}

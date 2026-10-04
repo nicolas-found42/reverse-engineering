@@ -1,0 +1,53 @@
+{
+  "id": "d021-decide",
+  "purpose": "review-fix design decision d021",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d021.json",
+  "args_sha256": "5e9fd6f58e30c430c3b6d640b822e246426200ef5048eadbbc371d2d7a777ea8",
+  "arguments": {
+    "decision": "How strict should the bank span terminator check be?",
+    "evidence": "Independent review of the new verifiers (agent finding, reproduced or plausible) reported: (1) corpus mode never asserts the corpus is complete: a mirror with 10 .ptg files removed returned pass with files 538, unpaired .msh/.mih skipped silently; (2) end flags in the middle of a span pass and a lone flag-7 final block is accepted; (3) decode memory grows unbounded for large spans and deinterleave allocates per channel for an empty payload. Measured facts: corpus has 305 spans (largest 80,496 bytes, median 17,520); every span has exactly one end-bit block (206 spans, flag 3) or exactly two (99 spans, flag 1 then flag 7 whose 14 data bytes are all 0x77); milestone formats check already verifies all 990 files by full SHA-256 against an independent archive read; notes/extracted-manifest.tsv holds a 16-hex sha1 prefix per file; milestone issue #2 requires missing required evidence to be incomplete, unsupported items listed, bounded processing, claims limited to what is measured. ",
+    "priorities": "Bounded measured profiles; a verifier must not pass violated invariants; no silent acceptance; keep claims limited.",
+    "candidates": [
+      {
+        "id": "strict_measured_classes",
+        "description": "Require exactly the two measured classes: end bit only on the final block (flag 3 final), or the final two blocks being flag 1 then a flag-7 block with 0x77 filler; any other end-bit placement or terminator fails with a diagnostic that says it is outside the measured profile."
+      },
+      {
+        "id": "keep_lenient",
+        "description": "Keep the current check (last block has the end bit) and only report the terminator class."
+      },
+      {
+        "id": "warn_only",
+        "description": "Accept other terminators but record a warning without failing."
+      },
+      {
+        "id": "gather_more_evidence",
+        "description": "Defer until other banks or regions are available."
+      }
+    ],
+    "requirements": [
+      "The verifier cannot return pass for a span with an end flag in the middle or a lone flag-7 final block.",
+      "The claim stays bounded to the measured corpus profile and says other terminators are unmeasured."
+    ]
+  },
+  "evidence_files": [],
+  "started_utc": "2026-10-04T07:05:34.861Z",
+  "seconds": 1.652,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"strict_measured_classes\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"warn_only\": 0,\n      \"gather_more_evidence\": 0,\n      \"ask_user\": 0,\n      \"strict_measured_classes\": 1,\n      \"none\": 0,\n      \"investigate\": 0,\n      \"keep_lenient\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"strict_measured_classes\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"strict_measured_classes\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"keep_lenient\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"keep_lenient\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"warn_only\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"warn_only\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2135,\n    \"output_tokens\": 431\n  }\n}"
+      }
+    ]
+  }
+}

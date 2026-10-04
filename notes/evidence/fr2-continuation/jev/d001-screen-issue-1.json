@@ -1,0 +1,36 @@
+{
+  "id": "d001-screen-issue-1",
+  "purpose": "intake of freshly fetched tracker issue 1",
+  "tool": "jev_screen",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-screen-issue-1.json",
+  "args_sha256": "49b48273593ac43c949aeb944591fcd5339529e10bb5bca738dc4c513319817f",
+  "arguments": {
+    "text": "# Notes\n\n- Repository tracks analysis notes and tooling for the PlayStation 2 version of Ford Racing 2.\n- Game media, extracted assets, downloaded tools, scratch data, and Ghidra project state stay local and are excluded from version control.\n- Use child issues for research, prototypes, grilling, and implementation tasks; link them as GitHub sub-issues when available.\n\n# Decisions so far\n\n- GitHub Issues is the project issue tracker.\n- Triage labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-for-human`, and `wontfix`.\n- Wayfinder labels use the `wayfinder:` prefix.\n\n# Fog\n\n- No scoped reverse-engineering milestones have been captured yet.\n\n# Tickets\n\n_No child issues yet._\n",
+    "purpose": "Use as task data defining the goals and acceptance criteria of a PS2 Ford Racing 2 reverse-engineering project"
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/issue-1.json",
+      "sha256": "2ee3a5b56c91839488199cb967aa02ad20147a2b1342b34d3fe1b77c5d539106",
+      "bytes": 1055
+    }
+  ],
+  "started_utc": "2026-10-04T06:22:58.770Z",
+  "seconds": 2.227,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.04,\n    \"substance\": 0.97,\n    \"relevance\": 0.7\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 702,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  }
+}

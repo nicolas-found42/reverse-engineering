@@ -1,0 +1,59 @@
+{
+  "id": "d011-decide-ptg-next",
+  "purpose": "next step for PTG investigation",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d011.json",
+  "args_sha256": "6eb6af8ee11b2ae571d95963fc0aea6bf790fc8e304568dccb7343609bdabc24",
+  "arguments": {
+    "decision": "What to do next with the PTG investigation, given verified structural findings and an unexplained tile-order permutation?",
+    "evidence": "PTG investigation findings (offline, read-only, 2026-10-04), real PAL corpus, 548 .ptg files:\nF1. Header words [count, a, b, stride, cell, width, height, last]: for ALL 548 files count==a*b, stride==cell (cell 32 in 505 files, 16 in 43), a==ceil(width/cell), b==ceil(height/cell); 0 violators. last==1 in 530 files, 0xDDDDDDDD in 17, 0 in 1. The existing supported sprite profile (16 files) is the count==1 subset.\nF2. The 17 files with last==0xDDDDDDDD (cell 32) fit size = 1120 + 1104*count EXACTLY (max residual 0). Files with last==1 do not fit a linear size model (max residual 192712 bytes).\nF3. In StartEU.ptg (640x480, count 300, 332320 bytes): bytes 0x50..0x1310 are exactly 300 consecutive 16-byte records (float 1.0, float 1.0, u32 pointer, 0xDDDDDDDD); pointer values 0x080213e0..0x083963b0, all unique, spacing 1648 for 230 consecutive pairs; they are NOT file offsets (span 3.6 MB vs 332 KB file). Then 300 descriptor blocks of 64 bytes (identical except one pointer word), then pixels from 24080 = 80+300*16+300*64, then zeros; a trailing 1040 bytes are all zero.\nF4. Rendering the 300x1024-byte pixel region as 8-bit indices in 32x32 tiles (no palette, grayscale) row-major 20x15 produces a recognizable Ford oval logo and lettering, but scrambled in strips: seam diff 10.79 vs interior diff 1.96. Column-major placement is worse (17.43). Applying the standard GS PSMT8 unswizzle per tile made the image worse. Within-tile raster of width 32 is smoothest (v-diff 3.48 vs 5.24 at 64).\nF5. Therefore: tile pixels are plain 8-bit raster 32x32; tile ORDER in the file is a permutation not explained by any decoded field. Palette location not found (not at file end).\nScope context: issue #2 says full PTG generalization is not required and other PTG profiles may be unsupported; the user's broader mandate for the whole game is not yet established. Candidate next steps are listed in the decision.\n",
+    "priorities": "Falsifiable, evidence-backed results with real-corpus checks; no unsupported claims about layout or colors; bounded effort and no scope creep beyond what the user's goals require; no debugger windows or focus stealing; preserve the milestone-#2 contract unchanged; keep unresolved items visible.",
+    "candidates": [
+      {
+        "id": "bank_invariants_as_verifier",
+        "description": "Write a separate verify_ptg command with test-first coverage that checks the universal header relations on all 548 files, the exact 1120+1104*count size model on the 17 DD-trailer files, the 300-record pointer table structure, and reports tile-order and palette as unresolved; stop deeper decoding there."
+      },
+      {
+        "id": "solve_tile_order_by_edge_matching",
+        "description": "Treat tile order as a jigsaw and recover placement by matching tile edge pixels, then confirm by rendering; accept only if seams reach interior-level smoothness."
+      },
+      {
+        "id": "trace_consumer_code_static",
+        "description": "Find in the EE code where PTG tile pointer records and descriptors are consumed (via the Ghidra export and pointer/GIF-tag constants) to learn the real ordering and palette rules."
+      },
+      {
+        "id": "stop_ptg_and_switch",
+        "description": "Leave PTG at the header-level finding and switch to another candidate investigation (model geometry or UI/text grammar)."
+      }
+    ],
+    "requirements": [
+      "Delivers a reproducible, test-covered artifact or a falsified hypothesis (not only a plausible picture).",
+      "Does not require a GUI or debugger window."
+    ]
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/ptg/findings.txt",
+      "sha256": "52b588fe76ed07fae587add95e6975e2f8ba5f1a1f465439c5b10e53e3491ec3",
+      "bytes": 1910
+    }
+  ],
+  "started_utc": "2026-10-04T06:46:29.301Z",
+  "seconds": 1.36,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"bank_invariants_as_verifier\",\n    \"escaped\": false,\n    \"confidence\": 0.93,\n    \"probabilities\": {\n      \"ask_user\": 0,\n      \"none\": 0,\n      \"bank_invariants_as_verifier\": 0.95,\n      \"investigate\": 0,\n      \"solve_tile_order_by_edge_matching\": 0.02,\n      \"trace_consumer_code_static\": 0.03,\n      \"stop_ptg_and_switch\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"bank_invariants_as_verifier\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"bank_invariants_as_verifier\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"solve_tile_order_by_edge_matching\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"solve_tile_order_by_edge_matching\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"trace_consumer_code_static\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"trace_consumer_code_static\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"stop_ptg_and_switch\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"stop_ptg_and_switch\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2699,\n    \"output_tokens\": 422\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "id": "d020-verify-matrix-claims",
+  "purpose": "verify completion matrix claims against primary results",
+  "tool": "jev_verify",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d020.json",
+  "args_sha256": "3c5450b991a3945ff5bac29ef4b4efbc762b3f69b1ac409769bcd94c591fcdac",
+  "arguments": {
+    "claims": [
+      "The three milestone checks (static, offline runtime replay, formats) each passed with exit 0 when replayed in this session, no emulator was started, and the formats result binds to the same corpus ID as the original.",
+      "The corpus is accounted for as 48 segments, 1037 records, 990 files, 604 zlib, 386 raw, 27 banks, 56 models and 548 PTG files.",
+      "Audio: 305 bank descriptors in 27 banks and 20 music streams pass, with the reference decoder exactly equal to ffmpeg on all 305 spans and on 40 music excerpts.",
+      "The bank span terminators split into 206 single flag-3 blocks and 99 flag-1 plus flag-7 end markers.",
+      "PTG: 548 files are classified as 16 sprite, 24 single_unsupported, 17 tiled_dd and 491 tiled_header_only, with zero header relation violations.",
+      "Models: the first u32 equals the name-pool end in all 56 models and the padding is zero in all 56.",
+      "The status classification was split into atomic findings because the compound pass returned review on 10 of 16 items, and eight atomic items still returned review.",
+      "The milestone completion gate is still escalate and issue 2 is still open with nothing pushed or posted.",
+      "Whether the decoded audio is bit-exact with SPU2 hardware has been established.",
+      "The whole game has been reverse engineered."
+    ],
+    "evidence": [
+      {
+        "id": "primary-results",
+        "text": "{\n \"fresh_replays\": {\n  \"static\": {\n   \"status\": \"pass\",\n   \"exit\": 0\n  },\n  \"runtime_offline_replay\": {\n   \"status\": \"pass\",\n   \"exit\": 0,\n   \"started_emulator\": false\n  },\n  \"formats\": {\n   \"status\": \"pass\",\n   \"exit\": 0,\n   \"counts\": {\n    \"segments\": 48,\n    \"records\": 1037,\n    \"files\": 990,\n    \"raw\": 386,\n    \"zlib\": 604,\n    \"banks\": 27,\n    \"models\": 56,\n    \"ptg\": 548,\n    \"discovered_files\": 990\n   },\n   \"corpus_id\": \"e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab\",\n   \"ignored_os_metadata\": [\n    \".DS_Store\",\n    \"3DDATA/.DS_Store\"\n   ]\n  },\n  \"processes_after\": \"no pcsx2 or ghidra process was running before or after\"\n },\n \"audio\": {\n  \"status\": \"pass\",\n  \"banks\": 27,\n  \"bank_descriptors\": 305,\n  \"streams\": 20,\n  \"terminator_classes\": {\n   \"1,7\": 99,\n   \"3\": 206\n  },\n  \"oracle\": {\n   \"tool\": \"ffmpeg\",\n   \"version\": \"ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers\",\n   \"spans_compared\": 305,\n   \"exact_equal\": 305,\n   \"music_excerpts_compared\": 40,\n   \"music_excerpts_equal\": 40\n  }\n },\n \"ptg\": {\n  \"status\": \"pass\",\n  \"files\": 548,\n  \"profiles\": {\n   \"single_unsupported\": 24,\n   \"sprite\": 16,\n   \"tiled_dd\": 17,\n   \"tiled_header_only\": 491\n  },\n  \"header_relation_violations\": 0\n },\n \"model\": {\n  \"status\": \"pass\",\n  \"models\": 56,\n  \"leading_equals_pool_end\": 56,\n  \"zero_padding\": 56\n },\n \"classification_d019\": {\n  \"auto\": 16,\n  \"review\": 8,\n  \"by_class\": {\n   \"verified_behavior\": 7,\n   \"missing_prerequisite\": 4,\n   \"missing_observation\": 3,\n   \"supported_bounded_profile\": 4,\n   \"unresolved_interpretation\": 3,\n   \"not_yet_probed\": 3\n  },\n  \"review_items\": [\n   \"static_inventory\",\n   \"model_geometry_layout\",\n   \"ptg_gear_pixels\",\n   \"ptg_dd_layout\",\n   \"ptg_palette\",\n   \"consumers_unmapped\",\n   \"windowless_capture\",\n   \"broader_scope_decision\"\n  ]\n },\n \"classification_d018_compound\": \"10 of 16 compound items returned review, which is why d019 split them\",\n \"milestone_gate\": \"the milestone completion gate action is escalate and is unchanged; a separate independent reasoner review accepted its bounded claims\",\n \"tracker\": \"issue 2 is still open; local commits are not pushed; nothing was posted to GitHub in this session\"\n}"
+      }
+    ],
+    "auto_accept": 0.8
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/matrix-evidence.json",
+      "sha256": "a035d7fd41385fcbc0b563e1a4d49a0c377a577d01a7d7ec49b52bf8468329b1",
+      "bytes": 2199
+    }
+  ],
+  "started_utc": "2026-10-04T06:57:00.431Z",
+  "seconds": 0.714,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 8,\n    \"contradicted\": 0,\n    \"unsupported\": 2,\n    \"needs_review\": 2\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The three milestone checks (static, offline runtime replay, formats) each passed with exit 0 when replayed in this session, no emulator was started, and the formats result binds to the same corpus ID as the original.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0.08,\n        \"supports\": 0.89\n      },\n      \"confidence\": 0.84,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.92\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The corpus is accounted for as 48 segments, 1037 records, 990 files, 604 zlib, 386 raw, 27 banks, 56 models and 548 PTG files.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Audio: 305 bank descriptors in 27 banks and 20 music streams pass, with the reference decoder exactly equal to ffmpeg on all 305 spans and on 40 music excerpts.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0.01,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The bank span terminators split into 206 single flag-3 blocks and 99 flag-1 plus flag-7 end markers.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"PTG: 548 files are classified as 16 sprite, 24 single_unsupported, 17 tiled_dd and 491 tiled_header_only, with zero header relation violations.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"Models: the first u32 equals the name-pool end in all 56 models and the padding is zero in all 56.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim6\",\n      \"claim\": \"The status classification was split into atomic findings because the compound pass returned review on 10 of 16 items, and eight atomic items still returned review.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0.06,\n        \"supports\": 0.94\n      },\n      \"confidence\": 0.91,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim7\",\n      \"claim\": \"The milestone completion gate is still escalate and issue 2 is still open with nothing pushed or posted.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0,\n        \"supports\": 0.98\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim8\",\n      \"claim\": \"Whether the decoded audio is bit-exact with SPU2 hardware has been established.\",\n      \"verdict\": \"unsupported\",\n      \"probabilities\": {\n        \"says_nothing\": 0.84,\n        \"contradicts\": 0.15,\n        \"supports\": 0.01\n      },\n      \"confidence\": 0.76,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.07\n    },\n    {\n      \"id\": \"claim9\",\n      \"claim\": \"The whole game has been reverse engineered.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"says_nothing\": 0.44,\n        \"contradicts\": 0.56,\n        \"supports\": 0\n      },\n      \"confidence\": 0.33,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.12\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 4087,\n    \"output_tokens\": 620\n  }\n}"
+      }
+    ]
+  }
+}

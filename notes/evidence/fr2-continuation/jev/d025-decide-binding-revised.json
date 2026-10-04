@@ -1,0 +1,53 @@
+{
+  "id": "d025-decide-binding-revised",
+  "purpose": "revised corpus binding decision after d024 low-confidence contradicted result",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d025.json",
+  "args_sha256": "03484fb44f6076ced33a40f47e174bbfeef72efc457c0ab8276468168f815126",
+  "arguments": {
+    "decision": "How should corpus-mode verifiers establish completeness and bind files to the archive baseline, given that d024 selected the manifest-hash option at confidence 0.41 with a contradicted requirement check?",
+    "evidence": "New measurement: format_contracts.archive(HDR, DAT) on the real corpus takes 0.4 seconds and returns, for all 990 files, the archive path (exact case with ;1 suffix), output_bytes and output_sha256. HDR and DAT are already pinned by corpus_identity() baseline hashes, so these per-file values derive from the pinned baseline, not from notes/extracted-manifest.tsv (an unpinned historical file whose binding to the baseline is only checked by the milestone coverage() call). The d024 contradiction: the manifest sha1 prefix check does not bind files to the archive baseline. Review finding: a mirror with 10 .ptg files removed passed. Milestone issue #2: missing required evidence is incomplete; unsupported items listed; complete corpus accounted for; each check independently runnable.",
+    "priorities": "Independent binding to the archive baseline; no hard-coded counts that can drift; missing expected files are incomplete, hash or pairing mismatches are fail; reasonable runtime; smallest correct change shared by the three verifiers.",
+    "candidates": [
+      {
+        "id": "archive_derived_expected_set",
+        "description": "Add a shared corpus_binding module: after corpus_identity(), read HDR/DAT, call archive() and take the expected files for each verifier from the archive entries by suffix (case-insensitive) with their exact paths and output_sha256; missing expected files make the run incomplete; a file whose SHA-256 differs from the archive's fails; unpaired headers or payloads fail; the real-corpus tests still assert the known counts."
+      },
+      {
+        "id": "manifest_hash",
+        "description": "Check each file's sha1 prefix against notes/extracted-manifest.tsv plus hard-coded counts."
+      },
+      {
+        "id": "counts_only",
+        "description": "Hard-code expected counts only."
+      },
+      {
+        "id": "gather_more_evidence",
+        "description": "Investigate more before changing the verifiers."
+      }
+    ],
+    "requirements": [
+      "The expected set and hashes derive from the pinned baseline (HDR/DAT), not from an unpinned file or constants.",
+      "Removing or altering a corpus file cannot yield pass."
+    ]
+  },
+  "evidence_files": [],
+  "started_utc": "2026-10-04T07:06:09.519Z",
+  "seconds": 0.652,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"archive_derived_expected_set\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"archive_derived_expected_set\": 1,\n      \"none\": 0,\n      \"manifest_hash\": 0,\n      \"counts_only\": 0,\n      \"investigate\": 0,\n      \"ask_user\": 0,\n      \"gather_more_evidence\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"archive_derived_expected_set\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"archive_derived_expected_set\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"manifest_hash\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"manifest_hash\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"counts_only\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"counts_only\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2140,\n    \"output_tokens\": 431\n  }\n}"
+      }
+    ]
+  }
+}

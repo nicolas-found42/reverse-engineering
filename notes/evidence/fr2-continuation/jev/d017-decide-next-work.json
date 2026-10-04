@@ -1,0 +1,59 @@
+{
+  "id": "d017-decide-next-work",
+  "purpose": "next work after three verifiers",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d017.json",
+  "args_sha256": "677143ef0fcf9d9e9d1d3bc48b82e460670b01127c48ed7a5f4500ad6f987e3e",
+  "arguments": {
+    "decision": "What should be the next piece of work now?",
+    "evidence": "State after this session (all offline, real PAL corpus, each with an immutable result, tests and a Jev claim check):\nDONE and committed locally (not pushed): (1) verify_audio: 305 bank spans + 20 music streams obey PS-ADPCM structure; decoder matches ffmpeg exactly on all 305 spans and 40 music excerpts (first decoder was falsified and corrected). (2) verify_ptg: universal header relations on 548/548 files; exact layout for 17 DD-trailer files; palette/tile-pointer/descriptor semantics unresolved. (3) verify_model: leading u32 == name-pool end 56/56; geometry unresolved. (4) DS_Store verifier fix.\nUnresolved with measured leads: PTG palette location and tile pointer meaning (pointers are not file offsets; descriptors constant; raw-index render shows a recognizable logo); model geometry (16-bit index runs seen); .mih word1 meaning; flag/loop behavior of music; 491 header-only PTG files.\nNot yet probed: UI/text/cfg grammars (216 .dat, 45 .ui, 16 .cfg, 5 .mbf; no measurement yet); EE/IOP/VU consumers (3446 functions inventoried, loader stages mapped, consumers unmapped).\nConstraints: no debugger windows or focus stealing (static/offline only); milestone-#2 evidence unchanged; the user's broader finish line is not established (issue #2 lists audio codec, mesh, full PTG, UI/text as separate investigations; handoff says resolve scope with one focused question and not to invent a mandate); public posting and push need explicit permission.\nRemaining work required regardless of choice: completion matrix and criteria, evidence bundle, independent code review, final Jev gate.",
+    "priorities": "Deliver the handoff's required completion matrix and final evidence index; add genuinely new falsifiable findings only where cheap and offline; do not invent scope; keep claims bounded; no windows or focus stealing; preserve prior evidence.",
+    "candidates": [
+      {
+        "id": "probe_ui_text_grammars",
+        "description": "Run a bounded offline probe of the .ui/.dat/.cfg/.mbf text and config files: measure printable fraction, grammar tokens and file clusters, using jev_classify for family labels with a manual_review class, and capture only measured structure."
+      },
+      {
+        "id": "trace_ptg_consumers_static",
+        "description": "Find the EE code that consumes PTG pointer records via the existing Ghidra export and constants, to recover tile pointer and palette semantics."
+      },
+      {
+        "id": "consolidate_matrix_bundle_review",
+        "description": "Stop new investigations; write the completion matrix and finish criteria, build the public evidence bundle and index, run independent code review and the final Jev gate."
+      },
+      {
+        "id": "gather_scope_answer_first",
+        "description": "Pause and ask the user for the finish line before doing anything else."
+      }
+    ],
+    "requirements": [
+      "Completes the handoff's required deliverables (matrix, criteria, evidence index, review).",
+      "Can be done without opening any GUI or debugger window."
+    ]
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/ledger-state-d017.txt",
+      "sha256": "8ea8a247c6ab3d2f224d79e10b37505ce8430f9c0fa3e542567782be1090ee33",
+      "bytes": 1591
+    }
+  ],
+  "started_utc": "2026-10-04T06:53:44.113Z",
+  "seconds": 0.709,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"consolidate_matrix_bundle_review\",\n    \"escaped\": false,\n    \"confidence\": 0.92,\n    \"probabilities\": {\n      \"trace_ptg_consumers_static\": 0,\n      \"investigate\": 0,\n      \"ask_user\": 0.02,\n      \"consolidate_matrix_bundle_review\": 0.93,\n      \"none\": 0,\n      \"probe_ui_text_grammars\": 0.03,\n      \"gather_scope_answer_first\": 0.02\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"probe_ui_text_grammars\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"probe_ui_text_grammars\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"trace_ptg_consumers_static\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"trace_ptg_consumers_static\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"consolidate_matrix_bundle_review\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"consolidate_matrix_bundle_review\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"gather_scope_answer_first\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"gather_scope_answer_first\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2311,\n    \"output_tokens\": 425\n  }\n}"
+      }
+    ]
+  }
+}

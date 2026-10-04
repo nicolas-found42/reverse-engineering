@@ -1,0 +1,37 @@
+{
+  "id": "d003-review-dsstore-patch",
+  "purpose": "review of .DS_Store handling patch",
+  "tool": "jev_review",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d003.json",
+  "args_sha256": "6ce7ecca7f30d5881a95514c766b90e2c917cf3419bd29ac9365e6457e93e71d",
+  "arguments": {
+    "request": "Make the FR2 format corpus verifier tolerate Finder-created .DS_Store files without silently skipping them: exclude only exact basename .DS_Store from the extra-path comparison, report each excluded path with sha256 in the result details, and keep every other unexpected file a failure; add a public-CLI regression test.",
+    "diff": "diff --git a/tools/corpus_contract.py b/tools/corpus_contract.py\nindex df9f623..252d615 100644\n--- a/tools/corpus_contract.py\n+++ b/tools/corpus_contract.py\n@@ -31,6 +31,9 @@ BASELINE = {\n }\n \n \n+OS_METADATA_NAME = \".DS_Store\"\n+\n+\n def corpus_identity(game: Path) -> dict:\n     identities = {name: identity(game / name) for name in BASELINE}\n     for name, (size, digest) in BASELINE.items():\n@@ -62,7 +65,15 @@ def coverage(game: Path, manifest: Path) -> dict:\n     }\n     if result[\"counts\"] != expected_counts:\n         failures.append(f\"archive counts differ: {result['counts']}\")\n-    discovered = sorted(p for p in files.rglob(\"*\") if p.is_file())\n+    on_disk = sorted(p for p in files.rglob(\"*\") if p.is_file())\n+    # Finder writes these into any browsed folder; they are never archive members.\n+    # Only this exact basename is excluded, and every exclusion stays in the result.\n+    ignored = [\n+        {\"path\": p.relative_to(files).as_posix(), **identity(p)}\n+        for p in on_disk\n+        if p.name == OS_METADATA_NAME\n+    ]\n+    discovered = [p for p in on_disk if p.name != OS_METADATA_NAME]\n     actual_paths = {p.relative_to(files).as_posix(): p for p in discovered}\n     expected_paths = {f[\"path\"].lstrip(\"/\"): f for f in result[\"files\"]}\n     for path in sorted(actual_paths.keys() ^ expected_paths.keys()):\n@@ -159,6 +170,7 @@ def coverage(game: Path, manifest: Path) -> dict:\n             **{k: len(v) for k, v in families.items()},\n             \"discovered_files\": len(discovered),\n         },\n+        \"ignored_os_metadata\": ignored,\n         \"unsupported_ptg\": sum(p[\"status\"] == \"unsupported\" for p in families[\"ptg\"]),\n         \"failures\": failures,\n     }\ndiff --git a/tools/test_evidence_pipeline.py b/tools/test_evidence_pipeline.py\nindex db66c6b..64defb0 100644\n--- a/tools/test_evidence_pipeline.py\n+++ b/tools/test_evidence_pipeline.py\n@@ -172,6 +172,36 @@ class EvidenceCommands(unittest.TestCase):\n         self.command(\"verify_formats.py\", \"archive\", hdr, self.root / \"missing\")\n         self.assertEqual(len(list((self.root / \"results\").glob(\"*/result.json\"))), 3)\n \n+    def test_corpus_reports_finder_metadata_but_still_fails_other_extras(self):\n+        game = TOOLS.parent / \"games\" / \"ford-racing-2\"\n+        if not (game / \"extracted\" / \"FILES.HDR\").exists():\n+            self.skipTest(\"real corpus integration; absent corpus is `incomplete` for the milestone\")\n+        mirror = self.root / \"mirror\"\n+        mirror.mkdir()\n+        for path in game.rglob(\"*\"):\n+            target = mirror / path.relative_to(game)\n+            if path.is_dir():\n+                target.mkdir(parents=True, exist_ok=True)\n+            elif path.name != \".DS_Store\":\n+                target.symlink_to(path)\n+        files = mirror / \"extracted\" / \"files\"\n+        (files / \".DS_Store\").write_bytes(b\"\\0Bud1\")\n+        (files / \"3DDATA\").mkdir(exist_ok=True)\n+        (files / \"3DDATA\" / \".DS_Store\").write_bytes(b\"\\0Bud1\\1\")\n+\n+        code, result = self.command(\"verify_formats.py\", \"corpus\", mirror)\n+        self.assertEqual((code, result[\"status\"]), (0, \"pass\"), result[\"diagnostics\"])\n+        ignored = result[\"details\"][\"ignored_os_metadata\"]\n+        self.assertEqual(\n+            sorted(entry[\"path\"] for entry in ignored), [\".DS_Store\", \"3DDATA/.DS_Store\"]\n+        )\n+        self.assertTrue(all(len(entry[\"sha256\"]) == 64 for entry in ignored))\n+\n+        (files / \"notes.txt\").write_bytes(b\"not part of the archive\")\n+        code, result = self.command(\"verify_formats.py\", \"corpus\", mirror)\n+        self.assertEqual((code, result[\"status\"]), (1, \"fail\"))\n+        self.assertIn(\"extraction path missing or additional: notes.txt\", result[\"diagnostics\"])\n+\n     def test_static_inventory_beyond_200_and_missing_evidence(self):\n         executable = self.write(\"executable\", b\"ELF fixture\")\n         functions = [\n",
+    "tests": "Full suite (sdk-venv python 3.12): Ran 16 tests OK exit=0. pyright on changed files: 0 errors. Real corpus: verify_formats.py corpus games/ford-racing-2 -> status pass exit 0 (previously fail with 2 .DS_Store diagnostics). New test was red first for the right reason (fail vs expected pass) then green."
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/patch-dsstore.diff",
+      "sha256": "c9c16f7b201cf1a794090815e142d3c215bf5e7004b14d3aa20c0c4dccfbbb3e",
+      "bytes": 3865
+    }
+  ],
+  "started_utc": "2026-10-04T06:25:33.246Z",
+  "seconds": 0.849,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_review\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"truncated\": false,\n  \"safe_to_apply\": 0.84,\n  \"scores\": {\n    \"correctness\": {\n      \"score\": 1.97,\n      \"confidence\": 0.95,\n      \"probabilities\": {\n        \"0\": 0.01,\n        \"1\": 0.02,\n        \"2\": 0.97\n      }\n    },\n    \"spec_match\": {\n      \"score\": 1.98,\n      \"confidence\": 0.97,\n      \"probabilities\": {\n        \"0\": 0,\n        \"1\": 0.02,\n        \"2\": 0.98\n      }\n    },\n    \"test_gap\": {\n      \"score\": 0.23,\n      \"confidence\": 0.66,\n      \"probabilities\": {\n        \"0\": 0.78,\n        \"1\": 0.21,\n        \"2\": 0.01\n      }\n    },\n    \"blast_radius\": {\n      \"score\": 0.83,\n      \"confidence\": 0.53,\n      \"probabilities\": {\n        \"0\": 0.24,\n        \"1\": 0.69,\n        \"2\": 0.07\n      }\n    }\n  },\n  \"weights\": {\n    \"correctness\": 0.4,\n    \"spec_match\": 0.3,\n    \"test_gap\": 0.15,\n    \"blast_radius\": 0.15\n  },\n  \"thresholds\": {\n    \"auto_accept\": 0.8,\n    \"review_at\": 0.5,\n    \"composite_floor\": 0.7\n  },\n  \"action\": \"review\",\n  \"composite\": 0.9115000000000001,\n  \"reason_codes\": [\n    \"confidence_below_auto_accept\"\n  ],\n  \"limiting_rubrics\": [\n    \"blast_radius\"\n  ],\n  \"usage\": {\n    \"input_tokens\": 1968,\n    \"output_tokens\": 79\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,860 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T072405Z-4a02570ecda344368721411ebd0f61a6",
+  "check": "model:corpus",
+  "command": [
+    "tools/verify_model.py",
+    "corpus",
+    "games/ford-racing-2"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "models": 56,
+    "leading_equals_pool_end": 56,
+    "zero_padding": 56,
+    "pad_lengths": {
+      "0": 1,
+      "1": 7,
+      "2": 1,
+      "3": 1,
+      "4": 2,
+      "5": 4,
+      "6": 5,
+      "7": 7,
+      "8": 4,
+      "9": 5,
+      "10": 4,
+      "11": 1,
+      "12": 3,
+      "13": 2,
+      "14": 2,
+      "15": 7
+    },
+    "file_results": [
+      {
+        "path": "3DDATA/debug.ps2;1",
+        "name_pool_end": 132,
+        "geometry_region_start": 144,
+        "pad_length": 12,
+        "geometry_bytes": 17120,
+        "geometry_sha256": "a155fdd605116dcba067e4aa72bc73c1257a3ce784f8528796598696a39e19e2",
+        "names": 7,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/misc.ps2;1",
+        "name_pool_end": 881,
+        "geometry_region_start": 896,
+        "pad_length": 15,
+        "geometry_bytes": 236048,
+        "geometry_sha256": "ed1d48f2255dbb74f7312ff951f2803fbcca85a911a94ca6ee8bf12fd6b29d49",
+        "names": 49,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/49COUPE.PS2;1",
+        "name_pool_end": 431,
+        "geometry_region_start": 432,
+        "pad_length": 1,
+        "geometry_bytes": 1146224,
+        "geometry_sha256": "8a350be44ff13e3d2bc424db51541895a05426a599a253c23029ede96a637934",
+        "names": 29,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/49MOVIE.PS2;1",
+        "name_pool_end": 432,
+        "geometry_region_start": 432,
+        "pad_length": 0,
+        "geometry_bytes": 487280,
+        "geometry_sha256": "7b1503c7556b7c7af18b55e21c4330e97420c3b9d03e3513332e0afacedc1e15",
+        "names": 29,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/COBRA.PS2;1",
+        "name_pool_end": 486,
+        "geometry_region_start": 496,
+        "pad_length": 10,
+        "geometry_bytes": 1246704,
+        "geometry_sha256": "448b8a681b10fb9705ea21cb445bd3b7c2e46279f766ff4b1ca9a4f5a1f36ecc",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/CROWNV.PS2;1",
+        "name_pool_end": 475,
+        "geometry_region_start": 480,
+        "pad_length": 5,
+        "geometry_bytes": 1234400,
+        "geometry_sha256": "9d55a1a71907b37a0fcaddb3d9f138143f4c0eea12ebf43abf36440a183dc90c",
+        "names": 31,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/EX.PS2;1",
+        "name_pool_end": 599,
+        "geometry_region_start": 608,
+        "pad_length": 9,
+        "geometry_bytes": 1338432,
+        "geometry_sha256": "86dad97ca7aa4bd40f5becc7e424b1325ff29a137e5417c7e4ddcc4dd2603c7e",
+        "names": 36,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/EXPLORER.PS2;1",
+        "name_pool_end": 489,
+        "geometry_region_start": 496,
+        "pad_length": 7,
+        "geometry_bytes": 1324656,
+        "geometry_sha256": "e796ad8b809e3c3bc1fd9b6ef4166855aa49208550a834b78de4fc214f7262ec",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F100_56.PS2;1",
+        "name_pool_end": 470,
+        "geometry_region_start": 480,
+        "pad_length": 10,
+        "geometry_bytes": 1165440,
+        "geometry_sha256": "a6665ebf3f47e3af98caa6b4cf58f5070822e3fb2bf7466109f729cbf73704b2",
+        "names": 31,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F100_65.PS2;1",
+        "name_pool_end": 431,
+        "geometry_region_start": 432,
+        "pad_length": 1,
+        "geometry_bytes": 1190560,
+        "geometry_sha256": "7d50097a6e166464c1d6e23103fa28b9b01d9c170170cee5d0f15f5c31eb156c",
+        "names": 29,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F150.PS2;1",
+        "name_pool_end": 450,
+        "geometry_region_start": 464,
+        "pad_length": 14,
+        "geometry_bytes": 1339568,
+        "geometry_sha256": "f26d3a1b36356d942a924d8530322283649a4fdf979391dd8e196bb761fc94b5",
+        "names": 30,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F150_04.PS2;1",
+        "name_pool_end": 488,
+        "geometry_region_start": 496,
+        "pad_length": 8,
+        "geometry_bytes": 1304576,
+        "geometry_sha256": "a099d8f041e7c30536ceed8adf9114d5c86646272e631982eec328a1ba11c8cb",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F350.PS2;1",
+        "name_pool_end": 485,
+        "geometry_region_start": 496,
+        "pad_length": 11,
+        "geometry_bytes": 1298816,
+        "geometry_sha256": "2ab6ffabd6c2a2bf936f0e515c8099ac8c3c271a855476d536c08fd7efe699ff",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FOCUSSVT.PS2;1",
+        "name_pool_end": 489,
+        "geometry_region_start": 496,
+        "pad_length": 7,
+        "geometry_bytes": 1252896,
+        "geometry_sha256": "f10dac91301d774b31c7b1832b8c5d819329061bfddfb997d8f7409e64f556b7",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FOCUSWRC.PS2;1",
+        "name_pool_end": 569,
+        "geometry_region_start": 576,
+        "pad_length": 7,
+        "geometry_bytes": 1046048,
+        "geometry_sha256": "42349a8c3601b9975a5a4dc11fa224f7e78ba09d6805971517157a8937e1aac1",
+        "names": 36,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FORDGT.PS2;1",
+        "name_pool_end": 643,
+        "geometry_region_start": 656,
+        "pad_length": 13,
+        "geometry_bytes": 1321392,
+        "geometry_sha256": "fb7ec5a90fd0bb913041afe88b84c474e7a402cdad626343d011ce0a9905a7fc",
+        "names": 40,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FORTYNIN.PS2;1",
+        "name_pool_end": 433,
+        "geometry_region_start": 448,
+        "pad_length": 15,
+        "geometry_bytes": 1021808,
+        "geometry_sha256": "945d1235a3debf0cfab292365ab7b46aa5b5e0fd297d7ab3297dc978ceda0a32",
+        "names": 29,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FR200.PS2;1",
+        "name_pool_end": 562,
+        "geometry_region_start": 576,
+        "pad_length": 14,
+        "geometry_bytes": 1282832,
+        "geometry_sha256": "68147cb11a9d71880951c6ba696b9180ffb70e277fbd236daf1d9bc63ef8e914",
+        "names": 36,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FR500.PS2;1",
+        "name_pool_end": 486,
+        "geometry_region_start": 496,
+        "pad_length": 10,
+        "geometry_bytes": 1283488,
+        "geometry_sha256": "7ed744b9e3df5f0a8a19a5b6f3f9e0a2d4f5554197b3cb16283dae1709337e21",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/G_TORINO.PS2;1",
+        "name_pool_end": 489,
+        "geometry_region_start": 496,
+        "pad_length": 7,
+        "geometry_bytes": 500576,
+        "geometry_sha256": "d90090eb0c74dd526b81aedc6a0f5316740a994fc0d499cab2e619c8fd536365",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/GT90.PS2;1",
+        "name_pool_end": 641,
+        "geometry_region_start": 656,
+        "pad_length": 15,
+        "geometry_bytes": 1263904,
+        "geometry_sha256": "5773b4534ba82f1a2983da2db9ea3f09a3da599c5069c05ebb537e9e05a3d04e",
+        "names": 40,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/INDIGO.PS2;1",
+        "name_pool_end": 759,
+        "geometry_region_start": 768,
+        "pad_length": 9,
+        "geometry_bytes": 1318752,
+        "geometry_sha256": "4c89d4986fe29d605edaf7ff396be663177f4b0f106fe13bb797e425238c06b4",
+        "names": 44,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/LIGHTNIN.PS2;1",
+        "name_pool_end": 489,
+        "geometry_region_start": 496,
+        "pad_length": 7,
+        "geometry_bytes": 1325040,
+        "geometry_sha256": "926df252c7ea077bc97869df191037d268d122d835cb1e7c2f46050492d5d562",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MACH1A.PS2;1",
+        "name_pool_end": 442,
+        "geometry_region_start": 448,
+        "pad_length": 6,
+        "geometry_bytes": 440896,
+        "geometry_sha256": "a51b5cc683b8b7bb6cfaef4213c2b8b382e51cc075021a1e7c9ca554de48955e",
+        "names": 29,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MACH1S.PS2;1",
+        "name_pool_end": 442,
+        "geometry_region_start": 448,
+        "pad_length": 6,
+        "geometry_bytes": 438176,
+        "geometry_sha256": "364a536cdb33db7d5974c442efa1ffc6cd089ef5b50fb1b21761abf22826a6de",
+        "names": 29,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MACH3.PS2;1",
+        "name_pool_end": 474,
+        "geometry_region_start": 480,
+        "pad_length": 6,
+        "geometry_bytes": 1215008,
+        "geometry_sha256": "980fb26d2a798e2f74b31b28f4aa788eac865e09fc138072514ffd650294928b",
+        "names": 31,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MUST68.PS2;1",
+        "name_pool_end": 487,
+        "geometry_region_start": 496,
+        "pad_length": 9,
+        "geometry_bytes": 1223824,
+        "geometry_sha256": "568b4e96db21a0e229e5a51e669e96e20197d4f3fb784674809f9d93b1e1db89",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MUST68B.PS2;1",
+        "name_pool_end": 488,
+        "geometry_region_start": 496,
+        "pad_length": 8,
+        "geometry_bytes": 508336,
+        "geometry_sha256": "81c64f0218e9a267eead98482cc9e17b405bc8760fffae1e6e4d72d24934e081",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MUSTCON.PS2;1",
+        "name_pool_end": 443,
+        "geometry_region_start": 448,
+        "pad_length": 5,
+        "geometry_bytes": 1261552,
+        "geometry_sha256": "01ac2ea3c962ad9390f6712fad4cd4cb4e37fb45c31c82b66baa4b48b5d4f10b",
+        "names": 30,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/POWERST.PS2;1",
+        "name_pool_end": 488,
+        "geometry_region_start": 496,
+        "pad_length": 8,
+        "geometry_bytes": 1231376,
+        "geometry_sha256": "7582712503887f562b49fac91504a4f08797b7665d8795369701fe33a1ad68df",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSA.PS2;1",
+        "name_pool_end": 527,
+        "geometry_region_start": 528,
+        "pad_length": 1,
+        "geometry_bytes": 3125568,
+        "geometry_sha256": "ebefea39e3fc8681cccc2d09b46eefa62d87b06703d0fb55ead4bd0211c30748",
+        "names": 34,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSB.PS2;1",
+        "name_pool_end": 527,
+        "geometry_region_start": 528,
+        "pad_length": 1,
+        "geometry_bytes": 3124592,
+        "geometry_sha256": "511cd9716bd788c60859ac3aad81d08d52f3d72211e5f0cf5fc6850798839a34",
+        "names": 34,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSC.PS2;1",
+        "name_pool_end": 527,
+        "geometry_region_start": 528,
+        "pad_length": 1,
+        "geometry_bytes": 3123504,
+        "geometry_sha256": "279c128084d5463b627767eb9afb942113c63ad04d22ed50bde9fdcf7fdb9421",
+        "names": 34,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSD.PS2;1",
+        "name_pool_end": 527,
+        "geometry_region_start": 528,
+        "pad_length": 1,
+        "geometry_bytes": 3122464,
+        "geometry_sha256": "030d5791374b8d5e71fa9f665180b9098c7d69668ae3e1bf91195d170163014f",
+        "names": 34,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TBIRD.PS2;1",
+        "name_pool_end": 441,
+        "geometry_region_start": 448,
+        "pad_length": 7,
+        "geometry_bytes": 1199856,
+        "geometry_sha256": "378d041fc18c71f86c54802664ced8907f40b2880fc45e01b221662e1382777e",
+        "names": 30,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TBIRD2.PS2;1",
+        "name_pool_end": 487,
+        "geometry_region_start": 496,
+        "pad_length": 9,
+        "geometry_bytes": 1248736,
+        "geometry_sha256": "d3058de4f160a0adb8286f1dd521ad77fea857612328ee6ca02d0714398bfadd",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TBIRDM.PS2;1",
+        "name_pool_end": 487,
+        "geometry_region_start": 496,
+        "pad_length": 9,
+        "geometry_bytes": 513520,
+        "geometry_sha256": "2938966535edeb6a09166a47c4eb9f1810c99843575e9f789beed89675d08061",
+        "names": 32,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/BayA.PS2;1",
+        "name_pool_end": 7243,
+        "geometry_region_start": 7248,
+        "pad_length": 5,
+        "geometry_bytes": 4414720,
+        "geometry_sha256": "ddf75e0be8238c3971fda6c94b11b676478dcb6200ceefcd1cb3710c866479c6",
+        "names": 514,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/BayB.PS2;1",
+        "name_pool_end": 18649,
+        "geometry_region_start": 18656,
+        "pad_length": 7,
+        "geometry_bytes": 6035088,
+        "geometry_sha256": "be38e036ca7d0f7a844e2de85db7afec1400db3ba4a0f6f1bb4a21ecda841295",
+        "names": 1313,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/BayC.PS2;1",
+        "name_pool_end": 11841,
+        "geometry_region_start": 11856,
+        "pad_length": 15,
+        "geometry_bytes": 5454336,
+        "geometry_sha256": "2e764be57c78469a3c6a3d4941379e983c1ca1673f50d4d79699e9928124400e",
+        "names": 792,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Brands.PS2;1",
+        "name_pool_end": 9076,
+        "geometry_region_start": 9088,
+        "pad_length": 12,
+        "geometry_bytes": 5440704,
+        "geometry_sha256": "69750fcc065d499accc30b6abc75298843cc5edd64797b314fd698645b3d65b5",
+        "names": 666,
+        "groups": 7,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Canyon.PS2;1",
+        "name_pool_end": 4307,
+        "geometry_region_start": 4320,
+        "pad_length": 13,
+        "geometry_bytes": 4245568,
+        "geometry_sha256": "f3c11cf2389ea2feddc2788bd6bacfaeac61708638d2ed14e4e7336c36279dc1",
+        "names": 280,
+        "groups": 7,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/DesA.PS2;1",
+        "name_pool_end": 9551,
+        "geometry_region_start": 9552,
+        "pad_length": 1,
+        "geometry_bytes": 4514992,
+        "geometry_sha256": "5ded838a9543df20074bae8559f9038bef690dc61f92cd500361164572946140",
+        "names": 678,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/DesB.PS2;1",
+        "name_pool_end": 6797,
+        "geometry_region_start": 6800,
+        "pad_length": 3,
+        "geometry_bytes": 4529424,
+        "geometry_sha256": "1ade2eb398c32b281fa2b5e7008508590a350d4290e625f3ae91a7674318f396",
+        "names": 481,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/DesC.PS2;1",
+        "name_pool_end": 7770,
+        "geometry_region_start": 7776,
+        "pad_length": 6,
+        "geometry_bytes": 4472032,
+        "geometry_sha256": "99feb517258ff1dc69fdc69cf0109465421ddea6e43c0f40de2e79780906a9ec",
+        "names": 553,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/FlorA.PS2;1",
+        "name_pool_end": 7588,
+        "geometry_region_start": 7600,
+        "pad_length": 12,
+        "geometry_bytes": 5138928,
+        "geometry_sha256": "279a643140c61b4cecfe55e46cc0d2917ce466b811877a68bff97cdb68a7948f",
+        "names": 495,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/FlorB.PS2;1",
+        "name_pool_end": 12844,
+        "geometry_region_start": 12848,
+        "pad_length": 4,
+        "geometry_bytes": 7003312,
+        "geometry_sha256": "8c1c4e38368a200383db416af2cb6eb7801f469e0a99765a4ee331657de99ead",
+        "names": 793,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/FlorC.PS2;1",
+        "name_pool_end": 11537,
+        "geometry_region_start": 11552,
+        "pad_length": 15,
+        "geometry_bytes": 6121152,
+        "geometry_sha256": "3627357ee33f420c035fcc3ad51776ff3df2ab154575f272239a6d9fece19143",
+        "names": 717,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Fukuoka.PS2;1",
+        "name_pool_end": 28203,
+        "geometry_region_start": 28208,
+        "pad_length": 5,
+        "geometry_bytes": 5525952,
+        "geometry_sha256": "ae643ec1bbc286e203e43a5a567b3177a0a0b5601eee8052f8ca76ffc63d7fc8",
+        "names": 1670,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/JungA.PS2;1",
+        "name_pool_end": 5112,
+        "geometry_region_start": 5120,
+        "pad_length": 8,
+        "geometry_bytes": 3277648,
+        "geometry_sha256": "555c520e3a16fe0aa4d641608ce6ca6f0bc33eaf1bccc671b7fc1ec03c97ab79",
+        "names": 347,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/JungB.PS2;1",
+        "name_pool_end": 10081,
+        "geometry_region_start": 10096,
+        "pad_length": 15,
+        "geometry_bytes": 3800016,
+        "geometry_sha256": "9dd3bf0889fd748424e8c4c536fe65f72785df06408ac03e4edb91152450c138",
+        "names": 676,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/JungC.PS2;1",
+        "name_pool_end": 7777,
+        "geometry_region_start": 7792,
+        "pad_length": 15,
+        "geometry_bytes": 3741392,
+        "geometry_sha256": "6781bee6a699d08c351fd78d69e889539c2a5a84d37bb2d74b6258ab11909a61",
+        "names": 525,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/oval2.PS2;1",
+        "name_pool_end": 12206,
+        "geometry_region_start": 12208,
+        "pad_length": 2,
+        "geometry_bytes": 3918784,
+        "geometry_sha256": "df375c43e45c89798d2a136908826fa79d876446a0e80567035368deda0f334b",
+        "names": 827,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/oval3.PS2;1",
+        "name_pool_end": 9930,
+        "geometry_region_start": 9936,
+        "pad_length": 6,
+        "geometry_bytes": 3043200,
+        "geometry_sha256": "2c07eb9103dc69303cb8f7eb93f5723d7daf03db51734910db88d70a9042c31f",
+        "names": 682,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Spring.PS2;1",
+        "name_pool_end": 8934,
+        "geometry_region_start": 8944,
+        "pad_length": 10,
+        "geometry_bytes": 5166288,
+        "geometry_sha256": "ca19a7a6c323d1fd2f7b90fdcfcfe909b526bc6e266978eabc71862bf39680cf",
+        "names": 551,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Spring2.PS2;1",
+        "name_pool_end": 9276,
+        "geometry_region_start": 9280,
+        "pad_length": 4,
+        "geometry_bytes": 4968384,
+        "geometry_sha256": "f746ac8c8b1449c286db908475585a09232127caa742eb4c2126ef878ff440fe",
+        "names": 548,
+        "groups": 9,
+        "unresolved": [
+          "geometry: not decoded; the region after the pad holds data this check only hashes",
+          "later header: the words at the aligned geometry start are not a stable structure across files"
+        ]
+      }
+    ],
+    "claim_limits": "Name-pool boundary only: no geometry or mesh decoding is claimed.",
+    "failures": []
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 31324,
+      "sha256": "5f5d29cec5f418e6d698a5e135fb333a8c568e7b7043376a7f5baa3ee2d903bc"
+    }
+  }
+}

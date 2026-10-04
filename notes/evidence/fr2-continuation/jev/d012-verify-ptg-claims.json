@@ -1,0 +1,65 @@
+{
+  "id": "d012-verify-ptg-claims",
+  "purpose": "verify PTG profile claims vs corpus result",
+  "tool": "jev_verify",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d012.json",
+  "args_sha256": "c2af4c61579a691b386027cd2c159196d4b71d6aafd0a987f3d3ccbce49b614b",
+  "arguments": {
+    "claims": [
+      "In all 548 FR2 .ptg files the header satisfies count == columns*rows, stride == cell, columns == ceil(width/cell) and rows == ceil(height/cell), with zero violations.",
+      "The 17 .ptg files whose last header word is 0xDDDDDDDD all have sizes exactly equal to 1120 + 1104 times their tile count.",
+      "In those 17 files the first two float words of each 16-byte pointer record equal the fraction of the tile that lies inside the image at that tile's row-major position, which is also what identifies the 10 half-height tiles of posnscrn.ptg.",
+      "The pointer values in those records are not offsets into the file because they exceed the file size.",
+      "No palette was located in these files, and palette location, pointer meaning and descriptor constants are recorded as unresolved rather than decoded.",
+      "The tiles of these 17 files are stored in a permuted order that is not row-major.",
+      "The colors of the PTG images have been decoded.",
+      "All 48 tests pass and pyright reports zero errors on the new files."
+    ],
+    "evidence": [
+      {
+        "id": "corpus-result",
+        "text": "{\"result_file\": \".scratch/evidence/ptg/20261004T064917Z-e09d51f9587a4d92ba02343f7c572221/result.json\", \"status\": \"pass\", \"diagnostics\": [], \"files\": 548, \"profiles\": {\"single_unsupported\": 24, \"sprite\": 16, \"tiled_dd\": 17, \"tiled_header_only\": 491}, \"header_relation_violations\": 0, \"tiled_dd_files\": [{\"path\": \"GRAPHICS/GAME/StartEU.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0x80213e0\", \"0x83963b0\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x0\"}, {\"path\": \"GRAPHICS/GAME/StartUS.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0x8022da0\", \"0x835a1a0\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x0\"}, {\"path\": \"GRAPHICS/GAME/barbig.ptg;1\", \"count\": 16, \"grid\": [4, 4], \"size\": 18784, \"size_model\": 18784, \"pointer_range\": [\"0x74407e0\", \"0x7834230\"], \"pointer_values_within_file\": false, \"tail_fill\": \"varied\"}, {\"path\": \"GRAPHICS/GAME/posnscrn.ptg;1\", \"count\": 80, \"grid\": [10, 8], \"size\": 89440, \"size_model\": 89440, \"pointer_range\": [\"0x1c8c590\", \"0x7c05bc0\"], \"pointer_values_within_file\": false, \"tail_fill\": \"varied\"}, {\"path\": \"GRAPHICS/LOADING/DolbyPro.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xe451d0\", \"0x1caabd0\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x1a\"}, {\"path\": \"GRAPHICS/LOADING/LOGO_EMP.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc16450\", \"0x1855610\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0xfe\"}, {\"path\": \"GRAPHICS/LOADING/PCLEGLEU.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc1a390\", \"0x1873630\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0xfe\"}, {\"path\": \"GRAPHICS/LOADING/PCLEGLUS.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc130d0\", \"0x174e200\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0xfe\"}, {\"path\": \"GRAPHICS/LOADING/freq.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0x13705d0\", \"0x1c95070\"], \"pointer_values_within_file\": false, \"tail_fill\": \"varied\"}, {\"path\": \"GRAPHICS/LOADING/gotham.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc1eb80\", \"0x1c76f00\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x0\"}, {\"path\": \"GRAPHICS/LOADING/loadEU.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc11cc0\", \"0x13f4780\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x1\"}, {\"path\": \"GRAPHICS/LOADING/loadUS.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc12e50\", \"0x142fe70\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x1\"}, {\"path\": \"GRAPHICS/LOADING/logo_rw.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc14ad0\", \"0x1888d00\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0xf6\"}, {\"path\": \"GRAPHICS/LOADING/pslegleu.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc120a0\", \"0x165ed90\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x0\"}, {\"path\": \"GRAPHICS/LOADING/psleglus.ptg;1\", \"count\": 280, \"grid\": [20, 14], \"size\": 310240, \"size_model\": 310240, \"pointer_range\": [\"0xc17170\", \"0x1b79c40\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x0\"}, {\"path\": \"GRAPHICS/LOADING/xblegleu.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc119e0\", \"0x141c840\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x0\"}, {\"path\": \"GRAPHICS/LOADING/xbleglus.ptg;1\", \"count\": 300, \"grid\": [20, 15], \"size\": 332320, \"size_model\": 332320, \"pointer_range\": [\"0xc1b6e0\", \"0x1aa63b0\"], \"pointer_values_within_file\": false, \"tail_fill\": \"0x0\"}], \"claim_limits\": \"Structure only: no palette, tile-pointer or pixel-color decoding is claimed.\", \"verifier_rule_for_pointer_record_floats\": \"for tile i the record words 0 and 1 must equal float32(min(32,width-(i%columns)*32)/32) and float32(min(32,height-(i//columns)*32)/32); the verifier raises on any mismatch, and the real-corpus run passed on all 17 files\", \"posnscrn_observation\": \"posnscrn.ptg is 320x240 (10 columns, 8 rows, 240 = 7*32+16); its pointer records 0..69 hold (1.0,1.0) and records 70..79, exactly the last tile row, hold (1.0,0.5); all 4566 other records in the 17 files hold (1.0,1.0)\", \"visual_observation_not_machine_verified\": \"Rendering StartEU.ptg pixel bytes as 8-bit grayscale in 32x32 row-major tiles shows a recognizable Ford oval logo and lettering with banding; applying GS PSMT8 unswizzle made it worse; the trailing 1040 bytes are uniform fill (0x00, 0xFE, 0x1A, ...) in 15 of 17 files, so no palette was located.\"}"
+      },
+      {
+        "id": "tests",
+        "text": "................................................\n----------------------------------------------------------------------\nRan 48 tests in 25.153s\n\nOK\ntests_exit=0\n\npyright: 0 errors, 0 warnings, 0 informations"
+      }
+    ],
+    "auto_accept": 0.8
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/ptg/evidence-summary.json",
+      "sha256": "688aee6091ad4cec142e8d9e1e1da43bf1d01f3ad0f7e36ccfc4d285ff8f9b98",
+      "bytes": 5886
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/ptg/tests.log",
+      "sha256": "a8be75c669bca905e63dc7ebcb3c17b16744116364eb1c965a78b7e7f5d792dc",
+      "bytes": 161
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/ptg/pyright.log",
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332",
+      "bytes": 37
+    }
+  ],
+  "started_utc": "2026-10-04T06:49:38.699Z",
+  "seconds": 0.842,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 6,\n    \"contradicted\": 1,\n    \"unsupported\": 1,\n    \"needs_review\": 3\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"In all 548 FR2 .ptg files the header satisfies count == columns*rows, stride == cell, columns == ceil(width/cell) and rows == ceil(height/cell), with zero violations.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.82,\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0.15\n      },\n      \"confidence\": 0.73,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.71\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The 17 .ptg files whose last header word is 0xDDDDDDDD all have sizes exactly equal to 1120 + 1104 times their tile count.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.39,\n        \"contradicts\": 0.29,\n        \"says_nothing\": 0.32\n      },\n      \"confidence\": 0.08,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.42\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"In those 17 files the first two float words of each 16-byte pointer record equal the fraction of the tile that lies inside the image at that tile's row-major position, which is also what identifies the 10 half-height tiles of posnscrn.ptg.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.96,\n        \"contradicts\": 0.04,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.93,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.94\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The pointer values in those records are not offsets into the file because they exceed the file size.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.92\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"No palette was located in these files, and palette location, pointer meaning and descriptor constants are recorded as unresolved rather than decoded.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.97,\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0.01\n      },\n      \"confidence\": 0.96,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.85\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"The tiles of these 17 files are stored in a permuted order that is not row-major.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"supports\": 0.03,\n        \"contradicts\": 0.65,\n        \"says_nothing\": 0.32\n      },\n      \"confidence\": 0.47,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.13\n    },\n    {\n      \"id\": \"claim6\",\n      \"claim\": \"The colors of the PTG images have been decoded.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"supports\": 0.03,\n        \"contradicts\": 0.95,\n        \"says_nothing\": 0.02\n      },\n      \"confidence\": 0.93,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-result\",\n      \"same_subject\": 0.54\n    },\n    {\n      \"id\": \"claim7\",\n      \"claim\": \"All 48 tests pass and pyright reports zero errors on the new files.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"tests\",\n      \"same_subject\": 0.97\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 5638,\n    \"output_tokens\": 819\n  }\n}"
+      }
+    ]
+  }
+}

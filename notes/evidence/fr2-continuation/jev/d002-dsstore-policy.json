@@ -1,0 +1,66 @@
+{
+  "id": "d002-dsstore-policy",
+  "purpose": "Choose handling for .DS_Store corpus extras",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d002.json",
+  "args_sha256": "70d10686b2a25fe13244a83e53999b7bd683789501938fd6442963df6de0db19",
+  "arguments": {
+    "decision": "How should the format verifier handle Finder-created .DS_Store files that appeared in the corpus after the last recorded pass?",
+    "evidence": "Observed 2026-10-04: python3 tools/verify_formats.py corpus games/ford-racing-2 returned status=fail exit=1 with exactly two diagnostics: 'extraction path missing or additional: .DS_Store' and '... 3DDATA/.DS_Store'. Prior PASS run was at 01:34:56 local; the macOS Finder metadata files games/ford-racing-2/extracted/files/.DS_Store (and 3DDATA/.DS_Store) have mtimes 01:38:52, i.e. created AFTER that pass by Finder browsing. All 990 expected paths matched; hashes/count checks produced no other failure. corpus_contract.coverage() computes sorted(actual_paths.keys() ^ expected_paths.keys()) over files.rglob('*') and reports every difference as a failure. The directory is user-owned game corpus; Finder will recreate .DS_Store whenever the folder is viewed. Issue #2 requires: report all discovered inputs, never silently skip files, preserve exact case and ;1 suffixes, hashes identify corpus.",
+    "priorities": "Never silently exclude discovered files to obtain a pass (issue #2). Preserve the user's working files and corpus; do not mutate game directories needlessly. A verifier should be robust against known OS metadata but every exclusion must be visible in the result. Smallest correct change with a public-seam regression test.",
+    "candidates": [
+      {
+        "id": "delete_ds_store",
+        "description": "Delete the .DS_Store files from the corpus directory and rerun; leave verifier unchanged."
+      },
+      {
+        "id": "ignore_exact_basename_reported",
+        "description": "Change the corpus verifier to exclude only files whose basename is exactly .DS_Store from the extra-path comparison, and record each excluded path with its SHA-256 in the result as ignored OS metadata (visible, not silent); add a failing-then-passing CLI test showing .DS_Store is ignored and reported while any other extra file still fails."
+      },
+      {
+        "id": "ignore_hidden_files",
+        "description": "Exclude all dot-files and hidden files from the comparison without reporting them."
+      },
+      {
+        "id": "leave_failing_report_incomplete",
+        "description": "Leave the verifier strict; report the formats check as failing until the user removes the Finder files."
+      }
+    ],
+    "requirements": [
+      {
+        "id": "visible",
+        "description": "Every excluded path remains visible in the result (not silent)."
+      },
+      {
+        "id": "nomutate",
+        "description": "Does not delete or modify files in the user's game corpus."
+      }
+    ]
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/replay/formats.log",
+      "sha256": "1217a2440b71c31f5c834f854f60a56113a06e122d0e34c77f538762f6b60b31",
+      "bytes": 255
+    }
+  ],
+  "started_utc": "2026-10-04T06:23:51.447Z",
+  "seconds": 1.011,
+  "rpc_error": null,
+  "is_error": true,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Input validation error: Invalid arguments for tool jev_decide: requirements.0: Invalid input: expected string, received object, requirements.1: Invalid input: expected string, received object"
+      }
+    ],
+    "isError": true
+  }
+}

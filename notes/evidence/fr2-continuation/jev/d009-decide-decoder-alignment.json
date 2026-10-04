@@ -1,0 +1,64 @@
+{
+  "id": "d009-decide-decoder-alignment",
+  "purpose": "decoder arithmetic after oracle mismatch",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d009.json",
+  "args_sha256": "2071a7962bc41b0d883ad3df2abd7c7e829850d4655bb4b016407e9e024742fe",
+  "arguments": {
+    "decision": "How should the reference PS-ADPCM decoder arithmetic and flag-7 handling be changed after the ffmpeg oracle disagreement, and how should the claim be worded?",
+    "evidence": "Independent oracle experiment, 2026-10-04, ffmpeg 9.0.2 decoder adpcm_psx via VAGp container, real FR2 corpus (read-only).\n1) Initial decoder (feedback term (p1*k0+p2*k1+32)>>6 floor; flag-7 block data decoded normally): ffmpeg comparison over all 305 bank spans: lengths equal 305/305, exact sample equality 1/305, max abs diff 28672. First divergence in speech.msb span 2 at sample 56: first block with filter 2 (hdr 0x2c), mine -7 vs ffmpeg -6, then grows.\n2) Variant search on that span (10808 samples), 16 combinations of rounding term (0 or +32), division (floor >>6 vs truncate toward zero), clipping of history (clipped/raw), and shift implementation (sar vs div): differing samples: rnd=0+floor: 10352; rnd=32+floor: 10602; rnd=32+trunc: 10692; rnd=0+trunc: 28 (all four clip/shift variants identical). So truncation toward zero with NO rounding term reproduces ffmpeg except for 28 samples.\n3) The 28 samples are exactly the final block (indices 10780..10807). That block is 00 07 77 77 77 77 77 77 77 77 77 77 77 77 77 77 (header 0x00, flags 7, 14 data bytes 0x77), preceded by a flag-1 block. ffmpeg outputs 28 zeros there; my decoder decoded the 0x77 nibbles to 28672. The same [flag 1 block][00 07 7777..] pattern ends all 99 speech.msb spans; the other 206 spans end with one flag-3 block.\n4) No hardware/SPU2 oracle is available locally; ffmpeg is a widely used software implementation, not a hardware measurement. The EE/IOP do not decode ADPCM in software as far as inventoried.\n",
+    "priorities": "Do not claim bit-exact hardware decoding without a hardware oracle. Prefer a decoder that reproduces an independent real implementation exactly on all 305 spans where evidence permits, keep every divergence and assumption visible, keep the claim bounded to structure and software-reference agreement, and avoid silently hiding the earlier mismatch.",
+    "candidates": [
+      {
+        "id": "align_to_ffmpeg_document_as_software_equivalent",
+        "description": "Change the decoder to truncating division with no rounding term and treat flag-7 blocks as 28 zero samples; assert exact equality with ffmpeg on all bank spans (when ffmpeg is available, otherwise incomplete for that check); document the claim as 'matches ffmpeg adpcm_psx', explicitly not hardware-exact; keep the first-mismatch finding in the evidence record."
+      },
+      {
+        "id": "keep_original_document_divergence",
+        "description": "Keep the +32 floor-rounding decoder and flag-7 data decoding, and document that it diverges from ffmpeg."
+      },
+      {
+        "id": "drop_decoder_claim_structure_only",
+        "description": "Remove decoded-PCM output from the verifier and keep only structure checks."
+      },
+      {
+        "id": "gather_hardware_evidence_first",
+        "description": "Block on obtaining a hardware or SPU2-accurate oracle before changing the decoder."
+      }
+    ],
+    "requirements": [
+      "The result is wording-bounded: it does not claim hardware-exact or playback-correct decoding.",
+      "The earlier 1/305 mismatch and the 28-sample flag-7 difference remain recorded in evidence."
+    ]
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/oracle-variant-evidence.txt",
+      "sha256": "26632f65d7c07e76268b6e27e241c0fdcd023f46d14b81169ba546876e2bb6e1",
+      "bytes": 1497
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/audio/ffmpeg-oracle.json",
+      "sha256": "556e255cd090716d219aab9e022088e9dca104b1181d3a7b89a295bc64eb7b59",
+      "bytes": 2191
+    }
+  ],
+  "started_utc": "2026-10-04T06:39:37.451Z",
+  "seconds": 0.86,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"align_to_ffmpeg_document_as_software_equivalent\",\n    \"escaped\": false,\n    \"confidence\": 0.97,\n    \"probabilities\": {\n      \"drop_decoder_claim_structure_only\": 0,\n      \"investigate\": 0.01,\n      \"gather_hardware_evidence_first\": 0,\n      \"ask_user\": 0,\n      \"keep_original_document_divergence\": 0,\n      \"align_to_ffmpeg_document_as_software_equivalent\": 0.98,\n      \"none\": 0.01\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"align_to_ffmpeg_document_as_software_equivalent\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"align_to_ffmpeg_document_as_software_equivalent\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"keep_original_document_divergence\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"keep_original_document_divergence\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"drop_decoder_claim_structure_only\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"drop_decoder_claim_structure_only\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"gather_hardware_evidence_first\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"gather_hardware_evidence_first\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2545,\n    \"output_tokens\": 422\n  }\n}"
+      }
+    ]
+  }
+}

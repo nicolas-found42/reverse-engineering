@@ -1,0 +1,63 @@
+{
+  "id": "d015-verify-model-claims",
+  "purpose": "verify model boundary claims",
+  "tool": "jev_verify",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d015.json",
+  "args_sha256": "0edc065cabf6cf6544160a497aaea637c17461fe572cc07cfe3092bef11e27bb",
+  "arguments": {
+    "claims": [
+      "In all 56 FR2 .ps2 models the first u32 equals the end offset of the name pool, so that field is a byte offset rather than a count of items.",
+      "In all 56 models the bytes between the name pool end and the next 16-byte boundary are zero, and every file size is a multiple of 16.",
+      "The words at the aligned geometry start follow a stable structure that is the same in every model.",
+      "The mesh geometry of the models has been decoded.",
+      "The milestone-#2 model contract reports this field as an unresolved count, so the new command records the finding separately instead of changing that contract.",
+      "All 56 tests pass and pyright reports zero errors on the new files."
+    ],
+    "evidence": [
+      {
+        "id": "verifier-and-result",
+        "text": "SOURCE of check_model, applied to every .ps2 model by verify_model.py corpus (any violation raises Invalid and is recorded as a failure, so status pass means none occurred):\ndef check_model(data: bytes) -> dict:\n    tree = model(data)\n    pool_end = max(name[\"end\"] for name in tree[\"names\"])\n    leading = tree[\"leading_count\"]\n    if leading != pool_end:\n        raise Invalid(f\"leading u32 {leading} differs from name pool end {pool_end}\")\n    if len(data) % 16:\n        raise Invalid(f\"size {len(data)} is not a multiple of 16\")\n    start = -(-pool_end // 16) * 16\n    if any(data[pool_end:start]):\n        raise Invalid(f\"padding between the name pool end {pool_end} and {start} is not zero\")\n    return {\n        \"name_pool_end\": pool_end,\n        \"geometry_region_start\": start,\n        \"pad_length\": start - pool_end,\n        \"geometry_bytes\": len(data) - start,\n        \"geometry_sha256\": sha256(data[start:]),\n        \"names\": len(tree[\"names\"]),\n        \"groups\": len(tree[\"groups\"]),\n        \"unresolved\": UNRESOLVED,\n    }\n\n\n\nRESULT:\n{\"result_file\": \".scratch/evidence/model/20261004T065247Z-90ddca2a117744e9872baf1718a3a080/result.json\", \"status\": \"pass\", \"diagnostics\": [], \"models\": 56, \"leading_equals_pool_end\": 56, \"zero_padding\": 56, \"pad_lengths\": {\"0\": 1, \"1\": 7, \"2\": 1, \"3\": 1, \"4\": 2, \"5\": 4, \"6\": 5, \"7\": 7, \"8\": 4, \"9\": 5, \"10\": 4, \"11\": 1, \"12\": 3, \"13\": 2, \"14\": 2, \"15\": 7}, \"failures\": [], \"claim_limits\": \"Name-pool boundary only: no geometry or mesh decoding is claimed.\", \"example_entries\": [{\"path\": \"3DDATA/CARS/49COUPE.PS2;1\", \"name_pool_end\": 431, \"geometry_region_start\": 432, \"pad_length\": 1, \"geometry_bytes\": 1146224}, {\"path\": \"3DDATA/CARS/49MOVIE.PS2;1\", \"name_pool_end\": 432, \"geometry_region_start\": 432, \"pad_length\": 0, \"geometry_bytes\": 487280}, {\"path\": \"3DDATA/CARS/COBRA.PS2;1\", \"name_pool_end\": 486, \"geometry_region_start\": 496, \"pad_length\": 10, \"geometry_bytes\": 1246704}, {\"path\": \"3DDATA/CARS/CROWNV.PS2;1\", \"name_pool_end\": 475, \"geometry_region_start\": 480, \"pad_length\": 5, \"geometry_bytes\": 1234400}], \"all_entries_leading_equals_pool_end\": true, \"entries_with_size_multiple_of_16\": 56}\nMilestone-#2 contract output for the same field: 'leading_count' with leading_count_semantics 'unresolved'. Observations (not part of the verifier): the words at the aligned geometry start are (1,4,0) in only 35 of 56 files and its first word matches no count of names, groups or roots; later data contains 16-bit index runs."
+      },
+      {
+        "id": "tests",
+        "text": "........................................................\n----------------------------------------------------------------------\nRan 56 tests in 26.539s\n\nOK\ntests_exit=0\n\npyright: 0 errors, 0 warnings, 0 informations"
+      }
+    ],
+    "auto_accept": 0.8
+  },
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/model/evidence.txt",
+      "sha256": "0474dafaad65a5dd37780c8727271fd079e5edd263f515928b9bc7ee638d785f",
+      "bytes": 2474
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/model/tests.log",
+      "sha256": "2cbe44cb04b79c1311f4075f678a36333fce481a1befbc1df6a66d5ebcac77a6",
+      "bytes": 169
+    },
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/model/pyright.log",
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332",
+      "bytes": 37
+    }
+  ],
+  "started_utc": "2026-10-04T06:53:01.395Z",
+  "seconds": 0.826,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 1,\n    \"unsupported\": 1,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"In all 56 FR2 .ps2 models the first u32 equals the end offset of the name pool, so that field is a byte offset rather than a count of items.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"verifier-and-result\",\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"In all 56 models the bytes between the name pool end and the next 16-byte boundary are zero, and every file size is a multiple of 16.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.01,\n        \"says_nothing\": 0,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"verifier-and-result\",\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"The words at the aligned geometry start follow a stable structure that is the same in every model.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"contradicts\": 0.99,\n        \"says_nothing\": 0.01,\n        \"supports\": 0\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"verifier-and-result\",\n      \"same_subject\": 0.64\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The mesh geometry of the models has been decoded.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"contradicts\": 0.91,\n        \"says_nothing\": 0.08,\n        \"supports\": 0.01\n      },\n      \"confidence\": 0.87,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.4\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"The milestone-#2 model contract reports this field as an unresolved count, so the new command records the finding separately instead of changing that contract.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0.06,\n        \"supports\": 0.92\n      },\n      \"confidence\": 0.88,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"verifier-and-result\",\n      \"same_subject\": 0.89\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"All 56 tests pass and pyright reports zero errors on the new files.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"tests\",\n      \"same_subject\": 0.95\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 3490,\n    \"output_tokens\": 625\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,5462 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T072335Z-9f21a709be1b4187a21971342bd54986",
+  "check": "audio:corpus",
+  "command": [
+    "tools/verify_audio.py",
+    "corpus",
+    "games/ford-racing-2",
+    "--oracle",
+    "ffmpeg"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "banks": 27,
+    "bank_descriptors": 305,
+    "streams": 20,
+    "terminator_classes": {
+      "1,7": 99,
+      "3": 206
+    },
+    "decode_skipped_spans": 0,
+    "max_bank_clip_fraction": 0.00025974025974025974,
+    "bank_results": [
+      {
+        "path": "SOUNDS/baya.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              35856
+            ],
+            "rate": 16000,
+            "blocks": 2241,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "9239f156fa2be8a8a48fa59b83246c1b7bcf2aabb261532b795871521e6a484c",
+            "clip_fraction": 0.0,
+            "seconds": 3.92175
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              35856,
+              79728
+            ],
+            "rate": 22050,
+            "blocks": 2742,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "642c920f9716a99492a19bd59c592e4b2b85a6eb4ea41abedb289147631a33dd",
+            "clip_fraction": 2.6049807231426486e-05,
+            "seconds": 3.481904761904762
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              79728,
+              153040
+            ],
+            "rate": 22050,
+            "blocks": 4582,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2ccd27e1b249af0e9bf89226af25e8c203809f04df24acb10417aed4211b77be",
+            "clip_fraction": 0.0,
+            "seconds": 5.818412698412699
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              153040,
+              178144
+            ],
+            "rate": 22050,
+            "blocks": 1569,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "bc30ec40024a887c94266c5ffb137419cddb2dc52b5b533fbca26a825bd01053",
+            "clip_fraction": 0.0,
+            "seconds": 1.9923809523809524
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              178144,
+              199808
+            ],
+            "rate": 20000,
+            "blocks": 1354,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2d8a510090af0733d7aa51fa0206086a93370217ffbd80acbdc01b6b5a31de3f",
+            "clip_fraction": 0.0,
+            "seconds": 1.8956
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/bayb.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              35856
+            ],
+            "rate": 16000,
+            "blocks": 2241,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "9239f156fa2be8a8a48fa59b83246c1b7bcf2aabb261532b795871521e6a484c",
+            "clip_fraction": 0.0,
+            "seconds": 3.92175
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              35856,
+              56736
+            ],
+            "rate": 7000,
+            "blocks": 1305,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "3e86839369c739d3f647f6bce6ba727034a072b3b1dde25b98d86ff5dbf8bf89",
+            "clip_fraction": 0.0,
+            "seconds": 5.22
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              56736,
+              108688
+            ],
+            "rate": 18000,
+            "blocks": 3247,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "12b22c1d74f31406c9e237c5e7d22bf7d1c9d3fe71582fb719c117114d2ede2b",
+            "clip_fraction": 0.0,
+            "seconds": 5.050888888888889
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              108688,
+              130352
+            ],
+            "rate": 20000,
+            "blocks": 1354,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2d8a510090af0733d7aa51fa0206086a93370217ffbd80acbdc01b6b5a31de3f",
+            "clip_fraction": 0.0,
+            "seconds": 1.8956
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              130352,
+              203664
+            ],
+            "rate": 22050,
+            "blocks": 4582,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2ccd27e1b249af0e9bf89226af25e8c203809f04df24acb10417aed4211b77be",
+            "clip_fraction": 0.0,
+            "seconds": 5.818412698412699
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              203664,
+              215200
+            ],
+            "rate": 15000,
+            "blocks": 721,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "bf24acb3dd97b76fcbd38327887c307ca872bbb3f6ad4cd7c850d996ffd239e7",
+            "clip_fraction": 0.0,
+            "seconds": 1.3458666666666668
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/bayc.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              51952
+            ],
+            "rate": 18000,
+            "blocks": 3247,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "12b22c1d74f31406c9e237c5e7d22bf7d1c9d3fe71582fb719c117114d2ede2b",
+            "clip_fraction": 0.0,
+            "seconds": 5.050888888888889
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              51952,
+              90864
+            ],
+            "rate": 22050,
+            "blocks": 2432,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a5da534dba1bf3d1387db8bfe579d41927fec44ba09d0cd05768a6a7c5c5dbdc",
+            "clip_fraction": 0.0,
+            "seconds": 3.0882539682539685
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              90864,
+              111744
+            ],
+            "rate": 7000,
+            "blocks": 1305,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "3e86839369c739d3f647f6bce6ba727034a072b3b1dde25b98d86ff5dbf8bf89",
+            "clip_fraction": 0.0,
+            "seconds": 5.22
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              111744,
+              185056
+            ],
+            "rate": 22050,
+            "blocks": 4582,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2ccd27e1b249af0e9bf89226af25e8c203809f04df24acb10417aed4211b77be",
+            "clip_fraction": 0.0,
+            "seconds": 5.818412698412699
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              185056,
+              202672
+            ],
+            "rate": 10000,
+            "blocks": 1101,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "da61008810f13f397ae33e630eadec57f97c062e3cb99c12ed61025dd7e9753d",
+            "clip_fraction": 0.0,
+            "seconds": 3.0828
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              202672,
+              213808
+            ],
+            "rate": 22050,
+            "blocks": 696,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "36c05d437f46df79e354246657d317da7104fdb0d4d32f85aa48dcd0fc2d5032",
+            "clip_fraction": 0.0,
+            "seconds": 0.8838095238095238
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              213808,
+              249664
+            ],
+            "rate": 16000,
+            "blocks": 2241,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "9239f156fa2be8a8a48fa59b83246c1b7bcf2aabb261532b795871521e6a484c",
+            "clip_fraction": 0.0,
+            "seconds": 3.92175
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              249664,
+              293280
+            ],
+            "rate": 20000,
+            "blocks": 2726,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c4fcf98f2450190c134651867e208057bd516c23e8942da25279ed7d9623f7ef",
+            "clip_fraction": 0.0,
+            "seconds": 3.8164
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car1_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              17520
+            ],
+            "rate": 22050,
+            "blocks": 1095,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a131b47e8bae97e286c570201934257be6656cc41f67eab5fae446824a977808",
+            "clip_fraction": 0.0,
+            "seconds": 1.3904761904761904
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              17520,
+              35232
+            ],
+            "rate": 22050,
+            "blocks": 1107,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "380de966a8e2fb094ced374369bbf2a4e92d8b557a05526cc88c4013f17455f2",
+            "clip_fraction": 0.0,
+            "seconds": 1.4057142857142857
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              35232,
+              56704
+            ],
+            "rate": 22050,
+            "blocks": 1342,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "76f865d77dd0bdee33956d5290d4d02e87464f4776062902a05a26ee3bcfb3f9",
+            "clip_fraction": 0.0,
+            "seconds": 1.7041269841269842
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              56704,
+              69152
+            ],
+            "rate": 22050,
+            "blocks": 778,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "85a554e3db344b55accf902c8d3a1372dc1503fc8114df13ffac3b6b3c98ddad",
+            "clip_fraction": 0.0,
+            "seconds": 0.9879365079365079
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              69152,
+              87104
+            ],
+            "rate": 22050,
+            "blocks": 1122,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "73c6b453504873f24b11c601bb72456e6bd97f2a2556f600a2b3c5a5104fcfcf",
+            "clip_fraction": 0.0,
+            "seconds": 1.4247619047619047
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car2_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              4880
+            ],
+            "rate": 22050,
+            "blocks": 305,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f477eef43d6403fa338bf976bca4bb290fe2bcd639b04f560b54f64118881104",
+            "clip_fraction": 0.0,
+            "seconds": 0.3873015873015873
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              4880,
+              44864
+            ],
+            "rate": 22050,
+            "blocks": 2499,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "1469047231b1debf548c68bffe225c9f8be4dd1ac278f5b381024edef5e239bb",
+            "clip_fraction": 0.0,
+            "seconds": 3.1733333333333333
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              44864,
+              67520
+            ],
+            "rate": 22050,
+            "blocks": 1416,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b204e59ec54c52c502e80be88d2a036e7cb4df7bb210403fd4636ecd379fe2cb",
+            "clip_fraction": 0.0,
+            "seconds": 1.7980952380952382
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              67520,
+              93312
+            ],
+            "rate": 22050,
+            "blocks": 1612,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "43ae01ebf59a3d43c262db97ac18723b7877d1aaae87b16cac78c3d03028e144",
+            "clip_fraction": 0.0,
+            "seconds": 2.046984126984127
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              93312,
+              122720
+            ],
+            "rate": 22050,
+            "blocks": 1838,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "0464729bf191247b3ae26b950e5dcacfb7be0a7a2fe937d0e2b43f68d7d1ce38",
+            "clip_fraction": 0.0,
+            "seconds": 2.333968253968254
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car3_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              15504
+            ],
+            "rate": 22050,
+            "blocks": 969,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "277e123c0fc56ffdb4af795597b1d6b9d63df1f2936fcbf2f52517ecf994011d",
+            "clip_fraction": 0.0,
+            "seconds": 1.2304761904761905
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              15504,
+              41504
+            ],
+            "rate": 22050,
+            "blocks": 1625,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "1b3c54471708bbfd69b62e10ca4ba61ae409cb71264cd79bdbc1c0ccf19b942a",
+            "clip_fraction": 0.0,
+            "seconds": 2.0634920634920637
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              41504,
+              72864
+            ],
+            "rate": 22050,
+            "blocks": 1960,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "dae8cecfab11fd271b1df26e4c8392993f0c4f6107651fd70bf57fa061d98622",
+            "clip_fraction": 0.0,
+            "seconds": 2.488888888888889
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              72864,
+              93168
+            ],
+            "rate": 22050,
+            "blocks": 1269,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "3dea83d47088494905479ba6f192db5db439ccd33f92258812c3412348124cc7",
+            "clip_fraction": 0.0,
+            "seconds": 1.6114285714285714
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              93168,
+              132400
+            ],
+            "rate": 22050,
+            "blocks": 2452,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c16302f9bab272454efe995d70d9526cf46b608c9b4b78f60359e04bb34e0d57",
+            "clip_fraction": 2.9130738755534842e-05,
+            "seconds": 3.113650793650794
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car4_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              9248
+            ],
+            "rate": 22050,
+            "blocks": 578,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a887ffaeab69d1e3c561a0f50017652d86bd5a51d570044eab6eb583213189af",
+            "clip_fraction": 0.0,
+            "seconds": 0.7339682539682539
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              9248,
+              36896
+            ],
+            "rate": 22050,
+            "blocks": 1728,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "469d8df5b7104671b0261b4bdc0793a651f7317bcd3f3069596b69185267caf3",
+            "clip_fraction": 0.0,
+            "seconds": 2.1942857142857144
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              36896,
+              49984
+            ],
+            "rate": 22050,
+            "blocks": 818,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "e79df8ed41b969abbe113a8876b0113fd457e1918d08df01da8bfd9213e69f22",
+            "clip_fraction": 0.0,
+            "seconds": 1.0387301587301587
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              49984,
+              64928
+            ],
+            "rate": 22050,
+            "blocks": 934,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "dc6cacb6ea0fd09c8f5d38e48ed42f0346618b031f696d1fc00876e8fc9a384a",
+            "clip_fraction": 0.0,
+            "seconds": 1.186031746031746
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              64928,
+              81152
+            ],
+            "rate": 22050,
+            "blocks": 1014,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "83f7fc10874422563bd387b29cb4ba8efbe88a2f36cae98c6c27c7684794e320",
+            "clip_fraction": 0.0,
+            "seconds": 1.2876190476190477
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car5_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              12736
+            ],
+            "rate": 22050,
+            "blocks": 796,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c91c7f77a4b9cb1ca69fc9bf8d76bb848daf23777ec701846606d75684779d0d",
+            "clip_fraction": 0.0,
+            "seconds": 1.0107936507936508
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              12736,
+              31360
+            ],
+            "rate": 22050,
+            "blocks": 1164,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "1080c520210832271e99af42d7351e7a4205401ec3862ef5defc3cdecbf54442",
+            "clip_fraction": 0.0,
+            "seconds": 1.4780952380952381
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              31360,
+              46800
+            ],
+            "rate": 22050,
+            "blocks": 965,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "48a225c5bf363dca7e71e42880eb1eb40b9f86872538a12a1e17b3c43f5dcafa",
+            "clip_fraction": 0.0,
+            "seconds": 1.2253968253968255
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              46800,
+              79728
+            ],
+            "rate": 22050,
+            "blocks": 2058,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "9937f72cc00181222cc4c42974de999ab14ac9279db70e28966ce05dafa4ca27",
+            "clip_fraction": 0.0,
+            "seconds": 2.6133333333333333
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              79728,
+              128064
+            ],
+            "rate": 22050,
+            "blocks": 3021,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "fb03c97e26b4c1e7062071e04af2143469c331bc1e523ac06303a51cde6cefd5",
+            "clip_fraction": 0.0,
+            "seconds": 3.836190476190476
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car6_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              12496
+            ],
+            "rate": 22050,
+            "blocks": 781,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7e9aad08e6bf1ce631c6392c76c12f80ea8edc0441de64894976b4f2d8184efc",
+            "clip_fraction": 0.0,
+            "seconds": 0.9917460317460317
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              12496,
+              39392
+            ],
+            "rate": 22050,
+            "blocks": 1681,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7e438cc73d711b7c85653de79c9033edebfced3669b9cdbbfc3634483990ccde",
+            "clip_fraction": 0.0,
+            "seconds": 2.1346031746031744
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              39392,
+              45184
+            ],
+            "rate": 22050,
+            "blocks": 362,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f6a467fcc07b52a948eac3a36d6cb993cf12a73fe7cfd0adc9f21dfbb62e7b8a",
+            "clip_fraction": 0.0,
+            "seconds": 0.4596825396825397
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              45184,
+              64864
+            ],
+            "rate": 22050,
+            "blocks": 1230,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "341d37917408a824e96b16713bffe575ce9e3c98f027ea38e9ad9025c1b155cc",
+            "clip_fraction": 0.0,
+            "seconds": 1.561904761904762
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              64864,
+              96688
+            ],
+            "rate": 22050,
+            "blocks": 1989,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "d92a836cc4e24cb03f55595e2f014fd1d70d79276b3e7d7b1fa478900047cf50",
+            "clip_fraction": 0.0,
+            "seconds": 2.525714285714286
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car7_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              18800
+            ],
+            "rate": 22050,
+            "blocks": 1175,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "1fb114138db19c4511343a32b2806678b820238395c5f7ab7b91616d823220c5",
+            "clip_fraction": 0.0,
+            "seconds": 1.492063492063492
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              18800,
+              42480
+            ],
+            "rate": 22050,
+            "blocks": 1480,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "03578d2c34d7bd785720482f159f09ed2a36b0aaf18b61fac8152b3b68fcefda",
+            "clip_fraction": 0.0,
+            "seconds": 1.8793650793650793
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              42480,
+              70240
+            ],
+            "rate": 22050,
+            "blocks": 1735,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "4040396096f62535831e6a8f74ea923e0a7ff6a6066feb09ab5b4308508148fa",
+            "clip_fraction": 0.0,
+            "seconds": 2.2031746031746033
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              70240,
+              102880
+            ],
+            "rate": 22050,
+            "blocks": 2040,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "1beddcf95eb83b7d914cea3a1285028e88af4e32b866dbff2dd2b62612930af3",
+            "clip_fraction": 0.0,
+            "seconds": 2.5904761904761906
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              102880,
+              137024
+            ],
+            "rate": 22050,
+            "blocks": 2134,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "6c0a75d9f03fdd225de2ae8f67f8ec1d873a7f830032be89858a5f597f3925c2",
+            "clip_fraction": 0.0,
+            "seconds": 2.7098412698412697
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car8_snd.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              13296
+            ],
+            "rate": 22050,
+            "blocks": 831,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "92c7a16bb85a211295fc6cb01c68fbc66680ecb920f345144827d11eb45dd2d9",
+            "clip_fraction": 0.0,
+            "seconds": 1.0552380952380953
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              13296,
+              28384
+            ],
+            "rate": 22050,
+            "blocks": 943,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "229ec6d6e999f2a203828c1c99f1a1b59e04a58f187b4452f90a6679ff8ab927",
+            "clip_fraction": 0.0,
+            "seconds": 1.1974603174603176
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              28384,
+              52592
+            ],
+            "rate": 22050,
+            "blocks": 1513,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "14b4458f4ae98e6a62e59e4dc215466a1ba39e15ba12bb520005c157cb596ab5",
+            "clip_fraction": 0.0,
+            "seconds": 1.9212698412698412
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              52592,
+              55904
+            ],
+            "rate": 22050,
+            "blocks": 207,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f4a68c728c045a37f48d3443627d3c8f0d925f6dcfe904681868ab11b61bbecf",
+            "clip_fraction": 0.0,
+            "seconds": 0.26285714285714284
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              55904,
+              82368
+            ],
+            "rate": 22050,
+            "blocks": 1654,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "220eb5f20c42d04b9346b27fe3612c757c866d10fb8389bc314210eb3d3834fa",
+            "clip_fraction": 2.159267576438072e-05,
+            "seconds": 2.10031746031746
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/car_gen.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              10512
+            ],
+            "rate": 18000,
+            "blocks": 657,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "5cb0a1235f764aeb565e132a77b28247c823d1700860b13b1be032ff77b5c888",
+            "clip_fraction": 0.0,
+            "seconds": 1.022
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              10512,
+              22304
+            ],
+            "rate": 18000,
+            "blocks": 737,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "4a9bb41ffdcd61aab1735c73875682795fb82422cc0aa284a3b3eceda0f9a375",
+            "clip_fraction": 0.0,
+            "seconds": 1.1464444444444444
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              22304,
+              37536
+            ],
+            "rate": 22050,
+            "blocks": 952,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "00a0aec27094a7b8d18f6e72e7bc918df79f6aeb995e372d65d1f95598458627",
+            "clip_fraction": 0.0,
+            "seconds": 1.208888888888889
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              37536,
+              41360
+            ],
+            "rate": 22050,
+            "blocks": 239,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c56414c01185028b2431410ed710e6cded23e24daaa92339376f66538e0f0293",
+            "clip_fraction": 0.0,
+            "seconds": 0.3034920634920635
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              41360,
+              48656
+            ],
+            "rate": 22050,
+            "blocks": 456,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c15c5d0cd60d52267a008bbeb4ca65c547d935a8846f342e07e84b7d1b97c295",
+            "clip_fraction": 0.0,
+            "seconds": 0.579047619047619
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              48656,
+              58864
+            ],
+            "rate": 22050,
+            "blocks": 638,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "13016b2bbdebb6f29be07bc8ef1d654b307688f2f3ecfe9a7cbda99040662707",
+            "clip_fraction": 0.0,
+            "seconds": 0.8101587301587302
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              58864,
+              74736
+            ],
+            "rate": 22050,
+            "blocks": 992,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "37dc39c5e12ce630e695fc14d489fec76dbaaec822ce59a04aa537f121ee8464",
+            "clip_fraction": 0.0,
+            "seconds": 1.2596825396825397
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              74736,
+              110272
+            ],
+            "rate": 22050,
+            "blocks": 2221,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b3e7e2adde78696de53ce788ad1e7d3912971a27c23e9d4213db93ecb98569df",
+            "clip_fraction": 0.0,
+            "seconds": 2.8203174603174603
+          },
+          {
+            "index": 8,
+            "sample_span": [
+              110272,
+              124160
+            ],
+            "rate": 22050,
+            "blocks": 868,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "28719f770e1684f8648b251946b64e0816180a087c34d216ba7815f8041f4ac8",
+            "clip_fraction": 0.0,
+            "seconds": 1.1022222222222222
+          },
+          {
+            "index": 9,
+            "sample_span": [
+              124160,
+              148080
+            ],
+            "rate": 22050,
+            "blocks": 1495,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "55a568ddc438d38637e56d4ea3afca7990d51bad6514b81746009a50a5e3d879",
+            "clip_fraction": 0.0,
+            "seconds": 1.8984126984126983
+          },
+          {
+            "index": 10,
+            "sample_span": [
+              148080,
+              169056
+            ],
+            "rate": 22050,
+            "blocks": 1311,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "0685dd86e6b24364f8b2ce1034469271c8331c6c3d9e74ab9a5577a8be308bd4",
+            "clip_fraction": 0.0,
+            "seconds": 1.6647619047619047
+          },
+          {
+            "index": 11,
+            "sample_span": [
+              169056,
+              180160
+            ],
+            "rate": 22050,
+            "blocks": 694,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "6e2b6f805a161c2e894b5a8a4e8a7f4d338d2515ba9634a9811c94f3762fb992",
+            "clip_fraction": 0.0,
+            "seconds": 0.8812698412698413
+          },
+          {
+            "index": 12,
+            "sample_span": [
+              180160,
+              211168
+            ],
+            "rate": 22050,
+            "blocks": 1938,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "aaa3899c384be0186916626ddda173d3960f566870e4a6ed31a56facc2791f65",
+            "clip_fraction": 0.0,
+            "seconds": 2.460952380952381
+          },
+          {
+            "index": 13,
+            "sample_span": [
+              211168,
+              241168
+            ],
+            "rate": 22050,
+            "blocks": 1875,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7fec9dbb5ec3322eb6e25a607778b437d7121d31cf03fe60abafc88257dadc3d",
+            "clip_fraction": 0.0,
+            "seconds": 2.380952380952381
+          },
+          {
+            "index": 14,
+            "sample_span": [
+              241168,
+              271408
+            ],
+            "rate": 22050,
+            "blocks": 1890,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "0e5399ea36eb819e89e989d03939c1131cbfa21e0bbdd5319f35f4c5f0ca9afa",
+            "clip_fraction": 0.0,
+            "seconds": 2.4
+          },
+          {
+            "index": 15,
+            "sample_span": [
+              271408,
+              296000
+            ],
+            "rate": 22050,
+            "blocks": 1537,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f4973b61bd203a9a887849bf5848c5b650694fe49499ac59f7da47c89cba67d0",
+            "clip_fraction": 0.0,
+            "seconds": 1.9517460317460318
+          },
+          {
+            "index": 16,
+            "sample_span": [
+              296000,
+              321472
+            ],
+            "rate": 22050,
+            "blocks": 1592,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2e63aeaee999aa9406ec8ebddecff0deee5a2d3c2c557b0944ebd52da7d568a7",
+            "clip_fraction": 0.0,
+            "seconds": 2.0215873015873016
+          },
+          {
+            "index": 17,
+            "sample_span": [
+              321472,
+              337072
+            ],
+            "rate": 22050,
+            "blocks": 975,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "fef3d956dce79903a9d99e3e3ad2d70011f0b3183ea1f4d10d9c63bed0232890",
+            "clip_fraction": 0.0,
+            "seconds": 1.2380952380952381
+          },
+          {
+            "index": 18,
+            "sample_span": [
+              337072,
+              350944
+            ],
+            "rate": 22050,
+            "blocks": 867,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "33a073e3f0423e4ff730ce0f7f039d9567fea08597c609ecfd7cfc8265d73447",
+            "clip_fraction": 0.0,
+            "seconds": 1.100952380952381
+          },
+          {
+            "index": 19,
+            "sample_span": [
+              350944,
+              370944
+            ],
+            "rate": 22050,
+            "blocks": 1250,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "bbeb1486c4826bf6c801480219c77f68998eb5cd4e19be2f28c77c740f54f051",
+            "clip_fraction": 0.0,
+            "seconds": 1.5873015873015872
+          },
+          {
+            "index": 20,
+            "sample_span": [
+              370944,
+              371872
+            ],
+            "rate": 22050,
+            "blocks": 58,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2f2417ead2989b2f415ddf69b2b3aeeec85cd6e4dc93939b4c575c4975486508",
+            "clip_fraction": 0.0,
+            "seconds": 0.07365079365079365
+          },
+          {
+            "index": 21,
+            "sample_span": [
+              371872,
+              374208
+            ],
+            "rate": 22050,
+            "blocks": 146,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2ef1b0643514e2f6104d8b4b02be0e4e80b4107ef3fc933f98f24eb081bfa252",
+            "clip_fraction": 0.0,
+            "seconds": 0.1853968253968254
+          },
+          {
+            "index": 22,
+            "sample_span": [
+              374208,
+              377792
+            ],
+            "rate": 22050,
+            "blocks": 224,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f6e9ff8b4fc3ec1f37b0e9a2bb580d7ff8c48773687c5cbcfc607ae1fb88bccf",
+            "clip_fraction": 0.0,
+            "seconds": 0.28444444444444444
+          },
+          {
+            "index": 23,
+            "sample_span": [
+              377792,
+              380544
+            ],
+            "rate": 22050,
+            "blocks": 172,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "1b05a73ae8b1d8c8a0db3783622c3e54855c0329efd31c74839cf5378b5acfa1",
+            "clip_fraction": 0.0,
+            "seconds": 0.21841269841269842
+          },
+          {
+            "index": 24,
+            "sample_span": [
+              380544,
+              386224
+            ],
+            "rate": 22050,
+            "blocks": 355,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "0341529e92c746e58c53a1b4164f4e12d44cf481f431207e191d38fd3da47256",
+            "clip_fraction": 0.0,
+            "seconds": 0.4507936507936508
+          },
+          {
+            "index": 25,
+            "sample_span": [
+              386224,
+              408304
+            ],
+            "rate": 22050,
+            "blocks": 1380,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "58d1fd342a09e22aa6456b1f2b28ce2e4ff77aa54f54fd967852630babe5d362",
+            "clip_fraction": 0.0,
+            "seconds": 1.7523809523809524
+          },
+          {
+            "index": 26,
+            "sample_span": [
+              408304,
+              429344
+            ],
+            "rate": 22050,
+            "blocks": 1315,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "57718addcacd8033d19e608451c5a96e4ce3af0b15c5336b38dab866d4aec52b",
+            "clip_fraction": 0.0,
+            "seconds": 1.66984126984127
+          },
+          {
+            "index": 27,
+            "sample_span": [
+              429344,
+              443328
+            ],
+            "rate": 22050,
+            "blocks": 874,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "8473d2e4f9dd0bd1480415f923ef222cd40056d97fa5b8405f72b327393c1ae4",
+            "clip_fraction": 0.0,
+            "seconds": 1.1098412698412699
+          },
+          {
+            "index": 28,
+            "sample_span": [
+              443328,
+              456256
+            ],
+            "rate": 22050,
+            "blocks": 808,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "d9bed25d98dd797a1543d7dd56db3628dd462df50941c9d89a35893b5a7595a1",
+            "clip_fraction": 0.0,
+            "seconds": 1.026031746031746
+          },
+          {
+            "index": 29,
+            "sample_span": [
+              456256,
+              465440
+            ],
+            "rate": 22050,
+            "blocks": 574,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "5d59714a271545211242ad80d23975d78b002dd7cc0c4957055892eda70f5e02",
+            "clip_fraction": 0.0,
+            "seconds": 0.7288888888888889
+          },
+          {
+            "index": 30,
+            "sample_span": [
+              465440,
+              472080
+            ],
+            "rate": 22050,
+            "blocks": 415,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b3d86a206d8dcfeb90922394342e35b162296f2d5fb150c8f3bf36e57fafc880",
+            "clip_fraction": 0.0,
+            "seconds": 0.526984126984127
+          },
+          {
+            "index": 31,
+            "sample_span": [
+              472080,
+              484096
+            ],
+            "rate": 22050,
+            "blocks": 751,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "940aba58296f352c2855c626db1c21a5f20ecf891f1e242a84111e3f0223c902",
+            "clip_fraction": 0.0,
+            "seconds": 0.9536507936507936
+          },
+          {
+            "index": 32,
+            "sample_span": [
+              484096,
+              490704
+            ],
+            "rate": 22050,
+            "blocks": 413,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f90bc2a1a8efcb6f902a6a46ab758026d44c3e75f70a41e6d94326a5e0c1cf5b",
+            "clip_fraction": 0.0,
+            "seconds": 0.5244444444444445
+          },
+          {
+            "index": 33,
+            "sample_span": [
+              490704,
+              498896
+            ],
+            "rate": 22050,
+            "blocks": 512,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f20be83d0cbc49c02b2a4236dc657c41bce05117edeab56baef6c36aa2cc5cee",
+            "clip_fraction": 0.0,
+            "seconds": 0.6501587301587302
+          },
+          {
+            "index": 34,
+            "sample_span": [
+              498896,
+              508672
+            ],
+            "rate": 22050,
+            "blocks": 611,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "88aadd30d93ddca11a7d7515ba2a878ec5a9efdaa54c372074024aad2469d0ac",
+            "clip_fraction": 0.0,
+            "seconds": 0.7758730158730158
+          },
+          {
+            "index": 35,
+            "sample_span": [
+              508672,
+              516128
+            ],
+            "rate": 22050,
+            "blocks": 466,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "213243254f389a87f1f38e2d87981223995b5d58b13f3ec19adb0ebd985120b8",
+            "clip_fraction": 0.0,
+            "seconds": 0.5917460317460318
+          },
+          {
+            "index": 36,
+            "sample_span": [
+              516128,
+              524112
+            ],
+            "rate": 22050,
+            "blocks": 499,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "108c2ece1333c58d2be2ae2f098abef61c88bda26642662b7c896e0476a101ef",
+            "clip_fraction": 0.0,
+            "seconds": 0.6336507936507937
+          },
+          {
+            "index": 37,
+            "sample_span": [
+              524112,
+              533328
+            ],
+            "rate": 22050,
+            "blocks": 576,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "59c306cbd6f73d563e9cd0adbc49dbced040c6fc60e91ccbb6e8d5a137c3183c",
+            "clip_fraction": 0.0,
+            "seconds": 0.7314285714285714
+          },
+          {
+            "index": 38,
+            "sample_span": [
+              533328,
+              542624
+            ],
+            "rate": 22050,
+            "blocks": 581,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b6c6c2d5fa79eee2adfcba57d1d4bea4cef6dd4ae9b49b7c3d92107c6ff52eda",
+            "clip_fraction": 0.0,
+            "seconds": 0.7377777777777778
+          },
+          {
+            "index": 39,
+            "sample_span": [
+              542624,
+              565824
+            ],
+            "rate": 18000,
+            "blocks": 1450,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c09aa81a2feaf40bef14ec4d6b3e1ff5deefe5836db1b72e5e94f19ed9c14c90",
+            "clip_fraction": 0.0,
+            "seconds": 2.2555555555555555
+          },
+          {
+            "index": 40,
+            "sample_span": [
+              565824,
+              598832
+            ],
+            "rate": 15000,
+            "blocks": 2063,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "4c69b472e7362c5e1411517a6794b3c21a0ded674fab3adfcf7600f0d11a9700",
+            "clip_fraction": 0.0,
+            "seconds": 3.8509333333333333
+          },
+          {
+            "index": 41,
+            "sample_span": [
+              598832,
+              605456
+            ],
+            "rate": 22050,
+            "blocks": 414,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c9abc5afd47b68a2892fdbdb7a4e00807762fe6dbdd4882912dd9d80103dbb22",
+            "clip_fraction": 0.0,
+            "seconds": 0.5257142857142857
+          },
+          {
+            "index": 42,
+            "sample_span": [
+              605456,
+              611616
+            ],
+            "rate": 22050,
+            "blocks": 385,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "db8b1d059e876f8115ec690bf293e6e0961cb2bcd964ec15247755780a901304",
+            "clip_fraction": 0.0,
+            "seconds": 0.4888888888888889
+          },
+          {
+            "index": 43,
+            "sample_span": [
+              611616,
+              617664
+            ],
+            "rate": 11025,
+            "blocks": 378,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "55e61edb22a6e1c86c7ebe5aa9106f5c06b1f41812f8d6c6fddb552426cdb58c",
+            "clip_fraction": 0.0,
+            "seconds": 0.96
+          },
+          {
+            "index": 44,
+            "sample_span": [
+              617664,
+              620912
+            ],
+            "rate": 22050,
+            "blocks": 203,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "3a75bb36f0fc3aedf71c349599e457af252dd7b87e6aad619c91ef182655ed13",
+            "clip_fraction": 0.0,
+            "seconds": 0.2577777777777778
+          },
+          {
+            "index": 45,
+            "sample_span": [
+              620912,
+              639152
+            ],
+            "rate": 22050,
+            "blocks": 1140,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "96b441e888137c3c893de3d5de2f83f89a9643ae458dc463e43e6914bc92c408",
+            "clip_fraction": 0.0,
+            "seconds": 1.4476190476190476
+          },
+          {
+            "index": 46,
+            "sample_span": [
+              639152,
+              642192
+            ],
+            "rate": 8000,
+            "blocks": 190,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "4fc942ca6e49baddd14f9a7ef9661d4db5cc1f508c02271326fde314fcfa6dc3",
+            "clip_fraction": 0.0,
+            "seconds": 0.665
+          },
+          {
+            "index": 47,
+            "sample_span": [
+              642192,
+              656736
+            ],
+            "rate": 22050,
+            "blocks": 909,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f56db86f99dcb7e15acae6de69a00559700ddd3130a4b56961f0434cc978a165",
+            "clip_fraction": 0.0,
+            "seconds": 1.1542857142857144
+          },
+          {
+            "index": 48,
+            "sample_span": [
+              656736,
+              659936
+            ],
+            "rate": 22050,
+            "blocks": 200,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a3cae394800b870e0809eeb9d17d5a141baa2bd6d83b960b5d7a7970cd44f18e",
+            "clip_fraction": 0.0,
+            "seconds": 0.25396825396825395
+          },
+          {
+            "index": 49,
+            "sample_span": [
+              659936,
+              662992
+            ],
+            "rate": 22050,
+            "blocks": 191,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "92841f36787d1ee3d9549d388f2759c26c5f259f25341c678029a0d4a920b73d",
+            "clip_fraction": 0.0,
+            "seconds": 0.24253968253968253
+          },
+          {
+            "index": 50,
+            "sample_span": [
+              662992,
+              665328
+            ],
+            "rate": 22050,
+            "blocks": 146,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "877296fbc8d1833d402faa73f0b1f7d015742ae4710dc6ca2fb863d3d980f95f",
+            "clip_fraction": 0.0,
+            "seconds": 0.1853968253968254
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/desa.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              17536
+            ],
+            "rate": 7000,
+            "blocks": 1096,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7da2d9db70763ce3028e5d02949480586c82e171e2b2882d2cd101a79c188539",
+            "clip_fraction": 0.0,
+            "seconds": 4.384
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              17536,
+              31408
+            ],
+            "rate": 7000,
+            "blocks": 867,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a07b8a6cb4160030a039d34e7b1505f6a2da129c10b4192c50c15cd6c925b627",
+            "clip_fraction": 0.0,
+            "seconds": 3.468
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              31408,
+              62992
+            ],
+            "rate": 22050,
+            "blocks": 1974,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7d3475b09ac720c221913b45f5f43de81be869b7d342d45bdcd46a701020c12c",
+            "clip_fraction": 0.0,
+            "seconds": 2.506666666666667
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              62992,
+              91168
+            ],
+            "rate": 22050,
+            "blocks": 1761,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "774ed914816b45443fb01e8bc1eff55ac9f4f82d6aa54d4c8ddca1a006c7451f",
+            "clip_fraction": 0.0,
+            "seconds": 2.236190476190476
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              91168,
+              135104
+            ],
+            "rate": 22050,
+            "blocks": 2746,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "0a47258ea10c507791d6fac86eb54f3831d56b2573fdc1368048a0659e1fe0cc",
+            "clip_fraction": 0.0,
+            "seconds": 3.486984126984127
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              135104,
+              183904
+            ],
+            "rate": 20000,
+            "blocks": 3050,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b94a01bf4724ae065e1bdc889d97f1bb31f7aed4ba062b9eb693bdf1b31ab09b",
+            "clip_fraction": 0.0,
+            "seconds": 4.27
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              183904,
+              229680
+            ],
+            "rate": 20000,
+            "blocks": 2861,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "158da086218d0642cbaa5e55b502b68d4c5e8bf8dc46f93100106c374c2f4eb1",
+            "clip_fraction": 0.0,
+            "seconds": 4.0054
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              229680,
+              241312
+            ],
+            "rate": 15000,
+            "blocks": 727,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7f2bf0797c7092863716ec50ad47797d9e15c14197cb467f0d91502ab77d1bfc",
+            "clip_fraction": 0.0,
+            "seconds": 1.3570666666666666
+          },
+          {
+            "index": 8,
+            "sample_span": [
+              241312,
+              253888
+            ],
+            "rate": 15000,
+            "blocks": 786,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2256ace164328784587916da114fb889e82ee239f86f56e91f2bdcbb5c7f7980",
+            "clip_fraction": 0.0,
+            "seconds": 1.4672
+          },
+          {
+            "index": 9,
+            "sample_span": [
+              253888,
+              276672
+            ],
+            "rate": 22050,
+            "blocks": 1424,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "3e71756738c1fb671e7d66ae389175ceb53d781117527f7737125533b0404d86",
+            "clip_fraction": 0.0,
+            "seconds": 1.8082539682539682
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/desb.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              48800
+            ],
+            "rate": 20000,
+            "blocks": 3050,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b94a01bf4724ae065e1bdc889d97f1bb31f7aed4ba062b9eb693bdf1b31ab09b",
+            "clip_fraction": 0.0,
+            "seconds": 4.27
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              48800,
+              60432
+            ],
+            "rate": 15000,
+            "blocks": 727,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7f2bf0797c7092863716ec50ad47797d9e15c14197cb467f0d91502ab77d1bfc",
+            "clip_fraction": 0.0,
+            "seconds": 1.3570666666666666
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              60432,
+              73008
+            ],
+            "rate": 15000,
+            "blocks": 786,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2256ace164328784587916da114fb889e82ee239f86f56e91f2bdcbb5c7f7980",
+            "clip_fraction": 0.0,
+            "seconds": 1.4672
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              73008,
+              124704
+            ],
+            "rate": 20000,
+            "blocks": 3231,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "db6073cadade6e8a131d0e621135bbad3e1064914278330c77ebe86db0016b5a",
+            "clip_fraction": 0.0,
+            "seconds": 4.5234
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              124704,
+              134832
+            ],
+            "rate": 18000,
+            "blocks": 633,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "23b012b473c8b11e9b5035f9afa07ca7774857b0c6204c44cec72e7a0be7dbaa",
+            "clip_fraction": 0.0,
+            "seconds": 0.9846666666666667
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              134832,
+              178768
+            ],
+            "rate": 22050,
+            "blocks": 2746,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "0a47258ea10c507791d6fac86eb54f3831d56b2573fdc1368048a0659e1fe0cc",
+            "clip_fraction": 0.0,
+            "seconds": 3.486984126984127
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              178768,
+              210352
+            ],
+            "rate": 22050,
+            "blocks": 1974,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7d3475b09ac720c221913b45f5f43de81be869b7d342d45bdcd46a701020c12c",
+            "clip_fraction": 0.0,
+            "seconds": 2.506666666666667
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              210352,
+              238528
+            ],
+            "rate": 22050,
+            "blocks": 1761,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "774ed914816b45443fb01e8bc1eff55ac9f4f82d6aa54d4c8ddca1a006c7451f",
+            "clip_fraction": 0.0,
+            "seconds": 2.236190476190476
+          },
+          {
+            "index": 8,
+            "sample_span": [
+              238528,
+              285488
+            ],
+            "rate": 20000,
+            "blocks": 2935,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "50c912ff5c4f1c54d7a7de8bd53317d72dcb68ac0236bb4b79af472d9e8b748a",
+            "clip_fraction": 0.0,
+            "seconds": 4.109
+          },
+          {
+            "index": 9,
+            "sample_span": [
+              285488,
+              299360
+            ],
+            "rate": 7000,
+            "blocks": 867,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a07b8a6cb4160030a039d34e7b1505f6a2da129c10b4192c50c15cd6c925b627",
+            "clip_fraction": 0.0,
+            "seconds": 3.468
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/desc.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              29200
+            ],
+            "rate": 10000,
+            "blocks": 1825,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "aacb4831f8d642ea12d780b9fd5e6621c240db0235a0e8174f5a05c660d9e906",
+            "clip_fraction": 0.0,
+            "seconds": 5.11
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              29200,
+              76160
+            ],
+            "rate": 20000,
+            "blocks": 2935,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "50c912ff5c4f1c54d7a7de8bd53317d72dcb68ac0236bb4b79af472d9e8b748a",
+            "clip_fraction": 0.0,
+            "seconds": 4.109
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              76160,
+              120096
+            ],
+            "rate": 22050,
+            "blocks": 2746,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "0a47258ea10c507791d6fac86eb54f3831d56b2573fdc1368048a0659e1fe0cc",
+            "clip_fraction": 0.0,
+            "seconds": 3.486984126984127
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              120096,
+              163072
+            ],
+            "rate": 17000,
+            "blocks": 2686,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "dfa84d4c40d513c4e418b22b29d3c541b843f6ceda658c905d9a1ce3f298e159",
+            "clip_fraction": 0.0,
+            "seconds": 4.424
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              163072,
+              206688
+            ],
+            "rate": 20000,
+            "blocks": 2726,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c4fcf98f2450190c134651867e208057bd516c23e8942da25279ed7d9623f7ef",
+            "clip_fraction": 0.0,
+            "seconds": 3.8164
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              206688,
+              234864
+            ],
+            "rate": 22050,
+            "blocks": 1761,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "774ed914816b45443fb01e8bc1eff55ac9f4f82d6aa54d4c8ddca1a006c7451f",
+            "clip_fraction": 0.0,
+            "seconds": 2.236190476190476
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              234864,
+              267872
+            ],
+            "rate": 15000,
+            "blocks": 2063,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "4c69b472e7362c5e1411517a6794b3c21a0ded674fab3adfcf7600f0d11a9700",
+            "clip_fraction": 0.0,
+            "seconds": 3.8509333333333333
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/flora.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              73312
+            ],
+            "rate": 22050,
+            "blocks": 4582,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2ccd27e1b249af0e9bf89226af25e8c203809f04df24acb10417aed4211b77be",
+            "clip_fraction": 0.0,
+            "seconds": 5.818412698412699
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              73312,
+              116928
+            ],
+            "rate": 20000,
+            "blocks": 2726,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c4fcf98f2450190c134651867e208057bd516c23e8942da25279ed7d9623f7ef",
+            "clip_fraction": 0.0,
+            "seconds": 3.8164
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              116928,
+              168880
+            ],
+            "rate": 18000,
+            "blocks": 3247,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "12b22c1d74f31406c9e237c5e7d22bf7d1c9d3fe71582fb719c117114d2ede2b",
+            "clip_fraction": 0.0,
+            "seconds": 5.050888888888889
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              168880,
+              180016
+            ],
+            "rate": 22050,
+            "blocks": 696,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "36c05d437f46df79e354246657d317da7104fdb0d4d32f85aa48dcd0fc2d5032",
+            "clip_fraction": 0.0,
+            "seconds": 0.8838095238095238
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              180016,
+              231504
+            ],
+            "rate": 18000,
+            "blocks": 3218,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "21e86563fe62458d7733eec3d54f54bb0c328998e5270a9a37925950047a6dbd",
+            "clip_fraction": 0.0,
+            "seconds": 5.005777777777777
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/florb.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              35856
+            ],
+            "rate": 16000,
+            "blocks": 2241,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "9239f156fa2be8a8a48fa59b83246c1b7bcf2aabb261532b795871521e6a484c",
+            "clip_fraction": 0.0,
+            "seconds": 3.92175
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              35856,
+              109168
+            ],
+            "rate": 22050,
+            "blocks": 4582,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "2ccd27e1b249af0e9bf89226af25e8c203809f04df24acb10417aed4211b77be",
+            "clip_fraction": 0.0,
+            "seconds": 5.818412698412699
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              109168,
+              138976
+            ],
+            "rate": 20000,
+            "blocks": 1863,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "e2ba755479db18476cd869cddcd633bc37f83d10be4b0fe8ac6e6845174caaac",
+            "clip_fraction": 0.0,
+            "seconds": 2.6082
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              138976,
+              173408
+            ],
+            "rate": 20000,
+            "blocks": 2152,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f03e1de7ede42ac2dba38a128cdbdacb5e86b220de78d7168508078acdae221d",
+            "clip_fraction": 1.6595857673924587e-05,
+            "seconds": 3.0128
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              173408,
+              249104
+            ],
+            "rate": 18000,
+            "blocks": 4731,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b8c546f49ad25b46a3af692e1799f8a7655afba5915566d684beb228860a5d30",
+            "clip_fraction": 0.0,
+            "seconds": 7.359333333333334
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              249104,
+              288016
+            ],
+            "rate": 22050,
+            "blocks": 2432,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a5da534dba1bf3d1387db8bfe579d41927fec44ba09d0cd05768a6a7c5c5dbdc",
+            "clip_fraction": 0.0,
+            "seconds": 3.0882539682539685
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              288016,
+              339504
+            ],
+            "rate": 18000,
+            "blocks": 3218,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "21e86563fe62458d7733eec3d54f54bb0c328998e5270a9a37925950047a6dbd",
+            "clip_fraction": 0.0,
+            "seconds": 5.005777777777777
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              339504,
+              391456
+            ],
+            "rate": 18000,
+            "blocks": 3247,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "12b22c1d74f31406c9e237c5e7d22bf7d1c9d3fe71582fb719c117114d2ede2b",
+            "clip_fraction": 0.0,
+            "seconds": 5.050888888888889
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/florc.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              51952
+            ],
+            "rate": 18000,
+            "blocks": 3247,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "12b22c1d74f31406c9e237c5e7d22bf7d1c9d3fe71582fb719c117114d2ede2b",
+            "clip_fraction": 0.0,
+            "seconds": 5.050888888888889
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              51952,
+              86384
+            ],
+            "rate": 20000,
+            "blocks": 2152,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f03e1de7ede42ac2dba38a128cdbdacb5e86b220de78d7168508078acdae221d",
+            "clip_fraction": 1.6595857673924587e-05,
+            "seconds": 3.0128
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              86384,
+              116192
+            ],
+            "rate": 20000,
+            "blocks": 1863,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "e2ba755479db18476cd869cddcd633bc37f83d10be4b0fe8ac6e6845174caaac",
+            "clip_fraction": 0.0,
+            "seconds": 2.6082
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              116192,
+              167680
+            ],
+            "rate": 18000,
+            "blocks": 3218,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "21e86563fe62458d7733eec3d54f54bb0c328998e5270a9a37925950047a6dbd",
+            "clip_fraction": 0.0,
+            "seconds": 5.005777777777777
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              167680,
+              203536
+            ],
+            "rate": 16000,
+            "blocks": 2241,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "9239f156fa2be8a8a48fa59b83246c1b7bcf2aabb261532b795871521e6a484c",
+            "clip_fraction": 0.0,
+            "seconds": 3.92175
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/junga.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              47440
+            ],
+            "rate": 20000,
+            "blocks": 2965,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "14315610a24ead56c0a5d90651da9dc2ef64ca847d34c07b9234be5b020f1ce3",
+            "clip_fraction": 0.0,
+            "seconds": 4.151
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              47440,
+              99088
+            ],
+            "rate": 18000,
+            "blocks": 3228,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "09b478bef84f0cbe97b10762bd507b0b02d0e4a24e4bfb5b93838b1398d8e6eb",
+            "clip_fraction": 0.0,
+            "seconds": 5.021333333333334
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              99088,
+              126080
+            ],
+            "rate": 16000,
+            "blocks": 1687,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7f6ba10bd2ce210be7b4ce3e1ed3a8fb6e4bc3829a772a42ce8d6a67c0e84521",
+            "clip_fraction": 0.0,
+            "seconds": 2.95225
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              126080,
+              146624
+            ],
+            "rate": 16000,
+            "blocks": 1284,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "ef39cb6e0f0cd32aa289dceb48d6bb6a9b6778e1a3bef3a34cf631c65615b599",
+            "clip_fraction": 0.0,
+            "seconds": 2.247
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              146624,
+              149568
+            ],
+            "rate": 2000,
+            "blocks": 184,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "cd10013f207a2d790620edd9ce8b242cf8d65ba0e4f5c4e08621f5b259437fb9",
+            "clip_fraction": 0.0,
+            "seconds": 2.576
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/jungb.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              24384
+            ],
+            "rate": 15000,
+            "blocks": 1524,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7e94bb02340752556edada7af99b24bc26ae0b7a90fdf5fe603bef973c9016f4",
+            "clip_fraction": 0.0,
+            "seconds": 2.8448
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              24384,
+              44928
+            ],
+            "rate": 16000,
+            "blocks": 1284,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "ef39cb6e0f0cd32aa289dceb48d6bb6a9b6778e1a3bef3a34cf631c65615b599",
+            "clip_fraction": 0.0,
+            "seconds": 2.247
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              44928,
+              96576
+            ],
+            "rate": 18000,
+            "blocks": 3228,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "09b478bef84f0cbe97b10762bd507b0b02d0e4a24e4bfb5b93838b1398d8e6eb",
+            "clip_fraction": 0.0,
+            "seconds": 5.021333333333334
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              96576,
+              126016
+            ],
+            "rate": 20000,
+            "blocks": 1840,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "476c52fd0e20928464811025635890ccadb593ea71ff999448238215d8fa7456",
+            "clip_fraction": 0.0,
+            "seconds": 2.576
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              126016,
+              163264
+            ],
+            "rate": 18000,
+            "blocks": 2328,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "03c5d6bc12a970239fb9ccd631eb4f8045132acce4e96562b7d703434ebc441a",
+            "clip_fraction": 0.0,
+            "seconds": 3.6213333333333333
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              163264,
+              166208
+            ],
+            "rate": 2000,
+            "blocks": 184,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "cd10013f207a2d790620edd9ce8b242cf8d65ba0e4f5c4e08621f5b259437fb9",
+            "clip_fraction": 0.0,
+            "seconds": 2.576
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              166208,
+              213648
+            ],
+            "rate": 20000,
+            "blocks": 2965,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "14315610a24ead56c0a5d90651da9dc2ef64ca847d34c07b9234be5b020f1ce3",
+            "clip_fraction": 0.0,
+            "seconds": 4.151
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              213648,
+              240640
+            ],
+            "rate": 16000,
+            "blocks": 1687,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7f6ba10bd2ce210be7b4ce3e1ed3a8fb6e4bc3829a772a42ce8d6a67c0e84521",
+            "clip_fraction": 0.0,
+            "seconds": 2.95225
+          },
+          {
+            "index": 8,
+            "sample_span": [
+              240640,
+              280160
+            ],
+            "rate": 13000,
+            "blocks": 2470,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "8be32248ab2b5df3000797474c8484e344f94dd1a3801246b7f20f5f891a18dc",
+            "clip_fraction": 0.0,
+            "seconds": 5.32
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/jungc.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              51648
+            ],
+            "rate": 18000,
+            "blocks": 3228,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "09b478bef84f0cbe97b10762bd507b0b02d0e4a24e4bfb5b93838b1398d8e6eb",
+            "clip_fraction": 0.0,
+            "seconds": 5.021333333333334
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              51648,
+              95264
+            ],
+            "rate": 20000,
+            "blocks": 2726,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c4fcf98f2450190c134651867e208057bd516c23e8942da25279ed7d9623f7ef",
+            "clip_fraction": 0.0,
+            "seconds": 3.8164
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              95264,
+              122256
+            ],
+            "rate": 16000,
+            "blocks": 1687,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "7f6ba10bd2ce210be7b4ce3e1ed3a8fb6e4bc3829a772a42ce8d6a67c0e84521",
+            "clip_fraction": 0.0,
+            "seconds": 2.95225
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              122256,
+              142800
+            ],
+            "rate": 16000,
+            "blocks": 1284,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "ef39cb6e0f0cd32aa289dceb48d6bb6a9b6778e1a3bef3a34cf631c65615b599",
+            "clip_fraction": 0.0,
+            "seconds": 2.247
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              142800,
+              170016
+            ],
+            "rate": 18000,
+            "blocks": 1701,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c36e1cdc49e0087464841f36b771273fa19bfd447374c5965d925638aa66ce20",
+            "clip_fraction": 0.0,
+            "seconds": 2.646
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              170016,
+              217456
+            ],
+            "rate": 20000,
+            "blocks": 2965,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "14315610a24ead56c0a5d90651da9dc2ef64ca847d34c07b9234be5b020f1ce3",
+            "clip_fraction": 0.0,
+            "seconds": 4.151
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              217456,
+              238320
+            ],
+            "rate": 20000,
+            "blocks": 1304,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "339ee56398dcf00786eff94e78c8dec1262f11f0703fa5c307c02583e43e10f1",
+            "clip_fraction": 0.0,
+            "seconds": 1.8256
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              238320,
+              248016
+            ],
+            "rate": 14000,
+            "blocks": 606,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "c2b8f3bfe311e47b0794a48b8fdcc184969e93e7f60bdf7a90b9dc6e5fdffac5",
+            "clip_fraction": 0.0,
+            "seconds": 1.212
+          },
+          {
+            "index": 8,
+            "sample_span": [
+              248016,
+              274112
+            ],
+            "rate": 18000,
+            "blocks": 1631,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "695d651226d0425b014968a2334c9c7be2153a40621510c8117715dcfc0821c6",
+            "clip_fraction": 0.0,
+            "seconds": 2.5371111111111113
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/oval2.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              59424
+            ],
+            "rate": 8000,
+            "blocks": 3714,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "796b0b576b13e8d02b864bc9771cb8dd5ae26da8083c5b24748ef49a3c7ff716",
+            "clip_fraction": 9.616124317255174e-06,
+            "seconds": 12.999
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              59424,
+              77024
+            ],
+            "rate": 18000,
+            "blocks": 1100,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "106e38f0cb6a7e0355ff80d12cb405be98e00914bfb410054b096e284e9f5312",
+            "clip_fraction": 0.00025974025974025974,
+            "seconds": 1.711111111111111
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              77024,
+              97728
+            ],
+            "rate": 10000,
+            "blocks": 1294,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "23da96614e8deeb1b35255df44cabcd5668948a96200641671a0cd1cdd280e0a",
+            "clip_fraction": 0.0,
+            "seconds": 3.6232
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              97728,
+              127536
+            ],
+            "rate": 20000,
+            "blocks": 1863,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "e2ba755479db18476cd869cddcd633bc37f83d10be4b0fe8ac6e6845174caaac",
+            "clip_fraction": 0.0,
+            "seconds": 2.6082
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              127536,
+              146352
+            ],
+            "rate": 20000,
+            "blocks": 1176,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "d4c7f9dd6ed3e49952dee7777b76484fb4be59a6e1d32c88acd7084d4d453c26",
+            "clip_fraction": 0.0,
+            "seconds": 1.6464
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/oval3.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              40768
+            ],
+            "rate": 12000,
+            "blocks": 2548,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "51d61bbef43ce3d2f7335d556865493f4c0a83bb693e23b7d1f46a3fdeb9e9b3",
+            "clip_fraction": 9.811616954474098e-05,
+            "seconds": 5.945333333333333
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              40768,
+              58368
+            ],
+            "rate": 18000,
+            "blocks": 1100,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "106e38f0cb6a7e0355ff80d12cb405be98e00914bfb410054b096e284e9f5312",
+            "clip_fraction": 0.00025974025974025974,
+            "seconds": 1.711111111111111
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              58368,
+              136464
+            ],
+            "rate": 12000,
+            "blocks": 4881,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "3aa14d20deb0f37305f046d960288b14a13b7b66d8b9bb54439a1a6cff339eec",
+            "clip_fraction": 0.0,
+            "seconds": 11.389
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              136464,
+              195888
+            ],
+            "rate": 8000,
+            "blocks": 3714,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "796b0b576b13e8d02b864bc9771cb8dd5ae26da8083c5b24748ef49a3c7ff716",
+            "clip_fraction": 9.616124317255174e-06,
+            "seconds": 12.999
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              195888,
+              214704
+            ],
+            "rate": 20000,
+            "blocks": 1176,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "d4c7f9dd6ed3e49952dee7777b76484fb4be59a6e1d32c88acd7084d4d453c26",
+            "clip_fraction": 0.0,
+            "seconds": 1.6464
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              214704,
+              244512
+            ],
+            "rate": 20000,
+            "blocks": 1863,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "e2ba755479db18476cd869cddcd633bc37f83d10be4b0fe8ac6e6845174caaac",
+            "clip_fraction": 0.0,
+            "seconds": 2.6082
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/SPEECH/speech.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              10016
+            ],
+            "rate": 22050,
+            "blocks": 626,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "e8625fd7ace0c07dcd7568929aee18ddb1f449342fa7ca8e9729d5f7b5d623bd",
+            "clip_fraction": 0.0,
+            "seconds": 0.7949206349206349
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              10016,
+              17216
+            ],
+            "rate": 22050,
+            "blocks": 450,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "8bb8e96540a80d558f490122765685953bded52bd2f110122a9bd62b4ae469ee",
+            "clip_fraction": 0.0,
+            "seconds": 0.5714285714285714
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              17216,
+              23392
+            ],
+            "rate": 22050,
+            "blocks": 386,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "c2c824794ae6fd4a1558e626a5fffb1dbf360191a989475922d5656cb59ad561",
+            "clip_fraction": 0.0,
+            "seconds": 0.4901587301587302
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              23392,
+              31904
+            ],
+            "rate": 22050,
+            "blocks": 532,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "033423fb5651b769c4e3afb83c4465132e9fa7d31e97629af867df41dc36ef02",
+            "clip_fraction": 0.0,
+            "seconds": 0.6755555555555556
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              31904,
+              38560
+            ],
+            "rate": 22050,
+            "blocks": 416,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "f11fb5f50155a43cfda8c960c9c956558a3fcf5fa9804752f8694e0e17078db6",
+            "clip_fraction": 0.0,
+            "seconds": 0.5282539682539683
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              38560,
+              46272
+            ],
+            "rate": 22050,
+            "blocks": 482,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "248a74d3ab4c268938e26b79aa9cabbe4d9ef73a8d2182ecaf8f900027fab5a2",
+            "clip_fraction": 0.0,
+            "seconds": 0.6120634920634921
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              46272,
+              60096
+            ],
+            "rate": 22050,
+            "blocks": 864,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "32b7d121827d0ecdf2588981d40d0176a116aa4588ffda7480d440ea03666956",
+            "clip_fraction": 0.0,
+            "seconds": 1.0971428571428572
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              60096,
+              71408
+            ],
+            "rate": 22050,
+            "blocks": 707,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "2efb74b9906a5eb537b45786ad3d04dcfcdac83aa6aba46ad2ac9f8b54e10a69",
+            "clip_fraction": 0.0,
+            "seconds": 0.8977777777777778
+          },
+          {
+            "index": 8,
+            "sample_span": [
+              71408,
+              84080
+            ],
+            "rate": 22050,
+            "blocks": 792,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "eaf74b5f95cb69b9ed5b4f75ee213e85a512a262a2163a10f010632c2bc43a2b",
+            "clip_fraction": 0.0,
+            "seconds": 1.0057142857142858
+          },
+          {
+            "index": 9,
+            "sample_span": [
+              84080,
+              95888
+            ],
+            "rate": 22050,
+            "blocks": 738,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "e9272c46d6d79f1bf2d376930fe83bc9993ea96fc106085b41fb4984d4576d78",
+            "clip_fraction": 0.0,
+            "seconds": 0.9371428571428572
+          },
+          {
+            "index": 10,
+            "sample_span": [
+              95888,
+              105696
+            ],
+            "rate": 22050,
+            "blocks": 613,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "ee9503abd0058f1ac9d175099b2053ccecae5249801589ee19a4a33e78e33664",
+            "clip_fraction": 0.0,
+            "seconds": 0.7784126984126984
+          },
+          {
+            "index": 11,
+            "sample_span": [
+              105696,
+              118240
+            ],
+            "rate": 22050,
+            "blocks": 784,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3ef70860341ab9cdb32ce28501e71b2629ba6bb887988ab69fae9801e9830ca3",
+            "clip_fraction": 0.0,
+            "seconds": 0.9955555555555555
+          },
+          {
+            "index": 12,
+            "sample_span": [
+              118240,
+              128640
+            ],
+            "rate": 22050,
+            "blocks": 650,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "eba1367ce9047ad4b2cb21e9b42a3e1cf45602136d72367d1c48fdd786a710c4",
+            "clip_fraction": 0.0,
+            "seconds": 0.8253968253968254
+          },
+          {
+            "index": 13,
+            "sample_span": [
+              128640,
+              139120
+            ],
+            "rate": 22050,
+            "blocks": 655,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "b1fe8fb877060f841d4362f9fcfd0dcb2f73c62aaa8beaa90383c754708d1e1e",
+            "clip_fraction": 0.0,
+            "seconds": 0.8317460317460318
+          },
+          {
+            "index": 14,
+            "sample_span": [
+              139120,
+              174192
+            ],
+            "rate": 22050,
+            "blocks": 2192,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "49e33c310df59e100d05a510b9b321b7d026a54feed2be4f68df891be7b05d64",
+            "clip_fraction": 0.0,
+            "seconds": 2.7834920634920635
+          },
+          {
+            "index": 15,
+            "sample_span": [
+              174192,
+              209904
+            ],
+            "rate": 22050,
+            "blocks": 2232,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "ce116611c9ff657d7352ac5133c5b5de635a71f691186bcd6eb89d32a82929e7",
+            "clip_fraction": 0.0,
+            "seconds": 2.834285714285714
+          },
+          {
+            "index": 16,
+            "sample_span": [
+              209904,
+              251536
+            ],
+            "rate": 22050,
+            "blocks": 2602,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "deef8fe0ce7113d803744054003edb36aca5367a615eaa08d34603378a896c23",
+            "clip_fraction": 0.0,
+            "seconds": 3.304126984126984
+          },
+          {
+            "index": 17,
+            "sample_span": [
+              251536,
+              265120
+            ],
+            "rate": 22050,
+            "blocks": 849,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "11470642ebb8183455b175778704b8d5e429605c8c72331a1375a4c1cfd4eb17",
+            "clip_fraction": 0.0,
+            "seconds": 1.078095238095238
+          },
+          {
+            "index": 18,
+            "sample_span": [
+              265120,
+              272880
+            ],
+            "rate": 22050,
+            "blocks": 485,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "78e566401a70198fca5aafe3ad781180e5d878c087463524fa2f30fdeb5a488b",
+            "clip_fraction": 0.0,
+            "seconds": 0.6158730158730159
+          },
+          {
+            "index": 19,
+            "sample_span": [
+              272880,
+              285120
+            ],
+            "rate": 22050,
+            "blocks": 765,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "ba22f1527633104d3ed8c85011f4e2d0200261ad851dee23c1ed552483258b32",
+            "clip_fraction": 0.0,
+            "seconds": 0.9714285714285714
+          },
+          {
+            "index": 20,
+            "sample_span": [
+              285120,
+              298608
+            ],
+            "rate": 22050,
+            "blocks": 843,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "53b02d560e18c301ce40b01b62e705e2ddd589e39e04497fc015bddff471018f",
+            "clip_fraction": 0.0,
+            "seconds": 1.0704761904761906
+          },
+          {
+            "index": 21,
+            "sample_span": [
+              298608,
+              307392
+            ],
+            "rate": 22050,
+            "blocks": 549,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "934229a20492dafe0788e3fdb3f4321fbb7e70dc5208b960686347a02edc7a83",
+            "clip_fraction": 0.0,
+            "seconds": 0.6971428571428572
+          },
+          {
+            "index": 22,
+            "sample_span": [
+              307392,
+              320064
+            ],
+            "rate": 22050,
+            "blocks": 792,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "7b0494e22ad58b3162eacf15153ba17255150bb293e3ad1909b371f059d083f2",
+            "clip_fraction": 0.0,
+            "seconds": 1.0057142857142858
+          },
+          {
+            "index": 23,
+            "sample_span": [
+              320064,
+              328480
+            ],
+            "rate": 22050,
+            "blocks": 526,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "71367f5706e4a0479db44811345e82ed3422234e8d7857a4b1abd01e96573435",
+            "clip_fraction": 0.0,
+            "seconds": 0.6679365079365079
+          },
+          {
+            "index": 24,
+            "sample_span": [
+              328480,
+              352000
+            ],
+            "rate": 22050,
+            "blocks": 1470,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "c0d5efa5cd874eb03494b8f38b512ac26ed434cbb2e82427c4cca24a6ce02afb",
+            "clip_fraction": 0.0,
+            "seconds": 1.8666666666666667
+          },
+          {
+            "index": 25,
+            "sample_span": [
+              352000,
+              381360
+            ],
+            "rate": 22050,
+            "blocks": 1835,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "10fcf54de552f4f74b3cd68472d57af6ff0e5d2ec57692c83b915ffbb0eb1f69",
+            "clip_fraction": 0.0,
+            "seconds": 2.3301587301587303
+          },
+          {
+            "index": 26,
+            "sample_span": [
+              381360,
+              402576
+            ],
+            "rate": 22050,
+            "blocks": 1326,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3c4260cb717ae135ffa1cb4f535d9fe8486e61fad078e0544ce4a42a5c1891cf",
+            "clip_fraction": 0.0,
+            "seconds": 1.6838095238095239
+          },
+          {
+            "index": 27,
+            "sample_span": [
+              402576,
+              413520
+            ],
+            "rate": 22050,
+            "blocks": 684,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "8e8e10874ca673e743fba502a02ae8d55ec188d3c2da433b8b2bd2e999531810",
+            "clip_fraction": 0.0,
+            "seconds": 0.8685714285714285
+          },
+          {
+            "index": 28,
+            "sample_span": [
+              413520,
+              426592
+            ],
+            "rate": 22050,
+            "blocks": 817,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "dc5a4b0b99b432d9f5889bd37c6e181ed4fbd12ab6f3a622e8b4f3ec03155c1c",
+            "clip_fraction": 0.0,
+            "seconds": 1.0374603174603174
+          },
+          {
+            "index": 29,
+            "sample_span": [
+              426592,
+              437856
+            ],
+            "rate": 22050,
+            "blocks": 704,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "f02a8a5a73673789ad495a36e0240033af53765fc931390cf9f70717fa9f9c56",
+            "clip_fraction": 0.0,
+            "seconds": 0.893968253968254
+          },
+          {
+            "index": 30,
+            "sample_span": [
+              437856,
+              454032
+            ],
+            "rate": 22050,
+            "blocks": 1011,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "c56ca85b0cafa6cf4e70e83d13f291655eb24293b852f1a2b5fd873e77611c8e",
+            "clip_fraction": 3.532570298148933e-05,
+            "seconds": 1.2838095238095237
+          },
+          {
+            "index": 31,
+            "sample_span": [
+              454032,
+              465216
+            ],
+            "rate": 22050,
+            "blocks": 699,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "1d500ce999c5676e893d48e6a0f4afeb9091e0d6ea481911e9a90bcbc481ede8",
+            "clip_fraction": 0.0,
+            "seconds": 0.8876190476190476
+          },
+          {
+            "index": 32,
+            "sample_span": [
+              465216,
+              476928
+            ],
+            "rate": 22050,
+            "blocks": 732,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "f278ba53a92d4bfe3d22b43fab519e802af04652baaf400b951b7666a1b34bfd",
+            "clip_fraction": 0.0,
+            "seconds": 0.9295238095238095
+          },
+          {
+            "index": 33,
+            "sample_span": [
+              476928,
+              489392
+            ],
+            "rate": 22050,
+            "blocks": 779,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "b7f9eca1cfc2f807b6f2cfb6473156481166470721dcae722438ea0e755f7377",
+            "clip_fraction": 0.0,
+            "seconds": 0.9892063492063492
+          },
+          {
+            "index": 34,
+            "sample_span": [
+              489392,
+              502704
+            ],
+            "rate": 22050,
+            "blocks": 832,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "80bcbc253768900c00fcd5aedd679e58b559b3bb57dd3714fb049bffd0b69bb7",
+            "clip_fraction": 0.0,
+            "seconds": 1.0565079365079366
+          },
+          {
+            "index": 35,
+            "sample_span": [
+              502704,
+              517296
+            ],
+            "rate": 22050,
+            "blocks": 912,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "c33f4ac4a5582167279c16dcc20492a9c73b5342292035aca171e5c6854ec64f",
+            "clip_fraction": 0.0,
+            "seconds": 1.158095238095238
+          },
+          {
+            "index": 36,
+            "sample_span": [
+              517296,
+              534864
+            ],
+            "rate": 22050,
+            "blocks": 1098,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "cc3beeffbbad57d0faa1c2c56d1d3fb07a829e3b2b4ebd9c6fec0c41ab2f322f",
+            "clip_fraction": 0.0,
+            "seconds": 1.3942857142857144
+          },
+          {
+            "index": 37,
+            "sample_span": [
+              534864,
+              547248
+            ],
+            "rate": 22050,
+            "blocks": 774,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "66e1977b2249fa10c24fd41584d03085b5f408fefaf8a1ef2bb2197a02f6d357",
+            "clip_fraction": 9.228497600590623e-05,
+            "seconds": 0.9828571428571429
+          },
+          {
+            "index": 38,
+            "sample_span": [
+              547248,
+              620752
+            ],
+            "rate": 22050,
+            "blocks": 4594,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "b0734e5626289070fbf05e538630275247d47d45cb3ae5dda7cc1ea87bbec41d",
+            "clip_fraction": 0.0,
+            "seconds": 5.8336507936507935
+          },
+          {
+            "index": 39,
+            "sample_span": [
+              620752,
+              701248
+            ],
+            "rate": 22050,
+            "blocks": 5031,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "5a0f157832d3354a1d911f933bbc7e2a8bb72b5caedb57ad577d57563e21e4f8",
+            "clip_fraction": 0.0,
+            "seconds": 6.388571428571429
+          },
+          {
+            "index": 40,
+            "sample_span": [
+              701248,
+              768592
+            ],
+            "rate": 22050,
+            "blocks": 4209,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "975a1d3eaad45036c479f7b07a07017e8ee598d7aa7efe8fa0d12f17de08e8ee",
+            "clip_fraction": 0.0,
+            "seconds": 5.344761904761905
+          },
+          {
+            "index": 41,
+            "sample_span": [
+              768592,
+              827360
+            ],
+            "rate": 22050,
+            "blocks": 3673,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "882cd07929fc6f1b8c3f1e2bb1659ebf9dd77878733989fae74285e460acfb52",
+            "clip_fraction": 0.0,
+            "seconds": 4.664126984126984
+          },
+          {
+            "index": 42,
+            "sample_span": [
+              827360,
+              897808
+            ],
+            "rate": 22050,
+            "blocks": 4403,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "10c41fb544b6cb15764816f5666fcf15a28b3f7d3ac0d8a2ab86bdc53e34e38f",
+            "clip_fraction": 0.0,
+            "seconds": 5.591111111111111
+          },
+          {
+            "index": 43,
+            "sample_span": [
+              897808,
+              961312
+            ],
+            "rate": 22050,
+            "blocks": 3969,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "439f45379c9fb9d97850cc25426d1c65468ee601bc8d6f84720e630dbd654717",
+            "clip_fraction": 0.0,
+            "seconds": 5.04
+          },
+          {
+            "index": 44,
+            "sample_span": [
+              961312,
+              1005904
+            ],
+            "rate": 22050,
+            "blocks": 2787,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "2381631aca106e822dc7ccee53460d3136d12ffa50a0deb9eb1aebdf4d32aeb2",
+            "clip_fraction": 0.0,
+            "seconds": 3.539047619047619
+          },
+          {
+            "index": 45,
+            "sample_span": [
+              1005904,
+              1039584
+            ],
+            "rate": 22050,
+            "blocks": 2105,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "a55e6decfcb52661d49e86db0eb8c753a8a9cd59141ec4691bbbc8b957b2198f",
+            "clip_fraction": 0.0,
+            "seconds": 2.673015873015873
+          },
+          {
+            "index": 46,
+            "sample_span": [
+              1039584,
+              1050720
+            ],
+            "rate": 22050,
+            "blocks": 696,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "4826d1d5bfa2d3977befcf47e21dcc92f2b58c3b1512627e036cfa402b88e026",
+            "clip_fraction": 0.0,
+            "seconds": 0.8838095238095238
+          },
+          {
+            "index": 47,
+            "sample_span": [
+              1050720,
+              1058896
+            ],
+            "rate": 22050,
+            "blocks": 511,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "ddcad4e368f00c674690b7b8fd2ec1fc61b7a51b498daa0e8c702de11c9f003b",
+            "clip_fraction": 0.0,
+            "seconds": 0.6488888888888888
+          },
+          {
+            "index": 48,
+            "sample_span": [
+              1058896,
+              1064416
+            ],
+            "rate": 22050,
+            "blocks": 345,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "301e679618fbeeb79abbff1dd5fc6cad6da564b4edb199a100c870360991c335",
+            "clip_fraction": 0.0,
+            "seconds": 0.4380952380952381
+          },
+          {
+            "index": 49,
+            "sample_span": [
+              1064416,
+              1072336
+            ],
+            "rate": 22050,
+            "blocks": 495,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "215ae2ddaed02740a0ec20679912a745f214f3486bf02f723b9880396887093e",
+            "clip_fraction": 0.0,
+            "seconds": 0.6285714285714286
+          },
+          {
+            "index": 50,
+            "sample_span": [
+              1072336,
+              1078896
+            ],
+            "rate": 22050,
+            "blocks": 410,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "91bb0cf0038259849612aa9235c038a3da9ad0f22a6602f1868be23322213bf9",
+            "clip_fraction": 0.0,
+            "seconds": 0.5206349206349207
+          },
+          {
+            "index": 51,
+            "sample_span": [
+              1078896,
+              1086144
+            ],
+            "rate": 22050,
+            "blocks": 453,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "11a860584b25bade6fd6e5042d5e7628de0c575695888f8323524e48c4c23eb6",
+            "clip_fraction": 0.0,
+            "seconds": 0.5752380952380952
+          },
+          {
+            "index": 52,
+            "sample_span": [
+              1086144,
+              1096208
+            ],
+            "rate": 22050,
+            "blocks": 629,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "8a7bf9fd6249c38dcbff81b0b9d874f9c8e6bfa4cf2e7ad56cc543968e8dd7b8",
+            "clip_fraction": 0.0,
+            "seconds": 0.7987301587301587
+          },
+          {
+            "index": 53,
+            "sample_span": [
+              1096208,
+              1106448
+            ],
+            "rate": 22050,
+            "blocks": 640,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3f11eeeb6703f6e29595d5e36e8d48795c44d05275e1d547a34ac7f87383d0b0",
+            "clip_fraction": 0.0,
+            "seconds": 0.8126984126984127
+          },
+          {
+            "index": 54,
+            "sample_span": [
+              1106448,
+              1118272
+            ],
+            "rate": 22050,
+            "blocks": 739,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3fe7af70f89c37be05a5646950eadc28b921d960d4d167664c145cb4a9a8b3a0",
+            "clip_fraction": 0.0,
+            "seconds": 0.9384126984126984
+          },
+          {
+            "index": 55,
+            "sample_span": [
+              1118272,
+              1131536
+            ],
+            "rate": 22050,
+            "blocks": 829,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "6a2cca32efe2b30e9b36c051270fecf99a94dc4e4d398f765e25bf1cb1d7b560",
+            "clip_fraction": 0.0,
+            "seconds": 1.0526984126984127
+          },
+          {
+            "index": 56,
+            "sample_span": [
+              1131536,
+              1144048
+            ],
+            "rate": 22050,
+            "blocks": 782,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "9a505ec33a04a33d58671299c0eb2802869c014a4d6664387a6bfcf6a1963e7d",
+            "clip_fraction": 0.0,
+            "seconds": 0.993015873015873
+          },
+          {
+            "index": 57,
+            "sample_span": [
+              1144048,
+              1153040
+            ],
+            "rate": 22050,
+            "blocks": 562,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "02ed581cd7ae082954b0c09778c4c3891eaeb338bdcdeb7d339b550c654c4b92",
+            "clip_fraction": 0.0,
+            "seconds": 0.7136507936507936
+          },
+          {
+            "index": 58,
+            "sample_span": [
+              1153040,
+              1170480
+            ],
+            "rate": 22050,
+            "blocks": 1090,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "77e259cc532f3a9b8ae2ba579ada6446eacbc84b9accd5c7bb0bdc03425ebe13",
+            "clip_fraction": 0.0,
+            "seconds": 1.384126984126984
+          },
+          {
+            "index": 59,
+            "sample_span": [
+              1170480,
+              1188832
+            ],
+            "rate": 22050,
+            "blocks": 1147,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "d1c474dfe3e0dfd2a572a8bed962934fcbbe2f77a785dc3a97c4a0bb2fad4586",
+            "clip_fraction": 0.0,
+            "seconds": 1.4565079365079365
+          },
+          {
+            "index": 60,
+            "sample_span": [
+              1188832,
+              1200528
+            ],
+            "rate": 22050,
+            "blocks": 731,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3463f4d3c39476ab7099de680a53092f5b3c11092f17ad6091c7335171a28d4e",
+            "clip_fraction": 0.0,
+            "seconds": 0.9282539682539682
+          },
+          {
+            "index": 61,
+            "sample_span": [
+              1200528,
+              1223120
+            ],
+            "rate": 22050,
+            "blocks": 1412,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "4c291bf76b9d13d00539d05851797e582c53df73f2186f9fc755d424388779a3",
+            "clip_fraction": 0.0,
+            "seconds": 1.793015873015873
+          },
+          {
+            "index": 62,
+            "sample_span": [
+              1223120,
+              1242928
+            ],
+            "rate": 22050,
+            "blocks": 1238,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "084a1ceecb8c618bffe78c39256c91231aa1ea806f91b2457a07ccb7c36420bb",
+            "clip_fraction": 0.0,
+            "seconds": 1.5720634920634922
+          },
+          {
+            "index": 63,
+            "sample_span": [
+              1242928,
+              1254576
+            ],
+            "rate": 22050,
+            "blocks": 728,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "2cded6880c09c03a92c9a4ceb3dde2889f078f1d73ce52689c61f8048afff3bb",
+            "clip_fraction": 0.0,
+            "seconds": 0.9244444444444444
+          },
+          {
+            "index": 64,
+            "sample_span": [
+              1254576,
+              1271280
+            ],
+            "rate": 22050,
+            "blocks": 1044,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "ee719ec8a99d1fcfeca051bf8bf11f514271b8d4ace0bbc8fae1ea61d572c5f9",
+            "clip_fraction": 0.0,
+            "seconds": 1.3257142857142856
+          },
+          {
+            "index": 65,
+            "sample_span": [
+              1271280,
+              1283312
+            ],
+            "rate": 22050,
+            "blocks": 752,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "83d8d4cc5fe34c48a258e5920d75a6c05169a40a6f711337d3bfa1ff17ee8bf4",
+            "clip_fraction": 0.0,
+            "seconds": 0.954920634920635
+          },
+          {
+            "index": 66,
+            "sample_span": [
+              1283312,
+              1298640
+            ],
+            "rate": 22050,
+            "blocks": 958,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "0b7572ccd073d7c7127c9a52031670caa7c9dacdf9e13fd24d38eac8332e69cf",
+            "clip_fraction": 0.0,
+            "seconds": 1.2165079365079365
+          },
+          {
+            "index": 67,
+            "sample_span": [
+              1298640,
+              1307968
+            ],
+            "rate": 22050,
+            "blocks": 583,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "ccde5f68cbc1dbe274828419c3450bd99fc2a241232147ce0ac936bfc9b9a3c3",
+            "clip_fraction": 6.125949522175937e-05,
+            "seconds": 0.7403174603174603
+          },
+          {
+            "index": 68,
+            "sample_span": [
+              1307968,
+              1336512
+            ],
+            "rate": 22050,
+            "blocks": 1784,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "009cf20acaf0ad24d1ba0aee91add360ac1df04d4e7af9ec4a927ebec0170b29",
+            "clip_fraction": 0.0,
+            "seconds": 2.2653968253968255
+          },
+          {
+            "index": 69,
+            "sample_span": [
+              1336512,
+              1348752
+            ],
+            "rate": 22050,
+            "blocks": 765,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "072e12e1f0dec6d282f2cb650d2b38d82cc9c3f317d5d72894a155b74c03e529",
+            "clip_fraction": 0.0,
+            "seconds": 0.9714285714285714
+          },
+          {
+            "index": 70,
+            "sample_span": [
+              1348752,
+              1372816
+            ],
+            "rate": 22050,
+            "blocks": 1504,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "354f18e8fd8b49e8dd761600f43339a9dd908e8ad63977467e929775975811f0",
+            "clip_fraction": 0.0,
+            "seconds": 1.90984126984127
+          },
+          {
+            "index": 71,
+            "sample_span": [
+              1372816,
+              1378208
+            ],
+            "rate": 22050,
+            "blocks": 337,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "96b90a19009b0d814cb21bd95e284098dd96c3d261550c91b50db8be2d6abc10",
+            "clip_fraction": 0.0,
+            "seconds": 0.42793650793650795
+          },
+          {
+            "index": 72,
+            "sample_span": [
+              1378208,
+              1386192
+            ],
+            "rate": 22050,
+            "blocks": 499,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "fe305aa08c9b21915cf027281a0b9473451c2eb56c29fdf9719423eba335ab09",
+            "clip_fraction": 0.0,
+            "seconds": 0.6336507936507937
+          },
+          {
+            "index": 73,
+            "sample_span": [
+              1386192,
+              1394560
+            ],
+            "rate": 22050,
+            "blocks": 523,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "47168c631b0ba17729627718c2698078d291ffbc914abda96646ef56710bc84d",
+            "clip_fraction": 0.0,
+            "seconds": 0.6641269841269841
+          },
+          {
+            "index": 74,
+            "sample_span": [
+              1394560,
+              1410304
+            ],
+            "rate": 22050,
+            "blocks": 984,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "63639eb69adfbcbe1d42520babb246adcbe29baac773a5b003b5fa00550abad8",
+            "clip_fraction": 0.0,
+            "seconds": 1.2495238095238095
+          },
+          {
+            "index": 75,
+            "sample_span": [
+              1410304,
+              1422960
+            ],
+            "rate": 22050,
+            "blocks": 791,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "6823ab1ea35323bdc0aacba8323ac8c483ebe0ae837225fc2324259b0fb61670",
+            "clip_fraction": 0.0,
+            "seconds": 1.0044444444444445
+          },
+          {
+            "index": 76,
+            "sample_span": [
+              1422960,
+              1435312
+            ],
+            "rate": 22050,
+            "blocks": 772,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3d2c1e12fa5add35c88df81427209cb98b5cde2ac1111630902ad5aa3374bba4",
+            "clip_fraction": 0.0,
+            "seconds": 0.9803174603174604
+          },
+          {
+            "index": 77,
+            "sample_span": [
+              1435312,
+              1443744
+            ],
+            "rate": 22050,
+            "blocks": 527,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "5abee897a82144cde1640fb728839477a6dcf9f8cefd3ccc510db1eadd6b5207",
+            "clip_fraction": 0.0,
+            "seconds": 0.6692063492063492
+          },
+          {
+            "index": 78,
+            "sample_span": [
+              1443744,
+              1454544
+            ],
+            "rate": 22050,
+            "blocks": 675,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "5b235720742234671794e38c465a186480dab84d2e62af08adf7a07306dc37de",
+            "clip_fraction": 0.0,
+            "seconds": 0.8571428571428571
+          },
+          {
+            "index": 79,
+            "sample_span": [
+              1454544,
+              1462784
+            ],
+            "rate": 22050,
+            "blocks": 515,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "ee37b7dcfe3887240ad0d3b34afe2de04aaf3fd6507ab857b0dbc7a4648a5af8",
+            "clip_fraction": 0.0,
+            "seconds": 0.653968253968254
+          },
+          {
+            "index": 80,
+            "sample_span": [
+              1462784,
+              1473600
+            ],
+            "rate": 22050,
+            "blocks": 676,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "a234559cc5d9b8a31dce01815a71bfadd64eccd948aa97882ca815d55a347cae",
+            "clip_fraction": 0.0,
+            "seconds": 0.8584126984126984
+          },
+          {
+            "index": 81,
+            "sample_span": [
+              1473600,
+              1484944
+            ],
+            "rate": 22050,
+            "blocks": 709,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "7a78479eb2a363fbe226a5f6df36ccfba9468f3ce67d90f24c75396ccd471f5a",
+            "clip_fraction": 0.0,
+            "seconds": 0.9003174603174603
+          },
+          {
+            "index": 82,
+            "sample_span": [
+              1484944,
+              1492000
+            ],
+            "rate": 22050,
+            "blocks": 441,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3a73b4dcc0c18ccbb68bdddf046a69a7fcafc7c196128354df8bbe2dfcfecb3a",
+            "clip_fraction": 0.0,
+            "seconds": 0.56
+          },
+          {
+            "index": 83,
+            "sample_span": [
+              1492000,
+              1506400
+            ],
+            "rate": 22050,
+            "blocks": 900,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "18be4d7b397a024b725930927e9373575a565c3491848a576d5c9ec3f22c3121",
+            "clip_fraction": 0.0,
+            "seconds": 1.1428571428571428
+          },
+          {
+            "index": 84,
+            "sample_span": [
+              1506400,
+              1518096
+            ],
+            "rate": 22050,
+            "blocks": 731,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "5f561959270194cf25cb18929bca7662866fb7a5028762d5b2c29f73a8602659",
+            "clip_fraction": 0.0,
+            "seconds": 0.9282539682539682
+          },
+          {
+            "index": 85,
+            "sample_span": [
+              1518096,
+              1529504
+            ],
+            "rate": 22050,
+            "blocks": 713,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "2ca9e378c48687f8acb60d278ca2ba6a6cb1b7ba8442af60a74627712ffba02c",
+            "clip_fraction": 0.0,
+            "seconds": 0.9053968253968254
+          },
+          {
+            "index": 86,
+            "sample_span": [
+              1529504,
+              1541056
+            ],
+            "rate": 22050,
+            "blocks": 722,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "2ee14cedb022822ae6d8db3ba2df25dfeafbf5a60e2954ab2953a6a24c978ca9",
+            "clip_fraction": 0.0,
+            "seconds": 0.9168253968253969
+          },
+          {
+            "index": 87,
+            "sample_span": [
+              1541056,
+              1552288
+            ],
+            "rate": 22050,
+            "blocks": 702,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "8648a4f96de9ae3f32447863706df77340cf31e8cbe10abdd0c93adc2cadcf3b",
+            "clip_fraction": 0.0,
+            "seconds": 0.8914285714285715
+          },
+          {
+            "index": 88,
+            "sample_span": [
+              1552288,
+              1563776
+            ],
+            "rate": 22050,
+            "blocks": 718,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "7b8717cf430d4c3bfb69aa6a362a6ae9cd1e900e55d4faf13239194c62ea8585",
+            "clip_fraction": 0.0,
+            "seconds": 0.9117460317460317
+          },
+          {
+            "index": 89,
+            "sample_span": [
+              1563776,
+              1571664
+            ],
+            "rate": 22050,
+            "blocks": 493,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "fc4b5d2940d5208470327661a233b5b8630f90b7924e56515100da0068f8306f",
+            "clip_fraction": 0.0,
+            "seconds": 0.626031746031746
+          },
+          {
+            "index": 90,
+            "sample_span": [
+              1571664,
+              1582880
+            ],
+            "rate": 22050,
+            "blocks": 701,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "4ee9aa43370b18d5e044b08877ee55146a3ccebc83d74779a06b930fcbb09bcb",
+            "clip_fraction": 5.0947625840635824e-05,
+            "seconds": 0.8901587301587301
+          },
+          {
+            "index": 91,
+            "sample_span": [
+              1582880,
+              1591744
+            ],
+            "rate": 22050,
+            "blocks": 554,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "f688f61c4e7933367027c802b6a073411cf767020c6fa66ed69a3788a8bf179a",
+            "clip_fraction": 0.0,
+            "seconds": 0.7034920634920635
+          },
+          {
+            "index": 92,
+            "sample_span": [
+              1591744,
+              1602896
+            ],
+            "rate": 22050,
+            "blocks": 697,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "aff44ab9fb679491b5b590e920b762487df76a4dd6f5175e667a6ed537d32f6b",
+            "clip_fraction": 0.0,
+            "seconds": 0.8850793650793651
+          },
+          {
+            "index": 93,
+            "sample_span": [
+              1602896,
+              1610912
+            ],
+            "rate": 22050,
+            "blocks": 501,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "92a6bafd2639543ed23e4f8c0723d6133a35eeeacc5d76b59f8b87578381f9cd",
+            "clip_fraction": 0.0,
+            "seconds": 0.6361904761904762
+          },
+          {
+            "index": 94,
+            "sample_span": [
+              1610912,
+              1620656
+            ],
+            "rate": 22050,
+            "blocks": 609,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "774a1a64558e3c03d9764afe9d46839f2b64bcafbb1d3aefd1f9630e62234441",
+            "clip_fraction": 0.0,
+            "seconds": 0.7733333333333333
+          },
+          {
+            "index": 95,
+            "sample_span": [
+              1620656,
+              1626016
+            ],
+            "rate": 22050,
+            "blocks": 335,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "170146d900e841accd7f68a0f6812a525fb581c1fb4a7296d4434b5f4d4d538d",
+            "clip_fraction": 0.0,
+            "seconds": 0.4253968253968254
+          },
+          {
+            "index": 96,
+            "sample_span": [
+              1626016,
+              1636624
+            ],
+            "rate": 22050,
+            "blocks": 663,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3c67a26e0e2913a210ae56f416b9dce3a1b7f37fd7c59d495cf83c6866262ab8",
+            "clip_fraction": 0.0,
+            "seconds": 0.8419047619047619
+          },
+          {
+            "index": 97,
+            "sample_span": [
+              1636624,
+              1646016
+            ],
+            "rate": 22050,
+            "blocks": 587,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "45ba5ef9ed1107530576ceefc13ee26cef02d22d6751fe39dc836ea36e34d2c0",
+            "clip_fraction": 0.0,
+            "seconds": 0.7453968253968254
+          },
+          {
+            "index": 98,
+            "sample_span": [
+              1646016,
+              1657088
+            ],
+            "rate": 22050,
+            "blocks": 692,
+            "last_flags": 7,
+            "terminator": "1,7",
+            "pcm_sha256": "3c27e01f3fe0c54408c180166bb729885dc321a948628605c2d9111836a178fb",
+            "clip_fraction": 0.0,
+            "seconds": 0.8787301587301587
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/spring.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              59424
+            ],
+            "rate": 8000,
+            "blocks": 3714,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "796b0b576b13e8d02b864bc9771cb8dd5ae26da8083c5b24748ef49a3c7ff716",
+            "clip_fraction": 9.616124317255174e-06,
+            "seconds": 12.999
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              59424,
+              89232
+            ],
+            "rate": 20000,
+            "blocks": 1863,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "e2ba755479db18476cd869cddcd633bc37f83d10be4b0fe8ac6e6845174caaac",
+            "clip_fraction": 0.0,
+            "seconds": 2.6082
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              89232,
+              108048
+            ],
+            "rate": 20000,
+            "blocks": 1176,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "d4c7f9dd6ed3e49952dee7777b76484fb4be59a6e1d32c88acd7084d4d453c26",
+            "clip_fraction": 0.0,
+            "seconds": 1.6464
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              108048,
+              125648
+            ],
+            "rate": 18000,
+            "blocks": 1100,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "106e38f0cb6a7e0355ff80d12cb405be98e00914bfb410054b096e284e9f5312",
+            "clip_fraction": 0.00025974025974025974,
+            "seconds": 1.711111111111111
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/spring2.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              17600
+            ],
+            "rate": 18000,
+            "blocks": 1100,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "106e38f0cb6a7e0355ff80d12cb405be98e00914bfb410054b096e284e9f5312",
+            "clip_fraction": 0.00025974025974025974,
+            "seconds": 1.711111111111111
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              17600,
+              47408
+            ],
+            "rate": 20000,
+            "blocks": 1863,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "e2ba755479db18476cd869cddcd633bc37f83d10be4b0fe8ac6e6845174caaac",
+            "clip_fraction": 0.0,
+            "seconds": 2.6082
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              47408,
+              66224
+            ],
+            "rate": 20000,
+            "blocks": 1176,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "d4c7f9dd6ed3e49952dee7777b76484fb4be59a6e1d32c88acd7084d4d453c26",
+            "clip_fraction": 0.0,
+            "seconds": 1.6464
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              66224,
+              125648
+            ],
+            "rate": 8000,
+            "blocks": 3714,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "796b0b576b13e8d02b864bc9771cb8dd5ae26da8083c5b24748ef49a3c7ff716",
+            "clip_fraction": 9.616124317255174e-06,
+            "seconds": 12.999
+          }
+        ]
+      },
+      {
+        "path": "SOUNDS/ui_snds.msb;1",
+        "descriptors": [
+          {
+            "index": 0,
+            "sample_span": [
+              0,
+              5552
+            ],
+            "rate": 22050,
+            "blocks": 347,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "f9b43337ac4b6e10feda3b59ea731f58258cb2f3f77ef215452af5a6ff38fb28",
+            "clip_fraction": 0.0,
+            "seconds": 0.44063492063492066
+          },
+          {
+            "index": 1,
+            "sample_span": [
+              5552,
+              10224
+            ],
+            "rate": 22050,
+            "blocks": 292,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "095e00a06b3fc72517cc244ae97894a08a1fb110fd139a7e856e495b414f3572",
+            "clip_fraction": 0.0,
+            "seconds": 0.3707936507936508
+          },
+          {
+            "index": 2,
+            "sample_span": [
+              10224,
+              13168
+            ],
+            "rate": 22050,
+            "blocks": 184,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "a8e2630db9e36a597665c91793ab15bd70cf50b50a674cdd0724b66c21568889",
+            "clip_fraction": 0.0,
+            "seconds": 0.23365079365079366
+          },
+          {
+            "index": 3,
+            "sample_span": [
+              13168,
+              16704
+            ],
+            "rate": 22050,
+            "blocks": 221,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "b5c00ab8c4046c44f6250b3cac261480c1d2b20c432d2a451548dbdcb71ed92e",
+            "clip_fraction": 0.0,
+            "seconds": 0.2806349206349206
+          },
+          {
+            "index": 4,
+            "sample_span": [
+              16704,
+              18976
+            ],
+            "rate": 22050,
+            "blocks": 142,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "d98311196273020f3a22a7704f74428e490cf8debc9f9f627792cf3059575a97",
+            "clip_fraction": 0.0,
+            "seconds": 0.18031746031746032
+          },
+          {
+            "index": 5,
+            "sample_span": [
+              18976,
+              22464
+            ],
+            "rate": 22050,
+            "blocks": 218,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "6cc41e528f47d61099bc60f553649d6bf28d1e3c5317af7080e57d863103f1d9",
+            "clip_fraction": 0.0,
+            "seconds": 0.2768253968253968
+          },
+          {
+            "index": 6,
+            "sample_span": [
+              22464,
+              35040
+            ],
+            "rate": 22050,
+            "blocks": 786,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "4d18f2c82e3255a21349153bd916c4119cecb13e7f8ed28fb5c79c75fc99bce0",
+            "clip_fraction": 0.0,
+            "seconds": 0.9980952380952381
+          },
+          {
+            "index": 7,
+            "sample_span": [
+              35040,
+              43472
+            ],
+            "rate": 22050,
+            "blocks": 527,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "dacc934ffbdc5295526766c357ba346d5676e117980e401b662734cdaff2bd21",
+            "clip_fraction": 0.0,
+            "seconds": 0.6692063492063492
+          },
+          {
+            "index": 8,
+            "sample_span": [
+              43472,
+              51600
+            ],
+            "rate": 22050,
+            "blocks": 508,
+            "last_flags": 3,
+            "terminator": "3",
+            "pcm_sha256": "8bcb9142276eec81707692e8df5b9f714fc4d5cc6a8b750ee35c674933d91cb1",
+            "clip_fraction": 0.0,
+            "seconds": 0.645079365079365
+          }
+        ]
+      }
+    ],
+    "stream_results": [
+      {
+        "path": "SOUNDS/MUSIC/house1.mib;1",
+        "mih": {
+          "words": [
+            64,
+            4050976,
+            2,
+            44100,
+            32768,
+            212,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 212,
+        "channel_blocks": [
+          434176,
+          434176
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "b71baabcbdda11eff08a0adeb8e71633773d953e616e3ac658f1dccb818763ac",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "44c1de698f36705557c95698462ed372964b1aa18ca8560f7f5abe385698b472",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 275.6673015873016
+      },
+      {
+        "path": "SOUNDS/MUSIC/house2.mib;1",
+        "mih": {
+          "words": [
+            64,
+            5398560,
+            2,
+            44100,
+            32768,
+            203,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 203,
+        "channel_blocks": [
+          415744,
+          415744
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "ad3b495551d9a659ae74fb34270840f425b8f49bdca2739d53f835cdecf27026",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "c98cc4ac40af3e8293300e443ed60302d8166571df4cdb439643cffd7e0830a5",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 263.96444444444444
+      },
+      {
+        "path": "SOUNDS/MUSIC/house4.mib;1",
+        "mih": {
+          "words": [
+            64,
+            1204256,
+            2,
+            44100,
+            32768,
+            201,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 201,
+        "channel_blocks": [
+          411648,
+          411648
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "88944cc69d4aa6fc17e2fdda6178931a561c46c579641ddc21b62a8839a9b51b",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "88e9e16abbca22642c9cff1ee3665086f65134e9df187eb4df36f9dcda0d4ad2",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 261.36380952380955
+      },
+      {
+        "path": "SOUNDS/MUSIC/house5.mib;1",
+        "mih": {
+          "words": [
+            64,
+            7794720,
+            2,
+            44100,
+            32768,
+            214,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 214,
+        "channel_blocks": [
+          438272,
+          438272
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "c55e66f2a3e4ccf5be6355dd806365303908c622fbab128a4054b3b939c336af",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "98f566105e89b5fb7156f0365201b2fe19df7f5bfa88a399572b9e5655254565",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 278.2679365079365
+      },
+      {
+        "path": "SOUNDS/MUSIC/house6.mib;1",
+        "mih": {
+          "words": [
+            64,
+            7061536,
+            2,
+            44100,
+            32768,
+            215,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 215,
+        "channel_blocks": [
+          440320,
+          440320
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "d247918ce39985c0db7c0b46b29bf668499a83aa0733b54c0b8bb0e5d690c97b",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "b453176a27e59464e463c12348f66009d3336a6a5e8c9cd1aff1ddb721f888e1",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 279.56825396825394
+      },
+      {
+        "path": "SOUNDS/MUSIC/house7.mib;1",
+        "mih": {
+          "words": [
+            64,
+            7196704,
+            2,
+            44100,
+            32768,
+            203,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 203,
+        "channel_blocks": [
+          415744,
+          415744
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "f5adf9a17d38c2d49ee7c0c208873680b63b926c6ada8bd17b127f30735034b2",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "63d3811538a0eedba55cc80c6d4276cbceac398a7aea164826ea41919fadfe5f",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 263.96444444444444
+      },
+      {
+        "path": "SOUNDS/MUSIC/house8.mib;1",
+        "mih": {
+          "words": [
+            64,
+            6893600,
+            2,
+            44100,
+            32768,
+            222,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 222,
+        "channel_blocks": [
+          454656,
+          454656
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "81373f0c5f2cadada75287ff7b15d5d12772893581a16d0298c578994d9bf1fb",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "00a814aa672e8996b3c8325ecfbd4742fa4726118e2c1fd11c93afdd329ae588",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 288.67047619047617
+      },
+      {
+        "path": "SOUNDS/MUSIC/rock1.mib;1",
+        "mih": {
+          "words": [
+            64,
+            6021152,
+            2,
+            44100,
+            32768,
+            177,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 177,
+        "channel_blocks": [
+          362496,
+          362496
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "5474481008353aa47599ea72c95fb5241c398b0bbc4eb8a2a977121464b27d93",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "a8cff3fdde47396673cc1f4d27b13d13c6479b5cad3558dbd1a81b7c8ac04d55",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 230.1561904761905
+      },
+      {
+        "path": "SOUNDS/MUSIC/rock2.mib;1",
+        "mih": {
+          "words": [
+            64,
+            2564128,
+            2,
+            44100,
+            32768,
+            112,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 112,
+        "channel_blocks": [
+          229376,
+          229376
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "164c99e505fa068c087b1a1a0b431e1ed82f0534cb6449e71fb0db65f9a3da2e",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "c987efb7ae3c4a9cea0cd316e017c851500f00bc0d840c39f498e215de854376",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 145.63555555555556
+      },
+      {
+        "path": "SOUNDS/MUSIC/rock3.mib;1",
+        "mih": {
+          "words": [
+            64,
+            950304,
+            2,
+            44100,
+            32768,
+            133,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 133,
+        "channel_blocks": [
+          272384,
+          272384
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "34bdf3934e1161ee43af4e3293f8dbe3310c596c3c8a18495e46fd361d0bf4ad",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "702e10f5322c4b20ab02f729be93a676f14552eed675ec6fb1ad3d17d7e7ec8f",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 172.94222222222223
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties1.mib;1",
+        "mih": {
+          "words": [
+            64,
+            5070880,
+            2,
+            44100,
+            32768,
+            114,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 114,
+        "channel_blocks": [
+          233472,
+          233472
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "abf5bb91821e3cda31554560f4f89a4683f1080c37f605693e58549599091922",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "5b2ab9f24acb7f41917603fce651fe2db8de2878334d75dbf0ad60e51846d1c8",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 148.23619047619047
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties2.mib;1",
+        "mih": {
+          "words": [
+            64,
+            8036384,
+            2,
+            44100,
+            32768,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 121,
+        "channel_blocks": [
+          247808,
+          247808
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "b183b5954b68f50ad3a11138d209682b010ce4739dbd79a0f9c649c2302a30a8",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "5ffff839852ef02cf1c782cd2bd113b6dff85514ffedabe0ba2374f95c4fa4e4",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 157.3384126984127
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties3.mib;1",
+        "mih": {
+          "words": [
+            64,
+            1757216,
+            2,
+            44100,
+            32768,
+            115,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 115,
+        "channel_blocks": [
+          235520,
+          235520
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "277a10926f0284e044bcc54cb8410a4771963df5f44cba0e2d599f3718096b85",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "317e07538d93c143d729573b429923f2c6cd5fc34dbff942fe10b7dcc61b790f",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 149.53650793650795
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties4.mib;1",
+        "mih": {
+          "words": [
+            64,
+            4882464,
+            2,
+            44100,
+            32768,
+            131,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 131,
+        "channel_blocks": [
+          268288,
+          268288
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "06e0a4f6320f76e70f95300d978f1dc47711fe8cfba2467b4cc1d8d93095f1a1",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "7fd89a2c396e7c002df4b5cd97cb2360ab0794414bcb3c8c57e6b086d2c58dad",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 170.3415873015873
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties5.mib;1",
+        "mih": {
+          "words": [
+            64,
+            7213088,
+            2,
+            44100,
+            32768,
+            110,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 110,
+        "channel_blocks": [
+          225280,
+          225280
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "f25c7bbbb97823a31b1095454b8dc947afe49968f580e8d46a569fe279841313",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "f32d1a87e8a41711752d63585935fab3d2052384d5e5debdcadd719b5e2f5d08",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 143.03492063492064
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties6.mib;1",
+        "mih": {
+          "words": [
+            64,
+            503840,
+            2,
+            44100,
+            32768,
+            103,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 103,
+        "channel_blocks": [
+          210944,
+          210944
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "c41e8f1435bfabdc6fe8fc280b12d40d40680c7d712231ae840736479b3d2384",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "d3bb7faf6623afc65c46c372aa682050c5a52b776d7bf9f0ba0a1fff084406ed",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 133.93269841269841
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties7.mib;1",
+        "mih": {
+          "words": [
+            64,
+            4198432,
+            2,
+            44100,
+            32768,
+            121,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 121,
+        "channel_blocks": [
+          247808,
+          247808
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "d26fdd4cbfaef3e49c06a67039eb565c390654c47796542662724d0c10363afb",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "dc8c47ddb2c60c52d1cb85b969f666284bdda37670684abcdc809133048a8cc8",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 157.3384126984127
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties8.mib;1",
+        "mih": {
+          "words": [
+            64,
+            647200,
+            2,
+            44100,
+            32768,
+            84,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 84,
+        "channel_blocks": [
+          172032,
+          172032
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "18d999824e5f55f9c7528ae3839c2f15ce1163eb620ba20e0bab4123c0d9f780",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "6dd140b912b1f6e0372dca19c0154285a55ad26b9a23110f074e75b0def9c9f0",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 109.22666666666667
+      },
+      {
+        "path": "SOUNDS/MUSIC/svnties9.mib;1",
+        "mih": {
+          "words": [
+            64,
+            5996576,
+            2,
+            44100,
+            32768,
+            209,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 209,
+        "channel_blocks": [
+          428032,
+          428032
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "7073b802e551b3a1e9b977ddb43595b226fd7e67ac0c2b8fe53ca10b6b33d321",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "4670d359a6a84a261a022834c3c954844370afbd80b86a8e14911e97062fdc36",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 271.7663492063492
+      },
+      {
+        "path": "SOUNDS/MUSIC/ui.mib;1",
+        "mih": {
+          "words": [
+            64,
+            7454752,
+            2,
+            44100,
+            32768,
+            175,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "channels": 2,
+          "rate": 44100,
+          "interleave": 32768
+        },
+        "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+        "turns": 175,
+        "channel_blocks": [
+          358400,
+          358400
+        ],
+        "flag_values": [
+          0
+        ],
+        "decoded_excerpt_blocks": 8192,
+        "decoded_excerpt": [
+          {
+            "channel": 0,
+            "pcm_sha256": "6832a236a3aa73e7e22281c0e8925be2af434d296b2c95364141f91a0a79a202",
+            "clip_fraction": 0.0
+          },
+          {
+            "channel": 1,
+            "pcm_sha256": "d2e797a651ec52de7810e85139b9b5b47884ade3cc7b08c2767b10b3b385d1f4",
+            "clip_fraction": 0.0
+          }
+        ],
+        "seconds": 227.55555555555554
+      }
+    ],
+    "claim_limits": "Structure and reference-decoder sanity only; no playback, loop-behavior or in-game correctness claim. Samples are hashed as little-endian int16.",
+    "failures": [],
+    "oracle": {
+      "tool": "ffmpeg",
+      "version": "ffmpeg version 9.0.2 Copyright (c) 2000-2026 the FFmpeg developers",
+      "spans_compared": 305,
+      "exact_equal": 305,
+      "music_excerpts_compared": 40,
+      "music_excerpts_equal": 40,
+      "spans_skipped_over_decode_bound": []
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 146096,
+      "sha256": "a8568ef9f4bd8c56ba63ce6566fcd2870230838093f6ba86df9ea24ab3c3e118"
+    }
+  }
+}

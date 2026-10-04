@@ -1,0 +1,62 @@
+{
+  "id": "d005-decide-first-investigation",
+  "purpose": "choose first investigation",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d005.json",
+  "args_sha256": "8cfc7c2f72d6751777ccdeda56d212085578f18d419a371d2c1f6a59c504f274",
+  "arguments": {
+    "decision": "Which single reverse-engineering investigation should be run first, now that evidence milestone #2 is complete and offline measurements exist for the candidates?",
+    "evidence": "Measured offline over the real PAL corpus (read-only): (1) AUDIO: all 27 .msb sound banks (every descriptor span) and all 20 .mib music files satisfy PS-ADPCM block structure: lengths multiple of 16, first block zero, last block end-flag set, 0.000 of blocks violate filter<=4/shift<=12/flags<=7; control files (.ps2/.ptg/.dat) violate filter<=4 in 39-96% of blocks. mih words = [64, X, 2, 44100, 32768, N]. Not yet decoded to PCM; no falsifier on decoded output run yet. (2) PTG: 548 files; 16 supported; 505 fail 'dimensions exceed stride or are empty', 24 'unsupported pattern table', 3 'unsupported header profile'; headers of the 505 not yet probed. (3) MODEL: 56 .ps2 trees, name tree decoded, leading count unresolved (49COUPE 431), geometry only hashed; no hypothesis measured yet. (4) CONSUMERS: 3446 functions inventoried; loader stages mapped; no consumer target defined. (5) UI/TEXT: 216 .dat, 45 .ui, 16 .cfg; no probe run. Issue #2 lists audio codec, mesh, full PTG and UI/text as separate out-of-scope investigations. The user forbids debugger windows or focus stealing; all candidates here are offline. A first jev_rerank over a mixed omnibus list returned max relevance 0.47 (audio 0.19) and was judged unreliable for ordering.",
+    "priorities": "1) Produce a falsifiable, evidence-backed result with real-corpus counterexamples. 2) Do not claim formats from other games without evidence on this corpus. 3) No debugger windows or focus stealing. 4) Prefer the candidate where existing measurements already narrow the hypothesis most. 5) Scope stays bounded; do not silently expand to whole-game reconstruction.",
+    "candidates": [
+      {
+        "id": "audio_adpcm_decode_and_falsify",
+        "description": "Implement an independent offline PS-ADPCM decoder (reference algorithm from the SPU2/PS-ADPCM documentation), decode every .msb descriptor span and .mib channel, and test falsifiers: clipping rate, end/loop flag positions, stereo 0x8000 interleave consistency, decoded duration vs mih fields. Keep claim to measured structure and decoder sanity, no playback claim."
+      },
+      {
+        "id": "ptg_probe_unsupported_headers",
+        "description": "Probe the headers of the 505 PTG files that fail the gear-sprite profile, cluster them by header words, and propose additional profiles tested on counterexamples."
+      },
+      {
+        "id": "model_leading_count_hypotheses",
+        "description": "Search for the meaning of the model leading count and geometry block layout by correlating counts with file sizes and block structure across 56 .ps2 files."
+      },
+      {
+        "id": "consumer_trace_static",
+        "description": "Trace EE/IOP consumers of loaded buffers in the Ghidra export with no predefined target."
+      },
+      {
+        "id": "ui_text_grammar_probe",
+        "description": "Probe .ui/.dat/.cfg text grammars across the corpus."
+      },
+      {
+        "id": "gather_more_evidence",
+        "description": "Do none of these yet; gather more evidence about scope first."
+      }
+    ],
+    "requirements": [
+      "The investigation can be completed entirely offline on the existing corpus without opening any GUI or debugger window.",
+      "Existing measurements already narrow the hypothesis enough to define a falsifiable test.",
+      "A real-corpus counterexample or falsifier can be specified before running it."
+    ]
+  },
+  "evidence_files": [],
+  "started_utc": "2026-10-04T06:31:51.335Z",
+  "seconds": 0.667,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"audio_adpcm_decode_and_falsify\",\n    \"escaped\": false,\n    \"confidence\": 0.98,\n    \"probabilities\": {\n      \"consumer_trace_static\": 0,\n      \"ui_text_grammar_probe\": 0,\n      \"gather_more_evidence\": 0,\n      \"model_leading_count_hypotheses\": 0,\n      \"audio_adpcm_decode_and_falsify\": 0.99,\n      \"ptg_probe_unsupported_headers\": 0.01,\n      \"investigate\": 0,\n      \"ask_user\": 0,\n      \"none\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 3,\n  \"checks\": [\n    {\n      \"candidate\": \"audio_adpcm_decode_and_falsify\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"audio_adpcm_decode_and_falsify\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"audio_adpcm_decode_and_falsify\",\n      \"requirement\": 2,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"ptg_probe_unsupported_headers\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"ptg_probe_unsupported_headers\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"ptg_probe_unsupported_headers\",\n      \"requirement\": 2,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"model_leading_count_hypotheses\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"model_leading_count_hypotheses\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"model_leading_count_hypotheses\",\n      \"requirement\": 2,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"consumer_trace_static\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"consumer_trace_static\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"consumer_trace_static\",\n      \"requirement\": 2,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"ui_text_grammar_probe\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"ui_text_grammar_probe\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"ui_text_grammar_probe\",\n      \"requirement\": 2,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 2,\n      \"answer\": \"contradicted\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 3871,\n    \"output_tokens\": 860\n  }\n}"
+      }
+    ]
+  }
+}

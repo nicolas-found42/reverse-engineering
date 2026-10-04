@@ -1,0 +1,53 @@
+{
+  "id": "d006-decide-audio-placement",
+  "purpose": "placement of audio verifier",
+  "tool": "jev_decide",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/args-d006.json",
+  "args_sha256": "e98cb3254b1224cd0930e8ce1a97a34426b50d544e3442f6f46e1b3a62de1a8f",
+  "arguments": {
+    "decision": "Where should the new PS-ADPCM audio structure/decoder verification live relative to the already-reviewed milestone-#2 evidence pipeline?",
+    "evidence": "Milestone #2's format contract for sound banks (tools/format_contracts.py bank()) explicitly returns payload_codec='unknown' and its README and issue say 'No payload codec or playback claim'; its committed results/hashes (formats-result.json etc.) and the escalated-then-reasoner-resolved completion gate are bound to the current contract. verify_formats.py has families archive/bank/model/sprite/corpus and writes immutable result dirs through evidence_common.write_result (pass=0, fail=1, incomplete=2). New measurements (offline, real corpus): all 305 bank descriptor spans and all 20 .mib streams show 0 PS-ADPCM rule violations; .mih word5 equals the number of 0x8000-byte interleave turns in 20/20 files; decoded clip fraction max 0.00026. New module tools/spu_adpcm.py (structure(), decode(), deinterleave(), mih_fields()) already written and not yet tested or committed. Issue #2 lists audio codec as a separate investigation and its acceptance requires audio decoding not be implied by the milestone claims.",
+    "priorities": "Do not invalidate or silently alter existing milestone evidence or its hashes. Keep results immutable and separated by interface (static/runtime/formats stay separate). Smallest public-seam change with negative/boundary tests. New claims must be bounded and not imply playback correctness.",
+    "candidates": [
+      {
+        "id": "new_verify_audio_command",
+        "description": "Add a new separate CLI tools/verify_audio.py (bank and music subcommands) using evidence_common.write_result and tools/spu_adpcm.py, with its own result directory and tests; leave format_contracts.py/verify_formats.py and milestone evidence untouched."
+      },
+      {
+        "id": "extend_bank_contract",
+        "description": "Change format_contracts.bank() to also check ADPCM structure and set payload_codec, extending verify_formats.py; this alters the contract the milestone evidence was bound to."
+      },
+      {
+        "id": "notes_only",
+        "description": "Record the measurements only in a notes markdown file with no executable verifier."
+      },
+      {
+        "id": "gather_more_evidence",
+        "description": "Do not implement anything until more audio evidence (e.g. EE/IOP code references to SPU2 upload) is collected."
+      }
+    ],
+    "requirements": [
+      "Existing milestone-#2 result files, hashes and their claims remain valid and unmodified.",
+      "The new claim is bounded to structural/decoder-sanity and implies no playback or in-game correctness."
+    ]
+  },
+  "evidence_files": [],
+  "started_utc": "2026-10-04T06:33:14.350Z",
+  "seconds": 0.785,
+  "rpc_error": null,
+  "is_error": false,
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"new_verify_audio_command\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"investigate\": 0,\n      \"notes_only\": 0,\n      \"none\": 0,\n      \"new_verify_audio_command\": 1,\n      \"ask_user\": 0,\n      \"extend_bank_contract\": 0,\n      \"gather_more_evidence\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 2,\n  \"checks\": [\n    {\n      \"candidate\": \"new_verify_audio_command\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"new_verify_audio_command\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"extend_bank_contract\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"extend_bank_contract\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"notes_only\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"notes_only\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"gather_more_evidence\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2203,\n    \"output_tokens\": 425\n  }\n}"
+      }
+    ]
+  }
+}
