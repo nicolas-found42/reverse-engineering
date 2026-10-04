@@ -1,0 +1,104 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+    "verified": 6,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 1
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "claim": "In FUN_00222358, record word 0's low 16 bits at offset +0 are replaced by FUN_00222080's return value, and all 2,571 archive-bound serialized mip records have that halfword initially zero.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.99,
+        "says_nothing": 0.0,
+        "contradicts": 0.01
+      },
+      "confidence": 0.98,
+      "action": "auto",
+      "supporting_evidence": "upload-mip-fields",
+      "same_subject": 0.78
+    },
+    {
+      "id": "claim1",
+      "claim": "Record word 0's high 16 bits at offset +2 provide the allocation increment to FUN_00222080; FUN_0022c660 recomputes a mip allocation size through FUN_0022c9f0 and stores it at the same +2 offset.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.9,
+        "says_nothing": 0.0,
+        "contradicts": 0.1
+      },
+      "confidence": 0.84,
+      "action": "auto",
+      "supporting_evidence": "allocation-recompute",
+      "same_subject": 0.37
+    },
+    {
+      "id": "claim2",
+      "claim": "Record word 1's low 16 bits at offset +4 are used as mip-buffer-width inputs packed into the MIPTBP1 register fields TBW1, TBW2, and TBW3.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.99,
+        "says_nothing": 0.0,
+        "contradicts": 0.01
+      },
+      "confidence": 0.98,
+      "action": "auto",
+      "supporting_evidence": "miptbp-register",
+      "same_subject": 0.46
+    },
+    {
+      "id": "claim3",
+      "claim": "Record word 2 at offset +8 is written as a source pointer by FUN_0022ba30 and then read as the source-address argument for FUN_00222110.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.88,
+        "says_nothing": 0.02,
+        "contradicts": 0.1
+      },
+      "confidence": 0.82,
+      "action": "auto",
+      "supporting_evidence": "loader-word-pointer-write",
+      "same_subject": 0.42
+    },
+    {
+      "id": "claim4",
+      "claim": "Record word 3's low 16 bits at offset +12 are passed to FUN_00222110 as its DBW input and occupy the BITBLTBUF DBW field position in the packet builder.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.58,
+        "says_nothing": 0.02,
+        "contradicts": 0.4
+      },
+      "confidence": 0.37,
+      "action": "review",
+      "supporting_evidence": "transfer-packet-builder",
+      "same_subject": 0.27
+    },
+    {
+      "id": "claim5",
+      "claim": "FUN_00222358 selects PSM and bits-per-pixel from the bit-8 branch once before its mip loop, halves transfer width and height for each mip, and reuses that PSM/bpp selection for base and mip uploads.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1.0,
+        "says_nothing": 0.0,
+        "contradicts": 0.0
+      },
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "branch-and-dimensions",
+      "same_subject": 0.52
+    }
+  ],
+  "usage": {
+    "input_tokens": 4048,
+    "output_tokens": 965
+  },
+  "interpretation": "Jev corroborates five specific static mappings/control-flow observations. It returns `review` for the DBW semantic label despite a verified verdict; preserve that uncertainty. Direct register-field mapping is still grounded by the pinned GS register declaration and packet-construction dataflow, but no hardware behavior is asserted."
+}

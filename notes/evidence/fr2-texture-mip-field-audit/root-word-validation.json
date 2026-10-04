@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source_audit_sha256": "cb790c07d636c5e1a33dbd0dac15205d6c79ac9e726c5d96e928312cf9dc4e6e",
+  "ELF_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "raw_word_anchors_checked": 14,
+  "method": "Each saved instruction anchor independently read through unique file-backed ELF PT_LOAD mapping. C field flow reviewed separately; this is an anchor byte check only.",
+  "important_opcode": {
+    "address": "002224ac",
+    "bytes": "0c000796",
+    "decoded_field": "LHU a3,+0xc(s0), not LW"
+  },
+  "scope": "No game execution, full semantic/type proof or rendering claim.",
+  "checker_history": "First inline attempt compared all14 words successfully then failed a mistaken expected-count15 assertion before producing a receipt. Corrected count derives from the supplied anchor sets and asserts14; no game project mutation or favorable judgment retry."
+}

@@ -1,0 +1,602 @@
+{
+  "schema_version": 1,
+  "scope": "Conditional address-intersection experiment using public PCSX2 tables and serialized DBW/TBW words. Both bases normalized to zero. Does not claim correct actual TBP/DBP allocation or GS renderer/silicon behavior. No original game routine executed.",
+  "assumptions": [
+    "Mip transfer uses descriptor-selected packed format and halved dimensions.",
+    "Record+4 TBW and+12 DBW retained in this traced uploader.",
+    "Normalized upload and sample base are equal; no evidence of data from other writes included."
+  ],
+  "packed_indexed_mip_records": 1740,
+  "profiles": [
+    {
+      "format": 3,
+      "logical_dimensions": [
+        8,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        4,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 53,
+      "written_nibbles": 128,
+      "sampled_pixels": 64,
+      "sampled_pixels_starting_outside_written_nibbles": 32,
+      "uniform_base_zero_mapping_full_coverage": false,
+      "unique_sample_starts": 64
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        16,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        8,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 26,
+      "written_nibbles": 256,
+      "sampled_pixels": 128,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 128
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        16,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        8,
+        8
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 96,
+      "written_nibbles": 512,
+      "sampled_pixels": 256,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 256
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        32,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        16,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 26,
+      "written_nibbles": 512,
+      "sampled_pixels": 256,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 256
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        32,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        16,
+        8
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 80,
+      "written_nibbles": 1024,
+      "sampled_pixels": 512,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 512
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        32,
+        32
+      ],
+      "assumed_transfer_dimensions": [
+        16,
+        16
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 155,
+      "written_nibbles": 2048,
+      "sampled_pixels": 1024,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 1024
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        64,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        32,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 11,
+      "written_nibbles": 1024,
+      "sampled_pixels": 512,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 512
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        64,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        32,
+        8
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 41,
+      "written_nibbles": 2048,
+      "sampled_pixels": 1024,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 1024
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        64,
+        32
+      ],
+      "assumed_transfer_dimensions": [
+        32,
+        16
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 125,
+      "written_nibbles": 4096,
+      "sampled_pixels": 2048,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 2048
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        64,
+        64
+      ],
+      "assumed_transfer_dimensions": [
+        32,
+        32
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 204,
+      "written_nibbles": 8192,
+      "sampled_pixels": 4096,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 4096
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        128,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 8,
+      "written_nibbles": 2048,
+      "sampled_pixels": 1024,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 1024
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        128,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        8
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 8,
+      "written_nibbles": 4096,
+      "sampled_pixels": 2048,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 2048
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        128,
+        32
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        16
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 25,
+      "written_nibbles": 8192,
+      "sampled_pixels": 4096,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 4096
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        128,
+        64
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        32
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 65,
+      "written_nibbles": 16384,
+      "sampled_pixels": 8192,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 8192
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        128,
+        128
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        64
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 108,
+      "written_nibbles": 32768,
+      "sampled_pixels": 16384,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 16384
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        256,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        128,
+        8
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 4,
+      "mip_records": 1,
+      "written_nibbles": 8192,
+      "sampled_pixels": 4096,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 4096
+    },
+    {
+      "format": 3,
+      "logical_dimensions": [
+        256,
+        256
+      ],
+      "assumed_transfer_dimensions": [
+        128,
+        128
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 4,
+      "mip_records": 1,
+      "written_nibbles": 131072,
+      "sampled_pixels": 65536,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 65536
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        8,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        4,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 22,
+      "written_nibbles": 64,
+      "sampled_pixels": 64,
+      "sampled_pixels_starting_outside_written_nibbles": 32,
+      "uniform_base_zero_mapping_full_coverage": false,
+      "unique_sample_starts": 64
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        16,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        8,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 12,
+      "written_nibbles": 128,
+      "sampled_pixels": 128,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 128
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        16,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        8,
+        8
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 92,
+      "written_nibbles": 256,
+      "sampled_pixels": 256,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 256
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        32,
+        8
+      ],
+      "assumed_transfer_dimensions": [
+        16,
+        4
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 2,
+      "mip_records": 8,
+      "written_nibbles": 256,
+      "sampled_pixels": 256,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 256
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        32,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        16,
+        8
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 29,
+      "written_nibbles": 512,
+      "sampled_pixels": 512,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 512
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        32,
+        32
+      ],
+      "assumed_transfer_dimensions": [
+        16,
+        16
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 152,
+      "written_nibbles": 1024,
+      "sampled_pixels": 1024,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 1024
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        64,
+        16
+      ],
+      "assumed_transfer_dimensions": [
+        32,
+        8
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 19,
+      "written_nibbles": 1024,
+      "sampled_pixels": 1024,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 1024
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        64,
+        32
+      ],
+      "assumed_transfer_dimensions": [
+        32,
+        16
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 61,
+      "written_nibbles": 2048,
+      "sampled_pixels": 2048,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 2048
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        64,
+        64
+      ],
+      "assumed_transfer_dimensions": [
+        32,
+        32
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 160,
+      "written_nibbles": 4096,
+      "sampled_pixels": 4096,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 4096
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        128,
+        32
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        16
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 20,
+      "written_nibbles": 4096,
+      "sampled_pixels": 4096,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 4096
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        128,
+        64
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        32
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 41,
+      "written_nibbles": 8192,
+      "sampled_pixels": 8192,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 8192
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        128,
+        128
+      ],
+      "assumed_transfer_dimensions": [
+        64,
+        64
+      ],
+      "serialized_DBW": 1,
+      "serialized_TBW": 2,
+      "mip_records": 80,
+      "written_nibbles": 16384,
+      "sampled_pixels": 16384,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 16384
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        256,
+        64
+      ],
+      "assumed_transfer_dimensions": [
+        128,
+        32
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 4,
+      "mip_records": 9,
+      "written_nibbles": 16384,
+      "sampled_pixels": 16384,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 16384
+    },
+    {
+      "format": 4,
+      "logical_dimensions": [
+        256,
+        256
+      ],
+      "assumed_transfer_dimensions": [
+        128,
+        128
+      ],
+      "serialized_DBW": 2,
+      "serialized_TBW": 4,
+      "mip_records": 2,
+      "written_nibbles": 65536,
+      "sampled_pixels": 65536,
+      "sampled_pixels_starting_outside_written_nibbles": 0,
+      "uniform_base_zero_mapping_full_coverage": true,
+      "unique_sample_starts": 65536
+    }
+  ],
+  "records_in_incomplete_profiles": 75
+}
