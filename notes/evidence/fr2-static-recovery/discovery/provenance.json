@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "executable": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "function_discovery": {
+    "original_function_count": 3453,
+    "explicit_address_taken_candidates_created": 381,
+    "table_backed_dispatch_candidates_created": 3,
+    "resulting_static_function_count": 3837,
+    "candidates_are_provisional": true,
+    "exact_original_source_extents_proven": false,
+    "normal_gameplay_reachability_proven": false,
+    "receipts": [
+      {
+        "path": ".scratch/mesh/codex-helpers/candidate-create-results-01.json",
+        "sha256": "60cbb323f2eaec113ecaca22eb26992e4266a5d2c1ac0cfa1cfe9bd18431682d",
+        "summary": "381 exact address-taken candidates; pre=3453, post=3834, failures=0, rejected=0, create-body overlaps=0"
+      },
+      {
+        "path": ".scratch/mesh/codex-helpers/candidate-body-audit-01.json",
+        "sha256": "e9adfa1f808f24033fbec3c940b2b6bbf410283053b7b24835c3f731db52d154",
+        "summary": "381 retained after reanalysis; 51,276 candidate body bytes; zero intersections with pre-existing bodies; no candidate overlap"
+      },
+      {
+        "path": ".scratch/mesh/codex-helpers/data-table-create-results-04.json",
+        "sha256": "3b220d33ceb479c1852d679081653f53ab00a40ce9585125f14cf79e33663de4",
+        "summary": "3 table-backed entries; pre=3834, post=3837; old/candidate body overlaps=0"
+      },
+      {
+        "path": ".scratch/mesh/codex-helpers/data-table-static-inventory-01.json",
+        "sha256": "ca1a05874479b59f842f825436b22895d4e4043ba379f149e125c5a5e60f8ac8",
+        "summary": "post-reanalysis static inventory, 3837 functions"
+      },
+      {
+        "path": ".scratch/mesh/codex-helpers/data-table-static-coverage-01.json",
+        "sha256": "eb257f536c1e349b3ce01101bf8d9ac310077fcaf0692bc635e5a29e700cddd9",
+        "summary": "post-reanalysis listing coverage export, 3837 functions"
+      },
+      {
+        "path": ".scratch/mesh/codex-helpers/jev-data-table-three-candidates-result.json",
+        "sha256": "7d17b301b7eac0d24fc5ae0d75596e1c802c82897c7d4b9743e77d54cfe8a8da",
+        "summary": "Jev verified static bounded table dispatch; gameplay-reachability claim requires review; exact original body extents unsupported"
+      }
+    ]
+  },
+  "model_sections": {
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+    "archive_header_sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d",
+    "archive_data_sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722",
+    "models": 56,
+    "exact_eof_models": 56,
+    "profile_counts": {
+      "loader68": 54,
+      "measured_legacy60": 2
+    },
+    "legacy_models": [
+      {
+        "path": "3DDATA/TRACKS/Brands.PS2;1",
+        "bytes": 5449792,
+        "sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8"
+      },
+      {
+        "path": "3DDATA/TRACKS/Canyon.PS2;1",
+        "bytes": 4249888,
+        "sha256": "bf689b86a426489f84e24a250a5fb26ea1655bcaba907f17769ba4d601ed5f48"
+      }
+    ],
+    "legacy_loader_selection_proven": false,
+    "exact_eof_result": {
+      "path": ".scratch/evidence/sections/20261004T090536Z-7e3930a192e945499eda27207014ba9b/result.json",
+      "sha256": "502dc555456f0b7a71dbf8a140f89671093f9ed1a1b0f0ec52d13e486897f528"
+    }
+  },
+  "ordered_jump_table_experiment": {
+    "script": {
+      "path": "tools/ghidra/experimental/VerifiedJumpTableOverride.java",
+      "sha256": "21d19cc7796c371bd1512cd5a0ecc2f6831761cd00d307aba408c063fa127ee2"
+    },
+    "patch": {
+      "path": "tools/ghidra/experimental/ordered-jumptable-override.patch",
+      "sha256": "2cbc7bcc430165a69661259517fd164f100ea95c6cd8de6d27191c866a347802"
+    },
+    "scope": "single guarded computed jump at 0017f5dc in function entry 0017f510, copied project only",
+    "positive_run_manifest": {
+      "path": ".scratch/mesh/codex-root/guarded-override-provenance-03/manifest.json",
+      "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+      "script_sha256": "21d19cc7796c371bd1512cd5a0ecc2f6831761cd00d307aba408c063fa127ee2",
+      "patch_sha256": "2cbc7bcc430165a69661259517fd164f100ea95c6cd8de6d27191c866a347802",
+      "native_decompiler_sha256": "cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd",
+      "generated_c_sha256": "68cedd349d0ffb13f5132aaf4bed5971721443d1b7c5322a7e9214d76c305e9d",
+      "all_eight_assertions_passed": true
+    },
+    "baseline_native_negative_run": {
+      "path": ".scratch/mesh/codex-root/guarded-override-baseline-negative-01.log",
+      "rejected_native_sha256": "f028f42715840233c2685351e6a01ca291e4090aefc48e2e33fd2d9e5965a759",
+      "reason": "private native decompiler hash guard mismatch",
+      "source_object_manifest_written": false
+    },
+    "ordinary_baseline_failure_preserved": "0017f510: Backward normalization not implemented",
+    "guarded_copied_inventory_export": {
+      "processed": 3837,
+      "generated": 3837,
+      "failed": 0,
+      "api_errors": 0,
+      "log_path": ".scratch/mesh/codex-root/decompile-guarded-3837-01.log"
+    },
+    "jev_narrowed_review": {
+      "path": ".scratch/mesh/codex-geometry/jev-review-ordered-override-narrowed.json",
+      "action": "escalate",
+      "safe_to_apply": 0.17,
+      "interpretation": "advisory review, not approval"
+    },
+    "jev_scope_provenance_review": {
+      "path": "notes/evidence/fr2-static-recovery/discovery/jev-exporter-scope-review.json",
+      "sha256": "fd172ee01de140c4510aa334a25387e5aa828077735b0e048329e85f90af5239",
+      "summary": "5 source-grounded claims verified; the branch-within-function check and script/native-artifact hash binding gaps are documented"
+    },
+    "guards_resolved": [
+      "R5900 language profile is checked",
+      "computed branch is required to lie inside the retrieved function body",
+      "manifest binds native decompiler, Java script, patch, executable, and generated C hashes",
+      "baseline native executable is rejected before source/object/manifest output"
+    ]
+  },
+  "limits": [
+    "No whole-game C or assembly dumps are stored in this evidence subdirectory.",
+    "Function entries are provisional analysis discoveries; exact original source extents are unproven.",
+    "The measured_legacy60 profile does not prove current loader compatibility.",
+    "Geometry semantics, runtime behavior, recompilation, and whole-game equivalence remain open.",
+    "Physical executable coverage is incomplete; unlisted executable bytes remain to be classified."
+  ]
+}

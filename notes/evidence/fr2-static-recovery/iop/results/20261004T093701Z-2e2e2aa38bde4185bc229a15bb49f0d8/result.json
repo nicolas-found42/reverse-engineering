@@ -1,0 +1,505 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T093701Z-2e2e2aa38bde4185bc229a15bb49f0d8",
+  "check": "iop-irx",
+  "command": [
+    "tools/verify_irx.py",
+    "games/ford-racing-2/extracted",
+    "--inventory",
+    ".scratch/mesh/codex-root/executable-inventory-01.json",
+    "--boundaries",
+    ".scratch/mesh/codex-root/executable-boundaries-01.json",
+    "--output",
+    "notes/evidence/fr2-static-recovery/iop/results"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-root/executable-inventory-01.json": {
+      "bytes": 188052,
+      "sha256": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2"
+    },
+    ".scratch/mesh/codex-root/executable-boundaries-01.json": {
+      "bytes": 138632,
+      "sha256": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102"
+    },
+    "games/ford-racing-2/extracted/IRX/IOPRP255.IMG": {
+      "bytes": 264449,
+      "sha256": "e5762f40f94405d765b99b13b735a044197aab58b91b9f08d7832aa091eef40f"
+    },
+    "games/ford-racing-2/extracted/IRX/LGDEV.IRX": {
+      "bytes": 57425,
+      "sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f"
+    },
+    "games/ford-racing-2/extracted/IRX/LIBSD.IRX": {
+      "bytes": 28573,
+      "sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10"
+    },
+    "games/ford-racing-2/extracted/IRX/MCMAN.IRX": {
+      "bytes": 95517,
+      "sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5"
+    },
+    "games/ford-racing-2/extracted/IRX/MCSERV.IRX": {
+      "bytes": 7417,
+      "sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2"
+    },
+    "games/ford-racing-2/extracted/IRX/PADMAN.IRX": {
+      "bytes": 44917,
+      "sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f"
+    },
+    "games/ford-racing-2/extracted/IRX/SDRDRV.IRX": {
+      "bytes": 8089,
+      "sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2"
+    },
+    "games/ford-racing-2/extracted/IRX/SIO2MAN.IRX": {
+      "bytes": 6553,
+      "sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708"
+    },
+    "games/ford-racing-2/extracted/IRX/STREAM.IRX": {
+      "bytes": 255417,
+      "sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3"
+    },
+    "games/ford-racing-2/extracted/IRX/USBD.IRX": {
+      "bytes": 34969,
+      "sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "module_count": 24,
+    "standalone_count": 9,
+    "romdir_module_count": 15,
+    "modules": [
+      {
+        "name": "LOADCORE",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 864,
+        "bytes": 9849,
+        "sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "Module_Manager",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 1,
+          "import_stubs": 5,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "SIFCMD",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 10720,
+        "bytes": 10105,
+        "sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "IOP_SIF_rpc_interface",
+        "iopmod_entry": 208,
+        "counts": {
+          "import_libraries": 6,
+          "import_stubs": 25,
+          "export_libraries": 1,
+          "export_links": 32
+        }
+      },
+      {
+        "name": "SIFMAN",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 20832,
+        "bytes": 5969,
+        "sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "IOP_SIF_manager",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 2,
+          "import_stubs": 7,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "THREADMAN",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 26816,
+        "bytes": 39421,
+        "sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "Multi_Thread_Manager",
+        "iopmod_entry": 16,
+        "counts": {
+          "import_libraries": 7,
+          "import_stubs": 36,
+          "export_libraries": 7,
+          "export_links": 74
+        }
+      },
+      {
+        "name": "IOMAN",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 66240,
+        "bytes": 12545,
+        "sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "IO/File_Manager",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 5,
+          "import_stubs": 15,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "MODLOAD",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 78800,
+        "bytes": 17997,
+        "sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "Moldule_File_loader",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 9,
+          "import_stubs": 49,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "FILEIO",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 96800,
+        "bytes": 17829,
+        "sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "FILEIO_service",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 12,
+          "import_stubs": 70,
+          "export_libraries": 0,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "CDVDMAN",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 114640,
+        "bytes": 72389,
+        "sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "cdvd_driver",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 10,
+          "import_stubs": 45,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "CDVDFSV",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 187040,
+        "bytes": 40661,
+        "sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "cdvd_ee_driver",
+        "iopmod_entry": 216,
+        "counts": {
+          "import_libraries": 10,
+          "import_stubs": 70,
+          "export_libraries": 1,
+          "export_links": 6
+        }
+      },
+      {
+        "name": "LOADFILE",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 227712,
+        "bytes": 11617,
+        "sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "LoadModuleByEE",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 10,
+          "import_stubs": 33,
+          "export_libraries": 0,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "TIMEMANI",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 239344,
+        "bytes": 6069,
+        "sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "Timer_Manager",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 2,
+          "import_stubs": 8,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "ROMDRV",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 245424,
+        "bytes": 3881,
+        "sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "ROM_file_driver",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 4,
+          "import_stubs": 7,
+          "export_libraries": 1,
+          "export_links": 6
+        }
+      },
+      {
+        "name": "EESYNC",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 249312,
+        "bytes": 1545,
+        "sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "SyncEE",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 4,
+          "import_stubs": 8,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "SYSCLIB",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 250864,
+        "bytes": 10205,
+        "sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "System_C_lib",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 1,
+          "import_stubs": 1,
+          "export_libraries": 2,
+          "export_links": 15
+        }
+      },
+      {
+        "name": "STDIO",
+        "source": "IRX/IOPRP255.IMG",
+        "offset": 261072,
+        "bytes": 3377,
+        "sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "Stdio",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 3,
+          "import_stubs": 6,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "LGDEV.IRX",
+        "source": "IRX/LGDEV.IRX",
+        "offset": 0,
+        "bytes": 57425,
+        "sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "LgDev_tb_rb_Driver",
+        "iopmod_entry": 232,
+        "counts": {
+          "import_libraries": 9,
+          "import_stubs": 41,
+          "export_libraries": 1,
+          "export_links": 19
+        }
+      },
+      {
+        "name": "LIBSD.IRX",
+        "source": "IRX/LIBSD.IRX",
+        "offset": 0,
+        "bytes": 28573,
+        "sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "Sound_Device_Library",
+        "iopmod_entry": 176,
+        "counts": {
+          "import_libraries": 5,
+          "import_stubs": 19,
+          "export_libraries": 1,
+          "export_links": 34
+        }
+      },
+      {
+        "name": "MCMAN.IRX",
+        "source": "IRX/MCMAN.IRX",
+        "offset": 0,
+        "bytes": 95517,
+        "sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "mcman",
+        "iopmod_entry": 376,
+        "counts": {
+          "import_libraries": 11,
+          "import_stubs": 33,
+          "export_libraries": 1,
+          "export_links": 61
+        }
+      },
+      {
+        "name": "MCSERV.IRX",
+        "source": "IRX/MCSERV.IRX",
+        "offset": 0,
+        "bytes": 7417,
+        "sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "mcserv",
+        "iopmod_entry": 88,
+        "counts": {
+          "import_libraries": 9,
+          "import_stubs": 53,
+          "export_libraries": 1,
+          "export_links": 8
+        }
+      },
+      {
+        "name": "PADMAN.IRX",
+        "source": "IRX/PADMAN.IRX",
+        "offset": 0,
+        "bytes": 44917,
+        "sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "padman",
+        "iopmod_entry": 12836,
+        "counts": {
+          "import_libraries": 11,
+          "import_stubs": 42,
+          "export_libraries": 1,
+          "export_links": 18
+        }
+      },
+      {
+        "name": "SDRDRV.IRX",
+        "source": "IRX/SDRDRV.IRX",
+        "offset": 0,
+        "bytes": 8089,
+        "sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "sdr_driver",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 7,
+          "import_stubs": 48,
+          "export_libraries": 1,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "SIO2MAN.IRX",
+        "source": "IRX/SIO2MAN.IRX",
+        "offset": 0,
+        "bytes": 6553,
+        "sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "sio2man",
+        "iopmod_entry": 1588,
+        "counts": {
+          "import_libraries": 8,
+          "import_stubs": 28,
+          "export_libraries": 1,
+          "export_links": 4
+        }
+      },
+      {
+        "name": "STREAM.IRX",
+        "source": "IRX/STREAM.IRX",
+        "offset": 0,
+        "bytes": 255417,
+        "sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "multi_streamer",
+        "iopmod_entry": 0,
+        "counts": {
+          "import_libraries": 12,
+          "import_stubs": 71,
+          "export_libraries": 0,
+          "export_links": 0
+        }
+      },
+      {
+        "name": "USBD.IRX",
+        "source": "IRX/USBD.IRX",
+        "offset": 0,
+        "bytes": 34969,
+        "sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255",
+        "elf_type": "0xff80",
+        "machine": 8,
+        "iopmod_name": "USB_driver",
+        "iopmod_entry": 19652,
+        "counts": {
+          "import_libraries": 8,
+          "import_stubs": 28,
+          "export_libraries": 1,
+          "export_links": 19
+        }
+      }
+    ],
+    "totals": {
+      "import_libraries": 166,
+      "import_stubs": 748,
+      "export_libraries": 28,
+      "export_links": 296
+    },
+    "claim_limits": [
+      "This inventory covers only the 24 ELF32LE MIPS ET 0xff80 IRX candidates in the pinned inventory.",
+      "IRX import indices are numeric; function names need a matching IOP library/version/index catalog.",
+      "Export offsets are recorded but not proven to be callable function entries.",
+      "The parser does not apply Sony ET 0xff80 relocations or verify runtime GP values.",
+      "IRX coverage does not establish whole-game code coverage or recovered source."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 11670,
+      "sha256": "502b24720acc8b189959cfc762ac51c0d8c854a3b77c15247d3d5c197fcfcb48"
+    }
+  }
+}

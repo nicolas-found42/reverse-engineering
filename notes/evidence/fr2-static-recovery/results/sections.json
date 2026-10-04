@@ -1,0 +1,3202 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T090536Z-7e3930a192e945499eda27207014ba9b",
+  "check": "sections:corpus",
+  "command": [
+    "tools/verify_sections.py",
+    "corpus",
+    "games/ford-racing-2",
+    "--output",
+    ".scratch/evidence/sections"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "models": 56,
+    "exact_eof_models": 56,
+    "file_results": [
+      {
+        "path": "3DDATA/debug.ps2;1",
+        "bytes": 17264,
+        "sha256": "7c9698fbaa6cdfe68ec642fdfaf4fbce94f2bfb0f833e9e127be820e988c024e",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 16576,
+          "size": 68,
+          "raw_words": [
+            17,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 8,
+        "geometry_headers": 19,
+        "section_offsets": {
+          "textures": 144,
+          "geometry": 5856,
+          "geometry_payload": 6512,
+          "later": 16576,
+          "tail": 17244,
+          "logical_end": 17264,
+          "end": 17264
+        },
+        "later_records": 5,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 5,
+          "pairs": 0
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/misc.ps2;1",
+        "bytes": 236944,
+        "sha256": "c3744239c76712de783d2a9dc3981eca0bf18eead6be41b1c75a04ea1b78ee69",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 212800,
+          "size": 68,
+          "raw_words": [
+            17,
+            15,
+            32,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            29,
+            5,
+            10,
+            0,
+            14,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 24,
+        "geometry_headers": 91,
+        "section_offsets": {
+          "textures": 896,
+          "geometry": 154480,
+          "geometry_payload": 156832,
+          "later": 212800,
+          "tail": 215220,
+          "logical_end": 236944,
+          "end": 236944
+        },
+        "later_records": 15,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 19,
+          "pairs": 5
+        },
+        "tail_rows": 0,
+        "tail_records": 32,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/49COUPE.PS2;1",
+        "bytes": 1146656,
+        "sha256": "62e3de6688791e6af88d65bebe7156ee2d1f1ec83911316cafddf3173259f381",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1143232,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            61,
+            56,
+            0,
+            4,
+            5,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 39,
+        "geometry_headers": 260,
+        "section_offsets": {
+          "textures": 432,
+          "geometry": 933936,
+          "geometry_payload": 938880,
+          "later": 1143232,
+          "tail": 1146624,
+          "logical_end": 1146644,
+          "end": 1146656
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 61,
+          "pairs": 56
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/49MOVIE.PS2;1",
+        "bytes": 487712,
+        "sha256": "b5717d0b1c80398d3f36cd586a925219fdf2ead7a52e84eed7bbcdaf10c46b8e",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 484288,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            57,
+            52,
+            0,
+            0,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 35,
+        "geometry_headers": 409,
+        "section_offsets": {
+          "textures": 432,
+          "geometry": 135840,
+          "geometry_payload": 142240,
+          "later": 484288,
+          "tail": 487692,
+          "logical_end": 487712,
+          "end": 487712
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 57,
+          "pairs": 52
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/COBRA.PS2;1",
+        "bytes": 1247200,
+        "sha256": "751fb754d2510c9d5d7fce725c13f5bed5e9e2edc0d670644dbb688d488e6912",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1243584,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            56,
+            51,
+            0,
+            5,
+            5,
+            0,
+            0,
+            4
+          ]
+        },
+        "geometry_records": 50,
+        "geometry_headers": 326,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 1001920,
+          "geometry_payload": 1008128,
+          "later": 1243584,
+          "tail": 1247176,
+          "logical_end": 1247196,
+          "end": 1247200
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 56,
+          "pairs": 51
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/CROWNV.PS2;1",
+        "bytes": 1234880,
+        "sha256": "2fe9a2429091cdfb9022e55098f3df486eabb21da74812854c24e149d1d29d0c",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1231136,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            5,
+            0,
+            0,
+            0,
+            0,
+            66,
+            61,
+            0,
+            5,
+            5,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 68,
+        "geometry_headers": 352,
+        "section_offsets": {
+          "textures": 480,
+          "geometry": 968816,
+          "geometry_payload": 976336,
+          "later": 1231136,
+          "tail": 1234852,
+          "logical_end": 1234872,
+          "end": 1234880
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 66,
+          "pairs": 61
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/EX.PS2;1",
+        "bytes": 1339040,
+        "sha256": "10735c9e97db9cb79a3e9ea9e91f59e18bb9312eac33f0618dacfb2656fcda55",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1334256,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            82,
+            73,
+            0,
+            5,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 62,
+        "geometry_headers": 415,
+        "section_offsets": {
+          "textures": 608,
+          "geometry": 1000032,
+          "geometry_payload": 1007200,
+          "later": 1334256,
+          "tail": 1339008,
+          "logical_end": 1339028,
+          "end": 1339040
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 82,
+          "pairs": 73
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/EXPLORER.PS2;1",
+        "bytes": 1325152,
+        "sha256": "e09982cb4441149e5c5b3b7eec173ba508d51bd0afe56bda036fa31422b3e2e0",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1321312,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            64,
+            59,
+            0,
+            5,
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        "geometry_records": 50,
+        "geometry_headers": 394,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 998880,
+          "geometry_payload": 1005408,
+          "later": 1321312,
+          "tail": 1325124,
+          "logical_end": 1325144,
+          "end": 1325152
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 64,
+          "pairs": 59
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F100_56.PS2;1",
+        "bytes": 1165920,
+        "sha256": "0ec391fc96f572d0ca3d445feddad97a8ac35919a540fea91338bc8292240a23",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1162368,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            64,
+            57,
+            0,
+            4,
+            5,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 42,
+        "geometry_headers": 334,
+        "section_offsets": {
+          "textures": 480,
+          "geometry": 904976,
+          "geometry_payload": 910784,
+          "later": 1162368,
+          "tail": 1165888,
+          "logical_end": 1165908,
+          "end": 1165920
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 64,
+          "pairs": 57
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F100_65.PS2;1",
+        "bytes": 1190992,
+        "sha256": "1a9e92a8a109aaae4688f1c77269cf20d44842bc3e5d28b0cdace3c09460314a",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1187904,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            54,
+            49,
+            0,
+            4,
+            5,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 36,
+        "geometry_headers": 314,
+        "section_offsets": {
+          "textures": 432,
+          "geometry": 927648,
+          "geometry_payload": 932784,
+          "later": 1187904,
+          "tail": 1190960,
+          "logical_end": 1190980,
+          "end": 1190992
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 54,
+          "pairs": 49
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F150.PS2;1",
+        "bytes": 1340032,
+        "sha256": "60f7ef5b1ee6edf106f3f71b905a1100feea683079c4a6ab4e8053051a6a0d1c",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1336704,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            54,
+            49,
+            0,
+            5,
+            5,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 52,
+        "geometry_headers": 366,
+        "section_offsets": {
+          "textures": 464,
+          "geometry": 1044832,
+          "geometry_payload": 1051424,
+          "later": 1336704,
+          "tail": 1340004,
+          "logical_end": 1340024,
+          "end": 1340032
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 54,
+          "pairs": 49
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F150_04.PS2;1",
+        "bytes": 1305072,
+        "sha256": "e1ee009ce3bc04b24e04a761b1eae2d8c74f896d95f2fc87ffca103932a4faee",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1301616,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            56,
+            51,
+            0,
+            5,
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        "geometry_records": 46,
+        "geometry_headers": 373,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 999984,
+          "geometry_payload": 1005968,
+          "later": 1301616,
+          "tail": 1305044,
+          "logical_end": 1305064,
+          "end": 1305072
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 56,
+          "pairs": 51
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/F350.PS2;1",
+        "bytes": 1299312,
+        "sha256": "48b4c87e18b095efe5bca98079546cd3cb47ac8e4954cb00eca4dd990e8c0a71",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1295520,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            63,
+            58,
+            0,
+            5,
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        "geometry_records": 49,
+        "geometry_headers": 383,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 993632,
+          "geometry_payload": 1000192,
+          "later": 1295520,
+          "tail": 1299284,
+          "logical_end": 1299304,
+          "end": 1299312
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 63,
+          "pairs": 58
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FOCUSSVT.PS2;1",
+        "bytes": 1253392,
+        "sha256": "be8e5a6454771fb20dab61c7c1c6017cba504a9b9726bff1f5bc7cd5656e5380",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1249552,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            64,
+            59,
+            0,
+            5,
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        "geometry_records": 58,
+        "geometry_headers": 332,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 992672,
+          "geometry_payload": 999296,
+          "later": 1249552,
+          "tail": 1253364,
+          "logical_end": 1253384,
+          "end": 1253392
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 64,
+          "pairs": 59
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FOCUSWRC.PS2;1",
+        "bytes": 1046624,
+        "sha256": "20da6f3b5791fae8d7a579dc7892339207017fd4c6beea8396486d3fac7cd95a",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1042640,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            72,
+            67,
+            0,
+            5,
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        "geometry_records": 66,
+        "geometry_headers": 342,
+        "section_offsets": {
+          "textures": 576,
+          "geometry": 780816,
+          "geometry_payload": 787952,
+          "later": 1042640,
+          "tail": 1046596,
+          "logical_end": 1046616,
+          "end": 1046624
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 72,
+          "pairs": 67
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FORDGT.PS2;1",
+        "bytes": 1322048,
+        "sha256": "463b30ac918bca9676903639c1198faa8c314efcb0e112f05527d49b7a8d9d28",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1317488,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            80,
+            75,
+            0,
+            5,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 74,
+        "geometry_headers": 407,
+        "section_offsets": {
+          "textures": 656,
+          "geometry": 1001216,
+          "geometry_payload": 1009504,
+          "later": 1317488,
+          "tail": 1322016,
+          "logical_end": 1322036,
+          "end": 1322048
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 80,
+          "pairs": 75
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FORTYNIN.PS2;1",
+        "bytes": 1022256,
+        "sha256": "60af4baccd375773999d89364628c45926dc16583e05d089510981656bc5c2e9",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1018576,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            63,
+            52,
+            0,
+            4,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 41,
+        "geometry_headers": 322,
+        "section_offsets": {
+          "textures": 448,
+          "geometry": 755600,
+          "geometry_payload": 761616,
+          "later": 1018576,
+          "tail": 1022236,
+          "logical_end": 1022256,
+          "end": 1022256
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 63,
+          "pairs": 52
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FR200.PS2;1",
+        "bytes": 1283408,
+        "sha256": "aecdb24d4d4070f27c8283b976c8429881ebb4e075a40b72a6bb9a7e5815b8a1",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1279184,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            72,
+            67,
+            0,
+            5,
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        "geometry_records": 66,
+        "geometry_headers": 374,
+        "section_offsets": {
+          "textures": 576,
+          "geometry": 993824,
+          "geometry_payload": 1001216,
+          "later": 1279184,
+          "tail": 1283380,
+          "logical_end": 1283400,
+          "end": 1283408
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 72,
+          "pairs": 67
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/FR500.PS2;1",
+        "bytes": 1283984,
+        "sha256": "f602fbbaf0b523b1c581a324c54515499813d32bd0204e3252b9f140a10fd674",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1279824,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            64,
+            59,
+            0,
+            5,
+            5,
+            0,
+            0,
+            4
+          ]
+        },
+        "geometry_records": 54,
+        "geometry_headers": 365,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 987488,
+          "geometry_payload": 994048,
+          "later": 1279824,
+          "tail": 1283960,
+          "logical_end": 1283980,
+          "end": 1283984
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 64,
+          "pairs": 59
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/G_TORINO.PS2;1",
+        "bytes": 501072,
+        "sha256": "d3234f605e98e4dadf46633f4de3271f937bd8fe46dfdbcf1904de4aaf734909",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 497280,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            65,
+            60,
+            0,
+            0,
+            5,
+            0,
+            0,
+            1
+          ]
+        },
+        "geometry_records": 43,
+        "geometry_headers": 313,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 256640,
+          "geometry_payload": 262384,
+          "later": 497280,
+          "tail": 501040,
+          "logical_end": 501060,
+          "end": 501072
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 65,
+          "pairs": 60
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/GT90.PS2;1",
+        "bytes": 1264560,
+        "sha256": "5330ef43f70432f4429494df7977d54ea3205257b7bb4172c0c96e1be05ad999",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1259744,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            89,
+            82,
+            0,
+            5,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 73,
+        "geometry_headers": 356,
+        "section_offsets": {
+          "textures": 656,
+          "geometry": 997008,
+          "geometry_payload": 1004672,
+          "later": 1259744,
+          "tail": 1264528,
+          "logical_end": 1264548,
+          "end": 1264560
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 89,
+          "pairs": 82
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/INDIGO.PS2;1",
+        "bytes": 1319520,
+        "sha256": "63fc16e9d44d2ecf72709779c021b46987c73bd129cd6e2d038a0002ea2bc7f2",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1314112,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            102,
+            92,
+            0,
+            6,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 96,
+        "geometry_headers": 419,
+        "section_offsets": {
+          "textures": 768,
+          "geometry": 1007824,
+          "geometry_payload": 1017120,
+          "later": 1314112,
+          "tail": 1319500,
+          "logical_end": 1319520,
+          "end": 1319520
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 102,
+          "pairs": 92
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/LIGHTNIN.PS2;1",
+        "bytes": 1325536,
+        "sha256": "60e3ecd7bd4a34dea60efa943c976a60577d9b57cb72e39e60c2d6fdabbf7f48",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1321664,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            64,
+            59,
+            0,
+            5,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 58,
+        "geometry_headers": 417,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 983344,
+          "geometry_payload": 990672,
+          "later": 1321664,
+          "tail": 1325504,
+          "logical_end": 1325524,
+          "end": 1325536
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 64,
+          "pairs": 59
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MACH1A.PS2;1",
+        "bytes": 441344,
+        "sha256": "8b2c548d23f1ea831c8cdc54fabf4a623d9a7b51379e4f406e02821e7be66c40",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 438624,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            8,
+            0,
+            0,
+            0,
+            0,
+            39,
+            34,
+            0,
+            0,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 29,
+        "geometry_headers": 240,
+        "section_offsets": {
+          "textures": 448,
+          "geometry": 247344,
+          "geometry_payload": 251616,
+          "later": 438624,
+          "tail": 441324,
+          "logical_end": 441344,
+          "end": 441344
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 39,
+          "pairs": 34
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MACH1S.PS2;1",
+        "bytes": 438624,
+        "sha256": "0ccf798cb857dcfcff41ab76a23a56aad9e43119164540831b301293715a2021",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 436064,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            6,
+            0,
+            0,
+            0,
+            0,
+            39,
+            34,
+            0,
+            0,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 29,
+        "geometry_headers": 237,
+        "section_offsets": {
+          "textures": 448,
+          "geometry": 246304,
+          "geometry_payload": 250560,
+          "later": 436064,
+          "tail": 438604,
+          "logical_end": 438624,
+          "end": 438624
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 39,
+          "pairs": 34
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MACH3.PS2;1",
+        "bytes": 1215488,
+        "sha256": "162befcf68782a0c70795252b39213f4864f95238a786b127c08c0e27b515c83",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1211424,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            9,
+            0,
+            0,
+            0,
+            0,
+            66,
+            61,
+            0,
+            5,
+            5,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 60,
+        "geometry_headers": 309,
+        "section_offsets": {
+          "textures": 480,
+          "geometry": 972896,
+          "geometry_payload": 979376,
+          "later": 1211424,
+          "tail": 1215460,
+          "logical_end": 1215480,
+          "end": 1215488
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 66,
+          "pairs": 61
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MUST68.PS2;1",
+        "bytes": 1224320,
+        "sha256": "d56ae2c9537ae4461c697dc4169cb9ce8683b36553e351abd3c9926f9c3736a6",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1220064,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            66,
+            61,
+            0,
+            5,
+            5,
+            0,
+            0,
+            4
+          ]
+        },
+        "geometry_records": 60,
+        "geometry_headers": 329,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 970912,
+          "geometry_payload": 977568,
+          "later": 1220064,
+          "tail": 1224296,
+          "logical_end": 1224316,
+          "end": 1224320
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 66,
+          "pairs": 61
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MUST68B.PS2;1",
+        "bytes": 508832,
+        "sha256": "04c2298b2d87ef3d150f45fe4a099fdd5603f405dad53b937c3af16957123383",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 504560,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            67,
+            61,
+            0,
+            0,
+            5,
+            0,
+            0,
+            4
+          ]
+        },
+        "geometry_records": 61,
+        "geometry_headers": 334,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 254544,
+          "geometry_payload": 261280,
+          "later": 504560,
+          "tail": 508812,
+          "logical_end": 508832,
+          "end": 508832
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 67,
+          "pairs": 61
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/MUSTCON.PS2;1",
+        "bytes": 1262000,
+        "sha256": "4d78397759d0d4bba1877db4a68308ef05213baa0dcabd183d9882f33e3711fd",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1258464,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            10,
+            0,
+            0,
+            0,
+            0,
+            52,
+            47,
+            0,
+            5,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 50,
+        "geometry_headers": 355,
+        "section_offsets": {
+          "textures": 448,
+          "geometry": 977072,
+          "geometry_payload": 983168,
+          "later": 1258464,
+          "tail": 1261968,
+          "logical_end": 1261988,
+          "end": 1262000
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 52,
+          "pairs": 47
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/POWERST.PS2;1",
+        "bytes": 1231872,
+        "sha256": "bf1bd43dad4cc65b76eed40770c92882c85991cb976ca33a0ec475691f575c1b",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1227904,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            9,
+            0,
+            0,
+            0,
+            0,
+            63,
+            58,
+            0,
+            4,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 41,
+        "geometry_headers": 373,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 923552,
+          "geometry_payload": 929760,
+          "later": 1227904,
+          "tail": 1231852,
+          "logical_end": 1231872,
+          "end": 1231872
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 63,
+          "pairs": 58
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSA.PS2;1",
+        "bytes": 3126096,
+        "sha256": "9aa6264a7eb3185480a36ca2ac317e37c3015c86576afdbc5e4e345905cafe97",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3122848,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            63,
+            58,
+            0,
+            4,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 53,
+        "geometry_headers": 313,
+        "section_offsets": {
+          "textures": 528,
+          "geometry": 2883472,
+          "geometry_payload": 2889408,
+          "later": 3122848,
+          "tail": 3126076,
+          "logical_end": 3126096,
+          "end": 3126096
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 63,
+          "pairs": 58
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSB.PS2;1",
+        "bytes": 3125120,
+        "sha256": "35338e4c3276052cef7a44d0a199a9355638aa74e01e8b8c985be458518d91a8",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3121872,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            63,
+            58,
+            0,
+            4,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 53,
+        "geometry_headers": 313,
+        "section_offsets": {
+          "textures": 528,
+          "geometry": 2882432,
+          "geometry_payload": 2888368,
+          "later": 3121872,
+          "tail": 3125100,
+          "logical_end": 3125120,
+          "end": 3125120
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 63,
+          "pairs": 58
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSC.PS2;1",
+        "bytes": 3124032,
+        "sha256": "7e72ae77f5091f19a4b9344ce4578c91011d9ec9c1cafd5cfa4562f9be658c6c",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3120784,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            63,
+            58,
+            0,
+            4,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 53,
+        "geometry_headers": 313,
+        "section_offsets": {
+          "textures": 528,
+          "geometry": 2881408,
+          "geometry_payload": 2887344,
+          "later": 3120784,
+          "tail": 3124012,
+          "logical_end": 3124032,
+          "end": 3124032
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 63,
+          "pairs": 58
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TAURUSD.PS2;1",
+        "bytes": 3122992,
+        "sha256": "377514d73fa238f79afc5c45097673feec90e8ddb111539f51e6c757331f6779",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3119744,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            63,
+            58,
+            0,
+            4,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 53,
+        "geometry_headers": 313,
+        "section_offsets": {
+          "textures": 528,
+          "geometry": 2880368,
+          "geometry_payload": 2886304,
+          "later": 3119744,
+          "tail": 3122972,
+          "logical_end": 3122992,
+          "end": 3122992
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 63,
+          "pairs": 58
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TBIRD.PS2;1",
+        "bytes": 1200304,
+        "sha256": "dd4aea15895268d220775448415f7561e3d1cf7ecc15a95a34d59b5a1abb9401",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1196880,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            4,
+            0,
+            0,
+            0,
+            0,
+            60,
+            55,
+            0,
+            4,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 38,
+        "geometry_headers": 356,
+        "section_offsets": {
+          "textures": 448,
+          "geometry": 900800,
+          "geometry_payload": 906656,
+          "later": 1196880,
+          "tail": 1200284,
+          "logical_end": 1200304,
+          "end": 1200304
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 60,
+          "pairs": 55
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TBIRD2.PS2;1",
+        "bytes": 1249232,
+        "sha256": "c3d03b36ec5d2eb89d4d26f3b8b31e11db6b852a60ca37366b62820e0f16e415",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 1245312,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            65,
+            60,
+            0,
+            5,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 67,
+        "geometry_headers": 374,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 969872,
+          "geometry_payload": 977152,
+          "later": 1245312,
+          "tail": 1249200,
+          "logical_end": 1249220,
+          "end": 1249232
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 65,
+          "pairs": 60
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/CARS/TBIRDM.PS2;1",
+        "bytes": 514016,
+        "sha256": "32579b498e35973ef5ad6ab48617688b901320e13faeb539c1a7bd09e0a59aa4",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 510128,
+          "size": 68,
+          "raw_words": [
+            17,
+            1,
+            0,
+            0,
+            7,
+            0,
+            0,
+            0,
+            0,
+            65,
+            60,
+            0,
+            0,
+            5,
+            0,
+            0,
+            2
+          ]
+        },
+        "geometry_records": 67,
+        "geometry_headers": 348,
+        "section_offsets": {
+          "textures": 496,
+          "geometry": 251456,
+          "geometry_payload": 258640,
+          "later": 510128,
+          "tail": 513996,
+          "logical_end": 514016,
+          "end": 514016
+        },
+        "later_records": 1,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 65,
+          "pairs": 60
+        },
+        "tail_rows": 0,
+        "tail_records": 0,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/BayA.PS2;1",
+        "bytes": 4421968,
+        "sha256": "514f676ab040374ae36c447ea506f9773d3328a3e09b0b6333d3c0778fe23580",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 4233856,
+          "size": 68,
+          "raw_words": [
+            17,
+            489,
+            83,
+            906,
+            4,
+            129,
+            1082,
+            0,
+            0,
+            317,
+            0,
+            287,
+            0,
+            300,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 563,
+        "geometry_headers": 2740,
+        "section_offsets": {
+          "textures": 7248,
+          "geometry": 2480416,
+          "geometry_payload": 2533840,
+          "later": 4233856,
+          "tail": 4336864,
+          "logical_end": 4421956,
+          "end": 4421968
+        },
+        "later_records": 489,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 30,
+          "pairs": 0
+        },
+        "tail_rows": 34,
+        "tail_records": 83,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/BayB.PS2;1",
+        "bytes": 6053744,
+        "sha256": "dc0fd9e8763893c5ce140cdc49a61680555b07856213ce32f014c632b92256c5",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 5736768,
+          "size": 68,
+          "raw_words": [
+            17,
+            1288,
+            88,
+            1724,
+            6,
+            166,
+            1273,
+            0,
+            0,
+            459,
+            0,
+            428,
+            0,
+            442,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 1358,
+        "geometry_headers": 5134,
+        "section_offsets": {
+          "textures": 18656,
+          "geometry": 2708608,
+          "geometry_payload": 2820448,
+          "later": 5736768,
+          "tail": 5936592,
+          "logical_end": 6053732,
+          "end": 6053744
+        },
+        "later_records": 1288,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 31,
+          "pairs": 0
+        },
+        "tail_rows": 26,
+        "tail_records": 88,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/BayC.PS2;1",
+        "bytes": 5466192,
+        "sha256": "0026ec56d1e71705a9fc7095e7021d0e83cb9de6b9d2b7f77b9e9a283343f375",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 5253472,
+          "size": 68,
+          "raw_words": [
+            17,
+            772,
+            73,
+            1129,
+            2,
+            150,
+            1118,
+            0,
+            0,
+            581,
+            0,
+            560,
+            0,
+            562,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 818,
+        "geometry_headers": 3993,
+        "section_offsets": {
+          "textures": 11856,
+          "geometry": 2372544,
+          "geometry_payload": 2447280,
+          "later": 5253472,
+          "tail": 5388804,
+          "logical_end": 5466180,
+          "end": 5466192
+        },
+        "later_records": 772,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 21,
+          "pairs": 0
+        },
+        "tail_rows": 24,
+        "tail_records": 73,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Brands.PS2;1",
+        "bytes": 5449792,
+        "sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+        "exact_eof": true,
+        "later_profile": "measured_legacy60",
+        "later_header": {
+          "offset": 5331008,
+          "size": 60,
+          "raw_words": [
+            653,
+            22,
+            852,
+            1,
+            117,
+            864,
+            0,
+            0,
+            889,
+            0,
+            786,
+            0,
+            841,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 772,
+        "geometry_headers": 4019,
+        "section_offsets": {
+          "textures": 9088,
+          "geometry": 2957392,
+          "geometry_payload": 3039088,
+          "later": 5331008,
+          "tail": 5445648,
+          "logical_end": 5449780,
+          "end": 5449792
+        },
+        "later_records": 653,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 103,
+          "pairs": 0
+        },
+        "tail_rows": 20,
+        "tail_records": 22,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Canyon.PS2;1",
+        "bytes": 4249888,
+        "sha256": "bf689b86a426489f84e24a250a5fb26ea1655bcaba907f17769ba4d601ed5f48",
+        "exact_eof": true,
+        "later_profile": "measured_legacy60",
+        "later_header": {
+          "offset": 4171904,
+          "size": 60,
+          "raw_words": [
+            267,
+            30,
+            247,
+            2,
+            186,
+            1027,
+            0,
+            0,
+            69,
+            0,
+            6,
+            0,
+            6,
+            96,
+            0
+          ]
+        },
+        "geometry_records": 281,
+        "geometry_headers": 2175,
+        "section_offsets": {
+          "textures": 4320,
+          "geometry": 2067616,
+          "geometry_payload": 2114224,
+          "later": 4171904,
+          "tail": 4243472,
+          "logical_end": 4249884,
+          "end": 4249888
+        },
+        "later_records": 267,
+        "node_counts": {
+          "node_80": 96,
+          "node_2c": 63,
+          "pairs": 0
+        },
+        "tail_rows": 27,
+        "tail_records": 30,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/DesA.PS2;1",
+        "bytes": 4524544,
+        "sha256": "f40c874fa21d86113af7ab74464bf6d1be5085aceafdf73193645e8247638dbb",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 4336672,
+          "size": 68,
+          "raw_words": [
+            17,
+            661,
+            31,
+            2259,
+            4,
+            118,
+            893,
+            0,
+            0,
+            260,
+            0,
+            241,
+            0,
+            243,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 720,
+        "geometry_headers": 3460,
+        "section_offsets": {
+          "textures": 9552,
+          "geometry": 2136768,
+          "geometry_payload": 2203536,
+          "later": 4336672,
+          "tail": 4490176,
+          "logical_end": 4524540,
+          "end": 4524544
+        },
+        "later_records": 661,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 19,
+          "pairs": 0
+        },
+        "tail_rows": 26,
+        "tail_records": 31,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/DesB.PS2;1",
+        "bytes": 4536224,
+        "sha256": "f4c93d821d486ebddf51303c8db55cfd81c81f197d88c451ef1a14064e890e1a",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 4371296,
+          "size": 68,
+          "raw_words": [
+            17,
+            466,
+            45,
+            2108,
+            4,
+            110,
+            840,
+            0,
+            0,
+            237,
+            0,
+            219,
+            0,
+            221,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 516,
+        "geometry_headers": 3103,
+        "section_offsets": {
+          "textures": 6800,
+          "geometry": 2286624,
+          "geometry_payload": 2338448,
+          "later": 4371296,
+          "tail": 4502780,
+          "logical_end": 4536212,
+          "end": 4536224
+        },
+        "later_records": 466,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 18,
+          "pairs": 0
+        },
+        "tail_rows": 33,
+        "tail_records": 45,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/DesC.PS2;1",
+        "bytes": 4479808,
+        "sha256": "e746a307d073cae9904765828b01c0fa161ff6b9645e493ba0e1801936fc38c3",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 4297072,
+          "size": 68,
+          "raw_words": [
+            17,
+            534,
+            83,
+            1772,
+            4,
+            99,
+            651,
+            0,
+            0,
+            243,
+            0,
+            225,
+            0,
+            227,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 586,
+        "geometry_headers": 3149,
+        "section_offsets": {
+          "textures": 7776,
+          "geometry": 2258672,
+          "geometry_payload": 2314512,
+          "later": 4297072,
+          "tail": 4418304,
+          "logical_end": 4479808,
+          "end": 4479808
+        },
+        "later_records": 534,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 18,
+          "pairs": 0
+        },
+        "tail_rows": 22,
+        "tail_records": 83,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/FlorA.PS2;1",
+        "bytes": 5146528,
+        "sha256": "aaa4ac7e555271b8db6a7a8fcf4a3bea97999cfc1aae33812368604d35707264",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 5003616,
+          "size": 68,
+          "raw_words": [
+            17,
+            481,
+            22,
+            1331,
+            4,
+            96,
+            1085,
+            0,
+            0,
+            497,
+            0,
+            290,
+            0,
+            358,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 673,
+        "geometry_headers": 3459,
+        "section_offsets": {
+          "textures": 7600,
+          "geometry": 2669376,
+          "geometry_payload": 2733664,
+          "later": 5003616,
+          "tail": 5126504,
+          "logical_end": 5146528,
+          "end": 5146528
+        },
+        "later_records": 481,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 207,
+          "pairs": 0
+        },
+        "tail_rows": 22,
+        "tail_records": 22,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/FlorB.PS2;1",
+        "bytes": 7016160,
+        "sha256": "ab25bc00528ff8230e89cc05bc7ef8ea806602f1f020c026b69bc01b76210f08",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 6806560,
+          "size": 68,
+          "raw_words": [
+            17,
+            763,
+            59,
+            1495,
+            6,
+            136,
+            937,
+            1,
+            119,
+            679,
+            0,
+            594,
+            0,
+            636,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 910,
+        "geometry_headers": 5506,
+        "section_offsets": {
+          "textures": 12848,
+          "geometry": 2686416,
+          "geometry_payload": 2782464,
+          "later": 6806560,
+          "tail": 6952444,
+          "logical_end": 7016156,
+          "end": 7016160
+        },
+        "later_records": 763,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 85,
+          "pairs": 0
+        },
+        "tail_rows": 44,
+        "tail_records": 59,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/FlorC.PS2;1",
+        "bytes": 6132704,
+        "sha256": "2f587d1b26196ff802167581089ee16d8bf61f646e81c9018cae8a0b89b3a161",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 5959552,
+          "size": 68,
+          "raw_words": [
+            17,
+            696,
+            40,
+            1367,
+            7,
+            124,
+            800,
+            1,
+            119,
+            571,
+            0,
+            436,
+            0,
+            498,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 838,
+        "geometry_headers": 4549,
+        "section_offsets": {
+          "textures": 11552,
+          "geometry": 2778848,
+          "geometry_payload": 2862208,
+          "later": 5959552,
+          "tail": 6092888,
+          "logical_end": 6132696,
+          "end": 6132704
+        },
+        "later_records": 696,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 135,
+          "pairs": 0
+        },
+        "tail_rows": 26,
+        "tail_records": 40,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Fukuoka.PS2;1",
+        "bytes": 5554160,
+        "sha256": "3dae1e8ff73ec00a97a88136d3a96976cd4db005d9326cc83972962a960428ec",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 5285040,
+          "size": 68,
+          "raw_words": [
+            17,
+            1661,
+            29,
+            2200,
+            14,
+            125,
+            1584,
+            0,
+            0,
+            906,
+            0,
+            817,
+            0,
+            871,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 1700,
+        "geometry_headers": 4478,
+        "section_offsets": {
+          "textures": 28208,
+          "geometry": 2661040,
+          "geometry_payload": 2795648,
+          "later": 5285040,
+          "tail": 5544404,
+          "logical_end": 5554148,
+          "end": 5554160
+        },
+        "later_records": 1661,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 89,
+          "pairs": 0
+        },
+        "tail_rows": 39,
+        "tail_records": 29,
+        "final_padding": 12,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/JungA.PS2;1",
+        "bytes": 3282768,
+        "sha256": "2d89dab6c141fd2cad35e113f18b0b1e62474082696815fa3059eedadf47b8f4",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3119872,
+          "size": 68,
+          "raw_words": [
+            17,
+            329,
+            35,
+            2692,
+            5,
+            112,
+            901,
+            0,
+            0,
+            151,
+            0,
+            108,
+            0,
+            116,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 391,
+        "geometry_headers": 1329,
+        "section_offsets": {
+          "textures": 5120,
+          "geometry": 2172544,
+          "geometry_payload": 2206448,
+          "later": 3119872,
+          "tail": 3260928,
+          "logical_end": 3282760,
+          "end": 3282768
+        },
+        "later_records": 329,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 43,
+          "pairs": 0
+        },
+        "tail_rows": 32,
+        "tail_records": 35,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/JungB.PS2;1",
+        "bytes": 3810112,
+        "sha256": "09ffd3219ea7f97abccb8c029c17f1b5863643ae96fde6b61a8ed8ba77bd202b",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3633344,
+          "size": 68,
+          "raw_words": [
+            17,
+            660,
+            32,
+            2162,
+            3,
+            108,
+            1111,
+            0,
+            0,
+            221,
+            0,
+            160,
+            0,
+            174,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 743,
+        "geometry_headers": 1970,
+        "section_offsets": {
+          "textures": 10096,
+          "geometry": 2335936,
+          "geometry_payload": 2394624,
+          "later": 3633344,
+          "tail": 3790776,
+          "logical_end": 3810108,
+          "end": 3810112
+        },
+        "later_records": 660,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 61,
+          "pairs": 0
+        },
+        "tail_rows": 29,
+        "tail_records": 32,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/JungC.PS2;1",
+        "bytes": 3749184,
+        "sha256": "512736c4a73f282fb58bbc6ed8ee5951cd49d4a98210667b5c1210fa7a31ac20",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3541104,
+          "size": 68,
+          "raw_words": [
+            17,
+            509,
+            44,
+            2755,
+            5,
+            125,
+            957,
+            0,
+            0,
+            151,
+            0,
+            99,
+            0,
+            111,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 570,
+        "geometry_headers": 1933,
+        "section_offsets": {
+          "textures": 7792,
+          "geometry": 2283552,
+          "geometry_payload": 2332064,
+          "later": 3541104,
+          "tail": 3700520,
+          "logical_end": 3749180,
+          "end": 3749184
+        },
+        "later_records": 509,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 52,
+          "pairs": 0
+        },
+        "tail_rows": 44,
+        "tail_records": 44,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/oval2.PS2;1",
+        "bytes": 3930992,
+        "sha256": "fc940669f565fd6b1b015a9b511a23836e15f550a926b7f23d19185bf6f1043d",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 3782432,
+          "size": 68,
+          "raw_words": [
+            17,
+            814,
+            15,
+            1176,
+            7,
+            82,
+            1118,
+            0,
+            0,
+            422,
+            0,
+            394,
+            0,
+            405,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 859,
+        "geometry_headers": 2293,
+        "section_offsets": {
+          "textures": 12208,
+          "geometry": 2547888,
+          "geometry_payload": 2612320,
+          "later": 3782432,
+          "tail": 3921552,
+          "logical_end": 3930988,
+          "end": 3930992
+        },
+        "later_records": 814,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 28,
+          "pairs": 0
+        },
+        "tail_rows": 15,
+        "tail_records": 15,
+        "final_padding": 4,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/oval3.PS2;1",
+        "bytes": 3053136,
+        "sha256": "a0e7b23e2cf4c72f61532c9e350317f4c4f71bf8d157bef1b5ebb423cc30b646",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 2930256,
+          "size": 68,
+          "raw_words": [
+            17,
+            671,
+            11,
+            893,
+            8,
+            98,
+            1020,
+            0,
+            0,
+            288,
+            0,
+            259,
+            0,
+            271,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 689,
+        "geometry_headers": 2031,
+        "section_offsets": {
+          "textures": 9936,
+          "geometry": 1808848,
+          "geometry_payload": 1862352,
+          "later": 2930256,
+          "tail": 3045148,
+          "logical_end": 3053136,
+          "end": 3053136
+        },
+        "later_records": 671,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 29,
+          "pairs": 0
+        },
+        "tail_rows": 14,
+        "tail_records": 11,
+        "final_padding": 0,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Spring.PS2;1",
+        "bytes": 5175232,
+        "sha256": "2388e3664d5bd47c8542898cae58aea79ad2d5fb5325a9e52b6cbc14e1397998",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 5024768,
+          "size": 68,
+          "raw_words": [
+            17,
+            539,
+            32,
+            678,
+            7,
+            156,
+            1848,
+            0,
+            0,
+            412,
+            0,
+            350,
+            0,
+            388,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 593,
+        "geometry_headers": 3967,
+        "section_offsets": {
+          "textures": 8944,
+          "geometry": 2331616,
+          "geometry_payload": 2394912,
+          "later": 5024768,
+          "tail": 5147644,
+          "logical_end": 5175224,
+          "end": 5175232
+        },
+        "later_records": 539,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 62,
+          "pairs": 0
+        },
+        "tail_rows": 24,
+        "tail_records": 32,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      },
+      {
+        "path": "3DDATA/TRACKS/Spring2.PS2;1",
+        "bytes": 4977664,
+        "sha256": "9346140f93cd5417c39a0bb18d53b0d8f3930c3aea43bc18aa9402891e15378f",
+        "exact_eof": true,
+        "later_profile": "loader68",
+        "later_header": {
+          "offset": 4843520,
+          "size": 68,
+          "raw_words": [
+            17,
+            537,
+            28,
+            707,
+            7,
+            123,
+            1452,
+            0,
+            0,
+            407,
+            0,
+            345,
+            0,
+            383,
+            0,
+            0,
+            0
+          ]
+        },
+        "geometry_records": 590,
+        "geometry_headers": 3682,
+        "section_offsets": {
+          "textures": 9280,
+          "geometry": 2338384,
+          "geometry_payload": 2399136,
+          "later": 4843520,
+          "tail": 4956004,
+          "logical_end": 4977656,
+          "end": 4977664
+        },
+        "later_records": 537,
+        "node_counts": {
+          "node_80": 0,
+          "node_2c": 62,
+          "pairs": 0
+        },
+        "tail_rows": 20,
+        "tail_records": 28,
+        "final_padding": 8,
+        "unresolved": [
+          "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+          "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+          "pixel decoding limits from the separate texture verifier still apply",
+          "source reconstruction, recompilation, runtime equivalence and owner render observations"
+        ]
+      }
+    ],
+    "profile_counts": {
+      "loader68": 54,
+      "measured_legacy60": 2
+    },
+    "unsupported": [],
+    "failures": [],
+    "unresolved": [
+      "Brands and Canyon match a measured 60-byte legacy header profile by pinned SHA-256 and exact EOF; the current FUN_0011ed90 disassembly does not show the loader selecting that profile, so executable compatibility remains unverified",
+      "semantic names, index/vertex/texture relationships, finite geometry floats, bounding boxes and VU consumers",
+      "pixel decoding limits from the separate texture verifier still apply",
+      "source reconstruction, recompilation, runtime equivalence and owner render observations"
+    ],
+    "claim_limits": "Exact byte consumption for listed models under explicit loader68 or SHA-256-bound measured_legacy60 structural profiles, including checked final zero alignment. The measured_legacy60 profile is not evidence that the current executable loader supports/selects it. No geometry interpretation or full-game decompilation claim."
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 92926,
+      "sha256": "dea0ce07ed92d4253338966732d85f1418e6f8c7ff53f3a4a90a29e82afbc28c"
+    }
+  }
+}

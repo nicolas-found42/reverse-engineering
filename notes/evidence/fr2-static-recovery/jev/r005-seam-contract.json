@@ -1,0 +1,21 @@
+{
+  "id": "r005-seam-contract",
+  "tool": "mcp__jev__jev_verify",
+  "arguments": {
+    "claims": [
+      "The handoff has already specified the model-section parser/verifier public seams: translated chain traversal with exact EOF for all corpus models, validated counts, negative and boundary tests, and pinned results. Tests at ps2_sections.parse and verify_sections file/corpus CLI implement this scope."
+    ],
+    "evidence": "next-phase.md: '1. Section chain. The translated section walker consumes every one of the 56 .PS2 models exactly to end of file, with validated counts, negative and boundary tests, and a pinned immutable result.' Handoff: 'exploratory code without a permanent bounded verifier or negative tests ... first reproduce scratch traversal ... extend later sections one at a time.'"
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 0,\n    \"contradicted\": 0,\n    \"unsupported\": 1,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The handoff has already specified the model-section parser/verifier public seams: translated chain traversal with exact EOF for all corpus models, validated counts, negative and boundary tests, and pinned results. Tests at ps2_sections.parse and verify_sections file/corpus CLI implement this scope.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"supports\": 0.19,\n        \"contradicts\": 0.8\n      },\n      \"confidence\": 0.71,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.24\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 706,\n    \"output_tokens\": 67\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.224,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

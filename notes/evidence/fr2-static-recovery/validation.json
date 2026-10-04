@@ -1,0 +1,181 @@
+{
+  "full_python_suite": {
+    "tests": 168,
+    "status": "pass",
+    "environment": ".scratch/modern-re-research/sdk-venv/bin/python"
+  },
+  "typecheck": {
+    "errors": 0,
+    "warnings": 0,
+    "status": "pass"
+  },
+  "post_typecheck_fix_vif_tests": {
+    "tests": 10,
+    "status": "pass"
+  },
+  "native_guard": {
+    "positive": "generated7targets,8assertions,sourcehashmatches3837full-export",
+    "negative": "baselinehashrejectedandnoartifacts"
+  },
+  "logs": [
+    {
+      "path": ".scratch/mesh/codex-root/full-python-sdk-suite-final-06.log",
+      "bytes": 269,
+      "sha256": "0f74693738eec8f1140f8944ca712b6ae801ba2a8a7f3e75c55f92ef9ec1f61c"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/pyright-final-06b.log",
+      "bytes": 37,
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/vif-post-typecheck-fix-tests.log",
+      "bytes": 1581,
+      "sha256": "4f96c6869e9aa4ed6f07cf0c0caf9987a281116cd0839ba0979fb0905f0e68a2"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/guarded-override-provenance-03.log",
+      "bytes": 6747,
+      "sha256": "389103369a8464a622dd23261219a8b6e923287effee3eb2b982e5d573fd53fd"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/guarded-override-baseline-negative-01.log",
+      "bytes": 7655,
+      "sha256": "43a8e58d62f252165110c39d42b7b96825ed92cd8fc4bea499c0eb962fb82af0"
+    }
+  ],
+  "source_files": [
+    {
+      "path": "tools/ghidra/ExportCoverage.java",
+      "bytes": 5321,
+      "sha256": "0b8e998dc4d0bdc99b4884ef5b32221f7aa8852cd78e95bd3efd1be403f7bdaf"
+    },
+    {
+      "path": "tools/ghidra/ExportDecompilation.java",
+      "bytes": 7559,
+      "sha256": "17c2d41f25ae38cf7217d37fb5c6a797833d31317f59e1ec015c091dae558546"
+    },
+    {
+      "path": "tools/ghidra/experimental/VerifiedJumpTableOverride.java",
+      "bytes": 10640,
+      "sha256": "21d19cc7796c371bd1512cd5a0ecc2f6831761cd00d307aba408c063fa127ee2"
+    },
+    {
+      "path": "tools/ghidra/experimental/ordered-jumptable-override.patch",
+      "bytes": 5240,
+      "sha256": "2cbc7bcc430165a69661259517fd164f100ea95c6cd8de6d27191c866a347802"
+    },
+    {
+      "path": "tools/ghidra/experimental/README.md",
+      "bytes": 2723,
+      "sha256": "104db40da4cfc1e6d9e4e99c66fe6935f6cd334c68b52ba58975410b9bde12ac"
+    },
+    {
+      "path": "tools/ps2_executables.py",
+      "bytes": 7248,
+      "sha256": "6872b9d9af5477fa81a87aab7c326b9f91a270412835145329e5aefccf44461d"
+    },
+    {
+      "path": "tools/ps2_irx.py",
+      "bytes": 8094,
+      "sha256": "cf34b2719c8370f1c52fd07ebbb1b574b7328aeeb9561e9cd98d6a926bef16b9"
+    },
+    {
+      "path": "tools/ps2_sections.py",
+      "bytes": 13636,
+      "sha256": "837be19ffe5819584845d2fe2dd2d5562f98470009c1f3573e8f46ffeb7f3d6d"
+    },
+    {
+      "path": "tools/ps2_vu.py",
+      "bytes": 7459,
+      "sha256": "20ef9b730fe413b1fb074b1e569881a0282875f7ab5ed87dade90292ddb1a7cd"
+    },
+    {
+      "path": "tools/ps2_vif.py",
+      "bytes": 7178,
+      "sha256": "0e1cc6b4bffd89ff4b22e845a2462869db27e756a0a022b51dc1fdbcac76d05e"
+    },
+    {
+      "path": "tools/verify_code_inventory.py",
+      "bytes": 8984,
+      "sha256": "2150a045158d1d2f8de1ecdb17d55cc2f47bb05ce8d9dba0689befbc6c574e1d"
+    },
+    {
+      "path": "tools/verify_decompilation.py",
+      "bytes": 15446,
+      "sha256": "e5fd5a1b1bd986d5b5fcfbe71fcd830f70561a59f8409769ab3f482895516213"
+    },
+    {
+      "path": "tools/verify_executables.py",
+      "bytes": 3237,
+      "sha256": "62cfe34a1bd0f1a0a19e0fc3c64d767b84522334bc2e299a374e5a47119fa3f1"
+    },
+    {
+      "path": "tools/verify_irx.py",
+      "bytes": 10987,
+      "sha256": "b784f15a3302870506435c6a75e699e974061ef50ae65b9a832442b5f0084627"
+    },
+    {
+      "path": "tools/verify_sections.py",
+      "bytes": 4991,
+      "sha256": "603769a4285ca1371dc7c1ab903c523e150a612c74887e97fae0ab89be9bbd98"
+    },
+    {
+      "path": "tools/verify_vu.py",
+      "bytes": 5631,
+      "sha256": "672f9bc78c10b1295a44a2e71a35de2fb6bf16e50c9fe68cf74392be1165e835"
+    },
+    {
+      "path": "tools/verify_vif.py",
+      "bytes": 12597,
+      "sha256": "a4d044aa3729bcea4cc1e0e42bd7ec3e19d9c73583c254af3143046cea223bf8"
+    },
+    {
+      "path": "tools/test_code_inventory.py",
+      "bytes": 5290,
+      "sha256": "850e1f940f428049404211d446c96eed58a11afd3e6e9dd6630d18b1068397d9"
+    },
+    {
+      "path": "tools/test_decompilation_verifier.py",
+      "bytes": 11429,
+      "sha256": "9cf5079f6cc02e2946f1941886bec042fd3efd8b0de81083dafb12e75196e664"
+    },
+    {
+      "path": "tools/test_ps2_executables.py",
+      "bytes": 4644,
+      "sha256": "bc597b9c10522d6bdf6992982efde40e7704891f0b75d228f063c53f96cfc0e1"
+    },
+    {
+      "path": "tools/test_ps2_irx.py",
+      "bytes": 11523,
+      "sha256": "34fa780b19cdbdec9ab24fc4c6780d5be876c229b6244767f4f9106f31ea11e8"
+    },
+    {
+      "path": "tools/test_ps2_sections.py",
+      "bytes": 12501,
+      "sha256": "f2fbaad23639255425454160c174633a7ff8ddd10956c038c293df84c703217b"
+    },
+    {
+      "path": "tools/test_ps2_vu.py",
+      "bytes": 3277,
+      "sha256": "a31013217cb996806927a56fc6593fd6d9a725824dbc9ce593f770cb0544987b"
+    },
+    {
+      "path": "tools/test_ps2_vif.py",
+      "bytes": 7211,
+      "sha256": "117a3ebf7e808ef54186ef78ed3d7696c260b326792b2f6c1e5beb303b1948d3"
+    },
+    {
+      "path": "tools/test_verify_vu.py",
+      "bytes": 2489,
+      "sha256": "f811e6daf8e02baef429738fef8d587f0128c27df3dc9904482e29bccf82501d"
+    },
+    {
+      "path": ".gitattributes",
+      "bytes": 141,
+      "sha256": "494f94c8114cc4e57b4b03b5c1874aec2b89800aae13c52b1426a0d395267496"
+    }
+  ],
+  "whole_game_decompiled": false,
+  "patch_whitespace": "Diff artifact blank context prefixes preserved; exact path attribute disables blank-at-eol only. All staged files pass git diff --cached --check."
+}

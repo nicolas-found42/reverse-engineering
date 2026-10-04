@@ -1,0 +1,13 @@
+# Guarded Ghidra duplicate target experiment
+
+These files are an experimental supplement for the single PAL `FUN_0017f510` switch. They were tested with Ghidra 12.1.3 in a private copy. They are not a general fix for backward normalization and must not be applied to the installed baseline release as part of ordinary export.
+
+`VerifiedJumpTableOverride.java` checks the exact game executable SHA-256, table bytes, computed branch, loop domain, and argument-setting opcodes before writing an override. It retains all seven table occurrences, including the shared destinations at indices 3 and 6. It then requires eight assertions about the generated C and writes a supplemental manifest in a fresh output directory. Run it only against a copied project. Headless `-readOnly` discards the in-memory project changes after export.
+
+The script also requires the R5900 language, a dispatch instruction inside the retrieved function body, and the exact tested private native decompiler hash. Its manifest binds the native binary, Java script, native patch, executable, and generated C hashes. The baseline native tool was rejected by the guard and produced no C or manifest. The provenance-hardened positive run produced the same C hash as the earlier full export.
+
+`ordered-jumptable-override.patch` changes the native decompiler to retain and check order only for override arrays that contain duplicate destinations. Unique-address arrays retain the previous unordered set algorithm. The list persists through clone, encode, and decode. The source baseline is the Ghidra 12.1.3 release's `Ghidra/Features/Decompiler/src/decompile/cpp`; hashes are `c8bf07367f23f827e0d290bb6bfb3c2ef9db67e2c9543931203b6b627892b7fe` for `jumptable.cc` and `3d26746eab3763dd76a15082105e928fca81abf06f828cee44a0b3da0e682ad6` for `jumptable.hh`.
+
+Apply the patch in an isolated source copy and build `ghidra_opt` with `make -j8 ghidra_opt CXX=clang++ ARCH_TYPE= OSDIR=mac_arm_64`. Place the result in an isolated release copy's native decompiler location. The tested private binary hash is `cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd`.
+
+Duplicate, permuted unique, deliberately mismatched duplicate, and saved-project-reopen regressions passed. A read-only full export with the guarded override generated all 3,837 saved functions. There were still 608 warning comments. The Jev review escalated with `safe_to_apply=0.17`; that result is preserved and is not approval. The bounded result and independent review do not establish generic patch correctness, exact source recovery, or whole-program equivalence. See the repository's static-recovery evidence for manifests, hashes, historical failures, and remaining coverage gaps.

@@ -1,0 +1,40 @@
+{
+  "id": "r014-romdir-tool-choice",
+  "tool": "mcp__jev__jev_decide",
+  "arguments": {
+    "decision": "How should this macOS arm64 static pipeline recover exact ROMDIR boundaries for the measured IOPRP255.IMG?",
+    "candidates": [
+      {
+        "id": "bounded_translation",
+        "description": "Write a bounds-checked local reader of the observed 16-byte ROMDIR entries, with name validation and ELF section/program bounds; use pinned ps2img source as layout evidence."
+      },
+      {
+        "id": "run_legacy",
+        "description": "Build and execute unmodified pinned ps2img on this image."
+      },
+      {
+        "id": "port_legacy",
+        "description": "Port legacy ps2img pointer and implicit declaration code to 64-bit modern Clang, then run it."
+      }
+    ],
+    "evidence": "Pinned ps2img 017018224a8a77a79bf57f387bbcea3f4505c8f0 common.h romdir_t is char name[10], unsigned short extinfo_size, int size. ximg.c starts modules at PAD16(romdir[1].size+romdir[2].size) and advances PAD16(each module size). Its entries[i].irx_binary = (char*)(elf_offset+(int)img) narrows pointer to 32 bits. Modern Clang build failed two implicit declaration errors. Measured image starts RESET size0, ROMDIR size304, EXTINFO size560, then 15 named modules; first ELF at864. Header-only inventory found those 15 exact sequential ELF candidates, but has not validated full section spans against module lengths.",
+    "priorities": "Offline only; preserve original payloads; exact evidence and failure boundaries; no host pointer corruption; no GUI or emulator. Prefer small grounded reusable verifier over unrelated broad porting.",
+    "requirements": [
+      "Works on 64-bit arm64 host without narrowing pointers.",
+      "Derives lengths from directory entries rather than next-magic guesses.",
+      "Rejects out-of-bounds module claims."
+    ],
+    "escalate_on_contradiction": true
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"bounded_translation\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"port_legacy\": 0,\n      \"ask_user\": 0,\n      \"investigate\": 0,\n      \"bounded_translation\": 1,\n      \"none\": 0,\n      \"run_legacy\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 3,\n  \"checks\": [\n    {\n      \"candidate\": \"bounded_translation\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"bounded_translation\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"bounded_translation\",\n      \"requirement\": 2,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"run_legacy\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"run_legacy\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"run_legacy\",\n      \"requirement\": 2,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"port_legacy\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"port_legacy\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"port_legacy\",\n      \"requirement\": 2,\n      \"answer\": \"contradicted\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 2121,\n    \"output_tokens\": 464\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.211,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

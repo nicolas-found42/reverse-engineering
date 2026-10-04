@@ -1,0 +1,38 @@
+{
+  "id": "irx-import-encoding-verify",
+  "tool": "jev_verify",
+  "arguments": {
+    "claims": [
+      "The documented upstream IRX import-link structure uses a jump-to-return-address instruction followed by a 16-bit immediate whose source and target registers are both zero; the link terminator is a zero entry and library version is 16-bit.",
+      "The parser requires the measured/documented corpus import stub form (jr $ra word 0x03e00008; ADDIU opcode 9 with rs=rt=0), an all-zero two-word terminator, and zero version high bits.",
+      "Every one of 748 observed import stubs and 166 terminators across these 24 modules matches those encodings."
+    ],
+    "evidence": [
+      {
+        "id": "upstream-irx-h",
+        "text": "Screened public frno7/iopmod include/iopmod/irx.h struct irx_import_link declaration: comment says jr is an unconditional MIPS I jump to return-address instruction; li is a 16-bit load-immediate pseudo-instruction whose imm is imported link index and whose rt and rs are $0. struct irx_import_library says the zero field is always zero; link array has terminating entry zero; version is 16-bit BCD. Source excerpt was screened earlier; recommendation was review because an ordinary C struct/comment excerpt had nonzero injection probability. Manual inspection found no agent-directed content."
+      },
+      {
+        "id": "upstream-irx-asm",
+        "text": "Screened public frno7/iopmod include/iopmod/asm/irx.h declares SHT_IOPMOD 0x70000080, IOPMOD_EXPORT_MAGIC 0x41c00000, and IOPMOD_IMPORT_MAGIC 0x41e00000."
+      },
+      {
+        "id": "corpus-observation",
+        "text": "Independent local byte audit of all 166 import library records and 748 nonterminal stubs across 24 IRX modules: all 748 first words are 0x03e00008; all second-word opcodes are 9 (ADDIU); all rs and rt fields are 0; all 166 import terminator pairs are exactly (0,0); all 166 version words have high16=0. These are measured corpus values, not evidence about every external IRX."
+      },
+      {
+        "id": "tests",
+        "text": "14 tests pass. Mutation cases reject changed JR instruction, nonzero LI rs, nonzero partial terminator, nonzero high version bits, invalid LI opcode, unterminated tables, and bounds errors."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 3,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The documented upstream IRX import-link structure uses a jump-to-return-address instruction followed by a 16-bit immediate whose source and target registers are both zero; the link terminator is a zero entry and library version is 16-bit.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.13,\n        \"says_nothing\": 0.01,\n        \"supports\": 0.86\n      },\n      \"confidence\": 0.78,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"upstream-irx-h\",\n      \"same_subject\": 0.68\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The parser requires the measured/documented corpus import stub form (jr $ra word 0x03e00008; ADDIU opcode 9 with rs=rt=0), an all-zero two-word terminator, and zero version high bits.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0,\n        \"supports\": 0.98\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-observation\",\n      \"same_subject\": 0.88\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Every one of 748 observed import stubs and 166 terminators across these 24 modules matches those encodings.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"corpus-observation\",\n      \"same_subject\": 0.96\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1999,\n    \"output_tokens\": 397\n  }\n}"
+      }
+    ]
+  },
+  "disposition": "Apply the encoding checks only to the documented measured profile. Exact raw corpus counters independently support the chosen constraints; retain the parser's ET 0xff80 and catalog/relocation limits."
+}

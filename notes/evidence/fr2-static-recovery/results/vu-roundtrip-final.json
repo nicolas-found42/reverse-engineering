@@ -1,0 +1,1336 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T094238Z-ec2560e7f3d84f40a1f7ecc9a9ea5e91",
+  "check": "vu-roundtrip",
+  "command": [
+    "tools/verify_vu.py",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--objdump",
+    ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+    "--assembler",
+    ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+    "--output",
+    ".scratch/evidence/vu"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "overlay_count": 8,
+    "code_bytes": 13584,
+    "instruction_pairs": 1698,
+    "overlays": [
+      {
+        "index": 0,
+        "name": ".DVP.overlay..0x0.4149910390.48.0",
+        "load_address": 2194416,
+        "vu_byte_address": 0,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1149936,
+        "sha256": "44dc920cd4ae5ca3acfb27d75abf5e97977f12671d95782396bb9736e4656f78",
+        "placeholder_offset": 1646996,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "exact_match": true,
+        "assembled_bytes": 2048,
+        "assembled_sha256": "44dc920cd4ae5ca3acfb27d75abf5e97977f12671d95782396bb9736e4656f78",
+        "transformations": {
+          "instruction_pairs": 256,
+          "branches": [
+            {
+              "pair": 75,
+              "target": 6128,
+              "signed_displacement": 690
+            },
+            {
+              "pair": 125,
+              "target": 1032,
+              "signed_displacement": 3
+            },
+            {
+              "pair": 127,
+              "target": 6160,
+              "signed_displacement": 642
+            },
+            {
+              "pair": 159,
+              "target": 744,
+              "signed_displacement": -67
+            },
+            {
+              "pair": 161,
+              "target": 3160,
+              "signed_displacement": 233
+            }
+          ],
+          "float_literals": [
+            {
+              "pair": 78,
+              "literal": "768",
+              "bits": "44400000"
+            },
+            {
+              "pair": 112,
+              "literal": "6144",
+              "bits": "45c00000"
+            },
+            {
+              "pair": 149,
+              "literal": "768",
+              "bits": "44400000"
+            },
+            {
+              "pair": 185,
+              "literal": "768",
+              "bits": "44400000"
+            }
+          ],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=0",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0-disassemble.stdout",
+            "bytes": 19120,
+            "sha256": "7f6aa56debb1f1cf9308bfb5b32516a92cdc441134e909fd4e35256e36e8bd19"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0.bin": {
+            "bytes": 2048,
+            "sha256": "44dc920cd4ae5ca3acfb27d75abf5e97977f12671d95782396bb9736e4656f78"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0.s": {
+            "bytes": 9225,
+            "sha256": "f5ade691d5c7de71be42e79adb5981f6b6441b451dc9ca9a181f1e1bda798fec"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-0.o": {
+            "bytes": 2716,
+            "sha256": "a16e9181b7324f1e2e389652281beaccdaccbb3b4c298beea023203ae3d3ce31"
+          }
+        }
+      },
+      {
+        "index": 1,
+        "name": ".DVP.overlay..unknvma.4149910390.784.1",
+        "load_address": 2196472,
+        "vu_byte_address": 2048,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1151992,
+        "sha256": "0f538b0e4eb49ed1111b083b5723c6c19dd664db2d8a119bd8b77259fb5c0f3d",
+        "placeholder_offset": 1649044,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "exact_match": true,
+        "assembled_bytes": 2048,
+        "assembled_sha256": "0f538b0e4eb49ed1111b083b5723c6c19dd664db2d8a119bd8b77259fb5c0f3d",
+        "transformations": {
+          "instruction_pairs": 256,
+          "branches": [
+            {
+              "pair": 39,
+              "target": 2936,
+              "signed_displacement": 71
+            },
+            {
+              "pair": 52,
+              "target": 2496,
+              "signed_displacement": 3
+            },
+            {
+              "pair": 54,
+              "target": 6160,
+              "signed_displacement": 459
+            },
+            {
+              "pair": 72,
+              "target": 2688,
+              "signed_displacement": 7
+            },
+            {
+              "pair": 78,
+              "target": 2848,
+              "signed_displacement": 21
+            },
+            {
+              "pair": 109,
+              "target": 3136,
+              "signed_displacement": 26
+            },
+            {
+              "pair": 120,
+              "target": 3040,
+              "signed_displacement": 3
+            },
+            {
+              "pair": 122,
+              "target": 6160,
+              "signed_displacement": 391
+            },
+            {
+              "pair": 137,
+              "target": 1448,
+              "signed_displacement": -213
+            },
+            {
+              "pair": 142,
+              "target": 3384,
+              "signed_displacement": 24
+            },
+            {
+              "pair": 165,
+              "target": 3408,
+              "signed_displacement": 4
+            },
+            {
+              "pair": 170,
+              "target": 6064,
+              "signed_displacement": 331
+            },
+            {
+              "pair": 207,
+              "target": 3488,
+              "signed_displacement": -28
+            },
+            {
+              "pair": 211,
+              "target": 6064,
+              "signed_displacement": 290
+            }
+          ],
+          "float_literals": [
+            {
+              "pair": 40,
+              "literal": "98304",
+              "bits": "47c00000"
+            },
+            {
+              "pair": 47,
+              "literal": "6144",
+              "bits": "45c00000"
+            },
+            {
+              "pair": 115,
+              "literal": "6144",
+              "bits": "45c00000"
+            },
+            {
+              "pair": 175,
+              "literal": "6144",
+              "bits": "45c00000"
+            },
+            {
+              "pair": 220,
+              "literal": "128",
+              "bits": "43000000"
+            },
+            {
+              "pair": 224,
+              "literal": "0.5",
+              "bits": "3f000000"
+            }
+          ],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=2048",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1-disassemble.stdout",
+            "bytes": 20736,
+            "sha256": "88cd1c1dc542bb0a32ee1efd083a21fed1ef4cca2e0bac263a5e69512dea4e7a"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1.bin": {
+            "bytes": 2048,
+            "sha256": "0f538b0e4eb49ed1111b083b5723c6c19dd664db2d8a119bd8b77259fb5c0f3d"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1.s": {
+            "bytes": 8764,
+            "sha256": "b6213e2c175bbb515cd5bbe86da393db65156847ebd233ca48148030acd0486a"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-1.o": {
+            "bytes": 2716,
+            "sha256": "ec7a451803ff32e92f5690ed9d1403b1e7d843a3203494bc6e92817b8bedd48a"
+          }
+        }
+      },
+      {
+        "index": 2,
+        "name": ".DVP.overlay..unknvma.4149910390.1384.2",
+        "load_address": 2198528,
+        "vu_byte_address": 4096,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1154048,
+        "sha256": "afbaaa5303b7b41f32cf58c4c83fa3610a13dc89f66bd056361bd9ff98fc0326",
+        "placeholder_offset": 1651092,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "exact_match": true,
+        "assembled_bytes": 2048,
+        "assembled_sha256": "afbaaa5303b7b41f32cf58c4c83fa3610a13dc89f66bd056361bd9ff98fc0326",
+        "transformations": {
+          "instruction_pairs": 256,
+          "branches": [
+            {
+              "pair": 40,
+              "target": 3872,
+              "signed_displacement": -69
+            },
+            {
+              "pair": 44,
+              "target": 6064,
+              "signed_displacement": 201
+            },
+            {
+              "pair": 175,
+              "target": 4600,
+              "signed_displacement": -113
+            },
+            {
+              "pair": 179,
+              "target": 6064,
+              "signed_displacement": 66
+            },
+            {
+              "pair": 240,
+              "target": 5680,
+              "signed_displacement": -43
+            },
+            {
+              "pair": 244,
+              "target": 6064,
+              "signed_displacement": 1
+            },
+            {
+              "pair": 251,
+              "target": 6376,
+              "signed_displacement": 33
+            }
+          ],
+          "float_literals": [
+            {
+              "pair": 2,
+              "literal": "0.5",
+              "bits": "3f000000"
+            },
+            {
+              "pair": 17,
+              "literal": "0.5",
+              "bits": "3f000000"
+            },
+            {
+              "pair": 53,
+              "literal": "-0.949999988",
+              "bits": "bf733333"
+            },
+            {
+              "pair": 57,
+              "literal": "0.5",
+              "bits": "3f000000"
+            },
+            {
+              "pair": 190,
+              "literal": "768",
+              "bits": "44400000"
+            }
+          ],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=4096",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2-disassemble.stdout",
+            "bytes": 20789,
+            "sha256": "dd98027db71e6dc860aac817fbc724a79622940926d9f586b1bbe6c4e890f1d5"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2.bin": {
+            "bytes": 2048,
+            "sha256": "afbaaa5303b7b41f32cf58c4c83fa3610a13dc89f66bd056361bd9ff98fc0326"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2.s": {
+            "bytes": 8844,
+            "sha256": "45e0758862839e56034f9f35ab6fb21528522e8386d24119eec9c5e67d8ba9b4"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-2.o": {
+            "bytes": 2716,
+            "sha256": "43a993eceadce87b5d6181f0a45ccc549b8a877f2cc68211813eb6122181c11e"
+          }
+        }
+      },
+      {
+        "index": 3,
+        "name": ".DVP.overlay..unknvma.4149910390.1992.3",
+        "load_address": 2200584,
+        "vu_byte_address": 6144,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1156104,
+        "sha256": "555e44d8172793c545f91864b1f868e6568517e727c281a7788560c5b205326b",
+        "placeholder_offset": 1653140,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "exact_match": true,
+        "assembled_bytes": 2048,
+        "assembled_sha256": "555e44d8172793c545f91864b1f868e6568517e727c281a7788560c5b205326b",
+        "transformations": {
+          "instruction_pairs": 256,
+          "branches": [
+            {
+              "pair": 0,
+              "target": 480,
+              "signed_displacement": -709
+            },
+            {
+              "pair": 72,
+              "target": 6896,
+              "signed_displacement": 21
+            },
+            {
+              "pair": 76,
+              "target": 7096,
+              "signed_displacement": 42
+            },
+            {
+              "pair": 79,
+              "target": 6880,
+              "signed_displacement": 12
+            },
+            {
+              "pair": 81,
+              "target": 6880,
+              "signed_displacement": 10
+            },
+            {
+              "pair": 83,
+              "target": 6880,
+              "signed_displacement": 8
+            },
+            {
+              "pair": 85,
+              "target": 6880,
+              "signed_displacement": 6
+            },
+            {
+              "pair": 87,
+              "target": 6880,
+              "signed_displacement": 4
+            },
+            {
+              "pair": 89,
+              "target": 6880,
+              "signed_displacement": 2
+            },
+            {
+              "pair": 91,
+              "target": 7296,
+              "signed_displacement": 52
+            },
+            {
+              "pair": 104,
+              "target": 6624,
+              "signed_displacement": -45
+            },
+            {
+              "pair": 109,
+              "target": 7048,
+              "signed_displacement": 3
+            },
+            {
+              "pair": 121,
+              "target": 6896,
+              "signed_displacement": -28
+            },
+            {
+              "pair": 142,
+              "target": 6896,
+              "signed_displacement": -49
+            },
+            {
+              "pair": 190,
+              "target": 9224,
+              "signed_displacement": 194
+            },
+            {
+              "pair": 193,
+              "target": 7664,
+              "signed_displacement": -4
+            },
+            {
+              "pair": 195,
+              "target": 9024,
+              "signed_displacement": 164
+            },
+            {
+              "pair": 199,
+              "target": 9152,
+              "signed_displacement": 176
+            },
+            {
+              "pair": 213,
+              "target": 9224,
+              "signed_displacement": 171
+            },
+            {
+              "pair": 216,
+              "target": 7848,
+              "signed_displacement": -4
+            },
+            {
+              "pair": 218,
+              "target": 9024,
+              "signed_displacement": 141
+            },
+            {
+              "pair": 222,
+              "target": 9152,
+              "signed_displacement": 153
+            },
+            {
+              "pair": 236,
+              "target": 9224,
+              "signed_displacement": 148
+            },
+            {
+              "pair": 239,
+              "target": 8032,
+              "signed_displacement": -4
+            },
+            {
+              "pair": 241,
+              "target": 9024,
+              "signed_displacement": 118
+            },
+            {
+              "pair": 245,
+              "target": 9152,
+              "signed_displacement": 130
+            }
+          ],
+          "float_literals": [
+            {
+              "pair": 46,
+              "literal": "1.8189894e-12",
+              "bits": "2c000000"
+            }
+          ],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=6144",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3-disassemble.stdout",
+            "bytes": 19113,
+            "sha256": "d78727c7badbda99ebca7ef87714725049850367211f332864b76df4ef5d5c25"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3.bin": {
+            "bytes": 2048,
+            "sha256": "555e44d8172793c545f91864b1f868e6568517e727c281a7788560c5b205326b"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3.s": {
+            "bytes": 7092,
+            "sha256": "4732f51dbfa3a9346dfac84631768b82086f01273635851f9576d24aa8b7fce9"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-3.o": {
+            "bytes": 2716,
+            "sha256": "433cbb79ad12a82666b8be8ab5093e1900fb6c61cffb619d1869a72e0838c078"
+          }
+        }
+      },
+      {
+        "index": 4,
+        "name": ".DVP.overlay..unknvma.4149910390.2613.4",
+        "load_address": 2202640,
+        "vu_byte_address": 8192,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1158160,
+        "sha256": "1a3f4ad92125a228e8edc0de1307c2cc1d670388fa2ae50a8228d1e446795f97",
+        "placeholder_offset": 1655188,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "exact_match": true,
+        "assembled_bytes": 2048,
+        "assembled_sha256": "1a3f4ad92125a228e8edc0de1307c2cc1d670388fa2ae50a8228d1e446795f97",
+        "transformations": {
+          "instruction_pairs": 256,
+          "branches": [
+            {
+              "pair": 3,
+              "target": 9224,
+              "signed_displacement": 125
+            },
+            {
+              "pair": 6,
+              "target": 8216,
+              "signed_displacement": -4
+            },
+            {
+              "pair": 8,
+              "target": 9024,
+              "signed_displacement": 95
+            },
+            {
+              "pair": 12,
+              "target": 9152,
+              "signed_displacement": 107
+            },
+            {
+              "pair": 26,
+              "target": 9224,
+              "signed_displacement": 102
+            },
+            {
+              "pair": 29,
+              "target": 8400,
+              "signed_displacement": -4
+            },
+            {
+              "pair": 31,
+              "target": 9024,
+              "signed_displacement": 72
+            },
+            {
+              "pair": 35,
+              "target": 9152,
+              "signed_displacement": 84
+            },
+            {
+              "pair": 65,
+              "target": 8888,
+              "signed_displacement": 21
+            },
+            {
+              "pair": 67,
+              "target": 8888,
+              "signed_displacement": 19
+            },
+            {
+              "pair": 85,
+              "target": 9024,
+              "signed_displacement": 18
+            },
+            {
+              "pair": 96,
+              "target": 8624,
+              "signed_displacement": -43
+            },
+            {
+              "pair": 118,
+              "target": 6896,
+              "signed_displacement": -281
+            },
+            {
+              "pair": 143,
+              "target": 9464,
+              "signed_displacement": 15
+            },
+            {
+              "pair": 147,
+              "target": 9400,
+              "signed_displacement": 3
+            },
+            {
+              "pair": 151,
+              "target": 9624,
+              "signed_displacement": 27
+            },
+            {
+              "pair": 161,
+              "target": 9576,
+              "signed_displacement": 11
+            },
+            {
+              "pair": 163,
+              "target": 9624,
+              "signed_displacement": 15
+            },
+            {
+              "pair": 185,
+              "target": 9720,
+              "signed_displacement": 5
+            },
+            {
+              "pair": 189,
+              "target": 9672,
+              "signed_displacement": -5
+            },
+            {
+              "pair": 241,
+              "target": 10864,
+              "signed_displacement": 92
+            }
+          ],
+          "float_literals": [],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=8192",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4-disassemble.stdout",
+            "bytes": 18580,
+            "sha256": "a14e040b1cba698b77c436d1c26b85f8c4e37b73dcc0ea80c155e3b7de058da4"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4.bin": {
+            "bytes": 2048,
+            "sha256": "1a3f4ad92125a228e8edc0de1307c2cc1d670388fa2ae50a8228d1e446795f97"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4.s": {
+            "bytes": 6571,
+            "sha256": "cfdbfea8160043f73e10bbc519dd8e441acd8f4cceaf0b4cca4abd7f07fdd629"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-4.o": {
+            "bytes": 2716,
+            "sha256": "6b9dec11997e998d5a510c0781f1f21728099726897ab11560a7d1f244c75287"
+          }
+        }
+      },
+      {
+        "index": 5,
+        "name": ".DVP.overlay..unknvma.4149910390.3243.5",
+        "load_address": 2204696,
+        "vu_byte_address": 10240,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1160216,
+        "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c",
+        "placeholder_offset": 1657236,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad",
+        "exact_match": true,
+        "assembled_bytes": 2048,
+        "assembled_sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c",
+        "transformations": {
+          "instruction_pairs": 256,
+          "branches": [
+            {
+              "pair": 40,
+              "target": 10864,
+              "signed_displacement": 37
+            },
+            {
+              "pair": 50,
+              "target": 10864,
+              "signed_displacement": 27
+            },
+            {
+              "pair": 78,
+              "target": 10000,
+              "signed_displacement": -109
+            },
+            {
+              "pair": 82,
+              "target": 9968,
+              "signed_displacement": -117
+            },
+            {
+              "pair": 158,
+              "target": 11608,
+              "signed_displacement": 12
+            },
+            {
+              "pair": 169,
+              "target": 11648,
+              "signed_displacement": 6
+            },
+            {
+              "pair": 190,
+              "target": 11344,
+              "signed_displacement": -53
+            },
+            {
+              "pair": 197,
+              "target": 6376,
+              "signed_displacement": -681
+            },
+            {
+              "pair": 202,
+              "target": 11176,
+              "signed_displacement": -86
+            }
+          ],
+          "float_literals": [
+            {
+              "pair": 36,
+              "literal": "4095",
+              "bits": "457ff000"
+            },
+            {
+              "pair": 166,
+              "literal": "0.0078125",
+              "bits": "3c000000"
+            },
+            {
+              "pair": 230,
+              "literal": "768",
+              "bits": "44400000"
+            },
+            {
+              "pair": 234,
+              "literal": "6144",
+              "bits": "45c00000"
+            }
+          ],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=10240",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5-disassemble.stdout",
+            "bytes": 19509,
+            "sha256": "86c17b88daadea00f368087b2a59f20bdabfea8754c195d9e02747e26dbfdec8"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5.bin": {
+            "bytes": 2048,
+            "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5.s": {
+            "bytes": 7551,
+            "sha256": "f5e195d23ec624026e31caae2c31d7af6cce10ec36158632f8624eeb640499d5"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-5.o": {
+            "bytes": 2716,
+            "sha256": "f330950d2ac67adea18b3d99969a740d4215ee0f1fd648224a2d3f2476910be6"
+          }
+        }
+      },
+      {
+        "index": 6,
+        "name": ".DVP.overlay..unknvma.4149910390.3827.6",
+        "load_address": 2206752,
+        "vu_byte_address": 12288,
+        "bytes": 176,
+        "instruction_pairs": 22,
+        "source_section": ".vutext",
+        "source_offset": 1162272,
+        "sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8",
+        "placeholder_offset": 1659284,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "86d2cf5b090f43ee54d8f7c1dcf746a853951191457ff6dac96269a9d24860b9",
+        "exact_match": true,
+        "assembled_bytes": 176,
+        "assembled_sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8",
+        "transformations": {
+          "instruction_pairs": 22,
+          "branches": [
+            {
+              "pair": 6,
+              "target": 12056,
+              "signed_displacement": -36
+            },
+            {
+              "pair": 20,
+              "target": 11960,
+              "signed_displacement": -62
+            }
+          ],
+          "float_literals": [],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=12288",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6-disassemble.stdout",
+            "bytes": 1653,
+            "sha256": "785bba6f8243ea8cae6fdf527f8e205f331b7882930ff74682a81498596fa327"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6.bin": {
+            "bytes": 176,
+            "sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6.s": {
+            "bytes": 482,
+            "sha256": "c19e1aff3bffba716e30e59e117a6266a4049d20f3c03781d6adc0b972745940"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-6.o": {
+            "bytes": 844,
+            "sha256": "35c2278a54e4595cfce0c10e1856997f2745bfa793084bf45fe1bbe4d7fcb002"
+          }
+        }
+      },
+      {
+        "index": 7,
+        "name": ".DVP.overlay..0x0.495278677.35.0",
+        "load_address": 2206960,
+        "vu_byte_address": 0,
+        "bytes": 1120,
+        "instruction_pairs": 140,
+        "source_section": ".vutext",
+        "source_offset": 1162480,
+        "sha256": "2093b6946baea64312037ec6a6dce16a7451b7729f4cf7e88042ac90895422e1",
+        "placeholder_offset": 1659460,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "5cc201eb697e57027dcf74bac0995467bc9b787848be4c0d740956a97ddf65a5",
+        "exact_match": true,
+        "assembled_bytes": 1120,
+        "assembled_sha256": "2093b6946baea64312037ec6a6dce16a7451b7729f4cf7e88042ac90895422e1",
+        "transformations": {
+          "instruction_pairs": 140,
+          "branches": [
+            {
+              "pair": 31,
+              "target": 336,
+              "signed_displacement": 10
+            },
+            {
+              "pair": 33,
+              "target": 336,
+              "signed_displacement": 8
+            },
+            {
+              "pair": 35,
+              "target": 336,
+              "signed_displacement": 6
+            },
+            {
+              "pair": 37,
+              "target": 336,
+              "signed_displacement": 4
+            },
+            {
+              "pair": 133,
+              "target": 1104,
+              "signed_displacement": 4
+            },
+            {
+              "pair": 135,
+              "target": 1104,
+              "signed_displacement": 2
+            }
+          ],
+          "float_literals": [
+            {
+              "pair": 17,
+              "literal": "320",
+              "bits": "43a00000"
+            },
+            {
+              "pair": 78,
+              "literal": "1.57079637",
+              "bits": "3fc90fdb"
+            },
+            {
+              "pair": 80,
+              "literal": "-0.159154937",
+              "bits": "be22f983"
+            },
+            {
+              "pair": 82,
+              "literal": "12582912",
+              "bits": "4b400000"
+            },
+            {
+              "pair": 84,
+              "literal": "-0.159154937",
+              "bits": "be22f983"
+            },
+            {
+              "pair": 85,
+              "literal": "0.5",
+              "bits": "3f000000"
+            },
+            {
+              "pair": 87,
+              "literal": "0.25",
+              "bits": "3e800000"
+            },
+            {
+              "pair": 89,
+              "literal": "-76.5749588",
+              "bits": "c2992661"
+            },
+            {
+              "pair": 90,
+              "literal": "-41.3416748",
+              "bits": "c2255de0"
+            },
+            {
+              "pair": 91,
+              "literal": "81.6022263",
+              "bits": "42a33457"
+            },
+            {
+              "pair": 95,
+              "literal": "39.710659",
+              "bits": "421ed7b7"
+            },
+            {
+              "pair": 99,
+              "literal": "6.28318501",
+              "bits": "40c90fda"
+            },
+            {
+              "pair": 102,
+              "literal": "-0.5",
+              "bits": "bf000000"
+            },
+            {
+              "pair": 103,
+              "literal": "1.59802982e+09",
+              "bits": "4ebe8000"
+            }
+          ],
+          "raw_opcode_fallbacks": 0
+        },
+        "disassembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "-D",
+            "-z",
+            "-b",
+            "binary",
+            "-m",
+            "dvp:vu",
+            "--adjust-vma=0",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7.bin"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7-disassemble.stdout",
+            "bytes": 9918,
+            "sha256": "81c0a38aecdb3d19c12de5335c5e6649f475a6db5411f9301e146195426f3fe7"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7-disassemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "assembly": {
+          "command": [
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "-o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7.o",
+            ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7.s"
+          ],
+          "exit_code": 0,
+          "stdout": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7-assemble.stdout",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stderr": {
+            "path": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7-assemble.stderr",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        "artifacts": {
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7.bin": {
+            "bytes": 1120,
+            "sha256": "2093b6946baea64312037ec6a6dce16a7451b7729f4cf7e88042ac90895422e1"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7.s": {
+            "bytes": 4447,
+            "sha256": "4c71547cdf8d75b97c1da74f2fea2c68ef10ffb3f6b1bc906da8d5cefde741a4"
+          },
+          ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d/overlay-7.o": {
+            "bytes": 1788,
+            "sha256": "b8fbf2cc7fbea1f6c7185fd6a6a2a092750d36a614cace2652dcdb779e332f54"
+          }
+        }
+      }
+    ],
+    "claim_limits": [
+      "LMA/code bounds and bytes only; VU0/VU1 ownership and semantic meaning remain unverified.",
+      "Overlays may share VU addresses; metadata identities remain separate.",
+      "Mnemonic source, signed branch displacement conversion, and nine-digit binary32 literals reproduce these chunks byte for byte.",
+      "No raw-opcode fallback is used. This is reconstruction/encoding validation, not a behavioral or scheduling oracle."
+    ],
+    "tools": {
+      "objdump": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+        "bytes": 1767240,
+        "sha256": "2556685450731e5422441d8022702a072b28fb1666055bf419755bb85d2900c3"
+      },
+      "assembler": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+        "bytes": 1509336,
+        "sha256": "0a10cb8645319ab24f96b86013a6f52ef03dcfce535349524a765db16ef741bd"
+      }
+    },
+    "exact_roundtrip_overlays": 8,
+    "work_directory": ".scratch/evidence/vu/private-work-d26f43042dc74dfbaf9da96908cf941d",
+    "whole_game_decompiled": false
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 42907,
+      "sha256": "e137cb44c7fc3ef0851441d14d7269dea2682d71772c57899b33899173178b35"
+    }
+  }
+}

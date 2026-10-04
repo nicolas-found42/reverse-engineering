@@ -1,0 +1,462 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T094949Z-b3f5767df25446e0b34371d067cf4480",
+  "check": "vif-static-mapping",
+  "command": [
+    "tools/verify_vif.py",
+    "--output",
+    ".scratch/mesh/codex-vif/verify-run-fixed-002"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "status": "verified_static_packet_mapping",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "static_guards": {
+      "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+      "guarded_functions": {
+        "0022fd48": {
+          "file_offset": 1248584,
+          "bytes": 92,
+          "sha256": "d4c1d4267be51fc1b68a38d2c6b23a590141ff641aa71e0e9d53f485e1890380"
+        },
+        "00114fe0": {
+          "file_offset": 90080,
+          "bytes": 144,
+          "sha256": "9280fbb33293b2a19f8737175415f3b6a5ec2cf1ec63d9c3264de6b91d21506c"
+        },
+        "001f4138": {
+          "file_offset": 1003832,
+          "bytes": 40,
+          "sha256": "5a90d463071203f20b480d9a57818d86a994cdf273eaa2873aaef16b476f04cd"
+        },
+        "001f4468": {
+          "file_offset": 1004648,
+          "bytes": 104,
+          "sha256": "0a1d0f104f8b814b7f5bddbd6292f1d21ef1e4a4029412bbde50624fbc6530b9"
+        },
+        "001f40d8": {
+          "file_offset": 1003736,
+          "bytes": 40,
+          "sha256": "159ede1641de3e80a285d6ab4ce3c7023e2e273a558621553eb7d1eeccbd7f45"
+        }
+      },
+      "channel_pointer_table": {
+        "address": "0024d0b8",
+        "file_offset": 1368248,
+        "words": [
+          "10008000",
+          "10009000"
+        ],
+        "index_0": {
+          "register_address": "10008000",
+          "label": "VIF0"
+        },
+        "index_1": {
+          "register_address": "10009000",
+          "label": "VIF1"
+        }
+      },
+      "static_conditional_ownership": [
+        {
+          "caller": "0022fd48",
+          "channel_index": 1,
+          "packet_address": "00217be0",
+          "when": "if this caller executes and the guarded helper path is reached"
+        },
+        {
+          "caller": "00114fe0",
+          "channel_index": 0,
+          "packet_address": "0021ace0",
+          "when": "if this caller executes and the guarded helper path is reached"
+        }
+      ],
+      "limits": [
+        "Raw code and pointer-table guards ground a static conditional ownership mapping; neither caller execution nor DMA completion was observed.",
+        "CHCR tag-transfer enable and unchanged non-SPR pointer behavior are established only for the guarded helper instruction bytes."
+      ]
+    },
+    "dma_chains": [
+      {
+        "start_address": 2194400,
+        "qwc": 782,
+        "tag_transfer_enabled": true,
+        "encoding_basis": {
+          "repository": "ps2dev/binutils-gdb",
+          "revision": "3eb45ea37f0efd498d1de3cf9562de07197aefa8",
+          "sources": [
+            "opcodes/dvp-opc.c:1454-1455",
+            "opcodes/dvp-opc.c:1742-1773",
+            "opcodes/dvp-opc.c:2041-2070",
+            "include/opcode/dvp.h:284",
+            "gas/config/tc-dvp.c:806-818"
+          ]
+        },
+        "body_bytes": 12512,
+        "end_tag_address": 2206928,
+        "nop_count": 7,
+        "nops": [
+          {
+            "source": "tag-upper-0",
+            "body_offset": null
+          },
+          {
+            "source": "cnt-body",
+            "body_offset": 2048
+          },
+          {
+            "source": "cnt-body",
+            "body_offset": 4104
+          },
+          {
+            "source": "cnt-body",
+            "body_offset": 6160
+          },
+          {
+            "source": "cnt-body",
+            "body_offset": 8216
+          },
+          {
+            "source": "cnt-body",
+            "body_offset": 10272
+          },
+          {
+            "source": "cnt-body",
+            "body_offset": 12328
+          }
+        ],
+        "claim_limits": [
+          "Static packet syntax and MPG byte spans only; runtime transfer is not observed.",
+          "VU scheduling, execution, geometry meaning, and rendered output are not established."
+        ],
+        "name": "vu1-static-upload",
+        "packet_file_offset": 1149920,
+        "channel_index": 1,
+        "channel": "VIF1",
+        "chunks": [
+          {
+            "index": 0,
+            "command_word": "4a000000",
+            "command_source": "tag-upper-1",
+            "command_body_offset": null,
+            "instruction_index": 0,
+            "vu_byte_address": 0,
+            "instruction_pairs": 256,
+            "bytes": 2048,
+            "payload_packet_offset": 16,
+            "payload_chain_address": 2194416,
+            "payload_sha256": "44dc920cd4ae5ca3acfb27d75abf5e97977f12671d95782396bb9736e4656f78"
+          },
+          {
+            "index": 1,
+            "command_word": "4a000100",
+            "command_source": "cnt-body",
+            "command_body_offset": 2052,
+            "instruction_index": 256,
+            "vu_byte_address": 2048,
+            "instruction_pairs": 256,
+            "bytes": 2048,
+            "payload_packet_offset": 2072,
+            "payload_chain_address": 2196472,
+            "payload_sha256": "0f538b0e4eb49ed1111b083b5723c6c19dd664db2d8a119bd8b77259fb5c0f3d"
+          },
+          {
+            "index": 2,
+            "command_word": "4a000200",
+            "command_source": "cnt-body",
+            "command_body_offset": 4108,
+            "instruction_index": 512,
+            "vu_byte_address": 4096,
+            "instruction_pairs": 256,
+            "bytes": 2048,
+            "payload_packet_offset": 4128,
+            "payload_chain_address": 2198528,
+            "payload_sha256": "afbaaa5303b7b41f32cf58c4c83fa3610a13dc89f66bd056361bd9ff98fc0326"
+          },
+          {
+            "index": 3,
+            "command_word": "4a000300",
+            "command_source": "cnt-body",
+            "command_body_offset": 6164,
+            "instruction_index": 768,
+            "vu_byte_address": 6144,
+            "instruction_pairs": 256,
+            "bytes": 2048,
+            "payload_packet_offset": 6184,
+            "payload_chain_address": 2200584,
+            "payload_sha256": "555e44d8172793c545f91864b1f868e6568517e727c281a7788560c5b205326b"
+          },
+          {
+            "index": 4,
+            "command_word": "4a000400",
+            "command_source": "cnt-body",
+            "command_body_offset": 8220,
+            "instruction_index": 1024,
+            "vu_byte_address": 8192,
+            "instruction_pairs": 256,
+            "bytes": 2048,
+            "payload_packet_offset": 8240,
+            "payload_chain_address": 2202640,
+            "payload_sha256": "1a3f4ad92125a228e8edc0de1307c2cc1d670388fa2ae50a8228d1e446795f97"
+          },
+          {
+            "index": 5,
+            "command_word": "4a000500",
+            "command_source": "cnt-body",
+            "command_body_offset": 10276,
+            "instruction_index": 1280,
+            "vu_byte_address": 10240,
+            "instruction_pairs": 256,
+            "bytes": 2048,
+            "payload_packet_offset": 10296,
+            "payload_chain_address": 2204696,
+            "payload_sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+          },
+          {
+            "index": 6,
+            "command_word": "4a160600",
+            "command_source": "cnt-body",
+            "command_body_offset": 12332,
+            "instruction_index": 1536,
+            "vu_byte_address": 12288,
+            "instruction_pairs": 22,
+            "bytes": 176,
+            "payload_packet_offset": 12352,
+            "payload_chain_address": 2206752,
+            "payload_sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8"
+          }
+        ]
+      },
+      {
+        "start_address": 2206944,
+        "qwc": 70,
+        "tag_transfer_enabled": true,
+        "encoding_basis": {
+          "repository": "ps2dev/binutils-gdb",
+          "revision": "3eb45ea37f0efd498d1de3cf9562de07197aefa8",
+          "sources": [
+            "opcodes/dvp-opc.c:1454-1455",
+            "opcodes/dvp-opc.c:1742-1773",
+            "opcodes/dvp-opc.c:2041-2070",
+            "include/opcode/dvp.h:284",
+            "gas/config/tc-dvp.c:806-818"
+          ]
+        },
+        "body_bytes": 1120,
+        "end_tag_address": 2208080,
+        "nop_count": 1,
+        "nops": [
+          {
+            "source": "tag-upper-0",
+            "body_offset": null
+          }
+        ],
+        "claim_limits": [
+          "Static packet syntax and MPG byte spans only; runtime transfer is not observed.",
+          "VU scheduling, execution, geometry meaning, and rendered output are not established."
+        ],
+        "name": "vu0-static-upload",
+        "packet_file_offset": 1162464,
+        "channel_index": 0,
+        "channel": "VIF0",
+        "chunks": [
+          {
+            "index": 0,
+            "command_word": "4a8c0000",
+            "command_source": "tag-upper-1",
+            "command_body_offset": null,
+            "instruction_index": 0,
+            "vu_byte_address": 0,
+            "instruction_pairs": 140,
+            "bytes": 1120,
+            "payload_packet_offset": 16,
+            "payload_chain_address": 2206960,
+            "payload_sha256": "2093b6946baea64312037ec6a6dce16a7451b7729f4cf7e88042ac90895422e1"
+          }
+        ]
+      }
+    ],
+    "overlay_count": 8,
+    "transfer_count": 8,
+    "matched_count": 8,
+    "unmatched_overlay_count": 0,
+    "matches": [
+      {
+        "chain": "vu1-static-upload",
+        "channel": "VIF1",
+        "channel_index": 1,
+        "mpg_instruction_index": 0,
+        "vu_byte_address": 0,
+        "instruction_pairs": 256,
+        "bytes": 2048,
+        "packet_chain_address": "00217bf0",
+        "packet_file_offset": 1149936,
+        "overlay_index": 0,
+        "overlay_name": ".DVP.overlay..0x0.4149910390.48.0",
+        "overlay_load_address": "00217bf0",
+        "overlay_source_offset": 1149936,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "44dc920cd4ae5ca3acfb27d75abf5e97977f12671d95782396bb9736e4656f78"
+      },
+      {
+        "chain": "vu1-static-upload",
+        "channel": "VIF1",
+        "channel_index": 1,
+        "mpg_instruction_index": 256,
+        "vu_byte_address": 2048,
+        "instruction_pairs": 256,
+        "bytes": 2048,
+        "packet_chain_address": "002183f8",
+        "packet_file_offset": 1151992,
+        "overlay_index": 1,
+        "overlay_name": ".DVP.overlay..unknvma.4149910390.784.1",
+        "overlay_load_address": "002183f8",
+        "overlay_source_offset": 1151992,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "0f538b0e4eb49ed1111b083b5723c6c19dd664db2d8a119bd8b77259fb5c0f3d"
+      },
+      {
+        "chain": "vu1-static-upload",
+        "channel": "VIF1",
+        "channel_index": 1,
+        "mpg_instruction_index": 512,
+        "vu_byte_address": 4096,
+        "instruction_pairs": 256,
+        "bytes": 2048,
+        "packet_chain_address": "00218c00",
+        "packet_file_offset": 1154048,
+        "overlay_index": 2,
+        "overlay_name": ".DVP.overlay..unknvma.4149910390.1384.2",
+        "overlay_load_address": "00218c00",
+        "overlay_source_offset": 1154048,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "afbaaa5303b7b41f32cf58c4c83fa3610a13dc89f66bd056361bd9ff98fc0326"
+      },
+      {
+        "chain": "vu1-static-upload",
+        "channel": "VIF1",
+        "channel_index": 1,
+        "mpg_instruction_index": 768,
+        "vu_byte_address": 6144,
+        "instruction_pairs": 256,
+        "bytes": 2048,
+        "packet_chain_address": "00219408",
+        "packet_file_offset": 1156104,
+        "overlay_index": 3,
+        "overlay_name": ".DVP.overlay..unknvma.4149910390.1992.3",
+        "overlay_load_address": "00219408",
+        "overlay_source_offset": 1156104,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "555e44d8172793c545f91864b1f868e6568517e727c281a7788560c5b205326b"
+      },
+      {
+        "chain": "vu1-static-upload",
+        "channel": "VIF1",
+        "channel_index": 1,
+        "mpg_instruction_index": 1024,
+        "vu_byte_address": 8192,
+        "instruction_pairs": 256,
+        "bytes": 2048,
+        "packet_chain_address": "00219c10",
+        "packet_file_offset": 1158160,
+        "overlay_index": 4,
+        "overlay_name": ".DVP.overlay..unknvma.4149910390.2613.4",
+        "overlay_load_address": "00219c10",
+        "overlay_source_offset": 1158160,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "1a3f4ad92125a228e8edc0de1307c2cc1d670388fa2ae50a8228d1e446795f97"
+      },
+      {
+        "chain": "vu1-static-upload",
+        "channel": "VIF1",
+        "channel_index": 1,
+        "mpg_instruction_index": 1280,
+        "vu_byte_address": 10240,
+        "instruction_pairs": 256,
+        "bytes": 2048,
+        "packet_chain_address": "0021a418",
+        "packet_file_offset": 1160216,
+        "overlay_index": 5,
+        "overlay_name": ".DVP.overlay..unknvma.4149910390.3243.5",
+        "overlay_load_address": "0021a418",
+        "overlay_source_offset": 1160216,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+      },
+      {
+        "chain": "vu1-static-upload",
+        "channel": "VIF1",
+        "channel_index": 1,
+        "mpg_instruction_index": 1536,
+        "vu_byte_address": 12288,
+        "instruction_pairs": 22,
+        "bytes": 176,
+        "packet_chain_address": "0021ac20",
+        "packet_file_offset": 1162272,
+        "overlay_index": 6,
+        "overlay_name": ".DVP.overlay..unknvma.4149910390.3827.6",
+        "overlay_load_address": "0021ac20",
+        "overlay_source_offset": 1162272,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8"
+      },
+      {
+        "chain": "vu0-static-upload",
+        "channel": "VIF0",
+        "channel_index": 0,
+        "mpg_instruction_index": 0,
+        "vu_byte_address": 0,
+        "instruction_pairs": 140,
+        "bytes": 1120,
+        "packet_chain_address": "0021acf0",
+        "packet_file_offset": 1162480,
+        "overlay_index": 7,
+        "overlay_name": ".DVP.overlay..0x0.495278677.35.0",
+        "overlay_load_address": "0021acf0",
+        "overlay_source_offset": 1162480,
+        "exact_bytes_match": true,
+        "exact_file_offset_match": true,
+        "exact_load_address_match": true,
+        "sha256": "2093b6946baea64312037ec6a6dce16a7451b7729f4cf7e88042ac90895422e1"
+      }
+    ],
+    "total_instruction_pairs": 1698,
+    "total_transferred_bytes": 13584,
+    "whole_game_execution_or_render_proven": false,
+    "claim_limits": [
+      "All eight static MPG payload byte spans match exactly one parse_overlays source span, with no unmatched overlays or extra transfers.",
+      "The first seven chunks map conditionally to VIF1 over VU byte-address range [0,12464); the last maps conditionally to VIF0 over [0,1120).",
+      "No runtime upload, VU scheduling, geometry semantics, or rendered output is established."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 14575,
+      "sha256": "c80fe6d64f5f0f7c67047ddcb9ea417ee1cf501833ec43d070b8fe25adef69dd"
+    }
+  }
+}
