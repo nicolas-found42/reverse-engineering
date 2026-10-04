@@ -19,9 +19,9 @@ for s in seeds:
  end=int(c['span']['end_exclusive'],16)
  why=None
  if c['rejects']:why='rejects: '+c['rejects'][0]['why']
- elif c['gap_words']:why='gaps'
+ elif any(x['word']!='00000000' for x in c['gap_words']):why='gaps with code'
  elif c['next_word_state'] not in('undefined','unowned_instruction') and c['next_word_state']!='owned '+c['span']['end_exclusive']:why='next '+c['next_word_state']
- elif f'{end-8:08x}' not in c['returns'] or max(c['returns'])!=f'{end-8:08x}' or get(end-8)!=0x03e00008:why='terminal return'
+ elif not ((f'{end-8:08x}' in c['returns'] and max(c['returns'])==f'{end-8:08x}' and get(end-8)==0x03e00008) or (f'{end-8:08x}' in c['tail_jumps'] and (get(end-8)>>26)==2 and all(r<f'{end-8:08x}' for r in c['returns']))):why='terminal transfer is neither the last return nor a pinned tail jump'
  elif any(e['kind']=='jump' and not e.get('tail_jump') and not (int(c['span']['start'],16)<=int(e['target'],16)<end) for e in c['edges']):why='J leaves span'
  if not why and any(e['kind']=='call' and e['target']==c['span']['start'] for e in c['edges']):why='self-call (unsupported)'
  if why:dropped[s]=why;continue
@@ -40,7 +40,9 @@ while changed:
  body={}
  for s,c in walks.items():
   a,b=int(c['span']['start'],16),int(c['span']['end_exclusive'],16)
-  for pc in range(a,b,4):body[pc]=s
+  gapset={int(x['address'],16) for x in c['gap_words']}
+  for pc in range(a,b,4):
+   if pc not in gapset:body[pc]=s
  decoded=set(fn_addr)|set(unowned)|set(body)
  spanmap=[(int(c['span']['start'],16),int(c['span']['end_exclusive'],16),s) for s,c in walks.items()]
  import bisect
@@ -87,7 +89,7 @@ for a,b,s in sorted((int(c['span']['start'],16),int(c['span']['end_exclusive'],1
  for x in inc:
   if x['owner_entry'] is not None:
    x['owner_name']=None;
- rows.append({'entry':s,'start':c['span']['start'],'end':c['span']['end_exclusive'],'words':c['span_words'],'bytes':c['span']['bytes'],'window_sha256':c['span']['sha256'],'first_word':f'{get(a):08x}','delay_word':f'{get(b-4):08x}','next_word':f'{get(b):08x}','next_state':ns2,'likely_count':sum(1 for e in c['edges'] if e['kind']=='conditional_likely'),'expected_calls':calls,'known_callees':known,'batch_callees':bcal,'unresolved_callees':unres,'zero_words':c['zero_words_reached'],'computed_calls':c['computed_calls'],'tail_jumps':c['tail_jumps'],'delay_breaks':c['delay_breaks'],'decoded_ranges':[[f'{x:08x}',f'{y:08x}'] for x,y in rng],'incoming':[{'site':x['site'],'owner_entry':x['owner_entry'],'owner_kind':x['owner_kind']} for x in inc]})
+ rows.append({'entry':s,'start':c['span']['start'],'end':c['span']['end_exclusive'],'words':c['span_words'],'bytes':c['span']['bytes'],'window_sha256':c['span']['sha256'],'first_word':f'{get(a):08x}','delay_word':f'{get(b-4):08x}','next_word':f'{get(b):08x}','next_state':ns2,'likely_count':sum(1 for e in c['edges'] if e['kind']=='conditional_likely'),'expected_calls':calls,'known_callees':known,'batch_callees':bcal,'unresolved_callees':unres,'zero_words':c['zero_words_reached'],'padding_words':[x['address'] for x in c['gap_words']],'computed_calls':c['computed_calls'],'tail_jumps':c['tail_jumps'],'delay_breaks':c['delay_breaks'],'decoded_ranges':[[f'{x:08x}',f'{y:08x}'] for x,y in rng],'incoming':[{'site':x['site'],'owner_entry':x['owner_entry'],'owner_kind':x['owner_kind']} for x in inc]})
 conf={'schema_version':2,'baseline':{'executable_sha256':sha(elf_p),'manifest_sha256':sha(exp/'decompilation/manifest.json'),'inventory_sha256':sha(exp/'inventory.json'),'coverage_sha256':sha(exp/'coverage.json'),'inventory_count':len(entries)},'seeds':rows}
 out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(conf,indent=1)+'\n')
 rep={'config':str(out),'config_sha256':sha(out),'seed_count':len(rows),'dropped':dropped,'seeds':[r['entry'] for r in rows],'total_words':sum(r['words'] for r in rows),'next_states':{k:sum(1 for r in rows if r['next_state']==k) for k in ('undefined','function_entry','batch_entry','unowned_instruction')},'with_incoming':sum(1 for r in rows if r['incoming']),'decoded_words':sum(sum((y-x)//4 for x,y in [(int(a,16),int(b,16)) for a,b in r['decoded_ranges']]) for r in rows)}

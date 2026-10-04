@@ -46,7 +46,9 @@ body={};checked=0;summary=[]
 for s in C['seeds']:
  START,END=int(s['start'],16),int(s['end'],16);assert s['entry']==s['start'] and s['words']*4==s['bytes']==END-START
  raw=read(START,END-START);assert sha(raw)==s['window_sha256']
- assert w(START)==int(s['first_word'],16) and w(END-4)==int(s['delay_word'],16) and w(END-8)==0x03e00008 and w(END)==int(s['next_word'],16)
+ PAD={int(x,16) for x in s.get('padding_words',[])}
+ assert w(START)==int(s['first_word'],16) and w(END-4)==int(s['delay_word'],16) and w(END)==int(s['next_word'],16)
+ assert w(END-8)==0x03e00008 or (f'{END-8:08x}' in s['tail_jumps'] and w(END-8)>>26==2)
  CC=set(s['computed_calls']);TJ=s['tail_jumps'];DB=set(s['delay_breaks'])
  seen={};edges=[];breaks=[];q=collections.deque([(START,False)])
  while q:
@@ -69,7 +71,7 @@ for s in C['seeds']:
    else:assert TJ.get(f'{pc:08x}')==f'{tgt:08x}' and f'{tgt:08x}' in ent,(s['entry'],hex(pc))
   elif k=='return':q+=[(pc+4,True)]
   edges.append((pc,k,tgt))
- assert set(seen)==set(range(START,END,4)),(s['entry'],'not every word reachable')
+ assert set(seen)|PAD==set(range(START,END,4)) and not set(seen)&PAD and all(w(x)==0 for x in PAD),(s['entry'],'reachability differs from pinned padding')
  for pc in seen:body[pc]=s['entry']
  calls={f'{p:08x}':f'{t:08x}' for p,k,t in edges if k=='call'};assert calls==s['expected_calls']
  batch=set(seeds)
@@ -82,6 +84,7 @@ for s in C['seeds']:
  dec=set()
  for a,b in s['decoded_ranges']:dec.update(range(int(a,16),int(b,16),4))
  for pc in range(START,END,4):
+  if pc in PAD:continue
   if pc in dec:assert all(inr(UNO,x) for x in range(pc,pc+4)),(s['entry'],'decoded word not unowned',hex(pc))
   else:assert all(inr(UND,x) for x in range(pc,pc+4)),(s['entry'],'undefined word not undefined',hex(pc))
   assert pc not in fn_addr

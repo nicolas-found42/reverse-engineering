@@ -1,0 +1,50 @@
+{
+ "tool": "jev_verify",
+ "model": "typesafe/jev-1.13",
+ "summary": {
+  "verified": 5,
+  "contradicted": 0,
+  "unsupported": 1,
+  "needs_review": 1
+ },
+ "results": [
+  {
+   "id": "claim0",
+   "confidence": 0.95
+  },
+  {
+   "id": "claim1",
+   "confidence": 0.91
+  },
+  {
+   "id": "claim2",
+   "supports": 0.91,
+   "contradicts": 0.07,
+   "confidence": 0.86
+  },
+  {
+   "id": "claim3",
+   "confidence": 0.99
+  },
+  {
+   "id": "claim4",
+   "confidence": 0.95
+  },
+  {
+   "id": "claim5",
+   "verdict": "unsupported",
+   "relation_verdict": "contradicted",
+   "supports": 0.26,
+   "says_nothing": 0.28,
+   "contradicts": 0.46,
+   "confidence": 0.19,
+   "same_subject": 0.24,
+   "action": "review"
+  }
+ ],
+ "usage": {
+  "input_tokens": 2992,
+  "output_tokens": 372
+ },
+ "root_disposition": "claim5 is a scope limitation with no cited evidence (same_subject 0.24; relation contradicts 0.46 is about an unrelated evidence passage). It is a stated limit, not a verified result, and is not retried. Limits are stated in the README, not verified here."
+}

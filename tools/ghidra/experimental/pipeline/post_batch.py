@@ -33,13 +33,13 @@ check('exactly K new functions equal to the seed entries and no removals',set(nf
 exe=ELF.read_bytes();words_total=0;new_words=[];pre_words=[]
 for s in S:
  st,en=addr(s['start']),addr(s['end']);f=nf[s['entry']];ins=f['instructions']
- assert f['name']=='candidate_ee_'+s['entry'] and f['size']==s['bytes'] and len(ins)==s['words'] and [addr(i['address']) for i in ins]==list(range(st,en,4)),s['entry']
+ pad={addr(x) for x in s.get('padding_words',[])};assert f['name']=='candidate_ee_'+s['entry'] and f['size']==s['bytes']-4*len(pad) and len(ins)==s['words']-len(pad) and [addr(i['address']) for i in ins]==[x for x in range(st,en,4) if x not in pad],s['entry']
  dec=set()
  for a,z in s['decoded_ranges']:dec.update(range(addr(a),addr(z),4))
  for i in ins:
   pc=addr(i['address']);raw=exe[0x1000+pc-0x100000:0x1000+pc-0x100000+4];assert i['bytes']==raw.hex(),(s['entry'],i['address'])
   (pre_words if pc in dec else new_words).append(pc)
- words_total+=s['words']
+ words_total+=s['words']-len(pad)
  nxt=struct.unpack('<I',exe[0x1000+en-0x100000:0x1000+en-0x100000+4])[0];assert nxt==int(s['next_word'],16)
 check('every candidate has the pinned name, size, address list and raw-ELF-equal words',True,{'seeds':K,'words':words_total,'newly_decoded_words':len(new_words),'preexisting_decoded_words':len(pre_words)})
 txb=[x for x in bc['blocks'] if x['name']=='.text'][0];txn=[x for x in nc['blocks'] if x['name']=='.text'][0]
@@ -100,10 +100,10 @@ import re,difflib,collections
 def norm_labels(t):
  cnt=0
  for s in S:
-  for pat in (b'&LAB_'+s['entry'].encode(),b'candidate_ee_'+s['entry'].encode(),b'func_0x'+s['entry'].encode(),b'LAB_'+s['entry'].encode()):
+  for pat in (b'&LAB_'+s['entry'].encode(),b'candidate_ee_'+s['entry'].encode(),b'func_0x'+s['entry'].encode(),b'LAB_'+s['entry'].encode(),b'&DAT_'+s['entry'].encode(),b'DAT_'+s['entry'].encode()):
    cnt+=t.count(pat);t=t.replace(pat,b'SEED_'+s['entry'].encode())
  return t,cnt
-TOK=re.compile(rb'\w+|\W');VARPAT=re.compile(rb'^([a-z]{1,2})(Var\d+|Stack_[0-9a-f]+|Gpffff[0-9a-f]+|G[0-9a-f]+)$');UND={b'undefined1',b'undefined2',b'undefined4',b'undefined8'};TYPES={b'code',b'int',b'uint',b'long',b'ulong',b'short',b'ushort',b'char',b'uchar'}
+TOK=re.compile(rb'\w+|\W');VARPAT=re.compile(rb'^([a-z]{1,2})(Var\d+|Stack_[0-9a-f]+|Gpffff[0-9a-f]+|G[0-9a-f]+)$');UND={b'undefined',b'undefined1',b'undefined2',b'undefined4',b'undefined8'};TYPES={b'code',b'int',b'uint',b'long',b'ulong',b'short',b'ushort',b'char',b'uchar'}
 def classify_changes(no,nn):
  """Return (ok, categories) comparing label-normalized old and new text token by token, whitespace-insensitive."""
  ta=[t for t in TOK.findall(no) if not t.isspace()];tb=[t for t in TOK.findall(nn) if not t.isspace()];cats=collections.Counter()
@@ -114,7 +114,7 @@ def classify_changes(no,nn):
   for x,y in zip(A,B):
    if x in UND and y in TYPES:cats['type_retyped_undefined_to_typed']+=1
    elif VARPAT.match(x) and VARPAT.match(y) and VARPAT.match(x).group(2)==VARPAT.match(y).group(2) and x!=y:cats['auto_variable_prefix_renamed']+=1
-   elif y.startswith(b'PTR_SEED_') and re.match(rb'^PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y) and x==b'PTR_LAB_'+re.match(rb'^PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y).group(1):cats['pointer_label_renamed']+=1
+   elif re.match(rb'^_?PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y) and x in (re.match(rb'^(_?)PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y).group(1)+b'PTR_LAB_'+re.match(rb'^_?PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y).group(1),re.match(rb'^(_?)PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y).group(1)+b'PTR_DAT_'+re.match(rb'^_?PTR_SEED_[0-9a-f]{8}_([0-9a-f]{8})$',y).group(1)):cats['pointer_label_renamed']+=1
    else:return False,cats
  return True,cats
 changed=[];owners={i['owner_entry'] for s in S for i in s['incoming'] if i['owner_kind']=='saved'};cat_total=collections.Counter()

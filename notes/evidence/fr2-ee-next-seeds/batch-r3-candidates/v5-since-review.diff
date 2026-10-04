@@ -1,0 +1,208 @@
+diff --git a/tools/ghidra/experimental/CreateEeCandidateV5.java b/tools/ghidra/experimental/CreateEeCandidateV5.java
+index 8e653ec..7fec1ae 100644
+--- a/tools/ghidra/experimental/CreateEeCandidateV5.java
++++ b/tools/ghidra/experimental/CreateEeCandidateV5.java
+@@ -35,19 +35,21 @@ public class CreateEeCandidateV5 extends GhidraScript {
+     private final Set<String> COMPUTED_CALLS = new TreeSet<>(), DELAY_BREAKS = new TreeSet<>();
+     private String TAIL_REF_TYPE = "UNCONDITIONAL_JUMP";
+     private final List<SeedCfg> SEEDS = new ArrayList<>();
++    private final Map<String,String> TAIL_FLOW = new TreeMap<>();
++    private final Set<Long> PADDING = new TreeSet<>();
+ 
+     private static final class SeedCfg {
+         String entry, windowSha, nextState; long start, end, firstWord, delayWord, nextWord; int words, bytes, likely;
+         final Map<String,String> calls = new TreeMap<>(), tails = new TreeMap<>(); final Set<Long> zeros = new TreeSet<>(), decoded = new TreeSet<>();
+         final Set<String> known = new TreeSet<>(), batch = new TreeSet<>(), unresolved = new TreeSet<>(), ccalls = new TreeSet<>(), breaks = new TreeSet<>();
+-        final List<JsonObject> incoming = new ArrayList<>(); final Set<String> preOther = new TreeSet<>(); JsonObject cfg; byte[] raw;
++        final List<JsonObject> incoming = new ArrayList<>(); final Set<Long> padding = new TreeSet<>(); final Set<String> preOther = new TreeSet<>(); JsonObject cfg; byte[] raw;
+     }
+     private long hx(JsonObject o, String k) { return Long.parseUnsignedLong(o.get(k).getAsString(), 16); }
+     private void use(SeedCfg c) {
+         ENTRY = c.entry; START = c.start; END = c.end; MAX_END = c.end; WORDS = c.words; BYTES = c.bytes; WINDOW_SHA = c.windowSha;
+         FIRST_WORD = c.firstWord; DELAY_WORD = c.delayWord; NEXT_WORD = c.nextWord; LIKELY_COUNT = c.likely;
+         EXPECTED_CALLS.clear(); EXPECTED_CALLS.putAll(c.calls); TAIL_JUMPS.clear(); TAIL_JUMPS.putAll(c.tails);
+-        ZERO_WORDS.clear(); ZERO_WORDS.addAll(c.zeros); COMPUTED_CALLS.clear(); COMPUTED_CALLS.addAll(c.ccalls); DELAY_BREAKS.clear(); DELAY_BREAKS.addAll(c.breaks);
++        ZERO_WORDS.clear(); ZERO_WORDS.addAll(c.zeros); PADDING.clear(); PADDING.addAll(c.padding); COMPUTED_CALLS.clear(); COMPUTED_CALLS.addAll(c.ccalls); DELAY_BREAKS.clear(); DELAY_BREAKS.addAll(c.breaks);
+     }
+     private void loadConfig(byte[] cb) {
+         JsonObject c = JsonParser.parseString(new String(cb, StandardCharsets.UTF_8)).getAsJsonObject();
+@@ -74,6 +76,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+             for (JsonElement e : o.getAsJsonArray("delay_breaks")) s.breaks.add(e.getAsString());
+             for (JsonElement e : o.getAsJsonArray("decoded_ranges")) { JsonArray r = e.getAsJsonArray(); long a = Long.parseUnsignedLong(r.get(0).getAsString(), 16), z = Long.parseUnsignedLong(r.get(1).getAsString(), 16); for (long pc = a; pc < z; pc += 4) s.decoded.add(pc); }
+             for (JsonElement e : o.getAsJsonArray("incoming")) s.incoming.add(e.getAsJsonObject());
++            if (o.has("padding_words")) for (JsonElement e : o.getAsJsonArray("padding_words")) { long pw = Long.parseUnsignedLong(e.getAsString(), 16); req(pw >= s.start && pw < s.end && (pw & 3) == 0 && !s.decoded.contains(pw), "padding word is outside the span, misaligned or pinned as a decoded body word: " + hex(pw)); s.padding.add(pw); }
+             req(!s.known.contains(s.entry) && !s.batch.contains(s.entry) && !s.unresolved.contains(s.entry), "self-call is not supported by this guard");
+             Set<String> targets = new TreeSet<>(s.calls.values()); Set<String> declared = new TreeSet<>(s.known); declared.addAll(s.batch); declared.addAll(s.unresolved);
+             req(targets.equals(declared), "config call targets differ from the known+batch+unresolved declarations for " + s.entry);
+@@ -85,13 +88,15 @@ public class CreateEeCandidateV5 extends GhidraScript {
+         for (SeedCfg s : SEEDS) for (String b : s.batch) req(all.contains(b), "batch callee is not a seed of this batch: " + b);
+         for (int i = 0; i < SEEDS.size(); i++) for (int j = i + 1; j < SEEDS.size(); j++) req(SEEDS.get(i).end <= SEEDS.get(j).start || SEEDS.get(j).end <= SEEDS.get(i).start, "seed spans overlap: " + SEEDS.get(i).entry + " " + SEEDS.get(j).entry);
+     }
++    private long T0 = System.currentTimeMillis();
++    private void phase(String name) { println("PHASE " + name + " t+" + (System.currentTimeMillis() - T0) / 1000 + "s"); }
+     private boolean liveInstruction(long pc) { return currentProgram.getListing().getInstructionAt(at(pc)) != null; }
+     private boolean nextWordOk(SeedCfg c) {
+         FunctionManager fm = currentProgram.getFunctionManager(); Address a = at(c.end); Listing l = currentProgram.getListing();
+         switch (c.nextState) {
+             case "undefined": return l.getInstructionAt(a) == null && l.getDefinedDataContaining(a) == null && fm.getFunctionContaining(a) == null;
+             case "unowned_instruction": return l.getInstructionAt(a) != null && fm.getFunctionContaining(a) == null;
+-            case "function_entry": case "batch_entry": { Function f = fm.getFunctionAt(a); return f != null && f.getBody().getMinAddress().equals(a) && l.getInstructionAt(a) != null; }
++            case "function_entry": case "batch_entry": { Function f = fm.getFunctionAt(a); return f != null && f.getEntryPoint().equals(a) && l.getInstructionAt(a) != null; }
+             default: return false;
+         }
+     }
+@@ -104,6 +109,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+         for (JsonElement e : block.getAsJsonArray("unowned_instruction_ranges")) { JsonObject r = e.getAsJsonObject(); long a = Long.parseUnsignedLong(r.get("start").getAsString(), 16), z = Long.parseUnsignedLong(r.get("end").getAsString(), 16); for (long x = a; x <= z; x++) unowned.add(x); }
+         for (SeedCfg s : SEEDS) {
+             for (long pc = s.start; pc < s.end; pc += 4) {
++                if (s.padding.contains(pc)) continue;
+                 Set<Long> want = s.decoded.contains(pc) ? unowned : undefined;
+                 for (long x = pc; x < pc + 4; x++) req(want.contains(x), "baseline coverage state differs from the pinned state at " + hex(x) + " (" + s.entry + ")");
+             }
+@@ -115,12 +121,13 @@ public class CreateEeCandidateV5 extends GhidraScript {
+         use(s); FunctionManager fm = currentProgram.getFunctionManager(); Listing l = currentProgram.getListing();
+         long file = TEXT_FILE + START - TEXT_VA; byte[] raw = Arrays.copyOfRange(elf, Math.toIntExact(file), Math.toIntExact(file + BYTES)); s.raw = raw;
+         req(sha(raw).equals(WINDOW_SHA), "candidate span SHA mismatch for " + ENTRY);
+-        req(word(raw, 0) == FIRST_WORD && word(raw, raw.length - 4) == DELAY_WORD && word(raw, raw.length - 8) == 0x03e00008L, "candidate initial/terminal/delay words differ from exact pins for " + ENTRY);
++        req(word(raw, 0) == FIRST_WORD && word(raw, raw.length - 4) == DELAY_WORD && (word(raw, raw.length - 8) == 0x03e00008L || (s.tails.containsKey(hex(END - 8)) && (word(raw, raw.length - 8) >>> 26) == 2)), "candidate initial/terminal/delay words differ from exact pins for " + ENTRY);
+         req(bytes(at(START), raw.length).equals(HexFormat.of().formatHex(raw)), "loaded program bytes differ from exact ELF candidate span for " + ENTRY);
+         long nf = file + BYTES; byte[] next = Arrays.copyOfRange(elf, Math.toIntExact(nf), Math.toIntExact(nf + 4));
+         req(word(next, 0) == NEXT_WORD && bytes(at(END), 4).equals(HexFormat.of().formatHex(next)), "pinned next word differs for " + ENTRY);
+         for (long pc = START; pc < END; pc += 4) {
+             Address a = at(pc); boolean dec = s.decoded.contains(pc); Instruction i = l.getInstructionAt(a);
++            if (s.padding.contains(pc)) { req(word(raw, Math.toIntExact(pc - START)) == 0, "padding word is not zero at " + hex(pc)); continue; }
+             if (dec) req(i != null && i.getLength() == 4 && l.getInstructionContaining(a).getAddress().equals(a) && fm.getFunctionContaining(a) == null, "pinned decoded word is not an unowned 4-byte instruction at " + hex(pc));
+             else req(i == null && l.getInstructionContaining(a) == null && l.getDefinedDataContaining(a) == null && fm.getFunctionContaining(a) == null, "pinned undefined word is not undefined at " + hex(pc));
+         }
+@@ -139,7 +146,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+         Set<String> expIntra = expectedIntraRefs(s), preCalls = new TreeSet<>(), preIntra = new TreeSet<>();
+         classifyRefs(s, preCalls, preIntra, s.preOther);
+         req(expIntra.containsAll(preIntra), "pre-existing intra-span references of " + ENTRY + " are not a subset of the raw CFG branch edges: " + preIntra);
+-        req(cfg.get("instruction_count_including_delay_slots").getAsInt() == WORDS, "raw CFG is not the exact pinned word count for " + ENTRY);
++        req(cfg.get("instruction_count_including_delay_slots").getAsInt() == WORDS - PADDING.size(), "raw CFG is not the exact pinned word count for " + ENTRY);
+         checkCandidateFlowProfile(cfg, raw);
+     }
+     // Partition every reference into the span's bytes: JAL to the entry, branch/jump refs from inside the span, and non-call refs to the entry from outside.
+@@ -174,6 +181,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+         for (SeedCfg s : SEEDS) {
+             Set<String> callees = new TreeSet<>(s.known); callees.addAll(s.batch);
+             for (String t : callees) { expCalled.get(s.entry).add(t); expCallers.get(t).add(s.entry); }
++            for (Map.Entry<String,String> tj : s.tails.entrySet()) if ("CALL_TERMINATOR".equals(TAIL_FLOW.get(tj.getKey()))) { expCalled.get(s.entry).add(tj.getValue()); expCallers.get(tj.getValue()).add(s.entry); }
+             for (JsonObject inc : s.incoming) if (!inc.get("owner_entry").isJsonNull()) { String o = inc.get("owner_entry").getAsString(); expCalled.get(o).add(s.entry); expCallers.get(s.entry).add(o); }
+         }
+         Map<String,Set<String>> afterCalled = calledGraph(), afterCallers = callerGraph();
+@@ -206,7 +214,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+             for (SeedCfg s : SEEDS) {
+                 use(s);
+                 for (long pc = START; pc < END; pc += 4) {
+-                    monitor.checkCancelled(); Address a = at(pc);
++                    monitor.checkCancelled(); if (s.padding.contains(pc)) continue; Address a = at(pc);
+                     if (!s.decoded.contains(pc)) {
+                         DisassembleCommand dc = new DisassembleCommand(new AddressSet(a), new AddressSet(a, a.add(3)), false); dc.enableCodeAnalysis(false);
+                         req(dc.applyTo(currentProgram, monitor), "single-word disassembly failed at " + hex(pc) + ": " + dc.getStatusMsg()); newWords.add(pc);
+@@ -215,11 +223,15 @@ public class CreateEeCandidateV5 extends GhidraScript {
+                     req(i != null && i.getLength() == 4 && bytes(a, 4).equals(HexFormat.of().formatHex(fb)) && Arrays.equals(fb, Arrays.copyOfRange(s.raw, Math.toIntExact(pc - START), Math.toIntExact(pc - START + 4))), "decoded/raw ELF bytes mismatch at " + hex(pc));
+                 }
+             }
+-            for (SeedCfg s : SEEDS) { use(s); checkDecoderFlow(s.cfg); }
++            phase("disassembly");
++            List<String> flowFailures = new ArrayList<>();
++            for (SeedCfg s : SEEDS) { use(s); try { checkDecoderFlow(s.cfg); } catch (Exception e) { flowFailures.add("SEED_FAILURE " + s.entry + ": " + e.getMessage()); } }
++            req(flowFailures.isEmpty(), "DECODER_FLOW_FAILURES " + flowFailures.size() + " " + String.join(" | ", flowFailures.subList(0, Math.min(flowFailures.size(), 400))));
++            phase("decoder-flow");
+             for (SeedCfg s : SEEDS) {
+                 use(s); Address start = at(START);
+                 AddressSet expected = new AddressSet(); for (JsonElement a : s.cfg.getAsJsonArray("instruction_addresses")) { Address ia = at(Long.parseUnsignedLong(a.getAsString(), 16)); expected.addRange(ia, ia.add(3)); }
+-                req(expected.getNumAddresses() == BYTES, "CFG body instruction ranges do not cover exactly the pinned body bytes for " + ENTRY);
++                req(expected.getNumAddresses() == BYTES - 4L * PADDING.size(), "CFG body instruction ranges do not cover exactly the pinned body bytes for " + ENTRY);
+                 AddressSetView body = CreateFunctionCmd.getFunctionBody(currentProgram, start, monitor);
+                 req(body.equals(expected), "Ghidra-computed body differs from raw CFG contiguous body for " + ENTRY + ": actual=" + rangeSummary(body) + " expected=" + rangeSummary(expected));
+                 CreateFunctionCmd create = new CreateFunctionCmd("candidate_ee_" + ENTRY, start, body, SourceType.ANALYSIS);
+@@ -227,7 +239,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+                 Function made = fm.getFunctionAt(start);
+                 req(made != null && made.getName().equals("candidate_ee_" + ENTRY) && made.getSymbol().getSource() == SourceType.ANALYSIS && made.getBody().equals(expected), "created candidate identity/body differs for " + ENTRY);
+             }
+-            Map<String,String> now = instructionSnapshot();
++            phase("functions-created"); Map<String,String> now = instructionSnapshot(); phase("instruction-snapshot");
+             for (String a : beforeInstructions.keySet()) req(Objects.equals(now.get(a), beforeInstructions.get(a)), "old instruction bytes changed at " + a);
+             Set<String> added = new TreeSet<>(now.keySet()); added.removeAll(beforeInstructions.keySet());
+             Set<String> expectedAdded = new TreeSet<>(); for (long pc : newWords) expectedAdded.add(hex(pc));
+@@ -236,12 +248,12 @@ public class CreateEeCandidateV5 extends GhidraScript {
+             Map<String,String> fnow = functionSnapshot(); for (Map.Entry<String,String> e : beforeFunctions.entrySet()) req(Objects.equals(fnow.get(e.getKey()), e.getValue()), "old function name/source/body changed at " + e.getKey());
+             req(fm.getFunctionCount() == INVENTORY_COUNT + SEEDS.size(), "function count did not increase by exactly the batch size");
+             for (SeedCfg s : SEEDS) req(nextWordOk(s), "next word after " + s.entry + " is not in its pinned state after creation");
+-            checkBatchDeltas(beforeRefs, beforeCalled, beforeCallers);
++            phase("state-checks"); checkBatchDeltas(beforeRefs, beforeCalled, beforeCallers); phase("batch-deltas");
+             commit = true;
+         } finally { currentProgram.endTransaction(tx, commit); }
+         JsonArray summary = new JsonArray();
+-        for (SeedCfg s : SEEDS) { Function p = fm.getFunctionAt(at(s.start)); req(p != null && p.getName().equals("candidate_ee_" + s.entry) && p.getBody().getNumAddresses() == s.bytes, "candidate absent or altered after transaction commit: " + s.entry);
+-            JsonObject o = new JsonObject(); o.addProperty("entry", s.entry); o.addProperty("words", s.words); o.addProperty("decoded_preexisting_words", s.decoded.size()); o.addProperty("incoming_sites", s.incoming.size()); o.addProperty("next_state", s.nextState); JsonArray orr = new JsonArray(); for (String k : s.preOther) orr.add(k); o.add("non_call_references_into_entry", orr); summary.add(o); }
++        for (SeedCfg s : SEEDS) { Function p = fm.getFunctionAt(at(s.start)); req(p != null && p.getName().equals("candidate_ee_" + s.entry) && p.getBody().getNumAddresses() == s.bytes - 4L * s.padding.size(), "candidate absent or altered after transaction commit: " + s.entry);
++            JsonObject o = new JsonObject(); o.addProperty("entry", s.entry); o.addProperty("words", s.words); o.addProperty("padding_words", s.padding.size()); o.addProperty("decoded_preexisting_words", s.decoded.size()); o.addProperty("incoming_sites", s.incoming.size()); o.addProperty("next_state", s.nextState); JsonArray orr = new JsonArray(); for (String k : s.preOther) orr.add(k); o.add("non_call_references_into_entry", orr); JsonObject tf = new JsonObject(); for (Map.Entry<String,String> tj : s.tails.entrySet()) tf.addProperty(tj.getKey(), tj.getValue() + "|" + TAIL_FLOW.getOrDefault(tj.getKey(), "?")); o.add("tail_jumps_with_flow_type", tf); summary.add(o); }
+         out.add("seeds", summary);
+     }
+     public void run() throws Exception {
+@@ -254,9 +266,13 @@ public class CreateEeCandidateV5 extends GhidraScript {
+             req(EXE_SHA.equals(sha(elf)) && EXE_SHA.equals(currentProgram.getExecutableSHA256()), "pinned executable identity mismatch"); req(MANIFEST_SHA.equals(sha(mb)), "baseline manifest hash mismatch"); req(INVENTORY_SHA.equals(sha(ib)), "baseline inventory hash mismatch"); req(COVERAGE_SHA.equals(sha(cb)), "baseline coverage hash mismatch"); req(LANGUAGE.equals(currentProgram.getLanguageID().toString()), "program is not R5900 little-endian");
+             JsonObject manifest = JsonParser.parseString(new String(mb, StandardCharsets.UTF_8)).getAsJsonObject(), inventory = JsonParser.parseString(new String(ib, StandardCharsets.UTF_8)).getAsJsonObject(), coverage = JsonParser.parseString(new String(cb, StandardCharsets.UTF_8)).getAsJsonObject();
+             MemoryBlock text = currentProgram.getMemory().getBlock(at(TEXT_VA)); req(text != null && text.getName().equals(".text") && text.isInitialized() && text.isExecute() && text.getStart().getOffset() == TEXT_VA && text.getSize() == TEXT_SIZE, "loaded .text block differs from exact ELF map");
+-            checkBaseline(manifest, inventory); checkCoverageStates(coverage);
++            phase("config-and-pins"); checkBaseline(manifest, inventory); phase("baseline"); checkCoverageStates(coverage); phase("coverage-states");
+             Map<String,String> functions = functionSnapshot(), instructions = instructionSnapshot(), data = dataSnapshot(); String memory = memoryHash(); Set<String> refsBefore = referenceSnapshot(); Map<String,Set<String>> calledBefore = calledGraph(), callersBefore = callerGraph();
+-            for (SeedCfg s : SEEDS) preSeed(s, elf);
++            phase("snapshots");
++            List<String> failures = new ArrayList<>();
++            for (SeedCfg s : SEEDS) { try { preSeed(s, elf); } catch (Exception e) { failures.add("SEED_FAILURE " + s.entry + ": " + e.getMessage()); } }
++            req(failures.isEmpty(), "PRE_CHECK_FAILURES " + failures.size() + " " + String.join(" | ", failures.subList(0, Math.min(failures.size(), 400))));
++            phase("pre-seed-checks");
+             runBatch(elf, sha(cfgb), instructions, data, memory, functions, refsBefore, calledBefore, callersBefore, out);
+             out.addProperty("status", "created_batch_bounded_candidates"); out.addProperty("function_count_after", currentProgram.getFunctionManager().getFunctionCount()); out.addProperty("old_function_snapshot_preserved", true); out.addProperty("initialized_memory_preserved", true); out.addProperty("defined_data_preserved", true);
+             out.addProperty("scope", "Static provisional candidates only. No original function identity, semantics, runtime reachability, or whole-game completeness is established.");
+@@ -382,8 +398,8 @@ public class CreateEeCandidateV5 extends GhidraScript {
+             if(k.equals("conditional")||k.equals("conditional_likely")||k.equals("call")||k.equals("computed_call"))e.addProperty("fallthrough",hex(fall));
+             if(k.equals("conditional_likely"))e.addProperty("not_taken_annuls_delay_slot",true);edges.add(e);
+         }
+-        req(seen.size()==(END-START)/4,"reachable CFG does not cover every instruction word in the exact interval: "+seen.size());
+-        for(long pc=START;pc<END;pc+=4)req(seen.containsKey(pc),"CFG has an unreachable word inside exact candidate interval at "+hex(pc));
++        req(seen.size()+PADDING.size()==(END-START)/4,"reachable CFG plus pinned padding does not cover every word in the exact interval: "+seen.size());
++        for(long pc=START;pc<END;pc+=4){req(seen.containsKey(pc)!=PADDING.contains(pc),"CFG reachability differs from the pinned padding set at "+hex(pc));}
+         JsonArray addresses=new JsonArray();for(long pc:seen.keySet())addresses.add(hex(pc));
+         JsonObject out=new JsonObject();out.addProperty("instruction_count_including_delay_slots",seen.size());out.addProperty("body_end_inclusive",hex(seen.lastKey()));out.add("instruction_addresses",addresses);out.add("edges",edges);out.add("delay_breaks",breaks);out.addProperty("branch_likely_scope","For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution.");return out;
+     }
+@@ -406,7 +422,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+         for(String t:tails.values()){Function tf=currentProgram.getFunctionManager().getFunctionAt(at(Long.parseUnsignedLong(t,16)));req(tf!=null,"tail jump target is not a saved function entry: "+t);}
+         req(actualCalls.equals(EXPECTED_CALLS),"outgoing JAL sites/targets differ from the pinned raw profile");
+         req(likely==LIKELY_COUNT,"branch-likely site count differs from the pinned profile; re-review taken-delay/not-taken-annul semantics");
+-        Set<Long> zeros=new TreeSet<>(); for(long pc=START;pc<END;pc+=4)if(wordAt(raw,pc)==0)zeros.add(pc);
++        Set<Long> zeros=new TreeSet<>(); for(long pc=START;pc<END;pc+=4)if(wordAt(raw,pc)==0&&!PADDING.contains(pc))zeros.add(pc);
+         req(zeros.equals(ZERO_WORDS),"reachable zero-word set differs from the pinned profile: "+zeros);
+     }
+     private Set<String> functionSet(Set<Function> functions) {
+@@ -429,7 +445,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
+         Set<String> out=new TreeSet<>();
+         for(JsonElement e:cfg.getAsJsonArray("edges")) {
+             JsonObject x=e.getAsJsonObject(); String k=x.get("kind").getAsString(); if(k.equals("return")||k.equals("computed_call"))continue;
+-            String type=(k.equals("call"))?"UNCONDITIONAL_CALL":x.has("tail_jump")?TAIL_REF_TYPE:(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
++            String type=(k.equals("call"))?"UNCONDITIONAL_CALL":x.has("tail_jump")?TAIL_FLOW.getOrDefault(x.get("site").getAsString(),TAIL_REF_TYPE):(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
+             out.add(x.get("site").getAsString()+"|"+x.get("target").getAsString()+"|"+type+"|DEFAULT");
+         }
+         return out;
+@@ -444,12 +460,15 @@ public class CreateEeCandidateV5 extends GhidraScript {
+                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra conditional target differs from raw-word target at "+hex(pc));
+                 req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra conditional fallthrough/delay-slot address differs at "+hex(pc));
+             } else if(kind.equals("unconditional_branch")||kind.equals("jump")) {
+-                req(actual.isJump()&&!actual.isConditional()&&!actual.isComputed()&&targets.length==1,"Ghidra does not classify raw direct jump consistently at "+hex(pc));
++                if(edge.has("tail_jump")) {
++                    String fts=actual.toString(); req(((fts.equals("UNCONDITIONAL_JUMP")&&actual.isJump())||(fts.equals("CALL_TERMINATOR")&&actual.isTerminal()))&&!actual.isConditional()&&!actual.isComputed()&&targets.length==1&&targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra does not classify raw tail jump consistently at "+hex(pc)+" flow="+actual+" targets="+Arrays.toString(targets)+" insn="+ins); TAIL_FLOW.put(hex(pc),fts);
++                } else
++                req(actual.isJump()&&!actual.isConditional()&&!actual.isComputed()&&targets.length==1,"Ghidra does not classify raw direct jump consistently at "+hex(pc)+" flow="+actual+" targets="+Arrays.toString(targets)+" insn="+ins);
+                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra direct-jump target differs from raw-word target at "+hex(pc));
+             } else if(kind.equals("call")) {
+                 req(actual.isCall()&&!actual.isComputed()&&targets.length==1,"Ghidra does not classify raw direct call consistently at "+hex(pc));
+                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra direct-call target differs from raw-word target at "+hex(pc));
+-                req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra direct-call fallthrough/delay-slot address differs at "+hex(pc));
++                req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra direct-call fallthrough/delay-slot address differs at "+hex(pc)+" fall="+ins.getFallThrough()+" expected="+edge.get("fallthrough").getAsString()+" insn="+ins);
+             } else if(kind.equals("computed_call")) {
+                 req(actual.isCall()&&actual.isComputed()&&targets.length==0,"Ghidra does not classify raw computed call consistently at "+hex(pc));
+                 req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra computed-call fallthrough/delay-slot address differs at "+hex(pc));
