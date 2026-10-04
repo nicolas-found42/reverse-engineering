@@ -1,0 +1,834 @@
+{
+  "schema": "fr2-geometry-vu-input-provenance/v1",
+  "scope": "Static bounded instruction and packet-construction provenance only. No original game, VU routine, emulator, or UI execution.",
+  "game_executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "saved_static_export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+  "pinned_ps2sdk": {
+    "commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "vif_codes_sha256": "b28a4d58edf1245c54fd7bfa8276b9d59ae5a369a27db57ba09938b5f8c4adfb",
+    "packet2_types_sha256": "33b6bda21b63d75da43475175e594a5514e9a2891700a9d396bcc3373faaad84"
+  },
+  "packet_path": {
+    "builder": "FUN_00128ca0",
+    "vif_word": "0x6c080000",
+    "decode": {
+      "command_byte": "0x6c",
+      "unpack_format": "V4-32",
+      "num": 8,
+      "immediate_address": "0x0000",
+      "USN_bit14": 0,
+      "TOPS_relative_bit15": 0
+    },
+    "qword_sources": [
+      "caller qword at s0+0x00",
+      "caller qword at s0+0x10",
+      "caller qword at s0+0x20",
+      "caller qword at s0+0x30",
+      "data qword at 0x70003160",
+      "data qword at 0x70003170",
+      "data qword at 0x70003180",
+      "data qword at 0x70003190"
+    ],
+    "then": "MSCAL command is emitted as 0x14000000 | *(gp-0x6dec); prior static dispatch bundle proves the programmed immediate is 0x5cc in the relevant setup path.",
+    "later_builder_call": "FUN_001ce288 calls FUN_00128ca0, then FUN_001288b0; FUN_001288b0 appends FUN_00128e88 geometry packet groups."
+  },
+  "geometry_unpack_packet": {
+    "builder": "FUN_00128e88",
+    "selected_base_by_saved_selector": {
+      "zero": "0x208",
+      "nonzero": "0x2c8"
+    },
+    "streams": [
+      {
+        "format": "V3-16",
+        "offset": 0
+      },
+      {
+        "format": "V4-8",
+        "offset": 1
+      },
+      {
+        "format": "V2-16",
+        "offset": 2,
+        "condition": "optional: saved param4 != 0"
+      }
+    ],
+    "unpack_top_relative_bit15": 0,
+    "emission_position": "after FUN_00128ca0 emits MSCAL 0x5cc in the observed caller packet-build order"
+  },
+  "entry_correspondence": {
+    "mscaltime_immediate": "0x5cc",
+    "vu_byte_address": "0x2e60",
+    "overlay": 5,
+    "overlay_vu_base": "0x2800",
+    "local_pair": 204,
+    "matrix_data_to_vf_registers": "The emitted command is V4-32 NUM=8 destination 0; the VU entry loads VU qwords 0..7 into VF01..VF08. Their packet-to-register value correspondence is conditional on compatible prior VIF mode/cycle/row state, which this trace does not establish.",
+    "top_loads": "Pair215 XTOP VI01; following selected loads reference VI01+0,+1,+2,+3,+4; ILW at VI01+3 selects x/z fields into VI02/VI03.",
+    "geometry_data_to_top_loads": "UNPROVEN. Geometry UNPACK destinations are absolute immediate addresses 0x208/0x2c8 with bit15 clear; XTOP reads the external VIF TOP register; the traced buffer span from the explicit V4-32 command to MSCAL contains only eight qwords and does not bind TOP to either geometry destination. Earlier helper VIF traffic and runtime TOP state are not fully decoded."
+  },
+  "top_state_sequence": {
+    "initialization_builder": "FUN_001124c0 writes BASE selected as 0x388 or 0x3aa (after initialization the saved selector is zero and local code selects 0x388), followed by OFFSET=0 and an MSCAL 0 command.",
+    "geometry_writer_tail": "FUN_00128e88 emits MSCNT, then BASE selected between 0x388 and 0x3aa, then OFFSET=0. This is emitted after the current geometry transfer commands; it does not set the TOP consumed by an earlier MSCAL in FUN_00128ca0.",
+    "current_top": "Unknown because earlier helper VIF traffic, prior VIF state/history, and runtime command completion are not fully reconstructed for this MSCAL.",
+    "known_public_reference": "Pinned PCSX2 commit 81526d4 copies TOPS to TOP at VIF1 execMicro, then updates TOPS from BASE or BASE+OFFSET according to DBF. The VIF1-specific implementation does not establish the game packet\u2019s VIF instance or state.",
+    "upstream_vif_state": "FUN_00128ca0 calls packet/DMA helper FUN_0010f8f8 before appending its V4-32 payload. The exact prior STCYCL, STMOD, ROW, TOPS, and effective VIF instance for this MSCAL are not recovered. FUN_001124c0 separately emits BASE/OFFSET/MSCAL0 during initialization; no static temporal proof ties that setup to the later MSCAL 0x5cc."
+  },
+  "numeric_path": {
+    "loi": [
+      {
+        "overlay": 5,
+        "pair": 230,
+        "raw_word_le": "0x44400000",
+        "binary32": "768.0",
+        "consumer_pair": 231,
+        "operation": "SUBI.xyz VF15,VF15,I"
+      },
+      {
+        "overlay": 5,
+        "pair": 234,
+        "raw_word_le": "0x45c00000",
+        "binary32": "6144.0",
+        "consumer_pair": 235,
+        "operation": "SUBI.xy VF12,VF12,I"
+      }
+    ],
+    "input_arithmetic": "VF15.xyz is also multiplied by VF20.xyz. VF16 is formed from VF15 using VF01..VF04; VF17 is formed from VF16 using VF05..VF08.",
+    "q": "DIV Q,VF00.w,VF17.w; WAITQ; MULQ.xyz VF17,VF17,Q and MULQ.xyz VF12,VF12,Q.",
+    "output_conversion": "Overlay6 pair0 FTOI4.xyz VF16,VF17; pairs2..4 SQI-store VF12, VF30, VF16.",
+    "f4_interpretation": "Sony VU User's Manual v6.0 says FTOI4 produces fixed point with four fractional bits; examples and conversion section show truncation toward zero. This does not establish units, global scale, saturation for all inputs, or execution.",
+    "itof_instruction_in_bounded_span": {
+      "span": "overlay5 pairs204..255 and overlay6 pairs0..4",
+      "present": false,
+      "method": "Exact mnemonic scan of extracted assembly span"
+    }
+  },
+  "selected_ee_instructions": {
+    "00128ca0": {
+      "name": "FUN_00128ca0",
+      "instructions": [
+        {
+          "address": "00128cec",
+          "text": "lui t2,0x6c08",
+          "bytes": "086c0a3c",
+          "references": []
+        },
+        {
+          "address": "00128cf4",
+          "text": "lui a3,0x7000",
+          "bytes": "0070073c",
+          "references": []
+        },
+        {
+          "address": "00128cfc",
+          "text": "addiu a3,a3,0x3020",
+          "bytes": "2030e724",
+          "references": []
+        },
+        {
+          "address": "00128d0c",
+          "text": "lui t3,0x1400",
+          "bytes": "00140b3c",
+          "references": []
+        },
+        {
+          "address": "00128d3c",
+          "text": "sw t2,0x0(v0)",
+          "bytes": "00004aac",
+          "references": []
+        },
+        {
+          "address": "00128d24",
+          "text": "lq a2,0x0(s0)",
+          "bytes": "0000067a",
+          "references": []
+        },
+        {
+          "address": "00128d50",
+          "text": "sq a2,0x0(v0)",
+          "bytes": "0000467c",
+          "references": []
+        },
+        {
+          "address": "00128d60",
+          "text": "lq v1,0x10(s0)",
+          "bytes": "1000037a",
+          "references": []
+        },
+        {
+          "address": "00128d68",
+          "text": "sq v1,0x0(v0)",
+          "bytes": "0000437c",
+          "references": []
+        },
+        {
+          "address": "00128d78",
+          "text": "lq v1,0x20(s0)",
+          "bytes": "2000037a",
+          "references": []
+        },
+        {
+          "address": "00128d80",
+          "text": "sq v1,0x0(v0)",
+          "bytes": "0000437c",
+          "references": []
+        },
+        {
+          "address": "00128d90",
+          "text": "lq v1,0x30(s0)",
+          "bytes": "3000037a",
+          "references": []
+        },
+        {
+          "address": "00128d9c",
+          "text": "sq v1,0x0(v0)",
+          "bytes": "0000437c",
+          "references": []
+        },
+        {
+          "address": "00128da8",
+          "text": "lq v1,0x140(a3)",
+          "bytes": "4001e378",
+          "references": [
+            {
+              "to": "70003160",
+              "type": "READ"
+            },
+            {
+              "to": "70003164",
+              "type": "READ"
+            },
+            {
+              "to": "70003168",
+              "type": "READ"
+            },
+            {
+              "to": "7000316c",
+              "type": "READ"
+            }
+          ]
+        },
+        {
+          "address": "00128db0",
+          "text": "sq v1,0x0(v0)",
+          "bytes": "0000437c",
+          "references": []
+        },
+        {
+          "address": "00128dc0",
+          "text": "lq v1,0x150(a3)",
+          "bytes": "5001e378",
+          "references": [
+            {
+              "to": "70003170",
+              "type": "READ"
+            },
+            {
+              "to": "70003174",
+              "type": "READ"
+            },
+            {
+              "to": "70003178",
+              "type": "READ"
+            },
+            {
+              "to": "7000317c",
+              "type": "READ"
+            }
+          ]
+        },
+        {
+          "address": "00128dc8",
+          "text": "sq v1,0x0(v0)",
+          "bytes": "0000437c",
+          "references": []
+        },
+        {
+          "address": "00128dd8",
+          "text": "lq v1,0x160(a3)",
+          "bytes": "6001e378",
+          "references": [
+            {
+              "to": "70003180",
+              "type": "READ"
+            },
+            {
+              "to": "70003184",
+              "type": "READ"
+            },
+            {
+              "to": "70003188",
+              "type": "READ"
+            },
+            {
+              "to": "7000318c",
+              "type": "READ"
+            }
+          ]
+        },
+        {
+          "address": "00128de0",
+          "text": "sq v1,0x0(v0)",
+          "bytes": "0000437c",
+          "references": []
+        },
+        {
+          "address": "00128df0",
+          "text": "lq v1,0x170(a3)",
+          "bytes": "7001e378",
+          "references": [
+            {
+              "to": "70003190",
+              "type": "READ"
+            },
+            {
+              "to": "70003194",
+              "type": "READ"
+            },
+            {
+              "to": "70003198",
+              "type": "READ"
+            },
+            {
+              "to": "7000319c",
+              "type": "READ"
+            }
+          ]
+        },
+        {
+          "address": "00128df8",
+          "text": "sq v1,0x0(v0)",
+          "bytes": "0000437c",
+          "references": []
+        },
+        {
+          "address": "00128e08",
+          "text": "lw v0,-0x6dec(gp)",
+          "bytes": "1492828f",
+          "references": []
+        },
+        {
+          "address": "00128e10",
+          "text": "or v0,v0,t3",
+          "bytes": "25104b00",
+          "references": []
+        },
+        {
+          "address": "00128e14",
+          "text": "sw v0,0x0(v1)",
+          "bytes": "000062ac",
+          "references": []
+        }
+      ]
+    },
+    "00128e88": {
+      "name": "FUN_00128e88",
+      "instructions": [
+        {
+          "address": "00128ec8",
+          "text": "lw s0,-0x6de8(gp)",
+          "bytes": "1892908f",
+          "references": []
+        },
+        {
+          "address": "00128eec",
+          "text": "li t9,0x2c8",
+          "bytes": "c8021924",
+          "references": []
+        },
+        {
+          "address": "00128f2c",
+          "text": "li t0,0x208",
+          "bytes": "08020824",
+          "references": []
+        },
+        {
+          "address": "00128f40",
+          "text": "movz t9,t0,s0",
+          "bytes": "0ac81001",
+          "references": []
+        },
+        {
+          "address": "00128f70",
+          "text": "addiu t6,t9,0x1",
+          "bytes": "01002e27",
+          "references": []
+        },
+        {
+          "address": "00128fac",
+          "text": "or t6,t6,v1",
+          "bytes": "2570c301",
+          "references": []
+        },
+        {
+          "address": "00129000",
+          "text": "or t3,t9,t8",
+          "bytes": "25583803",
+          "references": []
+        },
+        {
+          "address": "00129388",
+          "text": "sw t1,0x0(v0)",
+          "bytes": "000049ac",
+          "references": []
+        },
+        {
+          "address": "001293a0",
+          "text": "sltiu v1,v1,0x1",
+          "bytes": "0100632c",
+          "references": []
+        },
+        {
+          "address": "001293a8",
+          "text": "movz a2,a3,v1",
+          "bytes": "0a30e300",
+          "references": []
+        },
+        {
+          "address": "001293b0",
+          "text": "sw v1,-0x6de4(gp)",
+          "bytes": "1c9283af",
+          "references": []
+        },
+        {
+          "address": "001293b8",
+          "text": "sw a2,0x0(v0)",
+          "bytes": "000046ac",
+          "references": []
+        },
+        {
+          "address": "001293d4",
+          "text": "sw t2,0x0(v0)",
+          "bytes": "00004aac",
+          "references": []
+        }
+      ]
+    },
+    "001124c0": {
+      "name": "FUN_001124c0",
+      "instructions": [
+        {
+          "address": "001124d4",
+          "text": "sw zero,-0x6de4(gp)",
+          "bytes": "1c9280af",
+          "references": []
+        },
+        {
+          "address": "001124e4",
+          "text": "sw zero,-0x6de8(gp)",
+          "bytes": "189280af",
+          "references": []
+        },
+        {
+          "address": "001124f8",
+          "text": "sw v1,0x0(a0)",
+          "bytes": "000083ac",
+          "references": []
+        },
+        {
+          "address": "00112500",
+          "text": "ori a1,a1,0x388",
+          "bytes": "8803a534",
+          "references": []
+        },
+        {
+          "address": "00112508",
+          "text": "lw a2,-0x6de4(gp)",
+          "bytes": "1c92868f",
+          "references": []
+        },
+        {
+          "address": "00112514",
+          "text": "lui t2,0x1400",
+          "bytes": "00140a3c",
+          "references": []
+        },
+        {
+          "address": "00112518",
+          "text": "movz v1,a1,a2",
+          "bytes": "0a18a600",
+          "references": []
+        },
+        {
+          "address": "00112520",
+          "text": "sw v1,0x0(a3)",
+          "bytes": "0000e3ac",
+          "references": []
+        },
+        {
+          "address": "00112528",
+          "text": "sw t0,0xc(a0)",
+          "bytes": "0c0088ac",
+          "references": []
+        },
+        {
+          "address": "00112530",
+          "text": "lw v1,-0x6df4(gp)",
+          "bytes": "0c92838f",
+          "references": []
+        },
+        {
+          "address": "00112538",
+          "text": "or v1,v1,t2",
+          "bytes": "25186a00",
+          "references": []
+        },
+        {
+          "address": "00112540",
+          "text": "sw v1,0x0(t1)",
+          "bytes": "000023ad",
+          "references": []
+        }
+      ]
+    },
+    "001ce288": {
+      "name": "FUN_001ce288",
+      "instructions": [
+        {
+          "address": "001ce47c",
+          "text": "jal 0x00126c18",
+          "bytes": "069b040c",
+          "references": [
+            {
+              "to": "00126c18",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "00126c18"
+            }
+          ]
+        },
+        {
+          "address": "001ce484",
+          "text": "beq v0,zero,0x001ce4d0",
+          "bytes": "12004010",
+          "references": [
+            {
+              "to": "001ce4d0",
+              "type": "CONDITIONAL_JUMP",
+              "function": "001ce288"
+            }
+          ]
+        },
+        {
+          "address": "001ce48c",
+          "text": "jal 0x00128ca0",
+          "bytes": "28a3040c",
+          "references": [
+            {
+              "to": "00128ca0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "00128ca0"
+            }
+          ]
+        },
+        {
+          "address": "001ce4b8",
+          "text": "jal 0x001288b0",
+          "bytes": "2ca2040c",
+          "references": [
+            {
+              "to": "001288b0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001288b0"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "selected_vu_pairs": [
+    {
+      "overlay": 5,
+      "pair": 204,
+      "vu_byte_address": "0x2e60",
+      "bytes": "00000110ff020000",
+      "assembly_summary": "nop iaddiu vi01,vi00,0"
+    },
+    {
+      "overlay": 5,
+      "pair": 205,
+      "vu_byte_address": "0x2e68",
+      "bytes": "7c0be181ff020000",
+      "assembly_summary": "nop lqi vf01,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 206,
+      "vu_byte_address": "0x2e70",
+      "bytes": "7c0be281ff020000",
+      "assembly_summary": "nop lqi vf02,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 207,
+      "vu_byte_address": "0x2e78",
+      "bytes": "7c0be381ff020000",
+      "assembly_summary": "nop lqi vf03,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 208,
+      "vu_byte_address": "0x2e80",
+      "bytes": "7c0be481ff020000",
+      "assembly_summary": "nop lqi vf04,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 209,
+      "vu_byte_address": "0x2e88",
+      "bytes": "7c0be581ff020000",
+      "assembly_summary": "nop lqi vf05,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 210,
+      "vu_byte_address": "0x2e90",
+      "bytes": "7c0be681ff020000",
+      "assembly_summary": "nop lqi vf06,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 211,
+      "vu_byte_address": "0x2e98",
+      "bytes": "7c0be781ff020000",
+      "assembly_summary": "nop lqi vf07,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 212,
+      "vu_byte_address": "0x2ea0",
+      "bytes": "7c0be881ff020000",
+      "assembly_summary": "nop lqi vf08,(vi01++)"
+    },
+    {
+      "overlay": 5,
+      "pair": 215,
+      "vu_byte_address": "0x2eb8",
+      "bytes": "bc060180ff020000",
+      "assembly_summary": "nop xtop vi01"
+    },
+    {
+      "overlay": 5,
+      "pair": 219,
+      "vu_byte_address": "0x2ed8",
+      "bytes": "0208ff01ff020000",
+      "assembly_summary": "lq vf31,2(vi01)"
+    },
+    {
+      "overlay": 5,
+      "pair": 220,
+      "vu_byte_address": "0x2ee0",
+      "bytes": "03080209ff020000",
+      "assembly_summary": "ilw.x vi02,3(vi01)x"
+    },
+    {
+      "overlay": 5,
+      "pair": 221,
+      "vu_byte_address": "0x2ee8",
+      "bytes": "03084308ff020000",
+      "assembly_summary": "ilw.z vi03,3(vi01)z"
+    },
+    {
+      "overlay": 5,
+      "pair": 223,
+      "vu_byte_address": "0x2ef8",
+      "bytes": "0008e901ff020000",
+      "assembly_summary": "lq vf09,0(vi01)"
+    },
+    {
+      "overlay": 5,
+      "pair": 224,
+      "vu_byte_address": "0x2f00",
+      "bytes": "0108fe01ff020000",
+      "assembly_summary": "lq vf30,1(vi01)"
+    },
+    {
+      "overlay": 5,
+      "pair": 226,
+      "vu_byte_address": "0x2f10",
+      "bytes": "0408f401ff020000",
+      "assembly_summary": "lq vf20,4(vi01)"
+    },
+    {
+      "overlay": 5,
+      "pair": 228,
+      "vu_byte_address": "0x2f20",
+      "bytes": "0018ef01ff020000",
+      "assembly_summary": "lq vf15,0(vi03)"
+    },
+    {
+      "overlay": 5,
+      "pair": 229,
+      "vu_byte_address": "0x2f28",
+      "bytes": "0218ec01ff020000",
+      "assembly_summary": "lq vf12,2(vi03)"
+    },
+    {
+      "overlay": 5,
+      "pair": 230,
+      "vu_byte_address": "0x2f30",
+      "bytes": "00004044ff020080",
+      "assembly_summary": "LOI raw word"
+    },
+    {
+      "overlay": 5,
+      "pair": 231,
+      "vu_byte_address": "0x2f38",
+      "bytes": "3c030080e67bc001",
+      "assembly_summary": "subi.xyz vf15,vf15,I"
+    },
+    {
+      "overlay": 5,
+      "pair": 232,
+      "vu_byte_address": "0x2f40",
+      "bytes": "3c030080ea7bd401",
+      "assembly_summary": "mul.xyz vf15,vf15,vf20"
+    },
+    {
+      "overlay": 5,
+      "pair": 234,
+      "vu_byte_address": "0x2f50",
+      "bytes": "0000c045ff020080",
+      "assembly_summary": "LOI raw word"
+    },
+    {
+      "overlay": 5,
+      "pair": 235,
+      "vu_byte_address": "0x2f58",
+      "bytes": "3c03008026638001",
+      "assembly_summary": "subi.xy vf12,vf12,I"
+    },
+    {
+      "overlay": 5,
+      "pair": 237,
+      "vu_byte_address": "0x2f68",
+      "bytes": "01182608994acf01",
+      "assembly_summary": "muly vf10,vf09,vf15.y; ilw.w vi06,1(vi03)w"
+    },
+    {
+      "overlay": 5,
+      "pair": 238,
+      "vu_byte_address": "0x2f70",
+      "bytes": "3c030080e87bca01",
+      "assembly_summary": "add.xyz vf15,vf15,vf10"
+    },
+    {
+      "overlay": 5,
+      "pair": 239,
+      "vu_byte_address": "0x2f78",
+      "bytes": "3c030080bc09ef01",
+      "assembly_summary": "mulax acc,vf01,vf15.x"
+    },
+    {
+      "overlay": 5,
+      "pair": 240,
+      "vu_byte_address": "0x2f80",
+      "bytes": "3c030080bd10e001",
+      "assembly_summary": "madday acc,vf02,vf00.y"
+    },
+    {
+      "overlay": 5,
+      "pair": 241,
+      "vu_byte_address": "0x2f88",
+      "bytes": "3c030080be18ef01",
+      "assembly_summary": "maddaz acc,vf03,vf15.z"
+    },
+    {
+      "overlay": 5,
+      "pair": 242,
+      "vu_byte_address": "0x2f90",
+      "bytes": "3c0300800b24e001",
+      "assembly_summary": "maddw vf16,vf04,vf00.w"
+    },
+    {
+      "overlay": 5,
+      "pair": 246,
+      "vu_byte_address": "0x2fb0",
+      "bytes": "3c030080bc29f001",
+      "assembly_summary": "mulax acc,vf05,vf16.x"
+    },
+    {
+      "overlay": 5,
+      "pair": 247,
+      "vu_byte_address": "0x2fb8",
+      "bytes": "3c030080bd30f001",
+      "assembly_summary": "madday acc,vf06,vf16.y"
+    },
+    {
+      "overlay": 5,
+      "pair": 248,
+      "vu_byte_address": "0x2fc0",
+      "bytes": "3c030080be38f001",
+      "assembly_summary": "maddaz acc,vf07,vf16.z"
+    },
+    {
+      "overlay": 5,
+      "pair": 249,
+      "vu_byte_address": "0x2fc8",
+      "bytes": "3c0300804b44e001",
+      "assembly_summary": "maddw vf17,vf08,vf00.w"
+    },
+    {
+      "overlay": 5,
+      "pair": 250,
+      "vu_byte_address": "0x2fd0",
+      "bytes": "bc03f181ff020000",
+      "assembly_summary": "div q,vf00.w,vf17.w"
+    },
+    {
+      "overlay": 5,
+      "pair": 253,
+      "vu_byte_address": "0x2fe8",
+      "bytes": "bf030080ff020000",
+      "assembly_summary": "waitq"
+    },
+    {
+      "overlay": 5,
+      "pair": 254,
+      "vu_byte_address": "0x2ff0",
+      "bytes": "3c0300805c8cc001",
+      "assembly_summary": "mulq.xyz vf17,vf17,q"
+    },
+    {
+      "overlay": 5,
+      "pair": 255,
+      "vu_byte_address": "0x2ff8",
+      "bytes": "3c0300801c63c001",
+      "assembly_summary": "mulq.xyz vf12,vf12,q"
+    },
+    {
+      "overlay": 6,
+      "pair": 0,
+      "vu_byte_address": "0x3000",
+      "bytes": "3c0300807d89d001",
+      "assembly_summary": "ftoi4.xyz vf16,vf17"
+    },
+    {
+      "overlay": 6,
+      "pair": 2,
+      "vu_byte_address": "0x3010",
+      "bytes": "7d63e781ff020000",
+      "assembly_summary": "sqi vf12,(vi07++)"
+    },
+    {
+      "overlay": 6,
+      "pair": 3,
+      "vu_byte_address": "0x3018",
+      "bytes": "7df3e781ff020000",
+      "assembly_summary": "sqi vf30,(vi07++)"
+    },
+    {
+      "overlay": 6,
+      "pair": 4,
+      "vu_byte_address": "0x3020",
+      "bytes": "7d83e781ff020000",
+      "assembly_summary": "sqi vf16,(vi07++)"
+    }
+  ],
+  "limits": [
+    "Static emission order is not proof DMA ran or VU executed.",
+    "No exact VIF TOP value at MSCAL 0x5cc was established.",
+    "No static edge links geometry UNPACK destinations 0x208/0x2c8 to the vi03 pointer or TOP-relative loads.",
+    "Constants 768.0 and 6144.0 are exact I-register values but not a coordinate normalization/world-scale proof.",
+    "FTOI4 establishes conversion format only; no output units or hardware equivalence are claimed.",
+    "Pinned PCSX2 VIF unpack logic is MODE- and cycle-dependent; this bundle does not prove the game state required for literal V4-32 payload-to-VU-qword equality."
+  ]
+}

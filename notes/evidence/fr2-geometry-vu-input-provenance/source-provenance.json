@@ -1,0 +1,97 @@
+{
+  "schema": "fr2-geometry-vu-input-provenance-sources/v1",
+  "inputs": [
+    {
+      "path": "games/ford-racing-2/extracted/SLES_517.05",
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+      "role": "pinned executable identity; read-only"
+    },
+    {
+      "path": ".scratch/evidence/static-export.json",
+      "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+      "role": "saved static instruction export"
+    },
+    {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.s",
+      "sha256": "f5e195d23ec624026e31caae2c31d7af6cce10ec36158632f8624eeb640499d5",
+      "role": "bounded VU disassembly source"
+    },
+    {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.bin",
+      "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c",
+      "role": "VU pair bytes for exact literal and entry checks"
+    },
+    {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-6.s",
+      "sha256": "c19e1aff3bffba716e30e59e117a6266a4049d20f3c03781d6adc0b972745940",
+      "role": "bounded continuation disassembly"
+    },
+    {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-6.bin",
+      "sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8",
+      "role": "VU pair bytes for FTOI4 store continuation"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/ps2sdk/common/include/vif_codes.h",
+      "sha256": "b28a4d58edf1245c54fd7bfa8276b9d59ae5a369a27db57ba09938b5f8c4adfb",
+      "role": "pinned PS2SDK VIF word field macros"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/ps2sdk/ee/packet2/include/packet2_types.h",
+      "sha256": "33b6bda21b63d75da43475175e594a5514e9a2891700a9d396bcc3373faaad84",
+      "role": "pinned PS2SDK V4-32 enum"
+    }
+  ],
+  "external_sources": [
+    {
+      "url": "https://docs.alexrp.com/mips/ee_vu.pdf",
+      "title": "Sony Computer Entertainment VU User's Manual, Version 6.0",
+      "pages": [
+        33,
+        77,
+        78,
+        197
+      ],
+      "note": "PDF mirror of primary Sony manual; page 33 defines the I register and LOI raw single-precision load, pages 77-78 define FTOI4, and page 197 defines XTOP. Firecrawl request/metadata receipt covers the extracted manual; the Jev screen retained for pages 77-78/197 is unchanged."
+    },
+    {
+      "url": "https://github.com/PCSX2/pcsx2/tree/81526d4dc7cc70e4ae75abb35a789417456c6d43",
+      "title": "PCSX2 VIF unpack/state implementation at pinned commit",
+      "files": [
+        {
+          "path": "pcsx2/Vif_Unpack.cpp",
+          "sha256": "de6aea582900ca5316ff8ecc85be93938613d09e4eacf9bcbf62f7f4485930a1"
+        },
+        {
+          "path": "pcsx2/Vif_Unpack.h",
+          "sha256": "a36757a8dc392032d909a1e2d285d9b4ae22c3ed293166d36ba8e5ec1c139e6e"
+        },
+        {
+          "path": "pcsx2/Vif_Codes.cpp",
+          "sha256": "659e95720d49b7f047f499fa31770e522dccb610c2d595647231e1f28748396c"
+        }
+      ],
+      "note": "Pinned implementation reference only; source pin metadata and bounded Jev result summary are in vif-state-source-summary.json; full raw receipts remain in ignored scratch."
+    }
+  ],
+  "cross_bundle_dependencies": [
+    {
+      "path": "notes/evidence/fr2-geometry-vif-contract/README.md",
+      "sha256": "ccf3000602fef1a82e2eb488e2ab476bca34f71124587832c36f45cb96210f19",
+      "role": "existing V3-16/V4-8 packet field mapping and caller order"
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vu-dispatch/static-trace.json",
+      "sha256": "1ccf54142a15b87c5ddf887d6a7c211a3908644968f4f3c1ba890cddd10efdf1",
+      "role": "existing MSCAL 0x5cc to overlay address mapping"
+    }
+  ],
+  "interpretation_limits": [
+    "No runtime state was captured.",
+    "The exact TOP value at the 0x5cc MSCAL is not derived.",
+    "No geometry UNPACK-to-TOP-relative-load data edge is asserted.",
+    "The converted fixed-point representation has no established world or serialized-coordinate units.",
+    "Effective VIF MODE/STCYCL/ROW state for the packet is unresolved.",
+    "Pinned PCSX2 TOP-latch sequence is VIF1-specific and does not establish game channel identity or hardware execution."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "tool": "jev_verify",
+  "arguments": {
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "claims": [
+      "In FUN_00128ca0, the packet stream writes command word 0x6c080000, appends eight 16-byte values (four loaded from caller address s0+0..s0+0x30 and four loaded from addresses 0x70003160..0x7000319c), and then appends the command derived from 0x14000000 | *(gp-0x6dec).",
+      "The command 0x6c080000 encodes UNPACK V4-32, NUM=8, destination address 0 according to pinned PS2SDK field definitions.",
+      "The VU entry at byte address 0x2e60 begins by loading qwords at VU addresses 0 through 7 into VF01 through VF08, then executes XTOP VI01 and uses TOP-relative loads.",
+      "FUN_00128e88 chooses geometry UNPACK base 0x208 or 0x2c8, emits V3-16 at that base and V4-8 at base+1, and leaves UNPACK immediate bit 15 clear; those commands therefore do not themselves add TOPS to their destination addresses.",
+      "At 0x2e60's entry path, LOI raw words 0x44400000 and 0x45c00000 load I before SUBI.xyz on VF15 and SUBI.xy on VF12 respectively; this proves those exact subtract constants but does not establish a serialized-coordinate scale.",
+      "The bounded 0x2e60 path has FTOI4.xyz VF16,VF17 after the Q multiply path, and the Sony VU User's Manual defines FTOI4 as conversion with four fractional bits; this is a fixed-point conversion fact, not a proof of output units or hardware execution.",
+      "XTOP reads the external VIF TOP register into the integer register, but the local FUN_00128ca0 block does not set BASE or OFFSET before MSCAL 0x5cc, so these local sources alone do not bind TOP to geometry UNPACK base 0x208 or 0x2c8."
+    ],
+    "evidence": [
+      {
+        "id": "ee-00128ca0",
+        "text": "Static export executable SHA256 216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95. FUN_00128ca0 instructions: 00128cec lui t2,0x6c08; 00128d3c sw t2,0(v0); then stores qwords from lq 0(s0)/sq at 00128d50, lq 0x10(s0)/sq 00128d60-68, lq 0x20(s0)/sq 00128d78-80, lq 0x30(s0)/sq 00128d90-9c, followed by lq from 0x70003160, 3164, 3168, 316c; 3170,3174,3178,317c; 3180..318c; 3190..319c, each sq into packet buffer at 00128db0, 00128dc8, 00128de0, 00128df8. At 00128e08 lw v0,-0x6dec(gp); 00128e10 or v0,v0,t3 (t3 initialized by 00128d0c lui t3,0x1400); 00128e14 sw v0,0(v1). The command/data ordering is static output construction, not proof the DMA ran."
+      },
+      {
+        "id": "ps2sdk-vif",
+        "text": "Pinned PS2SDK commit ac92a9f657d2e531dd8f060250b07f2a5ac6dea5. common/include/vif_codes.h SHA256 b28a4d58edf1245c54fd7bfa8276b9d59ae5a369a27db57ba09938b5f8c4adfb defines VIF command fields: immediate bits 0-15, NUM bits 16-23, command bits 24-31; packet2_types.h enum P2_UNPACK_V4_32=0x0c. A command byte 0x6c is UNPACK family base 0x60 plus 0x0c, with NUM=8 and IMMEDIATE=0."
+      },
+      {
+        "id": "vu-entry",
+        "text": "Overlay 5 disassembly SHA256 f5e195d23ec624026e31caae2c31d7af6cce10ec36158632f8624eeb640499d5, binary SHA256 4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c. At pair204/address 0x2e60: iaddiu vi01,vi00,0. Pairs205..212 / addresses 0x2e68..0x2ea0: lqi vf01..vf08,(vi01++), eight sequential qword loads. Pair215/address0x2eb8: xtop vi01. Later pair219: lq vf31,2(vi01); pair220/221: ilw from 3(vi01); pair223/224/226: lq vf09,0(vi01), vf30,1(vi01), vf20,4(vi01). Pair230 contains LOI payload bytes 00 00 40 44 => little-endian raw 0x44400000. Pair231 SUBI.xyz vf15,vf15,I; pair232 MUL.xyz vf15,vf15,vf20; pair234 LOI raw 0x45c00000; pair235 SUBI.xy vf12,vf12,I. Pair246..249 transform vf16 into vf17. Pair250 DIV Q using vf00.w/vf17.w; pair253 WAITQ; pair254 MULQ.xyz vf17,vf17,Q. Overlay6 pair0/address0x3000 FTOI4.xyz vf16,vf17. Overlay6 pairs2..4 store vf12, vf30, vf16 with SQI. Addresses/pairs and raw LOI words were independently inspected."
+      },
+      {
+        "id": "geometry-vif",
+        "text": "Existing notes/evidence/fr2-geometry-vif-contract/README.md and source-provenance.json. FUN_00128e88 encodes base = 0x208 when saved selector zero, otherwise 0x2c8; V3-16 command at base and V4-8 at base+1. The immediate's bits 14 and 15 are clear, so command does not request signedness bit or TOPS-adjusted address. It also appends optional V2-16 at base+2 only when saved param4!=0. These findings identify packet fields, not semantic meaning of VU memory contents."
+      },
+      {
+        "id": "sony-vu-manual",
+        "text": "Sony VU User's Manual v6.0, PDF mirror URL https://docs.alexrp.com/mips/ee_vu.pdf, pages 77-78: FTOI4 converts VF source to fixed point with four fractional bits; examples include 0.45 -> 7, 0.55 -> 8, 123.45 -> 1975, consistent with multiply by 16 and truncate toward zero. Page 197 describes XTOP as reading the VIF TOP register into VI[it]. This is instruction specification only."
+      },
+      {
+        "id": "top-state-local-limit",
+        "text": "FUN_00128ca0's local instruction excerpt has the V4-32 UNPACK command/data and MSCAL 0x5cc but no BASE/OFFSET command before MSCAL. FUN_00128e88 later emits a BASE command selected between 0x388/0x3aa and then OFFSET=0 after its later MSCNT command. Thus the writer does affect subsequent VIF state, but it does not set the TOP value consumed by the earlier MSCAL in FUN_00128ca0. Current TOP for that MSCAL depends on VIF state produced elsewhere / prior stream history; absent that full state trace, no link from geometry base to TOP-relative loads is proven."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 7,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"In FUN_00128ca0, the packet stream writes command word 0x6c080000, appends eight 16-byte values (four loaded from caller address s0+0..s0+0x30 and four loaded from addresses 0x70003160..0x7000319c), and then appends the command derived from 0x14000000 | *(gp-0x6dec).\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.97,\n        \"says_nothing\": 0,\n        \"contradicts\": 0.03\n      },\n      \"confidence\": 0.95,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"ee-00128ca0\",\n      \"same_subject\": 0.81\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The command 0x6c080000 encodes UNPACK V4-32, NUM=8, destination address 0 according to pinned PS2SDK field definitions.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.76,\n        \"says_nothing\": 0.02,\n        \"contradicts\": 0.22\n      },\n      \"confidence\": 0.64,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"ps2sdk-vif\",\n      \"same_subject\": 0.6\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"The VU entry at byte address 0x2e60 begins by loading qwords at VU addresses 0 through 7 into VF01 through VF08, then executes XTOP VI01 and uses TOP-relative loads.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.95,\n        \"says_nothing\": 0,\n        \"contradicts\": 0.05\n      },\n      \"confidence\": 0.92,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"vu-entry\",\n      \"same_subject\": 0.88\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"FUN_00128e88 chooses geometry UNPACK base 0x208 or 0x2c8, emits V3-16 at that base and V4-8 at base+1, and leaves UNPACK immediate bit 15 clear; those commands therefore do not themselves add TOPS to their destination addresses.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"says_nothing\": 0,\n        \"contradicts\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"geometry-vif\",\n      \"same_subject\": 0.66\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"At 0x2e60's entry path, LOI raw words 0x44400000 and 0x45c00000 load I before SUBI.xyz on VF15 and SUBI.xy on VF12 respectively; this proves those exact subtract constants but does not establish a serialized-coordinate scale.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.98,\n        \"says_nothing\": 0.01,\n        \"contradicts\": 0.01\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"vu-entry\",\n      \"same_subject\": 0.87\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"The bounded 0x2e60 path has FTOI4.xyz VF16,VF17 after the Q multiply path, and the Sony VU User's Manual defines FTOI4 as conversion with four fractional bits; this is a fixed-point conversion fact, not a proof of output units or hardware execution.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.92,\n        \"says_nothing\": 0.02,\n        \"contradicts\": 0.06\n      },\n      \"confidence\": 0.88,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-vu-manual\",\n      \"same_subject\": 0.68\n    },\n    {\n      \"id\": \"claim6\",\n      \"claim\": \"XTOP reads the external VIF TOP register into the integer register, but the local FUN_00128ca0 block does not set BASE or OFFSET before MSCAL 0x5cc, so these local sources alone do not bind TOP to geometry UNPACK base 0x208 or 0x2c8.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"says_nothing\": 0,\n        \"contradicts\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"top-state-local-limit\",\n      \"same_subject\": 0.74\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 5238,\n    \"output_tokens\": 1070\n  }\n}"
+      }
+    ]
+  },
+  "disposition": {
+    "claim1_review": "Retained as returned; manual bit-field arithmetic independently resolves VIF command 0x6c080000 to UNPACK command family 0x60 plus V4-32 code 0x0c, NUM=8, immediate=0. No Jev retry.",
+    "other_claims": "Verified as returned. Deterministic source/instruction inspection remains the authority for exact bytes and addresses.",
+    "claim6_scope": "The returned Jev result is preserved unchanged. Post-call scope review narrows its claim: only the emitted span from explicit V4-32 command 0x6c080000 through the MSCAL word is checked here; it contains eight qwords and no BASE/OFFSET word. Earlier helper VIF traffic and runtime TOP state are not fully decoded, so this result is not used to assert that the entire function or preceding packet history leaves TOP unchanged. No Jev retry."
+  }
+}

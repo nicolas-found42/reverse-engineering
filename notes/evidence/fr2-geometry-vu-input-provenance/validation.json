@@ -1,0 +1,549 @@
+{
+  "schema": "fr2-geometry-vu-input-provenance-validation/v1",
+  "scope": "Deterministic source identities, exact selected EE instruction records, VU pair bytes, VIF word decode, LOI literal bytes, bounded mnemonic scan, and receipt integrity. No game or emulator execution. Three added checks validate the MODE/cycle/row qualification, bounded pinned-PCSX2 summary, and correct treatment of a jgrep no-text-files diagnostic.",
+  "checks": [
+    {
+      "name": "game executable identity",
+      "pass": true,
+      "detail": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    {
+      "name": "static export identity",
+      "pass": true,
+      "detail": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+    },
+    {
+      "name": "00128ca0 00128cec",
+      "pass": true,
+      "detail": "lui t2,0x6c08 086c0a3c"
+    },
+    {
+      "name": "00128ca0 00128cf4",
+      "pass": true,
+      "detail": "lui a3,0x7000 0070073c"
+    },
+    {
+      "name": "00128ca0 00128cfc",
+      "pass": true,
+      "detail": "addiu a3,a3,0x3020 2030e724"
+    },
+    {
+      "name": "00128ca0 00128d0c",
+      "pass": true,
+      "detail": "lui t3,0x1400 00140b3c"
+    },
+    {
+      "name": "00128ca0 00128d3c",
+      "pass": true,
+      "detail": "sw t2,0x0(v0) 00004aac"
+    },
+    {
+      "name": "00128ca0 00128d24",
+      "pass": true,
+      "detail": "lq a2,0x0(s0) 0000067a"
+    },
+    {
+      "name": "00128ca0 00128d50",
+      "pass": true,
+      "detail": "sq a2,0x0(v0) 0000467c"
+    },
+    {
+      "name": "00128ca0 00128d60",
+      "pass": true,
+      "detail": "lq v1,0x10(s0) 1000037a"
+    },
+    {
+      "name": "00128ca0 00128d68",
+      "pass": true,
+      "detail": "sq v1,0x0(v0) 0000437c"
+    },
+    {
+      "name": "00128ca0 00128d78",
+      "pass": true,
+      "detail": "lq v1,0x20(s0) 2000037a"
+    },
+    {
+      "name": "00128ca0 00128d80",
+      "pass": true,
+      "detail": "sq v1,0x0(v0) 0000437c"
+    },
+    {
+      "name": "00128ca0 00128d90",
+      "pass": true,
+      "detail": "lq v1,0x30(s0) 3000037a"
+    },
+    {
+      "name": "00128ca0 00128d9c",
+      "pass": true,
+      "detail": "sq v1,0x0(v0) 0000437c"
+    },
+    {
+      "name": "00128ca0 00128da8",
+      "pass": true,
+      "detail": "lq v1,0x140(a3) 4001e378"
+    },
+    {
+      "name": "00128ca0 00128db0",
+      "pass": true,
+      "detail": "sq v1,0x0(v0) 0000437c"
+    },
+    {
+      "name": "00128ca0 00128dc0",
+      "pass": true,
+      "detail": "lq v1,0x150(a3) 5001e378"
+    },
+    {
+      "name": "00128ca0 00128dc8",
+      "pass": true,
+      "detail": "sq v1,0x0(v0) 0000437c"
+    },
+    {
+      "name": "00128ca0 00128dd8",
+      "pass": true,
+      "detail": "lq v1,0x160(a3) 6001e378"
+    },
+    {
+      "name": "00128ca0 00128de0",
+      "pass": true,
+      "detail": "sq v1,0x0(v0) 0000437c"
+    },
+    {
+      "name": "00128ca0 00128df0",
+      "pass": true,
+      "detail": "lq v1,0x170(a3) 7001e378"
+    },
+    {
+      "name": "00128ca0 00128df8",
+      "pass": true,
+      "detail": "sq v1,0x0(v0) 0000437c"
+    },
+    {
+      "name": "00128ca0 00128e08",
+      "pass": true,
+      "detail": "lw v0,-0x6dec(gp) 1492828f"
+    },
+    {
+      "name": "00128ca0 00128e10",
+      "pass": true,
+      "detail": "or v0,v0,t3 25104b00"
+    },
+    {
+      "name": "00128ca0 00128e14",
+      "pass": true,
+      "detail": "sw v0,0x0(v1) 000062ac"
+    },
+    {
+      "name": "00128e88 00128ec8",
+      "pass": true,
+      "detail": "lw s0,-0x6de8(gp) 1892908f"
+    },
+    {
+      "name": "00128e88 00128eec",
+      "pass": true,
+      "detail": "li t9,0x2c8 c8021924"
+    },
+    {
+      "name": "00128e88 00128f2c",
+      "pass": true,
+      "detail": "li t0,0x208 08020824"
+    },
+    {
+      "name": "00128e88 00128f40",
+      "pass": true,
+      "detail": "movz t9,t0,s0 0ac81001"
+    },
+    {
+      "name": "00128e88 00128f70",
+      "pass": true,
+      "detail": "addiu t6,t9,0x1 01002e27"
+    },
+    {
+      "name": "00128e88 00128fac",
+      "pass": true,
+      "detail": "or t6,t6,v1 2570c301"
+    },
+    {
+      "name": "00128e88 00129000",
+      "pass": true,
+      "detail": "or t3,t9,t8 25583803"
+    },
+    {
+      "name": "00128e88 00129388",
+      "pass": true,
+      "detail": "sw t1,0x0(v0) 000049ac"
+    },
+    {
+      "name": "00128e88 001293a0",
+      "pass": true,
+      "detail": "sltiu v1,v1,0x1 0100632c"
+    },
+    {
+      "name": "00128e88 001293a8",
+      "pass": true,
+      "detail": "movz a2,a3,v1 0a30e300"
+    },
+    {
+      "name": "00128e88 001293b0",
+      "pass": true,
+      "detail": "sw v1,-0x6de4(gp) 1c9283af"
+    },
+    {
+      "name": "00128e88 001293b8",
+      "pass": true,
+      "detail": "sw a2,0x0(v0) 000046ac"
+    },
+    {
+      "name": "00128e88 001293d4",
+      "pass": true,
+      "detail": "sw t2,0x0(v0) 00004aac"
+    },
+    {
+      "name": "001124c0 001124d4",
+      "pass": true,
+      "detail": "sw zero,-0x6de4(gp) 1c9280af"
+    },
+    {
+      "name": "001124c0 001124e4",
+      "pass": true,
+      "detail": "sw zero,-0x6de8(gp) 189280af"
+    },
+    {
+      "name": "001124c0 001124f8",
+      "pass": true,
+      "detail": "sw v1,0x0(a0) 000083ac"
+    },
+    {
+      "name": "001124c0 00112500",
+      "pass": true,
+      "detail": "ori a1,a1,0x388 8803a534"
+    },
+    {
+      "name": "001124c0 00112508",
+      "pass": true,
+      "detail": "lw a2,-0x6de4(gp) 1c92868f"
+    },
+    {
+      "name": "001124c0 00112514",
+      "pass": true,
+      "detail": "lui t2,0x1400 00140a3c"
+    },
+    {
+      "name": "001124c0 00112518",
+      "pass": true,
+      "detail": "movz v1,a1,a2 0a18a600"
+    },
+    {
+      "name": "001124c0 00112520",
+      "pass": true,
+      "detail": "sw v1,0x0(a3) 0000e3ac"
+    },
+    {
+      "name": "001124c0 00112528",
+      "pass": true,
+      "detail": "sw t0,0xc(a0) 0c0088ac"
+    },
+    {
+      "name": "001124c0 00112530",
+      "pass": true,
+      "detail": "lw v1,-0x6df4(gp) 0c92838f"
+    },
+    {
+      "name": "001124c0 00112538",
+      "pass": true,
+      "detail": "or v1,v1,t2 25186a00"
+    },
+    {
+      "name": "001124c0 00112540",
+      "pass": true,
+      "detail": "sw v1,0x0(t1) 000023ad"
+    },
+    {
+      "name": "001ce288 001ce47c",
+      "pass": true,
+      "detail": "jal 0x00126c18 069b040c"
+    },
+    {
+      "name": "001ce288 001ce484",
+      "pass": true,
+      "detail": "beq v0,zero,0x001ce4d0 12004010"
+    },
+    {
+      "name": "001ce288 001ce48c",
+      "pass": true,
+      "detail": "jal 0x00128ca0 28a3040c"
+    },
+    {
+      "name": "001ce288 001ce4b8",
+      "pass": true,
+      "detail": "jal 0x001288b0 2ca2040c"
+    },
+    {
+      "name": "overlay5 pair204",
+      "pass": true,
+      "detail": "00000110ff020000"
+    },
+    {
+      "name": "overlay5 pair205",
+      "pass": true,
+      "detail": "7c0be181ff020000"
+    },
+    {
+      "name": "overlay5 pair206",
+      "pass": true,
+      "detail": "7c0be281ff020000"
+    },
+    {
+      "name": "overlay5 pair207",
+      "pass": true,
+      "detail": "7c0be381ff020000"
+    },
+    {
+      "name": "overlay5 pair208",
+      "pass": true,
+      "detail": "7c0be481ff020000"
+    },
+    {
+      "name": "overlay5 pair209",
+      "pass": true,
+      "detail": "7c0be581ff020000"
+    },
+    {
+      "name": "overlay5 pair210",
+      "pass": true,
+      "detail": "7c0be681ff020000"
+    },
+    {
+      "name": "overlay5 pair211",
+      "pass": true,
+      "detail": "7c0be781ff020000"
+    },
+    {
+      "name": "overlay5 pair212",
+      "pass": true,
+      "detail": "7c0be881ff020000"
+    },
+    {
+      "name": "overlay5 pair215",
+      "pass": true,
+      "detail": "bc060180ff020000"
+    },
+    {
+      "name": "overlay5 pair219",
+      "pass": true,
+      "detail": "0208ff01ff020000"
+    },
+    {
+      "name": "overlay5 pair220",
+      "pass": true,
+      "detail": "03080209ff020000"
+    },
+    {
+      "name": "overlay5 pair221",
+      "pass": true,
+      "detail": "03084308ff020000"
+    },
+    {
+      "name": "overlay5 pair223",
+      "pass": true,
+      "detail": "0008e901ff020000"
+    },
+    {
+      "name": "overlay5 pair224",
+      "pass": true,
+      "detail": "0108fe01ff020000"
+    },
+    {
+      "name": "overlay5 pair226",
+      "pass": true,
+      "detail": "0408f401ff020000"
+    },
+    {
+      "name": "overlay5 pair228",
+      "pass": true,
+      "detail": "0018ef01ff020000"
+    },
+    {
+      "name": "overlay5 pair229",
+      "pass": true,
+      "detail": "0218ec01ff020000"
+    },
+    {
+      "name": "overlay5 pair230",
+      "pass": true,
+      "detail": "00004044ff020080"
+    },
+    {
+      "name": "overlay5 pair231",
+      "pass": true,
+      "detail": "3c030080e67bc001"
+    },
+    {
+      "name": "overlay5 pair232",
+      "pass": true,
+      "detail": "3c030080ea7bd401"
+    },
+    {
+      "name": "overlay5 pair234",
+      "pass": true,
+      "detail": "0000c045ff020080"
+    },
+    {
+      "name": "overlay5 pair235",
+      "pass": true,
+      "detail": "3c03008026638001"
+    },
+    {
+      "name": "overlay5 pair237",
+      "pass": true,
+      "detail": "01182608994acf01"
+    },
+    {
+      "name": "overlay5 pair238",
+      "pass": true,
+      "detail": "3c030080e87bca01"
+    },
+    {
+      "name": "overlay5 pair239",
+      "pass": true,
+      "detail": "3c030080bc09ef01"
+    },
+    {
+      "name": "overlay5 pair240",
+      "pass": true,
+      "detail": "3c030080bd10e001"
+    },
+    {
+      "name": "overlay5 pair241",
+      "pass": true,
+      "detail": "3c030080be18ef01"
+    },
+    {
+      "name": "overlay5 pair242",
+      "pass": true,
+      "detail": "3c0300800b24e001"
+    },
+    {
+      "name": "overlay5 pair246",
+      "pass": true,
+      "detail": "3c030080bc29f001"
+    },
+    {
+      "name": "overlay5 pair247",
+      "pass": true,
+      "detail": "3c030080bd30f001"
+    },
+    {
+      "name": "overlay5 pair248",
+      "pass": true,
+      "detail": "3c030080be38f001"
+    },
+    {
+      "name": "overlay5 pair249",
+      "pass": true,
+      "detail": "3c0300804b44e001"
+    },
+    {
+      "name": "overlay5 pair250",
+      "pass": true,
+      "detail": "bc03f181ff020000"
+    },
+    {
+      "name": "overlay5 pair253",
+      "pass": true,
+      "detail": "bf030080ff020000"
+    },
+    {
+      "name": "overlay5 pair254",
+      "pass": true,
+      "detail": "3c0300805c8cc001"
+    },
+    {
+      "name": "overlay5 pair255",
+      "pass": true,
+      "detail": "3c0300801c63c001"
+    },
+    {
+      "name": "overlay6 pair0",
+      "pass": true,
+      "detail": "3c0300807d89d001"
+    },
+    {
+      "name": "overlay6 pair2",
+      "pass": true,
+      "detail": "7d63e781ff020000"
+    },
+    {
+      "name": "overlay6 pair3",
+      "pass": true,
+      "detail": "7df3e781ff020000"
+    },
+    {
+      "name": "overlay6 pair4",
+      "pass": true,
+      "detail": "7d83e781ff020000"
+    },
+    {
+      "name": "VIF word decode",
+      "pass": true,
+      "detail": "0x6c080000"
+    },
+    {
+      "name": "LOI768 bytes",
+      "pass": true,
+      "detail": "00004044"
+    },
+    {
+      "name": "LOI6144 bytes",
+      "pass": true,
+      "detail": "0000c045"
+    },
+    {
+      "name": "bounded-span has no ITOF",
+      "pass": true,
+      "detail": "overlay5 pair204..255"
+    },
+    {
+      "name": "jev-vu-input-claims.json JSON",
+      "pass": true,
+      "detail": "parse"
+    },
+    {
+      "name": "jev-manual-screen.json JSON",
+      "pass": true,
+      "detail": "parse"
+    },
+    {
+      "name": "firecrawl-manual-receipt.json JSON",
+      "pass": true,
+      "detail": "parse"
+    },
+    {
+      "name": "source-provenance.json JSON",
+      "pass": true,
+      "detail": "parse"
+    },
+    {
+      "name": "VIF state source summary JSON",
+      "pass": true,
+      "detail": "pinned PCSX2 source hashes and preserved Jev disposition parse"
+    },
+    {
+      "name": "qualified packet-to-register statement",
+      "pass": true,
+      "detail": "literal V4-32 payload-to-VU value correspondence remains conditional"
+    },
+    {
+      "name": "jgrep JSON export diagnostic",
+      "pass": true,
+      "detail": "exit 1 retained as inconclusive; not counted as zero semantic matches"
+    },
+    {
+      "name": "VIF command builder trace JSON",
+      "pass": true,
+      "detail": "selected instructions and bounded unknown state sources parse"
+    }
+  ],
+  "passed": 108,
+  "failed": 0,
+  "all_passed": true
+}
