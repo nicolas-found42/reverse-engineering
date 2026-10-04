@@ -1,0 +1,11 @@
+# PS2Recomp arithmetic experiment
+
+The upstream PS2Recomp source is distributed under GNU GPL version 3. The patch and synthetic helper files in this directory use that license; the upstream license text is retained in `LICENSE`. The runtime header itself is kept in private scratch, and its only local modifications are the two overflow helpers and their `<limits>` include.
+
+`defined-overflow.patch` changes two runtime helpers in PS2Recomp commit `c5a9d02573410a2085a4b4b831b0b68ba3515440`. It evaluates signed 32-bit add/subtract in an `int64_t` intermediate, checks the result against `int32_t` bounds, and converts to `uint32_t` for a defined modulo-2³² result. Each operand is evaluated once. This removes the reproduced signed C++ overflow in the helpers; it does not validate a complete PS2 runtime or game.
+
+The pristine header SHA-256 is `c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e`; the corrected header SHA-256 is `4b88ff8ea6966dd97aa17cb0e06c0c8ad98923b84af32b335e6e8972a0537973`. The patch SHA-256 is `3b14131ae25ff79ec204e4bc0b0de383b19d43d7cd71bb1407802a6b793ca31e`. Apply only to that pinned source. The verifier rejects a different header before compiling any extracted definitions.
+
+`verify_overflow.py` extracts only the two macro definitions and compiles `overflow_probe.cpp` with Clang UBSan. It checks both operations across 297 input pairs, including a grid of signed boundaries and directed overflow cases. Run it against the corrected header for the positive result, or use `--expect-ubsan` against the pristine header for the signed-overflow negative control. Both compiler and probe subprocesses have 30-second bounds. No original game function or emulator is executed.
+
+The source experiment, failed intermediate patch, exact hashes, model receipts, positive/negative results, and native integration compilation are retained in `notes/evidence/fr2-independent-recovery`. An initial sign-of-wide-result overflow predicate failed on `INT32_MIN + INT32_MIN`; that failure remains recorded. Final Jev arithmetic/scope claims were verified, while its patch review remained escalated on integration confidence. Root review and the subsequent full generated-function compilation provide independent bounded evidence; they do not change that model outcome.

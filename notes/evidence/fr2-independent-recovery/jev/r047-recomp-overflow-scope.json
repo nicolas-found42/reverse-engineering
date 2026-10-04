@@ -1,0 +1,36 @@
+{
+  "id": "r047",
+  "arguments": {
+    "claims": [
+      "Synthetic helper tests against unmodified PS2Recomp overflow macros trigger UBSan signed overflow for INT32_MAX+1 and INT32_MIN-1; two ordinary arithmetic control cases return normally.",
+      "The sanitizer results establish that the game actually reaches those overflow states during gameplay.",
+      "Passing C++ syntax and object compilation establishes semantic equivalence of every generated function."
+    ],
+    "evidence": [
+      {
+        "id": "synthetic-probe",
+        "text": "{\n  \"probe_sha256\": \"4d6170427bb88d6c3fb41680917518d8a0fcf2f0d416f94b4cfca7c591c54a13\",\n  \"purpose\": \"Synthetic integer macro tests only; no game function/runtime/emulator executed\",\n  \"results\": [\n    {\n      \"arguments\": [\n        \"add\",\n        \"1\",\n        \"2\"\n      ],\n      \"returncode\": 0,\n      \"output\": \"result=3 overflow=0\\n\"\n    },\n    {\n      \"arguments\": [\n        \"sub\",\n        \"2\",\n        \"1\"\n      ],\n      \"returncode\": 0,\n      \"output\": \"result=1 overflow=0\\n\"\n    },\n    {\n      \"arguments\": [\n        \"add\",\n        \"2147483647\",\n        \"1\"\n      ],\n      \"returncode\": -6,\n      \"output\": \".scratch/mesh/codex-root/recomp-overflow-probe.cpp:9:42: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int32_t' (aka 'int')\\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior .scratch/mesh/codex-root/recomp-overflow-probe.cpp:9:42 \\n\"\n    },\n    {\n      \"arguments\": [\n        \"sub\",\n        \"-2147483648\",\n        \"1\"\n      ],\n      \"returncode\": -6,\n      \"output\": \".scratch/mesh/codex-root/recomp-overflow-probe.cpp:10:47: runtime error: signed integer overflow: -2147483648 - 1 cannot be represented in type 'int32_t' (aka 'int')\\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior .scratch/mesh/codex-root/recomp-overflow-probe.cpp:10:47 \\n\"\n    }\n  ]\n}\n"
+      },
+      {
+        "id": "macros-scope",
+        "text": "Unmodified pinned PS2Recomp macro ADD32_OV casts operands int32_t, then computes int32_t _r=_a+_b before overflow detection; SUB32_OV analogous subtraction. Synthetic probe alone was run. No game input, state, function, runtime or emulator was executed."
+      },
+      {
+        "id": "sanitizer-doc",
+        "text": "- `-fno-sanitize-recover=...`: print a verbose error report and exit the program;\n% clang++ -fsanitize=signed-integer-overflow,null,alignment -fno-sanitize-recover=null -fsanitize-trap=alignment a.cc\n- `-fsanitize=signed-integer-overflow`: Signed integer overflow, where the\n- `-fsanitize=unsigned-integer-overflow`: Unsigned integer overflow, where\n`float-divide-by-zero`, `unsigned-integer-overflow`,\nEnables `signed-integer-overflow`, `unsigned-integer-overflow`,\n## Silencing Unsigned Integer Overflow [\\#](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html\\#silencing-unsigned-integer-overflow \"Link to this heading\")\n`-fsanitize-recover=unsigned-integer-overflow`, is particularly useful for\nwhile (count--) { /* ... */ } // No longer causes unsigned-integer-overflow sanitizer to trip\n| negated-unsigned-const | unsigned-integer-overflow |\n| unsigned-post-decr-while | unsigned-integer-overflow |\n| add-unsigned-overflow-test | unsigned-integer-overflow |\n| add-signed-overflow-test | signed-integer-overflow |\n`__attribute__((no_sanitize(\"signed-integer-overflow\")))`.\n  return \"signed-integer-overflow:file-with-known-overflow.cpp\\n\"\nsigned-integer-overflow:file-with-known-overflow.cpp\n`-fsanitize-recover=signed-integer-overflow,alignment,vptr`, although"
+      },
+      {
+        "id": "compilation-scope",
+        "text": "All4747 native source files passed clang++ fsyntax-only, all compiled to native arm64 objects and ar archive, registration repeated to allow86.85seconds after prior60second timeout. Native generator report1178unresolvedCFGwarnings. Static artifact auditor explicitly says translated semantics remain unverified and whole_game_decompiled=false."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 1,\n    \"contradicted\": 1,\n    \"unsupported\": 1,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"Synthetic helper tests against unmodified PS2Recomp overflow macros trigger UBSan signed overflow for INT32_MAX+1 and INT32_MIN-1; two ordinary arithmetic control cases return normally.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"synthetic-probe\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The sanitizer results establish that the game actually reaches those overflow states during gameplay.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"supports\": 0,\n        \"contradicts\": 0.99,\n        \"says_nothing\": 0.01\n      },\n      \"confidence\": 0.98,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.16\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Passing C++ syntax and object compilation establishes semantic equivalence of every generated function.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"supports\": 0,\n        \"contradicts\": 1,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"compilation-scope\",\n      \"same_subject\": 0.84\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2583,\n    \"output_tokens\": 389\n  }\n}"
+      }
+    ]
+  }
+}

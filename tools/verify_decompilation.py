@@ -17,6 +17,7 @@ from evidence_common import Incomplete, Invalid, identity, write_result
 
 CHECK = "decompilation"
 WARNING_TOKEN = re.compile(r"\bWARNING\b", re.IGNORECASE)
+RAW_STRING_START = re.compile(r'R"([^ ()\\\t\v\f\r\n]{0,16})\(')
 MAX_MISSING_SAMPLE = 20
 WARNING_CATEGORIES = (
     ("subroutine does not return", re.compile(r"subroutine does not return", re.I)),
@@ -46,7 +47,7 @@ def _read_json(path: Path, label: str) -> dict:
 
 
 def _c_comments(source: str):
-    """Yield C comments while skipping string and character literal contents."""
+    """Yield C/C++ comments, skipping ordinary, character, and raw literals."""
     i, size = 0, len(source)
     while i < size:
         if source.startswith("//", i):
@@ -63,6 +64,14 @@ def _c_comments(source: str):
             end += 2
             yield source[i:end]
             i = end
+        elif raw_start := RAW_STRING_START.match(source, i):
+            # Prefixes u8/u/U/L are visited before the R; the delimiter controls
+            # the closing token, and quotes inside the payload have no effect.
+            close = ")" + raw_start[1] + '"'
+            end = source.find(close, raw_start.end())
+            if end < 0:
+                return
+            i = end + len(close)
         elif source[i] in {"'", '"'}:
             quote = source[i]
             i += 1

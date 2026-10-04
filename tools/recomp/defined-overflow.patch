@@ -1,0 +1,55 @@
+--- a/ps2xRuntime/include/ps2_runtime_macros.h
++++ b/ps2xRuntime/include/ps2_runtime_macros.h
+@@ -3,6 +3,7 @@
+ #include <cstdint>
+ #include <cmath>
+ #include <cstring>
++#include <limits>
+ #include <bit>
+ #if defined(_MSC_VER)
+ #include <intrin.h>
+@@ -87,24 +88,28 @@
+ 
+ // Basic MIPS arithmetic operations
+ #define ADD32(a, b) ((uint32_t)((a) + (b)))
+-#define ADD32_OV(rs, rt, result32, overflow)              \
+-    do                                                    \
+-    {                                                     \
+-        int32_t _a = (int32_t)(rs);                       \
+-        int32_t _b = (int32_t)(rt);                       \
+-        int32_t _r = _a + _b;                             \
+-        overflow = (((_a ^ _b) >= 0) && ((_a ^ _r) < 0)); \
+-        result32 = (uint32_t)_r;                          \
++#define ADD32_OV(rs, rt, result32, overflow)                       \
++    do                                                             \
++    {                                                              \
++        int32_t _a = (int32_t)(rs);                                \
++        int32_t _b = (int32_t)(rt);                                \
++        int64_t _wide = (int64_t)_a + (int64_t)_b;                 \
++        uint32_t _r = (uint32_t)_wide;                             \
++        overflow = (_wide > std::numeric_limits<int32_t>::max() || \
++                    _wide < std::numeric_limits<int32_t>::min()); \
++        result32 = _r;                                             \
+     } while (0);
+ #define SUB32(a, b) ((uint32_t)((a) - (b)))
+-#define SUB32_OV(rs, rt, result32, overflow)             \
+-    do                                                   \
+-    {                                                    \
+-        int32_t _a = (int32_t)(rs);                      \
+-        int32_t _b = (int32_t)(rt);                      \
+-        int32_t _r = _a - _b;                            \
+-        overflow = (((_a ^ _b) < 0) && ((_a ^ _r) < 0)); \
+-        result32 = (uint32_t)_r;                         \
++#define SUB32_OV(rs, rt, result32, overflow)                      \
++    do                                                            \
++    {                                                             \
++        int32_t _a = (int32_t)(rs);                               \
++        int32_t _b = (int32_t)(rt);                               \
++        int64_t _wide = (int64_t)_a - (int64_t)_b;                \
++        uint32_t _r = (uint32_t)_wide;                            \
++        overflow = (_wide > std::numeric_limits<int32_t>::max() || \
++                    _wide < std::numeric_limits<int32_t>::min()); \
++        result32 = _r;                                            \
+     } while (0);
+ #define MUL32(a, b) ((uint32_t)((a) * (b)))
+ #define DIV32(a, b) ((uint32_t)((a) / (b)))

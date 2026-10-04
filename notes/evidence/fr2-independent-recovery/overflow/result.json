@@ -1,0 +1,78 @@
+{
+  "schema": "ps2recomp-signed-overflow-scratch-v1",
+  "upstream": {
+    "repository": "https://github.com/ran-j/PS2Recomp",
+    "commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "path": "ps2xRuntime/include/ps2_runtime_macros.h",
+    "baseline": {
+      "bytes": 34809,
+      "sha256": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e"
+    }
+  },
+  "patched_header": {
+    "path": ".scratch/mesh/codex-audit/recomp-overflow/header/ps2_runtime_macros.h",
+    "identity": {
+      "bytes": 35245,
+      "sha256": "4b88ff8ea6966dd97aa17cb0e06c0c8ad98923b84af32b335e6e8972a0537973"
+    }
+  },
+  "initial_faulty_intermediate": {
+    "path": ".scratch/mesh/codex-audit/recomp-overflow/header/ps2_runtime_macros.wide-sign-faulty.h",
+    "identity": {
+      "bytes": 35105,
+      "sha256": "e7f7df4750d1d6210105f6ba1722bffb542379f1c94b70e43a7dc30f3db2f1a5"
+    },
+    "test_status": "fail",
+    "failure": "INT32_MIN + INT32_MIN wraps to 0; sign of wide result did not flag overflow"
+  },
+  "probe": {
+    "path": ".scratch/mesh/codex-audit/recomp-overflow/probe.cpp",
+    "identity": {
+      "bytes": 2527,
+      "sha256": "4ab93c3dbc3157a8b99f86cc9a96316d5ef880418043c1e483a3737a2e2c49eb"
+    },
+    "edge_input_pairs": 297,
+    "macro_invocations": 594,
+    "reference": "independent int64_t operation, uint32_t conversion, int32_t numeric_limits range check",
+    "compiler": "Apple clang 21",
+    "flags": [
+      "-std=c++20",
+      "-fsanitize=undefined,signed-integer-overflow",
+      "-fno-sanitize-recover=all",
+      "-Wall",
+      "-Wextra",
+      "-Werror"
+    ]
+  },
+  "helper": {
+    "path": ".scratch/mesh/codex-audit/recomp-overflow/run_probe.py",
+    "identity": {
+      "bytes": 2381,
+      "sha256": "e3df10bdfb15afb298b87bd4c65e4e5268f890a24b2718a1a0c62e13b4b4713c"
+    }
+  },
+  "results": {
+    "patched": "ok: 297 add/sub edge-pair checks",
+    "baseline": "baseline reproduced UBSan signed-overflow failure",
+    "initial_wide_sign": "mismatch a=-2147483648 b=-2147483648 add=00000000/0 expected=00000000/1 sub=00000000/0 expected=00000000/0",
+    "baseline_root_result_sha256": "ea40c22c85610b8e82fb0f46befe7b70f37add456c12b3d3e98d63a0d4eb0177"
+  },
+  "jev": {
+    "first_gate": "escalate",
+    "final_gate": "escalate",
+    "final_safe_to_apply": 0.4,
+    "final_composite": 0.91825,
+    "final_verification": "3 claims verified automatically; patch review limited by blast-radius confidence"
+  },
+  "limits": [
+    "Only the two exact arithmetic macro definitions were compiled; full runtime header/project integration is untested.",
+    "No game payload, game function, emulator, GUI, or runtime was executed.",
+    "No original-source or runtime equivalence is claimed.",
+    "Final Jev review remains escalated on broad integration risk."
+  ],
+  "patch": {
+    "path": ".scratch/mesh/codex-audit/recomp-overflow/evidence/ps2recomp-overflow.patch",
+    "bytes": 2880,
+    "sha256": "3b14131ae25ff79ec204e4bc0b0de383b19d43d7cd71bb1407802a6b793ca31e"
+  }
+}
