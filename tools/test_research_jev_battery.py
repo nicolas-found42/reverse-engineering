@@ -2,6 +2,8 @@
 import contextlib
 import io
 import json
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -62,6 +64,13 @@ class BatteryFailures(unittest.TestCase):
         code, result, _ = self.invoke(probabilities={"supports": float("nan"), "contradicts": 0.0, "says_nothing": 0.0})
         self.assertEqual(code, 1)
         self.assertEqual(result["summary"]["invalid"], 1)
+
+    def test_malformed_response_is_still_invalid_under_optimised_python(self):
+        run = subprocess.run(
+            [sys.executable, "-O", "-m", "unittest", "test_research_jev_battery.BatteryFailures.test_malformed_distribution_is_not_success"],
+            cwd=Path(__file__).parent, capture_output=True, text=True, check=False,
+        )
+        self.assertEqual(run.returncode, 0, run.stderr)
 
     def test_uncertain_result_requires_review(self):
         code, result, _ = self.invoke(confidence=0.5)

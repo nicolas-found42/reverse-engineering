@@ -15,6 +15,11 @@ from pathlib import Path
 from typesafe_sdk import Choice, Noul, TypeSafeClient
 
 
+def check(condition: bool, what: str) -> None:
+    if not condition:
+        raise ValueError(f"malformed model response: {what}")
+
+
 def run(fixture, output):
     cases = json.loads(fixture.read_text())
     results = []
@@ -51,14 +56,15 @@ def run(fixture, output):
                 )
                 answer = response.answers["relation"]
                 probabilities = answer.probabilities
-                assert set(probabilities) == {"supports", "contradicts", "says_nothing"}
-                assert all(math.isfinite(v) and 0 <= v <= 1 for v in probabilities.values())
-                assert abs(sum(probabilities.values()) - 1) <= 0.02
-                assert answer.choice in probabilities
-                assert math.isfinite(answer.confidence) and 0 <= answer.confidence <= 1
+                # Explicit checks, not assert: assert is stripped under python -O and would let a malformed response count as valid.
+                check(set(probabilities) == {"supports", "contradicts", "says_nothing"}, "relation probability keys")
+                check(all(math.isfinite(v) and 0 <= v <= 1 for v in probabilities.values()), "relation probability range")
+                check(abs(sum(probabilities.values()) - 1) <= 0.02, "relation probability sum")
+                check(answer.choice in probabilities, "relation choice not among its options")
+                check(math.isfinite(answer.confidence) and 0 <= answer.confidence <= 1, "relation confidence range")
                 for question in ["ps2_validation", "overreach"]:
                     value = response.answers[question].noul
-                    assert math.isfinite(value) and 0 <= value <= 1
+                    check(math.isfinite(value) and 0 <= value <= 1, f"{question} noul range")
                 result = {
                     "id": case["id"], "source_url": case["source_url"],
                     "claim": case["claim"], "expected": case["expected"],
