@@ -1,0 +1,1014 @@
+{
+  "schema_version": 1,
+  "method": "Read .rel.text entries as ELF32LE (r_offset,r_info); for each bounded .text export table continue over a literal-zero pointer only when its exact text site has type R_MIPS_32 and symbol index 0; terminate only at a literal zero without that relocation. This is file-backed static arithmetic, not runtime binding.",
+  "input_count": 24,
+  "module_rows": [
+    {
+      "program": "CDVDFSV.irx",
+      "module_sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861",
+      "text_size": 22624,
+      "rel_text_r32_symbol0_count": 6,
+      "literal_export_links": 6,
+      "relocation_aware_export_links": 6,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "cdvdfsv",
+          "version": 257,
+          "table_text_offset": 21712,
+          "old_literal_link_count": 6,
+          "relocation_aware_link_count": 6,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 21756,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "CDVDMAN.irx",
+      "module_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca",
+      "text_size": 40944,
+      "rel_text_r32_symbol0_count": 113,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 113,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 113,
+      "tables": [
+        {
+          "library": "cdvdman",
+          "version": 257,
+          "table_text_offset": 39808,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 113,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "CDVDMAN.irx",
+              "module_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca",
+              "library": "cdvdman",
+              "version": 257,
+              "export_table_text_offset": 39808,
+              "ordinal": 0,
+              "text_site": 39828,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 40280,
+          "hidden_count": 113
+        }
+      ]
+    },
+    {
+      "program": "EESYNC.irx",
+      "module_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e",
+      "text_size": 640,
+      "rel_text_r32_symbol0_count": 6,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 6,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 6,
+      "tables": [
+        {
+          "library": "eesync",
+          "version": 257,
+          "table_text_offset": 400,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 6,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "EESYNC.irx",
+              "module_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e",
+              "library": "eesync",
+              "version": 257,
+              "export_table_text_offset": 400,
+              "ordinal": 0,
+              "text_site": 420,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 444,
+          "hidden_count": 6
+        }
+      ]
+    },
+    {
+      "program": "FILEIO.irx",
+      "module_sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824",
+      "text_size": 10736,
+      "rel_text_r32_symbol0_count": 0,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 0,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": []
+    },
+    {
+      "program": "IOMAN.irx",
+      "module_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c",
+      "text_size": 7776,
+      "rel_text_r32_symbol0_count": 35,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 35,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 35,
+      "tables": [
+        {
+          "library": "ioman",
+          "version": 260,
+          "table_text_offset": 7328,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 35,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "IOMAN.irx",
+              "module_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c",
+              "library": "ioman",
+              "version": 260,
+              "export_table_text_offset": 7328,
+              "ordinal": 0,
+              "text_site": 7348,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 7488,
+          "hidden_count": 35
+        }
+      ]
+    },
+    {
+      "program": "LOADCORE.irx",
+      "module_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38",
+      "text_size": 7568,
+      "rel_text_r32_symbol0_count": 28,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 28,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 28,
+      "tables": [
+        {
+          "library": "loadcore",
+          "version": 259,
+          "table_text_offset": 7344,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 28,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "LOADCORE.irx",
+              "module_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38",
+              "library": "loadcore",
+              "version": 259,
+              "export_table_text_offset": 7344,
+              "ordinal": 0,
+              "text_site": 7364,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 7476,
+          "hidden_count": 28
+        }
+      ]
+    },
+    {
+      "program": "LOADFILE.irx",
+      "module_sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f",
+      "text_size": 7168,
+      "rel_text_r32_symbol0_count": 0,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 0,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": []
+    },
+    {
+      "program": "MODLOAD.irx",
+      "module_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519",
+      "text_size": 12896,
+      "rel_text_r32_symbol0_count": 32,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 32,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 32,
+      "tables": [
+        {
+          "library": "modload",
+          "version": 262,
+          "table_text_offset": 11696,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 32,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "MODLOAD.irx",
+              "module_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519",
+              "library": "modload",
+              "version": 262,
+              "export_table_text_offset": 11696,
+              "ordinal": 0,
+              "text_site": 11716,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 11844,
+          "hidden_count": 32
+        }
+      ]
+    },
+    {
+      "program": "ROMDRV.irx",
+      "module_sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a",
+      "text_size": 2128,
+      "rel_text_r32_symbol0_count": 6,
+      "literal_export_links": 6,
+      "relocation_aware_export_links": 6,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "romdrv",
+          "version": 513,
+          "table_text_offset": 1888,
+          "old_literal_link_count": 6,
+          "relocation_aware_link_count": 6,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 1932,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "SIFCMD.irx",
+      "module_sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f",
+      "text_size": 6960,
+      "rel_text_r32_symbol0_count": 32,
+      "literal_export_links": 32,
+      "relocation_aware_export_links": 32,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "sifcmd",
+          "version": 257,
+          "table_text_offset": 6432,
+          "old_literal_link_count": 32,
+          "relocation_aware_link_count": 32,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 6580,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "SIFMAN.irx",
+      "module_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec",
+      "text_size": 4160,
+      "rel_text_r32_symbol0_count": 36,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 36,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 36,
+      "tables": [
+        {
+          "library": "sifman",
+          "version": 257,
+          "table_text_offset": 3872,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 36,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "SIFMAN.irx",
+              "module_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec",
+              "library": "sifman",
+              "version": 257,
+              "export_table_text_offset": 3872,
+              "ordinal": 0,
+              "text_site": 3892,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 4036,
+          "hidden_count": 36
+        }
+      ]
+    },
+    {
+      "program": "STDIO.irx",
+      "module_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081",
+      "text_size": 1856,
+      "rel_text_r32_symbol0_count": 15,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 15,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 15,
+      "tables": [
+        {
+          "library": "stdio",
+          "version": 259,
+          "table_text_offset": 80,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 15,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "STDIO.irx",
+              "module_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081",
+              "library": "stdio",
+              "version": 259,
+              "export_table_text_offset": 80,
+              "ordinal": 0,
+              "text_site": 100,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 160,
+          "hidden_count": 15
+        }
+      ]
+    },
+    {
+      "program": "SYSCLIB.irx",
+      "module_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447",
+      "text_size": 6400,
+      "rel_text_r32_symbol0_count": 58,
+      "literal_export_links": 15,
+      "relocation_aware_export_links": 58,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 43,
+      "tables": [
+        {
+          "library": "sysclib",
+          "version": 259,
+          "table_text_offset": 128,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 43,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "SYSCLIB.irx",
+              "module_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447",
+              "library": "sysclib",
+              "version": 259,
+              "export_table_text_offset": 128,
+              "ordinal": 0,
+              "text_site": 148,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 320,
+          "hidden_count": 43
+        },
+        {
+          "library": "stdio",
+          "version": 259,
+          "table_text_offset": 336,
+          "old_literal_link_count": 15,
+          "relocation_aware_link_count": 15,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 416,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "THREADMAN.irx",
+      "module_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b",
+      "text_size": 27808,
+      "rel_text_r32_symbol0_count": 123,
+      "literal_export_links": 74,
+      "relocation_aware_export_links": 123,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 49,
+      "tables": [
+        {
+          "library": "thbase",
+          "version": 258,
+          "table_text_offset": 26544,
+          "old_literal_link_count": 3,
+          "relocation_aware_link_count": 52,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "THREADMAN.irx",
+              "module_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b",
+              "library": "thbase",
+              "version": 258,
+              "export_table_text_offset": 26544,
+              "ordinal": 3,
+              "text_site": 26576,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 26772,
+          "hidden_count": 49
+        },
+        {
+          "library": "thevent",
+          "version": 257,
+          "table_text_offset": 26780,
+          "old_literal_link_count": 15,
+          "relocation_aware_link_count": 15,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 26860,
+          "hidden_count": 0
+        },
+        {
+          "library": "thsemap",
+          "version": 257,
+          "table_text_offset": 26868,
+          "old_literal_link_count": 13,
+          "relocation_aware_link_count": 13,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 26940,
+          "hidden_count": 0
+        },
+        {
+          "library": "thmsgbx",
+          "version": 257,
+          "table_text_offset": 26948,
+          "old_literal_link_count": 13,
+          "relocation_aware_link_count": 13,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 27020,
+          "hidden_count": 0
+        },
+        {
+          "library": "thfpool",
+          "version": 257,
+          "table_text_offset": 27028,
+          "old_literal_link_count": 13,
+          "relocation_aware_link_count": 13,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 27100,
+          "hidden_count": 0
+        },
+        {
+          "library": "thvpool",
+          "version": 257,
+          "table_text_offset": 27108,
+          "old_literal_link_count": 13,
+          "relocation_aware_link_count": 13,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 27180,
+          "hidden_count": 0
+        },
+        {
+          "library": "thrdman",
+          "version": 258,
+          "table_text_offset": 27264,
+          "old_literal_link_count": 4,
+          "relocation_aware_link_count": 4,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 27300,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "TIMEMANI.irx",
+      "module_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35",
+      "text_size": 3760,
+      "rel_text_r32_symbol0_count": 28,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 28,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 28,
+      "tables": [
+        {
+          "library": "timrman",
+          "version": 259,
+          "table_text_offset": 3488,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 28,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "TIMEMANI.irx",
+              "module_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35",
+              "library": "timrman",
+              "version": 259,
+              "export_table_text_offset": 3488,
+              "ordinal": 0,
+              "text_site": 3508,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 3620,
+          "hidden_count": 28
+        }
+      ]
+    },
+    {
+      "program": "LGDEV.IRX",
+      "module_sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f",
+      "text_size": 40064,
+      "rel_text_r32_symbol0_count": 19,
+      "literal_export_links": 19,
+      "relocation_aware_export_links": 19,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "lgdev",
+          "version": 264,
+          "table_text_offset": 39360,
+          "old_literal_link_count": 19,
+          "relocation_aware_link_count": 19,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 39456,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "LIBSD.IRX",
+      "module_sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10",
+      "text_size": 18496,
+      "rel_text_r32_symbol0_count": 34,
+      "literal_export_links": 34,
+      "relocation_aware_export_links": 34,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "libsd",
+          "version": 261,
+          "table_text_offset": 0,
+          "old_literal_link_count": 34,
+          "relocation_aware_link_count": 34,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 156,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "MCMAN.IRX",
+      "module_sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5",
+      "text_size": 72272,
+      "rel_text_r32_symbol0_count": 61,
+      "literal_export_links": 61,
+      "relocation_aware_export_links": 61,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "mcman",
+          "version": 519,
+          "table_text_offset": 0,
+          "old_literal_link_count": 61,
+          "relocation_aware_link_count": 61,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 264,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "MCSERV.IRX",
+      "module_sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2",
+      "text_size": 4704,
+      "rel_text_r32_symbol0_count": 8,
+      "literal_export_links": 8,
+      "relocation_aware_export_links": 8,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "mcserv",
+          "version": 513,
+          "table_text_offset": 0,
+          "old_literal_link_count": 8,
+          "relocation_aware_link_count": 8,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 52,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "PADMAN.IRX",
+      "module_sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f",
+      "text_size": 32192,
+      "rel_text_r32_symbol0_count": 18,
+      "literal_export_links": 18,
+      "relocation_aware_export_links": 18,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "padman",
+          "version": 515,
+          "table_text_offset": 31424,
+          "old_literal_link_count": 18,
+          "relocation_aware_link_count": 18,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 31516,
+          "hidden_count": 0
+        }
+      ]
+    },
+    {
+      "program": "SDRDRV.IRX",
+      "module_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+      "text_size": 4400,
+      "rel_text_r32_symbol0_count": 6,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 6,
+      "relocation_backed_zero_export_pointers": 1,
+      "formerly_hidden_export_entries": 6,
+      "tables": [
+        {
+          "library": "sdrdrv",
+          "version": 257,
+          "table_text_offset": 3744,
+          "old_literal_link_count": 0,
+          "relocation_aware_link_count": 6,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "SDRDRV.IRX",
+              "module_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+              "library": "sdrdrv",
+              "version": 257,
+              "export_table_text_offset": 3744,
+              "ordinal": 0,
+              "text_site": 3764,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 3788,
+          "hidden_count": 6
+        }
+      ]
+    },
+    {
+      "program": "SIO2MAN.IRX",
+      "module_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+      "text_size": 3856,
+      "rel_text_r32_symbol0_count": 63,
+      "literal_export_links": 4,
+      "relocation_aware_export_links": 63,
+      "relocation_backed_zero_export_pointers": 2,
+      "formerly_hidden_export_entries": 59,
+      "tables": [
+        {
+          "library": "sio2man",
+          "version": 515,
+          "table_text_offset": 3120,
+          "old_literal_link_count": 4,
+          "relocation_aware_link_count": 63,
+          "relocation_backed_zero_sites": [
+            {
+              "program": "SIO2MAN.IRX",
+              "module_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+              "library": "sio2man",
+              "version": 515,
+              "export_table_text_offset": 3120,
+              "ordinal": 4,
+              "text_site": 3156,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            },
+            {
+              "program": "SIO2MAN.IRX",
+              "module_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+              "library": "sio2man",
+              "version": 515,
+              "export_table_text_offset": 3120,
+              "ordinal": 27,
+              "text_site": 3248,
+              "raw_addend": 0,
+              "relocation_section": ".rel.text",
+              "relocation_type": "R_MIPS_32",
+              "relocation_type_number": 2,
+              "symbol_index": 0,
+              "synthetic_base_example": 4096,
+              "resulting_pointer_at_example_base": 4096
+            }
+          ],
+          "first_unrelocated_terminator_text_site": 3392,
+          "hidden_count": 59
+        }
+      ]
+    },
+    {
+      "program": "STREAM.IRX",
+      "module_sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3",
+      "text_size": 141632,
+      "rel_text_r32_symbol0_count": 0,
+      "literal_export_links": 0,
+      "relocation_aware_export_links": 0,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": []
+    },
+    {
+      "program": "USBD.IRX",
+      "module_sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255",
+      "text_size": 25296,
+      "rel_text_r32_symbol0_count": 19,
+      "literal_export_links": 19,
+      "relocation_aware_export_links": 19,
+      "relocation_backed_zero_export_pointers": 0,
+      "formerly_hidden_export_entries": 0,
+      "tables": [
+        {
+          "library": "usbd",
+          "version": 257,
+          "table_text_offset": 0,
+          "old_literal_link_count": 19,
+          "relocation_aware_link_count": 19,
+          "relocation_backed_zero_sites": [],
+          "first_unrelocated_terminator_text_site": 96,
+          "hidden_count": 0
+        }
+      ]
+    }
+  ],
+  "zero_export_sites": [
+    {
+      "program": "CDVDMAN.irx",
+      "module_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca",
+      "library": "cdvdman",
+      "version": 257,
+      "export_table_text_offset": 39808,
+      "ordinal": 0,
+      "text_site": 39828,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "EESYNC.irx",
+      "module_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e",
+      "library": "eesync",
+      "version": 257,
+      "export_table_text_offset": 400,
+      "ordinal": 0,
+      "text_site": 420,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "IOMAN.irx",
+      "module_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c",
+      "library": "ioman",
+      "version": 260,
+      "export_table_text_offset": 7328,
+      "ordinal": 0,
+      "text_site": 7348,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "LOADCORE.irx",
+      "module_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38",
+      "library": "loadcore",
+      "version": 259,
+      "export_table_text_offset": 7344,
+      "ordinal": 0,
+      "text_site": 7364,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "MODLOAD.irx",
+      "module_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519",
+      "library": "modload",
+      "version": 262,
+      "export_table_text_offset": 11696,
+      "ordinal": 0,
+      "text_site": 11716,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "SIFMAN.irx",
+      "module_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec",
+      "library": "sifman",
+      "version": 257,
+      "export_table_text_offset": 3872,
+      "ordinal": 0,
+      "text_site": 3892,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "STDIO.irx",
+      "module_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081",
+      "library": "stdio",
+      "version": 259,
+      "export_table_text_offset": 80,
+      "ordinal": 0,
+      "text_site": 100,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "SYSCLIB.irx",
+      "module_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447",
+      "library": "sysclib",
+      "version": 259,
+      "export_table_text_offset": 128,
+      "ordinal": 0,
+      "text_site": 148,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "THREADMAN.irx",
+      "module_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b",
+      "library": "thbase",
+      "version": 258,
+      "export_table_text_offset": 26544,
+      "ordinal": 3,
+      "text_site": 26576,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "TIMEMANI.irx",
+      "module_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35",
+      "library": "timrman",
+      "version": 259,
+      "export_table_text_offset": 3488,
+      "ordinal": 0,
+      "text_site": 3508,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "SDRDRV.IRX",
+      "module_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+      "library": "sdrdrv",
+      "version": 257,
+      "export_table_text_offset": 3744,
+      "ordinal": 0,
+      "text_site": 3764,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "SIO2MAN.IRX",
+      "module_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+      "library": "sio2man",
+      "version": 515,
+      "export_table_text_offset": 3120,
+      "ordinal": 4,
+      "text_site": 3156,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    },
+    {
+      "program": "SIO2MAN.IRX",
+      "module_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+      "library": "sio2man",
+      "version": 515,
+      "export_table_text_offset": 3120,
+      "ordinal": 27,
+      "text_site": 3248,
+      "raw_addend": 0,
+      "relocation_section": ".rel.text",
+      "relocation_type": "R_MIPS_32",
+      "relocation_type_number": 2,
+      "symbol_index": 0,
+      "synthetic_base_example": 4096,
+      "resulting_pointer_at_example_base": 4096
+    }
+  ],
+  "totals": {
+    "literal_export_links": 296,
+    "relocation_aware_export_links": 746,
+    "relocation_backed_zero_export_pointers": 13,
+    "formerly_hidden_export_entries": 450,
+    "rel_text_r32_symbol0_records": 746
+  },
+  "claim_limits": [
+    "A raw pointer value of zero is classified as a link only when its exact .text word has an R_MIPS_32 relocation with symbol index zero.",
+    "The chosen 0x1000 value is only an illustrative synthetic load base and not a runtime address.",
+    "The audit does not prove export API semantics, module registration, load order, or runtime import resolution."
+  ]
+}

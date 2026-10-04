@@ -1,0 +1,266 @@
+{
+  "schema_version": 1,
+  "scope": "Raw ELF relocation sites that distinguish null export terminators from relocation-backed zero pointer addends.",
+  "readme": "README.md",
+  "metadata_result": "zero-export-site-audit.json",
+  "jev_receipt": "jev-zero-export-verify.json",
+  "scratch_script": ".scratch/mesh/codex-audit/iop-export-relocation-audit/audit_zero_export_sites.py",
+  "scratch_script_sha256": "8c0c85206e81ebadcbf5313395fdba41a696d48f0972a411456ea32a9d3dc027",
+  "source_files": [
+    {
+      "path": "tools/ps2_irx.py",
+      "sha256": "0ddbe0bcfc3c7c6e770139822096c6a5f4890baf88ecca31eb85fece92ec8f7f"
+    },
+    {
+      "path": "tools/ps2_executables.py",
+      "sha256": "6872b9d9af5477fa81a87aab7c326b9f91a270412835145329e5aefccf44461d"
+    },
+    {
+      "path": "tools/ps2_irx_relocations.py",
+      "sha256": "d1133bd6e9a1502979a08f92d71889cab82d8ef6a52f496588bb080b4393f4c7"
+    },
+    {
+      "path": "tools/ps2_irx_crosswalk.py",
+      "sha256": "8397f59116c3c97c23794fb715f436ccf965129a6a1a7754c2b0656ffe32e6a4"
+    }
+  ],
+  "independent_relocation_aware_result": {
+    "path": ".scratch/mesh/codex-root/iop-crosswalk-relocated-corpus-01/20261004T131815Z-9f7349ab06714a37b86fbca21b751331/result.json",
+    "sha256": "15e09fae30c5691e70ad4311df4f8292adabac378755fdaac30eb2b7c56f6c43",
+    "status": "pass",
+    "module_count": 24,
+    "export_entries": 746,
+    "input_inventory_sha256": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2",
+    "input_boundaries_sha256": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102"
+  },
+  "totals": {
+    "literal_export_links": 296,
+    "relocation_aware_export_links": 746,
+    "relocation_backed_zero_export_pointers": 13,
+    "formerly_hidden_export_entries": 450,
+    "rel_text_r32_symbol0_records": 746
+  },
+  "input_modules": [
+    {
+      "program": "CDVDFSV.irx",
+      "sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861"
+    },
+    {
+      "program": "CDVDMAN.irx",
+      "sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca"
+    },
+    {
+      "program": "EESYNC.irx",
+      "sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e"
+    },
+    {
+      "program": "FILEIO.irx",
+      "sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824"
+    },
+    {
+      "program": "IOMAN.irx",
+      "sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c"
+    },
+    {
+      "program": "LOADCORE.irx",
+      "sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38"
+    },
+    {
+      "program": "LOADFILE.irx",
+      "sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f"
+    },
+    {
+      "program": "MODLOAD.irx",
+      "sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519"
+    },
+    {
+      "program": "ROMDRV.irx",
+      "sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a"
+    },
+    {
+      "program": "SIFCMD.irx",
+      "sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f"
+    },
+    {
+      "program": "SIFMAN.irx",
+      "sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec"
+    },
+    {
+      "program": "STDIO.irx",
+      "sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081"
+    },
+    {
+      "program": "SYSCLIB.irx",
+      "sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447"
+    },
+    {
+      "program": "THREADMAN.irx",
+      "sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b"
+    },
+    {
+      "program": "TIMEMANI.irx",
+      "sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35"
+    },
+    {
+      "program": "LGDEV.IRX",
+      "sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f"
+    },
+    {
+      "program": "LIBSD.IRX",
+      "sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10"
+    },
+    {
+      "program": "MCMAN.IRX",
+      "sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5"
+    },
+    {
+      "program": "MCSERV.IRX",
+      "sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2"
+    },
+    {
+      "program": "PADMAN.IRX",
+      "sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f"
+    },
+    {
+      "program": "SDRDRV.IRX",
+      "sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2"
+    },
+    {
+      "program": "SIO2MAN.IRX",
+      "sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708"
+    },
+    {
+      "program": "STREAM.IRX",
+      "sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3"
+    },
+    {
+      "program": "USBD.IRX",
+      "sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255"
+    }
+  ],
+  "status": "bounded raw metadata/site audit; not an API catalog, module loader proof, or runtime binding claim",
+  "listing_correlation": {
+    "metadata_result": "relocated-export-listing-correlation.json",
+    "jev_receipt": "jev-relocated-export-listing-verify.json",
+    "scratch_script": ".scratch/mesh/codex-audit/iop-export-relocation-audit/correlate_relocated_exports.py",
+    "scratch_script_sha256": "2d4f3085a326097271b6fe98db4127946496305706e4802524468f06de03a87e",
+    "metadata_sha256": "65b3ad3c29a8ccbe3b96bd56051552dfc852759ab0de43a931f266b2cc207cde",
+    "jev_receipt_sha256": "f58b925d933f56d0b8aa7ff7fbfc1685fdf4adb8e02d8a5443979e022cae4178",
+    "listing_source": "same-hash strict Ghidra coverage receipts at .scratch/mesh/codex-audit/iop-entry-recovery/strict-coverage",
+    "totals": {
+      "export_entries": 746,
+      "literal_visible": 296,
+      "relocation_recovered": 450,
+      "unique_module_target_pairs": 555,
+      "duplicate_entries": 191,
+      "saved_function_entry_targets": 427,
+      "unowned_instruction_targets": 162,
+      "undefined_targets": 157,
+      "recovered_saved_function_entry_targets": 246,
+      "recovered_unowned_instruction_targets": 114,
+      "recovered_undefined_targets": 90
+    },
+    "claim_limit": "Exact listing-range classification only. It does not prove correct instruction decoding, callability, export symbol identity, runtime load address, or registration."
+  },
+  "target_recovery_union": {
+    "metadata_result": "target-recovery-union.json",
+    "metadata_sha256": "b54d809e0c38088e4fcbb6fe02565f8e09d9d11528340d9f83eb12a15eab03be",
+    "jev_receipt": "jev-target-recovery-verify.json",
+    "jev_receipt_sha256": "c54a0e3bb44062164376fe0db5dac96528287fec60f872c3eb598ef32288030a",
+    "scratch_result": ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/full-persistent",
+    "scratch_run_manifest_sha256": "48f43b6ca829929bc578922a3d35e34468381057045d92ce17c09f147f69898d",
+    "static_union_receipt_sha256": "028e1d508f57cd99495b5a9f32c4e0a04e7a908a8450ecb515a76ec9af7f153e",
+    "C_hash_audit_sha256": "b86d9c01d20cd68b9bd89af9dfda821eac4549ae778a592905c592f533b1f08e",
+    "summary": {
+      "modules": 24,
+      "baseline_functions": 2241,
+      "final_functions": 2388,
+      "provisional_candidates": 147,
+      "new_instruction_starts": 1180,
+      "new_instruction_bytes": 4720,
+      "C_generated": 2388,
+      "C_failed": 0
+    },
+    "limitations": "Provisional static CFG candidates only; no runtime invocation, original identity/boundary, registration, or semantic equivalence claim.",
+    "guard_revision": {
+      "script": "tools/ghidra/experimental/CreateIopUndefinedExportCandidates.java",
+      "script_sha256": "3a7b959696748043de57d0c9755310db391d31a8b25952800f7759024ddcb88d",
+      "negative_receipt": "negative-multiseed-guard.json",
+      "negative_receipt_sha256": "924e731b5c32141c02dc77e9598ca11b40a28c6cfb811bcb5f3eb29c488a5781",
+      "jev_gate": "jev-single-seed-guard-gate.json",
+      "jev_gate_sha256": "5979f88259ef2ad4a6dd9638790eca90d37e84790c290c6d693892f704003cd0",
+      "jev_gate_action": "escalate"
+    }
+  },
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 8200,
+      "sha256": "6466ffcad99cfeb6fab805a882c18a6ce16fc45ab3aa54db1ba1487a8526f02d"
+    },
+    {
+      "path": "jev-relocated-export-listing-verify.json",
+      "bytes": 1568,
+      "sha256": "f58b925d933f56d0b8aa7ff7fbfc1685fdf4adb8e02d8a5443979e022cae4178"
+    },
+    {
+      "path": "jev-single-seed-guard-gate.json",
+      "bytes": 3829,
+      "sha256": "5979f88259ef2ad4a6dd9638790eca90d37e84790c290c6d693892f704003cd0"
+    },
+    {
+      "path": "jev-target-recovery-verify.json",
+      "bytes": 3455,
+      "sha256": "c54a0e3bb44062164376fe0db5dac96528287fec60f872c3eb598ef32288030a"
+    },
+    {
+      "path": "jev-zero-export-verify.json",
+      "bytes": 1388,
+      "sha256": "4f9bcd0fd55f875dca735bf9c8e1d606ce99013920079c61384d49b95eeb0227"
+    },
+    {
+      "path": "negative-multiseed-guard.json",
+      "bytes": 2503,
+      "sha256": "924e731b5c32141c02dc77e9598ca11b40a28c6cfb811bcb5f3eb29c488a5781"
+    },
+    {
+      "path": "relocated-export-listing-correlation.json",
+      "bytes": 279317,
+      "sha256": "65b3ad3c29a8ccbe3b96bd56051552dfc852759ab0de43a931f266b2cc207cde"
+    },
+    {
+      "path": "root-union-validation.json",
+      "bytes": 9723,
+      "sha256": "edf59eb10fc3dab8be7d06ecbdefd23c726a67c45c7fb49505f4d1f8fa0cffa3"
+    },
+    {
+      "path": "target-recovery-union.json",
+      "bytes": 17098,
+      "sha256": "b54d809e0c38088e4fcbb6fe02565f8e09d9d11528340d9f83eb12a15eab03be"
+    },
+    {
+      "path": "zero-export-site-audit.json",
+      "bytes": 35073,
+      "sha256": "e2c2361e1d7e8c166d5123b530e1a3f353ae837393cee9192bd13d355b67daf7"
+    }
+  ],
+  "current_source_files": [
+    {
+      "path": "tools/ghidra/experimental/CreateIopExportTargetCandidates.java",
+      "sha256": "f310a31fb5856e6c780b6cc0702c14cb053318f4a01afd75c9ae6931a6993189"
+    },
+    {
+      "path": "tools/ghidra/experimental/CreateIopUndefinedExportCandidates.java",
+      "sha256": "3a7b959696748043de57d0c9755310db391d31a8b25952800f7759024ddcb88d"
+    },
+    {
+      "path": "tools/ghidra/experimental/ExportIopCoverage.java",
+      "sha256": "8218203032c4f9b2338c3ad8fde427ae080d4a742e9783f44d3517c43535c4db"
+    }
+  ],
+  "historical_source_hash_disposition": "The target union was generated with pre-guard undefined-candidate SHA 9afecf3c...; current guard SHA 3a7b9596... was separately checked with a rejected multi-seed invocation. No union regeneration is claimed.",
+  "root_validation_script": {
+    "path": ".scratch/mesh/codex-root/check_iop_union_persistence.py",
+    "sha256": "c5166f4be5629f15c416e9f3860df752006213a8e79c4eeb84cf3b798662f9b6"
+  }
+}

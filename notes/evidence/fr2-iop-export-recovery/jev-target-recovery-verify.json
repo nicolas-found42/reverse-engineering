@@ -1,0 +1,118 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+    "verified": 6,
+    "contradicted": 0,
+    "unsupported": 1,
+    "needs_review": 1
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "claim": "The final static union has 24 modules and 2,388 functions, compared with 2,241 baseline functions.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "says_nothing": 0,
+        "contradicts": 0
+      },
+      "confidence": 1,
+      "action": "auto",
+      "supporting_evidence": "static-summary",
+      "same_subject": 0.96
+    },
+    {
+      "id": "claim1",
+      "claim": "The 147 provisional candidate functions comprise 13 metadata-entry targets, 40 previously-decoded unowned export targets, and 94 bounded candidates from undefined export targets.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "says_nothing": 0,
+        "contradicts": 0
+      },
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "static-summary",
+      "same_subject": 0.93
+    },
+    {
+      "id": "claim2",
+      "claim": "Of 95 unique undefined export target seeds, 94 were accepted and one SYSCLIB seed at text offset 0x1004 was rejected after bounded flow collided with defined data at 0x1080.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "says_nothing": 0,
+        "contradicts": 0
+      },
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "rejection",
+      "same_subject": 0.89
+    },
+    {
+      "id": "claim3",
+      "claim": "The union adds 1,180 instruction starts (4,720 bytes); its reported static verification passes, and a separate audit found no function-body range overlap.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.99,
+        "says_nothing": 0.01,
+        "contradicts": 0
+      },
+      "confidence": 0.97,
+      "action": "auto",
+      "supporting_evidence": "static-summary",
+      "same_subject": 0.86
+    },
+    {
+      "id": "claim4",
+      "claim": "The final C export generated 2,388 of 2,388 functions with zero failures.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "says_nothing": 0,
+        "contradicts": 0
+      },
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "static-summary",
+      "same_subject": 0.95
+    },
+    {
+      "id": "claim5",
+      "claim": "Nine old C artifact hashes changed; the evidence explicitly does not establish behavioral equivalence for those changes.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "says_nothing": 0,
+        "contradicts": 0
+      },
+      "confidence": 1,
+      "action": "auto",
+      "supporting_evidence": "old-c-audit",
+      "same_subject": 0.95
+    },
+    {
+      "id": "claim6",
+      "claim": "The evidence proves runtime invocation or original symbol identity of every provisional target.",
+      "verdict": "unsupported",
+      "relation_verdict": "contradicted",
+      "probabilities": {
+        "supports": 0,
+        "says_nothing": 0,
+        "contradicts": 1
+      },
+      "confidence": 1,
+      "action": "review",
+      "supporting_evidence": "limits",
+      "same_subject": 0.47
+    }
+  ],
+  "usage": {
+    "input_tokens": 3399,
+    "output_tokens": 840
+  }
+}

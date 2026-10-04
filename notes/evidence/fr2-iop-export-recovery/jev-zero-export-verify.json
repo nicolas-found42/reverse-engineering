@@ -1,0 +1,14 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "claims": [
+    {"claim": "In the 24 pinned module inputs, 13 literal-zero words at export-pointer positions are each exact .rel.text relocation sites with r_info type R_MIPS_32 and symbol index zero.", "verdict": "verified", "confidence": 0.97},
+    {"claim": "The old literal parser stops at those relocated zero words, hiding 450 later export entries; continuing through only those relocation-backed zeros produces 746 entries versus 296 literal entries.", "verdict": "verified", "confidence": 0.99},
+    {"claim": "The independently computed list of 13 zero export sites matches the pinned relocation-aware crosswalk result by module SHA-256 and site offset.", "verdict": "verified", "confidence": 1.0},
+    {"claim": "A zero pointer with R_MIPS_32 symbol zero becomes the explicitly chosen synthetic base in the current byte model; this does not prove the runtime base or export API meaning.", "verdict": "verified", "confidence": 1.0}
+  ],
+  "summary": {"verified": 4, "contradicted": 0, "unsupported": 0, "needs_review": 0},
+  "usage": {"input_tokens": 2600, "output_tokens": 503},
+  "disposition": "Judgment supports the bounded interpretation only. Deterministic ELF site arithmetic and hash-matched cross-check are the proof; runtime loading, API semantics, and binding remain unproved."
+}
