@@ -29,3 +29,36 @@ The first read-only CFG report for `00200d10` had SHA-256 `773d149608167f900e898
 The refreshed 3842 crosswalk and current read-only follow-on proposals are in [next-seeds-3842.md](next-seeds-3842.md). They do not meet the original defined/unowned-target priority category and do not justify a new Ghidra mutation without a separate guard review.
 
 Bounded results are now saved here: [reconciliation](00200d10-reconciliation.json), [root validation](root-3842-validation.json), [verifier summary](3842-verifier-summary.json), and [exact command record](00200d10-commands.md). The generated C, full instruction inventories, original ELF and Ghidra projects remain in ignored local storage. The root recovered both historical gate invocation/result pairs; the preflight explains the unresolved older source argument and the incorrect historical gate tests-count.
+
+## Later guarded checkpoints (3,843 to 4,718 functions)
+
+Each bundle records one isolated transaction on a byte-identical Ghidra project copy, the independent re-derivation of its config from the raw ELF, the read-only re-export, and a reconciliation against the pinned previous export. All are provisional static candidates; none claims original identity, behavior or runtime reachability. Single-seed bundles use guards V3/V4 (`tools/ghidra/experimental/CreateEeCandidateV3.java`, `...V4.java`); batch bundles use V5. Pipeline scripts are recorded under `tools/ghidra/experimental/pipeline/`.
+
+| Function count after | Bundle | Functions added |
+| ---: | --- | ---: |
+| 3,844 | [`00200e70-candidate`](00200e70-candidate/README.md) | 1 |
+| 3,845 | [`001ff038-candidate`](001ff038-candidate/README.md) | 1 |
+| 3,846 | [`001feb80-candidate`](001feb80-candidate/README.md) | 1 |
+| 3,847 | [`001ff270-candidate`](001ff270-candidate/README.md) | 1 |
+| 3,848 | [`001ff140-candidate`](001ff140-candidate/README.md) | 1 |
+| 3,849 | [`001ff460-candidate`](001ff460-candidate/README.md) | 1 |
+| 3,850 | [`001ff520-candidate`](001ff520-candidate/README.md) | 1 |
+| 3,851 | [`001ffbf0-candidate`](001ffbf0-candidate/README.md) | 1 |
+| 3,852 | [`001fed80-candidate`](001fed80-candidate/README.md) | 1 |
+| 3,853 | [`001ff9c8-candidate`](001ff9c8-candidate/README.md) | 1 |
+| 3,854 | [`00200408-candidate`](00200408-candidate/README.md) | 1 |
+| 3,855 | [`001fef28-candidate`](001fef28-candidate/README.md) | 1 |
+| 3,856 | [`001ffec8-candidate`](001ffec8-candidate/README.md) | 1 |
+| 3,857 | [`001fce10-candidate`](001fce10-candidate/README.md) | 1 |
+| 3,858 | [`001ffa50-candidate`](001ffa50-candidate/README.md) | 1 |
+| 3,859 | [`00201a48-candidate`](00201a48-candidate/README.md) | 1 |
+| 3,860 | [`001fd060-candidate`](001fd060-candidate/README.md) | 1 |
+| 3,861 | [`001fd768-candidate`](001fd768-candidate/README.md) | 1 |
+| 3,862 | [`002018d8-candidate`](002018d8-candidate/README.md) | 1 |
+| 3,863 | [`001feda0-candidate`](001feda0-candidate/README.md) | 1 |
+| 3,869 | [`batch-trial-candidates`](batch-trial-candidates/README.md) | 6 |
+| 4,346 | [`batch-all-1-candidates`](batch-all-1-candidates/README.md) | 477 |
+| 4,542 | [`batch-r2-candidates`](batch-r2-candidates/README.md) | 196 |
+| 4,718 | [`batch-r3-candidates`](batch-r3-candidates/README.md) | 176 |
+
+The three large batches add PS2Recomp function-table entries that were not saved functions. Their evidence per seed is table membership plus raw-word CFG validation; where available, direct JAL callers and non-call (address-taken) references into the entry are recorded and verified unchanged. In 96 saved functions' decompiled output (64, 26 and 6 across the three batches) address-of-label stores and pointer labels are now printed with the new function symbols (many are table-initializer functions storing code addresses), which is consistent with these being address-taken code but does not identify them. The V5 guard reviews escalated; see each bundle's `jev-review-*` receipts and root dispositions.
