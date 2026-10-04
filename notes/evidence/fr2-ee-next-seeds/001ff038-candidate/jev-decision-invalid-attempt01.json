@@ -1,0 +1,33 @@
+{
+  "tool": "jev_decide",
+  "arguments": {
+    "decision": "Choose the next read-only static candidate for a source-only proposal from the exact 3844-function export.",
+    "candidates": [
+      {
+        "id": "001ff038",
+        "description": "Prepare a bounded source-only proposal for entry 001ff038. One raw JAL from provisional function 00200d10; raw CFG over the old 264-byte maximum span reaches all nonzero words and one JR RA, with five zero words included; no computed transfers, unsupported branches, traps, escapes, or saved other references into the span."
+      },
+      {
+        "id": "gather_more",
+        "description": "Do not propose a candidate yet; gather additional independent evidence because 001ff038 has only one incoming call from a provisional caller."
+      }
+    ],
+    "evidence": "3844 export pins: ELF SHA 216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95; inventory SHA b23698a1e4e6bfb61f7d4ca9932b80971f1eb4527f57bb5219d14196586c4a9d; coverage SHA 2ff0ed89839dc6e4e26f7c8b93f1df7ee111f3c1205385e8c52f2640f13df1f0; 3844 functions. Exhaustive raw opcode2/opcode3 scan of saved function instructions finds exactly one transfer into undefined/unowned text: JAL at 00200dac to 001ff038 from candidate_ee_00200d10. Target remains undefined in 3844; raw word 27bdffa0 is nonzero. The 001ff038 source-comment interval [001ff038,001ff140) has 64 rows but is noncontiguous; its previous identified omitted words 001ff0a4 and 001ff0e8 are zero. Fresh raw CFG walk independently inspected all 66 words over that 264-byte maximum interval. It reaches all nonzero words, five zero words (including omitted slots), one JR RA at 001ff138 with delay word at 001ff13c, no computed call/jump, unsupported branch, trap, control transfer in delay slot, escaping edge, or unreachable nonzero word. The current export records one raw saved reference to the interval, from the provisional candidate caller. No baseline caller, function identity, runtime reachability, semantics, or complete boundaries are established. The JAL instruction inventory bytes match the raw ELF at the unique mapping VA 00100000 to file offset 0x1000.",
+    "priorities": "Prioritize exact raw ELF mapping and bounded structural evidence, while discounting provisional callers and any tool-generated interval hypothesis. Prefer further evidence over claiming function identity or semantics.",
+    "requirements": [
+      "The proposal must treat 001ff038 as a candidate address only, with no function-identity claim.",
+      "The proposal must retain all zero words inside the measured maximum span and keep them undecoded until transaction review.",
+      "The proposal must account for the sole incoming call being from a provisional function and lack of baseline callers.",
+      "The proposal must make no function mutation before separate parent review."
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Input validation error: Invalid arguments for tool jev_decide: candidates.0.id: Invalid string: must match pattern /^[a-z][a-z0-9_-]*$/, requirements: Too big: expected array to have <=3 items"
+      }
+    ],
+    "isError": true
+  }
+}

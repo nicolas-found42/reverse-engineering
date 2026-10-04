@@ -1,0 +1,29 @@
+{
+  "tool": "jev_verify",
+  "arguments": {
+    "claims": [
+      "For the exact ELF bytes in [001ff038,001ff140), the bounded raw decoder found 66 reachable words: 55 linear, 5 conditional branches, 5 JALs, and one JR RA; it found no recognized explicit trap, computed transfer, unsupported branch encoding, escape, or unreachable nonzero word.",
+      "All five zero words inside the candidate interval are reachable in the raw control-flow walk; the interval is 264 bytes and ends after the JR RA delay slot at 001ff13c, while 001ff140 lies outside it.",
+      "Only one current saved inventory reference enters the interval: the raw ELF-backed JAL at 00200dac from provisional function candidate_ee_00200d10 to entry 001ff038."
+    ],
+    "evidence": [
+      {
+        "id": "updated-cfg",
+        "text": "The updated raw decoder explicitly classifies SPECIAL function fields 12,13,48,49,50,51,52,54 and REGIMM rt fields 8,9,10,11,12,14 as trap; ADD/SUB/DADD/DSUB and ADDI/DADDI as arithmetic-trap-capable; JR/JALR as computed transfer unless exact JR RA; and rejects unsupported branch encodings. On the pinned span [001ff038,001ff140), the output has instruction_class_counts {call:5, conditional:5, linear:55, return:1}, no reject rows, no unreachable nonzero words, and zero words at 001ff084,001ff0a4,001ff0dc,001ff0e0,001ff0e8. The final reachable transfer is JR RA 03e00008 at 001ff138, with delay slot 27bd0060 at 001ff13c. 001ff140 has raw word 27bdff90 and is outside the interval."
+      },
+      {
+        "id": "updated-inventory",
+        "text": "In the pinned 3844 inventory, the complete saved reference scan into [001ff038,001ff140) has exactly one row: caller 00200d10, site 00200dac, raw word 0c07fc0e, reference type UNCONDITIONAL_CALL, target 001ff038. Its caller name is candidate_ee_00200d10. The original ELF word at the site matches inventory byte string and decodes to 001ff038. The target remains undefined and has no Ghidra function entry or defined instruction. No baseline caller."
+      }
+    ],
+    "auto_accept": 0.75
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.75,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 3,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"For the exact ELF bytes in [001ff038,001ff140), the bounded raw decoder found 66 reachable words: 55 linear, 5 conditional branches, 5 JALs, and one JR RA; it found no recognized explicit trap, computed transfer, unsupported branch encoding, escape, or unreachable nonzero word.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0.02,\n        \"supports\": 0.98\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"updated-cfg\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"All five zero words inside the candidate interval are reachable in the raw control-flow walk; the interval is 264 bytes and ends after the JR RA delay slot at 001ff13c, while 001ff140 lies outside it.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0.02,\n        \"supports\": 0.98\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"updated-cfg\",\n      \"same_subject\": 0.94\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Only one current saved inventory reference enters the interval: the raw ELF-backed JAL at 00200dac from provisional function candidate_ee_00200d10 to entry 001ff038.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"updated-inventory\",\n      \"same_subject\": 0.96\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1988,\n    \"output_tokens\": 319\n  }\n}"
+      }
+    ]
+  }
+}

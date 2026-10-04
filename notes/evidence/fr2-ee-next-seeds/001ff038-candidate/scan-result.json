@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "read_only_raw_direct_transfer_frontier_3844",
+  "pins": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "inventory_sha256": "b23698a1e4e6bfb61f7d4ca9932b80971f1eb4527f57bb5219d14196586c4a9d",
+    "coverage_sha256": "2ff0ed89839dc6e4e26f7c8b93f1df7ee111f3c1205385e8c52f2640f13df1f0",
+    "manifest_sha256": "1e3f425e7c1a653183a284a240b28f6ff2b2918250b1e1882b0dade4cf9c4ef4",
+    "inventory_count": 3844,
+    "mapping": "EE ELF .text VA 00100000 -> file offset 0x1000; range 00100000..00217bd3"
+  },
+  "previous_low_confidence_001ff038": {
+    "state_3844": "undefined",
+    "target_word": "27bdffa0",
+    "caller": "00200d10",
+    "caller_is_provisional": true,
+    "source_interval": "001ff038..001ff13f from PS2Recomp comments",
+    "prior_zero_holes": [
+      "001ff0a4",
+      "001ff0e8"
+    ],
+    "comment_rows_contiguous": false,
+    "conclusion": "still low confidence; 3844 export did not promote it, and caller is provisional; zero holes remain excluded pending independent raw CFG"
+  },
+  "undefined_or_unowned_direct_transfers": [
+    {
+      "op": "jal",
+      "target": "001ff038",
+      "state": "undefined",
+      "target_word": "27bdffa0",
+      "caller_count": 1,
+      "site_count": 1,
+      "callers": [
+        "00200d10"
+      ],
+      "sites": [
+        {
+          "caller": "00200d10",
+          "name": "candidate_ee_00200d10",
+          "site": "00200dac",
+          "word": "0c07fc0e",
+          "ref_types": [
+            "UNCONDITIONAL_CALL"
+          ]
+        }
+      ]
+    }
+  ],
+  "counts": {
+    "rows": 1,
+    "jal_targets": 1,
+    "j_targets": 0
+  }
+}

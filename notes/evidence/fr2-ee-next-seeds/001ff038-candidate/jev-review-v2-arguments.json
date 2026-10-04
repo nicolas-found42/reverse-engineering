@@ -1,0 +1,7 @@
+{
+  "tool": "jev_review",
+  "note": "Single call. The diff argument contained a prose summary of the diff, NOT the literal unified diff (the tool cannot read paths); the full diff was root-read separately before and after. Treat the review as a low-information advisory.",
+  "request_summary": "Guard V2 for single candidate_ee_001ff038 creation; requirements listed in the call.",
+  "diff_sha256_file": "v2-vs-e70.diff",
+  "tests_summary": "root Python port pass; root raw CFG checker pass; read-only Ghidra inspection of baseline copy (DEFAULT flow refs)"
+}

@@ -1,0 +1,30 @@
+{
+  "tool": "jev_verify",
+  "arguments": {
+    "claims": [
+      "In the 3844 Ghidra export, 001ff038 remains undefined and the only saved direct transfer into undefined or unowned .text is the JAL at 00200dac from candidate_ee_00200d10.",
+      "The JAL instruction at 00200dac maps to the original ELF bytes and decodes to target 001ff038.",
+      "A raw-word structural walk over the 264-byte interval [001ff038,001ff140) reached all nonzero words, including the five zero words as instructions/delay slots; it found a JR RA at 001ff138 and no computed transfer, unsupported branch, trap, escaping edge, or unreachable nonzero word.",
+      "The only saved caller of 001ff038 is provisional candidate_ee_00200d10; the evidence does not establish function identity, semantics, runtime reachability, or exact function boundaries."
+    ],
+    "evidence": [
+      {
+        "id": "3844-scan",
+        "text": "ELF SHA 216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95; inventory SHA b23698a1e4e6bfb61f7d4ca9932b80971f1eb4527f57bb5219d14196586c4a9d; coverage SHA 2ff0ed89839dc6e4e26f7c8b93f1df7ee111f3c1205385e8c52f2640f13df1f0; 3844 functions. The scan checked every saved function instruction's raw ELF word at VA 00100000 -> file offset 0x1000. Exactly one opcode-2/opcode-3 transfer from saved function instructions landed in undefined or unowned .text: JAL site 00200dac, word 0c07fc0e, target 001ff038, caller candidate_ee_00200d10. Inventory byte string matched ELF at the site. Target undefined, word at target 27bdffa0. No baseline caller."
+      },
+      {
+        "id": "001ff038-raw-cfg",
+        "text": "Maximum interval [001ff038,001ff140) is 264 bytes / 66 words, raw span SHA 16d48e8843225c3e399cb0b062641b0199c6870d685c79badaf65c4c3cf8c3a1. A bounded raw-word graph traversal from entry visited 66 words. It reached every nonzero word and zero words at 001ff084, 001ff0a4, 001ff0dc, 001ff0e0, 001ff0e8; only return site 001ff138 (JR RA), delay at 001ff13c. Edge list includes direct calls to 001ff270,001ffd70,001feb80,001fdb88,001fc4e0, conditional branches at 001ff098,001ff0a0,001ff0e4,001ff0ec,001ff108. No computed call/jump, unsupported branch encoding, syscall/break, delay control/trap, or out-of-range edge; no unreachable nonzero words. Source comments previously had 64 rows across same max interval and omitted zero words 001ff0a4 and 001ff0e8; comment rows are not proof of function bounds."
+      }
+    ],
+    "auto_accept": 0.75
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.75,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"In the 3844 Ghidra export, 001ff038 remains undefined and the only saved direct transfer into undefined or unowned .text is the JAL at 00200dac from candidate_ee_00200d10.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"contradicts\": 0.05,\n        \"supports\": 0.94\n      },\n      \"confidence\": 0.9,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"3844-scan\",\n      \"same_subject\": 0.9\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The JAL instruction at 00200dac maps to the original ELF bytes and decodes to target 001ff038.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0.01,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"3844-scan\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"A raw-word structural walk over the 264-byte interval [001ff038,001ff140) reached all nonzero words, including the five zero words as instructions/delay slots; it found a JR RA at 001ff138 and no computed transfer, unsupported branch, trap, escaping edge, or unreachable nonzero word.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0.15,\n        \"supports\": 0.85\n      },\n      \"confidence\": 0.77,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"001ff038-raw-cfg\",\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The only saved caller of 001ff038 is provisional candidate_ee_00200d10; the evidence does not establish function identity, semantics, runtime reachability, or exact function boundaries.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.03,\n        \"contradicts\": 0.02,\n        \"supports\": 0.95\n      },\n      \"confidence\": 0.93,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"3844-scan\",\n      \"same_subject\": 0.85\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2687,\n    \"output_tokens\": 480\n  }\n}"
+      }
+    ]
+  }
+}
