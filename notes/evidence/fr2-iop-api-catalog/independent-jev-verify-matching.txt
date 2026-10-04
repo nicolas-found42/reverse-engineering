@@ -1,0 +1,7 @@
+Exact Jev tool response summary (jev_verify, typesafe/jev-1.13, OpenRouter): verified=3, contradicted=0, unsupported=0, needs_review=1; auto_accept=.8.
+
+claim0: verified, confidence=.91, action=auto, P(says_nothing)=0, P(supports)=.94, P(contradicts)=.06: candidate_name requires exact library/version/ordinal.
+claim1: verified, confidence=.71, action=review, P(says_nothing)=.01, P(supports)=.8, P(contradicts)=.19: conflicting exact tables yield ambiguous and no name.
+claim2: verified, confidence=1, action=auto, P(says_nothing)=0, P(supports)=1, P(contradicts)=0: agreeing exact matches return candidate name, original_identity_verified=false, and source paths.
+
+Usage: input_tokens=1784, output_tokens=302.

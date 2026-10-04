@@ -159,7 +159,7 @@ def parse_irx(data: bytes, *, source: str | None = None) -> dict:
                  "size": text_section["size"]},
         "iopmod_section_type": f"0x{parsed['iopmod_section']['type']:08x}",
         "module": {"id_address": id_address, "entry_address": entry_address,
-                   "unknown": unknown, "text_bytes": text_bytes,
+                   "gp_offset": unknown, "unknown": unknown, "text_bytes": text_bytes,
                    "data_bytes": data_bytes, "bss_bytes": bss_bytes,
                    "version": version, "name": name_bytes.decode("ascii")},
         "imports": imports,
@@ -174,4 +174,5 @@ def parse_irx(data: bytes, *, source: str | None = None) -> dict:
             "No IRX relocations are applied or validated by this parser.",
         ],
     }
+    # Keep `unknown` as a compatibility alias for consumers of earlier receipts.
     return result

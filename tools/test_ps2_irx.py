@@ -49,6 +49,8 @@ class IrxParserTests(unittest.TestCase):
     def test_import_and_export_tables_preserve_offsets_and_numeric_indices(self):
         result = subject.parse_irx(minimal_elf(table_text()))
         self.assertEqual(result["module"]["name"], "test")
+        self.assertEqual(result["module"]["gp_offset"], 0)
+        self.assertEqual(result["module"]["unknown"], result["module"]["gp_offset"])
         self.assertEqual(result["imports"][0]["library"], "loadcore")
         self.assertEqual(result["imports"][0]["version"], 0x0101)
         self.assertEqual(result["imports"][0]["links"][0]["index"], 6)

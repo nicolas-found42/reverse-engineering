@@ -1,0 +1,967 @@
+{
+  "changed_model": {
+    "path": "tools/ps2_irx_relocations.py",
+    "sha256": "d1133bd6e9a1502979a08f92d71889cab82d8ef6a52f496588bb080b4393f4c7"
+  },
+  "changed_tests": {
+    "focused_status": "passed",
+    "focused_test_count": 12,
+    "path": "tools/test_ps2_irx_relocations.py",
+    "sha256": "be00d584bacc8caa3c7492801d0a0f9b2c437b55bf871ae0a56c019bf6b28c39"
+  },
+  "claim_limits": [
+    "No original module code executed.",
+    "Synthetic load base remains 0x1000 and does not establish a runtime allocation.",
+    "No claim that the game uses the pinned SDK loader revision or that the 24-file corpus is complete."
+  ],
+  "corpus_crosscheck": {
+    "all_24_satisfy_alloc_progbits_file_mapping_text_zero_mapping_and_iopmod_file_size_relationships": true,
+    "all_input_hashes_counts_and_extents_match_pinned_inventory": true,
+    "embedded_boundary_inventory": {
+      "path": ".scratch/mesh/codex-root/executable-boundaries-01.json",
+      "sha256": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102"
+    },
+    "embedded_count": 15,
+    "executable_inventory": {
+      "path": ".scratch/mesh/codex-root/executable-inventory-01.json",
+      "sha256": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2"
+    },
+    "max_pt_load_memory_bytes": 179776,
+    "module_count": 24,
+    "modules": [
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 176,
+            "size": 40064
+          },
+          {
+            "address": 40064,
+            "name": ".rodata",
+            "offset": 40240,
+            "size": 2608
+          },
+          {
+            "address": 42672,
+            "name": ".data",
+            "offset": 42848,
+            "size": 928
+          }
+        ],
+        "iopmod_bss_bytes": 1472,
+        "iopmod_data_bytes": 3536,
+        "iopmod_text_bytes": 40064,
+        "pt_load_file_size": 43600,
+        "pt_load_memory_size": 45072,
+        "relocation_counts": {
+          "2": 575,
+          "4": 646,
+          "5": 196,
+          "6": 196
+        },
+        "source": "games/ford-racing-2/extracted/IRX/LGDEV.IRX",
+        "source_sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 176,
+            "size": 18496
+          },
+          {
+            "address": 18496,
+            "name": ".rodata",
+            "offset": 18672,
+            "size": 464
+          },
+          {
+            "address": 18960,
+            "name": ".data",
+            "offset": 19136,
+            "size": 2288
+          }
+        ],
+        "iopmod_bss_bytes": 1632,
+        "iopmod_data_bytes": 2752,
+        "iopmod_text_bytes": 18496,
+        "pt_load_file_size": 21248,
+        "pt_load_memory_size": 22880,
+        "relocation_counts": {
+          "2": 93,
+          "4": 289,
+          "5": 219,
+          "6": 219
+        },
+        "source": "games/ford-racing-2/extracted/IRX/LIBSD.IRX",
+        "source_sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 72272
+          },
+          {
+            "address": 72272,
+            "name": ".rodata",
+            "offset": 72432,
+            "size": 464
+          },
+          {
+            "address": 72736,
+            "name": ".data",
+            "offset": 72896,
+            "size": 512
+          }
+        ],
+        "iopmod_bss_bytes": 86852,
+        "iopmod_data_bytes": 976,
+        "iopmod_text_bytes": 72272,
+        "pt_load_file_size": 73248,
+        "pt_load_memory_size": 160100,
+        "relocation_counts": {
+          "2": 115,
+          "4": 1189,
+          "5": 693,
+          "6": 693
+        },
+        "source": "games/ford-racing-2/extracted/IRX/MCMAN.IRX",
+        "source_sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 4704
+          },
+          {
+            "address": 4704,
+            "name": ".rodata",
+            "offset": 4864,
+            "size": 64
+          },
+          {
+            "address": 4768,
+            "name": ".data",
+            "offset": 4928,
+            "size": 32
+          }
+        ],
+        "iopmod_bss_bytes": 9376,
+        "iopmod_data_bytes": 96,
+        "iopmod_text_bytes": 4704,
+        "pt_load_file_size": 4800,
+        "pt_load_memory_size": 14176,
+        "relocation_counts": {
+          "2": 9,
+          "4": 139,
+          "5": 46,
+          "6": 46
+        },
+        "source": "games/ford-racing-2/extracted/IRX/MCSERV.IRX",
+        "source_sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 32192
+          },
+          {
+            "address": 32192,
+            "name": ".rodata",
+            "offset": 32352,
+            "size": 672
+          },
+          {
+            "address": 32864,
+            "name": ".data",
+            "offset": 33024,
+            "size": 64
+          }
+        ],
+        "iopmod_bss_bytes": 7248,
+        "iopmod_data_bytes": 736,
+        "iopmod_text_bytes": 32192,
+        "pt_load_file_size": 32928,
+        "pt_load_memory_size": 40176,
+        "relocation_counts": {
+          "2": 48,
+          "4": 671,
+          "5": 343,
+          "6": 343
+        },
+        "source": "games/ford-racing-2/extracted/IRX/PADMAN.IRX",
+        "source_sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 4400
+          },
+          {
+            "address": 4400,
+            "name": ".rodata",
+            "offset": 4560,
+            "size": 352
+          },
+          {
+            "address": 4752,
+            "name": ".data",
+            "offset": 4912,
+            "size": 48
+          }
+        ],
+        "iopmod_bss_bytes": 1896,
+        "iopmod_data_bytes": 400,
+        "iopmod_text_bytes": 4400,
+        "pt_load_file_size": 4800,
+        "pt_load_memory_size": 6696,
+        "relocation_counts": {
+          "2": 7,
+          "4": 139,
+          "5": 89,
+          "6": 89
+        },
+        "source": "games/ford-racing-2/extracted/IRX/SDRDRV.IRX",
+        "source_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 3856
+          },
+          {
+            "address": 3856,
+            "name": ".rodata",
+            "offset": 4016,
+            "size": 96
+          },
+          {
+            "address": 3952,
+            "name": ".data",
+            "offset": 4112,
+            "size": 32
+          }
+        ],
+        "iopmod_bss_bytes": 48,
+        "iopmod_data_bytes": 128,
+        "iopmod_text_bytes": 3856,
+        "pt_load_file_size": 3984,
+        "pt_load_memory_size": 4032,
+        "relocation_counts": {
+          "2": 64,
+          "4": 104,
+          "5": 33,
+          "6": 33
+        },
+        "source": "games/ford-racing-2/extracted/IRX/SIO2MAN.IRX",
+        "source_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 141632
+          },
+          {
+            "address": 141632,
+            "name": ".rodata",
+            "offset": 141792,
+            "size": 992
+          },
+          {
+            "address": 142624,
+            "name": ".data",
+            "offset": 142784,
+            "size": 1200
+          }
+        ],
+        "iopmod_bss_bytes": 35952,
+        "iopmod_data_bytes": 2192,
+        "iopmod_text_bytes": 141632,
+        "pt_load_file_size": 143824,
+        "pt_load_memory_size": 179776,
+        "relocation_counts": {
+          "2": 110,
+          "4": 1740,
+          "5": 2603,
+          "6": 2603
+        },
+        "source": "games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "source_sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 25296
+          },
+          {
+            "address": 25296,
+            "name": ".rodata",
+            "offset": 25456,
+            "size": 464
+          },
+          {
+            "address": 25760,
+            "name": ".data",
+            "offset": 25920,
+            "size": 336
+          },
+          {
+            "address": 26096,
+            "name": ".sdata",
+            "offset": 26256,
+            "size": 16
+          }
+        ],
+        "iopmod_bss_bytes": 16,
+        "iopmod_data_bytes": 816,
+        "iopmod_text_bytes": 25296,
+        "pt_load_file_size": 26112,
+        "pt_load_memory_size": 26128,
+        "relocation_counts": {
+          "2": 79,
+          "4": 480,
+          "5": 221,
+          "6": 221
+        },
+        "source": "games/ford-racing-2/extracted/IRX/USBD.IRX",
+        "source_sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 7568
+          },
+          {
+            "address": 7568,
+            "name": ".rodata",
+            "offset": 7728,
+            "size": 16
+          },
+          {
+            "address": 7584,
+            "name": ".data",
+            "offset": 7744,
+            "size": 32
+          }
+        ],
+        "iopmod_bss_bytes": 100,
+        "iopmod_data_bytes": 48,
+        "iopmod_text_bytes": 7568,
+        "pt_load_file_size": 7616,
+        "pt_load_memory_size": 7716,
+        "relocation_counts": {
+          "2": 29,
+          "4": 93,
+          "5": 35,
+          "6": 35
+        },
+        "source": "IOPRP255.IMG::LOADCORE",
+        "source_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 176,
+            "size": 6960
+          },
+          {
+            "address": 6960,
+            "name": ".rodata",
+            "offset": 7136,
+            "size": 80
+          },
+          {
+            "address": 7040,
+            "name": ".data",
+            "offset": 7216,
+            "size": 48
+          }
+        ],
+        "iopmod_bss_bytes": 6832,
+        "iopmod_data_bytes": 128,
+        "iopmod_text_bytes": 6960,
+        "pt_load_file_size": 7088,
+        "pt_load_memory_size": 13920,
+        "relocation_counts": {
+          "2": 33,
+          "4": 155,
+          "5": 50,
+          "6": 50
+        },
+        "source": "IOPRP255.IMG::SIFCMD",
+        "source_sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 4160
+          },
+          {
+            "address": 4160,
+            "name": ".rodata",
+            "offset": 4320,
+            "size": 160
+          },
+          {
+            "address": 4320,
+            "name": ".data",
+            "offset": 4480,
+            "size": 32
+          }
+        ],
+        "iopmod_bss_bytes": 1600,
+        "iopmod_data_bytes": 192,
+        "iopmod_text_bytes": 4160,
+        "pt_load_file_size": 4352,
+        "pt_load_memory_size": 5952,
+        "relocation_counts": {
+          "2": 37,
+          "4": 32,
+          "5": 23,
+          "6": 23
+        },
+        "source": "IOPRP255.IMG::SIFMAN",
+        "source_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 176,
+            "size": 27808
+          },
+          {
+            "address": 27808,
+            "name": ".rodata",
+            "offset": 27984,
+            "size": 976
+          },
+          {
+            "address": 28784,
+            "name": ".data",
+            "offset": 28960,
+            "size": 32
+          }
+        ],
+        "iopmod_bss_bytes": 1236,
+        "iopmod_data_bytes": 1008,
+        "iopmod_text_bytes": 27808,
+        "pt_load_file_size": 28816,
+        "pt_load_memory_size": 30052,
+        "relocation_counts": {
+          "2": 132,
+          "4": 760,
+          "5": 169,
+          "6": 169
+        },
+        "source": "IOPRP255.IMG::THREADMAN",
+        "source_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 7776
+          },
+          {
+            "address": 7776,
+            "name": ".rodata",
+            "offset": 7936,
+            "size": 192
+          },
+          {
+            "address": 7968,
+            "name": ".data",
+            "offset": 8128,
+            "size": 304
+          }
+        ],
+        "iopmod_bss_bytes": 656,
+        "iopmod_data_bytes": 496,
+        "iopmod_text_bytes": 7776,
+        "pt_load_file_size": 8272,
+        "pt_load_memory_size": 8928,
+        "relocation_counts": {
+          "2": 59,
+          "4": 168,
+          "5": 107,
+          "6": 107
+        },
+        "source": "IOPRP255.IMG::IOMAN",
+        "source_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 176,
+            "size": 12896
+          },
+          {
+            "address": 12896,
+            "name": ".rodata",
+            "offset": 13072,
+            "size": 832
+          },
+          {
+            "address": 13728,
+            "name": ".data",
+            "offset": 13904,
+            "size": 64
+          }
+        ],
+        "iopmod_bss_bytes": 36,
+        "iopmod_data_bytes": 896,
+        "iopmod_text_bytes": 12896,
+        "pt_load_file_size": 13792,
+        "pt_load_memory_size": 13828,
+        "relocation_counts": {
+          "2": 56,
+          "4": 300,
+          "5": 37,
+          "6": 37
+        },
+        "source": "IOPRP255.IMG::MODLOAD",
+        "source_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 10736
+          },
+          {
+            "address": 10736,
+            "name": ".rodata",
+            "offset": 10896,
+            "size": 848
+          },
+          {
+            "address": 11584,
+            "name": ".data",
+            "offset": 11744,
+            "size": 192
+          }
+        ],
+        "iopmod_bss_bytes": 3984,
+        "iopmod_data_bytes": 1040,
+        "iopmod_text_bytes": 10736,
+        "pt_load_file_size": 11776,
+        "pt_load_memory_size": 15760,
+        "relocation_counts": {
+          "2": 59,
+          "4": 334,
+          "5": 132,
+          "6": 132
+        },
+        "source": "IOPRP255.IMG::FILEIO",
+        "source_sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 40944
+          },
+          {
+            "address": 40944,
+            "name": ".rodata",
+            "offset": 41104,
+            "size": 4832
+          },
+          {
+            "address": 45776,
+            "name": ".data",
+            "offset": 45936,
+            "size": 352
+          }
+        ],
+        "iopmod_bss_bytes": 52016,
+        "iopmod_data_bytes": 5184,
+        "iopmod_text_bytes": 40944,
+        "pt_load_file_size": 46128,
+        "pt_load_memory_size": 98144,
+        "relocation_counts": {
+          "2": 346,
+          "4": 893,
+          "5": 972,
+          "6": 972
+        },
+        "source": "IOPRP255.IMG::CDVDMAN",
+        "source_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 22624
+          },
+          {
+            "address": 22624,
+            "name": ".rodata",
+            "offset": 22784,
+            "size": 2064
+          },
+          {
+            "address": 24688,
+            "name": ".data",
+            "offset": 24848,
+            "size": 96
+          }
+        ],
+        "iopmod_bss_bytes": 45188,
+        "iopmod_data_bytes": 2160,
+        "iopmod_text_bytes": 22624,
+        "pt_load_file_size": 24784,
+        "pt_load_memory_size": 69972,
+        "relocation_counts": {
+          "2": 61,
+          "4": 548,
+          "5": 638,
+          "6": 638
+        },
+        "source": "IOPRP255.IMG::CDVDFSV",
+        "source_sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 7168
+          },
+          {
+            "address": 7168,
+            "name": ".rodata",
+            "offset": 7328,
+            "size": 944
+          },
+          {
+            "address": 8112,
+            "name": ".data",
+            "offset": 8272,
+            "size": 128
+          }
+        ],
+        "iopmod_bss_bytes": 668,
+        "iopmod_data_bytes": 1072,
+        "iopmod_text_bytes": 7168,
+        "pt_load_file_size": 8240,
+        "pt_load_memory_size": 8908,
+        "relocation_counts": {
+          "2": 12,
+          "4": 145,
+          "5": 86,
+          "6": 86
+        },
+        "source": "IOPRP255.IMG::LOADFILE",
+        "source_sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 3760
+          },
+          {
+            "address": 3760,
+            "name": ".rodata",
+            "offset": 3920,
+            "size": 48
+          },
+          {
+            "address": 3808,
+            "name": ".data",
+            "offset": 3968,
+            "size": 336
+          }
+        ],
+        "iopmod_bss_bytes": 0,
+        "iopmod_data_bytes": 384,
+        "iopmod_text_bytes": 3760,
+        "pt_load_file_size": 4144,
+        "pt_load_memory_size": 4144,
+        "relocation_counts": {
+          "2": 43,
+          "4": 66,
+          "5": 19,
+          "6": 19
+        },
+        "source": "IOPRP255.IMG::TIMEMANI",
+        "source_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 2128
+          },
+          {
+            "address": 2128,
+            "name": ".rodata",
+            "offset": 2288,
+            "size": 32
+          },
+          {
+            "address": 2160,
+            "name": ".data",
+            "offset": 2320,
+            "size": 160
+          }
+        ],
+        "iopmod_bss_bytes": 208,
+        "iopmod_data_bytes": 192,
+        "iopmod_text_bytes": 2128,
+        "pt_load_file_size": 2320,
+        "pt_load_memory_size": 2528,
+        "relocation_counts": {
+          "2": 27,
+          "4": 37,
+          "5": 22,
+          "6": 22
+        },
+        "source": "IOPRP255.IMG::ROMDRV",
+        "source_sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 640
+          },
+          {
+            "address": 640,
+            "name": ".rodata",
+            "offset": 800,
+            "size": 16
+          },
+          {
+            "address": 656,
+            "name": ".data",
+            "offset": 816,
+            "size": 32
+          }
+        ],
+        "iopmod_bss_bytes": 0,
+        "iopmod_data_bytes": 48,
+        "iopmod_text_bytes": 640,
+        "pt_load_file_size": 688,
+        "pt_load_memory_size": 688,
+        "relocation_counts": {
+          "2": 7,
+          "4": 9,
+          "5": 2,
+          "6": 2
+        },
+        "source": "IOPRP255.IMG::EESYNC",
+        "source_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 6400
+          },
+          {
+            "address": 6400,
+            "name": ".rodata",
+            "offset": 6560,
+            "size": 560
+          },
+          {
+            "address": 6960,
+            "name": ".data",
+            "offset": 7120,
+            "size": 192
+          }
+        ],
+        "iopmod_bss_bytes": 0,
+        "iopmod_data_bytes": 752,
+        "iopmod_text_bytes": 6400,
+        "pt_load_file_size": 7152,
+        "pt_load_memory_size": 7152,
+        "relocation_counts": {
+          "2": 180,
+          "4": 78,
+          "5": 15,
+          "6": 15
+        },
+        "source": "IOPRP255.IMG::SYSCLIB",
+        "source_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447"
+      },
+      {
+        "allocated_progbits": [
+          {
+            "address": 0,
+            "name": ".text",
+            "offset": 160,
+            "size": 1856
+          },
+          {
+            "address": 1856,
+            "name": ".rodata",
+            "offset": 2016,
+            "size": 48
+          },
+          {
+            "address": 1904,
+            "name": ".data",
+            "offset": 2064,
+            "size": 32
+          }
+        ],
+        "iopmod_bss_bytes": 16,
+        "iopmod_data_bytes": 80,
+        "iopmod_text_bytes": 1856,
+        "pt_load_file_size": 1936,
+        "pt_load_memory_size": 1952,
+        "relocation_counts": {
+          "2": 16,
+          "4": 45,
+          "5": 13,
+          "6": 13
+        },
+        "source": "IOPRP255.IMG::STDIO",
+        "source_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081"
+      }
+    ],
+    "relocation_inventory": {
+      "path": ".scratch/mesh/codex-root/iop-relocation-inventory-01.json",
+      "sha256": "2a3ca7c7f569317fdfd44322fad3cae308ab1f045f4802cf50a526e168bf3600"
+    },
+    "relocation_type_totals": {
+      "2": 2197,
+      "4": 9060,
+      "5": 6763,
+      "6": 6763
+    },
+    "standalone_count": 9
+  },
+  "date": "2026-10-04",
+  "historical_base_profile_receipt": {
+    "meaning": "Prior model/source-arithmetic/corpus/native-harness receipt; retained unchanged as historical snapshot.",
+    "path": "notes/evidence/fr2-static-recovery/iop/relocation-model.json",
+    "profile_test_count": 9,
+    "sha256": "d77be09c8152fb0c907e06e313224a95b24ada8b11b6474bdb424a973ecdd6f7"
+  },
+  "jev_review": {
+    "jev_review": {
+      "action": "escalate",
+      "blast_radius_confidence": 0.12,
+      "composite": 0.905,
+      "correctness_confidence": 0.94,
+      "disposition": "Jev did not approve automatically; the low-confidence blast-radius rubric needs human review.",
+      "limiting_rubrics": [
+        "blast_radius"
+      ],
+      "reason_codes": [
+        "confidence_below_review"
+      ],
+      "safe_to_apply": 0.71,
+      "spec_match_confidence": 0.95,
+      "test_gap_confidence": 0.55
+    },
+    "jev_verify": {
+      "disposition": "Jev did not verify the mutation-test claim from its supplied evidence. Direct execution and source assertions are the verification record.",
+      "summary": {
+        "contradicted": 0,
+        "needs_review": 1,
+        "unsupported": 1,
+        "verified": 4
+      },
+      "unsupported_claim": "Two mutation tests fail for the stated contradictions (confidence 0.41; action review). The supplied evidence did not include their method bodies or detailed test output. Direct fresh unittest output shows both named tests pass; their assertions are preserved in the test source.",
+      "verified_confidences": [
+        0.99,
+        0.99,
+        0.92,
+        0.99
+      ]
+    },
+    "usage_tokens": {
+      "review_input": 997,
+      "review_output": 79,
+      "verify_input": 2536,
+      "verify_output": 538
+    }
+  },
+  "native_harness": "Not rerun: this extension changes only ELF/section/metadata validation, not relocation arithmetic; the prior native-harness match and hashes remain in the historical base receipt.",
+  "new_guards": [
+    "Every SHF_ALLOC SHT_PROGBITS section is wholly inside PT_LOAD filesz and section.offset equals PT_LOAD.offset plus section.address.",
+    ".text has address zero and file offset equal to PT_LOAD.offset.",
+    "PT_LOAD filesz equals iopmod text_bytes plus data_bytes; PT_LOAD memsz continues to equal text_bytes plus data_bytes plus bss_bytes."
+  ],
+  "post_jev_test_recheck": {
+    "existing_irx_tests_passed": 14,
+    "meaning": "A third allocated-PROGBITS mutation test was added after the Jev review; relocation implementation code did not change after that review.",
+    "relocation_tests_passed": 12
+  },
+  "schema_version": 1,
+  "source_basis": {
+    "commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "file": "iop/system/loadcore/src/loadcore.c",
+    "repository": "ps2dev/ps2sdk",
+    "sha256": "2eb29f11cce431de18f8d5f64c64e4eda22507bfca26487a57b53b63750e0d78"
+  },
+  "status": "file-mapping-consistency-guards-added-and-validated",
+  "supersedes_nothing": true,
+  "test_run": {
+    "command": "python3 -m unittest discover -s tools -p 'test_ps2_irx_relocations.py' -v",
+    "new_mutation_test_names": [
+      "test_allocated_text_must_map_to_its_pt_load_file_offset",
+      "test_allocated_progbits_must_be_file_backed_and_map_to_load",
+      "test_pt_load_file_size_must_match_iopmod_text_and_data_sizes"
+    ],
+    "passed": 12
+  }
+}

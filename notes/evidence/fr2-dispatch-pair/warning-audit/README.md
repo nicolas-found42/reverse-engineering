@@ -46,6 +46,8 @@ The existing decompilation's 8-line cache-operation loop corresponds structurall
 Commands and outcomes:
 
 ```text
+# create the isolated project copy (source project remains unchanged)
+mkdir -p ghidra-project/warning-audit-exp01 && cp -a ghidra-project/codex-root-dispatch-full-02/fr2.gpr ghidra-project/warning-audit-exp01/fr2.gpr && cp -a ghidra-project/codex-root-dispatch-full-02/fr2.rep ghidra-project/warning-audit-exp01/fr2.rep
 # failed before project open (hidden project-path component)
 env JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home PATH=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home/bin:$PATH .scratch/mesh/codex-geometry/ghidra-patched/support/analyzeHeadless .scratch/mesh/codex-audit/warnings/overlap-experiment-01/project-copy fr2 -process SLES_517.05 -noanalysis -scriptPath .scratch/mesh/codex-audit/warnings/overlap-experiment-01/scripts -postScript ProbeDelaySlot.java .scratch/mesh/codex-audit/warnings/overlap-experiment-01/probe-01.json
 # exit 1: Path element starting with '.' is not permitted
@@ -56,3 +58,30 @@ env JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home PATH=/
 ```
 
 The fresh-run `jev_verify` checked five claims about isolation, hash reproduction, decoded slots/target, block mapping, and the official source; all five were verified with confidence 0.90–1.00 (input 3,312 tokens, output 638). The fetched-source `jev_screen` recommendation was `pass` (injection 0.02, relevance 0.95, substance 0.98). Search-result screens were retained in the private scratch logs; one low-substance Ghidra release-search result was skipped and not used.
+
+## Why the warning is emitted
+
+A code-path review of the exact Ghidra 12.1.3 decompiler source resolves the warning more directly. `Sleigh::oneInstruction` begins with the branch's decoded length; when its SLEIGH constructor declares a delay slot, it decodes the slot instruction(s), adds their lengths to `fallOffset`, sets the next address after the combined span, and returns that combined length. `FlowInfo::run` stores this return value as `VisitStat.size`. `FlowInfo::setFallthruBound` calls `reinterpreted(addr)` when a new flow address lies strictly inside a previously visited `[start, start+size)` span. `FlowInfo::reinterpreted` formats the exact `Instruction at (...) overlaps instruction at (...)` warning.
+
+For `beq` at `0x001f36f0`, one 4-byte delay slot means the decompiler's visited span is `[0x001f36f0, 0x001f36f8)`. `bgtz` at `0x001f373c` targets `0x001f36f4`, the second word inside that span. The two listing instruction units still occupy separate adjacent byte ranges. This exact interaction explains the warning: the decompiler processes a branch plus its delay slot as one flow-translation span, then another branch targets an address inside it. The warning is about overlapping flow/translation ownership in this edge case, not evidence of two competing byte decodes.
+
+The official release sources were fetched from the pinned Ghidra 12.1.3 tag and pass Jev screening. `flow.cc` is HTTP 200, scrape ID `01a106c0-d84e-7230-9d1c-c6c146b90060`, SHA-256 `bde7bed05b3cd01b0032610b517533e0414f2bb008cf87d81b7c9e577ad860ad`; `sleigh.cc` is HTTP 200, scrape ID `01a106c1-2174-7588-9a7b-297987d53c82`, SHA-256 `613c0a2d1bc0715c7b382737286cb96f1514f55ccb4069afbb3f00078c30ce99`. Both fetched texts match the corresponding local source files byte-for-byte. The full Firecrawl arguments and responses are retained under `.scratch/mesh/codex-audit/warnings/` (files prefixed `firecrawl-ghidra-flow-source-01` and `firecrawl-ghidra-sleigh-source-01`).
+
+The final `jev_verify` checked four claims about the translator span, visited range, target address and cause; all were verified (0.97–1.00 confidence, input 2,727 tokens, output 515). The source `jev_screen` decisions were `pass`: flow.cc injection 0.03/substance 0.99/relevance 0.91; sleigh.cc injection 0.02/substance 0.99/relevance 0.95. `jgrep` query “reports when a branch destination falls inside the byte range previously consumed by a translated instruction” found `flow.cc:608–630` at p=0.73 (1 hit / 155 chunks, $0.0018); direct source inspection confirmed the path.
+
+This causal account lowers the warning's priority as a potential decoder defect: it is a diagnostic emitted by Ghidra's delay-slot translation-span bookkeeping on a control-flow edge into a delay slot. The artifact is unchanged and no patch or warning suppression is warranted. This does not validate every semantic detail of the routine or Ghidra output.
+
+The final `jev_gate` call on the evidence additions (before that result was appended to this receipt trail) returned `action=review`, `safe_to_apply=0.79`, and composite 0.97. Its six factual claims were all verified (0.95–0.99). The review missed the auto threshold of 0.80 by 0.01, with `test_gap` the limiting rubric; no program-code change is present and the targeted headless probe plus evidence-index integrity checks passed. Two earlier gate calls escalated while evidence summaries and a combined negative claim were too weak; those results are retained in `jev-receipts.json` as superseded dispositions. This final review is advisory and does not weaken the raw-byte/source findings above.
+
+Research command receipts are retained in scratch with their argument/result files. Exact invocations (all Firecrawl requests returned HTTP 200):
+
+```text
+python3 .scratch/mesh/codex-root/firecrawl_fetch.py search .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-delay-search-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-delay-search-01.json
+python3 .scratch/mesh/codex-root/firecrawl_fetch.py search .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-release-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-release-01.json
+python3 .scratch/mesh/codex-root/firecrawl_fetch.py scrape .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-source-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-source-01.json
+python3 .scratch/mesh/codex-root/firecrawl_fetch.py scrape .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-flow-source-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-flow-source-01.json
+python3 .scratch/mesh/codex-root/firecrawl_fetch.py scrape .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-sleigh-source-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-sleigh-source-01.json
+jgrep --json "reports when a branch destination falls inside the byte range previously consumed by a translated instruction" .scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc .scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/src/decompile/cpp/sleigh.cc
+```
+
+The release-source search returned no substantive result and was Jev-screened `skip`; the raw tagged source scrapes are the primary evidence used. The first headless attempt and its exact non-hidden-path retry are recorded immediately above, including their exit status and failure diagnostic.

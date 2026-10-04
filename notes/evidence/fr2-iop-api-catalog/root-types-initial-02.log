@@ -1,0 +1,4 @@
+Root pyright initial run: exit 1.
+tools/test_ps2_irx_relocations.py:161:33 reportArgumentType: bytearray passed to parse_elf(data: bytes).
+Correction: freeze the synthetic mutation buffer with bytes(payload) before parsing. The mutation and rejection behavior is unchanged.
+This is a transcription of the tool diagnostic, not original terminal output.
