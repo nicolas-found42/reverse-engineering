@@ -1,0 +1,529 @@
+{
+  "schema_version": 1,
+  "status": "PASS_REOPENED_THREE_SEED_UNION",
+  "all_checks_pass": true,
+  "scope": "Reopened cumulative Ghidra project with three separately invoked single-seed transactions. Static candidate/export reconciliation only; no identity, semantic correctness, runtime reachability, or whole-game completeness claim.",
+  "pins": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "language": "r5900:LE:32:default",
+    "ghidra_version": "12.1.3",
+    "candidate_script_sha256": "331375450502153b58491c759595f970099e0387b0345e847ebf5f0b299d39e6",
+    "base_manifest_sha256": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce",
+    "base_inventory_sha256": "15488c325db2c87f6e5b08a93b07fe92daff9feb711dc12b4451d39a86dc98be",
+    "reopened_manifest_sha256": "93ec7a633c9602c53613700e5cb31b403dde10a3c54dbd7f63185562dc6bcf76",
+    "reopened_inventory_sha256": "c72cf614099d5cea5aafb1a5e85606df0fe3165b43f628bc7f6bb25780468389",
+    "reopened_coverage_sha256": "4e3e7afb40e4f3c25b8dd69eb3444d6c1246829ea1a75e31a11c352058f4d221",
+    "reopened_manifest_path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/ee-union-final-01/reopened-export/manifest.json",
+    "reopened_inventory_path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/ee-union-final-01/reopened-export/inventory.json",
+    "reopened_coverage_path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/ee-union-final-01/reopened-export/coverage.json"
+  },
+  "counts": {
+    "base": 3838,
+    "final": 3841,
+    "generated": 3841,
+    "failed": 0,
+    "coverage_inventory": 3841
+  },
+  "checks": {
+    "executable_and_language_match": true,
+    "three_seed_individual_results_match_final_exports": true,
+    "all_base_function_entries_preserved": true,
+    "all_base_function_names_and_identity_flags_preserved": true,
+    "all_base_function_body_sizes_and_blocks_preserved": true,
+    "all_base_instruction_addresses_text_and_bytes_preserved": true,
+    "only_expected_reference_resolution_added": true,
+    "callgraph_set_deltas_are_exact_candidate_relations": true,
+    "only_expected_c_artifact_changed": true,
+    "memory_block_inventory_unchanged": true,
+    "defined_string_data_inventory_unchanged": true,
+    "coverage_changes_are_only_the_692_new_candidate_instruction_bytes": true,
+    "export_complete": true
+  },
+  "candidates": [
+    {
+      "entry": "001fbfb8",
+      "individual_status": "created_single_bounded_candidate",
+      "candidate_name": "candidate_ee_001fbfb8",
+      "source_type": "ANALYSIS",
+      "source_body_bytes": 276,
+      "final_manifest_name": "candidate_ee_001fbfb8",
+      "final_manifest_body_bytes": 276,
+      "final_manifest_completed": true,
+      "final_manifest_sha256": "66d9f4054c2e13c95847086aff23c22bd94128b5d2b9fba7d3974c61128bf892",
+      "final_inventory_name": "candidate_ee_001fbfb8",
+      "final_inventory_size": 276,
+      "final_blocks": [
+        {
+          "start": "001fbfb8",
+          "end": "001fbfe3"
+        },
+        {
+          "start": "001fbfe4",
+          "end": "001fbfef"
+        },
+        {
+          "start": "001fbff0",
+          "end": "001fbffb"
+        },
+        {
+          "start": "001fbffc",
+          "end": "001fc007"
+        },
+        {
+          "start": "001fc008",
+          "end": "001fc017"
+        },
+        {
+          "start": "001fc018",
+          "end": "001fc023"
+        },
+        {
+          "start": "001fc024",
+          "end": "001fc02b"
+        },
+        {
+          "start": "001fc02c",
+          "end": "001fc043"
+        },
+        {
+          "start": "001fc044",
+          "end": "001fc063"
+        },
+        {
+          "start": "001fc064",
+          "end": "001fc06b"
+        },
+        {
+          "start": "001fc06c",
+          "end": "001fc07b"
+        },
+        {
+          "start": "001fc07c",
+          "end": "001fc093"
+        },
+        {
+          "start": "001fc094",
+          "end": "001fc0af"
+        },
+        {
+          "start": "001fc0b0",
+          "end": "001fc0cb"
+        }
+      ],
+      "source_candidate_json_sha256": "e034be01b8e3bb112d79d50b7e97fc988c484934bd548b87ba9ad80a48d4e056",
+      "instruction_count": 69,
+      "instruction_rows_sha256": "d3b29340b38099cfac1e62d4c5db493e13f17aaf18d8b1d488444569db750148",
+      "raw_instruction_rows_match": true,
+      "final_instruction_rows_sha256": "d3b29340b38099cfac1e62d4c5db493e13f17aaf18d8b1d488444569db750148",
+      "matches": true
+    },
+    {
+      "entry": "001fc0d0",
+      "individual_status": "created_single_bounded_candidate",
+      "candidate_name": "candidate_ee_001fc0d0",
+      "source_type": "ANALYSIS",
+      "source_body_bytes": 68,
+      "final_manifest_name": "candidate_ee_001fc0d0",
+      "final_manifest_body_bytes": 68,
+      "final_manifest_completed": true,
+      "final_manifest_sha256": "fdd45aee6c64e00c36c1a9dd537e5477ee1f24e302af117fca04bdcb17819bdc",
+      "final_inventory_name": "candidate_ee_001fc0d0",
+      "final_inventory_size": 68,
+      "final_blocks": [
+        {
+          "start": "001fc0d0",
+          "end": "001fc0ef"
+        },
+        {
+          "start": "001fc0f0",
+          "end": "001fc0ff"
+        },
+        {
+          "start": "001fc100",
+          "end": "001fc10b"
+        },
+        {
+          "start": "001fc10c",
+          "end": "001fc113"
+        }
+      ],
+      "source_candidate_json_sha256": "3c2b0cd88e51b09e932dd25dc5a1b81bb2ceaf1fe95dae873d50704ba5be54f3",
+      "instruction_count": 17,
+      "instruction_rows_sha256": "c88e26a3612ebd6bd51097a667d6b0dca5b964d84875aecc45a5ebdc0ced9a39",
+      "raw_instruction_rows_match": true,
+      "final_instruction_rows_sha256": "c88e26a3612ebd6bd51097a667d6b0dca5b964d84875aecc45a5ebdc0ced9a39",
+      "matches": true
+    },
+    {
+      "entry": "001fc118",
+      "individual_status": "created_single_bounded_candidate",
+      "candidate_name": "candidate_ee_001fc118",
+      "source_type": "ANALYSIS",
+      "source_body_bytes": 348,
+      "final_manifest_name": "candidate_ee_001fc118",
+      "final_manifest_body_bytes": 348,
+      "final_manifest_completed": true,
+      "final_manifest_sha256": "0b1f38e0358bc27b698287b80a1d398db84e7094c4e6b5ac5c29678a597f8710",
+      "final_inventory_name": "candidate_ee_001fc118",
+      "final_inventory_size": 348,
+      "final_blocks": [
+        {
+          "start": "001fc118",
+          "end": "001fc14b"
+        },
+        {
+          "start": "001fc14c",
+          "end": "001fc157"
+        },
+        {
+          "start": "001fc158",
+          "end": "001fc15f"
+        },
+        {
+          "start": "001fc160",
+          "end": "001fc167"
+        },
+        {
+          "start": "001fc168",
+          "end": "001fc173"
+        },
+        {
+          "start": "001fc174",
+          "end": "001fc183"
+        },
+        {
+          "start": "001fc184",
+          "end": "001fc18b"
+        },
+        {
+          "start": "001fc18c",
+          "end": "001fc197"
+        },
+        {
+          "start": "001fc198",
+          "end": "001fc19b"
+        },
+        {
+          "start": "001fc19c",
+          "end": "001fc1ab"
+        },
+        {
+          "start": "001fc1ac",
+          "end": "001fc1bf"
+        },
+        {
+          "start": "001fc1c0",
+          "end": "001fc1d7"
+        },
+        {
+          "start": "001fc1d8",
+          "end": "001fc1f3"
+        },
+        {
+          "start": "001fc1f4",
+          "end": "001fc1fb"
+        },
+        {
+          "start": "001fc1fc",
+          "end": "001fc207"
+        },
+        {
+          "start": "001fc208",
+          "end": "001fc20b"
+        },
+        {
+          "start": "001fc20c",
+          "end": "001fc247"
+        },
+        {
+          "start": "001fc248",
+          "end": "001fc24f"
+        },
+        {
+          "start": "001fc250",
+          "end": "001fc253"
+        },
+        {
+          "start": "001fc254",
+          "end": "001fc273"
+        }
+      ],
+      "source_candidate_json_sha256": "d07a70c72874fa0ffa715abdebdeba4497f64ed343d42533f4e15be7110e9e7f",
+      "instruction_count": 87,
+      "instruction_rows_sha256": "f4e465d6e8e84f875e0fb0c42a90da267fb7c4c96b08f275fb2d00415ea5ee82",
+      "raw_instruction_rows_match": true,
+      "final_instruction_rows_sha256": "f4e465d6e8e84f875e0fb0c42a90da267fb7c4c96b08f275fb2d00415ea5ee82",
+      "matches": true
+    }
+  ],
+  "differences": {
+    "old_identity": [],
+    "old_bodies": [],
+    "old_instruction_code": [],
+    "old_references": [
+      {
+        "function": "001fbe48",
+        "address": "001fbf20",
+        "old": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      },
+      {
+        "function": "001fbe48",
+        "address": "001fbf44",
+        "old": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      },
+      {
+        "function": "001fbe48",
+        "address": "001fbf68",
+        "old": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      }
+    ],
+    "old_callgraph_set_differences": [
+      {
+        "entry": "001fbcc0",
+        "field": "callers",
+        "removed": [],
+        "added": [
+          "001fbfb8",
+          "001fc118"
+        ]
+      },
+      {
+        "entry": "001fbe48",
+        "field": "callees",
+        "removed": [],
+        "added": [
+          "001fc0d0"
+        ]
+      },
+      {
+        "entry": "001fc278",
+        "field": "callers",
+        "removed": [],
+        "added": [
+          "001fc118"
+        ]
+      },
+      {
+        "entry": "00200470",
+        "field": "callers",
+        "removed": [],
+        "added": [
+          "001fc118"
+        ]
+      }
+    ],
+    "callgraph_order_only": {
+      "field_row_count": 2173,
+      "canonical_sha256": "f25ede43edf57844aed51d721578137c4917e08e5ca93af77b6a11495e8bb970",
+      "sample": [
+        {
+          "entry": "00100008",
+          "field": "callees",
+          "before": [
+            "001eade0",
+            "00105428",
+            "001f2888",
+            "001f2c70"
+          ],
+          "after": [
+            "001f2888",
+            "001eade0",
+            "001f2c70",
+            "00105428"
+          ]
+        },
+        {
+          "entry": "001001e0",
+          "field": "callees",
+          "before": [
+            "0010d020",
+            "0020e10c",
+            "001006a8",
+            "00101730",
+            "0010aed8"
+          ],
+          "after": [
+            "0010aed8",
+            "00101730",
+            "0020e10c",
+            "001006a8",
+            "0010d020"
+          ]
+        },
+        {
+          "entry": "00100348",
+          "field": "callers",
+          "before": [
+            "00119358",
+            "00163ae0",
+            "001d40a0",
+            "00100638",
+            "0017ea00",
+            "00164430",
+            "0015ef30"
+          ],
+          "after": [
+            "00100638",
+            "00163ae0",
+            "0015ef30",
+            "001d40a0",
+            "00164430",
+            "00119358",
+            "0017ea00"
+          ]
+        },
+        {
+          "entry": "00100348",
+          "field": "callees",
+          "before": [
+            "0010d100",
+            "00105888",
+            "001006a8",
+            "0010aed8"
+          ],
+          "after": [
+            "00105888",
+            "0010aed8",
+            "001006a8",
+            "0010d100"
+          ]
+        },
+        {
+          "entry": "00100548",
+          "field": "callers",
+          "before": [
+            "0015fa10",
+            "00119358",
+            "0016c398",
+            "001d40a0",
+            "001dc4a0",
+            "00163e40",
+            "001783e8",
+            "0015f0c0",
+            "00170940",
+            "0016cbd0",
+            "001af188",
+            "001647e0"
+          ],
+          "after": [
+            "001dc4a0",
+            "0016c398",
+            "001af188",
+            "0015fa10",
+            "001647e0",
+            "0015f0c0",
+            "001783e8",
+            "00170940",
+            "0016cbd0",
+            "001d40a0",
+            "00163e40",
+            "00119358"
+          ]
+        }
+      ],
+      "interpretation": "Caller/callee lists differed in ordering only; set membership was equal for these rows."
+    },
+    "coverage_block_differences": [],
+    "coverage_undefined_byte_delta": {
+      "old": 154822,
+      "new": 154130,
+      "removed": 692,
+      "expected_candidate_bytes": 692
+    },
+    "coverage_text_counters": {
+      "instruction_count": {
+        "baseline": 247746,
+        "final": 247919,
+        "delta": 173
+      },
+      "instruction_bytes": {
+        "baseline": 990984,
+        "final": 991676,
+        "delta": 692
+      },
+      "function_instruction_bytes": {
+        "baseline": 859832,
+        "final": 860524,
+        "delta": 692
+      },
+      "unowned_instruction_count": {
+        "baseline": 32788,
+        "final": 32788,
+        "delta": 0
+      },
+      "unowned_instruction_bytes": {
+        "baseline": 131152,
+        "final": 131152,
+        "delta": 0
+      },
+      "defined_data_bytes": {
+        "baseline": 6,
+        "final": 6,
+        "delta": 0
+      },
+      "undefined_bytes": {
+        "baseline": 154822,
+        "final": 154130,
+        "delta": -692
+      }
+    },
+    "coverage_other_blocks": {
+      "count": 34,
+      "baseline_canonical_sha256": "1de0512084f1c8a0336a17ada499dd74feeb7a68828f228429f3dccb9c18fa36",
+      "final_canonical_sha256": "1de0512084f1c8a0336a17ada499dd74feeb7a68828f228429f3dccb9c18fa36",
+      "all_unchanged": true
+    },
+    "inventory_memory_blocks_equal": true,
+    "inventory_strings_equal": true,
+    "old_c_artifacts": [
+      "001fbe48"
+    ],
+    "expected_c_diff_detail": "Only 001fbe48.c changes, replacing its three unresolved call names with candidate_ee_001fc0d0 after the bounded function creation; raw instructions and all other C bytes are unchanged."
+  },
+  "candidate_zero_tails_left_unowned": {
+    "001fbfb8": "001fc0cc",
+    "001fc0d0": "001fc114",
+    "001fc118": "001fc274"
+  },
+  "limitations": [
+    "The candidate names and boundaries remain provisional hypotheses; each body is only the contiguous CFG body, excluding its recorded unowned zero tail.",
+    "No function source identity, runtime reachability, semantic correctness, or whole-game completeness is established.",
+    "Only saved function inventory and reopened generated artifact consistency were checked; undefined .text can contain data."
+  ]
+}

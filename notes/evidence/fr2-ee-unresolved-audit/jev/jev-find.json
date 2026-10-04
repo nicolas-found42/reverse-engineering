@@ -1,0 +1,34 @@
+{
+  "tool": "jev_find",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "query": "Among these measured static findings, identify the most concrete recoverable missing-code seed: an address classified undefined by the saved Ghidra coverage, directly targeted by one or more calls from saved functions, for which pinned PS2Recomp emitted a separate bounded function body from the same executable.",
+  "exists": 0.97,
+  "exists_verdict": "answered",
+  "top": [
+    {
+      "id": "ee-undefined-call-target-001fc0d0",
+      "probability": 1.0,
+      "text": "The target address 0x001fc0d0 falls within Ghidra .text undefined range 0x001fbfb8-0x001fc277. Three saved jal references from 0x001fbe48 target it. Pinned PS2Recomp generated a separate sub_001FC0D0 function spanning 0x001fc0d0-0x001fc118, 18 words."
+    },
+    {
+      "id": "ee-unowned-text",
+      "probability": 0.0,
+      "text": "Saved Ghidra coverage: 32,788 instruction bytes in .text are not owned by functions. Most are already represented by generated output; 728 unowned instruction words with no generated instruction comment are all zero words."
+    },
+    {
+      "id": "ee-vutext",
+      "probability": 0.0,
+      "text": "Saved Ghidra coverage marks executable block .vutext, 13,696 bytes from 0x00217be0-0x0021b15f, with zero EE instructions. VU interpretation requires a separate architecture audit."
+    },
+    {
+      "id": "ee-leaf",
+      "probability": 0.0,
+      "text": "A Ghidra candidate_leaf_0022a180 appears in the function inventory but has no inbound references. Its 18 instructions do not appear in the 4746-function PS2Recomp output."
+    }
+  ],
+  "usage": {
+    "input_tokens": 913,
+    "output_tokens": 97
+  }
+}

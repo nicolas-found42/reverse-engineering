@@ -1,0 +1,45 @@
+{
+  "base_revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "build_result": {
+    "all_batches_pass": true,
+    "function_file_count": 4746,
+    "mode": "clang_compile_objects",
+    "source_file_count": 4746
+  },
+  "changed_source_files": [
+    {
+      "bytes": 8904,
+      "path": "ps2xRecomp/src/lib/fpu_translator.cpp",
+      "sha256": "98c253124ddcc83684c220673b384ba5bd258129135ee57dd8c5db86dd048b0c"
+    },
+    {
+      "bytes": 19533,
+      "path": "ps2xRecomp/src/lib/instruction_translator.cpp",
+      "sha256": "d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7"
+    },
+    {
+      "bytes": 31565,
+      "path": "ps2xRecomp/src/lib/mmi_translation_helpers.cpp",
+      "sha256": "e0b82fa9b78f526ca3ec96ad430816b5d9c6e60ce47f16127eed6d212a8ba080"
+    },
+    {
+      "bytes": 11824,
+      "path": "ps2xRecomp/src/lib/special_translator.cpp",
+      "sha256": "86a554b9172db6857b64a3ed05599d0b245bab4819dacfce082cd3eec87d753c"
+    },
+    {
+      "bytes": 35294,
+      "path": "ps2xRuntime/include/ps2_runtime_macros.h",
+      "sha256": "777cfee061a8c88f98aed4de1321b7d2aeed42b959c6475329771c8c0e392f2d"
+    },
+    {
+      "bytes": 2201,
+      "path": "ps2xRuntime/include/ee_fpu_experimental_helpers.h",
+      "sha256": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf"
+    }
+  ],
+  "claim_limit": "This identifies the translated source version used for this static crosswalk. It does not establish translator correctness or runtime equivalence.",
+  "project": "PS2Recomp",
+  "schema_version": 1,
+  "working_tree_patch_sha256_including_untracked_via_file_hash_set": "cb1d87c470769f85ae8f5b502aa0b41638942fe1b3f515152202da0b78c5018a"
+}

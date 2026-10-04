@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "status": "PASS_SINGLE_SEED_REOPEN_AND_EXPORT",
+  "checks": {
+    "executable_sha_pinned": true,
+    "candidate_committed_once": true,
+    "candidate_body_68_bytes": true,
+    "zero_word_001fc114_remains_unowned": true,
+    "reopened_export_complete": true,
+    "candidate_in_reopened_manifest": true,
+    "candidate_in_reopened_inventory": true,
+    "exactly_one_new_entry": true,
+    "old_bodies_and_instruction_bytes_unchanged": true,
+    "only_expected_reference_changes": true,
+    "only_expected_old_c_file_changed": true,
+    "coverage_count_matches": true,
+    "candidate_c_matches_manifest_hash_and_length": true
+  },
+  "all_checks_pass": true,
+  "scope": "One provisional EE seed. Does not prove original function identity, semantic correctness, runtime reachability, true boundary beyond measured CFG, or whole-game completeness.",
+  "candidate": {
+    "entry": "001fc0d0",
+    "name": "candidate_ee_001fc0d0",
+    "body_start": "001fc0d0",
+    "body_end_inclusive": "001fc113",
+    "body_bytes": 68,
+    "unreachable_zero_tail_left_unowned": [
+      "001fc114"
+    ],
+    "incoming_saved_call_sites": [
+      "001fbf20",
+      "001fbf44",
+      "001fbf68"
+    ]
+  },
+  "pins": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "text_window_sha256": "edf31a53a1dd273f55d1c55703638db8e5dd0e2b7d2a6924874df0085f7aac4d",
+    "text_window_file_offset": "000fcfb8",
+    "baseline_3837_manifest_sha256": "39302b3579c4c88f688a962fc794a6f9c6d652730c4f09794e7a40b29001192e",
+    "prior_3838_manifest_sha256": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce",
+    "prior_3838_inventory_sha256": "15488c325db2c87f6e5b08a93b07fe92daff9feb711dc12b4451d39a86dc98be",
+    "candidate_script_sha256": "150e8b2e30df5696134d116307e1ec815594c5d50017ecc04ae3f7dd141c7147"
+  },
+  "output_files": {
+    "candidate_json": {
+      "path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/candidate.json",
+      "sha256": "3c2b0cd88e51b09e932dd25dc5a1b81bb2ceaf1fe95dae873d50704ba5be54f3"
+    },
+    "reopened_manifest": {
+      "path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/reopened-export/manifest.json",
+      "sha256": "2a2d307d0f28a00011d9d2956143f270b83b4a0f5ada9d8c4053c6107f8f3b26"
+    },
+    "reopened_inventory": {
+      "path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/reopened-export/inventory.json",
+      "sha256": "5c5e4feec2e7bc9128d39b7a9a9b67a20d77e11682e61ad13bb3a0654f582dcb"
+    },
+    "reopened_coverage": {
+      "path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/reopened-export/coverage.json",
+      "sha256": "c7752cff3459006d6bdfd18b9fe88a6d4410244a2a58df2741f2a1a27220ca54"
+    },
+    "candidate_c": {
+      "path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/reopened-export/functions/001fc0d0.c",
+      "sha256": "d677df50fc2e7ed3e1f303d221966e22ecd5441ba9d0ac679ab04d7233408bdd",
+      "bytes": 203
+    }
+  },
+  "counts": {
+    "reopened_functions": 3839,
+    "generated": 3839,
+    "failed": 0,
+    "coverage_inventory_count": 3839
+  },
+  "comparisons": {
+    "prior_entry_count": 3838,
+    "new_entries": [
+      "001fc0d0"
+    ],
+    "body_or_raw_instruction_differences": [],
+    "reference_differences": [
+      {
+        "entry": "001fbe48",
+        "address": "001fbf68",
+        "old_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      },
+      {
+        "entry": "001fbe48",
+        "address": "001fbf44",
+        "old_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      },
+      {
+        "entry": "001fbe48",
+        "address": "001fbf20",
+        "old_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      }
+    ],
+    "prior_c_differences": [
+      {
+        "entry": "001fbe48",
+        "old_sha256": "b9132394cffff2acb8f2963933de03c8c1de25256558a73cad0f13784b7a5634",
+        "new_sha256": "a057059453f28e8ef521ab6dfddc89352b7dd52cc2eadf636c607555bb76c423",
+        "old_bytes": 1488,
+        "new_bytes": 1506,
+        "unified_diff": [
+          "--- functions/001fbe48.c",
+          "+++ functions/001fbe48.c",
+          "@@ -35,15 +35,15 @@",
+          "           piVar1[0x2a] = 0;",
+          "           piVar1[0x29] = 0;",
+          "           piVar1[0x28] = 0;",
+          "-          lVar4 = func_0x001fc0d0(param_1,0,piVar1[0x25]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,0,piVar1[0x25]);",
+          "           piVar1[0x28] = piVar1[0x28] + 1;",
+          "           break;",
+          "         case 2:",
+          "-          lVar4 = func_0x001fc0d0(param_1,piVar1[0x29],piVar1[0x26]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,piVar1[0x29],piVar1[0x26]);",
+          "           piVar1[0x29] = piVar1[0x29] + 1;",
+          "           break;",
+          "         default:",
+          "-          lVar4 = func_0x001fc0d0(param_1,piVar1[0x2a],piVar1[0x27]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,piVar1[0x2a],piVar1[0x27]);",
+          "           piVar1[0x2a] = piVar1[0x2a] + 1;",
+          "         }",
+          "       }"
+        ],
+        "changed_lines": [
+          "-          lVar4 = func_0x001fc0d0(param_1,0,piVar1[0x25]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,0,piVar1[0x25]);",
+          "-          lVar4 = func_0x001fc0d0(param_1,piVar1[0x29],piVar1[0x26]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,piVar1[0x29],piVar1[0x26]);",
+          "-          lVar4 = func_0x001fc0d0(param_1,piVar1[0x2a],piVar1[0x27]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,piVar1[0x2a],piVar1[0x27]);"
+        ]
+      }
+    ]
+  },
+  "preserved_failures": [
+    ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0/candidate.log: Ghidra rejected dot-prefixed project path",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt02/candidate-retry.log: Java compile errors; no candidate script loaded",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt02/candidate.json: wrong initial .text size pin rejected before candidate transaction",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt03/candidate.json: Ghidra bounded disassembly additionally decoded branch delay slot 001fc0ec and first exact-delta guard rejected it",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt04/candidate.json: initial full-span CFG assumption correctly rejected unreachable zero NOP 001fc114"
+  ],
+  "first_reconciliation_attempt": "001fc0d0-reconciliation-check01-failed.json; its only failed check incorrectly counted unchanged unified-diff context lines as edits; check02 counts only +/- changed lines"
+}

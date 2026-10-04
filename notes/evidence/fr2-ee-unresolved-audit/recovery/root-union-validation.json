@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "independent_checks": [
+    "All3838baseline and3841final Cmanifested files independently rehashed and sizes matched",
+    "All3838prior identities/bodyrows/instruction bytes/text preserved",
+    "Onlyold001fbe48Cchanges:exact3callname replacement",
+    "Exactly3priorreference resolutions and4set-basedcallgraph rows added",
+    "Allnontextcoverageblocks, memory and strings unchanged",
+    "All173newinstructionwords match unique originalELFPTLOADbytes"
+  ],
+  "counts": {
+    "base": 3838,
+    "final": 3841,
+    "failed": 0,
+    "new_instruction_words": 173
+  },
+  "coverage_delta": {
+    "instruction_count": 173,
+    "instruction_bytes": 692,
+    "function_instruction_bytes": 692,
+    "unowned_instruction_count": 0,
+    "unowned_instruction_bytes": 0,
+    "defined_data_bytes": 0,
+    "undefined_bytes": -692
+  },
+  "callgraph_membership_changes": [
+    {
+      "entry": "001fbcc0",
+      "field": "callers",
+      "added": [
+        "001fbfb8",
+        "001fc118"
+      ],
+      "removed": []
+    },
+    {
+      "entry": "001fbe48",
+      "field": "callees",
+      "added": [
+        "001fc0d0"
+      ],
+      "removed": []
+    },
+    {
+      "entry": "001fc278",
+      "field": "callers",
+      "added": [
+        "001fc118"
+      ],
+      "removed": []
+    },
+    {
+      "entry": "00200470",
+      "field": "callers",
+      "added": [
+        "001fc118"
+      ],
+      "removed": []
+    }
+  ],
+  "pins": {
+    "baseline_manifest": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce",
+    "final_manifest": "93ec7a633c9602c53613700e5cb31b403dde10a3c54dbd7f63185562dc6bcf76",
+    "final_inventory": "c72cf614099d5cea5aafb1a5e85606df0fe3165b43f628bc7f6bb25780468389",
+    "final_coverage": "4e3e7afb40e4f3c25b8dd69eb3444d6c1246829ea1a75e31a11c352058f4d221",
+    "candidate_script": "331375450502153b58491c759595f970099e0387b0345e847ebf5f0b299d39e6"
+  },
+  "scope": "Static persisted candidate consistency only; no original code execution, source identity, runtime reachability, semantic or game completeness claim."
+}

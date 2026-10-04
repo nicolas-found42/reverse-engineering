@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "status": "FAIL_RECONCILIATION",
+  "checks": {
+    "elf_sha256_pinned": true,
+    "candidate_single_transaction_committed": true,
+    "candidate_cfg_body_is_68_bytes": true,
+    "zero_tail_001fc114_unowned": true,
+    "reopened_export_completed_all_3839": true,
+    "candidate_present_in_reopened_c_manifest": true,
+    "candidate_present_in_reopened_evidence_inventory": true,
+    "all_prior_function_entries_remain": true,
+    "prior_function_name_body_blocks_and_instruction_bytes_preserved": true,
+    "only_expected_prior_caller_references_changed": true,
+    "coverage_export_count_matches": true,
+    "candidate_c_hash_matches_manifest": true,
+    "prior_c_file_changes_are_limited_to_the_three_call_name_bindings": false
+  },
+  "all_checks_pass": false,
+  "scope": "One provisional EE candidate on one fresh isolated Ghidra project copy. Does not prove original function identity, true source boundary, semantics, runtime reachability, or whole-game completeness.",
+  "candidate": {
+    "entry": "001fc0d0",
+    "name": "candidate_ee_001fc0d0",
+    "body_start": "001fc0d0",
+    "body_end_inclusive": "001fc113",
+    "body_bytes": 68,
+    "unreachable_zero_tail_left_unowned": [
+      "001fc114"
+    ],
+    "incoming_saved_call_sites": [
+      "001fbf20",
+      "001fbf44",
+      "001fbf68"
+    ]
+  },
+  "source_pins": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "window_sha256": "edf31a53a1dd273f55d1c55703638db8e5dd0e2b7d2a6924874df0085f7aac4d",
+    "window_file_offset": "000fcfb8",
+    "baseline_3837_manifest_sha256": "39302b3579c4c88f688a962fc794a6f9c6d652730c4f09794e7a40b29001192e",
+    "prior_3838_c_manifest_sha256": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce",
+    "prior_3838_inventory_sha256": "15488c325db2c87f6e5b08a93b07fe92daff9feb711dc12b4451d39a86dc98be",
+    "candidate_script_sha256": "150e8b2e30df5696134d116307e1ec815594c5d50017ecc04ae3f7dd141c7147"
+  },
+  "outputs": {
+    "candidate_result_path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/candidate.json",
+    "candidate_result_sha256": "3c2b0cd88e51b09e932dd25dc5a1b81bb2ceaf1fe95dae873d50704ba5be54f3",
+    "reopened_manifest_path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/reopened-export/manifest.json",
+    "reopened_manifest_sha256": "2a2d307d0f28a00011d9d2956143f270b83b4a0f5ada9d8c4053c6107f8f3b26",
+    "reopened_inventory_sha256": "5c5e4feec2e7bc9128d39b7a9a9b67a20d77e11682e61ad13bb3a0654f582dcb",
+    "reopened_coverage_sha256": "c7752cff3459006d6bdfd18b9fe88a6d4410244a2a58df2741f2a1a27220ca54",
+    "candidate_c_path": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt05/reopened-export/functions/001fc0d0.c",
+    "candidate_c_sha256": "d677df50fc2e7ed3e1f303d221966e22ecd5441ba9d0ac679ab04d7233408bdd",
+    "candidate_c_bytes": 203
+  },
+  "reopened_counts": {
+    "inventory_count": 3839,
+    "generated": 3839,
+    "failed": 0,
+    "coverage_inventory_count": 3839
+  },
+  "comparison": {
+    "prior_function_entry_count": 3838,
+    "new_function_entry_count": 1,
+    "prior_body_differences": [],
+    "prior_instruction_address_text_byte_differences": [],
+    "prior_reference_differences": [
+      {
+        "entry": "001fbe48",
+        "address": "001fbf20",
+        "old_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      },
+      {
+        "entry": "001fbe48",
+        "address": "001fbf44",
+        "old_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      },
+      {
+        "entry": "001fbe48",
+        "address": "001fbf68",
+        "old_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "new_references": [
+          {
+            "to": "001fc0d0",
+            "type": "UNCONDITIONAL_CALL",
+            "function": "001fc0d0"
+          }
+        ]
+      }
+    ],
+    "prior_generated_c_differences": [
+      {
+        "entry": "001fbe48",
+        "old_sha256": "b9132394cffff2acb8f2963933de03c8c1de25256558a73cad0f13784b7a5634",
+        "new_sha256": "a057059453f28e8ef521ab6dfddc89352b7dd52cc2eadf636c607555bb76c423",
+        "old_bytes": 1488,
+        "new_bytes": 1506,
+        "diff_lines": [
+          "--- functions/001fbe48.c",
+          "+++ functions/001fbe48.c",
+          "@@ -35,15 +35,15 @@",
+          "           piVar1[0x2a] = 0;",
+          "           piVar1[0x29] = 0;",
+          "           piVar1[0x28] = 0;",
+          "-          lVar4 = func_0x001fc0d0(param_1,0,piVar1[0x25]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,0,piVar1[0x25]);",
+          "           piVar1[0x28] = piVar1[0x28] + 1;",
+          "           break;",
+          "         case 2:",
+          "-          lVar4 = func_0x001fc0d0(param_1,piVar1[0x29],piVar1[0x26]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,piVar1[0x29],piVar1[0x26]);",
+          "           piVar1[0x29] = piVar1[0x29] + 1;",
+          "           break;",
+          "         default:",
+          "-          lVar4 = func_0x001fc0d0(param_1,piVar1[0x2a],piVar1[0x27]);",
+          "+          lVar4 = candidate_ee_001fc0d0(param_1,piVar1[0x2a],piVar1[0x27]);",
+          "           piVar1[0x2a] = piVar1[0x2a] + 1;",
+          "         }",
+          "       }"
+        ]
+      }
+    ]
+  },
+  "preserved_failures": [
+    ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0/candidate.log: Ghidra rejected hidden .scratch project path before processing",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt02/candidate.log: initial candidate script compile errors; no candidate script ran",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt02/candidate.json: text mapping guard rejected wrong initial text-size pin",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt03/candidate.json: decoder-delta guard rejected a Ghidra-created architectural delay-slot instruction at 001fc0ec",
+    " .scratch/mesh/codex-audit/ee-undefined-recovery-001fc0d0-attempt04/candidate.json: CFG proved a zero NOP at 001fc114 is outside reachable body; initial full-span assumption rejected"
+  ],
+  "transaction_behavior": "Exactly one candidate transaction was committed in attempt05; each earlier rejection was rolled back. Candidate presence and count were checked after transaction commit, then persisted project state was reopened before export."
+}
