@@ -1,0 +1,11 @@
+{
+  "tool": "jev_verify",
+  "note": "claims abbreviated where they restate reconciliation.json; evidence passed as three prose summaries (config-check, transaction, reconciliation) of the preserved result files",
+  "claims": [
+    "Transaction added exactly one function candidate_ee_001ff270 (124 words / 496 bytes, 3846 -> 3847) and accepted the pinned three branch-likely instructions.",
+    "Nine direct JALs: three saved entries, six uncreated undefined targets; not call-closed; next word 001ff460 stays undefined and unowned.",
+    "Reconciliation 23/23 against the pinned 3846 export with predicted deltas only.",
+    "One old C output (001ff038) changed by one label substitution; rehash of 7,693 artifacts agrees; verifier pass, 606 warnings equal to prior.",
+    "Result does not establish identity, branch-likely execution semantics, behavior or reachability."
+  ]
+}

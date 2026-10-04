@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "config_sha256": "84a76103776d680b917109a7a59c21eeac3b3d1527aff551c0f3dd7f43fc97a2",
+  "checker_sha256": "fd7a98d7178759e01eeed21775c529c725c3f5aae2d924172d0e80d18488ab8a",
+  "entry": "001ff270",
+  "span": [
+    "001ff270",
+    "001ff460"
+  ],
+  "words": 124,
+  "edge_counts": {
+    "call": 9,
+    "conditional": 10,
+    "return": 1,
+    "conditional_likely": 3,
+    "unconditional_branch": 7
+  },
+  "calls": {
+    "001ff2a0": "001ff140",
+    "001ff2e0": "001feb80",
+    "001ff304": "00200040",
+    "001ff358": "001fc4e0",
+    "001ff32c": "001fef28",
+    "001ff3bc": "001ff460",
+    "001ff390": "001ff520",
+    "001ff3e8": "001fce10",
+    "001ff414": "001fdb88"
+  },
+  "known_callees": [
+    "001fc4e0",
+    "001feb80",
+    "00200040"
+  ],
+  "unresolved_callees": [
+    "001fce10",
+    "001fdb88",
+    "001fef28",
+    "001ff140",
+    "001ff460",
+    "001ff520"
+  ],
+  "zero_words": [
+    "001ff2b4",
+    "001ff31c"
+  ],
+  "incoming_raw_jal_sites": [
+    "001ff08c"
+  ],
+  "scope": "Independent raw-byte re-derivation of the guard config. Structural union only; no identity, feasibility, execution, or call-closure beyond the listed callee states."
+}

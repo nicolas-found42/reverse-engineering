@@ -1,0 +1,337 @@
+{
+  "schema_version": 1,
+  "config_sha256": "84a76103776d680b917109a7a59c21eeac3b3d1527aff551c0f3dd7f43fc97a2",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "baseline_manifest_sha256": "1b4aef79ddcac08266fafd469635ec825bbb3882caa2a21983e930e6aae248f1",
+  "baseline_inventory_sha256": "85bddca04822c8adeef332fe372dedd76b46f28ae03e9ba118f94c27fce0869c",
+  "baseline_coverage_sha256": "9ed5d9487addbc4bdac758a256e1c6e9898781ab7403135a552367501e02aab4",
+  "language": "r5900:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "entry": "001ff270",
+  "status": "created_single_bounded_candidate",
+  "cfg": {
+    "instruction_count_including_delay_slots": 124,
+    "body_end_inclusive": "001ff45c",
+    "instruction_addresses": [
+      "001ff270",
+      "001ff274",
+      "001ff278",
+      "001ff27c",
+      "001ff280",
+      "001ff284",
+      "001ff288",
+      "001ff28c",
+      "001ff290",
+      "001ff294",
+      "001ff298",
+      "001ff29c",
+      "001ff2a0",
+      "001ff2a4",
+      "001ff2a8",
+      "001ff2ac",
+      "001ff2b0",
+      "001ff2b4",
+      "001ff2b8",
+      "001ff2bc",
+      "001ff2c0",
+      "001ff2c4",
+      "001ff2c8",
+      "001ff2cc",
+      "001ff2d0",
+      "001ff2d4",
+      "001ff2d8",
+      "001ff2dc",
+      "001ff2e0",
+      "001ff2e4",
+      "001ff2e8",
+      "001ff2ec",
+      "001ff2f0",
+      "001ff2f4",
+      "001ff2f8",
+      "001ff2fc",
+      "001ff300",
+      "001ff304",
+      "001ff308",
+      "001ff30c",
+      "001ff310",
+      "001ff314",
+      "001ff318",
+      "001ff31c",
+      "001ff320",
+      "001ff324",
+      "001ff328",
+      "001ff32c",
+      "001ff330",
+      "001ff334",
+      "001ff338",
+      "001ff33c",
+      "001ff340",
+      "001ff344",
+      "001ff348",
+      "001ff34c",
+      "001ff350",
+      "001ff354",
+      "001ff358",
+      "001ff35c",
+      "001ff360",
+      "001ff364",
+      "001ff368",
+      "001ff36c",
+      "001ff370",
+      "001ff374",
+      "001ff378",
+      "001ff37c",
+      "001ff380",
+      "001ff384",
+      "001ff388",
+      "001ff38c",
+      "001ff390",
+      "001ff394",
+      "001ff398",
+      "001ff39c",
+      "001ff3a0",
+      "001ff3a4",
+      "001ff3a8",
+      "001ff3ac",
+      "001ff3b0",
+      "001ff3b4",
+      "001ff3b8",
+      "001ff3bc",
+      "001ff3c0",
+      "001ff3c4",
+      "001ff3c8",
+      "001ff3cc",
+      "001ff3d0",
+      "001ff3d4",
+      "001ff3d8",
+      "001ff3dc",
+      "001ff3e0",
+      "001ff3e4",
+      "001ff3e8",
+      "001ff3ec",
+      "001ff3f0",
+      "001ff3f4",
+      "001ff3f8",
+      "001ff3fc",
+      "001ff400",
+      "001ff404",
+      "001ff408",
+      "001ff40c",
+      "001ff410",
+      "001ff414",
+      "001ff418",
+      "001ff41c",
+      "001ff420",
+      "001ff424",
+      "001ff428",
+      "001ff42c",
+      "001ff430",
+      "001ff434",
+      "001ff438",
+      "001ff43c",
+      "001ff440",
+      "001ff444",
+      "001ff448",
+      "001ff44c",
+      "001ff450",
+      "001ff454",
+      "001ff458",
+      "001ff45c"
+    ],
+    "edges": [
+      {
+        "site": "001ff2a0",
+        "kind": "call",
+        "target": "001ff140",
+        "fallthrough": "001ff2a8"
+      },
+      {
+        "site": "001ff2a8",
+        "kind": "conditional",
+        "target": "001ff448",
+        "fallthrough": "001ff2b0"
+      },
+      {
+        "site": "001ff458",
+        "kind": "return"
+      },
+      {
+        "site": "001ff2c0",
+        "kind": "conditional_likely",
+        "target": "001ff2d0",
+        "fallthrough": "001ff2c8",
+        "not_taken_annuls_delay_slot": true
+      },
+      {
+        "site": "001ff2c8",
+        "kind": "unconditional_branch",
+        "target": "001ff444"
+      },
+      {
+        "site": "001ff2e0",
+        "kind": "call",
+        "target": "001feb80",
+        "fallthrough": "001ff2e8"
+      },
+      {
+        "site": "001ff2e8",
+        "kind": "conditional",
+        "target": "001ff2f8",
+        "fallthrough": "001ff2f0"
+      },
+      {
+        "site": "001ff2f8",
+        "kind": "conditional",
+        "target": "001ff344",
+        "fallthrough": "001ff300"
+      },
+      {
+        "site": "001ff2f0",
+        "kind": "unconditional_branch",
+        "target": "001ff444"
+      },
+      {
+        "site": "001ff348",
+        "kind": "conditional",
+        "target": "001ff368",
+        "fallthrough": "001ff350"
+      },
+      {
+        "site": "001ff304",
+        "kind": "call",
+        "target": "00200040",
+        "fallthrough": "001ff30c"
+      },
+      {
+        "site": "001ff30c",
+        "kind": "conditional_likely",
+        "target": "001ff324",
+        "fallthrough": "001ff314",
+        "not_taken_annuls_delay_slot": true
+      },
+      {
+        "site": "001ff36c",
+        "kind": "conditional",
+        "target": "001ff3ac",
+        "fallthrough": "001ff374"
+      },
+      {
+        "site": "001ff324",
+        "kind": "unconditional_branch",
+        "target": "001ff444"
+      },
+      {
+        "site": "001ff358",
+        "kind": "call",
+        "target": "001fc4e0",
+        "fallthrough": "001ff360"
+      },
+      {
+        "site": "001ff318",
+        "kind": "conditional",
+        "target": "001ff32c",
+        "fallthrough": "001ff320"
+      },
+      {
+        "site": "001ff360",
+        "kind": "unconditional_branch",
+        "target": "001ff444"
+      },
+      {
+        "site": "001ff32c",
+        "kind": "call",
+        "target": "001fef28",
+        "fallthrough": "001ff334"
+      },
+      {
+        "site": "001ff338",
+        "kind": "conditional",
+        "target": "001ff3a0",
+        "fallthrough": "001ff340"
+      },
+      {
+        "site": "001ff3bc",
+        "kind": "call",
+        "target": "001ff460",
+        "fallthrough": "001ff3c4"
+      },
+      {
+        "site": "001ff3c4",
+        "kind": "conditional",
+        "target": "001ff3f8",
+        "fallthrough": "001ff3cc"
+      },
+      {
+        "site": "001ff3a4",
+        "kind": "unconditional_branch",
+        "target": "001ff444"
+      },
+      {
+        "site": "001ff3fc",
+        "kind": "unconditional_branch",
+        "target": "001ff444"
+      },
+      {
+        "site": "001ff390",
+        "kind": "call",
+        "target": "001ff520",
+        "fallthrough": "001ff398"
+      },
+      {
+        "site": "001ff398",
+        "kind": "conditional",
+        "target": "001ff3d0",
+        "fallthrough": "001ff3a0"
+      },
+      {
+        "site": "001ff3e8",
+        "kind": "call",
+        "target": "001fce10",
+        "fallthrough": "001ff3f0"
+      },
+      {
+        "site": "001ff3f0",
+        "kind": "conditional",
+        "target": "001ff404",
+        "fallthrough": "001ff3f8"
+      },
+      {
+        "site": "001ff404",
+        "kind": "conditional_likely",
+        "target": "001ff424",
+        "fallthrough": "001ff40c",
+        "not_taken_annuls_delay_slot": true
+      },
+      {
+        "site": "001ff414",
+        "kind": "call",
+        "target": "001fdb88",
+        "fallthrough": "001ff41c"
+      },
+      {
+        "site": "001ff43c",
+        "kind": "unconditional_branch",
+        "target": "001ff2b8"
+      }
+    ],
+    "branch_likely_scope": "For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution."
+  },
+  "call_graph_limit": "known callees [001fc4e0, 001feb80, 00200040]; unresolved callees left uncreated [001fce10, 001fdb88, 001fef28, 001ff140, 001ff460, 001ff520]",
+  "incoming_references": [
+    {
+      "to": "001ff270",
+      "from": "001ff08c",
+      "type": "UNCONDITIONAL_CALL",
+      "source": "DEFAULT"
+    }
+  ],
+  "body_bytes": 496,
+  "body_interval_bytes": 496,
+  "excluded_next_word": "001ff460",
+  "excluded_next_word_hex": "27bdffe0",
+  "function_count_after": 3847,
+  "old_function_snapshot_preserved": true,
+  "initialized_memory_preserved": true,
+  "defined_data_preserved": true,
+  "scope": "Static provisional candidate only. No original function identity, semantics, runtime reachability, or whole-game completeness is established."
+}
