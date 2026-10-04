@@ -24,10 +24,8 @@ def tree(leading_pad=0):
     return struct.pack("<5I", 24, 1, 20, 1, 22) + b"A\0B\0" + bytes(8 + leading_pad)
 
 
-def tex_field(w, h, fmt=1):
-    packed = fmt == 3 and min(w, h) >= 16 or fmt == 4 and w >= 32 and h >= 16
-    uw, uh = (w // 2, h // 2) if packed else (w, h)
-    return ((w.bit_length() - 1) << 15) | ((h.bit_length() - 1) << 19) | (int(packed) << 8) | ((uw.bit_length() - 1) << 23) | ((uh.bit_length() - 1) << 27)
+def tex_field(w, h):
+    return ((w.bit_length() - 1) << 15) | ((h.bit_length() - 1) << 19)
 
 
 def item(name, fmt, w, h, palette=0, mips=0, flags=0x100, pixels=None):
@@ -60,11 +58,7 @@ def container(items, a=2, b=1, c=1, tail_count=3, clut_fill=None):
         st = bytearray(0x40)
         struct.pack_into("<I", st, 0, it["palette"])
         st[0x34], st[0x35] = it["fmt"], it["mips"]
-        field = tex_field(it["w"], it["h"], it["fmt"])
-        tbw = max(2 if it["fmt"] in (3, 4) else 1, it["w"] // 64)
-        dbw = max(1, it["w"] // 128) if field & 256 else tbw
-        struct.pack_into("<I", st, 0x30, tbw << 16 | dbw << 22)
-        struct.pack_into("<Q", st, 0x38, field)
+        struct.pack_into("<Q", st, 0x38, tex_field(it["w"], it["h"]))
         out += st + bytes(0x10 * it["mips"])
         structs.append(it)
     for it in structs:
@@ -117,32 +111,11 @@ class Parser(unittest.TestCase):
         item0 = ps2_container.parse(data)["textures"]["items"][0]
         self.assertEqual(ps2_container.decode_rgba(data, item0), pixels)
 
-    def test_format4_rejects_unmeasured_palette_block_size(self):
+    def test_format4_pixels_are_not_decoded(self):
         data = container([item("N", 4, 16, 16)])
         item0 = ps2_container.parse(data)["textures"]["items"][0]
-        item0['palette_bytes'] = 32
         with self.assertRaises(ps2_container.Unsupported):
             ps2_container.decode_rgba(data, item0)
-
-    def test_format4_linear_indices_select_raw_palette_colors(self):
-        palette = b''.join(bytes((i, 2*i, 3*i, 128)) for i in range(16))
-        pixels = bytes([0x10, 0x32, 0x54, 0x76] * 8)
-        data = container([item('N', 4, 8, 8, palette=2, pixels=[pixels])], clut_fill=[bytes(0x400), bytes(0x400), palette, bytes(0x400)])
-        texture = ps2_container.parse(data)['textures']['items'][0]
-        self.assertEqual(ps2_container.decode_rgba(data, texture)[:32], palette[:32])
-
-    def test_format4_256_entry_palette_keeps_first_sixteen_raw_colors(self):
-        palette = b''.join(bytes((i, (2*i) & 255, (3*i) & 255, 128)) for i in range(256))
-        pixels = bytes([0x10, 0x32, 0x54, 0x76, 0x98, 0xba, 0xdc, 0xfe] * 4)
-        data = container([item('N', 4, 8, 8, pixels=[pixels])], clut_fill=[palette, bytes(0x400), bytes(0x40), bytes(0x400)])
-        texture = ps2_container.parse(data)['textures']['items'][0]
-        self.assertEqual(ps2_container.decode_rgba(data, texture)[:64], palette[:64])
-
-    def test_small_linear_eight_bit_is_decoded_without_swizzling(self):
-        palette = b''.join(bytes((i, 0, 0, 128)) for i in range(256))
-        data = container([item('N', 3, 8, 8, pixels=[bytes(range(64))])], clut_fill=[palette, bytes(0x400), bytes(0x40), bytes(0x400)])
-        texture = ps2_container.parse(data)['textures']['items'][0]
-        self.assertEqual(ps2_container.decode_rgba(data, texture), palette[:256])
 
     def test_truncated_inputs_are_rejected(self):
         good = container([item("A", 3, 16, 16)])
@@ -228,8 +201,8 @@ class Cli(unittest.TestCase):
         decoded = {t["name"]: t for t in d["textures"]}
         self.assertEqual(len(decoded["CAR"]["rgba_sha256"]), 64)
         self.assertEqual(len(decoded["LAMP"]["rgba_sha256"]), 64)
-        self.assertEqual(len(decoded["NET"]["rgba_sha256"]), 64)
-        self.assertTrue(any("mip" in u for u in d["unresolved"]), d["unresolved"])
+        self.assertIn("not decoded", decoded["NET"]["decode"])
+        self.assertTrue(any("4-bit" in u for u in d["unresolved"]), d["unresolved"])
 
     def test_malformed_file_fails_and_missing_is_incomplete(self):
         code, result = self.command("file", self.write(container([item("A", 3, 16, 16)])[:-300]))
@@ -247,10 +220,10 @@ class Cli(unittest.TestCase):
         self.assertEqual(d["formats"], {"1": 350, "3": 1551, "4": 469})
         self.assertEqual(d["texture_count"], 2370)
         self.assertEqual(d["next_section_records_fit"], 56)
-        self.assertEqual(d["decoded_level0_images"], 2370)
+        self.assertEqual(d["decoded_level0_images"], 1856)
         files = {f["path"]: f for f in d["file_results"]}
         undecoded = [t for f in files.values() for t in f["textures"] if "rgba_sha256" not in t and t["format"] in (1, 3)]
-        self.assertEqual(undecoded, [])
+        self.assertEqual((len(undecoded), {t["format"] for t in undecoded}, all(min(t["width"], t["height"]) < 16 for t in undecoded)), (45, {3}, True))
         # Regression pins for two images checked by eye: the 1949 coupe body atlas and a wheel image.
         coupe = files["3DDATA/CARS/49COUPE.PS2;1"]["textures"][0]
         self.assertEqual((coupe["name"], coupe["width"], coupe["height"], coupe["format"]), ("COUPE49_512", 512, 256, 3))

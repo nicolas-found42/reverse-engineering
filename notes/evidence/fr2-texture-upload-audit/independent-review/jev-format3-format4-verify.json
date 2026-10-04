@@ -1,0 +1,16 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "summary": {"verified": 6, "contradicted": 0, "unsupported": 0, "needs_review": 0},
+  "claims": [
+    {"id": "claim0", "verdict": "verified", "confidence": 1.0, "action": "auto", "supporting_evidence": "game-static-fields", "claim": "Format 3 selected fields are PSMT8=19, CPSM=PSMCT32=0, CSM=0, CSA=0."},
+    {"id": "claim1", "verdict": "verified", "confidence": 0.99, "action": "auto", "supporting_evidence": "independent-run", "claim": "The pinned T32/I8 block map, T32/I4 sub-block map, and CT32 physical upload map yield identity labels 0..255 after the game bits-3/4 permutation."},
+    {"id": "claim2", "verdict": "verified", "confidence": 1.0, "action": "auto", "supporting_evidence": "independent-run", "claim": "Without the game bits-3/4 permutation, the format-3 mapping is not identity."},
+    {"id": "claim3", "verdict": "verified", "confidence": 0.97, "action": "auto", "supporting_evidence": "independent-run", "claim": "Format 4 yields identity labels 0..15 on both upload shapes; the 16x16 route requires the game bits-3/4 permutation."},
+    {"id": "claim4", "verdict": "verified", "confidence": 1.0, "action": "auto", "supporting_evidence": "independent-run", "claim": "All 19 observed format-4 0x400-byte palette references are in palette group A."},
+    {"id": "claim5", "verdict": "verified", "confidence": 1.0, "action": "auto", "supporting_evidence": "scope", "claim": "The calculations prove address/index ordering only; they do not prove rendered colors, alpha semantics, or runtime reachability."}
+  ],
+  "usage": {"input_tokens": 3422, "output_tokens": 749},
+  "note": "Compact durable receipt for the full result and bounded evidence; no claim was accepted on Jev alone."
+}

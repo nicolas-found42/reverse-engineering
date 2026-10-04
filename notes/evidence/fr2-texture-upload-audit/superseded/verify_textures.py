@@ -3,9 +3,8 @@
 
 Separate from the other checks. Parses the section chain of each `.PS2` model the way the executable's
 loader does (name tree, texture library, start of the next section) and decodes level-0 pixels for
-format 1 (32-bit linear) and indexed formats 3/4 under the bounded static model
-upload contract. Descriptor bit8 selects packed versus direct source indices.
-Mip levels, palette table entries and later sections stay unresolved.
+format 1 (32-bit linear) and format 3 with sides that are multiples of 16 (8-bit, GS block layout, raw palette). Format 4 pixels, mip levels,
+the palette table entries and every later section stay unresolved; no geometry claim is made.
 """
 
 import argparse
@@ -18,8 +17,9 @@ from evidence_common import Incomplete, Invalid, sha256, write_result
 
 MAX_BYTES = 128 * 1024 * 1024
 UNRESOLVED = [
+    "format 4 (4-bit) pixel layout: structure is checked, pixels are not decoded",
     "format 2 (16-bit): handled by the parser's size rules but absent from the corpus",
-    "indexed texture dimensions or transfer/buffer-width profiles outside the bounded measured level-zero contract",
+    "format 3 images with a dimension below 16 (45 in the corpus): the 16x16 block layout is not applied, so they are not decoded",
     "mip levels above level 0: sizes are checked, pixels are not decoded",
     "contents of the 12-byte palette table entries (only hashed) and the extra word after the texture count",
     "every section after the texture library, including geometry and the 0x34-byte records",
@@ -90,7 +90,7 @@ def check_corpus(game: Path) -> dict:
         "next_section_records_fit": len(models),
         "file_results": models,
         "unresolved": UNRESOLVED,
-        "claim_limits": "Texture-library structure and bounded level-zero decoding for formats 1, 3, and 4 under the static model upload contract. No mip, geometry, renderer execution, or hardware equivalence claim.",
+        "claim_limits": "Texture-library structure for all formats; pixel decoding only for formats 1 and 3 (visually confirmed on samples). No geometry claim.",
         "failures": failures,
     }
 

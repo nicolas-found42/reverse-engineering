@@ -1,0 +1,22 @@
+.......................................................................................................................................................................................................................................................Es......................................
+======================================================================
+ERROR: test_research_jev_battery (unittest.loader._FailedTest.test_research_jev_battery)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_research_jev_battery
+Traceback (most recent call last):
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 433, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/opt/homebrew/Cellar/python@3.14/3.14.7/Frameworks/Python.framework/Versions/3.14/lib/python3.14/unittest/loader.py", line 374, in _get_module_from_name
+    __import__(name)
+    ~~~~~~~~~~^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_research_jev_battery.py", line 11, in <module>
+    import research_jev_battery as battery
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/research_jev_battery.py", line 15, in <module>
+    from typesafe_sdk import Choice, Noul, TypeSafeClient
+ModuleNotFoundError: No module named 'typesafe_sdk'
+
+
+----------------------------------------------------------------------
+Ran 286 tests in 51.956s
+
+FAILED (errors=1, skipped=1)

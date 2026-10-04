@@ -10,10 +10,9 @@ Verified on the unchanged PAL corpus only. The loader (`FUN_0011ed90`) parses th
    a 0x10-byte record per mip level, and finally the image planes, each 16-byte aligned;
 3. the next section starts at the 16-byte-aligned end and opens with a record count (records of 0x34 bytes).
 
-Level-zero decoding covers format 1 (32-bit linear) and formats 3/4 under the
-bounded static upload contract in ps2_texture_indices. Descriptor bit8 selects
-packed upload versus direct linear indices. Mips and later geometry remain
-separate, and no original rendering or hardware execution is claimed.
+Pixel decoding is claimed only for format 1 (32-bit, linear) and format 3 (8-bit in the GS block layout with
+a raw-order palette), each checked visually. Format 4 (4-bit) layout and everything after the texture
+section are unresolved.
 """
 
 from __future__ import annotations
@@ -177,21 +176,11 @@ def decode_rgba(data: bytes, item: dict) -> bytes:
     plane = data[level["offset"] : level["offset"] + level["size"]]
     if item["format"] == 1:
         return plane
-    if item["format"] in (3, 4):
-        from ps2_texture_indices import decode_indices
-        count = 256 if item["format"] == 3 else 16
-        palette_size = count * 4
-        allowed_sizes = (0x400,) if item['format'] == 3 else (0x40, 0x400)
-        if item["palette_bytes"] not in allowed_sizes:
-            raise Unsupported(f"format {item['format']} palette block is outside the measured profile")
-        pixels = decode_indices(data, item)
-        palette_block = data[item["palette_offset"] : item["palette_offset"] + item['palette_bytes']]
-        if len(palette_block) != item['palette_bytes']:
-            raise Invalid('palette bytes are outside the input')
-        # The 16x16 PSMCT32 upload of a 256-color A/C block follows the
-        # loader's bit3/4 permutation; CSM0/CSA0 then restores raw indices
-        # 0..15 for PSMT4, as does the unpermuted 8x2 sixteen-color upload.
-        palette = palette_block[:palette_size]
-        entries = [palette[4 * i : 4 * i + 4] for i in range(count)]
+    if item["format"] == 3:
+        if item["palette_bytes"] != 0x400:
+            raise Unsupported("format 3 needs a 256-entry palette block")
+        pixels = unswizzle8(plane, item["width"], item["height"])
+        palette = data[item["palette_offset"] : item["palette_offset"] + 0x400]
+        entries = [palette[4 * i : 4 * i + 4] for i in range(256)]
         return b"".join(map(entries.__getitem__, pixels))
     raise Unsupported(f"format {item['format']} pixel layout is not decoded")

@@ -1,0 +1,38 @@
+F....E......E..
+======================================================================
+ERROR: test_format4_linear_indices_select_raw_palette_colors (test_ps2_textures.Parser.test_format4_linear_indices_select_raw_palette_colors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_textures.py", line 131, in test_format4_linear_indices_select_raw_palette_colors
+    self.assertEqual(ps2_container.decode_rgba(data, texture)[:32], palette[:32])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 186, in decode_rgba
+    raise Unsupported(f"format {item['format']} pixel layout is not decoded")
+ps2_container.Unsupported: format 4 pixel layout is not decoded
+
+======================================================================
+ERROR: test_small_linear_eight_bit_is_decoded_without_swizzling (test_ps2_textures.Parser.test_small_linear_eight_bit_is_decoded_without_swizzling)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_textures.py", line 137, in test_small_linear_eight_bit_is_decoded_without_swizzling
+    self.assertEqual(ps2_container.decode_rgba(data, texture), palette[:256])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 182, in decode_rgba
+    pixels = unswizzle8(plane, item["width"], item["height"])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 166, in unswizzle8
+    raise Unsupported(f"8-bit block layout needs multiples of 16; got {w}x{h}")
+ps2_container.Unsupported: 8-bit block layout needs multiples of 16; got 8x8
+
+======================================================================
+FAIL: test_corpus_real_integration (test_ps2_textures.Cli.test_corpus_real_integration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_textures.py", line 242, in test_corpus_real_integration
+    self.assertEqual(d["decoded_level0_images"], 2370)
+AssertionError: 1856 != 2370
+
+----------------------------------------------------------------------
+Ran 15 tests in 2.861s
+
+FAILED (failures=1, errors=2)

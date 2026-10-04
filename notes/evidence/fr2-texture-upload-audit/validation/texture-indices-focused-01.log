@@ -1,0 +1,117 @@
+EEEEEEEE
+======================================================================
+ERROR: test_inconsistent_transfer_dimensions_are_rejected (test_ps2_texture_indices.IndexDecoding.test_inconsistent_transfer_dimensions_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 52, in test_inconsistent_transfer_dimensions_are_rejected
+    data, texture = fixture()
+                    ^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+======================================================================
+ERROR: test_invalid_buffer_width_cannot_read_unwritten_memory (test_ps2_texture_indices.IndexDecoding.test_invalid_buffer_width_cannot_read_unwritten_memory)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 61, in test_invalid_buffer_width_cannot_read_unwritten_memory
+    data, texture = fixture(width=256, height=256)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+======================================================================
+ERROR: test_item_dimensions_must_match_the_descriptor (test_ps2_texture_indices.IndexDecoding.test_item_dimensions_must_match_the_descriptor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 74, in test_item_dimensions_must_match_the_descriptor
+    data, texture = fixture()
+                    ^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+======================================================================
+ERROR: test_linear_eight_bit_includes_small_images (test_ps2_texture_indices.IndexDecoding.test_linear_eight_bit_includes_small_images)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 42, in test_linear_eight_bit_includes_small_images
+    data, texture = fixture(fmt=3, width=8, height=8, packed=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+======================================================================
+ERROR: test_linear_four_bit_uses_low_then_high_nibbles (test_ps2_texture_indices.IndexDecoding.test_linear_four_bit_uses_low_then_high_nibbles)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 27, in test_linear_four_bit_uses_low_then_high_nibbles
+    data, texture = fixture(width=8, height=8, packed=False)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+======================================================================
+ERROR: test_packed_eight_bit_matches_measured_existing_formula (test_ps2_texture_indices.IndexDecoding.test_packed_eight_bit_matches_measured_existing_formula)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 47, in test_packed_eight_bit_matches_measured_existing_formula
+    data, texture = fixture(fmt=3)
+                    ^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+======================================================================
+ERROR: test_packed_four_bit_known_first_row_cells (test_ps2_texture_indices.IndexDecoding.test_packed_four_bit_known_first_row_cells)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 34, in test_packed_four_bit_known_first_row_cells
+    data, texture = fixture()
+                    ^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+======================================================================
+ERROR: test_truncated_plane_and_descriptor_are_rejected (test_ps2_texture_indices.IndexDecoding.test_truncated_plane_and_descriptor_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 68, in test_truncated_plane_and_descriptor_are_rejected
+    data, texture = fixture()
+                    ^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_texture_indices.py", line 21, in fixture
+    texture = ps2_container.parse(data)['textures']['items'][0]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 96, in parse
+    raise Invalid(f"texture {i}: unknown format {fmt}")
+evidence_common.Invalid: texture 0: unknown format 0
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.003s
+
+FAILED (errors=8)

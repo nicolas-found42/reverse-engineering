@@ -1,0 +1,42 @@
+..............................................................................................................................................................................................................................................................E.E.E......................................
+======================================================================
+ERROR: test_patch_stages_only_and_reproduces_candidate_hashes (test_translator_semantics.TranslatorSemanticsTests.test_patch_stages_only_and_reproduces_candidate_hashes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_translator_semantics.py", line 54, in test_patch_stages_only_and_reproduces_candidate_hashes
+    stage = verify.stage_and_patch(self.source_root, Path(directory))
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_translator_semantics.py", line 181, in stage_and_patch
+    raise ValueError(f"cannot apply translator patch to pinned inputs: {apply.stdout}{apply.stderr}")
+ValueError: cannot apply translator patch to pinned inputs: patching file 'ps2xRecomp/src/lib/instruction_translator.cpp'
+Ignoring previously applied (or reversed) patch.
+2 out of 2 hunks ignored--saving rejects to 'ps2xRecomp/src/lib/instruction_translator.cpp.rej'
+patching file 'ps2xRecomp/src/lib/special_translator.cpp'
+Ignoring previously applied (or reversed) patch.
+4 out of 4 hunks ignored--saving rejects to 'ps2xRecomp/src/lib/special_translator.cpp.rej'
+
+
+======================================================================
+ERROR: test_pinned_checkout_commit_and_input_hashes (test_translator_semantics.TranslatorSemanticsTests.test_pinned_checkout_commit_and_input_hashes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_translator_semantics.py", line 34, in test_pinned_checkout_commit_and_input_hashes
+    verify.verify_source_file_hashes(self.source_root)
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_translator_semantics.py", line 60, in verify_source_file_hashes
+    raise ValueError(f"wrong input SHA-256 for {rel}: expected {expected}, got {actual}")
+ValueError: wrong input SHA-256 for ps2xRecomp/src/lib/instruction_translator.cpp: expected b24105265f6d6f14c48bb72e5066877e0b3e1ffe439ddd0331e0d297004bd226, got d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7
+
+======================================================================
+ERROR: test_wrong_input_sha_is_rejected (test_translator_semantics.TranslatorSemanticsTests.test_wrong_input_sha_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_translator_semantics.py", line 46, in test_wrong_input_sha_is_rejected
+    verify.verify_source_file_hashes(root)
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/verify_translator_semantics.py", line 60, in verify_source_file_hashes
+    raise ValueError(f"wrong input SHA-256 for {rel}: expected {expected}, got {actual}")
+ValueError: wrong input SHA-256 for ps2xRecomp/src/lib/instruction_translator.cpp: expected b24105265f6d6f14c48bb72e5066877e0b3e1ffe439ddd0331e0d297004bd226, got d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7
+
+----------------------------------------------------------------------
+Ran 297 tests in 50.132s
+
+FAILED (errors=3)

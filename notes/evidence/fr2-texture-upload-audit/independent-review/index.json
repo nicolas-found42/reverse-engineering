@@ -1,0 +1,39 @@
+{
+  "title": "Independent GS palette upload mapping review",
+  "status": "bounded static mapping corroboration",
+  "files": [
+    "README.md",
+    "jev-format3-format4-verify.json",
+    "jev-format3-format4-verify-request.json"
+  ],
+  "ignored_scratch": {
+    "script": ".scratch/mesh/codex-root/texture-independent-review/audit_clut4_first16.py",
+    "script_sha256": "a25e3285b3f8d5cdf3eac8d01260fff9f8b2158b9ca8ac1ec8d61e8c7dba196e",
+    "result": ".scratch/mesh/codex-root/texture-independent-review/independent-clut-upload-audit.json",
+    "result_sha256": "eba8ded52faee5a46b75374a07f786f5e105bd6ec189e559c4d651726482acb0",
+    "superseded_script": ".scratch/mesh/codex-root/texture-independent-review/audit_clut4_first16-superseded-row4-byte.py",
+    "superseded_script_sha256": "b7f8142b3899b7d3963edbd46360803b5c7e7e78a6fce0297b2c45127cffc6b7",
+    "superseded_result": ".scratch/mesh/codex-root/texture-independent-review/independent-clut-upload-audit-superseded-row4-byte.json",
+    "superseded_result_sha256": "9dd8ef261238037e17240799dc650067d97cfa52e8ed174e540db6fcde440c49",
+    "jev_format4_prior_receipt": ".scratch/mesh/codex-root/texture-independent-review/jev-clut4-first16-verify.json",
+    "jev_format4_prior_receipt_sha256": "a80c2316066d4712a7bb44c8f23fe9948e7d2a6bb401ea953fa723a31c8f7330",
+    "independent_public_table_script": ".scratch/mesh/codex-root/texture-independent-review/review_public_gs_tables.py",
+    "independent_public_table_script_sha256": "e503af1edfd591567b12f2b3ac7600ebc659eec660578cd6667a8bc65c88986a",
+    "independent_public_table_result": ".scratch/mesh/codex-root/texture-independent-review/independent-public-table-audit.json",
+    "independent_public_table_result_sha256": "2605c3b3e2ec5d37784213bb49c54393e30a5eb566210fc879aceb3e061df3ec"
+  },
+  "results": {
+    "format3_psmt8_entries_checked": 256,
+    "format3_identity_entries_after_game_bitswap": 256,
+    "format3_identity_entries_without_bitswap": 128,
+    "format4_psmt4_entries_checked_per_upload_shape": 16,
+    "format4_0x400_palette_references": 19,
+    "format4_0x400_palette_references_in_group_A": 19
+  },
+  "scope": [
+    "Static address/index ordering only.",
+    "No game or emulator execution.",
+    "No rendered RGBA, alpha, or runtime-reachability claim.",
+    "Pinned GS tables are composed as a layout check; vectorized PCSX2 helper behavior is not replayed instruction by instruction."
+  ]
+}

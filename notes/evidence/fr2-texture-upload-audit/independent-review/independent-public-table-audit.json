@@ -1,0 +1,739 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "method": "Independent reference parser reads pinned PCSX2 public _blockTable/columnTable arrays and evaluates page/block/column equations directly; it does not call root check_texture_upload_maps.py or helper private _packed4_order. It separately compares every corpus item\u2019s independently indexed bytes with decode_indices.",
+  "pcsx2_source": {
+    "url": "https://raw.githubusercontent.com/PCSX2/pcsx2/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/GS/GSTables.cpp",
+    "path": ".scratch/mesh/codex-root/GSTables-pinned.cpp",
+    "sha256": "4fc8ae3ef65d610ef8c1f8059b3a9ef8ae7fce5762a77e71410c7d0f0b12306b",
+    "public_equation": "pxOffset: pageX*pageSize + blockTable[y/columnHeight][subpageX/columnWidth]*blockSize + columnTable[y%columnHeight][subpageX%columnWidth]",
+    "source_lines": "GSTables.cpp 248-260; arrays _blockTable32/_blockTable16/_blockTable8/_blockTable4 and columnTable8/columnTable4"
+  },
+  "independent_formula": {
+    "fmt3": "PSMCT32 word offset * 4 bytes maps the four upload bytes to raster labels; PSMT8 table yields byte address.",
+    "fmt4": "PSMCT16 halfword offset * 4 nibbles maps each 16-bit upload texel to four source nibble labels; PSMT4 table yields nibble address.",
+    "page_block_column": "Four public PCSX2 tables for each bpp profile are used; page width is buffer_width*64/page_width."
+  },
+  "counts": {
+    "linear_fmt3": 230,
+    "linear_fmt4": 28,
+    "packed_fmt3": 1321,
+    "packed_fmt4": 441,
+    "pixel_indices_checked_fmt3": 57782272,
+    "pixel_indices_checked_fmt4": 15067968
+  },
+  "unique_packed_profiles": 31,
+  "packed_profiles": [
+    {
+      "format": 3,
+      "width": 16,
+      "height": 16,
+      "upload_width": 8,
+      "upload_height": 8,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 256,
+      "items": 17,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 32,
+      "height": 16,
+      "upload_width": 16,
+      "upload_height": 8,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 512,
+      "items": 6,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 32,
+      "height": 32,
+      "upload_width": 16,
+      "upload_height": 16,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 1024,
+      "items": 88,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 64,
+      "height": 16,
+      "upload_width": 32,
+      "upload_height": 8,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 1024,
+      "items": 10,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 64,
+      "height": 32,
+      "upload_width": 32,
+      "upload_height": 16,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 2048,
+      "items": 28,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 64,
+      "height": 64,
+      "upload_width": 32,
+      "upload_height": 32,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 4096,
+      "items": 225,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 128,
+      "height": 16,
+      "upload_width": 64,
+      "upload_height": 8,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 2048,
+      "items": 3,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 128,
+      "height": 32,
+      "upload_width": 64,
+      "upload_height": 16,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 4096,
+      "items": 16,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 128,
+      "height": 64,
+      "upload_width": 64,
+      "upload_height": 32,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 8192,
+      "items": 67,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 128,
+      "height": 128,
+      "upload_width": 64,
+      "upload_height": 64,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 16384,
+      "items": 238,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 256,
+      "height": 16,
+      "upload_width": 128,
+      "upload_height": 8,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 4096,
+      "items": 7,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 256,
+      "height": 32,
+      "upload_width": 128,
+      "upload_height": 16,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 8192,
+      "items": 8,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 256,
+      "height": 64,
+      "upload_width": 128,
+      "upload_height": 32,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 16384,
+      "items": 26,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 256,
+      "height": 128,
+      "upload_width": 128,
+      "upload_height": 64,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 32768,
+      "items": 71,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 256,
+      "height": 256,
+      "upload_width": 128,
+      "upload_height": 128,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 65536,
+      "items": 371,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 512,
+      "height": 32,
+      "upload_width": 256,
+      "upload_height": 16,
+      "dbw": 4,
+      "tbw": 8,
+      "coordinates": 16384,
+      "items": 2,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 512,
+      "height": 256,
+      "upload_width": 256,
+      "upload_height": 128,
+      "dbw": 4,
+      "tbw": 8,
+      "coordinates": 131072,
+      "items": 101,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 3,
+      "width": 512,
+      "height": 512,
+      "upload_width": 256,
+      "upload_height": 256,
+      "dbw": 4,
+      "tbw": 8,
+      "coordinates": 262144,
+      "items": 37,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 32,
+      "height": 16,
+      "upload_width": 16,
+      "upload_height": 8,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 512,
+      "items": 3,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 32,
+      "height": 32,
+      "upload_width": 16,
+      "upload_height": 16,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 1024,
+      "items": 24,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 64,
+      "height": 32,
+      "upload_width": 32,
+      "upload_height": 16,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 2048,
+      "items": 10,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 64,
+      "height": 64,
+      "upload_width": 32,
+      "upload_height": 32,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 4096,
+      "items": 74,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 128,
+      "height": 32,
+      "upload_width": 64,
+      "upload_height": 16,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 4096,
+      "items": 38,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 128,
+      "height": 64,
+      "upload_width": 64,
+      "upload_height": 32,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 8192,
+      "items": 33,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 128,
+      "height": 128,
+      "upload_width": 64,
+      "upload_height": 64,
+      "dbw": 1,
+      "tbw": 2,
+      "coordinates": 16384,
+      "items": 83,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 256,
+      "height": 64,
+      "upload_width": 128,
+      "upload_height": 32,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 16384,
+      "items": 12,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 256,
+      "height": 128,
+      "upload_width": 128,
+      "upload_height": 64,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 32768,
+      "items": 45,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 256,
+      "height": 256,
+      "upload_width": 128,
+      "upload_height": 128,
+      "dbw": 2,
+      "tbw": 4,
+      "coordinates": 65536,
+      "items": 95,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 512,
+      "height": 128,
+      "upload_width": 256,
+      "upload_height": 64,
+      "dbw": 4,
+      "tbw": 8,
+      "coordinates": 65536,
+      "items": 10,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 512,
+      "height": 256,
+      "upload_width": 256,
+      "upload_height": 128,
+      "dbw": 4,
+      "tbw": 8,
+      "coordinates": 131072,
+      "items": 2,
+      "coordinate_bijection": true
+    },
+    {
+      "format": 4,
+      "width": 512,
+      "height": 512,
+      "upload_width": 256,
+      "upload_height": 256,
+      "dbw": 4,
+      "tbw": 8,
+      "coordinates": 262144,
+      "items": 12,
+      "coordinate_bijection": true
+    }
+  ],
+  "maximum_per_profile_coordinates": 262144,
+  "minimum_per_profile_coordinates": 256,
+  "game_instruction_profile": {
+    "elf_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "instruction_checks": [
+      {
+        "function": "00222358",
+        "address": "002223a8",
+        "bytes": "0b004010",
+        "instruction": "beq v0,zero,0x002223d8"
+      },
+      {
+        "function": "00222358",
+        "address": "002223c8",
+        "bytes": "0c006390",
+        "instruction": "lbu v1,0xc(v1)"
+      },
+      {
+        "function": "00222358",
+        "address": "002223d0",
+        "bytes": "0a000010",
+        "instruction": "b 0x002223fc"
+      },
+      {
+        "function": "00222358",
+        "address": "002223d4",
+        "bytes": "0b00a590",
+        "instruction": "_lbu a1,0xb(a1)"
+      },
+      {
+        "function": "00222358",
+        "address": "002223f0",
+        "bytes": "09006390",
+        "instruction": "lbu v1,0x9(v1)"
+      },
+      {
+        "function": "00222358",
+        "address": "002223f8",
+        "bytes": "0200a590",
+        "instruction": "lbu a1,0x2(a1)"
+      },
+      {
+        "function": "00222358",
+        "address": "0022244c",
+        "bytes": "4488080c",
+        "instruction": "jal 0x00222110"
+      },
+      {
+        "function": "00220fe0",
+        "address": "00221038",
+        "bytes": "38002ade",
+        "instruction": "ld t2,0x38(s1)"
+      },
+      {
+        "function": "00220fe0",
+        "address": "00221048",
+        "bytes": "05004010",
+        "instruction": "beq v0,zero,0x00221060"
+      },
+      {
+        "function": "00220fe0",
+        "address": "00221050",
+        "bytes": "2d400000",
+        "instruction": "move t0,zero"
+      },
+      {
+        "function": "00220fe0",
+        "address": "00221054",
+        "bytes": "0b000010",
+        "instruction": "b 0x00221084"
+      },
+      {
+        "function": "00220fe0",
+        "address": "00221058",
+        "bytes": "20000924",
+        "instruction": "_li t1,0x20"
+      },
+      {
+        "function": "00220fe0",
+        "address": "00221084",
+        "bytes": "300027de",
+        "instruction": "ld a3,0x30(s1)"
+      },
+      {
+        "function": "00220fe0",
+        "address": "002210c4",
+        "bytes": "4488080c",
+        "instruction": "jal 0x00222110"
+      },
+      {
+        "function": "00220fe0",
+        "address": "002210c8",
+        "bytes": "04504201",
+        "instruction": "_sllv t2,v0,t2"
+      }
+    ],
+    "static_call_sites_to_00222358": [
+      {
+        "caller": "00127470",
+        "address": "00127520",
+        "bytes": "d688080c",
+        "instruction": "jal 0x00222358"
+      },
+      {
+        "caller": "00228ed8",
+        "address": "00228f5c",
+        "bytes": "d688080c",
+        "instruction": "jal 0x00222358"
+      }
+    ],
+    "claim_limit": "Static instruction bytes and call references only; invocation is not observed."
+  },
+  "samples": [
+    {
+      "path": "/3DDATA/debug.ps2;1",
+      "name": "CUBESIDE",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        32,
+        32
+      ],
+      "indices_sha256": "1da09c2da647ceeec1410b2427a93466b292ab97e69b156e5246710c1cd2b307"
+    },
+    {
+      "path": "/3DDATA/debug.ps2;1",
+      "name": "CONE_ORANGE",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        32,
+        32
+      ],
+      "indices_sha256": "34576dff866801fbfa588403ed3fcfa2df85c9811261c4aa7bfe2e263f3132a5"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "TIMEBONUS1",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "indices_sha256": "a77dda050115482cd752a2f58d42ebd389855a0662e2c90db9a4088eb673cc5f"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "SKILLSCONE",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        64,
+        64
+      ],
+      "indices_sha256": "585fd19fdd6ee880eddbc52e62e286e054cdee6f8eb9c8a86884ace687d5dad6"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "CRATE",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        64,
+        64
+      ],
+      "indices_sha256": "0b96d40acc5102e02c82d7812d09de1cc280d542d3b1f4116a4d49ac6a7ef9e1"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "ENVIRO_3",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        128,
+        128
+      ],
+      "indices_sha256": "888c88e426249914d25c87d81a34eba5316f5c01581f3a351286cd2a83dc7ab9"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "UI_LIGHTS",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        64,
+        64
+      ],
+      "indices_sha256": "497c6db3af5423679e60959e3dec5f4861dec98ab9fd41be5f48a16cd70b863c"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "UI_GLOWS",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        32,
+        16
+      ],
+      "indices_sha256": "4801f1a68c3cf07a4aeff63a320fde1c7023610697376cfee5a39d11d36da356"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "UI_BOARD",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        64,
+        16
+      ],
+      "indices_sha256": "66fa81008caa273469b2b0a6ffb1a9c027038c939ea78ad3282de495d6313369"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "SHADOW",
+      "format": 3,
+      "packed": false,
+      "dimensions": [
+        64,
+        64
+      ],
+      "indices_sha256": "66e1c6ba0e5197656dbda79be3c133f3a60795ad28ccf47a25353f3327b8673e"
+    },
+    {
+      "path": "/3DDATA/misc.ps2;1",
+      "name": "RACELINE",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        32,
+        32
+      ],
+      "indices_sha256": "52cf947b911824d6160186299f9b1e43d211d26409713a4bb94b21ceea7b2659"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_512",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        512,
+        256
+      ],
+      "indices_sha256": "75f2482dfa9486490f64a5bf5115788b474557bbcfe0e642e21639ba57405a32"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_512",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        512,
+        256
+      ],
+      "indices_sha256": "989654d5494336603f9ddd1675bb52f7eb3e11c63debf7a668d94e85acd9d3b9"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_512",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        512,
+        256
+      ],
+      "indices_sha256": "968b5398796d95bd49182db5c23b1d29f74fbaf5b9e6b85e1a8016278d20f807"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_512",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        512,
+        256
+      ],
+      "indices_sha256": "547567c7ca870cd8bb69c85328ff7f2a67fedfa5f4e191e077ca3c5104f4a4c5"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_256",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        256,
+        256
+      ],
+      "indices_sha256": "66b963a2e68116ec5d9b81abcc8084cef6d6b80f9b888a0616baeb6bb3ea1c9d"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_256",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        256,
+        256
+      ],
+      "indices_sha256": "84f14ffc30f45fed5fe7b30c8a28f7f928e833cb24d4e035b9f94de3dc010d3e"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_256",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        256,
+        256
+      ],
+      "indices_sha256": "0bb4c986c2b2593cd7febd9bcc13fe5aad117992698863b886168a235f398cae"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_256",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        256,
+        256
+      ],
+      "indices_sha256": "937d6b5a6f6053ba61a792800b2e59a0b8c61da1430d03d6a2cb564dbb5dc6ca"
+    },
+    {
+      "path": "/3DDATA/CARS/49COUPE.PS2;1",
+      "name": "COUPE49_128",
+      "format": 3,
+      "packed": true,
+      "dimensions": [
+        128,
+        128
+      ],
+      "indices_sha256": "48abe764f2d88615bd294ef3cc6a1c3d88b20cb418832870e731acbb0a5628b1"
+    }
+  ],
+  "claim_limits": [
+    "Static table-address equivalence and offline byte indexing only.",
+    "The game instructions establish statically distinct branches/lookup offsets and call references; neither path execution nor actual GS upload is observed.",
+    "Indexed bytes do not prove rendering, palette correctness, alpha interpretation, or visual appearance."
+  ]
+}

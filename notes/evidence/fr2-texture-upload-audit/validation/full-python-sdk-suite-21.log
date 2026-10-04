@@ -1,0 +1,14 @@
+...........................................................................................................................................................................E.............................................................................................................................
+======================================================================
+ERROR: test_valid_file_reports_textures_hashes_and_unresolved_items (test_ps2_textures.Cli.test_valid_file_reports_textures_hashes_and_unresolved_items)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_textures.py", line 231, in test_valid_file_reports_textures_hashes_and_unresolved_items
+    self.assertIn("not decoded", decoded["NET"]["decode"])
+                                 ~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'decode'
+
+----------------------------------------------------------------------
+Ran 297 tests in 49.128s
+
+FAILED (errors=1)
