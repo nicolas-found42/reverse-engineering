@@ -88,10 +88,7 @@ def _cross_check(details: dict, coverage: dict) -> dict:
     return checked
 
 
-def classify_unlisted(data: bytes, static: dict, coverage: dict | None = None) -> dict:
-    details = _unlisted(data, static)
-    targets = [(r['address'], r['address'] + r['bytes']) for r in details['regions']]
-    overlays = [(r['source_offset'], r['source_offset'] + r['bytes']) for r in details['synthetic_regions']]
+def _controls(data: bytes, static: dict) -> dict:
     owned = [int.from_bytes(bytes.fromhex(row['bytes']), 'little')
              for function in static['functions'] for row in function['instructions']]
     controls = {'owned': _rate(owned), 'data': _rate([
@@ -101,19 +98,36 @@ def classify_unlisted(data: bytes, static: dict, coverage: dict | None = None) -
         for word in _words(data, {'offset': 0}, section['offset'], section['size'])])}
     if controls['owned']['plausible'] < CONTROL_SHARE * controls['owned']['nonzero_words']:
         raise Incomplete('shape filter rejects function-owned words; it cannot classify unlisted spans', controls)
-    classes: dict[str, dict] = {}
+    return controls
+
+
+def segments(data: bytes, details: dict) -> list[dict]:
+    """Every unlisted span piece with its class, address and words, in region order."""
+    targets = [(r['address'], r['address'] + r['bytes']) for r in details['regions']]
+    overlays = [(r['source_offset'], r['source_offset'] + r['bytes']) for r in details['synthetic_regions']]
+    pieces = []
     for region in details['regions']:
         for span in region['unlisted_spans']:
             if span['offset'] % WORD or span['bytes'] % WORD:
                 raise Invalid('unlisted span is not word aligned')
             for at, size, overlay in _segments(region['offset'] + span['offset'], span['bytes'], overlays):
                 words = _words(data, {'offset': 0}, at, size)
-                row = classes.setdefault('vu_microcode' if overlay else _kind(words, targets),
-                                         {'bytes': 0, 'spans': 0, 'zero_words': 0, 'with_return': 0})
-                row['bytes'] += size
-                row['spans'] += 1
-                row['zero_words'] += words.count(0)
-                row['with_return'] += JR_RA in words
+                pieces.append({'region': region['name'], 'address': region['address'] + at - region['offset'],
+                               'bytes': size, 'words': words,
+                               'kind': 'vu_microcode' if overlay else _kind(words, targets)})
+    return pieces
+
+
+def classify_unlisted(data: bytes, static: dict, coverage: dict | None = None) -> dict:
+    details = _unlisted(data, static)
+    controls = _controls(data, static)
+    classes: dict[str, dict] = {}
+    for piece in segments(data, details):
+        row = classes.setdefault(piece['kind'], {'bytes': 0, 'spans': 0, 'zero_words': 0, 'with_return': 0})
+        row['bytes'] += piece['bytes']
+        row['spans'] += 1
+        row['zero_words'] += piece['words'].count(0)
+        row['with_return'] += JR_RA in piece['words']
     result = {'executable_sha256': details['executable_sha256'],
               'mapped_executable_bytes': details['mapped_executable_bytes'],
               'function_owned_bytes': details['listed_instruction_bytes'],
