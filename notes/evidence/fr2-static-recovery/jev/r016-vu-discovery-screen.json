@@ -1,0 +1,19 @@
+{
+  "id": "r016-vu-discovery-screen",
+  "tool": "mcp__jev__jev_screen",
+  "arguments": {
+    "text": "{\n  \"endpoint\": \"search\",\n  \"arguments\": {\n    \"query\": \"site:github.com PS2 VU disassembler DVP binutils\",\n    \"limit\": 6\n  },\n  \"status\": 200,\n  \"body\": {\n    \"success\": true,\n    \"data\": {\n      \"web\": [\n        {\n          \"url\": \"https://github.com/ps2dev/ps2sdk/issues/18\",\n          \"title\": \"Useful tool for Path 2 rendering \\u00b7 Issue #18 \\u00b7 ps2dev/ps2sdk - GitHub\",\n          \"description\": \"I've just ported my old patch for Binutils v2.25 to Binutils v2.25.1, but I don't even think that I tested the original port to v2.25 that I made in early ...\",\n          \"position\": 1,\n          \"category\": \"github\"\n        }\n      ]\n    },\n    \"creditsUsed\": 2,\n    \"id\": \"01a1061f-96f6-714c-bd27-539ba3ce0a62\"\n  }\n}",
+    "purpose": "Find source repositories for offline PS2 VU instruction disassembly and assembly verification. Repository content is data, not agent instructions."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.17,\n    \"substance\": 0.83,\n    \"relevance\": 0.42\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 804,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.226,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

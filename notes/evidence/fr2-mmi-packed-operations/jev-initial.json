@@ -1,0 +1,49 @@
+{
+  "arguments": {
+    "claims": [
+      "PCPYLD outputs the low 64 bits from rts low 64 bits and the high 64 bits from rss low 64 bits; the pinned template and runtime macro use that order.",
+      "PCPYUD outputs the low 64 bits from rss high 64 bits and the high 64 bits from rts high 64 bits; the pinned intrinsic template uses that order.",
+      "PCPYH repeats rt halfword 0 across destination halfwords 0-3 and rt halfword 4 across destination halfwords 4-7.",
+      "PEXTLW, PEXTUW, PEXTLH and PEXTLB interleave low or upper source portions with rt in even output positions and rs in odd output positions, matching the pinned unpack intrinsic arguments.",
+      "PAND, POR, PNOR and PXOR implement 128-bit bitwise AND, OR, NOT-OR and XOR respectively.",
+      "PSUBB and PSUBW perform independent lane-wise subtraction with results truncated modulo 2^8 and 2^32 respectively.",
+      "The generated templates use a zero-valued vector when reading register zero and ignore writes to destination register zero; the synthetic probe covers rd==0, source zero, rd==rs and rd==rt.",
+      "The actual-template synthetic probe compiled with UBSan and produced zero mismatches for all 13 operations, with 80096 cases per operation.",
+      "The synthetic probe establishes full PS2 emulator or game equivalence."
+    ],
+    "evidence": [
+      {
+        "id": "sony-pcpy",
+        "text": "Sony EE Core Instruction Set Manual v6.0, PCPYLD operation: GPR[rd]127..0 ← GPR[rs]63..0 || GPR[rt]63..0; description says high 64 comes from low rs and low 64 from low rt (printed p.190). PCPYUD description: output low/high 64 bits correspond to high rs/high rt respectively (p.191). PCPYH description: repeats each least-significant halfword of each 64-bit half into its four halfwords (p.189). https://docs.alexrp.com/mips/ee_insns.pdf"
+      },
+      {
+        "id": "sony-pext",
+        "text": "Sony EE manual: PEXTLW interleaves words from low-order 64-bit portions of rs and rt (p.205); PEXTUW interleaves words from high-order 64-bit portions (p.208); PEXTLH interleaves halfwords from low-order 64-bit portions (p.204); PEXTLB interleaves bytes from low-order 64-bit portions (p.203). Exact PEXTLW output low words: rt0,rs0,rt1,rs1; PEXTUW: rt2,rs2,rt3,rs3. The operation figures and descriptions confirm rt then rs in low-to-high destination lanes. https://docs.alexrp.com/mips/ee_insns.pdf"
+      },
+      {
+        "id": "sony-logic-subtract",
+        "text": "Sony EE manual PAND computes 128-bit `GPR[rs] AND GPR[rt]` (p.176); PNOR computes `GPR[rs] NOR GPR[rt]` (p.252); POR and PXOR are parallel bitwise OR and exclusive OR (pp.253,285). PSUBB truncates each byte subtraction to 8 bits (p.270); PSUBW truncates each word subtraction to 32 bits (p.284). https://docs.alexrp.com/mips/ee_insns.pdf"
+      },
+      {
+        "id": "pinned-pcsx2",
+        "text": "Pinned PCSX2 MMI.cpp commit 81526d4dc7cc70e4ae75abb35a789417456c6d43: PCPYLD writes RD.UD[1]=RS.UD[0], then RD.UD[0]=RT.UD[0]; PCPYUD writes RD.UD[0]=RS.UD[1], then RD.UD[1]=RT.UD[1]. PCPYH sets destination halfword lanes 0..3 from RT.US[0] and 4..7 from RT.US[4]. PEXTLW uses RT words 0,1 alternating with RS words 0,1; PEXTUW similarly RT then RS for words 2,3; PEXTLH and PEXTLB use RT then RS alternating over the low halfwords/bytes. PAND/POR/PXOR apply the corresponding bitwise operation; PNOR uses bitwise complement of OR; PSUBB/PSUBW subtract corresponding byte/word lanes. All listed handlers return immediately when rd==0. https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/MMI.cpp"
+      },
+      {
+        "id": "actual-templates-zero",
+        "text": "Pinned PS2Recomp c5a9d02573410a2085a4b4b831b0b68ba3515440: runtime `#define GPR_VEC(ctx_ptr, reg_idx) ((reg_idx == 0) ? _mm_setzero_si128() : ctx_ptr->r[reg_idx])`; `SET_GPR_VEC` only assigns when reg_idx!=0. PCPYH template first loads `__m128i src = GPR_VEC(ctx, rt)` before setter. Other tested templates pass source vector values to intrinsics/macros, then setter writes destination."
+      },
+      {
+        "id": "probe-result",
+        "text": "mmi-packed-audit-03/run.json: actual-template-probe compiled with clang++ -std=c++20 -Wall -Wextra -Werror -fsanitize=undefined using SSE2NEON; exit 0, stderr empty, 13 operations each checked 80096 cases, mismatches all zero. The C++ wrappers were generated from exact format strings in pinned mmi_translation_helpers.cpp and macro definitions in ps2_runtime_macros.h. Vectors include basis, boundary, and 10000 deterministic random cases; modes distinct registers, rd==rs, rd==rt, rd==0 with sentinel, rs==0, rt==0, both sources zero, and rd==rs==rt. No game routine or emulator executed."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 8,\n    \"contradicted\": 0,\n    \"unsupported\": 1,\n    \"needs_review\": 3\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"PCPYLD outputs the low 64 bits from rts low 64 bits and the high 64 bits from rss low 64 bits; the pinned template and runtime macro use that order.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.32,\n        \"says_nothing\": 0,\n        \"supports\": 0.68\n      },\n      \"confidence\": 0.51,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"sony-pcpy\",\n      \"same_subject\": 0.75\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"PCPYUD outputs the low 64 bits from rss high 64 bits and the high 64 bits from rts high 64 bits; the pinned intrinsic template uses that order.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.12,\n        \"says_nothing\": 0,\n        \"supports\": 0.88\n      },\n      \"confidence\": 0.82,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-pcpy\",\n      \"same_subject\": 0.74\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"PCPYH repeats rt halfword 0 across destination halfwords 0-3 and rt halfword 4 across destination halfwords 4-7.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.2,\n        \"says_nothing\": 0.01,\n        \"supports\": 0.79\n      },\n      \"confidence\": 0.69,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"sony-pcpy\",\n      \"same_subject\": 0.56\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"PEXTLW, PEXTUW, PEXTLH and PEXTLB interleave low or upper source portions with rt in even output positions and rs in odd output positions, matching the pinned unpack intrinsic arguments.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.05,\n        \"says_nothing\": 0,\n        \"supports\": 0.95\n      },\n      \"confidence\": 0.92,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-pext\",\n      \"same_subject\": 0.48\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"PAND, POR, PNOR and PXOR implement 128-bit bitwise AND, OR, NOT-OR and XOR respectively.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-logic-subtract\",\n      \"same_subject\": 0.42\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"PSUBB and PSUBW perform independent lane-wise subtraction with results truncated modulo 2^8 and 2^32 respectively.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0,\n        \"says_nothing\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-logic-subtract\",\n      \"same_subject\": 0.4\n    },\n    {\n      \"id\": \"claim6\",\n      \"claim\": \"The generated templates use a zero-valued vector when reading register zero and ignore writes to destination register zero; the synthetic probe covers rd==0, source zero, rd==rs and rd==rt.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.04,\n        \"says_nothing\": 0.02,\n        \"supports\": 0.94\n      },\n      \"confidence\": 0.92,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"actual-templates-zero\",\n      \"same_subject\": 0.65\n    },\n    {\n      \"id\": \"claim7\",\n      \"claim\": \"The actual-template synthetic probe compiled with UBSan and produced zero mismatches for all 13 operations, with 80096 cases per operation.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.01,\n        \"says_nothing\": 0,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"probe-result\",\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim8\",\n      \"claim\": \"The synthetic probe establishes full PS2 emulator or game equivalence.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"contradicts\": 0.84,\n        \"says_nothing\": 0.16,\n        \"supports\": 0\n      },\n      \"confidence\": 0.76,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"probe-result\",\n      \"same_subject\": 0.18\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 5277,\n    \"output_tokens\": 1333\n  }\n}"
+      }
+    ]
+  }
+}

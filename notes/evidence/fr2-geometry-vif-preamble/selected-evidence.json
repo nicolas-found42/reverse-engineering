@@ -1,0 +1,112 @@
+{
+  "overlay5_pairs": [
+    {
+      "pair": 213,
+      "byte_address": "0x2ea8",
+      "raw_bytes": "3c030080ff020040",
+      "disassembly": "nop[e] nop",
+      "role": "E-marked instruction"
+    },
+    {
+      "pair": 214,
+      "byte_address": "0x2eb0",
+      "raw_bytes": "3c030080ff020000",
+      "disassembly": "nop nop",
+      "role": "single E delay-slot instruction"
+    },
+    {
+      "pair": 215,
+      "byte_address": "0x2eb8",
+      "raw_bytes": "bc060180ff020000",
+      "disassembly": "nop xtop vi01",
+      "role": "continuation instruction identified by E-delay TPC rule"
+    }
+  ],
+  "fun_0010f8f8_bounded_writes": [
+    "Starts an inline CNT tag: word0 prefix `0x10000000` (ID=CNT), word1 ADDR zero, upper words carry VIF commands.",
+    "VIF command word `0x13000000` (VIF FLUSHA code 0x13).",
+    "VIF command word `0x50000002` (VIF DIRECT code 0x50, immediate 2).",
+    "Qwords `0x1000000000008001` and `0xe`.",
+    "Computed qword: `DAT_002324fa | ((long)(DAT_002324ec << 48) >> 24) | (iGpffff911c == 0 ? 1<<32 : 0)`, stored as the GS A+D data value.",
+    "Qword `0x4e` is the GS A+D register address (PS2SDK GS_REG_ZBUF_1); then the CNT tag QWC is patched to 2.",
+    "A bounded VIF1 submitter clears QWC at MMIO `0x10009020`, writes TADR at `0x10009030`, and writes CHCR `0x145` at `0x10009000` (TTE bit 6 set). This establishes the VIF1 submission configuration, not the queue identity of this particular later render packet."
+  ],
+  "fun_00128ca0_matrix_packet": {
+    "command": "0x6c080000 (V4-32, NUM=8, immediate address 0, mask clear)",
+    "first_four_vectors": "param_1 offsets 0, 0x10, 0x20, 0x30",
+    "last_four_vectors": "EE scratchpad 0x70003160, 0x70003170, 0x70003180, 0x70003190",
+    "scratchpad_writer_path": "001ce288 -> 00126c18(4) -> 00127c00(1) -> 00128518 -> 00115560 writes the 0x70003160..0x7000319f result block before 00128ca0 loads it",
+    "not_the_source": "00128ca0's 00115518 call fills local auStack_50, which is not subsequently read in the saved pseudocode"
+  },
+  "fun_00128e88_v4_payload_and_selector": {
+    "command": "0x6c058000 (V4-32, NUM=5, TOPS-relative address 0)",
+    "uVar14": "0x208 or 0x2c8 is data inside this TOPS-relative payload and contributes to a later V4-8 command immediate; it is not this V4-32 command's destination",
+    "tail_base": "independently selected as 0x030003aa or 0x03000388 from uGpffff921c"
+  },
+  "fun_00128e88_tail_output_order": [
+    "STMOD word 0x05000000 (MODE immediate 0).",
+    "three zero words",
+    "STCYCL word 0x01000404 (WL=4, CL=4).",
+    "MSCNT word 0x17000000.",
+    "BASE word 0x030003aa unless uGpffff921c != 0, then 0x03000388; toggles uGpffff921c after selection.",
+    "OFFSET word 0x02000000 (immediate zero); then two zero words."
+  ],
+  "conditional_calling_path": {
+    "001288b0": [
+      "If the 16-bit count at record+0x1c is nonzero, execute that many calls to 00128e88.",
+      "If the 16-bit count at record+0x28 is nonzero, execute that many calls to 00128e88."
+    ],
+    "001ce288": "Each outer loop iteration calls 00128ca0 and then 001288b0; if another iteration follows, its 00128ca0 V4-32 write comes after any explicit STMOD/STCYCL from a nonempty prior geometry group, with 0010f8f8 helper traffic in between."
+  },
+  "raw_instruction_anchors": {
+    "0010f8f8": [
+      {"address":"0010f910","text":"sw v0,0xc(a3)","bytes":"0c00e2ac","meaning":"CNT word prefix 0x10000000"},
+      {"address":"0010f918","text":"sw zero,0x4(t1)","bytes":"040020ad","meaning":"zeros DMA tag ADDR"},
+      {"address":"0010f950","text":"sw t0,0x0(v0)","bytes":"000048ac","meaning":"stores VIF FLUSHA 0x13000000"},
+      {"address":"0010f980","text":"sw t2,0x0(v0)","bytes":"00004aac","meaning":"stores VIF DIRECT(2) 0x50000002 in tag upper words"},
+      {"address":"0010f9a4","text":"sd t5,0x0(v0)","bytes":"00004dfc","meaning":"GIF tag low64 0x1000000000008001"},
+      {"address":"0010f9b8","text":"sd t6,0x0(v0)","bytes":"00004efc","meaning":"A+D register descriptor qword 0x0e"},
+      {"address":"0010f9cc","text":"sd a0,0x0(v0)","bytes":"000044fc","meaning":"stores computed GS A+D data qword"},
+      {"address":"0010f9e0","text":"sd t4,0x0(v0)","bytes":"00004cfc","meaning":"stores GS A+D register address 0x4e"},
+      {"address":"0010fa1c","text":"_sw a0,0x0(a2)","bytes":"0000c4ac","meaning":"patches CNT tag QWC/ID word; finalized QWC is 2"}
+    ],
+    "0021b5b0": [
+      {"address":"0021b60c","text":"ori v0,v0,0x9020","bytes":"20904234","meaning":"selects VIF1 QWC MMIO 0x10009020"},
+      {"address":"0021b610","text":"sw zero,0x0(v0)","bytes":"000040ac","meaning":"clears QWC"},
+      {"address":"0021b62c","text":"ori v0,v0,0x9030","bytes":"30904234","meaning":"selects VIF1 TADR MMIO 0x10009030"},
+      {"address":"0021b630","text":"sw v1,0x0(v0)","bytes":"000043ac","meaning":"writes TADR"},
+      {"address":"0021b63c","text":"li v1,0x145","bytes":"45010324","meaning":"sets CHCR 0x145 (TTE bit 6)"},
+      {"address":"0021b640","text":"ori v0,v0,0x9000","bytes":"00904234","meaning":"selects VIF1 CHCR MMIO 0x10009000"},
+      {"address":"0021b644","text":"sw v1,0x0(v0)","bytes":"000043ac","meaning":"starts VIF1 DMA chain"}
+    ],
+    "001ce288": [
+      {"address":"001ce48c","text":"jal 0x00128ca0","bytes":"28a3040c","meaning":"matrix builder call"},
+      {"address":"001ce490","text":"_nop","bytes":"00000000","meaning":"delay slot"},
+      {"address":"001ce4b8","text":"jal 0x001288b0","bytes":"2ca2040c","meaning":"geometry builder follows the matrix builder"}
+    ],
+    "00128ca0": [
+      {"address":"00128cec","text":"lui t2,0x6c08","bytes":"086c0a3c","meaning":"forms the 0x6c080000 V4-32 NUM8 command"},
+      {"address":"00128d24","text":"lq a2,0x0(s0)","bytes":"0000067a","meaning":"first 16-byte source chunk from param_1"},
+      {"address":"00128d60","text":"lq v1,0x10(s0)","bytes":"1000037a","meaning":"second 16-byte source chunk from param_1"},
+      {"address":"00128d78","text":"lq v1,0x20(s0)","bytes":"2000037a","meaning":"third 16-byte source chunk from param_1"},
+      {"address":"00128d90","text":"lq v1,0x30(s0)","bytes":"3000037a","meaning":"fourth 16-byte source chunk from param_1"},
+      {"address":"00128cfc","text":"addiu a3,a3,0x3020","bytes":"2030e724","meaning":"forms scratchpad base 0x70003020"},
+      {"address":"00128da8","text":"lq v1,0x140(a3)","bytes":"4001e378","meaning":"scratchpad vector 0x70003160"},
+      {"address":"00128dc0","text":"lq v1,0x150(a3)","bytes":"5001e378","meaning":"scratchpad vector 0x70003170"},
+      {"address":"00128dd8","text":"lq v1,0x160(a3)","bytes":"6001e378","meaning":"scratchpad vector 0x70003180"},
+      {"address":"00128df0","text":"lq v1,0x170(a3)","bytes":"7001e378","meaning":"scratchpad vector 0x70003190"}
+    ],
+    "00126c18": [
+      {"address":"00126d38","text":"jal 0x00127c00","bytes":"009f040c","meaning":"calls scratchpad-value producer"},
+      {"address":"00126d3c","text":"_li a0,0x1","bytes":"01000424","meaning":"delay slot supplies producer argument 1"}
+    ]
+  },
+  "negative_or_open": [
+    "The BASE/OFFSET values 0x388/0x3aa follow this writer's MSCNT; they do not feed that same MSCNT TOP latch.",
+    "The initial MSCAL 0x5cc TOP/MODE/CYCLE/ROW state is not derived.",
+    "The later render packet's queue slot and selected TADR are not statically followed to its VIF1 submission.",
+    "No global MODE/CYCLE/TOP state claim: first-iteration inherited state and DMA/VIF runtime ordering remain open.",
+    "uVar14 0x208/0x2c8 and tail BASE 0x388/0x3aa are separate packet fields; no header-buffer equivalence is inferred.",
+    "Static builder order is not a claim of cycle-by-cycle hardware ordering or physical emulator/silicon equivalence."
+  ]
+}

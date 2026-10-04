@@ -1,0 +1,39 @@
+{
+  "id": "r002-stage-selection",
+  "tool": "mcp__jev__jev_decide",
+  "arguments": {
+    "decision": "Choose the next bounded implementation deliverable in the owner's mesh/VU/render phase.",
+    "candidates": [
+      {
+        "id": "bounded_chain",
+        "description": "Translate remaining loader sections into a bounded parser with exact EOF on corpus and public parser/verifier negative tests before geometry extraction."
+      },
+      {
+        "id": "render_first",
+        "description": "Try generating pictures from payload bytes before section chain recovery."
+      },
+      {
+        "id": "textures_first",
+        "description": "Decode remaining 4-bit textures before later-section recovery."
+      }
+    ],
+    "evidence": "next-phase.md requires (1) all 56 files exact EOF with counts/negative tests then (2) geometry invariants then (3) renders/owner observations. walk3 baseline bad 0 means header cursor equality and end+12<=size only; oval2 ends 3782432 of 3930992; oval3 ends 2930256 of 3053136. FUN_0011ed90 and helper instruction exports available offline.",
+    "priorities": "Follow ordered measurable bar; offline static only; preserve uncertain meanings and bound claims.",
+    "requirements": [
+      "Checks exact EOF instead of merely room for a tail.",
+      "Supports later invariant checks from grounded section spans.",
+      "Can be performed offline without emulator."
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"bounded_chain\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"investigate\": 0,\n      \"textures_first\": 0,\n      \"bounded_chain\": 1,\n      \"render_first\": 0,\n      \"none\": 0,\n      \"ask_user\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 3,\n  \"checks\": [\n    {\n      \"candidate\": \"bounded_chain\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"bounded_chain\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"bounded_chain\",\n      \"requirement\": 2,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"render_first\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"render_first\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"render_first\",\n      \"requirement\": 2,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"textures_first\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"textures_first\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"textures_first\",\n      \"requirement\": 2,\n      \"answer\": \"unknown\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 1945,\n    \"output_tokens\": 458\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.194,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

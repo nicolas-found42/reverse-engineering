@@ -1,0 +1,83 @@
+{
+  "experiment": "PS2Recomp scalar translator semantics",
+  "status": "experimental bounded patch; not whole-game verified",
+  "upstream": {
+    "repository": "https://github.com/ran-j/PS2Recomp.git",
+    "commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "license": "GNU GPL v3 (pinned upstream LICENSE; local tools/recomp/LICENSE)",
+    "patched_files": {
+      "ps2xRecomp/src/lib/instruction_translator.cpp": {
+        "input_sha256": "b24105265f6d6f14c48bb72e5066877e0b3e1ffe439ddd0331e0d297004bd226",
+        "candidate_sha256": "d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7"
+      },
+      "ps2xRecomp/src/lib/special_translator.cpp": {
+        "input_sha256": "98adc0305effdd57ca34ea029070f117379bd7e78c9f8944a8e9276c8c7bd3cd",
+        "candidate_sha256": "86a554b9172db6857b64a3ed05599d0b245bab4819dacfce082cd3eec87d753c"
+      }
+    },
+    "read_only_exception_flow_hashes": {
+      "ps2xRecomp/src/lib/function_emitter.cpp": "a0dc4503e18abd010fa008f2e5b03b16ed9d05434435ff49725a72c11102ba84",
+      "ps2xRecomp/src/lib/control_flow_emitter.cpp": "44c0204441106b033a6897bfd52e6e6ce551a6d64a12a7004518a76d657eea07",
+      "ps2xRuntime/src/lib/ps2_runtime.cpp": "77cd184f2e70eacfd5ea584ec95829553e3deeead0a19c04e4b0970dd7c6c9ee"
+    }
+  },
+  "patch": {
+    "path": "tools/recomp/translator-semantics.patch",
+    "sha256": "339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006"
+  },
+  "primary_architecture_reference": {
+    "title": "Sony EE Core Instruction Set Manual v6.0",
+    "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+    "published": "2002-04",
+    "pages": {
+      "ADDI": 25,
+      "DADD": 47,
+      "DADDI": 48,
+      "DADDIU": 49,
+      "DSUB": 63
+    },
+    "local_pdf_copy": false
+  },
+  "validation": {
+    "harness": "tools/recomp/verify_translator_semantics.py",
+    "focused_tests": "tools/test_translator_semantics.py",
+    "source_root_is_required_argument": true,
+    "staging_scope": [
+      "ps2xRecomp/src/lib/instruction_translator.cpp",
+      "ps2xRecomp/src/lib/special_translator.cpp"
+    ],
+    "candidate_templates_executed": true,
+    "upstream_ubsan_negative_controls": [
+      "DADD",
+      "DSUB",
+      "DADDI",
+      "DADDIU"
+    ],
+    "wrong_source_sha_rejected": true,
+    "full_game_generated_or_executed": false,
+    "original_routine_or_emulator_executed": false,
+    "candidate_template_control_blocks": 10,
+    "superseded_nine_control_result": "notes/evidence/fr2-translator-semantics/results/translator-validation-9-controls-superseded.json",
+    "focused_unit_tests": 7,
+    "structured_compiler_failure_diagnostic_test": true
+  },
+  "limitations": [
+    "Caller exception propagation was inspected and bounded with synthetic control flow; all runtime exception handlers and dispatch paths are not proven end-to-end.",
+    "The probe uses synthetic runtime/register helpers and a separately defined 32-bit overflow-helper model; combine tools/recomp/defined-overflow.patch for a runtime build.",
+    "This does not establish full PS2Recomp or whole-game equivalence."
+  ],
+  "jev": {
+    "screen_receipt": "notes/evidence/fr2-translator-semantics/jev/sony-manual-screen.json",
+    "prior_scratch_gate": "notes/evidence/fr2-translator-semantics/jev/prior-scratch-gate.json",
+    "promotion_final_gate": "notes/evidence/fr2-translator-semantics/jev/promotion-final-gate.json",
+    "final_action": "escalate",
+    "review_composite": 0.790125,
+    "safe_to_apply": 0.11,
+    "verification": {
+      "verified": 5,
+      "unsupported": 1,
+      "needs_review": 2
+    },
+    "usage_tokens": 19998
+  }
+}

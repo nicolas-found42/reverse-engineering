@@ -1,0 +1,108 @@
+2026-10-04 14:14:09 INFO  (LoggingInitialization) Using log config file: jar:file:/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-10-04 14:14:09 INFO  (LoggingInitialization) Using log file: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3844-01/inspect/inspect.log  
+2026-10-04 14:14:09 DEBUG (GhidraObjectInputFilter) Including serial input filter: FileSystem/data/client.rmi.serial.filter  
+2026-10-04 14:14:09 INFO  (Preferences) Loading user preferences: /Users/Nicolas/Library/ghidra/ghidra_12.1.3_PUBLIC/preferences  
+2026-10-04 14:14:09 INFO  (ClassSearcher) Searching for classes...  
+2026-10-04 14:14:10 INFO  (ClassSearcher) Class search complete (582 ms)  
+2026-10-04 14:14:10 INFO  (DefaultSSLContextInitializer) Initializing SSL Context  
+2026-10-04 14:14:10 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-10-04 14:14:10 INFO  (SecureRandomFactory) Random Number Generator initialization complete: NativePRNGNonBlocking  
+2026-10-04 14:14:10 INFO  (DefaultTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-10-04 14:14:10 INFO  (AnalyzeHeadless) Headless startup complete (1301 ms)  
+2026-10-04 14:14:10 INFO  (ClassSearcher) Class searcher loaded 59 extension points (20 false positives)  
+2026-10-04 14:14:10 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/Atmel/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/BSim/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/FunctionID/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/PyGhidra/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/BytePatterns/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3844-01/inspect
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/VersionTracking/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/PIC/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/JVM/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Debug/Debugger/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Base/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/FileFormats/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/PDB/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/DATA/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/8051/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/WildcardAssembler/ghidra_scripts  
+2026-10-04 14:14:10 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-10-04 14:14:10 ERROR (HeadlessAnalyzer) Abort due to Headless analyzer error: Path element starting with '.' is not permitted java.lang.IllegalArgumentException: Path element starting with '.' is not permitted
+	at ghidra.util.NamingUtilities.checkName(NamingUtilities.java:108)
+	at ghidra.framework.protocol.ghidra.GhidraURL.checkValidProjectPath(GhidraURL.java:440)
+	at ghidra.framework.protocol.ghidra.GhidraURL.checkLocalAbsolutePath(GhidraURL.java:421)
+	at ghidra.framework.model.ProjectLocator.<init>(ProjectLocator.java:75)
+	at ghidra.framework.model.ProjectLocator.<init>(ProjectLocator.java:60)
+	at ghidra.app.util.headless.HeadlessAnalyzer.processLocal(HeadlessAnalyzer.java:420)
+	at ghidra.app.util.headless.AnalyzeHeadless.launch(AnalyzeHeadless.java:199)
+	at ghidra.GhidraLauncher.launch(GhidraLauncher.java:81)
+	at ghidra.Ghidra.main(Ghidra.java:54)
+ 
+2026-10-04 14:14:15 INFO  (LoggingInitialization) Using log config file: jar:file:/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml  
+2026-10-04 14:14:15 INFO  (LoggingInitialization) Using log file: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3844-01/inspect/inspect.log  
+2026-10-04 14:14:15 DEBUG (GhidraObjectInputFilter) Including serial input filter: FileSystem/data/client.rmi.serial.filter  
+2026-10-04 14:14:15 INFO  (Preferences) Loading user preferences: /Users/Nicolas/Library/ghidra/ghidra_12.1.3_PUBLIC/preferences  
+2026-10-04 14:14:15 INFO  (ClassSearcher) Searching for classes...  
+2026-10-04 14:14:15 INFO  (ClassSearcher) Class search complete (600 ms)  
+2026-10-04 14:14:15 INFO  (DefaultSSLContextInitializer) Initializing SSL Context  
+2026-10-04 14:14:15 INFO  (SecureRandomFactory) Initializing Random Number Generator...  
+2026-10-04 14:14:15 INFO  (SecureRandomFactory) Random Number Generator initialization complete: NativePRNGNonBlocking  
+2026-10-04 14:14:15 INFO  (DefaultTrustManagerFactory) Trust manager disabled, cacerts have not been set  
+2026-10-04 14:14:16 INFO  (AnalyzeHeadless) Headless startup complete (1228 ms)  
+2026-10-04 14:14:16 INFO  (ClassSearcher) Class searcher loaded 59 extension points (20 false positives)  
+2026-10-04 14:14:16 INFO  (HeadlessAnalyzer) HEADLESS Script Paths:
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/Atmel/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/BSim/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/FunctionID/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/PyGhidra/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/BytePatterns/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3844-01/inspect
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/VersionTracking/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/PIC/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/JVM/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Debug/Debugger/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Base/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/FileFormats/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/PDB/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/DATA/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/8051/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/WildcardAssembler/ghidra_scripts  
+2026-10-04 14:14:16 INFO  (HeadlessAnalyzer) HEADLESS: execution starts  
+2026-10-04 14:14:16 INFO  (HeadlessAnalyzer) Opening existing project: /Users/Nicolas/Documents/github/hermes/reverse-engineering/ghidra-project/codex-audit-ee-001ff038-inspect-01/fr2  
+2026-10-04 14:14:16 INFO  (HeadlessProject) Opening project: /Users/Nicolas/Documents/github/hermes/reverse-engineering/ghidra-project/codex-audit-ee-001ff038-inspect-01/fr2  
+2026-10-04 14:14:17 INFO  (HeadlessAnalyzer) REPORT: Processing read-only project file: /SLES_517.05  
+2026-10-04 14:14:17 INFO  (HeadlessAnalyzer) REPORT: Execute script: InspectRefs.java   
+2026-10-04 14:14:17 INFO  (HeadlessAnalyzer) SCRIPT: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3844-01/inspect/InspectRefs.java  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> INSPECT function=candidate_ee_00200d10 source=ANALYSIS body=204  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d2c -> 00200d58 CONDITIONAL_JUMP|DEFAULT|mem flowtype=CONDITIONAL_JUMP fall=00200d34  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d38 -> 00200d58 CONDITIONAL_JUMP|DEFAULT|mem flowtype=CONDITIONAL_JUMP fall=00200d40  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d44 -> 001fc4e0 UNCONDITIONAL_CALL|DEFAULT|mem flowtype=UNCONDITIONAL_CALL fall=00200d4c  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d58 -> 00200d94 CONDITIONAL_JUMP|DEFAULT|mem flowtype=CONDITIONAL_JUMP fall=00200d60  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d60 -> 00200d78 CONDITIONAL_JUMP|DEFAULT|mem flowtype=CONDITIONAL_JUMP fall=00200d68  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d68 -> 00200d8c CONDITIONAL_JUMP|DEFAULT|mem flowtype=CONDITIONAL_JUMP fall=00200d70  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d70 -> 00200da0 UNCONDITIONAL_JUMP|DEFAULT|mem flowtype=UNCONDITIONAL_JUMP fall=null  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d7c -> 00200d9c CONDITIONAL_JUMP|DEFAULT|mem flowtype=CONDITIONAL_JUMP fall=00200d84  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d84 -> 00200dac UNCONDITIONAL_JUMP|DEFAULT|mem flowtype=UNCONDITIONAL_JUMP fall=null  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d8c -> 00200dac UNCONDITIONAL_JUMP|DEFAULT|mem flowtype=UNCONDITIONAL_JUMP fall=null  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200d94 -> 00200dac UNCONDITIONAL_JUMP|DEFAULT|mem flowtype=UNCONDITIONAL_JUMP fall=null  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200da4 -> 001fc4e0 UNCONDITIONAL_CALL|DEFAULT|mem flowtype=UNCONDITIONAL_CALL fall=00200dac  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200dac -> 001ff038 UNCONDITIONAL_CALL|DEFAULT|mem flowtype=UNCONDITIONAL_CALL fall=00200db4  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> REF 00200db8 -> 00200dc4 CONDITIONAL_JUMP|DEFAULT|mem flowtype=CONDITIONAL_JUMP fall=00200dc0  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> HIST {CONDITIONAL_JUMP|DEFAULT|mem=7, UNCONDITIONAL_CALL|DEFAULT|mem=3, UNCONDITIONAL_JUMP|DEFAULT|mem=4}  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> TO001ff038 00200dac UNCONDITIONAL_CALL DEFAULT  
+2026-10-04 14:14:17 INFO  (GhidraScript) InspectRefs.java> FUNC at 001ff038: null count=3844  

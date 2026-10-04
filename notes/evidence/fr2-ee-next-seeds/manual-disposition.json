@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "disposition": "retain_one_provisional_static_candidate",
+  "scope": "Local isolated Ghidra project only. No game execution, original function identity, semantic or whole-game completeness claim.",
+  "Jev_gate_outcomes_retained": [
+    "gate01 escalated safe_to_apply0.10 and one contradiction; old source argument unresolved",
+    "gate02 escalated safe_to_apply0.16, five verified with two review flags; final source SHA resolved"
+  ],
+  "independent_root_basis": {
+    "artifact_hashes_recomputed": 7683,
+    "new_words_independently_ELF_checked": 51,
+    "old_C_differences": "exactly three call-label substitutions in two provisional callers",
+    "old_names_bodies_instruction_text_bytes_memory_and_strings_preserved": true,
+    "reconciliation_checks": 17,
+    "generated_functions": 3842,
+    "failed_decompilations": 0
+  },
+  "limitations": [
+    "Provisional callers provide structural incoming references only.",
+    "606 decompiler warning comments persist; counts are not semantic proofs.",
+    "First CFG report was overwritten before correction; its recorded hash and provenance loss are retained.",
+    "Historical gate02 tests string said15 checks; direct saved result contains17."
+  ],
+  "authorization": "Continuation of the user-authorized static decompilation goal; Jev is advisory. No threshold changed and no unchanged gate rerun."
+}

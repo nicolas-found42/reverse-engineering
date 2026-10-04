@@ -1,0 +1,71 @@
+{
+  "schema": "fr2-geometry-vu-input-provenance-index/v1",
+  "scope": "Bounded static provenance from one V4-32 packet to VU registers, plus exact constants/conversion and unresolved TOP linkage.",
+  "validation": {
+    "all_passed": true,
+    "passed": 108,
+    "failed": 0,
+    "report": "validation.json"
+  },
+  "claims": {
+    "verified_static_correspondence": "The builder emits V4-32 NUM8 destination0 before MSCAL 0x5cc; the entry loads qwords0..7 into VF01..VF08. Literal payload-to-register value correspondence depends on prior VIF MODE/STCYCL/ROW state and remains unresolved.",
+    "known_unresolved": "Prior VIF mode/cycle/row state and TOP state at the MSCAL; link from geometry UNPACK bases0x208/0x2c8 to TOP-relative loads. Startup BASE/OFFSET persistence and any ITOP or MODE/cycle state hidden in helper traffic also remain unproven.",
+    "numeric": "raw LOI constants 768.0 and6144.0; downstream FTOI4 fixed-point conversion with four fractional bits; no units/world scale claimed."
+  },
+  "jev_dispositions": {
+    "verify": "7 verified, 0 contradicted, 0 unsupported, 1 review retained; VIF word decode review deterministically resolved by field arithmetic; broad TOP wording narrowed without requery. The V4-32-to-VF mapping is qualified posthoc for unproven cycle/mode/row state; the original Jev result remains unchanged. The packet-to-VU value mapping and whole-call BASE/OFFSET claim are narrowed due unproven VIF state; original outcomes remain unchanged.",
+    "screen": "review retained at injection probability0.29; screened manual excerpt manually inspected and contains no agent-directed text.",
+    "pcsx2_state": "MODE dependency verified (0.98); VIF1 TOP latch verified for the pinned implementation but retained at review (0.70/subject0.48); game MODE/cycle/TOP assertion unsupported with relation contradicted (0.99). See vif-state-source-summary.json and retained scratch receipt hash."
+  },
+  "external_source": "Sony VU User's Manual v6.0 PDF mirror pages 33, 77-78, 197; pinned PCSX2 VIF implementation commit 81526d4; details in source-provenance.json.",
+  "files": {
+    "README.md": {
+      "sha256": "0a892d66b3e066e663bae4b1e3c412710a9e802db0716ea30acbd2246d1082e2",
+      "bytes": 5044
+    },
+    "static-trace.json": {
+      "sha256": "f2635aaf85c12d2cdf804e8518e239ddaa5c69f342fbf29c1be969bf1122fb6f",
+      "bytes": 23578
+    },
+    "source-provenance.json": {
+      "sha256": "3fbf57546e401395ee0a370e63f328b37f30fdad8336d3dd9d8bb9be97464168",
+      "bytes": 4325
+    },
+    "validation.json": {
+      "sha256": "8d237db33502da4b569adfbf5e97f51e6285715cfe3a82924fb66d0c43c6b5b7",
+      "bytes": 12294
+    },
+    "jev-vu-input-claims.json": {
+      "sha256": "e9f857a9e495269184ed4e407e951856775ccfb12117991586b41b04d1621b64",
+      "bytes": 10867
+    },
+    "jev-manual-screen.json": {
+      "sha256": "410bb65bcd99259a6899eef2c549e3addc8e451638cf4059376f8ca30546a7b2",
+      "bytes": 1718
+    },
+    "firecrawl-manual-receipt.json": {
+      "sha256": "3dde07fd78186026a85650a0723e4a0d64a8e70e4ea4135ec649f398e5bcb311",
+      "bytes": 1871
+    },
+    "vif-state-source-summary.json": {
+      "sha256": "64fb549297668c8d23366a99b28b74a86e2f914d282da7ae33b2db5625422cf7",
+      "bytes": 45963
+    },
+    "jgrep-export-diagnostic.json": {
+      "sha256": "0c735eea2d748d62e7ed36323e6703f527d93d539a5b1bd865fc3aced65aebee",
+      "bytes": 498
+    },
+    "vif-command-builder-trace.json": {
+      "sha256": "6982a591258734f281120bc8f3d41fbd46d6c054307d0c9bee1c120afc8245ff",
+      "bytes": 9565
+    },
+    "root-validation.json": {
+      "sha256": "50bf9fa1765dd9df2a70a19d7d3d785ae9e10c994bed4936c039597dc9f55c6d",
+      "bytes": 589
+    }
+  },
+  "root_checker": {
+    "path": ".scratch/mesh/codex-root/check_vu_input_provenance.py",
+    "sha256": "0b57c7d7709172b38d8be08820fadda38c5661eb920351cb618b6a0ab7776837"
+  }
+}

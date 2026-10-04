@@ -1,0 +1,180 @@
+{
+  "schema_version": 1,
+  "status": "observed_reference_disagreement",
+  "upstream_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "header_pins": [
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/ps2_gs_psmct32.h",
+      "sha256": "9635a40e11bae56189b64d1d9660fb68d0375444d355db43246973adb95e71f7",
+      "bytes": 1310
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/ps2_gs_psmct16.h",
+      "sha256": "a9a637692da997bc28a750cbf015f517805964bcf25a4ab547ac5929257d484c",
+      "bytes": 2878
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/ps2_gs_psmt8.h",
+      "sha256": "b6e5a69a8d6d361f05653140454e17d0d348f312cec43fc08ec094f8ed74d282",
+      "bytes": 2277
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/ps2_gs_psmt4.h",
+      "sha256": "fe284803477252f88aad6d40516a5ef5415d7aa42de382e4c6138433e83d6b89",
+      "bytes": 3596
+    }
+  ],
+  "reference_source": {
+    "path": ".scratch/mesh/codex-root/github-raw-GSTables.cpp",
+    "sha256": "a9a226297ede32b89177d7bdb04e9d8e21728e7d55799405f6112e97fe4969e8",
+    "public_revision": "81526d4dc7cc70e4ae75abb35a789417456c6d43"
+  },
+  "harness": {
+    "path": ".scratch/mesh/codex-root/gs-address-low-width-native-02/probe.cpp",
+    "sha256": "ef0234923d6c102b3544394eeaa13deb564e815f8d789288686fa5c9955ae7da"
+  },
+  "compile": {
+    "command": [
+      "clang++",
+      "-std=c++20",
+      "-O1",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include",
+      ".scratch/mesh/codex-root/gs-address-low-width-native-02/probe.cpp",
+      "-o",
+      ".scratch/mesh/codex-root/gs-address-low-width-native-02/probe"
+    ],
+    "exit_code": 0,
+    "binary_sha256": "00a811ba386aed8ab5a73620a735e698d5daf909a8b71f4e30fd528c0296e749",
+    "undefined_behavior_sanitizer": true
+  },
+  "runs": [
+    {
+      "kind": "actual",
+      "exit_code": 0,
+      "values": 1474560,
+      "counts": {
+        "32": 98304,
+        "16": 196608,
+        "8": 393216,
+        "4": 786432
+      },
+      "mismatches": {
+        "32": 24576,
+        "16": 49152,
+        "8": 196608,
+        "4": 393216
+      },
+      "example_mismatches": [
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 0,
+          "y": 32,
+          "actual": 8192,
+          "expected": 0
+        },
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 1,
+          "y": 32,
+          "actual": 8196,
+          "expected": 4
+        },
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 2,
+          "y": 32,
+          "actual": 8208,
+          "expected": 16
+        },
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 3,
+          "y": 32,
+          "actual": 8212,
+          "expected": 20
+        }
+      ],
+      "output_sha256": "aa3df39edb9aca981626b5e6707003b18ebe9ba2d2f17b1a9fc7749eceb90e2a",
+      "stderr_bytes": 0
+    },
+    {
+      "kind": "mutant",
+      "exit_code": 0,
+      "values": 1474560,
+      "counts": {
+        "32": 98304,
+        "16": 196608,
+        "8": 393216,
+        "4": 786432
+      },
+      "mismatches": {
+        "32": 98304,
+        "16": 196608,
+        "8": 393216,
+        "4": 786432
+      },
+      "example_mismatches": [
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 0,
+          "y": 0,
+          "actual": 1,
+          "expected": 0
+        },
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 1,
+          "y": 0,
+          "actual": 5,
+          "expected": 4
+        },
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 2,
+          "y": 0,
+          "actual": 17,
+          "expected": 16
+        },
+        {
+          "bits": 32,
+          "base": 0,
+          "buffer_width": 0,
+          "x": 3,
+          "y": 0,
+          "actual": 21,
+          "expected": 20
+        }
+      ],
+      "output_sha256": "dc931243520fba1fce08b4ca2c1e2041437aba80cf3ba3aac0c0105c03b4aa2f",
+      "stderr_bytes": 0
+    }
+  ],
+  "scope": "Only four pinned C++ address helper functions executed with synthetic coordinates and explicit buffer bases; public table page/block/column oracle. No original game routine, GS device, renderer, emulator, or linked runner executed. No CLUT/mip/timing/color/hardware/whole-game equivalence claim. Only widths0/1 are measured here. Actual/reference differences are retained; no assertion that either is correct on PS2 silicon. These four helper functions are not by themselves proof of active backend behavior.",
+  "observed_differences": {
+    "actual": 663552,
+    "actual_values": 1474560,
+    "one_bit_mutant": 1474560,
+    "interpretation": "Pinned standalone helper normalization differs from pinned PCSX2 page-row equation at widths0/1. These helpers do not by themselves establish the active CPU backend path or PS2 silicon semantics."
+  },
+  "prior_failed_attempt": {
+    "path": ".scratch/mesh/codex-root/gs-address-low-width-native-01/failure.json",
+    "sha256": "7d3b165962a5402a8262974eeb6decdb52afa8211074d4af2f10372a30e1276b"
+  }
+}

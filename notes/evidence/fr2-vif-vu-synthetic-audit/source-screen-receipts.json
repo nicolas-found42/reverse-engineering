@@ -1,0 +1,30 @@
+[
+  {
+    "full_immutable_receipt": ".scratch/mesh/codex-root/r090-PS2Recomp-Vif-screen.json",
+    "receipt_sha256": "fda7ec18140da81c0040bd7c4a0f0073064d45754201a7110b67f211b0d8d2e4",
+    "arguments_purpose": "Static audit of pinned public PS2Recomp VIF MSCNT register-latch transitions and VU E-bit delay stop/continuation; source treated only as data, no game routines or runtime runner executed.",
+    "screened_text_sha256": "4090662ca7029c6563444e69ac184cf1396efdf672d179dd8e9d617fe856c4a5",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.05,\n    \"substance\": 0.98,\n    \"relevance\": 0.9\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 8519,\n    \"output_tokens\": 57\n  }\n}"
+        }
+      ]
+    }
+  },
+  {
+    "full_immutable_receipt": ".scratch/mesh/codex-root/r090-PS2Recomp-VuCore-screen.json",
+    "receipt_sha256": "f3358ddfef9a0edb08effc8d47818559a8dd72ece4b4148137ceb2f15228b61a",
+    "arguments_purpose": "Static audit of pinned public PS2Recomp VIF MSCNT register-latch transitions and VU E-bit delay stop/continuation; source treated only as data, no game routines or runtime runner executed.",
+    "screened_text_sha256": "2c19f489f0ed5c22c8dbb2712825dcd2004b0bd93644204c274b4c829003af59",
+    "result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.06,\n    \"substance\": 0.98,\n    \"relevance\": 0.6\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 18481,\n    \"output_tokens\": 57\n  }\n}"
+        }
+      ]
+    }
+  }
+]

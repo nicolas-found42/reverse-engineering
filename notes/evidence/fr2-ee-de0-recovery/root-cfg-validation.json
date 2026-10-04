@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "status": "pass_static_structural_union",
+  "method": "Independent root raw-word scan through pinned ELF .text mapping",
+  "ELF_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "window_sha256": "5cfd509032d8c80b12270ca07516600f5c82f992435abca90be8cea38544d88f",
+  "checker_sha256": "3b8a59a95bcb258b5a78c1abb3a0833179f5ed35e2279cc6574555c66a4eaa82",
+  "reachable_instruction_words_including_delay_slots": 36,
+  "control_transfer_counts": {
+    "branch": 5,
+    "return": 1,
+    "unconditional": 2,
+    "call": 2
+  },
+  "allowed_exact_JR_RA_return_sites": [
+    "00200e68"
+  ],
+  "likely_branch_sites": [
+    "00200e08",
+    "00200e28"
+  ],
+  "scope": "Structural union of taken branch delay words and annulled-not-taken continuations. Calls not followed; only exact JR RA return permitted. No computed call/other register jump/trap/control in delay word accepted. This does not claim stepwise branch execution, return feasibility, original identity or runtime behavior.",
+  "Jev_contradiction_disposition": "Original preflight verification contradiction retained. Root distinguishes permitted exact JR RA return from other computed transfers; no unchanged judgment rerun.",
+  "checker_history": "First inline scan passed traversal checks then failed its ordered likely-site list assertion. BFS visits e28 before e08; changed assertion to the exact set and sorted only the reported sites. No project mutation occurred."
+}

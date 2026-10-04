@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "method": "Use Baseline.entries(.ps2;1) to enumerate and content-verify archive outputs, then independently parse each model container and recount PSMT4 references to 0x400-byte palette blocks. Compare those references against the prior uppercase-glob subset receipt.",
+  "archive_baseline": {
+    "profile": "fr2-pal-sles-517.05",
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+    "archive_entry_count": 56,
+    "baseline_sources": {
+      "ford-racing-2.bin": {
+        "bytes": 678667248,
+        "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+      },
+      "ford-racing-2.cue": {
+        "bytes": 79,
+        "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+      },
+      "extracted/SLES_517.05": {
+        "bytes": 1662804,
+        "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+      },
+      "extracted/FILES.HDR": {
+        "bytes": 29428,
+        "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+      },
+      "extracted/FILES.DAT": {
+        "bytes": 334641152,
+        "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+      }
+    }
+  },
+  "historical_uppercase_glob_subset": {
+    "entry_count": 54,
+    "old_texture_count": 54,
+    "prior_0x400_format4_reference_count": 19
+  },
+  "omitted_by_uppercase_glob": [
+    {
+      "archive_path": "/3DDATA/debug.ps2;1",
+      "texture_count": 2
+    },
+    {
+      "archive_path": "/3DDATA/misc.ps2;1",
+      "texture_count": 15
+    }
+  ],
+  "all56_counts": {
+    "archive_models": 56,
+    "glob_omitted_textures": 17,
+    "textures": 2370,
+    "format4_0x400_references": 19,
+    "format4_0x400_group_A": 19
+  },
+  "all56_palette_references": [
+    {
+      "archive_path": "/3DDATA/TRACKS/BayA.PS2;1",
+      "file_sha256": "514f676ab040374ae36c447ea506f9773d3328a3e09b0b6333d3c0778fe23580",
+      "texture_index": 65,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 8320,
+      "palette_bytes": 1024,
+      "palette_sha256": "dbbae4d184b86cb3219800189994847d7a04b52d8cba7a79649de8501edbef57"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/BayA.PS2;1",
+      "file_sha256": "514f676ab040374ae36c447ea506f9773d3328a3e09b0b6333d3c0778fe23580",
+      "texture_index": 76,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 8320,
+      "palette_bytes": 1024,
+      "palette_sha256": "dbbae4d184b86cb3219800189994847d7a04b52d8cba7a79649de8501edbef57"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Brands.PS2;1",
+      "file_sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+      "texture_index": 17,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 11200,
+      "palette_bytes": 1024,
+      "palette_sha256": "46d12a1d16f53b00201712c693e73b13a53544bf6c32d9a835410397a4ae3c85"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Brands.PS2;1",
+      "file_sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+      "texture_index": 19,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 11200,
+      "palette_bytes": 1024,
+      "palette_sha256": "46d12a1d16f53b00201712c693e73b13a53544bf6c32d9a835410397a4ae3c85"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Brands.PS2;1",
+      "file_sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+      "texture_index": 28,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 11200,
+      "palette_bytes": 1024,
+      "palette_sha256": "46d12a1d16f53b00201712c693e73b13a53544bf6c32d9a835410397a4ae3c85"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Brands.PS2;1",
+      "file_sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+      "texture_index": 30,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 11200,
+      "palette_bytes": 1024,
+      "palette_sha256": "46d12a1d16f53b00201712c693e73b13a53544bf6c32d9a835410397a4ae3c85"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Brands.PS2;1",
+      "file_sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+      "texture_index": 42,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 11200,
+      "palette_bytes": 1024,
+      "palette_sha256": "46d12a1d16f53b00201712c693e73b13a53544bf6c32d9a835410397a4ae3c85"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Brands.PS2;1",
+      "file_sha256": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+      "texture_index": 58,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 11200,
+      "palette_bytes": 1024,
+      "palette_sha256": "46d12a1d16f53b00201712c693e73b13a53544bf6c32d9a835410397a4ae3c85"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/DesB.PS2;1",
+      "file_sha256": "f4c93d821d486ebddf51303c8db55cfd81c81f197d88c451ef1a14064e890e1a",
+      "texture_index": 36,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 7584,
+      "palette_bytes": 1024,
+      "palette_sha256": "7a7ad13314645cf87e4ca134f9d345a1ecee0e0aeb4bc3fd6489a60ac8a4463e"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/FlorA.PS2;1",
+      "file_sha256": "aaa4ac7e555271b8db6a7a8fcf4a3bea97999cfc1aae33812368604d35707264",
+      "texture_index": 12,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 8960,
+      "palette_bytes": 1024,
+      "palette_sha256": "d11914eb816fd19ede68e9fbe092df9c0b89e552d57b6ba8dcd9acf7d9ecced8"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/FlorB.PS2;1",
+      "file_sha256": "ab25bc00528ff8230e89cc05bc7ef8ea806602f1f020c026b69bc01b76210f08",
+      "texture_index": 87,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 14256,
+      "palette_bytes": 1024,
+      "palette_sha256": "3940632039d210cad4d94f77d08375f81f8df48929bf6cf77c4af5fb8fb83bcd"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/FlorC.PS2;1",
+      "file_sha256": "2f587d1b26196ff802167581089ee16d8bf61f646e81c9018cae8a0b89b3a161",
+      "texture_index": 10,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 12848,
+      "palette_bytes": 1024,
+      "palette_sha256": "700b60c7eb7cdb2c44ce8e946ff4225464a6f43934af55a8e8d2b42619a05abf"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Fukuoka.PS2;1",
+      "file_sha256": "3dae1e8ff73ec00a97a88136d3a96976cd4db005d9326cc83972962a960428ec",
+      "texture_index": 17,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 30272,
+      "palette_bytes": 1024,
+      "palette_sha256": "06b95e8d48e3b7775e8110f1cfd705cb3e97c7f7a502aa37e7daa2b1745de192"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/Fukuoka.PS2;1",
+      "file_sha256": "3dae1e8ff73ec00a97a88136d3a96976cd4db005d9326cc83972962a960428ec",
+      "texture_index": 22,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 30272,
+      "palette_bytes": 1024,
+      "palette_sha256": "06b95e8d48e3b7775e8110f1cfd705cb3e97c7f7a502aa37e7daa2b1745de192"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/JungA.PS2;1",
+      "file_sha256": "2d89dab6c141fd2cad35e113f18b0b1e62474082696815fa3059eedadf47b8f4",
+      "texture_index": 19,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 5840,
+      "palette_bytes": 1024,
+      "palette_sha256": "197ce2c6f672de6891d5e7e7721d28da53dcf1770d59c1066fd16d6e2e0b5f1a"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/JungB.PS2;1",
+      "file_sha256": "09ffd3219ea7f97abccb8c029c17f1b5863643ae96fde6b61a8ed8ba77bd202b",
+      "texture_index": 65,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 11008,
+      "palette_bytes": 1024,
+      "palette_sha256": "2bc02c950e7eaf83706ff96647337a1233beb0f75332a760dc85ae67c5f9e758"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/JungC.PS2;1",
+      "file_sha256": "512736c4a73f282fb58bbc6ed8ee5951cd49d4a98210667b5c1210fa7a31ac20",
+      "texture_index": 54,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 8544,
+      "palette_bytes": 1024,
+      "palette_sha256": "3cd21f4118fb5dd702ac9988047b817a9603f1c6a0a1b359e10c4705d72f8d43"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/oval2.PS2;1",
+      "file_sha256": "fc940669f565fd6b1b015a9b511a23836e15f550a926b7f23d19185bf6f1043d",
+      "texture_index": 36,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 13072,
+      "palette_bytes": 1024,
+      "palette_sha256": "1fd5e9c5e82c263f62a87d66df82c71bfa1c9dd44005d6d4e3db84430cce1b4f"
+    },
+    {
+      "archive_path": "/3DDATA/TRACKS/oval3.PS2;1",
+      "file_sha256": "a0e7b23e2cf4c72f61532c9e350317f4c4f71bf8d157bef1b5ebb423cc30b646",
+      "texture_index": 57,
+      "palette_index": 0,
+      "palette_group": "A",
+      "palette_offset": 10848,
+      "palette_bytes": 1024,
+      "palette_sha256": "d820a499f93b9795e5c7fa80b37c6fa9cdb887e24aeac8797b7077c3a64f5578"
+    }
+  ],
+  "reconciliation": {
+    "prior_reference_count": 19,
+    "all56_reference_count": 19,
+    "prior_references_subset_of_all56": true,
+    "new_0x400_format4_references": 0
+  },
+  "limits": [
+    "Archive-bound file completeness is established against pinned local archive outputs.",
+    "This counts palette references and groups only; it does not prove visual/render correctness."
+  ]
+}

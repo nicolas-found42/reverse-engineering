@@ -1,0 +1,58 @@
+{
+  "commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "isolated_checkout": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01",
+  "patches": [
+    {
+      "path": "tools/recomp/defined-overflow.patch",
+      "sha256": "3b14131ae25ff79ec204e4bc0b0de383b19d43d7cd71bb1407802a6b793ca31e",
+      "check_returncode": 0
+    },
+    {
+      "path": "tools/recomp/translator-semantics.patch",
+      "sha256": "339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006",
+      "check_returncode": 0
+    },
+    {
+      "path": "tools/recomp/shuffle-lanes.patch",
+      "sha256": "86837455a5a1ca60a12c3064966397c9d1b1d16514e939d1e5267da79e10cf31",
+      "check_returncode": 0
+    },
+    {
+      "path": "tools/recomp/experimental/ee-fpu-semantics.patch",
+      "sha256": "c25899e99c4f57ed6e26cb7d721f36f975701b5039c18e259e5648af06209c1f",
+      "check_returncode": 0
+    }
+  ],
+  "combined_sources": [
+    {
+      "path": "ps2xRuntime/include/ps2_runtime_macros.h",
+      "bytes": 35294,
+      "sha256": "777cfee061a8c88f98aed4de1321b7d2aeed42b959c6475329771c8c0e392f2d"
+    },
+    {
+      "path": "ps2xRuntime/include/ee_fpu_experimental_helpers.h",
+      "bytes": 2201,
+      "sha256": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf"
+    },
+    {
+      "path": "ps2xRecomp/src/lib/instruction_translator.cpp",
+      "bytes": 19533,
+      "sha256": "d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7"
+    },
+    {
+      "path": "ps2xRecomp/src/lib/special_translator.cpp",
+      "bytes": 11824,
+      "sha256": "86a554b9172db6857b64a3ed05599d0b245bab4819dacfce082cd3eec87d753c"
+    },
+    {
+      "path": "ps2xRecomp/src/lib/mmi_translation_helpers.cpp",
+      "bytes": 31565,
+      "sha256": "e0b82fa9b78f526ca3ec96ad430816b5d9c6e60ce47f16127eed6d212a8ba080"
+    },
+    {
+      "path": "ps2xRecomp/src/lib/fpu_translator.cpp",
+      "bytes": 8904,
+      "sha256": "98c253124ddcc83684c220673b384ba5bd258129135ee57dd8c5db86dd048b0c"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "{\n  \"tool\": \"jev_review\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"truncated\": false,\n  \"safe_to_apply\": 0.04,\n  \"scores\": {\n    \"correctness\": {\n      \"score\": 1.2,\n      \"confidence\": 0.46,\n      \"probabilities\": {\n        \"0\": 0.08,\n        \"1\": 0.64,\n        \"2\": 0.28\n      }\n    },\n    \"spec_match\": {\n      \"score\": 1.87,\n      \"confidence\": 0.8,\n      \"probabilities\": {\n        \"0\": 0.02,\n        \"1\": 0.1,\n        \"2\": 0.88\n      }\n    },\n    \"test_gap\": {\n      \"score\": 1.78,\n      \"confidence\": 0.67,\n      \"probabilities\": {\n        \"0\": 0.06,\n        \"1\": 0.11,\n        \"2\": 0.83\n      }\n    },\n    \"blast_radius\": {\n      \"score\": 0.54,\n      \"confidence\": 0.19,\n      \"probabilities\": {\n        \"0\": 0.59,\n        \"1\": 0.28,\n        \"2\": 0.13\n      }\n    }\n  },\n  \"weights\": {\n    \"correctness\": 0.4,\n    \"spec_match\": 0.3,\n    \"test_gap\": 0.15,\n    \"blast_radius\": 0.15\n  },\n  \"thresholds\": {\n    \"auto_accept\": 0.8,\n    \"review_at\": 0.5,\n    \"composite_floor\": 0.7\n  },\n  \"action\": \"escalate\",\n  \"composite\": 0.6465,\n  \"reason_codes\": [\n    \"confidence_below_review\",\n    \"safe_to_apply_below_review\"\n  ],\n  \"limiting_rubrics\": [\n    \"blast_radius\"\n  ],\n  \"usage\": {\n    \"input_tokens\": 8360,\n    \"output_tokens\": 79\n  }\n}"
+    }
+  ]
+}

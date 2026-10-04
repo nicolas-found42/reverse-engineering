@@ -1,0 +1,36 @@
+{
+  "module_count": 24,
+  "input_hash_matched": 24,
+  "import_success": 24,
+  "analysis_success": 24,
+  "iopmod_skip_count": 24,
+  "gp_synthetic_report_count": 24,
+  "decompilation": {
+    "inventory": 2241,
+    "processed": 2241,
+    "generated": 2241,
+    "failed": 0
+  },
+  "nonempty_getErrorMessage_count": 0,
+  "pseudocode_warning_comments": 91,
+  "warning_categories": {
+    "Type propagation algorithm not settling": 4,
+    "Globals starting with '_' overlap smaller symbols at the same address": 61,
+    "Removing unreachable block (ram,0xADDR)": 25,
+    "Do nothing block with infinite loop": 1
+  },
+  "irx_modules_parsed": 24,
+  "irx_import_library_count": 166,
+  "irx_import_stub_count": 748,
+  "irx_export_library_count": 28,
+  "irx_export_link_count": 296,
+  "negative_control_import_failed": true,
+  "integrity_issues": [],
+  "limits": [
+    "Saved function discovery does not prove all instructions/functions recovered.",
+    "Ghidra skips .iopmod and does not resolve IOP tables by itself.",
+    "GP values are synthetic section-GOT-base+0x7ff0 fallback, not actual IOP runtime GP.",
+    "ET 0xff80 load-base relocation semantics remain unverified.",
+    "IOP import names remain unresolved by API catalog."
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "id": "vif-static-verify-001",
+  "tool": "mcp__jev__jev_verify",
+  "input_args": {
+    "claims": [
+      "On the pinned executable, the guarded CNT tag QWC spans exactly the bytes after its 16-byte DMA tag up to the immediately following END tag: 782 qwords for the first chain and 70 qwords for the second.",
+      "The bounded parser interprets MPG NUM=0 as 256 VU instruction pairs, and interprets MPG IMM as an instruction index whose VU byte address is IMM multiplied by eight.",
+      "The verified first chain conditionally maps seven payloads to the first seven overlay source spans, and the second chain maps one payload to the eighth overlay source span; all eight byte spans match exactly with no unmatched overlay or extra MPG.",
+      "The raw caller, helper, and DMA pointer-table guards support a conditional static mapping of the seven-chunk chain to VIF1 and the one-chunk chain to VIF0, if those routines execute.",
+      "The parser accepts REF DMA tags and DIRECT VIF commands.",
+      "The static byte checks prove that the DMA transfers occurred at runtime and establish rendered geometry semantics."
+    ],
+    "evidence": [
+      {
+        "id": "pinned-binutils-vif-source",
+        "text": "Pinned source .scratch/mesh/codex-root/binutils-dvp/gas/config/tc-dvp.c: vif_insn_len decodes MPG when (cmd & 0x70)==0x40, sets DVP_VUUP, reads NUM from bits 16..23, and returns 1+(NUM==0?256:NUM)*2 32-bit words. opcodes/dvp-opc.c extract_vif_datalen reads MPG NUM from bits 16..23 and returns 256 for zero. Therefore command-word count is VU instruction pairs and each payload pair is 8 bytes. The verifier rejects every DMA tag other than CNT at chain start and END at the exact body boundary; it rejects VIF commands other than exact NOP and MPG."
+      },
+      {
+        "id": "raw-static-guards-and-packet-result",
+        "text": "Verifier binds to executable SHA-256 216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95. It compares exact raw function instruction byte sequences for 0022fd48, 00114fe0, 001f4138, 001f4468, 001f40d8 and compares pointer table 0024d0b8 words [10008000,10009000]. Raw caller instructions pass arg index 1/packet 00217be0 and index 0/packet 0021ace0. Helper instructions are pinned and preserve TTE bit 0x40 while setting CHCR 0x105, TADR+0x30 and QWC zero at +0x20; f40d8 does not transform these non-SPR packet addresses. Output status pass: overlay_count=8, transfer_count=8, matched_count=8, unmatched_overlay_count=0, total_instruction_pairs=1698, total_transferred_bytes=13584. Seven matches label VIF1 and one VIF0. Every match checks exact payload bytes against data[parse_overlays.source_offset:source_offset+bytes], as well as ELF VA mapping and SHA-256. Claim limits explicitly exclude runtime execution, scheduling, geometry semantics, and rendered output."
+      },
+      {
+        "id": "targeted-tests",
+        "text": "PYTHONPATH=tools python3 -m unittest test_ps2_vif test_ps2_vu test_ps2_executables -v: 22 tests passed. Negative controls cover wrong executable identity, TTE disabled, non-CNT tag, IRQ flag, nonzero CNT address, unsupported VIF command, VIF interrupt flag, malformed QWC, unsupported END payload, out-of-range MPG destination, and MPG payload overrun. The pinned executable fixture verifies all 8 exact matches and no extras."
+      }
+    ],
+    "auto_accept": 0.8,
+    "subject_at": 0.5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 1,\n    \"unsupported\": 1,\n    \"needs_review\": 3\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"On the pinned executable, the guarded CNT tag QWC spans exactly the bytes after its 16-byte DMA tag up to the immediately following END tag: 782 qwords for the first chain and 70 qwords for the second.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.1,\n        \"says_nothing\": 0.43,\n        \"supports\": 0.47\n      },\n      \"confidence\": 0.21,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"raw-static-guards-and-packet-result\",\n      \"same_subject\": 0.32\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The bounded parser interprets MPG NUM=0 as 256 VU instruction pairs, and interprets MPG IMM as an instruction index whose VU byte address is IMM multiplied by eight.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.23,\n        \"says_nothing\": 0.22,\n        \"supports\": 0.55\n      },\n      \"confidence\": 0.33,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"pinned-binutils-vif-source\",\n      \"same_subject\": 0.6\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"The verified first chain conditionally maps seven payloads to the first seven overlay source spans, and the second chain maps one payload to the eighth overlay source span; all eight byte spans match exactly with no unmatched overlay or extra MPG.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0,\n        \"supports\": 0.98\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"raw-static-guards-and-packet-result\",\n      \"same_subject\": 0.89\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The raw caller, helper, and DMA pointer-table guards support a conditional static mapping of the seven-chunk chain to VIF1 and the one-chunk chain to VIF0, if those routines execute.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0.02,\n        \"supports\": 0.96\n      },\n      \"confidence\": 0.95,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"raw-static-guards-and-packet-result\",\n      \"same_subject\": 0.86\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"The parser accepts REF DMA tags and DIRECT VIF commands.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"contradicts\": 0.93,\n        \"says_nothing\": 0.02,\n        \"supports\": 0.05\n      },\n      \"confidence\": 0.88,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"pinned-binutils-vif-source\",\n      \"same_subject\": 0.73\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"The static byte checks prove that the DMA transfers occurred at runtime and establish rendered geometry semantics.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"contradicts\": 0.99,\n        \"says_nothing\": 0.01,\n        \"supports\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"raw-static-guards-and-packet-result\",\n      \"same_subject\": 0.47\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 3444,\n    \"output_tokens\": 799\n  }\n}"
+      }
+    ]
+  }
+}

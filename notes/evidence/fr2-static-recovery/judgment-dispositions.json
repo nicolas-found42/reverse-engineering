@@ -1,0 +1,343 @@
+{
+  "policy": "Jev is advisory; escalation is not automatic approval. Negative controls, operational failures and conflicting judgments are retained.",
+  "receipts": [
+    {
+      "id": "r001-docs-screen",
+      "receipt": "jev/r001-docs-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r002-stage-selection",
+      "receipt": "jev/r002-stage-selection.json",
+      "tool": "mcp__jev__jev_decide",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r003-scratch-limit",
+      "receipt": "jev/r003-scratch-limit.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 2,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 1
+      },
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r004-tail-layout",
+      "receipt": "jev/r004-tail-layout.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 3,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 2
+      },
+      "disposition": "Direct loader cursor review superseded the provisional tail layout; corrected fixed size60, no serialized stack-relocation input, and sum(groups)<=packed_count are tested."
+    },
+    {
+      "id": "r005-seam-contract",
+      "receipt": "jev/r005-seam-contract.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 0,
+        "contradicted": 0,
+        "unsupported": 1,
+        "needs_review": 1
+      },
+      "disposition": "Claim about seam names was unsupported. Implementation names remain routine local choices, not facts about the game or a user permission requirement."
+    },
+    {
+      "id": "r006-firecrawl-discovery-screen",
+      "receipt": "jev/r006-firecrawl-discovery-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r007-firecrawl-docs-screen",
+      "receipt": "jev/r007-firecrawl-docs-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r008-recomp-screen",
+      "receipt": "jev/r008-recomp-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r009-recomp-capability",
+      "receipt": "jev/r009-recomp-capability.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 2,
+        "contradicted": 0,
+        "unsupported": 1,
+        "needs_review": 1
+      },
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r010-decomp-tool-path",
+      "receipt": "jev/r010-decomp-tool-path.json",
+      "tool": "mcp__jev__jev_decide",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r011-tool-search-screen",
+      "receipt": "jev/r011-tool-search-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Empty Firecrawl search result is retained as an operational discovery limit, not positive evidence."
+    },
+    {
+      "id": "r012-tail-corrections",
+      "receipt": "jev/r012-tail-corrections.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 1,
+        "contradicted": 1,
+        "unsupported": 1,
+        "needs_review": 2
+      },
+      "disposition": "Independent raw-instruction review checked60-bytefinalrecords, delay-slotheaderword16 read, and allocation constraints. Corpusprofilesremainbounded."
+    },
+    {
+      "id": "r013-romdir-source-screen",
+      "receipt": "jev/r013-romdir-source-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r014-romdir-tool-choice",
+      "receipt": "jev/r014-romdir-tool-choice.json",
+      "tool": "mcp__jev__jev_decide",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r015-executable-inventory-audit",
+      "receipt": "jev/r015-executable-inventory-audit.json",
+      "tool": "mcp__jev__jev_audit",
+      "action": "escalate",
+      "summary": {
+        "records": 4,
+        "flagged": 1,
+        "invalid": 0
+      },
+      "disposition": "Model aggregatecount flagged contradicted; deterministic15+9+1 enumeration verifies25. Separate r015-disposition.json retained."
+    },
+    {
+      "id": "r016-vu-discovery-screen",
+      "receipt": "jev/r016-vu-discovery-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r017-dvp-build-screen",
+      "receipt": "jev/r017-dvp-build-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r018-warning-recovery-triage",
+      "receipt": "jev/r018-warning-recovery-triage.json",
+      "tool": "mcp__jev__jev_classify",
+      "action": null,
+      "summary": {
+        "items": 10,
+        "auto": 9,
+        "review": 1,
+        "invalid_response": 0,
+        "by_class": {
+          "control_flow": 4,
+          "types": 2,
+          "engine_limit": 2,
+          "decode": 1,
+          "manual_review": 1
+        }
+      },
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r019-dvp-disassembler-screen",
+      "receipt": "jev/r019-dvp-disassembler-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r020-current-recovery-claims",
+      "receipt": "jev/r020-current-recovery-claims.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 5,
+        "contradicted": 1,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "disposition": "Historical snapshot:54ordinarymodelEOFplus2thenunresolved,3453savedentries/3452C+1failure. Subsequent results supersede counts, not judgments. Fullgameequivalencecontradicted."
+    },
+    {
+      "id": "r021-dvp-overlay-source-screen",
+      "receipt": "jev/r021-dvp-overlay-source-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r022-dvp-exact-layout-screen",
+      "receipt": "jev/r022-dvp-exact-layout-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r023-vu-branch-source-screen",
+      "receipt": "jev/r023-vu-branch-source-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Full result retained without threshold changes. Advisory judgments do not establish semantic correctness. Non-auto results require direct source/byte review or remain unresolved; see README and related deterministic results."
+    },
+    {
+      "id": "r024-vu-reconstruction-claims",
+      "receipt": "jev/r024-vu-reconstruction-claims.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 3,
+        "contradicted": 1,
+        "unsupported": 0,
+        "needs_review": 1
+      },
+      "disposition": "8nativeVUroundtrips exact; firstplaceholder and lossybranch/float attempts failed and are retainedlocally. Semanticsnegativecontrolcontradicted. Placeholder source reviewed independently."
+    },
+    {
+      "id": "r025-code-physical-coverage-review",
+      "receipt": "jev/r025-code-physical-coverage-review.json",
+      "tool": "mcp__jev__jev_review",
+      "action": "escalate",
+      "summary": null,
+      "disposition": "Reviewescalated. Independent reviewer confirmedDVPmapping/exclusion; further foundentry-membershipandPT_LOADgaps, subsequentlyfixedwith10focusedtests. Escalationnotapproval."
+    },
+    {
+      "id": "r026-vif-source-screen",
+      "receipt": "jev/r026-vif-source-screen.json",
+      "tool": "mcp__jev__jev_screen",
+      "action": null,
+      "summary": null,
+      "disposition": "Operationalschemafailure:taskargumentunsupported. Fullfailurepreserved; correctedpurposeargumentandvalidreviewresultinr033. Notascreenapproval."
+    },
+    {
+      "id": "r027-vu-ownership-claims",
+      "receipt": "jev/r027-vu-ownership-claims.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 2,
+        "contradicted": 1,
+        "unsupported": 0,
+        "needs_review": 1
+      },
+      "disposition": "Countsauto/ownershipreview; exactchannelpointertable,callerarguments,CHCR/TADRopcodesandMPGcommands independently checked. Claimconditionalonexecution; runtimeoverclaimcontradicted."
+    },
+    {
+      "id": "r028-recovery-tool-review",
+      "receipt": "jev/r028-recovery-tool-review.json",
+      "tool": "mcp__jev__jev_review",
+      "action": "escalate",
+      "summary": null,
+      "disposition": "Allfiveperfilereviewsescalated. Boundedparserscheckedagainst pinnedsource,realcorpus,negativefixtures andindependentreview. Remainingsemanticlimitsstated; noautomaticapproval. Nativeoutputmissing-objectcheckaddedafterthisreceipt."
+    },
+    {
+      "id": "r029-export-completeness-claims",
+      "receipt": "jev/r029-export-completeness-claims.json",
+      "tool": "mcp__jev__jev_verify",
+      "action": null,
+      "summary": {
+        "verified": 3,
+        "contradicted": 0,
+        "unsupported": 1,
+        "needs_review": 2
+      },
+      "disposition": "Savedexportcoverageverifiedreview andphysicalbytegapverifiedauto. Direct verifierchecks all3837artifacthashes/entries and608warnings. IOPsummary remainsqualified. Fullsourceclaimunsupported withcontradictedrelation; completionrejected."
+    },
+    {
+      "id": "r030-guarded-export-provenance-review",
+      "receipt": "jev/r030-guarded-export-provenance-review.json",
+      "disposition": "Reviewescalated; rawopcodeguards,branchmembership,nativehashnegativecontrolandmatchingCsourcehashverifieddirectly. Retainedasboundedexperiment, notgenericpatchapproval."
+    },
+    {
+      "id": "r031-sdk-register-source-screen",
+      "receipt": "jev/r031-sdk-register-source-screen.json",
+      "disposition": "Operationalschemafailure:taskargumentunsupported. Fullfailurepreserved; correctedpurposeargumentinr032. Notascreenapproval."
+    },
+    {
+      "id": "r032-sdk-register-source-screen-corrected",
+      "receipt": "jev/r032-sdk-register-source-screen-corrected.json",
+      "disposition": "Correctedschemascreenpass. Exactpinnedupstreamheaderdefineschannel0/1 CHCRaddresses10008000/10009000. Dataonly."
+    },
+    {
+      "id": "r033-vif-source-screen-corrected",
+      "receipt": "jev/r033-vif-source-screen-corrected.json",
+      "disposition": "Correctedr026schemafailure; screeningreview. SourceisboundedpinnedbinutilsCcomments/code; independentlytreatedonlyasencodingevidence, noexternalinstructionsfollowed. Priorpartialsourcewasviewedbeforevalidscreen; orderingisnotclaimedperfect."
+    },
+    {
+      "id": "r034-stable-recovery-snapshot-gate",
+      "receipt": "jev/r034-stable-recovery-snapshot-gate.json",
+      "disposition": "Large16-fileproviderrequestreturned400. Exactfailurepreserved. Smallercomponentbatches r035-r038 areoperationalrecovery, notthresholdrelaxation orscore-shopping."
+    },
+    {
+      "id": "r035-executable-iop-gate",
+      "receipt": "jev/r035-executable-iop-gate.json",
+      "disposition": "Componentgateescalated; fullscoresretained. Deterministictests andsource/corpus checks supportboundedexperiment, notgenericcorrectnessorfullgamecompletion."
+    },
+    {
+      "id": "r036-sections-coverage-gate",
+      "receipt": "jev/r036-sections-coverage-gate.json",
+      "disposition": "Componentgateescalated; fullscoresretained. Deterministictests andsource/corpus checks supportboundedexperiment, notgenericcorrectnessorfullgamecompletion."
+    },
+    {
+      "id": "r037-vu-vif-gate",
+      "receipt": "jev/r037-vu-vif-gate.json",
+      "disposition": "Componentgateescalated; fullscoresretained. Deterministictests andsource/corpus checks supportboundedexperiment, notgenericcorrectnessorfullgamecompletion."
+    },
+    {
+      "id": "r038-ee-export-experiment-gate",
+      "receipt": "jev/r038-ee-export-experiment-gate.json",
+      "disposition": "Componentgateescalated; fullscoresretained. Deterministictests andsource/corpus checks supportboundedexperiment, notgenericcorrectnessorfullgamecompletion. EEcountclaimwasmarkedcontradictedwithconfidence.33; exactimmutableee-guarded-export result independentlyconfirms3837generated,0failed,608warnings andpass. Historicstandardexporthas3836+1failure. Contradictionretained; nofavorableclaimretry."
+    }
+  ]
+}

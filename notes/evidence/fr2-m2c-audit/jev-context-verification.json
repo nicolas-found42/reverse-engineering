@@ -1,0 +1,40 @@
+{
+  "arguments": {
+    "claims": [
+      "Supplying a C context declaration with s128* parameters for the synthetic function produces byte-for-byte identical m2c C output to the no-context baseline, including s128* increments += 0x10.",
+      "Supplying a C context declaration with u8* parameters causes m2c to preserve u8* temporaries and increments += 0x10, so the C pointer step is 16 bytes.",
+      "The u8* context output models the synthetic lq/sq operations as full 128-bit memory reads and writes.",
+      "The explicit vector-pointer context does not correct the pointer scaling mismatch."
+    ],
+    "evidence": [
+      {
+        "id": "baseline",
+        "text": "No-context synthetic output (sha256 b3ff078262cbe96390662bb85d105d9f49dc652bd992601d9a8d3fee6450acbe): `void synthetic_vector_pointer_loop(s128 *arg0, s128 *arg1, s32 arg2) { s128 *var_4; s128 *var_5; s128 temp_2; s32 var_6; var_4=arg0; var_5=arg1; ... temp_2=*var_5; var_5 += 0x10; *var_4=temp_2; ... var_4 += 0x10; }`."
+      },
+      {
+        "id": "vector-context",
+        "text": "Context file: `typedef __int128 s128; typedef int s32; void synthetic_vector_pointer_loop(s128 *arg0, s128 *arg1, s32 arg2);` Result stdout SHA256 is exactly the baseline SHA256 b3ff078262cbe96390662bb85d105d9f49dc652bd992601d9a8d3fee6450acbe, return code 0, stderr empty. Exact args/stdout saved under context-probes/vector-pointer."
+      },
+      {
+        "id": "byte-context",
+        "text": "Context file: `typedef __int128 s128; typedef int s32; void synthetic_vector_pointer_loop(unsigned char *arg0, unsigned char *arg1, s32 arg2);` Result output SHA256 08f3046b9f1312288784b897e205ca80bd2eb8c131ca303bff1a408a4617c09e, return code 0, stderr empty. Output declares `u8 *var_4`, `u8 *var_5`, keeps `var_5 += 0x10` and `var_4 += 0x10`, but emits `s128 temp_2; temp_2 = *var_5; *var_4 = temp_2;`."
+      },
+      {
+        "id": "synthetic-asm",
+        "text": "The synthetic input file contains `lq $2,0($5)`, `addiu $5,$5,0x10`, `sq $2,0($4)`, and a loop increment `addiu $4,$4,0x10`. No game assembly was used. MIPS lq/sq are 128-bit quadword load/store operations."
+      },
+      {
+        "id": "c-semantics",
+        "text": "In C pointer arithmetic, advancing a pointer by N advances N elements of the pointed-to type. Therefore an unsigned char* increment by 0x10 advances 16 bytes, but dereferencing it accesses one byte; an s128* increment by 0x10 advances 16 s128 elements (256 bytes if sizeof(s128)==16)."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"Supplying a C context declaration with s128* parameters for the synthetic function produces byte-for-byte identical m2c C output to the no-context baseline, including s128* increments += 0x10.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 1,\n        \"contradicts\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"vector-context\",\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"Supplying a C context declaration with u8* parameters causes m2c to preserve u8* temporaries and increments += 0x10, so the C pointer step is 16 bytes.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 0.9400000000000001,\n        \"contradicts\": 0.06\n      },\n      \"confidence\": 0.9,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"byte-context\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"The u8* context output models the synthetic lq/sq operations as full 128-bit memory reads and writes.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"supports\": 0.51,\n        \"contradicts\": 0.48\n      },\n      \"confidence\": 0.26,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"byte-context\",\n      \"same_subject\": 0.9\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The explicit vector-pointer context does not correct the pointer scaling mismatch.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.02,\n        \"supports\": 0.87,\n        \"contradicts\": 0.11\n      },\n      \"confidence\": 0.8,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"c-semantics\",\n      \"same_subject\": 0.8\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2686,\n    \"output_tokens\": 517\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "method": "Execute only pinned public software with authored synthetic VIF commands and VU nop/E-delay/VI-write/XTOP/XITOP pairs. No original game code or payload is linked or loaded. No GS drawing command, display initialization or game runner is invoked.",
+  "source_revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "probe_source_sha256": "ab81038168125b712d60026ff051fe15c7552432c6786ce2d6513ab8c5b2e790",
+  "native_binary_sha256": "12ec339d5b5abab9222e688066bba136b1920a21c24284b0cbd259bbbd62e95e",
+  "public_runtime_source_pins": [
+    {
+      "path": "ps2xRuntime/src/lib/ps2_vif1_interpreter.cpp",
+      "sha256": "4090662ca7029c6563444e69ac184cf1396efdf672d179dd8e9d617fe856c4a5",
+      "Firecrawl_trimmed_equal": true,
+      "runtime_build_source_equal": true
+    },
+    {
+      "path": "ps2xRuntime/src/lib/vu/ps2_vu1_core.cpp",
+      "sha256": "2c19f489f0ed5c22c8dbb2712825dcd2004b0bd93644204c274b4c829003af59",
+      "Firecrawl_trimmed_equal": true,
+      "runtime_build_source_equal": true
+    }
+  ],
+  "binary_preflight": {
+    "guest_names_checked": 4746,
+    "guest_entries_or_registration_in_probe": false,
+    "InitWindow_or_InitAudioDevice_in_probe": false,
+    "binary_sha256": "12ec339d5b5abab9222e688066bba136b1920a21c24284b0cbd259bbbd62e95e"
+  },
+  "process_records": [
+    {
+      "command": [
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/vif-vu-synthetic-01/probe"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "result": {
+        "vif_latch_cases": 4096,
+        "packet_order_cases": 1024,
+        "vu_stop_resume_cases": 4096,
+        "negative_detected": 0
+      }
+    },
+    {
+      "command": [
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/vif-vu-synthetic-01/probe",
+        "e-clear"
+      ],
+      "returncode": 0,
+      "stderr": "",
+      "result": {
+        "vif_latch_cases": 4096,
+        "packet_order_cases": 1024,
+        "vu_stop_resume_cases": 0,
+        "negative_detected": 4096
+      }
+    }
+  ],
+  "limits": [
+    "Observed deterministic software behavior only; no PS2 hardware, scheduling/concurrency, full VIF/VU correctness, original game packet state, or game completeness claim.",
+    "TOPS register values, BASE/OFFSET and DBF are supplied synthetically. Original preceding game state remains unresolved.",
+    "Baseline checks cover all 1024 possible TOP values at four distinct synthetic start PCs; they do not cover every VU instruction or E-bit interaction.",
+    "The linked library was built from the separate four-patch EE experiment source tree. Both VIF and VU core source files equal the pinned pristine public files; the tested mechanisms do not use those EE patches."
+  ]
+}

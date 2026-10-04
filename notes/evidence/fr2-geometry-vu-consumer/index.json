@@ -1,0 +1,68 @@
+{
+  "bundle": "fr2-geometry-vu-consumer",
+  "scope": "Static VU instruction consumer and conditional linkage from one serialized V4-32 payload lane; no routine or emulator execution.",
+  "status": "Bounded static facts validated; runtime TOPS/MODE/cycle remain open.",
+  "file_count": 10,
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 5289,
+      "sha256": "4e9347cda1467b23b2b824cf7b58aebe798da830f0028a2e227cbf474b2be92c"
+    },
+    {
+      "path": "anchors.json",
+      "bytes": 14028,
+      "sha256": "2f4188cfeda630681d4f78db73de93468e6c5f79ddc5af3044d494369565feca"
+    },
+    {
+      "path": "check_geometry_anchors_root_01.py",
+      "bytes": 4610,
+      "sha256": "fba5d576331033ab46085277023eb66c22fb499eb989a4dd433b4ce459d6e482"
+    },
+    {
+      "path": "jev-verify-vu0-payload-link.json",
+      "bytes": 4880,
+      "sha256": "43d84e2f7cb9b8dc72435583e983a01d4e35d7c1491e3b180a91c41c7d9c59f2"
+    },
+    {
+      "path": "r100-gate-disposition.json",
+      "bytes": 636,
+      "sha256": "91a4f24b4a261c802bb14e06c2c91dc8b6ca07be423bfc2f411b340c03935221"
+    },
+    {
+      "path": "r100-geometry-vif-integration-gate.json",
+      "bytes": 71578,
+      "sha256": "ef5bf89e1c3d935822bda7538974f72e80bfed42a9b0be3fac39c428dfca6067"
+    },
+    {
+      "path": "root-geometry-anchors-validation-01.json",
+      "bytes": 2598,
+      "sha256": "91834751a50a5c41821388d8fb2eb793d6e3802d09494bbc2ef5eb5248978a6c"
+    },
+    {
+      "path": "root-geometry-tag-anchor-mismatches-01.json",
+      "bytes": 455,
+      "sha256": "e375fec36b43ef34b31b5e11007f2cdf5a7f6728e6f92e71acd821395d445d6d"
+    },
+    {
+      "path": "superseded-hypotheses.json",
+      "bytes": 1453,
+      "sha256": "36e1a097d6f077f486f83a7af7e2369ccddc3e2c27ad969c48d77ef311797d61"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 3969,
+      "sha256": "2b0f0d1011303c6413d69e03fc8e3167c94299abaeeb4a80e9411ff79b9c52ec"
+    }
+  ],
+  "source_pins": {
+    "static_export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+    "overlay5_sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c",
+    "FUN_00128e88_saved_c_sha256": "db45fd58871c3e44f227855cae71c6b3e9715e394c923d830c6a0520bdb3aae6"
+  },
+  "limits": [
+    "No runtime DMA/VIF/VU execution claim.",
+    "No global TOP/MODE/cycle state claim.",
+    "No semantic geometry labels or XGKICK-pointer claim."
+  ]
+}

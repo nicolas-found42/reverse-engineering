@@ -1,0 +1,27 @@
+{
+  "command": [
+    "clang++",
+    "-std=c++20",
+    "-DUSE_SSE2NEON",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fixed-01/ps2xRuntime/include",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fixed-01/ps2xRuntime/include",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fixed-01/ps2xRuntime/src/lib/Kernel",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fixed-01/ps2xIOP/include",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-fixed-01",
+    "-c",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-fixed-01/register_functions.cpp",
+    "-o",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-registration-combined-01.o"
+  ],
+  "returncode": 0,
+  "seconds": 94.40409112499765,
+  "object_sha256": "2c0babdb53ffbb5c5133e60a4fb41cbf50d0ed57adfd599f677d67568e44fb9a",
+  "scope": "Compilation only; no game function executed"
+}

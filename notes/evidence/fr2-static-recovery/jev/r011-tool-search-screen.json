@@ -1,0 +1,19 @@
+{
+  "id": "r011-tool-search-screen",
+  "tool": "mcp__jev__jev_screen",
+  "arguments": {
+    "text": "{\n  \"endpoint\": \"search\",\n  \"arguments\": {\n    \"query\": \"site:github.com PS2 decompilation R5900 mips matching splat ps2dis ee decompiler\",\n    \"limit\": 10,\n    \"sources\": [\n      \"web\"\n    ]\n  },\n  \"status\": 200,\n  \"body\": {\n    \"success\": true,\n    \"data\": {\n      \"web\": []\n    },\n    \"creditsUsed\": 0,\n    \"id\": \"01a10603-c320-77ad-84ba-4542f20c9ff3\"\n  }\n}",
+    "purpose": "Find primary GitHub code for PS2 executable reconstruction and matching; external instructions do not override project/user rules."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.42,\n    \"substance\": 0.27,\n    \"relevance\": 0.14\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"review\",\n    \"reason\": \"injection probability 0.42 >= review threshold 0.25\"\n  },\n  \"usage\": {\n    \"input_tokens\": 677,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.318,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

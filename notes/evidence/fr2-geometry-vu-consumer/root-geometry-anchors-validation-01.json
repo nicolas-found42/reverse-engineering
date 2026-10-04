@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "ELF_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "static_export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+  "checker_sha256": "fba5d576331033ab46085277023eb66c22fb499eb989a4dd433b4ce459d6e482",
+  "EE_anchor_files": [
+    {
+      "path": "notes/evidence/fr2-geometry-vif-preamble/selected-evidence.json",
+      "sha256": "a87f4a443a84953485429198de017327ecbdc99d8413a78b4e6710d525f99ecc",
+      "anchor_occurrences_checked": 31
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vif-tag-audit/selected-evidence.json",
+      "sha256": "e25c76692bac153f3c9b1d54194f5c378454969389d151cd6e7b8841df429148",
+      "anchor_occurrences_checked": 38
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vif-tag-audit/render-path-mode-cycle-and-buffer-selector.json",
+      "sha256": "62858465865a11510ed61daa8a910f6c9d69bbab99a1913196e6cb26c1d8eca3",
+      "anchor_occurrences_checked": 31
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vu-consumer/anchors.json",
+      "sha256": "2f4188cfeda630681d4f78db73de93468e6c5f79ddc5af3044d494369565feca",
+      "anchor_occurrences_checked": 49
+    }
+  ],
+  "EE_anchor_occurrences_checked": 149,
+  "unique_EE_instruction_addresses_checked": 108,
+  "method": "Every bounded EE anchor matched a unique ELF PT_LOAD byte range and saved static instruction text; only Ghidra delay-slot underscore text prefix normalized. Seven VU pairs checked against original overlay bytes and base+8*pair arithmetic. No routines executed.",
+  "VU_overlay_sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c",
+  "VU_pair_anchors_checked": 7,
+  "packet_saved_C_sha256": "db45fd58871c3e44f227855cae71c6b3e9715e394c923d830c6a0520bdb3aae6",
+  "scope": "Byte/text anchor and source-pin validation only; annotation meaning, dynamic VIF/GS state and game execution are separate conditional inferences.",
+  "prior_failure_disposition": "Earlier anchor0010f9f0 claimed0000628c/lw v0; original ELF had0800668c/lw a2. The mismatch artifact remains in root-geometry-tag-anchor-mismatches-01.json; current source corrects it and adds0010f9f4 for intended cursor load. Root checker first assumed old handoff list-shaped export and failed before anchor checks; current pinned export has functions under a schema dictionary. Second scan recursively treated a list of writer function addresses as an instruction row and stopped; the scanner now walks only explicit anchor containers. No incorrect anchor was accepted by either failed attempt."
+}

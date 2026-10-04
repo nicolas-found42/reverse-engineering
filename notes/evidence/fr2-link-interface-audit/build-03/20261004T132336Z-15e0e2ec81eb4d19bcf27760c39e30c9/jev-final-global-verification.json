@@ -1,0 +1,63 @@
+{
+  "schema_version": 1,
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+    "verified": 2,
+    "contradicted": 0,
+    "unsupported": 1,
+    "needs_review": 3
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "claim": "Each of the four table globals has exactly one global definition in the final executable.",
+      "verdict": "verified",
+      "probabilities": {
+        "contradicts": 0.4,
+        "says_nothing": 0.03,
+        "supports": 0.57
+      },
+      "confidence": 0.36,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.72
+    },
+    {
+      "id": "claim1",
+      "claim": "nm -m reports the four definitions as external, not weak external.",
+      "verdict": "verified",
+      "probabilities": {
+        "contradicts": 0.24,
+        "supports": 0.74,
+        "says_nothing": 0.02
+      },
+      "confidence": 0.62,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.78
+    },
+    {
+      "id": "claim2",
+      "claim": "The wrapper hash matches ba44633e030d4ecd13933318c82d1c91445525ac91865c611f7c5ef35559c763 and filters the runtime placeholder before adding generated registration.",
+      "verdict": "unsupported",
+      "probabilities": {
+        "contradicts": 0.22,
+        "says_nothing": 0.49,
+        "supports": 0.29
+      },
+      "confidence": 0.23,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.48
+    }
+  ],
+  "usage": {
+    "input_tokens": 1691,
+    "output_tokens": 191
+  },
+  "disposition": "Preserved without retry. The result is low-confidence/review and does not override deterministic nm output, the exact wrapper bytes/hash, and the final link command. Parent agent will independently inspect linked artifact."
+}

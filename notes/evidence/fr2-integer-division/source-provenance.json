@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "source_url": "https://raw.githubusercontent.com/PCSX2/pcsx2/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/R5900OpcodeImpl.cpp",
+  "source_revision": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+  "firecrawl_status": 200,
+  "firecrawl_receipt_sha256": "d885c602facc74721e96dd66df941d74100138f9bf0beec517ab0ec30130d62a",
+  "firecrawl_receipt_path": ".scratch/mesh/codex-root/firecrawl-integer-div-01.json",
+  "screen_arguments_sha256": "c151641515981724c6a02b1c345fac9af979835515c527d68b1b643999cf4f77",
+  "screen_receipt_sha256": "394d120f9cd432f5664eea901a04fbd4ab037cfc91cc33af42ca85ee310183a7",
+  "screen_receipt_path": ".scratch/mesh/codex-root/r068-integer-div-source-screen.json",
+  "screen_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.03,\n    \"substance\": 0.99,\n    \"relevance\": 0.96\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 17179,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "public_source_sha256": "6ae749a7e3a297a291f1844d2f96a17bf7c53a9c6f6f4ab4ddab27781a78c2b4",
+  "public_source_path": ".scratch/mesh/codex-root/pcsx2-R5900OpcodeImpl-pinned-01.txt",
+  "manual_url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+  "manual_printed_pages": [
+    67,
+    68,
+    138,
+    140
+  ],
+  "software_comparator_limit": "Pinned PCSX2 interpreter source is an independent software comparator only; its DIVU comment conflicts with the implementation cast, so the executed expression is used."
+}

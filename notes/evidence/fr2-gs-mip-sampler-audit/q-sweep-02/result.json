@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "public_revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "source_pins": [
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp",
+      "sha256": "3f0fea655726215f56d8c3c9cff8345a7d36a929fe3f845cc96346a247085fa9"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h",
+      "sha256": "46e69da0062b4f9e82cae926f0e3d2012283634fe1647049a9e832ab7a452ed0"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/gs_cpu_backend.h",
+      "sha256": "2de22e260b71f3da317310b38a7ba40a4b3e5e2bab11a6cbc50662d9d9ef85f8"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/gs_types.h",
+      "sha256": "ec42ebfb1d1f20f748ba46510fa6a857fb5cd917405dcf338711a465feb40937"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/gs_texture_page_cache.h",
+      "sha256": "51bef021981a9834cc7bcadc9a4527d3588b058c481212353499e7936d12a3e6"
+    }
+  ],
+  "authored_probe_sha256": "abfaa4c50dcd068eaf537d6015dd0b3f5a416128bafc601bf4f3d6357cf3fa89",
+  "draft_original_probe_sha256": "6346bf720477256209d19578347bad9254d8737015da35b9fd51ad31f0336850",
+  "runner_sha256": "5089f347fe72bf5144e34adc04e9b27855a742c9540aa16ebcba58a0d9e568db",
+  "compile": {
+    "command": [
+      "clang++",
+      "-std=c++20",
+      "-O1",
+      "-mmacosx-version-min=26.4",
+      "-DUSE_SSE2NEON",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/src",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-mip-sampler-native-02/probe.cpp",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+      "-framework",
+      "OpenGL",
+      "-framework",
+      "Cocoa",
+      "-framework",
+      "IOKit",
+      "-framework",
+      "CoreFoundation",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-mip-sampler-native-02/probe"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libraries": [
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+        "sha256": "923592007bb581846a7659ed3459d43b5a92fdc421f2732d3098262ca8912015"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+        "sha256": "a3f193a7cf8036fa2be98be51f6f4a218e4d0cda02bb45be3e1760a8a600e4df"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+        "sha256": "c5658b264fe8d23fd6046151fb9c111fff0f7f493a531f37a2c239b34541db05"
+      }
+    ]
+  },
+  "binary_preflight": {
+    "binary_sha256": "d161cfc74b5da11f50f8c93e6691f9576586ba7ed8ad4fc7db22947794592382",
+    "generated_guest_names_checked_absent": 4746,
+    "registration_and_display_audio_entry_symbols_absent": true,
+    "symbols_sha256": "4b68538937a498e90ffda666b056604fb145295936f12ec97c2ea3fdfdea9908",
+    "source_review": "Probe initializes CPU VRAM, writes three authored constant color planes, submits authored sprites to CPU memory and reads four output pixels. Same GS entry points as 01 plus homogeneous per-vertex Q. No display, presentation or audio initialization; original guest names absent."
+  },
+  "process": {
+    "command": [
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-mip-sampler-native-02/probe"
+    ],
+    "exit_code": 0,
+    "stderr_bytes": 0,
+    "stdout_sha256": "7b877ea39188aced0b43cc4c40f4ba5ad836497ee028695603a4becfd391e883"
+  },
+  "cases": [
+    {
+      "mode": "fixed",
+      "fst": 0,
+      "fixed_LOD": 0,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147483903,
+      "TEX1": 137,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 0,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 0,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2147548928,
+      "manual_expected_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 0,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 0,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2164195328,
+      "manual_expected_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 1,
+      "fixed_LOD": 0,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147483903,
+      "TEX1": 137,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 1,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 1,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2147548928,
+      "manual_expected_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 1,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "fixed",
+      "fst": 1,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2164195328,
+      "manual_expected_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "q_based",
+      "fst": 0,
+      "q": 1,
+      "manual_Q_LOD": 0,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147483903,
+      "four_pixels_uniform": 1,
+      "TEX1": 136,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "q_based",
+      "fst": 0,
+      "q": 0.5,
+      "manual_Q_LOD": 1,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147548928,
+      "four_pixels_uniform": 1,
+      "TEX1": 136,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "q_based",
+      "fst": 0,
+      "q": 0.25,
+      "manual_Q_LOD": 2,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2164195328,
+      "four_pixels_uniform": 1,
+      "TEX1": 136,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "q_based",
+      "fst": 1,
+      "q": 1,
+      "manual_Q_LOD": 0,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147483903,
+      "four_pixels_uniform": 1,
+      "TEX1": 136,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "q_based",
+      "fst": 1,
+      "q": 0.5,
+      "manual_Q_LOD": 1,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2147548928,
+      "four_pixels_uniform": 1,
+      "TEX1": 136,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "mode": "q_based",
+      "fst": 1,
+      "q": 0.25,
+      "manual_Q_LOD": 2,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_expected_rgba": 2164195328,
+      "four_pixels_uniform": 1,
+      "TEX1": 136,
+      "MIPTBP1": 17280548928
+    }
+  ],
+  "counts": {
+    "total": 16,
+    "fixed": 10,
+    "q_based": 6,
+    "fixed_manual_disagreements": 4,
+    "q_manual_disagreements": 4,
+    "q_cases_equal_to_TEX0_base_plane": 6,
+    "manual_disagreements_total": 8
+  },
+  "preserved_01_files_verified_before_run": 19,
+  "limits": [
+    "Direct backend GSDrawState synthetic entry only; no original game frontend/submission executed.",
+    "Expected levels derive from the manual LOD formula with homogeneous Q on both sprite vertices and L=0,K=0; sprite-specific hardware Q handling is not independently verified.",
+    "Constant-color point-sampled CT32 planes only; no filtering, derivative, hardware or original-game claim.",
+    "No production runtime patch applied."
+  ]
+}

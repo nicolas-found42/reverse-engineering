@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "independent_visual_source_check",
+  "source": {
+    "url": "https://raw.githubusercontent.com/ninjadynamics/PS2Docs/a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369/GS_Users_Manual.pdf",
+    "sha256": "daf72c776f6e27721149f28dc46ad47443e560b22a04f3d8ff4bcf74f254bf12",
+    "bytes": 1265948,
+    "pdf_pages": 176,
+    "DBW_BITBLTBUF_range_pages_one_based": [
+      101
+    ],
+    "scope": "Pinned public mirror downloaded as read-only reference, original document not edited or distributed."
+  },
+  "render": {
+    "pdf_page_one_based": 101,
+    "printed_page": 101,
+    "command": [
+      "pdftoppm",
+      "-f",
+      "101",
+      "-l",
+      "101",
+      "-r",
+      "110",
+      "-png",
+      "-singlefile",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-manual-visual-01/source.pdf",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-manual-visual-01/page-101"
+    ],
+    "exit_code": 0,
+    "image_path": ".scratch/mesh/codex-root/gs-manual-visual-01/page-101.png",
+    "image_sha256": "6a4d3f24602e807b78eda7e9edc9c6098428c8ef132ba06d9e1d90705f5392f0",
+    "visually_inspected": true
+  },
+  "paraphrased_findings": [
+    "BITBLTBUF table places DBW in bits53:48.",
+    "DBW represents pixel width divided by64, with footnote1 attached directly to the destination-width row.",
+    "Footnote1 restricts the value to1through32. Zero therefore falls outside the documented numeric range.",
+    "The separate undefined-operation footnote2 attaches to SPSM, not DBW; it must not be promoted as specified zero-DBW response semantics.",
+    "The reviewed table does not specify a response to zero DBW. This is a bounded section review, not an absence finding over all documentation."
+  ],
+  "Jev_receipt": {
+    "exact_focused_screen_and_verify_envelope_path": ".scratch/mesh/codex-root/texture-independent-review/gs-bitbltbuf-dbwidth-jev-envelopes-01.json",
+    "sha256": "c510f5e72f0510fa77ccc80cf3a7c6ee378a52f7ae9781c879f36f81f69f602d",
+    "full_response_preserved_in_ignored_scratch": true,
+    "original_broad_screen_result": "Unrecoverable/truncated per preserved envelope; not retried",
+    "manual_silence_claim": "Review confidence0.25 remains retained"
+  },
+  "limits": [
+    "Document is a pinned public mirror of a Sony-authored manual, not a hardware measurement.",
+    "No original PDF or rendered page is committed or distributed in this bundle.",
+    "Transfer-only indexedDBW1 semantics unresolved; separate textureTBWwidth constraint does not define transfer behavior."
+  ]
+}

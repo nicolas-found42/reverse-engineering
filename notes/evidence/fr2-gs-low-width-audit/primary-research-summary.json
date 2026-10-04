@@ -1,0 +1,73 @@
+{
+  "scope": "read-only research on BITBLTBUF DBW zero and indexed DBW one; no emulator, console, or game execution",
+  "manual": {
+    "title": "GS Users Manual, Version 6.0",
+    "publisher": "Sony Computer Entertainment Inc.",
+    "publication": "April 2002",
+    "mirror_repository": "https://github.com/ninjadynamics/PS2Docs",
+    "mirror_commit": "a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369",
+    "path": "GS_Users_Manual.pdf",
+    "url": "https://raw.githubusercontent.com/ninjadynamics/PS2Docs/a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369/GS_Users_Manual.pdf",
+    "sha256": "daf72c776f6e27721149f28dc46ad47443e560b22a04f3d8ff4bcf74f254bf12",
+    "firecrawl": {
+      "request": {
+        "url": "https://raw.githubusercontent.com/ninjadynamics/PS2Docs/a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369/GS_Users_Manual.pdf",
+        "formats": ["markdown"],
+        "parsers": ["pdf"],
+        "pdfOptions": {"maxPages": 176},
+        "maxAge": 0,
+        "onlyMainContent": false
+      },
+      "scrape_id": "01a107ca-97a2-7686-b618-b4bf0eda9b84",
+      "status_code": 200,
+      "pages": 176,
+      "content_type": "application/pdf"
+    },
+    "manual_terms_note": "The mirrored PDF labels itself SCE Confidential and restricts distribution/use to licensed developers and publishers. This receipt stores no PDF or page image and only paraphrases the relevant constraints.",
+    "source_facts": {
+      "printed_page_101_bitbltbuf": "SBW/DBW are pixel-width counts in units of 64 pixels; footnote gives the allowed range 1..32. Therefore DBW=0 is invalid/out of specification. The passage does not state what hardware does for zero.",
+      "section_2_6_texture_buffer": "Texture-buffer width is a 64-texel multiple generally and a 128-texel multiple for PSMT8/PSMT4. This is a separate texture-buffer constraint; it does not make BITBLTBUF DBW=1 numerically invalid.",
+      "section_8_5_address_unit_correction": "SBP/DBP/TBP values count 64-word (256-byte) blocks, not 256-bit units. No DBW=0 or indexed DBW=1 page-row stride rule was found in the manual sections reviewed."
+    },
+    "jev_screen": {
+      "scope": "focused BITBLTBUF excerpt",
+      "injection": 0.03,
+      "substance": 0.98,
+      "relevance": 0.95,
+      "action": "pass"
+    },
+    "jev_verify": {
+      "tool": "jev_verify",
+      "model": "typesafe/jev-1.13",
+      "claims": [
+        {"claim": "BITBLTBUF DBW is width in units of pixels/64 and permitted range is 1..32.", "verdict": "verified", "probabilities": {"contradicts": 0.0, "says_nothing": 0.0, "supports": 1.0}, "confidence": 1.0, "action": "auto"},
+        {"claim": "Manual excerpt does not specify the GS response to DBW=0.", "verdict": "verified", "probabilities": {"contradicts": 0.14, "says_nothing": 0.36, "supports": 0.5}, "confidence": 0.25, "action": "review", "note": "absence claim needs human review; do not treat as verified hardware behavior"},
+        {"claim": "Texture buffer width for PSMT8/PSMT4 must be a multiple of 128 texels.", "verdict": "verified", "probabilities": {"contradicts": 0.0, "says_nothing": 0.0, "supports": 1.0}, "confidence": 1.0, "action": "auto"},
+        {"claim": "DBW=1 is within BITBLTBUF numeric range, while TBW=1 violates the indexed texture-buffer width constraint.", "verdict": "verified", "probabilities": {"contradicts": 0.01, "says_nothing": 0.01, "supports": 0.98}, "confidence": 0.97, "action": "auto"}
+      ],
+      "usage": {"input_tokens": 2562, "output_tokens": 248}
+    }
+  },
+  "hardware_test_repository": {
+    "repository": "https://github.com/unknownbrackets/ps2autotests",
+    "commit": "97469ffbed8631277b94e28d01dabd702aa97ef3",
+    "license": "ISC-style license (pinned LICENSE.md blob f4d2bdd006c79e05a993e94063888bc81b4f40a9); scrape 01a107cf-3caa-7269-bd61-8ffae922a67a; Jev screen injection .05/substance .75/relevance .96, pass",
+    "tree_sha": "97469ffbed8631277b94e28d01dabd702aa97ef3",
+    "tree_firecrawl_scrape_id": "01a107cc-9c05-740d-817e-5aa91935fad7",
+    "tree_jev_screen": {"injection": 0.06, "substance": 0.83, "relevance": 0.8, "action": "pass"},
+    "gs_paths": [
+      "tests/gs/Makefile", "tests/gs/emit_giftag.cpp", "tests/gs/emit_giftag.h", "tests/gs/gsregs.cpp", "tests/gs/gsregs.h", "tests/gs/label.cpp", "tests/gs/label.elf", "tests/gs/label.expected", "tests/gs/signal.cpp", "tests/gs/signal.elf", "tests/gs/signal.expected"
+    ],
+    "gsregs_cpp_blob": "00bde7ed211398cc1fbba1fcb43dce95eca764df",
+    "gsregs_cpp_scrape_id": "01a107cd-9314-7369-a3e3-66e3011b6371",
+    "gsregs_cpp_jev_screen": {"injection": 0.04, "substance": 0.91, "relevance": 0.85, "action": "pass"},
+    "observed_scope": "GS test subtree contains SIGNAL/LABEL tests and helper encoders only; no BITBLTBUF/DBW-named test path. gsregs.cpp only encodes SIGNAL and LABEL values.",
+    "limits": "Repository README describes tests run on PS2 with expected results, but the inspected GS tests do not probe DBW. Absence in this pinned tree is not evidence of chip behavior or that no such tests exist elsewhere."
+  },
+  "software_model_comparison": {
+    "source": "Parent's synthetic software-only probes; not hardware evidence",
+    "pcsx2": "raw zero DBW divided by indexed page width produces zero rows; pinned GS width/page helpers use BW as supplied",
+    "ps2recomp": "some standalone indexed helpers clamp page rows to at least one; actual CPU upload backend separately clamps DBW to max(DBW,1), yielding stride zero for indexed DBW 0/1 in the traced profile",
+    "resolution": "Neither software behavior establishes silicon behavior. The manual makes DBW=0 invalid, and does not specify recovery behavior. Indexed DBW=1 is a valid BITBLTBUF field value but is not compliant as a PSMT8/PSMT4 texture-buffer width; a transfer-only use is not resolved by that texture-buffer restriction."
+  }
+}

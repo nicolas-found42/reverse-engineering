@@ -1,0 +1,435 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T132336Z-15e0e2ec81eb4d19bcf27760c39e30c9",
+  "status": "pass",
+  "check": "runtime-generated-object-link",
+  "scope": "compile and link only; the produced runner was not executed; no emulator, GUI, or game runtime was launched",
+  "cmake": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-venv/bin/cmake",
+    "version": "cmake version 3.31.6"
+  },
+  "generator": "Unix Makefiles",
+  "host": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+  "processor": "arm64",
+  "runtime_source": {
+    "repo": "PS2Recomp",
+    "base_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "working_tree_status": "M ps2xRecomp/src/lib/fpu_translator.cpp\n M ps2xRecomp/src/lib/instruction_translator.cpp\n M ps2xRecomp/src/lib/mmi_translation_helpers.cpp\n M ps2xRecomp/src/lib/special_translator.cpp\n M ps2xRuntime/include/ps2_runtime_macros.h\n?? ps2xRuntime/include/ee_fpu_experimental_helpers.h",
+    "modified_or_added_source_identities": [
+      {
+        "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/ps2_runtime_macros.h",
+        "bytes": 35294,
+        "sha256": "777cfee061a8c88f98aed4de1321b7d2aeed42b959c6475329771c8c0e392f2d"
+      },
+      {
+        "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/ee_fpu_experimental_helpers.h",
+        "bytes": 2201,
+        "sha256": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf"
+      },
+      {
+        "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRecomp/src/lib/fpu_translator.cpp",
+        "bytes": 8904,
+        "sha256": "98c253124ddcc83684c220673b384ba5bd258129135ee57dd8c5db86dd048b0c"
+      },
+      {
+        "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRecomp/src/lib/instruction_translator.cpp",
+        "bytes": 19533,
+        "sha256": "d4e99dca9b814c307f933085dde05d138a191a39e6c52fcf37767453a1f22eb7"
+      },
+      {
+        "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRecomp/src/lib/mmi_translation_helpers.cpp",
+        "bytes": 31565,
+        "sha256": "e0b82fa9b78f526ca3ec96ad430816b5d9c6e60ce47f16127eed6d212a8ba080"
+      },
+      {
+        "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRecomp/src/lib/special_translator.cpp",
+        "bytes": 11824,
+        "sha256": "86a554b9172db6857b64a3ed05599d0b245bab4819dacfce082cd3eec87d753c"
+      }
+    ],
+    "note": "Runtime was compiled from the existing private FPU experiment clone, not a clean checkout. The runtime macro header and experimental FPU helper are included in the recorded source identities."
+  },
+  "dependency": {
+    "name": "raylib",
+    "tag": "5.5",
+    "commit": "c1ab645ca298a2801097931d1079b10ff7eb9df8",
+    "expected_commit": "c1ab645ca298a2801097931d1079b10ff7eb9df8",
+    "clean_worktree": true,
+    "license": {
+      "path": ".scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/LICENSE",
+      "bytes": 877,
+      "sha256": "355bdd50936805f62f091da289f7ba467ea0711586a464ad755dcc73dcfb52a8"
+    },
+    "cmakelists": {
+      "path": ".scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/CMakeLists.txt",
+      "bytes": 1939,
+      "sha256": "66bd4c569639bd978341c5441145a43a5ae05315c05535f37e7bb606deefdff0"
+    },
+    "source_tree_note": "Exact shallow tag checkout; no source modifications. Build used source override, no network dependency resolution during configure."
+  },
+  "generated_inputs": [
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-00.o",
+      "bytes": 4957040,
+      "sha256": "9d4c0c14ed6fd55c999b07b7cc17970d55ab0e5c69118e8e2518d1f894555fcf"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-01.o",
+      "bytes": 4812880,
+      "sha256": "bef654ee0b88926e9c5c9efedd52e7e822c6d6b502fd1c8ccf07e1b136819eb5"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-02.o",
+      "bytes": 5196296,
+      "sha256": "86988f968f0c325b812d0d5a368b56885d4b68c651e78821e849d4c573512b1b"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-03.o",
+      "bytes": 5301672,
+      "sha256": "9ec02bdb3b832ec6b9e2beb0d795d3e010aa85997b50c9bf71ca553c14d9964d"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-04.o",
+      "bytes": 4935680,
+      "sha256": "ee9562f095b58778143872bdebf89ad5ed61a6ea6f9a99f740747f9bfe813484"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-05.o",
+      "bytes": 5267888,
+      "sha256": "f8462d5aaa362f7cb49259413379e0fa0d7dd5ab9701483cf8cf25f0547bf2a4"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-06.o",
+      "bytes": 5098144,
+      "sha256": "7888d4e5db3c84ff86b325e482440cdb95febba62ce6b4615e403703d4796896"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-07.o",
+      "bytes": 4894816,
+      "sha256": "331dd5c86378a188be3f21979bd040566e50050c5d552e388f3664db35c9c691"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-08.o",
+      "bytes": 5519264,
+      "sha256": "ad1b87ab92be4451b1e393b00601f5be54b8a17d8181ece392f697c9238b6f4d"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-09.o",
+      "bytes": 5133568,
+      "sha256": "2f397e0864d9400ebd62d95d5d93b621129e4ef58a884275619ce43251ba3176"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-10.o",
+      "bytes": 4911392,
+      "sha256": "e42562b1296fef9e10a36f940e39340cd76d0620e6237a7ecf765dc0e2f4319c"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-11.o",
+      "bytes": 5175256,
+      "sha256": "576867e241555ce21aecdef262e435c0c72a40a3d86d955d8ab4aa2414d5a2cf"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-12.o",
+      "bytes": 5042464,
+      "sha256": "6fecb28da3308f4175e4958c061cb8e8baac0be96a7bd3bf5b144f55979ccf3b"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-13.o",
+      "bytes": 5084376,
+      "sha256": "755b1ac4d29668409b423f294a8ad2a5fc4a5c45ac587e0c3bba21f5bdca8a45"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-14.o",
+      "bytes": 4812496,
+      "sha256": "6a66e7133d52433bf69d92c9b27d96e1f3284f8c288051d438a340f6ae0c4767"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-15.o",
+      "bytes": 5158216,
+      "sha256": "6e2504efc90c9084c51eac8f47e6b568ec2e4f109c5c9c5ad7dbd2cee9ac63b9"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-registration-fpu-01.o",
+      "bytes": 1911912,
+      "sha256": "2c0babdb53ffbb5c5133e60a4fb41cbf50d0ed57adfd599f677d67568e44fb9a"
+    }
+  ],
+  "generated_function_symbols_distinct": 4746,
+  "registration_integration": {
+    "provided_generated_object": ".scratch/mesh/codex-root/recomp-registration-fpu-01.o",
+    "runtime_placeholder_removed": "ps2xRuntime/src/runner/register_functions.cpp",
+    "reason": "Both define the function-table globals; retaining the runtime empty 4M-slot table produced four duplicate-symbol link errors."
+  },
+  "options": {
+    "PS2X_BUILD_RUNTIME": true,
+    "PS2X_BUILD_RECOMP": false,
+    "PS2X_BUILD_ANALYZER": false,
+    "PS2X_BUILD_TEST": false,
+    "PS2X_BUILD_STUDIO": false,
+    "PS2X_ENABLE_DEBUG_UI": false,
+    "PS2X_ENABLE_FFMPEG": false,
+    "PS2X_ENABLE_RUNNER_UNITY_BUILD": false,
+    "PS2X_ENABLE_RUNNER_PCH": false,
+    "FETCHCONTENT_FULLY_DISCONNECTED": true
+  },
+  "commands": [
+    {
+      "command": "cmake -S .scratch/mesh/codex-audit/headless-link-build-02/src -B .scratch/mesh/codex-audit/headless-link-build-02/build -G Ninja -DCMAKE_BUILD_TYPE=Debug -DFETCHCONTENT_FULLY_DISCONNECTED=ON",
+      "exit": "failed: CMake could not find Ninja build program; no compilers set"
+    },
+    {
+      "command": ".scratch/mesh/codex-root/recomp-venv/bin/cmake -S .scratch/mesh/codex-audit/headless-link-build-02/src -B .scratch/mesh/codex-audit/headless-link-build-02/build-make-01 -G \"Unix Makefiles\" -DCMAKE_BUILD_TYPE=Debug -DFETCHCONTENT_FULLY_DISCONNECTED=ON",
+      "exit": "0 configure"
+    },
+    {
+      "command": ".scratch/mesh/codex-root/recomp-venv/bin/cmake --build .scratch/mesh/codex-audit/headless-link-build-02/build-make-01 --target ps2EntryRunner --parallel 8",
+      "exit": "1 link; four duplicate function-table globals from runtime placeholder and generated registration object"
+    },
+    {
+      "command": ".scratch/mesh/codex-root/recomp-venv/bin/cmake -S .scratch/mesh/codex-audit/headless-link-build-02/src-generated-registration -B .scratch/mesh/codex-audit/headless-link-build-02/build-make-02 -G \"Unix Makefiles\" -DCMAKE_BUILD_TYPE=Debug -DFETCHCONTENT_FULLY_DISCONNECTED=ON",
+      "exit": "0 configure"
+    },
+    {
+      "command": ".scratch/mesh/codex-root/recomp-venv/bin/cmake --build .scratch/mesh/codex-audit/headless-link-build-02/build-make-02 --target ps2EntryRunner --parallel 8",
+      "exit": "0 build and link"
+    }
+  ],
+  "link": {
+    "result": "success",
+    "command_file": {
+      "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/CMakeFiles/ps2EntryRunner.dir/link.txt",
+      "bytes": 2458,
+      "sha256": "09b0fe5cf7401a1735064083e0a61d212fb70b070656c0dc537b8380e6c918ea"
+    },
+    "runner_artifact": {
+      "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/ps2EntryRunner",
+      "bytes": 81438416,
+      "sha256": "ecfa7280d4be2be36467cce068f1927c001c15732f57d0cb4932bbd6fb3870e2"
+    },
+    "file_type": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/ps2EntryRunner: Mach-O 64-bit executable arm64",
+    "executed": false,
+    "generated_object_count": 17,
+    "generated_function_symbols_distinct": 4746
+  },
+  "build_log": {
+    "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02.log",
+    "bytes": 16176,
+    "sha256": "24566d96ad0d98993d338fb0bda44e2d9afd2304dee49ebb2ced1c9149261913"
+  },
+  "compiler_warnings_count": 8,
+  "compiler_warnings": [
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/src/external/stb_vorbis.c:1404:75: warning: pointer comparison always evaluates to false [-Wtautological-compare]",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h:68:11: warning: enumeration value 'Max' not handled in switch [-Wswitch]",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h:92:11: warning: enumeration value 'Max' not handled in switch [-Wswitch]",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h:169:11: warning: 9 enumeration values not handled in switch: 'C32', 'C24', 'C16'... [-Wswitch]",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h:68:11: warning: enumeration value 'Max' not handled in switch [-Wswitch]",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h:92:11: warning: enumeration value 'Max' not handled in switch [-Wswitch]",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h:169:11: warning: 9 enumeration values not handled in switch: 'C32', 'C24', 'C16'... [-Wswitch]",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h:326:11: warning: no case matching constant switch condition '49'"
+  ],
+  "limitations": [
+    "A successful host executable link establishes symbol/dependency closure only. It does not validate game behavior, runtime initialization, assets, graphics/audio, or hardware equivalence.",
+    "FFmpeg and MPEG decoding are disabled and runtime CMake reports a stub-frame fallback.",
+    "Debug UI is disabled; the linked program remains the normal runtime runner and was never launched.",
+    "Existing runtime TODO/fallback semantics remain; linkability is not a claim of a playable or complete game.",
+    "The private source clone contains the listed experiment modifications; this is not a pristine upstream-runtime build."
+  ],
+  "supersedes": {
+    "result": "notes/evidence/fr2-link-interface-audit/build-02/20261004T131946Z-fc90d3da777d417592e2d98ac95bad77/result.json",
+    "reason": "Its symbol-count parser searched unmangled names and measured zero; corrected extraction below matches guest addresses embedded in mangled C++ symbols."
+  },
+  "generated_guest_entry_addresses_sample": [
+    "00100008",
+    "001001C8",
+    "001001D0",
+    "001001D8",
+    "00100348"
+  ],
+  "symbol_count_method": "nm -gU over the 16 batch objects and registration object; regex extracts guest address from mangled C++ sub_XXXXXXXX_ names; distinct guest address count.",
+  "symbol_count_raw_nm_sha256": "ca1364bbb1b208e546677d1412773cab7293f6465184b8036988f2c33ca1c0a7",
+  "artifacts": {},
+  "supersedes_prior_zero_count_result": {
+    "path": "notes/evidence/fr2-link-interface-audit/build-02/20261004T132045Z-5db988e837614c16975a04a519cc3433/result.json",
+    "reason": "This package includes exact final-binary symbol counts; earlier result had a parser bug and remains preserved unchanged."
+  },
+  "registration_global_definitions_in_final_binary": {
+    "g_ps2RecompiledFunctionTable": 1,
+    "g_ps2RecompiledFunctionTableBase": 1,
+    "g_ps2RecompiledFunctionTableEnd": 1,
+    "g_ps2RecompiledFunctionTableSlotCount": 1
+  },
+  "registration_global_definition_counts_exactly_one_each": true,
+  "registration_symbol_output_sha256": "f8601f8695801a34d82547277de41edfd67e70189794a11bf1fc0248990f2a3a",
+  "object_symbol_output_sha256": "ca1364bbb1b208e546677d1412773cab7293f6465184b8036988f2c33ca1c0a7",
+  "link_wrapper": {
+    "path": ".scratch/mesh/codex-audit/headless-link-build-02/src-generated-registration/CMakeLists.txt",
+    "bytes": 3204,
+    "sha256": "ba44633e030d4ecd13933318c82d1c91445525ac91865c611f7c5ef35559c763"
+  },
+  "link_command_file": {
+    "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/CMakeFiles/ps2EntryRunner.dir/link.txt",
+    "bytes": 2458,
+    "sha256": "09b0fe5cf7401a1735064083e0a61d212fb70b070656c0dc537b8380e6c918ea"
+  },
+  "runner_artifact": {
+    "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/ps2EntryRunner",
+    "bytes": 81438416,
+    "sha256": "ecfa7280d4be2be36467cce068f1927c001c15732f57d0cb4932bbd6fb3870e2"
+  },
+  "runner_file_type": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/ps2EntryRunner: Mach-O 64-bit executable arm64",
+  "object_count": 17,
+  "object_inputs": [
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-00.o",
+      "bytes": 4957040,
+      "sha256": "9d4c0c14ed6fd55c999b07b7cc17970d55ab0e5c69118e8e2518d1f894555fcf"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-01.o",
+      "bytes": 4812880,
+      "sha256": "bef654ee0b88926e9c5c9efedd52e7e822c6d6b502fd1c8ccf07e1b136819eb5"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-02.o",
+      "bytes": 5196296,
+      "sha256": "86988f968f0c325b812d0d5a368b56885d4b68c651e78821e849d4c573512b1b"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-03.o",
+      "bytes": 5301672,
+      "sha256": "9ec02bdb3b832ec6b9e2beb0d795d3e010aa85997b50c9bf71ca553c14d9964d"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-04.o",
+      "bytes": 4935680,
+      "sha256": "ee9562f095b58778143872bdebf89ad5ed61a6ea6f9a99f740747f9bfe813484"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-05.o",
+      "bytes": 5267888,
+      "sha256": "f8462d5aaa362f7cb49259413379e0fa0d7dd5ab9701483cf8cf25f0547bf2a4"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-06.o",
+      "bytes": 5098144,
+      "sha256": "7888d4e5db3c84ff86b325e482440cdb95febba62ce6b4615e403703d4796896"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-07.o",
+      "bytes": 4894816,
+      "sha256": "331dd5c86378a188be3f21979bd040566e50050c5d552e388f3664db35c9c691"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-08.o",
+      "bytes": 5519264,
+      "sha256": "ad1b87ab92be4451b1e393b00601f5be54b8a17d8181ece392f697c9238b6f4d"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-09.o",
+      "bytes": 5133568,
+      "sha256": "2f397e0864d9400ebd62d95d5d93b621129e4ef58a884275619ce43251ba3176"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-10.o",
+      "bytes": 4911392,
+      "sha256": "e42562b1296fef9e10a36f940e39340cd76d0620e6237a7ecf765dc0e2f4319c"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-11.o",
+      "bytes": 5175256,
+      "sha256": "576867e241555ce21aecdef262e435c0c72a40a3d86d955d8ab4aa2414d5a2cf"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-12.o",
+      "bytes": 5042464,
+      "sha256": "6fecb28da3308f4175e4958c061cb8e8baac0be96a7bd3bf5b144f55979ccf3b"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-13.o",
+      "bytes": 5084376,
+      "sha256": "755b1ac4d29668409b423f294a8ad2a5fc4a5c45ac587e0c3bba21f5bdca8a45"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-14.o",
+      "bytes": 4812496,
+      "sha256": "6a66e7133d52433bf69d92c9b27d96e1f3284f8c288051d438a340f6ae0c4767"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/batch-15.o",
+      "bytes": 5158216,
+      "sha256": "6e2504efc90c9084c51eac8f47e6b568ec2e4f109c5c9c5ad7dbd2cee9ac63b9"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-registration-fpu-01.o",
+      "bytes": 1911912,
+      "sha256": "2c0babdb53ffbb5c5133e60a4fb41cbf50d0ed57adfd599f677d67568e44fb9a"
+    }
+  ],
+  "runtime_source_base_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "runtime_source_tree_status": [
+    "M ps2xRecomp/src/lib/fpu_translator.cpp",
+    " M ps2xRecomp/src/lib/instruction_translator.cpp",
+    " M ps2xRecomp/src/lib/mmi_translation_helpers.cpp",
+    " M ps2xRecomp/src/lib/special_translator.cpp",
+    " M ps2xRuntime/include/ps2_runtime_macros.h",
+    "?? ps2xRuntime/include/ee_fpu_experimental_helpers.h"
+  ],
+  "raylib_commit": "c1ab645ca298a2801097931d1079b10ff7eb9df8",
+  "raylib_license": {
+    "path": ".scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/LICENSE",
+    "bytes": 877,
+    "sha256": "355bdd50936805f62f091da289f7ba467ea0711586a464ad755dcc73dcfb52a8"
+  },
+  "link_filter": {
+    "target": "ps2EntryRunner",
+    "regex_removed_from_SOURCES": "/register_functions\\.cpp$",
+    "replacement": "generated registration object recomp-registration-fpu-01.o"
+  },
+  "compile_link_flags": {
+    "generator": "Unix Makefiles",
+    "build_type": "Debug",
+    "target": "ps2EntryRunner",
+    "parallelism": 8,
+    "runtime_on": true,
+    "recompilation_off": true,
+    "debug_ui_off": true,
+    "ffmpeg_off": true,
+    "unity_build_off": true,
+    "pch_off": true,
+    "sccache_off": true,
+    "fully_disconnected_fetchcontent": true
+  },
+  "claim_limit": "Successful compile/link of the runtime runner and supplied generated objects only. The executable was not executed; no GUI, emulator, or game runtime was launched.",
+  "fetchcontent_overrides": [
+    {
+      "dependency": "sse2neon",
+      "path": ".scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+      "consumed": "yes; top-level arm64 configuration declares and populates it"
+    },
+    {
+      "dependency": "elfio",
+      "path": ".scratch/mesh/codex-root/recomp-build/_deps/elfio-src",
+      "consumed": "no; PS2X_BUILD_RECOMP=OFF"
+    },
+    {
+      "dependency": "fmt",
+      "path": ".scratch/mesh/codex-root/recomp-build/_deps/fmt-src",
+      "consumed": "no; PS2X_BUILD_RECOMP=OFF"
+    },
+    {
+      "dependency": "libdwarf",
+      "path": ".scratch/mesh/codex-root/recomp-build/_deps/libdwarf-src",
+      "consumed": "no; PS2X_BUILD_RECOMP=OFF"
+    },
+    {
+      "dependency": "rabbitizer",
+      "path": ".scratch/mesh/codex-root/recomp-build/_deps/rabbitizer-src",
+      "consumed": "no; PS2X_BUILD_RECOMP=OFF"
+    },
+    {
+      "dependency": "toml11",
+      "path": ".scratch/mesh/codex-root/recomp-build/_deps/toml11-src",
+      "consumed": "no; PS2X_BUILD_RECOMP=OFF"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "summary": {"verified": 4, "contradicted": 0, "unsupported": 0, "needs_review": 0},
+  "results": [
+    {"id":"claim0","verdict":"verified","confidence":0.9,"action":"auto","probabilities":{"supports":0.94,"says_nothing":0,"contradicts":0.06},"claim":"The signed reference oracle avoids signed 32-bit INT_MIN/-1 overflow by widening both operands to int64_t before division, then keeps and sign-extends the low word."},
+    {"id":"claim1","verdict":"verified","confidence":0.97,"action":"auto","probabilities":{"supports":0.98,"says_nothing":0.01,"contradicts":0.01},"claim":"The generated wrappers use argument order from pinned DIV/DIVU/DIV1/DIVU1 translator templates and source-pinned GPR_U32/GPR_S32 macros."},
+    {"id":"claim2","verdict":"verified","confidence":1,"action":"auto","probabilities":{"supports":1,"says_nothing":0,"contradicts":0},"claim":"Each operation is tested for 600,600 samples with zero observed baseline mismatches, and each quotient-bit-flipped negative-control operation reports 600,600 mismatches."},
+    {"id":"claim3","verdict":"verified","confidence":1,"action":"auto","probabilities":{"supports":1,"says_nothing":0,"contradicts":0},"claim":"The zero-divisor result is validated only against the pinned software policy; the evidence does not claim a Sony hardware-defined result."}
+  ],
+  "usage": {"input_tokens": 2541, "output_tokens": 431}
+}

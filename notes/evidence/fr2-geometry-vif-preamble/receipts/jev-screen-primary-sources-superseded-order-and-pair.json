@@ -1,0 +1,14 @@
+{
+  "arguments": {
+    "purpose": "Screen external primary technical documentation and pinned emulator-source excerpts before using their VU/VIF control-flow semantics.",
+    "text": "Sony Computer Entertainment, VU User\u2019s Manual Version 6.0, \u00a73.4, Figure 3-19: The E bit marks the end of a micro subroutine. There is one E-bit delay instruction; after it executes, the micro subroutine stops and returns to macro mode, and the address of the following instruction is stored in TPC. Branch, external synchronization (including XTOP/XITOP), XGKICK, VU memory load/store, and another E-setting instruction cannot occupy the delay slot.\n\nPinned PCSX2 commit 81526d4dc7cc70e4ae75abb35a789417456c6d43, Vif_Codes.cpp: VIF1 execMicro sets TOP = TOPS & 0x3ff, then if DBF sets TOPS = BASE and clears DBF; otherwise TOPS = BASE + OFST and sets DBF. `vifCode_MSCNT` calls `vuExecMicro(idx, -1, false)`. `vifCode_Offset` clears DBF, loads OFST from the command immediate, and sets TOPS = BASE. `vifCode_Base` sets BASE from immediate. `vifCode_STMod` loads MODE from the immediate low two bits; `vifCode_STCycl` loads CL/WL from the command immediate.\n\nSaved static overlay-5 VU instruction pairs: pair 214 is `nop[e] nop`; pair 215 is `nop nop`; pair 216 is `nop xtop vi01`. Saved static export FUN_00128e88 emits STMOD 0, STCYCL 4/4, BASE immediate 0x3aa or 0x388, OFFSET 0, then MSCNT in the order visible in its output-buffer stores."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.05,\n    \"substance\": 0.98,\n    \"relevance\": 0.96\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 934,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "review_scope": "Read-only review of tools/ps2_irx_crosswalk.py against its tests, measured load_iop_irx path, exact 24-module corpus, and pinned ps2sdk loadcore source.",
+  "git_head": "592df6bb86de5c1c68fbeac0eaad5a9d60f63bb5",
+  "source_identities": {
+    "crosswalk": {
+      "path": "tools/ps2_irx_crosswalk.py",
+      "bytes": 9483,
+      "sha256": "8397f59116c3c97c23794fb715f436ccf965129a6a1a7754c2b0656ffe32e6a4"
+    },
+    "crosswalk_tests": {
+      "path": "tools/test_ps2_irx_crosswalk.py",
+      "bytes": 7280,
+      "sha256": "41a118d8aea8aa966c3b21916164d7af677977450d0b98190d1df78e0252f89c"
+    },
+    "relocation_model": {
+      "path": "tools/ps2_irx_relocations.py",
+      "bytes": 11852,
+      "sha256": "d1133bd6e9a1502979a08f92d71889cab82d8ef6a52f496588bb080b4393f4c7"
+    },
+    "relocation_tests": {
+      "path": "tools/test_ps2_irx_relocations.py",
+      "bytes": 13017,
+      "sha256": "f5de41cfa3d89faa153ea2956230194cac61215ca644b49096d4d87e36867f95"
+    },
+    "corpus_verifier": {
+      "path": "tools/verify_irx.py",
+      "bytes": 10987,
+      "sha256": "b784f15a3302870506435c6a75e699e974061ef50ae65b9a832442b5f0084627"
+    },
+    "inventory": {
+      "path": ".scratch/mesh/codex-root/executable-inventory-01.json",
+      "bytes": 188052,
+      "sha256": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2"
+    },
+    "boundaries": {
+      "path": ".scratch/mesh/codex-root/executable-boundaries-01.json",
+      "bytes": 138632,
+      "sha256": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102"
+    },
+    "ps2sdk_loadcore": {
+      "path": ".scratch/mesh/codex-root/ps2sdk/iop/system/loadcore/src/loadcore.c",
+      "bytes": 43572,
+      "sha256": "2eb29f11cce431de18f8d5f64c64e4eda22507bfca26487a57b53b63750e0d78"
+    },
+    "ps2sdk_irx_header": {
+      "path": ".scratch/mesh/codex-root/ps2sdk/iop/kernel/include/irx.h",
+      "bytes": 2528,
+      "sha256": "2afc986bdf65970f599f635ed3c5c73353f8ed6a83f2ca186c285c927bdddff7"
+    }
+  },
+  "ps2sdk_commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+  "corpus_summary": {
+    "inventory_sha256": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2",
+    "boundaries_sha256": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102",
+    "module_count": 24,
+    "text_section_indexes": {
+      "2": 24
+    },
+    "loaded_export_entries": 746,
+    "relocation_site_type_target_text_counts": [
+      {
+        "type": 2,
+        "symbol_index": 0,
+        "relocation_target_section": 2,
+        "text_section_index": 2,
+        "count": 746
+      }
+    ],
+    "missing_zero_symbol_r_mips_32_sites": []
+  },
+  "adversarial_cases": [
+    {
+      "case": "R32_zero_pointer_is_candidate",
+      "status": "accepted",
+      "export_entries": 2,
+      "candidate_targets": [
+        0
+      ]
+    },
+    {
+      "case": "genuine_zero_terminator_ends_table",
+      "status": "accepted",
+      "export_entries": 0,
+      "candidate_targets": []
+    },
+    {
+      "case": "unrelocated_pointer_after_relocated_zero_is_rejected",
+      "status": "rejected",
+      "error": "Invalid: observed export pointer lacks its R_MIPS_32 relocation"
+    },
+    {
+      "case": "non_R32_LO16_export_pointer_is_rejected",
+      "status": "rejected",
+      "error": "Invalid: observed export pointer lacks its R_MIPS_32 relocation"
+    },
+    {
+      "case": "wrapped_pointer_cannot_become_false_terminator",
+      "status": "rejected",
+      "error": "Invalid: relocated export pointer wrapped into a false null terminator"
+    },
+    {
+      "case": "relocated_import_stub_is_rejected",
+      "status": "rejected",
+      "error": "Invalid: invalid IOP import stub JR instruction 0x03e01008 for 'demo'"
+    }
+  ],
+  "test_command": "python3 -m unittest test_ps2_irx_crosswalk -v (cwd=tools)",
+  "test_result": "13 passed",
+  "claim_limit": "No source modifications; no game/module execution; no runtime binding or semantic equivalence claim."
+}

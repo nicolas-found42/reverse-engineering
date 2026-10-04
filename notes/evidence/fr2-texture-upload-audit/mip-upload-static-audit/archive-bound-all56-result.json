@@ -1,0 +1,270 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "method": "Read-only corpus parse compared with raw descriptor field extraction and static format-table/GS upload formulas. No game, emulator, or uploaded function executed.",
+  "inputs": {
+    "elf_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "static_export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+    "format_table_provenance_sha256": "00012524c5d4c6013f795cd3f5e1407c646bb3ea943ff9f27cc911cb09d5af69",
+    "archive_baseline_profile": "fr2-pal-sles-517.05",
+    "archive_baseline_corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+    "archive_bound_entry_count": 56
+  },
+  "source_instruction_anchors": {
+    "0022ba30": {
+      "0022bdd8": {
+        "text": "lbu v0,0x35(a0)",
+        "bytes": "35008290"
+      },
+      "0022bde8": {
+        "text": "_sw s1,0x2c(a0)",
+        "bytes": "2c0091ac"
+      },
+      "0022bf20": {
+        "text": "_sw s1,0x28(v1)",
+        "bytes": "280071ac"
+      },
+      "0022bf38": {
+        "text": "sw s1,-0x8(v1)",
+        "bytes": "f8ff71ac"
+      },
+      "0022bf3c": {
+        "text": "lw v0,0x0(a1)",
+        "bytes": "0000a28c"
+      },
+      "0022bfbc": {
+        "text": "sra t1,t1,0x1",
+        "bytes": "43480900"
+      },
+      "0022bfc0": {
+        "text": "sra t0,t0,0x1",
+        "bytes": "43400800"
+      },
+      "0022bfd8": {
+        "text": "jal 0x0022c660",
+        "bytes": "98b1080c"
+      }
+    },
+    "00222358": {
+      "0022244c": {
+        "text": "jal 0x00222110",
+        "bytes": "4488080c"
+      },
+      "00222454": {
+        "text": "lbu s7,0x35(s5)",
+        "bytes": "3500b792"
+      },
+      "00222488": {
+        "text": "sra s1,s1,0x1",
+        "bytes": "43881100"
+      },
+      "00222490": {
+        "text": "sra s2,s2,0x1",
+        "bytes": "43901200"
+      },
+      "002224c8": {
+        "text": "lw a1,0x8(s0)",
+        "bytes": "0800058e"
+      },
+      "00222504": {
+        "text": "slti v0,s4,0x3",
+        "bytes": "0300822a"
+      }
+    },
+    "0022c660": {
+      "0022c700": {
+        "text": "lbu v0,0x35(s1)",
+        "bytes": "35002292"
+      },
+      "0022c788": {
+        "text": "lw v1,0x2c(s1)",
+        "bytes": "2c00238e"
+      },
+      "0022c7a8": {
+        "text": "jal 0x0022c9f0",
+        "bytes": "7cb2080c"
+      },
+      "0022c7c0": {
+        "text": "sh v1,0x2(s0)",
+        "bytes": "020003a6"
+      }
+    },
+    "00222110": {
+      "00222114": {
+        "text": "mult t3,t2,t3",
+        "bytes": "18584b01"
+      }
+    }
+  },
+  "corpus_counts": {
+    "model_files": 56,
+    "textures": 2370,
+    "format_3": 1551,
+    "packed_items": 1762,
+    "mip_count_0": 1027,
+    "levels": 4941,
+    "base_uploads": 2370,
+    "mip_count_2": 1228,
+    "mip_uploads": 2571,
+    "format_1": 350,
+    "direct_items": 608,
+    "mip_count_1": 115,
+    "format_4": 469
+  },
+  "format_upload_profiles": [
+    {
+      "format": 1,
+      "packed_flag": false,
+      "mips": 0,
+      "selected_psm": 0,
+      "transfer_bits_per_pixel": 32,
+      "texture_count": 77
+    },
+    {
+      "format": 1,
+      "packed_flag": false,
+      "mips": 1,
+      "selected_psm": 0,
+      "transfer_bits_per_pixel": 32,
+      "texture_count": 40
+    },
+    {
+      "format": 1,
+      "packed_flag": false,
+      "mips": 2,
+      "selected_psm": 0,
+      "transfer_bits_per_pixel": 32,
+      "texture_count": 233
+    },
+    {
+      "format": 3,
+      "packed_flag": false,
+      "mips": 0,
+      "selected_psm": 19,
+      "transfer_bits_per_pixel": 8,
+      "texture_count": 70
+    },
+    {
+      "format": 3,
+      "packed_flag": false,
+      "mips": 1,
+      "selected_psm": 19,
+      "transfer_bits_per_pixel": 8,
+      "texture_count": 31
+    },
+    {
+      "format": 3,
+      "packed_flag": false,
+      "mips": 2,
+      "selected_psm": 19,
+      "transfer_bits_per_pixel": 8,
+      "texture_count": 129
+    },
+    {
+      "format": 3,
+      "packed_flag": true,
+      "mips": 0,
+      "selected_psm": 0,
+      "transfer_bits_per_pixel": 32,
+      "texture_count": 784
+    },
+    {
+      "format": 3,
+      "packed_flag": true,
+      "mips": 1,
+      "selected_psm": 0,
+      "transfer_bits_per_pixel": 32,
+      "texture_count": 41
+    },
+    {
+      "format": 3,
+      "packed_flag": true,
+      "mips": 2,
+      "selected_psm": 0,
+      "transfer_bits_per_pixel": 32,
+      "texture_count": 496
+    },
+    {
+      "format": 4,
+      "packed_flag": false,
+      "mips": 0,
+      "selected_psm": 20,
+      "transfer_bits_per_pixel": 4,
+      "texture_count": 10
+    },
+    {
+      "format": 4,
+      "packed_flag": false,
+      "mips": 2,
+      "selected_psm": 20,
+      "transfer_bits_per_pixel": 4,
+      "texture_count": 18
+    },
+    {
+      "format": 4,
+      "packed_flag": true,
+      "mips": 0,
+      "selected_psm": 2,
+      "transfer_bits_per_pixel": 16,
+      "texture_count": 86
+    },
+    {
+      "format": 4,
+      "packed_flag": true,
+      "mips": 1,
+      "selected_psm": 2,
+      "transfer_bits_per_pixel": 16,
+      "texture_count": 3
+    },
+    {
+      "format": 4,
+      "packed_flag": true,
+      "mips": 2,
+      "selected_psm": 2,
+      "transfer_bits_per_pixel": 16,
+      "texture_count": 352
+    }
+  ],
+  "bytes": {
+    "all_source_plane_bytes": 79708000,
+    "all_predicted_transfer_bytes": 79708000,
+    "mip_source_records": 2571,
+    "mip_records_with_serialized_word2_zero": 2571,
+    "min_plane_bytes": 32,
+    "max_plane_bytes": 262144,
+    "mip_record_distinct_values_by_u32_word": [
+      9,
+      77,
+      1,
+      3
+    ],
+    "mip_record_word3_values": {
+      "0": 224,
+      "1": 1939,
+      "2": 408
+    },
+    "sample_record": {
+      "file": "/3DDATA/debug.ps2;1",
+      "format": 3,
+      "logical_dimensions": [
+        32,
+        32
+      ],
+      "level": 0,
+      "raw_record_word_values": [
+        "0x10000",
+        "0x6f440002",
+        "0x0",
+        "0x1"
+      ],
+      "raw_record_word2_zero": true,
+      "source_record_bytes": 3456
+    }
+  },
+  "limits": [
+    "This validates static byte-count/dimension equivalence for corpus levels, not GS memory contents, visual output, or hardware behavior.",
+    "Serialized 16-byte mip records are preserved by file offsets but not interpreted by ps2_container; the game overwrites some fields and consumes others during its runtime upload path.",
+    "The corpus has at most two extra mip levels; the upload function contains a fixed three-iteration extra-level loop. The parser's generic limit of eight is not a claim that the loader supports eight levels.",
+    "No complete semantics are assigned to all four serialized mip-record words; exact field-level interpretation remains open."
+  ]
+}

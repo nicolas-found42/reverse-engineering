@@ -1,0 +1,47 @@
+{
+ "tool": "jev_verify",
+ "model": "typesafe/jev-1.13",
+ "summary": {
+  "verified": 6,
+  "contradicted": 0,
+  "unsupported": 0,
+  "needs_review": 2
+ },
+ "results": [
+  {
+   "id": "claim0",
+   "confidence": 0.96
+  },
+  {
+   "id": "claim1",
+   "confidence": 0.95
+  },
+  {
+   "id": "claim2",
+   "supports": 0.85,
+   "contradicts": 0.15,
+   "confidence": 0.76,
+   "action": "review"
+  },
+  {
+   "id": "claim3",
+   "confidence": 0.95
+  },
+  {
+   "id": "claim4",
+   "confidence": 0.99
+  },
+  {
+   "id": "claim5",
+   "supports": 0.54,
+   "says_nothing": 0.44,
+   "confidence": 0.32,
+   "action": "review"
+  }
+ ],
+ "usage": {
+  "input_tokens": 2890,
+  "output_tokens": 370
+ },
+ "root_disposition": "claim2 (compound numbers, 0.76) is verified deterministically: post_batch.py asserts each coverage delta and range change (+23 new words, -101 unowned) and the guard output records decoded_preexisting_words 90 and 11. claim5 is a scope limitation without cited evidence (0.32). Neither retried."
+}

@@ -1,0 +1,227 @@
+{
+  "seed": "001feb80",
+  "span": {
+    "start": "001feb80",
+    "end_exclusive": "001fed7c",
+    "bytes": 508,
+    "sha256": "7ad6fe6295459d7cd50933913fea7974222e578e51e16809b56eee1e51f45374"
+  },
+  "reachable_count": 127,
+  "span_words": 127,
+  "gap_words": [],
+  "next_word": "00000000",
+  "next_word_state": "undefined",
+  "edges": [
+    {
+      "site": "001feba8",
+      "word": "0c07ff5c",
+      "kind": "call",
+      "delay": "001febac",
+      "target": "001ffd70",
+      "fallthrough": "001febb0"
+    },
+    {
+      "site": "001febbc",
+      "word": "10600021",
+      "kind": "conditional",
+      "delay": "001febc0",
+      "target": "001fec44",
+      "fallthrough": "001febc4"
+    },
+    {
+      "site": "001febd0",
+      "word": "1460001d",
+      "kind": "conditional",
+      "delay": "001febd4",
+      "target": "001fec48",
+      "fallthrough": "001febd8"
+    },
+    {
+      "site": "001fec04",
+      "word": "14400008",
+      "kind": "conditional",
+      "delay": "001fec08",
+      "target": "001fec28",
+      "fallthrough": "001fec0c"
+    },
+    {
+      "site": "001fec14",
+      "word": "14400004",
+      "kind": "conditional",
+      "delay": "001fec18",
+      "target": "001fec28",
+      "fallthrough": "001fec1c"
+    },
+    {
+      "site": "001fec20",
+      "word": "0c07ef1c",
+      "kind": "call",
+      "delay": "001fec24",
+      "target": "001fbc70",
+      "fallthrough": "001fec28"
+    },
+    {
+      "site": "001fec2c",
+      "word": "10400006",
+      "kind": "conditional",
+      "delay": "001fec30",
+      "target": "001fec48",
+      "fallthrough": "001fec34"
+    },
+    {
+      "site": "001fec3c",
+      "word": "1040fff0",
+      "kind": "conditional",
+      "delay": "001fec40",
+      "target": "001fec00",
+      "fallthrough": "001fec44"
+    },
+    {
+      "site": "001fec60",
+      "word": "04810008",
+      "kind": "conditional",
+      "delay": "001fec64",
+      "target": "001fec84",
+      "fallthrough": "001fec68"
+    },
+    {
+      "site": "001fec6c",
+      "word": "10600003",
+      "kind": "conditional",
+      "delay": "001fec70",
+      "target": "001fec7c",
+      "fallthrough": "001fec74"
+    },
+    {
+      "site": "001fec74",
+      "word": "10000004",
+      "kind": "unconditional_branch",
+      "delay": "001fec78",
+      "target": "001fec88"
+    },
+    {
+      "site": "001fec9c",
+      "word": "1060002c",
+      "kind": "conditional",
+      "delay": "001feca0",
+      "target": "001fed50",
+      "fallthrough": "001feca4"
+    },
+    {
+      "site": "001feca8",
+      "word": "0c07f138",
+      "kind": "call",
+      "delay": "001fecac",
+      "target": "001fc4e0",
+      "fallthrough": "001fecb0"
+    },
+    {
+      "site": "001fecc0",
+      "word": "0c07ef1c",
+      "kind": "call",
+      "delay": "001fecc4",
+      "target": "001fbc70",
+      "fallthrough": "001fecc8"
+    },
+    {
+      "site": "001fece0",
+      "word": "0c07ef1c",
+      "kind": "call",
+      "delay": "001fece4",
+      "target": "001fbc70",
+      "fallthrough": "001fece8"
+    },
+    {
+      "site": "001fece8",
+      "word": "0c07c980",
+      "kind": "call",
+      "delay": "001fecec",
+      "target": "001f2600",
+      "fallthrough": "001fecf0"
+    },
+    {
+      "site": "001fed30",
+      "word": "10400004",
+      "kind": "conditional",
+      "delay": "001fed34",
+      "target": "001fed44",
+      "fallthrough": "001fed38"
+    },
+    {
+      "site": "001fed38",
+      "word": "0c07c992",
+      "kind": "call",
+      "delay": "001fed3c",
+      "target": "001f2648",
+      "fallthrough": "001fed40"
+    },
+    {
+      "site": "001fed74",
+      "word": "03e00008",
+      "kind": "return",
+      "delay": "001fed78"
+    },
+    {
+      "site": "001fec7c",
+      "word": "10000002",
+      "kind": "unconditional_branch",
+      "delay": "001fec80",
+      "target": "001fec88"
+    }
+  ],
+  "edge_counts": {
+    "call": 7,
+    "conditional": 10,
+    "return": 1,
+    "unconditional_branch": 2
+  },
+  "calls": [
+    {
+      "site": "001feba8",
+      "target": "001ffd70",
+      "saved_entry": true
+    },
+    {
+      "site": "001fec20",
+      "target": "001fbc70",
+      "saved_entry": true
+    },
+    {
+      "site": "001feca8",
+      "target": "001fc4e0",
+      "saved_entry": true
+    },
+    {
+      "site": "001fecc0",
+      "target": "001fbc70",
+      "saved_entry": true
+    },
+    {
+      "site": "001fece0",
+      "target": "001fbc70",
+      "saved_entry": true
+    },
+    {
+      "site": "001fece8",
+      "target": "001f2600",
+      "saved_entry": true
+    },
+    {
+      "site": "001fed38",
+      "target": "001f2648",
+      "saved_entry": true
+    }
+  ],
+  "returns": [
+    "001fed74"
+  ],
+  "rejects": [],
+  "zero_words_reached": [
+    "001febfc",
+    "001fec08",
+    "001fec40",
+    "001fecec",
+    "001fed3c"
+  ],
+  "scope": "Structural union walk; not feasible execution, identity, or exact original boundaries."
+}

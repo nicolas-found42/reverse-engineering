@@ -1,0 +1,25 @@
+F....
+======================================================================
+FAIL: test_field_map_accounts_for_loader_cursor_updates_before_float_loads (test_verify_object_floats.ObjectFloats.test_field_map_accounts_for_loader_cursor_updates_before_float_loads)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_verify_object_floats.py", line 29, in test_field_map_accounts_for_loader_cursor_updates_before_float_loads
+    self.assertEqual([f["source_offset"] for f in verify_object_floats.FIELDS], source_fields)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [4, 8, 12, 16] != [8, 12, 16, 20]
+
+First differing element 0:
+4
+8
+
+- [4, 8, 12, 16]
+?  ---
+
++ [8, 12, 16, 20]
+?           ++++
+
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.202s
+
+FAILED (failures=1)

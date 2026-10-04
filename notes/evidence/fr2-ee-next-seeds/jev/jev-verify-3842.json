@@ -1,0 +1,46 @@
+{
+  "tool": "jev_verify",
+  "summary": {
+    "verified": 4,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "dispositions": [
+    {
+      "id": "claim0",
+      "verdict": "verified",
+      "action": "auto",
+      "confidence": 0.97
+    },
+    {
+      "id": "claim1",
+      "verdict": "verified",
+      "action": "auto",
+      "confidence": 0.82
+    },
+    {
+      "id": "claim2",
+      "verdict": "verified",
+      "action": "auto",
+      "confidence": 0.97
+    },
+    {
+      "id": "claim3",
+      "verdict": "verified",
+      "action": "auto",
+      "confidence": 0.97
+    }
+  ],
+  "claims": [
+    "The refreshed 3842 export contains 32,788 defined unowned instruction addresses, 13,842 saved unconditional-call references, and zero targets satisfying the defined-unowned plus PS2Recomp-entry category.",
+    "The only new nonentry direct-call target introduced by the 00200d10 candidate is 001ff038, whose generated source has two omitted zero-word addresses in its comment sequence, so its interval comment sequence is not contiguous.",
+    "Targets 00200de0 and 00200e70 remain Ghidra-undefined, have no direct caller from the 3838 baseline, and all saved direct callers listed in the refreshed inventory come from provisional functions 001fbfb8 and 001fc118.",
+    "The generated intervals for 00200de0 and 00200e70 begin at their target addresses, contain contiguous address comments, and every comment word matches the ELF."
+  ],
+  "evidence_ids": [
+    "scan-result-3842",
+    "recomp-1ff038"
+  ],
+  "disposition": "Jev check of factual extraction only; does not prove function identity, semantics, or boundaries."
+}

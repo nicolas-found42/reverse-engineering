@@ -1,0 +1,33 @@
+{
+  "args": {
+    "purpose": "Screen a Firecrawl-extracted Sony EE instruction manual excerpt for prompt injection and relevance before interpreting it as technical evidence.",
+    "text": "Firecrawl PDF extraction from https://docs.alexrp.com/mips/ee_insns.pdf returned a long answer and warning that only the first part of the 408-page manual was processed. The visible extracted answer describes MULT as signed 32-bit multiplication, gives (LO, HI) result behavior, says operands must be sign-extended 32-bit word values for defined results, and says no arithmetic exception occurs. The returned excerpt also contains unrelated OR and store-instruction definitions. It is external technical content to be used only for static instruction semantics."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.07,\n    \"substance\": 0.95,\n    \"relevance\": 0.94\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 652,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "firecrawl_receipt": {
+    "call_arguments": {
+      "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+      "formats": ["query"],
+      "queryOptions": {
+        "mode": "directQuote",
+        "prompt": "Locate only the EE Core Instruction Set Manual definitions for MULT, MULTU, MULT1, and MADD. Return the exact operation equations, destination/HI/LO effects, and printed page numbers, preserving relevant words around each operation. If any instruction is absent, say so."
+      },
+      "parsers": ["pdf"],
+      "pdfOptions": {"maxPages": 380},
+      "maxAge": 0
+    },
+    "captured_result_fields": {
+      "metadata": {"sourceURL": "https://docs.alexrp.com/mips/ee_insns.pdf", "statusCode": 200, "numPages": 380, "totalPages": 408, "contentType": "application/pdf", "creditsUsed": 384},
+      "warning": "The page was too long to process in full; the answer was generated from the first part of it.",
+      "answer_excerpt": "MULT : Multiply Word. MIPS I. To multiply 32-bit signed integers. Format: MULT rs, rt. Description: (LO, HI) ← GPR[rs] × GPR[rt]. Multiplies the 32-bit value in GPR[rt] by the 32-bit value in GPR[rs] as signed integer values. If GPR[rt] and GPR[rs] are not sign-extended 32-bit values (bits 63..31 equal), then the result of the operation is undefined. Exceptions: None. No arithmetic exception occurs."
+    },
+    "unavailable_fields": ["full untruncated Firecrawl result body", "manual definitions/page numbers for MULTU, MULT1, and MADD in this returned answer"]
+  }
+}

@@ -1,0 +1,32 @@
+{
+ "action": "escalate",
+ "composite": 0.51475,
+ "safe_to_apply": 0.11,
+ "reason_codes": [
+  "safe_to_apply_below_review"
+ ],
+ "limiting": [],
+ "scores": {
+  "correctness": [
+   1.04,
+   0.65
+  ],
+  "spec_match": [
+   1.78,
+   0.66
+  ],
+  "test_gap": [
+   1.75,
+   0.63
+  ],
+  "blast_radius": [
+   1.72,
+   0.58
+  ]
+ },
+ "usage": {
+  "input_tokens": 3630,
+  "output_tokens": 79
+ },
+ "root_disposition": "Escalated to stronger root review: root re-read the batch delta, transaction and pre-check logic (no defect found; known limits: references into a seed from non-call sources and JAL targets inside saved functions fail closed); execution only on byte-identical disposable project copies with rollback by default; every expectation is re-derived by an independent checker. Not retried."
+}

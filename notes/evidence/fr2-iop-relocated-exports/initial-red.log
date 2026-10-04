@@ -1,0 +1,33 @@
+......EE..E.
+======================================================================
+ERROR: test_relocated_zero_export_is_pointer_and_unrelocated_zero_terminates (test_ps2_irx_crosswalk.CrosswalkTests.test_relocated_zero_export_is_pointer_and_unrelocated_zero_terminates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_irx_crosswalk.py", line 117, in test_relocated_zero_export_is_pointer_and_unrelocated_zero_terminates
+    result = subject.crosswalk(inputs, synthetic_load_base=0x1000)
+TypeError: crosswalk() got an unexpected keyword argument 'synthetic_load_base'
+
+======================================================================
+ERROR: test_relocation_view_requires_nonzero_base_and_preserves_input (test_ps2_irx_crosswalk.CrosswalkTests.test_relocation_view_requires_nonzero_base_and_preserves_input)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_irx_crosswalk.py", line 127, in test_relocation_view_requires_nonzero_base_and_preserves_input
+    subject.crosswalk([("provider", raw)], synthetic_load_base=0)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: crosswalk() got an unexpected keyword argument 'synthetic_load_base'
+
+======================================================================
+ERROR: test_unrelocated_nonzero_export_pointer_is_rejected_in_relocation_view (test_ps2_irx_crosswalk.CrosswalkTests.test_unrelocated_nonzero_export_pointer_is_rejected_in_relocation_view)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_irx_crosswalk.py", line 135, in test_unrelocated_nonzero_export_pointer_is_rejected_in_relocation_view
+    subject.crosswalk([("provider", relocatable_module(pointer_relocations=(20,)))],
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                      synthetic_load_base=0x1000)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: crosswalk() got an unexpected keyword argument 'synthetic_load_base'
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.002s
+
+FAILED (errors=3)

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "provider": "openrouter",
+  "model": "typesafe/jev-1.13",
+  "results": [
+    {
+      "tool": "jev_verify",
+      "claims": [
+        {
+          "claim": "The bounded read-only coverage export produced exact code-unit and saved-function-body ranges for all 24 pinned IOP modules, and its entry sets and per-function body byte counts match the historical 2,241-function manifests.",
+          "verdict": "verified",
+          "confidence": 1.0,
+          "probabilities": {"supports": 1.0, "says_nothing": 0.0, "contradicts": 0.0},
+          "action": "auto"
+        },
+        {
+          "claim": "There are 13 metadata-declared IOPMOD entry-zero modules with no saved function at zero; each already has a decoded instruction there, but existing Ghidra references to zero are ELF imported data references rather than code callers.",
+          "verdict": "verified",
+          "confidence": 0.93,
+          "probabilities": {"supports": 0.96, "says_nothing": 0.0, "contradicts": 0.04},
+          "action": "auto"
+        },
+        {
+          "claim": "The isolated 13-candidate experiment added exactly one provisional function per missing entry while preserving every old function body, initialized memory byte, and listing code unit, and its STREAM negative control rejected the wrong module identity.",
+          "verdict": "verified",
+          "confidence": 0.99,
+          "probabilities": {"supports": 1.0, "says_nothing": 0.0, "contradicts": 0.0},
+          "action": "auto"
+        },
+        {
+          "claim": "The CFG-computed candidate function ranges establish the original complete function extents and runtime invocation of those IOPMOD entrypoints.",
+          "verdict": "contradicted",
+          "confidence": 0.98,
+          "probabilities": {"supports": 0.0, "says_nothing": 0.01, "contradicts": 0.99},
+          "action": "auto"
+        }
+      ],
+      "summary": {"verified": 3, "contradicted": 1, "unsupported": 0, "needs_review": 0},
+      "usage": {"input_tokens": 2406, "output_tokens": 475}
+    },
+    {
+      "tool": "jev_review",
+      "scope": "The two new experimental Ghidra scripts; review requested whether exact coverage export and isolated guard conditions are suitable for the requested experiment.",
+      "action": "escalate",
+      "safe_to_apply": 0.45,
+      "composite": 0.87825,
+      "limiting_rubrics": ["blast_radius"],
+      "reason_codes": ["confidence_below_review", "safe_to_apply_below_review"],
+      "scores": {
+        "correctness": {"score": 1.92, "confidence": 0.88},
+        "spec_match": {"score": 1.96, "confidence": 0.94},
+        "test_gap": {"score": 0.83, "confidence": 0.39},
+        "blast_radius": {"score": 0.5, "confidence": 0.25}
+      },
+      "usage": {"input_tokens": 9466, "output_tokens": 79},
+      "disposition": "Kept the scripts in tools/ghidra/experimental and the candidate project isolated. This is not an automatic approval to promote or change canonical analysis state."
+    },
+    {
+      "tool": "jev_gate",
+      "scope": "Final evidence gate for the two scripts and their coverage/candidate claims.",
+      "action": "escalate",
+      "safe_to_apply": 0.37,
+      "composite": 0.796,
+      "reason_codes": ["confidence_below_review", "safe_to_apply_below_review", "review_escalated", "claims_contradicted", "claim_confidence_below_auto_accept"],
+      "review": {
+        "scores": {
+          "correctness": {"score": 1.61, "confidence": 0.41},
+          "spec_match": {"score": 1.81, "confidence": 0.72},
+          "test_gap": {"score": 0.85, "confidence": 0.3},
+          "blast_radius": {"score": 0.45, "confidence": 0.32}
+        },
+        "limiting_rubrics": ["test_gap"]
+      },
+      "verification": {
+        "action": "escalate",
+        "summary": {"verified": 3, "contradicted": 1, "unsupported": 0, "needs_review": 2, "invalid_response": 0},
+        "claims": [
+          {"claim": "The exporter recovered exact Ghidra code-unit and saved-function-body intervals for all 24 pinned modules in a copied, read-only, no-analysis project.", "verdict": "verified", "confidence": 0.99, "action": "auto"},
+          {"claim": "The exported function inventories and each function's body byte count matched the historical 2,241-function manifests exactly, while raw .text hashes matched the loaded blocks.", "verdict": "verified", "confidence": 0.94, "action": "auto"},
+          {"claim": "Exactly 13 modules declared entry address zero without a saved function there; each already had a decoded instruction, and the 13 isolated candidate runs preserved every other function body, initialized memory byte, and listing code unit.", "verdict": "verified", "confidence": 0.78, "action": "review"},
+          {"claim": "The new CFG candidate ranges prove the exact original function boundaries and runtime invocation.", "verdict": "contradicted", "confidence": 0.98, "action": "escalate"}
+        ]
+      },
+      "usage": {"input_tokens": 10783, "output_tokens": 241},
+      "disposition": "The contradicted boundary/runtime claim was deliberately overbroad and is explicitly rejected. Other lower-confidence gate results remain escalated for parent review; the scripts stay experimental."
+    }
+  ]
+}

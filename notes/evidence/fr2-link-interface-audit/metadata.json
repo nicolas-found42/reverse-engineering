@@ -1,0 +1,128 @@
+{
+  "schema_version": 1,
+  "scope": "Read-only static link/runtime interface audit of the FPU-patched generated archive and pinned PS2Recomp runtime source; no game execution, emulator, GUI, runtime launch, or actual link.",
+  "inputs": {
+    "archive": {
+      "path": ".scratch/mesh/codex-root/libfr2_recompiled-fpu-01.a",
+      "bytes": 83527016,
+      "sha256": "26592f274eeb1961d4f61f7d8f5d5d4707a7a67becaf32ebe292e1efe99f0ed8",
+      "object_count": 17,
+      "generated_function_symbols": 4746,
+      "distinct_generated_function_symbols": 4746
+    },
+    "archive_report": {
+      "path": ".scratch/mesh/codex-root/recomp-fpu-archive-01.json",
+      "scope": "Archive creation and distinct defined generated-function symbol inventory only; no game linking, execution, runtime support, or behavior proof."
+    },
+    "object_compile_report": {
+      "path": ".scratch/mesh/codex-root/recomp-objects-fpu-01/result.json",
+      "mode": "clang_compile_objects",
+      "source_file_count": 4746,
+      "function_file_count": 4746,
+      "all_batches_pass": true,
+      "scope": "Syntax checking compiled translation units without linking or executing generated code."
+    },
+    "runtime_clone": {
+      "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01",
+      "head": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+      "local_changes": "FPU/translator experiment files changed in the clone; the runtime implementation/header/CMake files recorded below are not listed as modified by git status.",
+      "sha256": {
+        "ps2xRuntime/src/lib/ps2_runtime.cpp": "77cd184f2e70eacfd5ea584ec95829553e3deeead0a19c04e4b0970dd7c6c9ee",
+        "ps2xRuntime/include/ps2_runtime.h": "30f8614adb393d34a2cbc9dc5a2f701b1d2b468e7c4878c9e494fd8341aa2a67",
+        "ps2xRuntime/CMakeLists.txt": "dbda0bb76363c22e7c5fe84f15bf65698184db32d34556d5b62098e93c84e6e0"
+      }
+    },
+    "build_cache": {
+      "path": ".scratch/mesh/codex-root/recomp-fpu-build-01/CMakeCache.txt",
+      "sha256": "20d8e17b83775685eae01636fb6e401019cc704090bcf346ebb93c533603999f",
+      "toggles": {
+        "PS2X_BUILD_RECOMP": true,
+        "PS2X_BUILD_RUNTIME": false,
+        "PS2X_BUILD_TEST": false,
+        "PS2X_BUILD_STUDIO": false,
+        "PS2X_BUILD_ANALYZER": false
+      }
+    }
+  },
+  "symbols": {
+    "nm_u_distinct_names": 4767,
+    "archive_global_defined_distinct_names": 4763,
+    "generated_function_refs_resolved_within_archive": 4746,
+    "remaining_external_names": 21,
+    "remaining_ps2runtime_methods": [
+      "clearLLBit(R5900Context*)",
+      "handleBreak(uint8_t*, R5900Context*)",
+      "handleSyscall(uint8_t*, R5900Context*, uint32_t)",
+      "SignalException(R5900Context*, PS2Exception)",
+      "eeCheckpointDue(uint32_t)",
+      "dispatchGuestBranch(uint8_t*, R5900Context*, uint32_t, uint32_t, uint32_t, GuestBranchKind, const char*)",
+      "vu0StartMicroProgram(uint8_t*, R5900Context*, uint32_t)",
+      "executeVU0Microprogram(uint8_t*, R5900Context*, uint32_t)",
+      "Load8(uint8_t*, R5900Context*, uint32_t)",
+      "Load16(uint8_t*, R5900Context*, uint32_t)",
+      "Load32(uint8_t*, R5900Context*, uint32_t)",
+      "Load64(uint8_t*, R5900Context*, uint32_t)",
+      "Load128(uint8_t*, R5900Context*, uint32_t)",
+      "Store8(uint8_t*, R5900Context*, uint32_t, uint8_t)",
+      "Store16(uint8_t*, R5900Context*, uint32_t, uint16_t)",
+      "Store32(uint8_t*, R5900Context*, uint32_t, uint32_t)",
+      "Store64(uint8_t*, R5900Context*, uint32_t, uint64_t)",
+      "Store128(uint8_t*, R5900Context*, uint32_t, __m128i)"
+    ],
+    "remaining_darwin_abi_names": [
+      "___chkstk_darwin",
+      "___stack_chk_fail",
+      "___stack_chk_guard"
+    ],
+    "runtime_method_source_crosscheck": "All 18 names declared in ps2xRuntime/include/ps2_runtime.h and defined in ps2xRuntime/src/lib/ps2_runtime.cpp. Lines: dispatchGuestBranch 1345, SignalException 1414, executeVU0Microprogram 1426, vu0StartMicroProgram 1449, handleSyscall 1460, handleBreak 1481, clearLLBit 1582, Load/Store 2016-2145, eeCheckpointDue 2212.",
+    "generated_table_globals_defined_in_archive": [
+      "g_ps2RecompiledFunctionTable",
+      "g_ps2RecompiledFunctionTableBase",
+      "g_ps2RecompiledFunctionTableEnd",
+      "g_ps2RecompiledFunctionTableSlotCount"
+    ],
+    "generated_table_metadata": {
+      "base": "0x100008",
+      "end_exclusive": "0x230b8c",
+      "slot_count": 312033,
+      "note": "Extracted from generated registration metadata; not independently validated against all executable runtime entry points."
+    },
+    "weak_duplicate_helper_symbols": [
+      "ps2TraceGuestWrite",
+      "PS2Runtime::isSpecialAddress",
+      "libc++ signbit helper"
+    ],
+    "weak_duplicate_note": "`nm -m` identifies repeated copies as weak external or weak private external; they are not evidence of strong duplicate-definition errors."
+  },
+  "cmake_integration": {
+    "runtime_target": "ps2_runtime is a static target; PUBLIC links ps2_host_backend, ffmpeg, and ps2_iop.",
+    "runner_target": "ps2EntryRunner links PRIVATE only ps2_runtime; optional desktop debug UI adds rlImGui and imgui.",
+    "generated_archive_wired": false,
+    "basis": "CMake runner glob only includes ps2xRuntime/src/runner/*.cpp and the inspected CMakeLists has no reference to the generated archive/output or generated registration source.",
+    "headless_dependencies": {
+      "non_vita_backend": "Links raylib even when debug UI is disabled.",
+      "ffmpeg_default": "Enabled by default outside Android; pkg-config requires libavcodec, libavformat, libavutil, libswresample, and libswscale.",
+      "ffmpeg_opt_out": "PS2X_ENABLE_FFMPEG=OFF selects the fallback described as stub frames for MPEG decode.",
+      "dedicated_headless_target_found": false
+    }
+  },
+  "runtime_fallback_examples": {
+    "unknown_numeric_syscall": "PS2Runtime::handleSyscall routes unhandled numeric syscall IDs to ps2_syscalls::TODO; generic unknown IDs log and set return value zero.",
+    "unimplemented_import_stub": "ps2_stubs::TODO_NAMED throws std::runtime_error.",
+    "vu0": "Missing or invalid VU0 code/data paths call seedVu0IdleSuccess.",
+    "scope": "These identify source fallback behavior only and do not prove that the game invokes these paths or that the fallback is semantically incorrect."
+  },
+  "conclusion": {
+    "missing_runtime_method_implementations_found": false,
+    "measured_generated_archive_cmake_link_integration_present": false,
+    "actual_link_verified": false,
+    "portable_across_host_os": false,
+    "game_runnable_or_behaviorally_complete": "not established"
+  },
+  "jev": {
+    "screen": {"recommendation": "pass", "injection": 0.04, "substance": 0.98, "relevance": 0.92, "usage_tokens": {"input": 936, "output": 57}},
+    "integration_screen": {"recommendation": "pass", "injection": 0.02, "substance": 0.97, "relevance": 0.94, "usage_tokens": {"input": 775, "output": 57}},
+    "verification": {"verified": 5, "contradicted": 0, "unsupported": 0, "needs_review": 0, "usage_tokens": {"input": 3441, "output": 627}},
+    "integration_verification": {"verified": 2, "contradicted": 0, "unsupported": 0, "needs_review": 0, "usage_tokens": {"input": 1514, "output": 232}}
+  }
+}

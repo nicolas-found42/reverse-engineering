@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "status": "PASS_SINGLE_SEED_REOPEN_AND_EXPORT",
+  "all_checks_pass": true,
+  "checks": {
+    "candidate_committed": true,
+    "bounded_cfg_body": true,
+    "zero_tail_unowned": true,
+    "reopened_export_complete": true,
+    "candidate_manifest_and_inventory_match": true,
+    "exact_new_entry": true,
+    "old_bodies_and_instruction_bytes_unchanged": true,
+    "old_references_unchanged": true,
+    "no_prior_C_changed": true,
+    "candidate_C_hash_and_size": true,
+    "coverage_count": true
+  },
+  "scope": "One provisional EE seed; no original function identity, semantics, runtime reachability, or whole-game claim.",
+  "candidate": {
+    "entry": "001fc118",
+    "name": "candidate_ee_001fc118",
+    "body_start": "001fc118",
+    "body_end_inclusive": "001fc273",
+    "body_bytes": 348,
+    "maximum_boundary_hypothesis_end_exclusive": "001fc278",
+    "unowned_zero_tail": [
+      {
+        "address": "001fc274",
+        "raw_word": "00000000",
+        "classification": "unreachable zero word inside maximum boundary hypothesis; left unowned"
+      }
+    ],
+    "raw_neighbor_call": {
+      "site": "001fc0f0",
+      "raw_word": "0c07f046",
+      "target": "001fc118",
+      "source_status": "raw direct JAL decoded from adjacent undefined candidate interval; not a saved Ghidra reference"
+    },
+    "saved_incoming_references": [],
+    "outgoing_calls": [
+      {
+        "site": "001fc174",
+        "kind": "call",
+        "target": "00200e70",
+        "followed": false
+      },
+      {
+        "site": "001fc19c",
+        "kind": "call",
+        "target": "00200470",
+        "followed": false
+      },
+      {
+        "site": "001fc18c",
+        "kind": "call",
+        "target": "00200d10",
+        "followed": false
+      },
+      {
+        "site": "001fc1ac",
+        "kind": "call",
+        "target": "001fc278",
+        "followed": false
+      },
+      {
+        "site": "001fc1dc",
+        "kind": "call",
+        "target": "00200e70",
+        "followed": false
+      },
+      {
+        "site": "001fc1fc",
+        "kind": "call",
+        "target": "00200d10",
+        "followed": false
+      },
+      {
+        "site": "001fc210",
+        "kind": "call",
+        "target": "00200de0",
+        "followed": false
+      },
+      {
+        "site": "001fc248",
+        "kind": "call",
+        "target": "001fbcc0",
+        "followed": false
+      }
+    ]
+  },
+  "pins": {
+    "exe_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "window_sha256": "edf31a53a1dd273f55d1c55703638db8e5dd0e2b7d2a6924874df0085f7aac4d",
+    "window_file_offset": "000fcfb8",
+    "candidate_script_sha256": "150e8b2e30df5696134d116307e1ec815594c5d50017ecc04ae3f7dd141c7147",
+    "prior_manifest_sha256": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce",
+    "prior_inventory_sha256": "15488c325db2c87f6e5b08a93b07fe92daff9feb711dc12b4451d39a86dc98be"
+  },
+  "outputs": {
+    "candidate_json_sha256": "d07a70c72874fa0ffa715abdebdeba4497f64ed343d42533f4e15be7110e9e7f",
+    "reopened_manifest_sha256": "315e6b8e94e6e57d1267aed50347101ed99547ef87a70f05a468fb5a8b2d881e",
+    "reopened_inventory_sha256": "e1d9abe1138d5ec78e3f3cc1ee2cf54b14e5b6ce71ddf074d3f40613d8e8dcd9",
+    "reopened_coverage_sha256": "178e49ca115f1cd2915684a0e65e99587ca1e2ee0ed72bae420f292c2d7c3f73",
+    "candidate_c_sha256": "0b1f38e0358bc27b698287b80a1d398db84e7094c4e6b5ac5c29678a597f8710",
+    "candidate_c_bytes": 1392
+  },
+  "counts": {
+    "old": 3838,
+    "new": 3839,
+    "generated": 3839,
+    "failed": 0,
+    "coverage_inventory": 3839
+  },
+  "comparison": {
+    "old_body_differences": [],
+    "old_instruction_differences": [],
+    "old_reference_differences": [],
+    "old_c_differences": []
+  },
+  "scratch_run": ".scratch/mesh/codex-audit/ee-undefined-recovery-001fc118-attempt01"
+}

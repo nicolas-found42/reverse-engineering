@@ -65,3 +65,18 @@ Commits (local, not pushed): ca41902, 938bdde, 8f3183f, cf4d2da, 40fbb69; fixes 
 jev_gate over the cumulative final patch (15 files, 91 KB of diffs, evidence: corpus summary, state, independent review record, tests, completion matrix). Result: escalate. Claims 0-8 (genuine): 5 verified auto, 4 verified at review confidence; claim 9 (planted control: whole game reverse engineered) contradicted 0.99. Patch review: composite 0.79, safe_to_apply 0.58, per-file escalate with low-confidence blast_radius/test_gap. Not auto-approved; not rerun; independent review is the resolution. The planted control forces an aggregate escalate, so only per-claim verdicts are informative.
 
 Second-pass independent review: confirmed the fixes; one claimed regression (reply-then-exit) not reproducible with a flushing server; minor items fixed test-first (R2-R5). Commits d4f7f2c and 2ce0348.
+
+## Cycle 3: mesh phase, texture library (d028-d035)
+
+| id | tool | question | result | disposition |
+| --- | --- | --- | --- | --- |
+| d028-find-model-loader-chunks | jev_find | locate pointer relocation in loader chunks | partial 0.67 | used to locate only |
+| d029-find-model-loader-chunks | jev_find | locate name-tree walk | absent 0.21 in searched function | used to locate only |
+| d030-find-model-loader-chunks | jev_find | locate float-field handling | answered 0.90 | used to locate only |
+| d031-decide-mesh-method | jev_decide | method for recovering the model container layout | translate_section_parsers, conf 1 | applied |
+| d032-verify-texture-claims | jev_verify | 7 texture-library claims incl. 2 overclaims | 5 verified (claim1 review 0.14), 4-bit decoded contradicted, geometry unsupported (review) | overclaims not made; claim1 split in d033 |
+| d033-verify-decode-coverage-atomic | jev_verify | atomic decode coverage claims | verified 0.98 auto; under-16 claim review 0.71 | not relabeled; resolved by the deterministic corpus test |
+| d034-review-texture-patch | jev_review | review of the texture patch | escalate; safe_to_apply 0.41, no named defect | not auto-approved; resolved by tests, mutation, fuzz, jgrep; result stays escalate |
+| d035-decide-mesh-phase-bar | jev_decide | bar for the mesh/VU/render phase | chain_then_geometry_invariants, conf 1 | applied in next-phase.md |
+
+jgrep: jgrep-18 (debug output, 0 hits), jgrep-19 (unvalidated offset slicing, 2 hits at ps2_container.py:173-187 p=0.67 and verify_textures.py:36-67 p=0.54; inspected, ranges are bounded by parse()'s need() checks). Deterministic-only: pyright, full suites, the swap mutation, the 3,000-mutation fuzz.

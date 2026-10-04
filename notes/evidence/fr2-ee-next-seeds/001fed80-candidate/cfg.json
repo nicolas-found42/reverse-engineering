@@ -1,0 +1,47 @@
+{
+  "seed": "001fed80",
+  "span": {
+    "start": "001fed80",
+    "end_exclusive": "001fed9c",
+    "bytes": 28,
+    "sha256": "e54100a1f0f15ee3f78dc39ab0f37a93812c50aad1116be2733e19513a01f9ca"
+  },
+  "reachable_count": 7,
+  "span_words": 7,
+  "gap_words": [],
+  "next_word": "00000000",
+  "next_word_state": "undefined",
+  "edges": [
+    {
+      "site": "001fed88",
+      "word": "0c07ffb2",
+      "kind": "call",
+      "delay": "001fed8c",
+      "target": "001ffec8",
+      "fallthrough": "001fed90"
+    },
+    {
+      "site": "001fed94",
+      "word": "03e00008",
+      "kind": "return",
+      "delay": "001fed98"
+    }
+  ],
+  "edge_counts": {
+    "call": 1,
+    "return": 1
+  },
+  "calls": [
+    {
+      "site": "001fed88",
+      "target": "001ffec8",
+      "saved_entry": false
+    }
+  ],
+  "returns": [
+    "001fed94"
+  ],
+  "rejects": [],
+  "zero_words_reached": [],
+  "scope": "Structural union walk; not feasible execution, identity, or exact original boundaries."
+}

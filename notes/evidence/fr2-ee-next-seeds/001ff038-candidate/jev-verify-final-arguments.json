@@ -1,0 +1,19 @@
+{
+  "tool": "jev_verify",
+  "claims": [
+    "A guarded isolated Ghidra transaction added exactly one function, candidate_ee_001ff038, covering 66 words / 264 bytes [001ff038,001ff140), raising the function count from 3844 to 3845.",
+    "All 66 candidate instruction words match the raw ELF bytes through the unique PT_LOAD mapping, and the next word 001ff140 (27bdff90) stays undefined and outside every function.",
+    "The three unresolved outgoing call targets 001ff270, 001feb80 and 001fdb88 remain uncreated and undefined, so the candidate is not call-closed.",
+    "Reconciliation against the pinned 3844 export passed 20 of 20 checks: all 3844 prior function names, sizes, blocks and instruction address/text/bytes are preserved; exactly one reference annotation changed (00200dac now resolves to the new function); and the only call-graph changes are the owner 00200d10 gaining the candidate as callee and 001ffd70 and 001fc4e0 gaining it as caller.",
+    "Exactly one old generated C output (00200d10) changed, by one func_0x001ff038 to candidate_ee_001ff038 label substitution, and an independent root rehash of 7,689 C artifacts agrees.",
+    "The reusable decompilation verifier passed with 3845 processed, 3845 generated, 0 failed and 606 warning comments.",
+    "These results do not establish original function identity, behavior, call-closure, or runtime reachability of the candidate."
+  ],
+  "evidence_ids": [
+    "transaction (transaction-result.json guard check list and script output)",
+    "reconciliation (reconcile_3844_3845.py 20-check result)",
+    "root-checks (root-ee-3845-validation-01.json and root-ee-f038-cfg-validation-01.json)",
+    "verifier (tools/verify_decompilation.py summary)"
+  ],
+  "note": "Claims exact; evidence passed as four prose summaries of the cited result files, which are preserved alongside."
+}

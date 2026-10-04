@@ -1,0 +1,206 @@
+{
+  "schema_version": 1,
+  "status": "verified-isolated-positive-and-permutation-negative",
+  "date": "2026-10-04",
+  "baseline": {
+    "manifest": ".scratch/mesh/codex-root/decompile-guarded-3837-01/manifest.json",
+    "manifest_sha256": "39302b3579c4c88f688a962fc794a6f9c6d652730c4f09794e7a40b29001192e",
+    "entry_count": 3837,
+    "source_project": "ghidra-project/codex-data-pointer-candidates/fr2.rep (copied into pristine projects per run)"
+  },
+  "source_files": {
+    "tools/ghidra/experimental/VerifiedDispatchPairOverride.java": "17c3c901398ad448944493196befcbf28c86f76c5745e13fb4c6fd66eadec5f5",
+    "tools/ghidra/experimental/ordered-jumptable-override.patch": "2cbc7bcc430165a69661259517fd164f100ea95c6cd8de6d27191c866a347802"
+  },
+  "executable": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "runs": {
+    "positive": {
+      "output_dir": ".scratch/mesh/codex-helpers/dispatch-pair-final-positive-r6-20261004",
+      "output_sha256": {
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-positive-r6-20261004/experiment.json": "a573c5bdd52e26bf035c917a41d38682e279155d4e3c773689b1e5dd134d9abb",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-positive-r6-20261004/inventory.json": "968b2a7b53550f8b033af7a371317bf83fc4cf97c9368c2cba85175d9481c4b8",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-positive-r6-20261004/coverage.json": "b26a6d323ad4cc822a27623062381c02922e16ed828950debda38f6adbbf8061",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-positive-r6-20261004/functions/001fbe48.c": "b9132394cffff2acb8f2963933de03c8c1de25256558a73cad0f13784b7a5634",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-positive-r6-20261004/functions/001161a8.c": "9a0bf2034c154fe81d39add4e5d7a7d92864ebdba7ccbfdfccc1a8c0f9dd163f"
+      },
+      "entry_count": 3837,
+      "entry_set_unchanged": true,
+      "entry_set_sha256": "3c2a7fe588981514376a30d39d44173237a0024118b78e7f43101f8f96925046",
+      "only_body_size_deltas": {
+        "001161a8": {
+          "before_body_bytes": 968,
+          "after_body_bytes": 976
+        },
+        "001fbe48": {
+          "before_body_bytes": 232,
+          "after_body_bytes": 368
+        }
+      },
+      "body_added_instructions": {
+        "001fbe48": 34,
+        "001161a8": 2
+      },
+      "global_new_listing_count": 29,
+      "global_new_listing_range": [
+        "001fbf0c",
+        "001fbf7c"
+      ],
+      "global_new_listing_addresses_exact": true,
+      "global_listing_count_before_after": [
+        268374,
+        268403
+      ],
+      "global_listing_bytes_match_ELF": true,
+      "initialized_memory_unchanged": true,
+      "defined_data_spans_unchanged": true,
+      "text_coverage_before": {
+        "instruction_count": 247717,
+        "instruction_bytes": 990868,
+        "function_instruction_bytes": 859688,
+        "unowned_instruction_count": 32795,
+        "unowned_instruction_bytes": 131180,
+        "defined_data_bytes": 6,
+        "undefined_bytes": 154938
+      },
+      "text_coverage_after": {
+        "instruction_count": 247746,
+        "instruction_bytes": 990984,
+        "function_instruction_bytes": 859832,
+        "unowned_instruction_count": 32788,
+        "unowned_instruction_bytes": 131152,
+        "defined_data_bytes": 6,
+        "undefined_bytes": 154822
+      },
+      "coverage_export_text_summary": {
+        "instruction_count": 247746,
+        "instruction_bytes": 990984,
+        "function_instruction_bytes": 859832,
+        "unowned_instruction_count": 32788,
+        "unowned_instruction_bytes": 131152,
+        "defined_data_bytes": 6,
+        "undefined_bytes": 154822
+      },
+      "C_SHA256": {
+        "001fbe48": "b9132394cffff2acb8f2963933de03c8c1de25256558a73cad0f13784b7a5634",
+        "001161a8": "9a0bf2034c154fe81d39add4e5d7a7d92864ebdba7ccbfdfccc1a8c0f9dd163f"
+      },
+      "script_sha256": "17c3c901398ad448944493196befcbf28c86f76c5745e13fb4c6fd66eadec5f5",
+      "source_basis_sha256": "dafbb368f61228a1764eb2b032ae584e2b267ea21797c9bc43620923871a97b0",
+      "native_sha256": "cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd"
+    },
+    "permuted": {
+      "output_dir": ".scratch/mesh/codex-helpers/dispatch-pair-final-permuted-r2-20261004",
+      "output_sha256": {
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-permuted-r2-20261004/experiment.json": "bae20f6cf312910019dcbf4332739511a6843d543ac0f2028bc8daf8b685d7b1",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-permuted-r2-20261004/inventory.json": "5b9500676245a1c3caa24f8815dd2ff825437295049abdfc261c2dcd0fe7b3d0",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-permuted-r2-20261004/coverage.json": "b26a6d323ad4cc822a27623062381c02922e16ed828950debda38f6adbbf8061",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-permuted-r2-20261004/functions/001fbe48.c": "73e4c810aa66a151b32badea2c2db63ae5dc503ec14d12eb8e99b4d98a6a70d8",
+        ".scratch/mesh/codex-helpers/dispatch-pair-final-permuted-r2-20261004/functions/001161a8.c": "9a0bf2034c154fe81d39add4e5d7a7d92864ebdba7ccbfdfccc1a8c0f9dd163f"
+      },
+      "entry_count": 3837,
+      "entry_set_unchanged": true,
+      "entry_set_sha256": "3c2a7fe588981514376a30d39d44173237a0024118b78e7f43101f8f96925046",
+      "only_body_size_deltas": {
+        "001161a8": {
+          "before_body_bytes": 968,
+          "after_body_bytes": 976
+        },
+        "001fbe48": {
+          "before_body_bytes": 232,
+          "after_body_bytes": 368
+        }
+      },
+      "body_added_instructions": {
+        "001fbe48": 34,
+        "001161a8": 2
+      },
+      "global_new_listing_count": 29,
+      "global_new_listing_range": [
+        "001fbf0c",
+        "001fbf7c"
+      ],
+      "global_new_listing_addresses_exact": true,
+      "global_listing_count_before_after": [
+        268374,
+        268403
+      ],
+      "global_listing_bytes_match_ELF": true,
+      "initialized_memory_unchanged": true,
+      "defined_data_spans_unchanged": true,
+      "text_coverage_before": {
+        "instruction_count": 247717,
+        "instruction_bytes": 990868,
+        "function_instruction_bytes": 859688,
+        "unowned_instruction_count": 32795,
+        "unowned_instruction_bytes": 131180,
+        "defined_data_bytes": 6,
+        "undefined_bytes": 154938
+      },
+      "text_coverage_after": {
+        "instruction_count": 247746,
+        "instruction_bytes": 990984,
+        "function_instruction_bytes": 859832,
+        "unowned_instruction_count": 32788,
+        "unowned_instruction_bytes": 131152,
+        "defined_data_bytes": 6,
+        "undefined_bytes": 154822
+      },
+      "coverage_export_text_summary": {
+        "instruction_count": 247746,
+        "instruction_bytes": 990984,
+        "function_instruction_bytes": 859832,
+        "unowned_instruction_count": 32788,
+        "unowned_instruction_bytes": 131152,
+        "defined_data_bytes": 6,
+        "undefined_bytes": 154822
+      },
+      "C_SHA256": {
+        "001fbe48": "73e4c810aa66a151b32badea2c2db63ae5dc503ec14d12eb8e99b4d98a6a70d8",
+        "001161a8": "9a0bf2034c154fe81d39add4e5d7a7d92864ebdba7ccbfdfccc1a8c0f9dd163f"
+      },
+      "script_sha256": "17c3c901398ad448944493196befcbf28c86f76c5745e13fb4c6fd66eadec5f5",
+      "source_basis_sha256": "dafbb368f61228a1764eb2b032ae584e2b267ea21797c9bc43620923871a97b0",
+      "native_sha256": "cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd"
+    }
+  },
+  "negative_control": {
+    "positive_and_permuted_001fbe48_c_differ": true,
+    "001161a8_c_same": true,
+    "selector_targets_swapped": [
+      1,
+      2
+    ],
+    "ordered_native_patch_sha256": "2cbc7bcc430165a69661259517fd164f100ea95c6cd8de6d27191c866a347802"
+  },
+  "superseded_receipts": {
+    "broad_disassembly": {
+      "path": ".scratch/mesh/codex-helpers/dispatch-pair-broad-disassembly-superseded-20261004.json",
+      "sha256": "b2e551382f62a80d3cdcf304929c128dcf545d401231937e8c713e1decc39147",
+      "extra_instructions": 2876,
+      "extra_ranges": 22,
+      "disposition": "retained failed exploratory run; never treat as a valid repair"
+    },
+    "bounded_rejections": [
+      "four-byte command check rejected a MIPS delay-slot decode at 001fbf20; read-only discarded the temporary change.",
+      "listing delta initially expected five already-defined 001fbef8..001fbf08 starts to be newly decoded; comparison showed only 001fbf0c..001fbf7c was new. Both read-only diagnostic copies were discarded."
+    ]
+  },
+  "full_export_command": "JAVA_HOME=/opt/homebrew/opt/openjdk@27 .scratch/mesh/codex-geometry/ghidra-patched/support/analyzeHeadless <fresh-copy> fr2 -process SLES_517.05 -noanalysis -readOnly -scriptPath \"$PWD/tools/ghidra/experimental;$PWD/tools/ghidra\" -postScript VerifiedJumpTableOverride.java <singleton-output> -postScript VerifiedDispatchPairOverride.java positive <pair-output> \"$PWD/.scratch/mesh/codex-root/decompile-guarded-3837-01/manifest.json\" \"$PWD/tools/ghidra/experimental/ordered-jumptable-override.patch\" -postScript ExportDecompilation.java <full-c-output> 30 -postScript ExportEvidence.java <full-c-output>/inventory.json -postScript ExportCoverage.java <full-c-output>/coverage.json",
+  "scope": "Static isolated Ghidra experiment only. Generated pseudocode does not prove original source, runtime reachability, whole-program equivalence, or complete code discovery.",
+  "supersedes_receipt": ".scratch/mesh/codex-helpers/dispatch-pair-reproducibility-20261004-04.json",
+  "supersedes_receipt_sha256": "095f22c1011c32d6887c9ffa8a321b49e08a03efcac5aefbdb064ca128d82193",
+  "scope_correction": {
+    "reason": "Root tested the pair-only full-export command and got 3,836 generated C files plus the original 0017f510 failure because the singleton override is not persisted in the copied baseline project.",
+    "required_order": [
+      "VerifiedJumpTableOverride.java",
+      "VerifiedDispatchPairOverride.java",
+      "ExportDecompilation.java",
+      "ExportEvidence.java",
+      "ExportCoverage.java"
+    ],
+    "receipt_for_pair_only_incomplete_run": "Retain the pair-only result as incomplete; full combined export is pending the root rerun."
+  }
+}

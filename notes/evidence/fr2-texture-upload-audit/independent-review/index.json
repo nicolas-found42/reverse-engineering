@@ -1,0 +1,121 @@
+{
+  "title": "Independent GS palette upload mapping review",
+  "status": "bounded static mapping corroboration",
+  "files": [
+    "README.md",
+    "jev-format3-format4-verify.json",
+    "jev-format3-format4-verify-request.json",
+    "mip-draw-object-identity-01.md",
+    "mip-draw-object-identity-01.json",
+    "check_mip_identity_root_01.py",
+    "root-mip-identity-validation-01.json"
+  ],
+  "ignored_scratch": {
+    "script": ".scratch/mesh/codex-root/texture-independent-review/audit_clut4_first16.py",
+    "script_sha256": "a25e3285b3f8d5cdf3eac8d01260fff9f8b2158b9ca8ac1ec8d61e8c7dba196e",
+    "result": ".scratch/mesh/codex-root/texture-independent-review/independent-clut-upload-audit.json",
+    "result_sha256": "eba8ded52faee5a46b75374a07f786f5e105bd6ec189e559c4d651726482acb0",
+    "superseded_script": ".scratch/mesh/codex-root/texture-independent-review/audit_clut4_first16-superseded-row4-byte.py",
+    "superseded_script_sha256": "b7f8142b3899b7d3963edbd46360803b5c7e7e78a6fce0297b2c45127cffc6b7",
+    "superseded_result": ".scratch/mesh/codex-root/texture-independent-review/independent-clut-upload-audit-superseded-row4-byte.json",
+    "superseded_result_sha256": "9dd8ef261238037e17240799dc650067d97cfa52e8ed174e540db6fcde440c49",
+    "jev_format4_prior_receipt": ".scratch/mesh/codex-root/texture-independent-review/jev-clut4-first16-verify.json",
+    "jev_format4_prior_receipt_sha256": "a80c2316066d4712a7bb44c8f23fe9948e7d2a6bb401ea953fa723a31c8f7330",
+    "independent_public_table_script": ".scratch/mesh/codex-root/texture-independent-review/review_public_gs_tables.py",
+    "independent_public_table_script_sha256": "e503af1edfd591567b12f2b3ac7600ebc659eec660578cd6667a8bc65c88986a",
+    "independent_public_table_result": ".scratch/mesh/codex-root/texture-independent-review/independent-public-table-audit.json",
+    "independent_public_table_result_sha256": "2605c3b3e2ec5d37784213bb49c54393e30a5eb566210fc879aceb3e061df3ec"
+  },
+  "results": {
+    "format3_psmt8_entries_checked": 256,
+    "format3_identity_entries_after_game_bitswap": 256,
+    "format3_identity_entries_without_bitswap": 128,
+    "format4_psmt4_entries_checked_per_upload_shape": 16,
+    "format4_0x400_palette_references": 19,
+    "format4_0x400_palette_references_in_group_A": 19
+  },
+  "scope": [
+    "Static address/index ordering only.",
+    "No game or emulator execution.",
+    "No rendered RGBA, alpha, or runtime-reachability claim.",
+    "Pinned GS tables are composed as a layout check; vectorized PCSX2 helper behavior is not replayed instruction by instruction."
+  ],
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 5924,
+      "sha256": "7c8d0b507ec7541abc4042cb304d931752bf249fe7c1b4864ff5ea15d8606b77"
+    },
+    {
+      "path": "archive-bound-all56-palette-references.json",
+      "bytes": 9560,
+      "sha256": "0e7182f6ff2e1b4cc74ffa3160d6ebcf4935206e56cef82ee1ef0326647c1dd8"
+    },
+    {
+      "path": "archive-bound-coverage-correction-01.json",
+      "bytes": 2631,
+      "sha256": "229336f479d89e76f998759c26fa8f0625b6ceb8a0cb455c60f56a18226efb3e"
+    },
+    {
+      "path": "independent-clut-upload-audit-superseded-row4-byte.json",
+      "bytes": 24584,
+      "sha256": "9dd8ef261238037e17240799dc650067d97cfa52e8ed174e540db6fcde440c49"
+    },
+    {
+      "path": "independent-clut-upload-audit.json",
+      "bytes": 24915,
+      "sha256": "eba8ded52faee5a46b75374a07f786f5e105bd6ec189e559c4d651726482acb0"
+    },
+    {
+      "path": "independent-public-table-audit.json",
+      "bytes": 17718,
+      "sha256": "2605c3b3e2ec5d37784213bb49c54393e30a5eb566210fc879aceb3e061df3ec"
+    },
+    {
+      "path": "jev-format3-format4-verify-request.json",
+      "bytes": 2918,
+      "sha256": "efca3e2acc9637dd89f2f363dcd3f92948bac1e2549c1096b5c6bcc0375dcd95"
+    },
+    {
+      "path": "jev-format3-format4-verify.json",
+      "bytes": 1791,
+      "sha256": "0e9c24953f2260f3212b09829cab4b3973b7267826309f054c2a15b71fa2bc75"
+    }
+  ],
+  "mip_draw_object_identity": {
+    "status": "bounded static relationship; no per-draw mip-selection proof",
+    "note": "mip-draw-object-identity-01.md",
+    "note_sha256": "c9b57f0d23b5074679ed811e0c18104e9f1f112c26e5f62aab6dc507cda21104",
+    "metadata": "mip-draw-object-identity-01.json",
+    "metadata_sha256": "ac94d8716f002fff101dfd61a4caa67ac4a10da558fd0876757977e6d094869d",
+    "ignored_scratch_capture": ".scratch/mesh/codex-root/texture-independent-review/mip-loader-draw-object-identity-raw-02.json",
+    "ignored_scratch_capture_sha256": "47224a61953f22773aa0cad8e497f393bcde5193b9a43c273cbbf50996a8ff46",
+    "all56_counts": {
+      "files": 56,
+      "filtered_rows": 75,
+      "mip_count_1": 15,
+      "mip_count_2": 60,
+      "raw_selector_0": 56,
+      "raw_selector_1": 19
+    },
+    "limits": [
+      "Conditional valid-index/non-null path.",
+      "No per-draw LOD or actual sampling proof.",
+      "Static only; no game/emulator/runtime execution."
+    ],
+    "test_q_capture": ".scratch/mesh/codex-root/texture-independent-review/mip-test-q-path-raw-03.json",
+    "test_q_capture_sha256": "92c776cc0b507429b76b8fbe6e1c2e647454e29bbd050cfde30ca013fa575401",
+    "jev_test_fields_verify": ".scratch/mesh/codex-root/texture-independent-review/jev-mip-test-fields-verify-01.json",
+    "jev_test_fields_verify_sha256": "b724ed616920969b192a075fd9b72d24fff6da70d63a2035e700ad5a5cd15bf1",
+    "test_fields_verified": {
+      "selector_1": "TEST_1 ATST=GEQUAL, AREF=0x40",
+      "selector_2": "TEST_1 ATST=GREATER, AREF=0"
+    },
+    "q_source": "unresolved; 00228b38 is a separate direct caller of 0021b850 and submits an unmapped per-vertex buffer",
+    "root_validator": "check_mip_identity_root_01.py",
+    "root_validator_sha256": "5e63e08b9da0028c9a3e9deb726f73c70a30d3d87555cfe2d67fd520e56c0fbc",
+    "root_validation_result": "root-mip-identity-validation-01.json",
+    "root_validation_result_sha256": "90d12b6c958f27d2e0b9038272e1c4e6ac73f31dd4380196715716a15ae6f955",
+    "root_validation_scope": "276 instruction occurrences across 11 spans against saved text/bytes and unique ELF PT_LOAD mappings; exact PCPYLD macro line equals pristine public header (whole headers differ)"
+  }
+}

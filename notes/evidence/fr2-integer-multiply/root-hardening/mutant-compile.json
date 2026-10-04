@@ -1,0 +1,21 @@
+{
+  "argv": [
+    "clang++",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fsanitize=undefined",
+    "-fno-sanitize-recover=all",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-root-01/mutant",
+    "-isystem",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/integer_multiply_probe.cpp",
+    "-o",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-root-01/mutant/multiply-probe"
+  ],
+  "returncode": 0,
+  "stdout": "",
+  "stderr": ""
+}

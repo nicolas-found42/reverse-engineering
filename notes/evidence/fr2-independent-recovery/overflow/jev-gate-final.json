@@ -1,0 +1,29 @@
+{
+  "tool": "jev_gate",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "truncated": false,
+  "action": "escalate",
+  "reason_codes": ["confidence_below_review", "safe_to_apply_below_review", "review_escalated"],
+  "review": {
+    "composite": 0.91825,
+    "safe_to_apply": 0.4,
+    "limiting_rubric": "blast_radius",
+    "scores": {
+      "correctness": {"score": 1.94, "confidence": 0.91, "probabilities": {"0": 0.02, "1": 0.02, "2": 0.96}},
+      "spec_match": {"score": 1.91, "confidence": 0.87, "probabilities": {"0": 0.02, "1": 0.05, "2": 0.93}},
+      "test_gap": {"score": 0.32, "confidence": 0.51, "probabilities": {"0": 0.74, "1": 0.19, "2": 0.07}},
+      "blast_radius": {"score": 0.43, "confidence": 0.35, "probabilities": {"0": 0.75, "1": 0.07, "2": 0.18}}
+    }
+  },
+  "verification": {
+    "action": "auto",
+    "claims": [
+      {"verdict": "verified", "confidence": 0.98, "probabilities": {"verified": 0.99, "contradicted": 0.00, "unsupported": 0.01}, "action": "auto"},
+      {"verdict": "verified", "confidence": 0.99, "probabilities": {"verified": 0.99, "contradicted": 0.00, "unsupported": 0.01}, "action": "auto"},
+      {"verdict": "verified", "confidence": 0.99, "probabilities": {"verified": 0.99, "contradicted": 0.00, "unsupported": 0.01}, "action": "auto"}
+    ]
+  },
+  "usage": {"input_tokens": 2646, "output_tokens": 214},
+  "disposition": "Patch review escalated only on broad blast-radius confidence. All three bounded arithmetic/scope claims were verified automatically. Preserve this escalation and rely on local bounded evidence for the root's integration decision; no retry."
+}

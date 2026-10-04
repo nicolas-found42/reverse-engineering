@@ -1,0 +1,46 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "summary": {
+    "verified": 4,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "results": [
+    {
+      "claim": "The saved combined Ghidra coverage classifies 0x001fc0d0 as undefined within a 704-byte .text range 0x001fbfb8–0x001fc277.",
+      "verdict": "verified",
+      "probabilities": {"says_nothing": 0.02, "contradicts": 0.09, "supports": 0.89},
+      "confidence": 0.83,
+      "action": "auto",
+      "supporting_evidence": "ghidra-coverage"
+    },
+    {
+      "claim": "Three saved unconditional-call references from function 0x001fbe48 target 0x001fc0d0.",
+      "verdict": "verified",
+      "probabilities": {"says_nothing": 0.0, "contradicts": 0.0, "supports": 1.0},
+      "confidence": 1.0,
+      "action": "auto",
+      "supporting_evidence": "ghidra-call-refs"
+    },
+    {
+      "claim": "The pinned PS2Recomp output contains a separate function file for 0x001fc0d0 spanning 0x001fc0d0–0x001fc118, consisting of an 18-word body.",
+      "verdict": "verified",
+      "probabilities": {"says_nothing": 0.0, "contradicts": 0.0, "supports": 1.0},
+      "confidence": 1.0,
+      "action": "auto",
+      "supporting_evidence": "generated-source-metadata"
+    },
+    {
+      "claim": "The measured claim is a missing Ghidra function seed/decompilation candidate, not proof of whole-program behavior or semantic correctness.",
+      "verdict": "verified",
+      "probabilities": {"says_nothing": 0.0, "contradicts": 0.0, "supports": 1.0},
+      "confidence": 1.0,
+      "action": "auto",
+      "supporting_evidence": "scope"
+    }
+  ],
+  "usage": {"input_tokens": 2507, "output_tokens": 516}
+}

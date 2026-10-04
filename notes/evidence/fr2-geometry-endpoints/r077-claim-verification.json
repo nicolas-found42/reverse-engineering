@@ -1,0 +1,27 @@
+{
+  "arguments": {
+    "claims": [
+      "The saved consumer constructs eight packed corner words from adjacent serialized endpoint pairs +4/+8, +12/+16, +20/+24 in 52-byte geometry records.",
+      "The bounded archive corpus check finds 16,074 geometry records with 96,444 finite endpoint words and zero reversed endpoint pairs across 56 exact-EOF models.",
+      "This completes mesh vertex containment, coordinate axes and whole-game geometry recovery."
+    ],
+    "evidence": [
+      {
+        "id": "exact-machine-and-symbolic-labels",
+        "text": "Executable SHA216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95. Original ELF bytes rechecked for all204 saved instruction words of00122d90/0021b710. Resolver uses context .14 + low16 ID*52, rejects ID0. Caller00122da8 bnel nonzero to22dd0; taken delay22dac adds4 to returned pointer. Loads at effective group+4,+8,+c,+10,+14,+18. Abstract PEXTLW rt0,rs0,rt1,rs1 and PCPYLD rt.low64,rs.low64 labels for packing span22e7c..22f0c yield [4,12,20,1],[4,12,24,1],[4,16,20,1],[4,16,24,1],[8,12,20,1],[8,12,24,1],[8,16,20,1],[8,16,24,1]. VU transforms later, not evaluated."
+      },
+      {
+        "id": "new-measured-controls",
+        "text": "Fresh verify_geometry_bounds corpus receipt statuspass:56 expected/checked/exactEOF (54loader68,2exactSHA measuredlegacy60),16074records,96444words,0nonfinite,0reversedadjacentpairs,56allzerorecords. Baseline.entry.load verifies archive membership SHA and source slices. Five focused tests pass: all18 endpoint NaN/+Inf/-Inf controls, three reversedpair controls, degenerate/zero, bad table bounds/shape. Pyright0errors. Full union284tests pass46.631s. Independent exploratory incorrect triplet interpretation had15805 invertedrecords; preserved, then adjacent pair selection established from machine packing. No vertexstream, axes/units, transformed-output or containment tested."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 2,\n    \"contradicted\": 0,\n    \"unsupported\": 1,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The saved consumer constructs eight packed corner words from adjacent serialized endpoint pairs +4/+8, +12/+16, +20/+24 in 52-byte geometry records.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.98,\n        \"says_nothing\": 0,\n        \"contradicts\": 0.02\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"exact-machine-and-symbolic-labels\",\n      \"same_subject\": 0.85\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The bounded archive corpus check finds 16,074 geometry records with 96,444 finite endpoint words and zero reversed endpoint pairs across 56 exact-EOF models.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.98,\n        \"says_nothing\": 0,\n        \"contradicts\": 0.02\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"new-measured-controls\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"This completes mesh vertex containment, coordinate axes and whole-game geometry recovery.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"supports\": 0,\n        \"says_nothing\": 0.04,\n        \"contradicts\": 0.96\n      },\n      \"confidence\": 0.94,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.24\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1995,\n    \"output_tokens\": 351\n  }\n}"
+      }
+    ]
+  }
+}

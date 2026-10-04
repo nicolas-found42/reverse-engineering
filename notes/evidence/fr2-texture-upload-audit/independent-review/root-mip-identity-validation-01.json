@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "checker_sha256": "5e63e08b9da0028c9a3e9deb726f73c70a30d3d87555cfe2d67fd520e56c0fbc",
+  "capture_sha256": "47224a61953f22773aa0cad8e497f393bcde5193b9a43c273cbbf50996a8ff46",
+  "inventory_sha256": "1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8",
+  "ELF_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "captured_instruction_occurrences_checked": 276,
+  "unique_instruction_addresses_checked": 276,
+  "function_spans": {
+    "0011ecd0": 32,
+    "0011ed90": 11,
+    "0021b6e0": 12,
+    "0022ba30": 26,
+    "0021d180": 41,
+    "0021bc18": 10,
+    "0021bf28": 6,
+    "0021c3e0": 13,
+    "0021b850": 44,
+    "0022c660": 22,
+    "00222358": 59
+  },
+  "PCPYLD_reference_header_sha256": "180b12c3230dafa29ed618fea3f754c67e9500341b426e5fde1f61d8f3be929b",
+  "pristine_header_sha256": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e",
+  "PCPYLD_definition_equals_pristine_public": true,
+  "whole_headers_equal": false,
+  "method": "All saved bounded spans matched exact instruction bytes/text in pinned3837 inventory and unique original ELF PT_LOAD mappings. Root separately read group/table selection and TEX1 emission source, confirming slot bits23:20, group stride0x114, +ec pointer table, and TEX1 lowword+18/highword+14. Raw capture stays ignored.",
+  "checker_history": "First run passed all raw spans but incorrectly required the whole patched reference header to equal pristine. Header differences exist in separate EE macros; the exact PCPYLD definition is independently equal. Equality check narrowed to the used macro, and whole-header difference is recorded.",
+  "limits": "This validates bytes/text/pins and a static pointer relationship under valid handle/index/non-null paths. No actual object lifetime, draw submission or sampled level proof."
+}

@@ -1,0 +1,131 @@
+{
+  "status": "superseded-broad-disassembly-experiment",
+  "date": "2026-10-04",
+  "cause": "GhidraScript disassemble(target) followed control flow beyond the two bounded dispatch repairs. Do not use this output as a valid repair result.",
+  "listing_instruction_count_before": 247717,
+  "listing_instruction_bytes_before": 990868,
+  "listing_instruction_count_after": 250593,
+  "listing_instruction_bytes_after": 1002372,
+  "extra_instruction_count": 2876,
+  "extra_instruction_bytes": 11504,
+  "function_owned_instruction_bytes_delta": 144,
+  "undefined_instruction_bytes_delta": -11504,
+  "extra_listing_ranges": [
+    [
+      "001fbf0c",
+      "001fbf7f",
+      116
+    ],
+    [
+      "001fbfb8",
+      "001fc0cb",
+      276
+    ],
+    [
+      "001fc0d0",
+      "001fc113",
+      68
+    ],
+    [
+      "001fc118",
+      "001fc273",
+      348
+    ],
+    [
+      "001fce10",
+      "001fd763",
+      2388
+    ],
+    [
+      "001fd768",
+      "001fdb83",
+      1052
+    ],
+    [
+      "001fdb88",
+      "001fdda3",
+      540
+    ],
+    [
+      "001fea98",
+      "001feaf3",
+      92
+    ],
+    [
+      "001feaf8",
+      "001feb57",
+      96
+    ],
+    [
+      "001feb80",
+      "001fed7b",
+      508
+    ],
+    [
+      "001fed80",
+      "001fed9b",
+      28
+    ],
+    [
+      "001feda0",
+      "001fef23",
+      388
+    ],
+    [
+      "001fef28",
+      "001ff26b",
+      836
+    ],
+    [
+      "001ff270",
+      "001ff51b",
+      684
+    ],
+    [
+      "001ff520",
+      "001ffbeb",
+      1740
+    ],
+    [
+      "001ffbf0",
+      "001ffd3b",
+      332
+    ],
+    [
+      "001ffec8",
+      "0020003f",
+      376
+    ],
+    [
+      "00200408",
+      "0020046b",
+      100
+    ],
+    [
+      "00200d10",
+      "00200ddb",
+      204
+    ],
+    [
+      "00200de0",
+      "00201123",
+      836
+    ],
+    [
+      "002018d8",
+      "00201a43",
+      364
+    ],
+    [
+      "00201a48",
+      "00201acb",
+      132
+    ]
+  ],
+  "range_instruction_count_sum": 2876,
+  "source_coverage_files": {
+    "before": ".scratch/mesh/codex-helpers/pair-coverage-before-01.json",
+    "after": ".scratch/mesh/codex-helpers/pair-coverage-after-01.json"
+  },
+  "disposition": "Superseded by DisassembleCommand with flow-following disabled and exact listing/memory delta guards. The extra intervals are preserved as forensic history."
+}

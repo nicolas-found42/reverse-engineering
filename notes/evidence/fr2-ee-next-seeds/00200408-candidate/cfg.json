@@ -1,0 +1,108 @@
+{
+  "seed": "00200408",
+  "span": {
+    "start": "00200408",
+    "end_exclusive": "0020046c",
+    "bytes": 100,
+    "sha256": "84c946629366622550dc1863b4058e100321b61010cff94261e202f1003ac265"
+  },
+  "reachable_count": 25,
+  "span_words": 25,
+  "gap_words": [],
+  "next_word": "00000000",
+  "next_word_state": "undefined",
+  "edges": [
+    {
+      "site": "00200418",
+      "word": "0c08008e",
+      "kind": "call",
+      "delay": "0020041c",
+      "target": "00200238",
+      "fallthrough": "00200420"
+    },
+    {
+      "site": "00200428",
+      "word": "0c08008e",
+      "kind": "call",
+      "delay": "0020042c",
+      "target": "00200238",
+      "fallthrough": "00200430"
+    },
+    {
+      "site": "00200430",
+      "word": "1040000a",
+      "kind": "conditional",
+      "delay": "00200434",
+      "target": "0020045c",
+      "fallthrough": "00200438"
+    },
+    {
+      "site": "0020043c",
+      "word": "0c08008e",
+      "kind": "call",
+      "delay": "00200440",
+      "target": "00200238",
+      "fallthrough": "00200444"
+    },
+    {
+      "site": "00200448",
+      "word": "0c080052",
+      "kind": "call",
+      "delay": "0020044c",
+      "target": "00200148",
+      "fallthrough": "00200450"
+    },
+    {
+      "site": "00200450",
+      "word": "0c080258",
+      "kind": "call",
+      "delay": "00200454",
+      "target": "00200960",
+      "fallthrough": "00200458"
+    },
+    {
+      "site": "00200464",
+      "word": "03e00008",
+      "kind": "return",
+      "delay": "00200468"
+    }
+  ],
+  "edge_counts": {
+    "call": 5,
+    "conditional": 1,
+    "return": 1
+  },
+  "calls": [
+    {
+      "site": "00200418",
+      "target": "00200238",
+      "saved_entry": true
+    },
+    {
+      "site": "00200428",
+      "target": "00200238",
+      "saved_entry": true
+    },
+    {
+      "site": "0020043c",
+      "target": "00200238",
+      "saved_entry": true
+    },
+    {
+      "site": "00200448",
+      "target": "00200148",
+      "saved_entry": true
+    },
+    {
+      "site": "00200450",
+      "target": "00200960",
+      "saved_entry": true
+    }
+  ],
+  "returns": [
+    "00200464"
+  ],
+  "rejects": [],
+  "zero_words_reached": [],
+  "scope": "Structural union walk; not feasible execution, identity, or exact original boundaries."
+}

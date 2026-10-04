@@ -1,0 +1,5037 @@
+{
+  "schema_version": 2,
+  "config_sha256": "b978fcae5c09199cb766f85a545f8b4ca1b16a0ec824aa30f4d95014d179a4a4",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "baseline_manifest_sha256": "56ebb06dbbbd3f2f2a6448aee0305078ad5e6a2633aa227937b924b559de26a9",
+  "baseline_inventory_sha256": "fb89f6aad257c07194b89d02f55f50ff8d2eabf112dd5a30b82a00496672c4e2",
+  "baseline_coverage_sha256": "2d9b9b02c74f574fd5b571db513ba9b7f1eac8d7724f2ed8ef89d2ee88eb1f09",
+  "language": "r5900:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "seed_count": 477,
+  "seeds": [
+    {
+      "entry": "0010a720",
+      "words": 20,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 1,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0010ee10",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0010ff98",
+      "words": 16,
+      "decoded_preexisting_words": 16,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0022a258|0010ff98|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00110b28",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00112320",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00112328",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00113c30",
+      "words": 75,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00114358",
+      "words": 68,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00117300",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00251f60|00117300|DATA|DEFAULT",
+        "00251f88|00117300|DATA|DEFAULT",
+        "00251f8c|00117300|DATA|DEFAULT",
+        "00251f98|00117300|DATA|DEFAULT",
+        "00251fe4|00117300|DATA|DEFAULT",
+        "00252008|00117300|DATA|DEFAULT",
+        "00252014|00117300|DATA|DEFAULT",
+        "00252050|00117300|DATA|DEFAULT",
+        "002520d0|00117300|DATA|DEFAULT",
+        "002520d8|00117300|DATA|DEFAULT"
+      ]
+    },
+    {
+      "entry": "00117308",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00251f64|00117308|DATA|DEFAULT",
+        "00251f68|00117308|DATA|DEFAULT",
+        "00251f6c|00117308|DATA|DEFAULT",
+        "00251f70|00117308|DATA|DEFAULT",
+        "00251f74|00117308|DATA|DEFAULT",
+        "00251f78|00117308|DATA|DEFAULT",
+        "00251f7c|00117308|DATA|DEFAULT",
+        "00251f80|00117308|DATA|DEFAULT",
+        "00251f84|00117308|DATA|DEFAULT",
+        "00251f90|00117308|DATA|DEFAULT",
+        "00251f94|00117308|DATA|DEFAULT",
+        "00251f9c|00117308|DATA|DEFAULT",
+        "00251fa0|00117308|DATA|DEFAULT",
+        "00251fa4|00117308|DATA|DEFAULT",
+        "00251fa8|00117308|DATA|DEFAULT",
+        "00251fac|00117308|DATA|DEFAULT",
+        "00251fb0|00117308|DATA|DEFAULT",
+        "00251fb4|00117308|DATA|DEFAULT",
+        "00251fb8|00117308|DATA|DEFAULT",
+        "00251fbc|00117308|DATA|DEFAULT",
+        "00251fc0|00117308|DATA|DEFAULT",
+        "00251fc4|00117308|DATA|DEFAULT",
+        "00251fc8|00117308|DATA|DEFAULT",
+        "00251fcc|00117308|DATA|DEFAULT",
+        "00251fd0|00117308|DATA|DEFAULT",
+        "00251fd4|00117308|DATA|DEFAULT",
+        "00251fd8|00117308|DATA|DEFAULT",
+        "00251fdc|00117308|DATA|DEFAULT",
+        "00251fe0|00117308|DATA|DEFAULT",
+        "00251fe8|00117308|DATA|DEFAULT",
+        "00251fec|00117308|DATA|DEFAULT",
+        "00251ff0|00117308|DATA|DEFAULT",
+        "00251ff4|00117308|DATA|DEFAULT",
+        "00251ff8|00117308|DATA|DEFAULT",
+        "00251ffc|00117308|DATA|DEFAULT",
+        "00252000|00117308|DATA|DEFAULT",
+        "00252004|00117308|DATA|DEFAULT",
+        "0025200c|00117308|DATA|DEFAULT",
+        "00252010|00117308|DATA|DEFAULT",
+        "00252018|00117308|DATA|DEFAULT",
+        "0025201c|00117308|DATA|DEFAULT",
+        "00252020|00117308|DATA|DEFAULT",
+        "00252024|00117308|DATA|DEFAULT",
+        "00252028|00117308|DATA|DEFAULT",
+        "0025202c|00117308|DATA|DEFAULT",
+        "00252030|00117308|DATA|DEFAULT",
+        "00252034|00117308|DATA|DEFAULT",
+        "00252038|00117308|DATA|DEFAULT",
+        "0025203c|00117308|DATA|DEFAULT",
+        "00252040|00117308|DATA|DEFAULT",
+        "00252044|00117308|DATA|DEFAULT",
+        "00252048|00117308|DATA|DEFAULT",
+        "0025204c|00117308|DATA|DEFAULT",
+        "00252054|00117308|DATA|DEFAULT",
+        "00252058|00117308|DATA|DEFAULT",
+        "0025205c|00117308|DATA|DEFAULT",
+        "00252060|00117308|DATA|DEFAULT",
+        "00252064|00117308|DATA|DEFAULT",
+        "00252068|00117308|DATA|DEFAULT",
+        "0025206c|00117308|DATA|DEFAULT",
+        "00252070|00117308|DATA|DEFAULT",
+        "00252074|00117308|DATA|DEFAULT",
+        "00252078|00117308|DATA|DEFAULT",
+        "0025207c|00117308|DATA|DEFAULT",
+        "00252080|00117308|DATA|DEFAULT",
+        "00252084|00117308|DATA|DEFAULT",
+        "00252088|00117308|DATA|DEFAULT",
+        "0025208c|00117308|DATA|DEFAULT",
+        "00252090|00117308|DATA|DEFAULT",
+        "00252094|00117308|DATA|DEFAULT",
+        "00252098|00117308|DATA|DEFAULT",
+        "0025209c|00117308|DATA|DEFAULT",
+        "002520a0|00117308|DATA|DEFAULT",
+        "002520a4|00117308|DATA|DEFAULT",
+        "002520a8|00117308|DATA|DEFAULT",
+        "002520ac|00117308|DATA|DEFAULT",
+        "002520b0|00117308|DATA|DEFAULT",
+        "002520b4|00117308|DATA|DEFAULT",
+        "002520b8|00117308|DATA|DEFAULT",
+        "002520bc|00117308|DATA|DEFAULT",
+        "002520c0|00117308|DATA|DEFAULT",
+        "002520c4|00117308|DATA|DEFAULT",
+        "002520c8|00117308|DATA|DEFAULT",
+        "002520cc|00117308|DATA|DEFAULT",
+        "002520d4|00117308|DATA|DEFAULT"
+      ]
+    },
+    {
+      "entry": "001174c8",
+      "words": 34,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00117778",
+      "words": 66,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00118e28",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00118f38",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00118f48",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00119310",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00119318",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00119338",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00119350",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00119ca8",
+      "words": 47,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0011a040",
+      "words": 51,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0011a5e0",
+      "words": 68,
+      "decoded_preexisting_words": 68,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "00119468|0011a5e0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0011a8f0",
+      "words": 29,
+      "decoded_preexisting_words": 29,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001194b8|0011a8f0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0011a968",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001194d4|0011a968|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0011aa88",
+      "words": 7,
+      "decoded_preexisting_words": 7,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0011aa30|0011aa88|PARAM|ANALYSIS",
+        "0011aa48|0011aa88|PARAM|ANALYSIS",
+        "0011aa60|0011aa88|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0011eb70",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00121cc8",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00127220",
+      "words": 38,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0012aee8",
+      "words": 349,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00136978",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00137130",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d1638|00137130|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00138dc8",
+      "words": 59,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00138eb8",
+      "words": 63,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001399e0",
+      "words": 90,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0013a240",
+      "words": 50,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0013def8",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0013ea28",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0013ea30",
+      "words": 4,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0013eab8",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0013eac0",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00140b40",
+      "words": 29,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00140d88",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00140d90",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001412c8",
+      "words": 9,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00144730",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00144738",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00144740",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00148500",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00148594|00148500|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00148508",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014859c|00148508|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001485a8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001485cc|001485a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001486a0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014871c|001486a0|DATA|ANALYSIS",
+        "00148724|001486a0|DATA|ANALYSIS",
+        "0014872c|001486a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001486a8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00148720|001486a8|DATA|ANALYSIS",
+        "00148728|001486a8|DATA|ANALYSIS",
+        "00148734|001486a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00148de0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00148bc8|00148de0|DATA|ANALYSIS",
+        "00148bd0|00148de0|DATA|ANALYSIS",
+        "00148bd8|00148de0|DATA|ANALYSIS",
+        "00148be0|00148de0|DATA|ANALYSIS",
+        "00148be8|00148de0|DATA|ANALYSIS",
+        "00148bf0|00148de0|DATA|ANALYSIS",
+        "00148bf4|00148de0|DATA|ANALYSIS",
+        "00148bfc|00148de0|DATA|ANALYSIS",
+        "00148c04|00148de0|DATA|ANALYSIS",
+        "00148c10|00148de0|DATA|ANALYSIS",
+        "00148c20|00148de0|DATA|ANALYSIS",
+        "00148c28|00148de0|DATA|ANALYSIS",
+        "00148c30|00148de0|DATA|ANALYSIS",
+        "00148c38|00148de0|DATA|ANALYSIS",
+        "00148c4c|00148de0|DATA|ANALYSIS",
+        "00148c5c|00148de0|DATA|ANALYSIS",
+        "00148c6c|00148de0|DATA|ANALYSIS",
+        "00148c7c|00148de0|DATA|ANALYSIS",
+        "00148c8c|00148de0|DATA|ANALYSIS",
+        "00148c9c|00148de0|DATA|ANALYSIS",
+        "00148cac|00148de0|DATA|ANALYSIS",
+        "00148cbc|00148de0|DATA|ANALYSIS",
+        "00148ccc|00148de0|DATA|ANALYSIS",
+        "00148cdc|00148de0|DATA|ANALYSIS",
+        "00148cec|00148de0|DATA|ANALYSIS",
+        "00148cfc|00148de0|DATA|ANALYSIS",
+        "00148d0c|00148de0|DATA|ANALYSIS",
+        "00148d1c|00148de0|DATA|ANALYSIS",
+        "00148d2c|00148de0|DATA|ANALYSIS",
+        "00148d3c|00148de0|DATA|ANALYSIS",
+        "00148d4c|00148de0|DATA|ANALYSIS",
+        "00148d5c|00148de0|DATA|ANALYSIS",
+        "00148d6c|00148de0|DATA|ANALYSIS",
+        "00148d7c|00148de0|DATA|ANALYSIS",
+        "00148d8c|00148de0|DATA|ANALYSIS",
+        "00148d9c|00148de0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00148de8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00148bc4|00148de8|DATA|ANALYSIS",
+        "00148bcc|00148de8|DATA|ANALYSIS",
+        "00148bd4|00148de8|DATA|ANALYSIS",
+        "00148bdc|00148de8|DATA|ANALYSIS",
+        "00148be4|00148de8|DATA|ANALYSIS",
+        "00148bec|00148de8|DATA|ANALYSIS",
+        "00148bf8|00148de8|DATA|ANALYSIS",
+        "00148c00|00148de8|DATA|ANALYSIS",
+        "00148c08|00148de8|DATA|ANALYSIS",
+        "00148c18|00148de8|DATA|ANALYSIS",
+        "00148c2c|00148de8|DATA|ANALYSIS",
+        "00148c34|00148de8|DATA|ANALYSIS",
+        "00148c3c|00148de8|DATA|ANALYSIS",
+        "00148c44|00148de8|DATA|ANALYSIS",
+        "00148c54|00148de8|DATA|ANALYSIS",
+        "00148c64|00148de8|DATA|ANALYSIS",
+        "00148c74|00148de8|DATA|ANALYSIS",
+        "00148c84|00148de8|DATA|ANALYSIS",
+        "00148c94|00148de8|DATA|ANALYSIS",
+        "00148ca4|00148de8|DATA|ANALYSIS",
+        "00148cb4|00148de8|DATA|ANALYSIS",
+        "00148cc4|00148de8|DATA|ANALYSIS",
+        "00148cd4|00148de8|DATA|ANALYSIS",
+        "00148ce4|00148de8|DATA|ANALYSIS",
+        "00148cf4|00148de8|DATA|ANALYSIS",
+        "00148d04|00148de8|DATA|ANALYSIS",
+        "00148d14|00148de8|DATA|ANALYSIS",
+        "00148d24|00148de8|DATA|ANALYSIS",
+        "00148d34|00148de8|DATA|ANALYSIS",
+        "00148d44|00148de8|DATA|ANALYSIS",
+        "00148d54|00148de8|DATA|ANALYSIS",
+        "00148d64|00148de8|DATA|ANALYSIS",
+        "00148d74|00148de8|DATA|ANALYSIS",
+        "00148d84|00148de8|DATA|ANALYSIS",
+        "00148d94|00148de8|DATA|ANALYSIS",
+        "00148da4|00148de8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149578",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001492fc|00149578|DATA|ANALYSIS",
+        "00149304|00149578|DATA|ANALYSIS",
+        "00149314|00149578|DATA|ANALYSIS",
+        "0014931c|00149578|DATA|ANALYSIS",
+        "00149324|00149578|DATA|ANALYSIS",
+        "0014932c|00149578|DATA|ANALYSIS",
+        "00149334|00149578|DATA|ANALYSIS",
+        "00149348|00149578|DATA|ANALYSIS",
+        "00149350|00149578|DATA|ANALYSIS",
+        "0014935c|00149578|DATA|ANALYSIS",
+        "00149384|00149578|DATA|ANALYSIS",
+        "00149394|00149578|DATA|ANALYSIS",
+        "001493d4|00149578|DATA|ANALYSIS",
+        "00149424|00149578|DATA|ANALYSIS",
+        "00149484|00149578|DATA|ANALYSIS",
+        "00149504|00149578|DATA|ANALYSIS",
+        "00149514|00149578|DATA|ANALYSIS",
+        "00149524|00149578|DATA|ANALYSIS",
+        "00149534|00149578|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149580",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001492f4|00149580|DATA|ANALYSIS",
+        "00149310|00149580|DATA|ANALYSIS",
+        "00149318|00149580|DATA|ANALYSIS",
+        "00149320|00149580|DATA|ANALYSIS",
+        "00149328|00149580|DATA|ANALYSIS",
+        "00149330|00149580|DATA|ANALYSIS",
+        "00149338|00149580|DATA|ANALYSIS",
+        "00149340|00149580|DATA|ANALYSIS",
+        "00149358|00149580|DATA|ANALYSIS",
+        "0014936c|00149580|DATA|ANALYSIS",
+        "0014938c|00149580|DATA|ANALYSIS",
+        "0014939c|00149580|DATA|ANALYSIS",
+        "001493dc|00149580|DATA|ANALYSIS",
+        "0014942c|00149580|DATA|ANALYSIS",
+        "0014948c|00149580|DATA|ANALYSIS",
+        "0014950c|00149580|DATA|ANALYSIS",
+        "0014951c|00149580|DATA|ANALYSIS",
+        "0014952c|00149580|DATA|ANALYSIS",
+        "0014953c|00149580|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149588",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00149374|00149588|DATA|ANALYSIS",
+        "001493c4|00149588|DATA|ANALYSIS",
+        "001493e4|00149588|DATA|ANALYSIS",
+        "001493f4|00149588|DATA|ANALYSIS",
+        "00149404|00149588|DATA|ANALYSIS",
+        "00149414|00149588|DATA|ANALYSIS",
+        "00149434|00149588|DATA|ANALYSIS",
+        "00149444|00149588|DATA|ANALYSIS",
+        "0014945c|00149588|DATA|ANALYSIS",
+        "00149474|00149588|DATA|ANALYSIS",
+        "00149494|00149588|DATA|ANALYSIS",
+        "001494a4|00149588|DATA|ANALYSIS",
+        "001494b4|00149588|DATA|ANALYSIS",
+        "001494c4|00149588|DATA|ANALYSIS",
+        "001494d4|00149588|DATA|ANALYSIS",
+        "001494e4|00149588|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149590",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014937c|00149590|DATA|ANALYSIS",
+        "001493cc|00149590|DATA|ANALYSIS",
+        "001493ec|00149590|DATA|ANALYSIS",
+        "001493fc|00149590|DATA|ANALYSIS",
+        "0014940c|00149590|DATA|ANALYSIS",
+        "0014941c|00149590|DATA|ANALYSIS",
+        "0014943c|00149590|DATA|ANALYSIS",
+        "00149454|00149590|DATA|ANALYSIS",
+        "0014946c|00149590|DATA|ANALYSIS",
+        "0014947c|00149590|DATA|ANALYSIS",
+        "0014949c|00149590|DATA|ANALYSIS",
+        "001494ac|00149590|DATA|ANALYSIS",
+        "001494bc|00149590|DATA|ANALYSIS",
+        "001494cc|00149590|DATA|ANALYSIS",
+        "001494dc|00149590|DATA|ANALYSIS",
+        "001494ec|00149590|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001495a0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001493a4|001495a0|DATA|ANALYSIS",
+        "001493b4|001495a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001495a8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001493ac|001495a8|DATA|ANALYSIS",
+        "001493bc|001495a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001495b0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001494f4|001495b0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001495b8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001494fc|001495b8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149958",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00149360|00149958|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149960",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00149364|00149960|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149b80",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00149ab0|00149b80|DATA|ANALYSIS",
+        "00149ac0|00149b80|DATA|ANALYSIS",
+        "00149ad0|00149b80|DATA|ANALYSIS",
+        "00149ae0|00149b80|DATA|ANALYSIS",
+        "00149af0|00149b80|DATA|ANALYSIS",
+        "00149b00|00149b80|DATA|ANALYSIS",
+        "00149b10|00149b80|DATA|ANALYSIS",
+        "00149b18|00149b80|DATA|ANALYSIS",
+        "00149b1c|00149b80|DATA|ANALYSIS",
+        "00149b38|00149b80|DATA|ANALYSIS",
+        "00149b40|00149b80|DATA|ANALYSIS",
+        "00149b4c|00149b80|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149b88",
+      "words": 26,
+      "decoded_preexisting_words": 26,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00149ab8|00149b88|DATA|ANALYSIS",
+        "00149ac8|00149b88|DATA|ANALYSIS",
+        "00149ad8|00149b88|DATA|ANALYSIS",
+        "00149ae8|00149b88|DATA|ANALYSIS",
+        "00149af8|00149b88|DATA|ANALYSIS",
+        "00149b08|00149b88|DATA|ANALYSIS",
+        "00149b14|00149b88|DATA|ANALYSIS",
+        "00149b24|00149b88|DATA|ANALYSIS",
+        "00149b2c|00149b88|DATA|ANALYSIS",
+        "00149b34|00149b88|DATA|ANALYSIS",
+        "00149b3c|00149b88|DATA|ANALYSIS",
+        "00149b44|00149b88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149d90",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00149d14|00149d90|DATA|ANALYSIS",
+        "00149d1c|00149d90|DATA|ANALYSIS",
+        "00149d24|00149d90|DATA|ANALYSIS",
+        "00149d2c|00149d90|DATA|ANALYSIS",
+        "00149d34|00149d90|DATA|ANALYSIS",
+        "00149d3c|00149d90|DATA|ANALYSIS",
+        "00149d44|00149d90|DATA|ANALYSIS",
+        "00149d4c|00149d90|DATA|ANALYSIS",
+        "00149d54|00149d90|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149d98",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00149d18|00149d98|DATA|ANALYSIS",
+        "00149d20|00149d98|DATA|ANALYSIS",
+        "00149d28|00149d98|DATA|ANALYSIS",
+        "00149d30|00149d98|DATA|ANALYSIS",
+        "00149d38|00149d98|DATA|ANALYSIS",
+        "00149d40|00149d98|DATA|ANALYSIS",
+        "00149d48|00149d98|DATA|ANALYSIS",
+        "00149d50|00149d98|DATA|ANALYSIS",
+        "00149d5c|00149d98|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149f80",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00149ee8|00149f80|DATA|ANALYSIS",
+        "00149f00|00149f80|DATA|ANALYSIS",
+        "00149f0c|00149f80|DATA|ANALYSIS",
+        "00149f18|00149f80|DATA|ANALYSIS",
+        "00149f24|00149f80|DATA|ANALYSIS",
+        "00149f30|00149f80|DATA|ANALYSIS",
+        "00149f44|00149f80|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149f88",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00149ef0|00149f88|DATA|ANALYSIS",
+        "00149f04|00149f88|DATA|ANALYSIS",
+        "00149f10|00149f88|DATA|ANALYSIS",
+        "00149f1c|00149f88|DATA|ANALYSIS",
+        "00149f28|00149f88|DATA|ANALYSIS",
+        "00149f34|00149f88|DATA|ANALYSIS",
+        "00149f40|00149f88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00149f90",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00149ef8|00149f90|DATA|ANALYSIS",
+        "00149f08|00149f90|DATA|ANALYSIS",
+        "00149f14|00149f90|DATA|ANALYSIS",
+        "00149f20|00149f90|DATA|ANALYSIS",
+        "00149f2c|00149f90|DATA|ANALYSIS",
+        "00149f38|00149f90|DATA|ANALYSIS",
+        "00149f4c|00149f90|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a630",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a404|0014a630|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a638",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a410|0014a638|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a640",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a43c|0014a640|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a648",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a45c|0014a648|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a650",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a464|0014a650|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a658",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a458|0014a658|DATA|ANALYSIS",
+        "0014a480|0014a658|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a660",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014a47c|0014a660|DATA|ANALYSIS",
+        "0014a484|0014a660|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a670",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a488|0014a670|DATA|ANALYSIS",
+        "0014a498|0014a670|DATA|ANALYSIS",
+        "0014a4b8|0014a670|DATA|ANALYSIS",
+        "0014a524|0014a670|DATA|ANALYSIS",
+        "0014a534|0014a670|DATA|ANALYSIS",
+        "0014a54c|0014a670|DATA|ANALYSIS",
+        "0014a5a4|0014a670|DATA|ANALYSIS",
+        "0014a5b4|0014a670|DATA|ANALYSIS",
+        "0014a5c4|0014a670|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a678",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014a48c|0014a678|DATA|ANALYSIS",
+        "0014a4a0|0014a678|DATA|ANALYSIS",
+        "0014a4c4|0014a678|DATA|ANALYSIS",
+        "0014a52c|0014a678|DATA|ANALYSIS",
+        "0014a544|0014a678|DATA|ANALYSIS",
+        "0014a554|0014a678|DATA|ANALYSIS",
+        "0014a5ac|0014a678|DATA|ANALYSIS",
+        "0014a5bc|0014a678|DATA|ANALYSIS",
+        "0014a5cc|0014a678|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a688",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a41c|0014a688|DATA|ANALYSIS",
+        "0014a428|0014a688|DATA|ANALYSIS",
+        "0014a490|0014a688|DATA|ANALYSIS",
+        "0014a4a8|0014a688|DATA|ANALYSIS",
+        "0014a514|0014a688|DATA|ANALYSIS",
+        "0014a594|0014a688|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a690",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a42c|0014a690|DATA|ANALYSIS",
+        "0014a438|0014a690|DATA|ANALYSIS",
+        "0014a4a4|0014a690|DATA|ANALYSIS",
+        "0014a4b0|0014a690|DATA|ANALYSIS",
+        "0014a51c|0014a690|DATA|ANALYSIS",
+        "0014a59c|0014a690|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a698",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "0014a4c0|0014a698|DATA|ANALYSIS",
+        "0014a4d4|0014a698|DATA|ANALYSIS",
+        "0014a4e4|0014a698|DATA|ANALYSIS",
+        "0014a53c|0014a698|DATA|ANALYSIS",
+        "0014a55c|0014a698|DATA|ANALYSIS",
+        "0014a56c|0014a698|DATA|ANALYSIS",
+        "0014a574|0014a698|DATA|ANALYSIS",
+        "0014a5d4|0014a698|DATA|ANALYSIS",
+        "0014a5dc|0014a698|DATA|ANALYSIS",
+        "0014a5e4|0014a698|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a930",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a8dc|0014a930|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a938",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a8e0|0014a938|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a940",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a88c|0014a940|DATA|ANALYSIS",
+        "0014a8cc|0014a940|DATA|ANALYSIS",
+        "0014a8e4|0014a940|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a948",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a890|0014a948|DATA|ANALYSIS",
+        "0014a8d0|0014a948|DATA|ANALYSIS",
+        "0014a8e8|0014a948|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a950",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a898|0014a950|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a958",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a8a0|0014a958|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a960",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a800|0014a960|DATA|ANALYSIS",
+        "0014a8d4|0014a960|DATA|ANALYSIS",
+        "0014a8f4|0014a960|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a968",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a808|0014a968|DATA|ANALYSIS",
+        "0014a8d8|0014a968|DATA|ANALYSIS",
+        "0014a8fc|0014a968|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a970",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014a8ec|0014a970|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014a978",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014a8f0|0014a978|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014b140",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "0014aec4|0014b140|DATA|ANALYSIS",
+        "0014aecc|0014b140|DATA|ANALYSIS",
+        "0014aed4|0014b140|DATA|ANALYSIS",
+        "0014aedc|0014b140|DATA|ANALYSIS",
+        "0014aee4|0014b140|DATA|ANALYSIS",
+        "0014aeec|0014b140|DATA|ANALYSIS",
+        "0014aef4|0014b140|DATA|ANALYSIS",
+        "0014aefc|0014b140|DATA|ANALYSIS",
+        "0014af04|0014b140|DATA|ANALYSIS",
+        "0014af0c|0014b140|DATA|ANALYSIS",
+        "0014af14|0014b140|DATA|ANALYSIS",
+        "0014af1c|0014b140|DATA|ANALYSIS",
+        "0014af2c|0014b140|DATA|ANALYSIS",
+        "0014af3c|0014b140|DATA|ANALYSIS",
+        "0014af4c|0014b140|DATA|ANALYSIS",
+        "0014af5c|0014b140|DATA|ANALYSIS",
+        "0014af6c|0014b140|DATA|ANALYSIS",
+        "0014af7c|0014b140|DATA|ANALYSIS",
+        "0014af8c|0014b140|DATA|ANALYSIS",
+        "0014af9c|0014b140|DATA|ANALYSIS",
+        "0014afac|0014b140|DATA|ANALYSIS",
+        "0014afbc|0014b140|DATA|ANALYSIS",
+        "0014afcc|0014b140|DATA|ANALYSIS",
+        "0014afdc|0014b140|DATA|ANALYSIS",
+        "0014afec|0014b140|DATA|ANALYSIS",
+        "0014affc|0014b140|DATA|ANALYSIS",
+        "0014b00c|0014b140|DATA|ANALYSIS",
+        "0014b01c|0014b140|DATA|ANALYSIS",
+        "0014b02c|0014b140|DATA|ANALYSIS",
+        "0014b03c|0014b140|DATA|ANALYSIS",
+        "0014b04c|0014b140|DATA|ANALYSIS",
+        "0014b05c|0014b140|DATA|ANALYSIS",
+        "0014b06c|0014b140|DATA|ANALYSIS",
+        "0014b07c|0014b140|DATA|ANALYSIS",
+        "0014b08c|0014b140|DATA|ANALYSIS",
+        "0014b09c|0014b140|DATA|ANALYSIS",
+        "0014b0ac|0014b140|DATA|ANALYSIS",
+        "0014b0bc|0014b140|DATA|ANALYSIS",
+        "0014b0cc|0014b140|DATA|ANALYSIS",
+        "0014b0dc|0014b140|DATA|ANALYSIS",
+        "0014b0ec|0014b140|DATA|ANALYSIS",
+        "0014b0fc|0014b140|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014c588",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014c4ec|0014c588|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014c650",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014c570|0014c650|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014c6c0",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014c57c|0014c6c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014c730",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014c51c|0014c730|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014c868",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014c450|0014c868|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014c8d8",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014c540|0014c8d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014ca10",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014c4e0|0014ca10|DATA|ANALYSIS",
+        "0014c4f8|0014ca10|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d388",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d2dc|0014d388|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d3a0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d2e8|0014d3a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d3b0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d2f4|0014d3b0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d3c0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d300|0014d3c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d3d0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d30c|0014d3d0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d3e0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d318|0014d3e0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d3f0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d324|0014d3f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d400",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d330|0014d400|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d410",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d33c|0014d410|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d420",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d348|0014d420|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d448",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d354|0014d448|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d460",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d22c|0014d460|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d488",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d238|0014d488|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d4a0",
+      "words": 8,
+      "decoded_preexisting_words": 8,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014d248|0014d4a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d4c0",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014d2b8|0014d4c0|DATA|ANALYSIS",
+        "0014d2d0|0014d4c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d518",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d4f4|0014d518|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d528",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d50c|0014d528|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d7f0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d6bc|0014d7f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d8d0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d6d4|0014d8d0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d920",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d6a4|0014d920|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014d998",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d6ec|0014d998|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014da10",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d704|0014da10|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014da48",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d71c|0014da48|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014da60",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d610|0014da60|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014da88",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d680|0014da88|DATA|ANALYSIS",
+        "0014d698|0014da88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014daf0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014d600|0014daf0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e358",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014dee8|0014e358|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e368",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df08|0014e368|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e378",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df28|0014e378|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e388",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df48|0014e388|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e3b0",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df68|0014e3b0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e4e0",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014dfa8|0014e4e0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e508",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014dfc8|0014e508|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e520",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014dfe8|0014e520|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e530",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e008|0014e530|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e540",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "0014defc|0014e540|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e580",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df7c|0014e580|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e590",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df9c|0014e590|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e5a0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df3c|0014e5a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e5b0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014df5c|0014e5b0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e5c0",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014dfbc|0014e5c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e630",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014dffc|0014e630|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e640",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e018|0014e640|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e650",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014debc|0014e650|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e670",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014e028|0014e670|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e6a8",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014e038|0014e6a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e6c0",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014e1b0|0014e6c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e6d8",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e1c8|0014e6d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e7b8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e1e0|0014e7b8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e7c8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e1ec|0014e7c8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e7d8",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014e1f8|0014e7d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e848",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e048|0014e848|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e858",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e068|0014e858|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e868",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e084|0014e868|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e8c0",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014e0c0|0014e8c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e8d8",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014e0d0|0014e8d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e8f0",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e0fc|0014e8f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e960",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e108|0014e960|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e9d0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e118|0014e9d0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e9e0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e138|0014e9e0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014e9f0",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0014e148|0014e9f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014ea60",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e174|0014ea60|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014ea70",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e180|0014ea70|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014ea80",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e190|0014ea80|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014ea90",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e210|0014ea90|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014ead8",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014e230|0014ead8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014eaf0",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0014e23c|0014eaf0|DATA|ANALYSIS",
+        "0014e270|0014eaf0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014eb08",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e27c|0014eb08|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014eb78",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e288|0014eb78|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0014ebe8",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0014e05c|0014ebe8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001505a8",
+      "words": 13,
+      "decoded_preexisting_words": 13,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150200|001505a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001505e0",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150214|001505e0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001505f8",
+      "words": 13,
+      "decoded_preexisting_words": 13,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150228|001505f8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150630",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015023c|00150630|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150648",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150250|00150648|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150670",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150264|00150670|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150688",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150278|00150688|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150698",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015028c|00150698|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001506a8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001502a0|001506a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001506b8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001502b4|001506b8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001507c0",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150304|001507c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001507d8",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150318|001507d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150800",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015032c|00150800|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150838",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "00150354|00150838|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150858",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015037c|00150858|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150868",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150390|00150868|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150878",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001503a4|00150878|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150888",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001503b8|00150888|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150898",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001501f4|00150898|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001508a8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001503cc|001508a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001508c8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001503ec|001508c8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001508d8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015040c|001508d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001508e8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015042c|001508e8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150908",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015046c|00150908|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150918",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015048c|00150918|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150928",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150498|00150928|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150948",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001504f4|00150948|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150978",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150518|00150978|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150998",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150530|00150998|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001509b8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150548|001509b8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001509c8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150554|001509c8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001509d8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150560|001509d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001509e8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015056c|001509e8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001509f8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150578|001509f8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a08",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001503d8|00150a08|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a18",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001503f8|00150a18|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a28",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150418|00150a28|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a38",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150438|00150a38|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a48",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150458|00150a48|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a58",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150478|00150a58|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a68",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001504b0|00150a68|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150a78",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001504bc|00150a78|DATA|ANALYSIS",
+        "00150584|00150a78|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150db8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150d1c|00150db8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150dc8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150d34|00150dc8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150dd8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150d4c|00150dd8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150de8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150d58|00150de8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150df8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150d70|00150df8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150e08",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150d7c|00150e08|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150e18",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150d94|00150e18|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150e28",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150da0|00150e28|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150e38",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150c64|00150e38|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00150e58",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00150c90|00150e58|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151450",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001513c4|00151450|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151460",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001513dc|00151460|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151470",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001513f4|00151470|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151480",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015140c|00151480|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151490",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151418|00151490|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001514a0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151424|001514a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001514b0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151430|001514b0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151558",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015150c|00151558|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151580",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151524|00151580|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00151598",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151530|00151598|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001515c0",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015153c|001515c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001515d8",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "00151548|001515d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152388",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001516f8|00152388|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001523d8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151720|001523d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152438",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151748|00152438|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152498",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151698|00152498|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152578",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001517b0|00152578|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152de0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001518a0|00152de0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152e70",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001518f0|00152e70|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152ec8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151918|00152ec8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152f28",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151950|00152f28|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00152f88",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151958|00152f88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00153838",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151aec|00153838|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00153890",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151b04|00153890|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001538f0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151b2c|001538f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00153950",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00151b54|00153950|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00154be0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154230|00154be0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00154c30",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154258|00154c30|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00154c90",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154280|00154c90|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00154cf0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001542a8|00154cf0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00154d60",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001542c0|00154d60|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00154dd0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001542e8|00154dd0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00154ff8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154348|00154ff8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00155030",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154370|00155030|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00155088",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154398|00155088|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001550e0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001543c0|001550e0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00155140",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001543d8|00155140|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001551a0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154400|001551a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001553e0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154478|001553e0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00155438",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001544a0|00155438|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00155490",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001544c8|00155490|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001554f0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001544f0|001554f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00155550",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00154528|00155550|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001561b8",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0015611c|001561b8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001562f0",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001561ac|001562f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00156360",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0015614c|00156360|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00156508",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00156170|00156508|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00156d58",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "00156cd4|00156d58|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00156d78",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156cec|00156d78|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00156d88",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156cf8|00156d88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00156d98",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156d04|00156d98|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00156de8",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156d28|00156de8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00157118",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156f0c|00157118|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00157190",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156f24|00157190|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00157208",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156f3c|00157208|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00157218",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156f48|00157218|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00157280",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00156ed0|00157280|DATA|ANALYSIS",
+        "00156ee8|00157280|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001578c8",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00158328",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0015828c|00158328|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001583f0",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158310|001583f0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001584d0",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001582bc|001584d0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158678",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001582e0|00158678|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158b70",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158afc|00158b70|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158bf0",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158b2c|00158bf0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158c30",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158ad8|00158c30|DATA|ANALYSIS",
+        "00158af0|00158c30|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158c80",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158c54|00158c80|DATA|ANALYSIS",
+        "00158c6c|00158c80|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158c90",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158c70|00158c90|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158ec0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158d84|00158ec0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158f18",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158d9c|00158f18|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158f50",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00158db4|00158f50|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158f68",
+      "words": 8,
+      "decoded_preexisting_words": 8,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00158dc0|00158f68|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00158f88",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00158d60|00158f88|DATA|ANALYSIS",
+        "00158d78|00158f88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001597c8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00159694|001597c8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001597d8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001596ac|001597d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001597e8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001596b8|001597e8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001597f8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001596c4|001597f8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159808",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001596d0|00159808|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159818",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001596dc|00159818|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159828",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001596e8|00159828|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159838",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00159688|00159838|DATA|ANALYSIS",
+        "001596a0|00159838|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159bf8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00159bcc|00159bf8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159c08",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00159bd8|00159c08|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159c18",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00159ba8|00159c18|DATA|ANALYSIS",
+        "00159bc0|00159c18|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159c70",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00159c4c|00159c70|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00159c80",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00159c64|00159c80|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a680",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a210|0015a680|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a690",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a230|0015a690|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a6a0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a250|0015a6a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a6b0",
+      "words": 8,
+      "decoded_preexisting_words": 8,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0015a270|0015a6b0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a6d0",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0015a290|0015a6d0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a820",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a2f0|0015a820|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a838",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a310|0015a838|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a880",
+      "words": 5,
+      "decoded_preexisting_words": 5,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a244|0015a880|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a898",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a264|0015a898|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a8a8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a284|0015a8a8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a8c8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a204|0015a8c8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a8d8",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0015a2a4|0015a8d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a958",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a304|0015a958|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015a9d8",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "0015a4d8|0015a9d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015aad0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a508|0015aad0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015aae0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a514|0015aae0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015aaf0",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0015a520|0015aaf0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ab60",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a370|0015ab60|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ab70",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a390|0015ab70|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ab80",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a3ac|0015ab80|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ab90",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a3b8|0015ab90|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015abd8",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0015a3e8|0015abd8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015abf0",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0015a3f8|0015abf0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ac08",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a424|0015ac08|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ace8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a440|0015ace8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015acf8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a460|0015acf8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ad08",
+      "words": 4,
+      "decoded_preexisting_words": 4,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0015a470|0015ad08|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ad78",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a49c|0015ad78|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ad88",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a4a8|0015ad88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ad98",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a4b8|0015ad98|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ada8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a538|0015ada8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ae08",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "0015a564|0015ae08|DATA|ANALYSIS",
+        "0015a598|0015ae08|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ae20",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015a5a4|0015ae20|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015c158",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015c12c|0015c158|DATA|ANALYSIS",
+        "0015c13c|0015c158|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015c168",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0015c148|0015c168|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ea08",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "0015e724|0015ea08|PARAM|ANALYSIS",
+        "0015e768|0015ea08|PARAM|ANALYSIS",
+        "0015e7ac|0015ea08|PARAM|ANALYSIS",
+        "0015e7f0|0015ea08|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0015ee20",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0010bc24|0015ee20|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00168380",
+      "words": 10,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00168c98",
+      "words": 15,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00168cd8",
+      "words": 15,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0016c8c0",
+      "words": 11,
+      "decoded_preexisting_words": 11,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0016c3a8|0016c8c0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0016e9f8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0016e550|0016e9f8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001754e8",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001739cc|001754e8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00179188",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001788d8|00179188|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0017d2d0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "0017d280|0017d2d0|PARAM|ANALYSIS",
+        "0017d2c0|0017d2d0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0017ee60",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00180d08",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "00180bd0|00180d08|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001844c0",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00183d4c|001844c0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00185118",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "001850dc|00185118|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00189ad0",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "00187df0|00189ad0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0018ccc0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0018cc88|0018ccc0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00190a60",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00190a40|00190a60|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001936d0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00193660|001936d0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00196eb8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00196e40|00196eb8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00199d40",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00199cd0|00199d40|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00199e30",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00199e20|00199e30|DATA|ANALYSIS",
+        "00199e28|00199e30|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0019a0a0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0019a030|0019a0a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0019a178",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0019a168|0019a178|DATA|ANALYSIS",
+        "0019a170|0019a178|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0019d1c0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0019cf88|0019d1c0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0019e100",
+      "words": 13,
+      "decoded_preexisting_words": 13,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "0019dfa8|0019e100|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0019f298",
+      "words": 28,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0019f6b8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0019f638|0019f6b8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001a0e60",
+      "words": 27,
+      "decoded_preexisting_words": 27,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001a8f88|001a0e60|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001a0f18",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001a0e58|001a0f18|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001a5160",
+      "words": 26,
+      "decoded_preexisting_words": 26,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001cb524|001a5160|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001a5268",
+      "words": 19,
+      "decoded_preexisting_words": 19,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001cb3f0|001a5268|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001a52b8",
+      "words": 19,
+      "decoded_preexisting_words": 19,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001dd3a0|001a52b8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001a5bd0",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001a60e8",
+      "words": 24,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001a6148",
+      "words": 24,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001a6220",
+      "words": 16,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001a62a0",
+      "words": 19,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001a62f0",
+      "words": 19,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001a6340",
+      "words": 28,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001a9ba0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001a9b30|001a9ba0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001adf08",
+      "words": 18,
+      "decoded_preexisting_words": 18,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001ad520|001adf08|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001ae570",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "001ae498|001ae570|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001afc78",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001afbec|001afc78|DATA|ANALYSIS",
+        "001afc2c|001afc78|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b0c38",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001b0c60",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b00d8|001b0c60|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b0ca8",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b0130|001b0ca8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b0cf0",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b013c|001b0cf0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b0d38",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b0144|001b0d38|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b0d60",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b0148|001b0d60|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b0d88",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001b0150|001b0d88|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b0fd0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001b0fac|001b0fd0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b1018",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001b10c0",
+      "words": 41,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001b1750",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b14b4|001b1750|DATA|ANALYSIS",
+        "001b1704|001b1750|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b19d8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b1938|001b19d8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b19e0",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001b1fc8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b1fb8|001b1fc8|DATA|ANALYSIS",
+        "001b1fc0|001b1fc8|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b2248",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b2170|001b2248|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b27d0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b27c0|001b27d0|DATA|ANALYSIS",
+        "001b27c8|001b27d0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b30a0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b3030|001b30a0|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b4388",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b42e4|001b4388|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b43b0",
+      "words": 22,
+      "decoded_preexisting_words": 22,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b42f8|001b43b0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b4408",
+      "words": 22,
+      "decoded_preexisting_words": 22,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b430c|001b4408|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b4460",
+      "words": 22,
+      "decoded_preexisting_words": 22,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b4320|001b4460|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b44b8",
+      "words": 11,
+      "decoded_preexisting_words": 11,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001b4348|001b44b8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b44e8",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b4334|001b44e8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b4510",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b435c|001b4510|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b4538",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b4374|001b4538|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b4a08",
+      "words": 90,
+      "decoded_preexisting_words": 90,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b46e0|001b4a08|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b4ec8",
+      "words": 33,
+      "decoded_preexisting_words": 33,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001b46f4|001b4ec8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b5e70",
+      "words": 22,
+      "decoded_preexisting_words": 22,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b5cec|001b5e70|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b6530",
+      "words": 28,
+      "decoded_preexisting_words": 28,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "001b606c|001b6530|PARAM|ANALYSIS",
+        "001b6080|001b6530|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b7370",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b6da4|001b7370|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b7938",
+      "words": 24,
+      "decoded_preexisting_words": 24,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001b7480|001b7938|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001b7998",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001b74d8|001b7998|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001ba768",
+      "words": 53,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001c0010",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001c3360",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001cacd8",
+      "words": 194,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001cbc88",
+      "words": 37,
+      "decoded_preexisting_words": 37,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001cb64c|001cbc88|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001cbd20",
+      "words": 30,
+      "decoded_preexisting_words": 30,
+      "incoming_sites": 0,
+      "next_state": "unowned_instruction",
+      "non_call_references_into_entry": [
+        "001cb668|001cbd20|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001ccb38",
+      "words": 39,
+      "decoded_preexisting_words": 39,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001cb498|001ccb38|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d4140",
+      "words": 38,
+      "decoded_preexisting_words": 38,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001d40b4|001d4140|PARAM|ANALYSIS",
+        "001d4108|001d4140|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d41d8",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001d4184|001d41d8|PARAM|ANALYSIS",
+        "001d41b4|001d41d8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d6150",
+      "words": 17,
+      "decoded_preexisting_words": 17,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001d56bc|001d6150|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d6450",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d61a8|001d6450|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d70f0",
+      "words": 10,
+      "decoded_preexisting_words": 10,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d64b0|001d70f0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d7948",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d783c|001d7948|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d7e60",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d7960|001d7e60|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d8d38",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d87b0|001d8d38|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d9388",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d8ec0|001d9388|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d96d8",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d93a0|001d96d8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001d9b78",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d9738|001d9b78|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001da658",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001d9b90|001da658|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001da8c0",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001da670|001da8c0|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001db170",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001da8d8|001db170|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001e5670",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001e549c|001e5670|PARAM|ANALYSIS",
+        "001e54e0|001e5670|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001e5688",
+      "words": 6,
+      "decoded_preexisting_words": 6,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001e5494|001e5688|PARAM|ANALYSIS",
+        "001e54fc|001e5688|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001eb250",
+      "words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001edfe8",
+      "words": 11,
+      "decoded_preexisting_words": 11,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001ee078|001edfe8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001f26b8",
+      "words": 14,
+      "decoded_preexisting_words": 14,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "001f27c0|001f26b8|PARAM|ANALYSIS",
+        "001f27e4|001f26b8|PARAM|ANALYSIS",
+        "001f282c|001f26b8|PARAM|ANALYSIS",
+        "0024bad4|001f26b8|DATA|DEFAULT"
+      ]
+    },
+    {
+      "entry": "001f26f0",
+      "words": 16,
+      "decoded_preexisting_words": 16,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001f27b4|001f26f0|PARAM|ANALYSIS",
+        "001f27d0|001f26f0|PARAM|ANALYSIS",
+        "001f2810|001f26f0|PARAM|ANALYSIS",
+        "0024bacc|001f26f0|DATA|DEFAULT"
+      ]
+    },
+    {
+      "entry": "001f2a98",
+      "words": 70,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f3028",
+      "words": 3,
+      "decoded_preexisting_words": 3,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001f319c|001f3028|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001f4828",
+      "words": 5,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f4894",
+      "words": 9,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f4988",
+      "words": 16,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f49c8",
+      "words": 4,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f49d8",
+      "words": 3,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f4c38",
+      "words": 11,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f4c68",
+      "words": 16,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f4d44",
+      "words": 9,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f4e80",
+      "words": 4,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f4e90",
+      "words": 9,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f5290",
+      "words": 20,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f6c40",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001f6ca8|001f6c40|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001f8960",
+      "words": 25,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f9100",
+      "words": 36,
+      "decoded_preexisting_words": 36,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "001f9240|001f9100|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001f9420",
+      "words": 9,
+      "decoded_preexisting_words": 9,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001f9474|001f9420|PARAM|ANALYSIS",
+        "001f9488|001f9420|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001f9570",
+      "words": 21,
+      "decoded_preexisting_words": 21,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001f96dc|001f9570|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "001f97b8",
+      "words": 82,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "001f9900",
+      "words": 33,
+      "decoded_preexisting_words": 33,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "001f9a60|001f9900|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00201bf8",
+      "words": 80,
+      "decoded_preexisting_words": 80,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "00201dcc|00201bf8|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00203f28",
+      "words": 18,
+      "decoded_preexisting_words": 18,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [
+        "00204160|00203f28|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "00203f70",
+      "words": 29,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00203fe8",
+      "words": 9,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00204010",
+      "words": 15,
+      "decoded_preexisting_words": 15,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [
+        "002040a0|00204010|PARAM|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "0020a728",
+      "words": 16,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0020a768",
+      "words": 35,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0020ba68",
+      "words": 25,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "0020da70",
+      "words": 2,
+      "decoded_preexisting_words": 2,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [
+        "0020daf8|0020da70|DATA|ANALYSIS"
+      ]
+    },
+    {
+      "entry": "002138f8",
+      "words": 30,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00213b38",
+      "words": 21,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    },
+    {
+      "entry": "00216618",
+      "words": 45,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": []
+    }
+  ],
+  "status": "created_batch_bounded_candidates",
+  "function_count_after": 4346,
+  "old_function_snapshot_preserved": true,
+  "initialized_memory_preserved": true,
+  "defined_data_preserved": true,
+  "scope": "Static provisional candidates only. No original function identity, semantics, runtime reachability, or whole-game completeness is established."
+}

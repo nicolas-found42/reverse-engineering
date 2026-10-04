@@ -1,0 +1,35 @@
+{
+  "tool": "jgrep",
+  "interpretation": "Behavior search results are retrieval signals only. No-hit results did not establish absence; exact source word/cursor layout plus opcode definitions identify the STROW stores. Exact argv and raw output are retained in ignored scratch paths listed below.",
+  "searches": [
+    {
+      "query": "appends VIF command words into the shared DMA packet buffer and advances its output cursor",
+      "exit_code": 0,
+      "hits_chunks": "7 hits / 13 chunks",
+      "raw_json_ignored_path": ".scratch/mesh/codex-root/geometry-vif-preamble/jgrep/shared-packet-writer.json",
+      "raw_json_sha256": "9ec204700dec6f03dec00f7ccfcfe5a9905094e71bba7e5f1cd50bc1c276cbea"
+    },
+    {
+      "query": "writes VIF BASE and OFFSET control words immediately before an MSCNT command",
+      "exit_code": 1,
+      "hits_chunks": "0 hits / 5 chunks",
+      "raw_json_ignored_path": ".scratch/mesh/codex-root/geometry-vif-preamble/jgrep/base-before-mscnt.json",
+      "raw_json_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "query": "writes the four-component VIF row register by placing a STROW command and then four row words into the packet buffer",
+      "exit_code": 1,
+      "hits_chunks": "0 hits / 11 chunks",
+      "raw_json_ignored_path": ".scratch/mesh/codex-root/geometry-vif-preamble/jgrep/strow-write.json",
+      "raw_json_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "query": "appends STCYCL, STMOD, or STROW control words to this shared VIF packet chain",
+      "source_scope": "34 saved C exports containing puGpffff9220",
+      "exit_code": 1,
+      "hits_chunks": "0 hits / 102 chunks",
+      "raw_json_ignored_path": ".scratch/mesh/codex-root/geometry-vif-preamble/jgrep/shared-vif-state-writers.json",
+      "raw_json_sha256": "e8906c20c1bd26f62b6d7245e49da025a944dc8d568df1f18be64f790a770f75"
+    }
+  ]
+}

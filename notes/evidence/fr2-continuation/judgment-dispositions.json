@@ -934,6 +934,237 @@
     "receipt_action": "escalate",
     "per_claim": null
    }
+  },
+  {
+   "id": "d028-find-model-loader-chunks",
+   "receipt": "jev/d028-find-model-loader-chunks.json",
+   "receipt_identity": {
+    "bytes": 55188,
+    "sha256": "6d38581d70a01b02ec9827195fa447d3a9d29590a44d95fc54b5f5608ae3a3c4"
+   },
+   "result_summary": "jev_find over loader chunks (pointer relocation partial 0.67)",
+   "disposition": "Used only to locate chunks; the loader text was read and translated by hand.",
+   "machine_summary": {
+    "tool": "jev_find",
+    "purpose": "locate behaviors in FUN_0011ed90 (model loader) chunks; chunks over 2000 chars truncated",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 1.503,
+    "usage": {
+     "input_tokens": 32600,
+     "output_tokens": 724
+    },
+    "receipt_action": null,
+    "per_claim": null
+   }
+  },
+  {
+   "id": "d029-find-model-loader-chunks",
+   "receipt": "jev/d029-find-model-loader-chunks.json",
+   "receipt_identity": {
+    "bytes": 56256,
+    "sha256": "a234a64296a07d15f9a08c9d99335cf6d5bb6a8f6e0b8b6e06c4ba050e35842d"
+   },
+   "result_summary": "jev_find over loader chunks (name-tree walk absent 0.21 in the searched function)",
+   "disposition": "Used to locate chunks; FUN_00123908 was found by call-graph reading, not by this result.",
+   "machine_summary": {
+    "tool": "jev_find",
+    "purpose": "locate behaviors in FUN_0011ed90 (model loader) chunks; chunks over 2000 chars truncated",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 1.169,
+    "usage": {
+     "input_tokens": 32570,
+     "output_tokens": 724
+    },
+    "receipt_action": null,
+    "per_claim": null
+   }
+  },
+  {
+   "id": "d030-find-model-loader-chunks",
+   "receipt": "jev/d030-find-model-loader-chunks.json",
+   "receipt_identity": {
+    "bytes": 57189,
+    "sha256": "8fe5fd66548bd4f3b8cebc54e90491d66a0ebb1ace67929dcb84bc8afb015ddc"
+   },
+   "result_summary": "jev_find over loader chunks (float-field handling answered 0.90)",
+   "disposition": "Used to locate chunks only.",
+   "machine_summary": {
+    "tool": "jev_find",
+    "purpose": "locate behaviors in FUN_0011ed90 (model loader) chunks; chunks over 2000 chars truncated",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 1.104,
+    "usage": {
+     "input_tokens": 32555,
+     "output_tokens": 725
+    },
+    "receipt_action": null,
+    "per_claim": null
+   }
+  },
+  {
+   "id": "d031-decide-mesh-method",
+   "receipt": "jev/d031-decide-mesh-method.json",
+   "receipt_identity": {
+    "bytes": 5943,
+    "sha256": "35d945e80465a1c99e8dda1c0dc87b91251060f53c19302f11598b164ad4fa8b"
+   },
+   "result_summary": "translate_section_parsers, confidence 1",
+   "disposition": "Applied: sections are translated from the executable's loader one at a time and checked on all 56 files.",
+   "machine_summary": {
+    "tool": "jev_decide",
+    "purpose": "choose method for model container recovery (mesh phase)",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 1.249,
+    "usage": {
+     "input_tokens": 2432,
+     "output_tokens": 425
+    },
+    "receipt_action": "translate_section_parsers",
+    "per_claim": null
+   }
+  },
+  {
+   "id": "d032-verify-texture-claims",
+   "receipt": "jev/d032-verify-texture-claims.json",
+   "receipt_identity": {
+    "bytes": 7680,
+    "sha256": "93317989b3a6b3248b16ea7e08fdba475cd6ca4e566c37868378d8a1ffac3b40"
+   },
+   "result_summary": "7 claims: 5 verified (4 auto, claim1 review conf 0.14), 1 contradicted (4-bit decoded, auto), 1 unsupported (geometry recovered, review)",
+   "disposition": "Overclaims not made. Claim1 was compound; it was split in d033 (changed question, not a retry).",
+   "machine_summary": {
+    "tool": "jev_verify",
+    "purpose": "Verify texture-library claims against the real-corpus run; claims 5 and 6 are deliberate overclaims",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 0.827,
+    "usage": {
+     "input_tokens": 2826,
+     "output_tokens": 435
+    },
+    "receipt_action": null,
+    "per_claim": [
+     {
+      "verdict": "verified",
+      "confidence": 0.95,
+      "action": "auto"
+     },
+     {
+      "verdict": "verified",
+      "confidence": 0.14,
+      "action": "review"
+     },
+     {
+      "verdict": "verified",
+      "confidence": 1,
+      "action": "auto"
+     },
+     {
+      "verdict": "verified",
+      "confidence": 0.98,
+      "action": "auto"
+     },
+     {
+      "verdict": "contradicted",
+      "confidence": 1,
+      "action": "auto"
+     },
+     {
+      "verdict": "unsupported",
+      "confidence": 0.99,
+      "action": "review"
+     },
+     {
+      "verdict": "verified",
+      "confidence": 1,
+      "action": "auto"
+     }
+    ]
+   }
+  },
+  {
+   "id": "d033-verify-decode-coverage-atomic",
+   "receipt": "jev/d033-verify-decode-coverage-atomic.json",
+   "receipt_identity": {
+    "bytes": 3086,
+    "sha256": "fff4d7808b1961ad786c1204633c6eb0f609aaeffba8fa9da1b113e4ba8ae3d3"
+   },
+   "result_summary": "decoded-formats claim verified 0.98 auto; claim that every undecoded format-1/3 image has a side under 16 verified at review (0.71)",
+   "disposition": "Not relabeled. Resolved by the deterministic real-corpus test (45 undecoded, all with a side below 16, sizes 8x8/16x8/32x8/64x8).",
+   "machine_summary": {
+    "tool": "jev_verify",
+    "purpose": "Atomic re-check of d032 claim1 (review, conf 0.14, compound) with the undecoded-image list as evidence",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 0.548,
+    "usage": {
+     "input_tokens": 1051,
+     "output_tokens": 126
+    },
+    "receipt_action": null,
+    "per_claim": [
+     {
+      "verdict": "verified",
+      "confidence": 0.98,
+      "action": "auto"
+     },
+     {
+      "verdict": "verified",
+      "confidence": 0.71,
+      "action": "review"
+     }
+    ]
+   }
+  },
+  {
+   "id": "d034-review-texture-patch",
+   "receipt": "jev/d034-review-texture-patch.json",
+   "receipt_identity": {
+    "bytes": 28662,
+    "sha256": "a4afe3a04220a2a6a8823b67275eba66956bac1993b882d9d5569a58474bc7ad"
+   },
+   "result_summary": "escalate; safe_to_apply 0.41, composite 0.74, correctness conf 0.25, no named defect",
+   "disposition": "Not auto-approved and not rerun. Resolved by independent evidence: pyright 0 errors, 83+1 tests, a width/height-swap mutation test that fails the corpus test, a 3,000-mutation fuzz of parse() on real models (0 unexpected exceptions; worst case 4 s at the 2048x2048 dimension cap) now also a seeded test, and jgrep rules (two hits inspected: ranges already bounded by need()). A background reviewer subagent was started and stopped at the owner's instruction before it returned; it contributed nothing. Result stays escalate.",
+   "machine_summary": {
+    "tool": "jev_review",
+    "purpose": "Independent semantic review of the texture-library patch (3 new files)",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 0.756,
+    "usage": {
+     "input_tokens": 8603,
+     "output_tokens": 79
+    },
+    "receipt_action": "escalate",
+    "per_claim": null
+   }
+  },
+  {
+   "id": "d035-decide-mesh-phase-bar",
+   "receipt": "jev/d035-decide-mesh-phase-bar.json",
+   "receipt_identity": {
+    "bytes": 6368,
+    "sha256": "afe1eb458ffae3b82331d0ca9706e2c9111e0839a7842b4bd9bd6a66b15b0917"
+   },
+   "result_summary": "chain_then_geometry_invariants, confidence 1, all three requirements supported",
+   "disposition": "Applied in next-phase.md.",
+   "machine_summary": {
+    "tool": "jev_decide",
+    "purpose": "Choose the measurable bar for the mesh/VU/render phase",
+    "model": "typesafe/jev-1.13",
+    "is_error": false,
+    "seconds": 0.501,
+    "usage": {
+     "input_tokens": 3206,
+     "output_tokens": 743
+    },
+    "receipt_action": "chain_then_geometry_invariants",
+    "per_claim": null
+   }
   }
  ]
 }

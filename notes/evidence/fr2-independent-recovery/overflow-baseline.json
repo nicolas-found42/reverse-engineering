@@ -1,0 +1,42 @@
+{
+  "probe_sha256": "4d6170427bb88d6c3fb41680917518d8a0fcf2f0d416f94b4cfca7c591c54a13",
+  "purpose": "Synthetic integer macro tests only; no game function/runtime/emulator executed",
+  "results": [
+    {
+      "arguments": [
+        "add",
+        "1",
+        "2"
+      ],
+      "returncode": 0,
+      "output": "result=3 overflow=0\n"
+    },
+    {
+      "arguments": [
+        "sub",
+        "2",
+        "1"
+      ],
+      "returncode": 0,
+      "output": "result=1 overflow=0\n"
+    },
+    {
+      "arguments": [
+        "add",
+        "2147483647",
+        "1"
+      ],
+      "returncode": -6,
+      "output": ".scratch/mesh/codex-root/recomp-overflow-probe.cpp:9:42: runtime error: signed integer overflow: 2147483647 + 1 cannot be represented in type 'int32_t' (aka 'int')\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior .scratch/mesh/codex-root/recomp-overflow-probe.cpp:9:42 \n"
+    },
+    {
+      "arguments": [
+        "sub",
+        "-2147483648",
+        "1"
+      ],
+      "returncode": -6,
+      "output": ".scratch/mesh/codex-root/recomp-overflow-probe.cpp:10:47: runtime error: signed integer overflow: -2147483648 - 1 cannot be represented in type 'int32_t' (aka 'int')\nSUMMARY: UndefinedBehaviorSanitizer: undefined-behavior .scratch/mesh/codex-root/recomp-overflow-probe.cpp:10:47 \n"
+    }
+  ]
+}

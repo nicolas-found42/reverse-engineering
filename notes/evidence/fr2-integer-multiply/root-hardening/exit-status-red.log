@@ -1,0 +1,14 @@
+....F......
+======================================================================
+FAIL: test_nonzero_native_status_is_rejected_even_with_valid_json_output (test_recomp_integer_multiply.MultiplyGuards.test_nonzero_native_status_is_rejected_even_with_valid_json_output)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_recomp_integer_multiply.py", line 23, in test_nonzero_native_status_is_rejected_even_with_valid_json_output
+    with self.assertRaisesRegex(ValueError, "exit status"):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 11 tests in 2.925s
+
+FAILED (failures=1)

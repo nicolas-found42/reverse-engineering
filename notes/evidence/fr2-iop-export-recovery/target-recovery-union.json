@@ -1,0 +1,351 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "purpose": "Static provisional recovery of relocation-backed IOP export targets in a fresh saved Ghidra project copy; no original module code executed.",
+  "method": {
+    "raw_profile": "Pinned 24 IRX inputs; ELF type 0xff80, MIPS machine 8, base-zero .text; exact export table slots validated against R_MIPS_32 symbol-zero relocation records.",
+    "predecoded": "Create provisional ANALYSIS functions only for relocation-backed export targets that were already decoded as unowned instructions; no new disassembly.",
+    "undefined": "For each unique undefined target, an isolated saved-program open runs a bounded CFG decode (max 0x800 bytes/512 instructions), following forward branches, including delay slots, and ending at jr ra after its delay slot; rejects unresolved jumps, data/function collisions, out-of-range edges, and any mutation outside measured new instruction words.",
+    "transactions": "Every undefined seed was attempted in its own Ghidra process so a rejected seed cannot roll back a prior accepted target. Exports were read-only.",
+    "generated_names": "Generic IOP_EXPORT_xxxxxxxx_PROVISIONAL or IOPMOD_ENTRY_xxxxxxxx_PROVISIONAL; names assert no original symbol identity."
+  },
+  "counts": {
+    "modules": 24,
+    "baseline_functions": 2241,
+    "final_functions": 2388,
+    "candidate_functions": 147,
+    "metadata_entry_candidates": 13,
+    "predecoded_unowned_instruction_candidates": 40,
+    "undefined_unique_seed_count": 95,
+    "undefined_bounded_candidates_accepted": 94,
+    "undefined_seed_rejections": 1,
+    "new_instruction_starts": 1180,
+    "new_instruction_bytes": 4720,
+    "body_range_overlap_pairs": 0,
+    "C_processed": 2388,
+    "C_generated": 2388,
+    "C_failed": 0,
+    "preexisting_C_artifact_count_changed": 9,
+    "preexisting_C_artifact_count_identical": 2232,
+    "warning_comment_count_before": 91,
+    "warning_comment_count_after": 106,
+    "warning_categories_before": {
+      "infinite-loop do-nothing block": 1,
+      "overlapping global symbols": 61,
+      "type propagation did not settle": 4,
+      "unreachable block": 25
+    },
+    "warning_categories_after": {
+      "infinite-loop do-nothing block": 2,
+      "overlapping global symbols": 75,
+      "type propagation did not settle": 4,
+      "unreachable block": 25
+    }
+  },
+  "rejection_examples": [
+    {
+      "module": "SYSCLIB.irx",
+      "target_text_offset": "00001004",
+      "reason": "bounded flow collides with defined data at 00001080"
+    }
+  ],
+  "old_c_change_dispositions": [
+    {
+      "program": "FILEIO.irx",
+      "entry": "000018f0",
+      "disposition": "base-zero entry label renders where baseline had null function-pointer spelling; presentation-level collision, not runtime-call evidence"
+    },
+    {
+      "program": "SIFMAN.irx",
+      "entry": "00000348",
+      "disposition": "same base-zero entry-label substitution"
+    },
+    {
+      "program": "LOADFILE.irx",
+      "entry": "0000134c",
+      "disposition": "same base-zero entry-label substitution"
+    },
+    {
+      "program": "CDVDMAN.irx",
+      "entry": "0000227c",
+      "disposition": "same base-zero entry-label substitution"
+    },
+    {
+      "program": "THREADMAN.irx",
+      "entry": "00000010",
+      "disposition": "GP/global presentation changed after candidate entry annotation"
+    },
+    {
+      "program": "THREADMAN.irx",
+      "entry": "00000cec",
+      "disposition": "GP/global presentation changed after candidate entry annotation"
+    },
+    {
+      "program": "MODLOAD.irx",
+      "entry": "00001320",
+      "disposition": "GP symbol presentation changed"
+    },
+    {
+      "program": "LIBSD.IRX",
+      "entry": "0000379c",
+      "disposition": "decompiler rewrote pointer-vs-integer expression around a 0x1d00 compare; semantic equivalence not established"
+    },
+    {
+      "program": "LIBSD.IRX",
+      "entry": "00003800",
+      "disposition": "decompiler local types/temporaries and compare expressions changed; semantic equivalence not established"
+    }
+  ],
+  "module_inventory": [
+    {
+      "program": "CDVDFSV.irx",
+      "raw_sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861",
+      "text_sha256": "7506480569b4c865337871052725476124ffb504e4ee66b7c6fe90a9b9d643f7",
+      "text_size": 22624,
+      "functions": 114,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "CDVDMAN.irx",
+      "raw_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca",
+      "text_sha256": "70c10b097bd07285660508e5c1db604d64f721851fb88c4ce00e919735ec4999",
+      "text_size": 40944,
+      "functions": 165,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "EESYNC.irx",
+      "raw_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e",
+      "text_sha256": "6278b3ad197397217a6f3d5948579d1fe2e418fd270cc682c768e491d936530a",
+      "text_size": 640,
+      "functions": 12,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "FILEIO.irx",
+      "raw_sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824",
+      "text_sha256": "017df3bb12c5602b2752bfe9cb6c98884568b81616413fa5f78cc9ec4cf0343e",
+      "text_size": 10736,
+      "functions": 119,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "IOMAN.irx",
+      "raw_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c",
+      "text_sha256": "036670b9948d8052a5c0adbde01fcbb14ff55bd4e0ea5911e67aa3f3b8614f80",
+      "text_size": 7776,
+      "functions": 59,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "LGDEV.IRX",
+      "raw_sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f",
+      "text_sha256": "86693c76ebbe7506d959017547dc79cc87580252d364924fa28e79c2d768f9cd",
+      "text_size": 40064,
+      "functions": 167,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "LIBSD.IRX",
+      "raw_sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10",
+      "text_sha256": "394f8466b9781c6fd7cce442a398c6f9e3bbe050e1c0c278fd41e19eb3aefadc",
+      "text_size": 18496,
+      "functions": 79,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "LOADCORE.irx",
+      "raw_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38",
+      "text_sha256": "f70015a489983b1ad173d4cc78f8aa80863ddd9a0ea93b3e7bd197792fa8bc71",
+      "text_size": 7568,
+      "functions": 49,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "LOADFILE.irx",
+      "raw_sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f",
+      "text_sha256": "fce5270d164896056e704739bf4b5545fd9476ac33396ed9af7de1c1a616ba40",
+      "text_size": 7168,
+      "functions": 65,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "MCMAN.IRX",
+      "raw_sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5",
+      "text_sha256": "509f1f93f78f3c6050475ec1c611b67be65b55d98238ef195274c101ce9ae216",
+      "text_size": 72272,
+      "functions": 235,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "MCSERV.IRX",
+      "raw_sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2",
+      "text_sha256": "5e251ee45ee75b6da1763d5b1b41d45c0e9244918790768f69e521e772b09a17",
+      "text_size": 4704,
+      "functions": 77,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "MODLOAD.irx",
+      "raw_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519",
+      "text_sha256": "1424cd6e68a67fa8716e2f3346a4791dfa1f126f16bbe8b6bff24725387699cd",
+      "text_size": 12896,
+      "functions": 113,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "PADMAN.IRX",
+      "raw_sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f",
+      "text_sha256": "ce8029ed16fc5bed03cc089f31ab1ea012c34a8c8981f3e11ea0f4ffc334fa70",
+      "text_size": 32192,
+      "functions": 174,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "ROMDRV.irx",
+      "raw_sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a",
+      "text_sha256": "490c9ada961721d515aafd358883b51dd2685bd3a0f4ae766a1e62104c48a7e9",
+      "text_size": 2128,
+      "functions": 16,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "SDRDRV.IRX",
+      "raw_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+      "text_sha256": "22e10494dc10c9daf83ac0e60fec60bdc3a3fc78c9a9918e5ee85e377614d706",
+      "text_size": 4400,
+      "functions": 58,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "SIFCMD.irx",
+      "raw_sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f",
+      "text_sha256": "c5e96b44acaa0c176a2055bddc104f65fbd3fbd6a28b02de3c17ebe580ca1f72",
+      "text_size": 6960,
+      "functions": 68,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "SIFMAN.irx",
+      "raw_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec",
+      "text_sha256": "e80d4f7e1bc96132141e2a2d6ba0bb6e34af753eaafe2c5ad687deb2f27ea0c4",
+      "text_size": 4160,
+      "functions": 45,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "SIO2MAN.IRX",
+      "raw_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+      "text_sha256": "b52fd2e75c54b62de663d397d058d6928d9cb3d45a6cc8385b35a3ea06cbc9e7",
+      "text_size": 3856,
+      "functions": 76,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "STDIO.irx",
+      "raw_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081",
+      "text_sha256": "8e4f1fea7b44483c5638ac925616e9f568f22b70535df9d873a8667e8c3c8b92",
+      "text_size": 1856,
+      "functions": 21,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "STREAM.IRX",
+      "raw_sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3",
+      "text_sha256": "39c3ee6885ed2a1ce5366dd7d2958b671681b8c0be39582fd2ca1a80cdf77f20",
+      "text_size": 141632,
+      "functions": 282,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "SYSCLIB.irx",
+      "raw_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447",
+      "text_sha256": "28b40a8606e632db3c0e658419841d247572ab19c2e3213b3f330465ac30e261",
+      "text_size": 6400,
+      "functions": 44,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "THREADMAN.irx",
+      "raw_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b",
+      "text_sha256": "be754feffdaddfc279ed4fc0e988cf45ac97bc47756d306f471f14f4b17565c9",
+      "text_size": 27808,
+      "functions": 172,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "TIMEMANI.irx",
+      "raw_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35",
+      "text_sha256": "630194a90f3e8dbd6aad58fd054dd6bed23a2b5692703cdb44cf649b731e7d97",
+      "text_size": 3760,
+      "functions": 32,
+      "body_range_overlap_count": 0
+    },
+    {
+      "program": "USBD.IRX",
+      "raw_sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255",
+      "text_sha256": "7090b9dc4d73270ebbe9b600af6df45f6a51de01604249579d06f1157bdfa2ca",
+      "text_size": 25296,
+      "functions": 146,
+      "body_range_overlap_count": 0
+    }
+  ],
+  "overlap_examples": [],
+  "static_union_receipt": {
+    "path": ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/full-persistent/static-union-verification.json",
+    "sha256": "028e1d508f57cd99495b5a9f32c4e0a04e7a908a8450ecb515a76ec9af7f153e"
+  },
+  "C_warning_receipt": {
+    "path": ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/persistent-c-export-audit.json",
+    "sha256": "b86d9c01d20cd68b9bd89af9dfda821eac4549ae778a592905c592f533b1f08e"
+  },
+  "source_and_runner_hashes": {
+    "tools/ghidra/experimental/CreateIopEntryCandidates.java": "5f3c012db5ee4b4c3869ffb527f8bf53dd505d87c27e93589b4fd8ebd7e288a8",
+    "tools/ghidra/experimental/CreateIopExportTargetCandidates.java": "f310a31fb5856e6c780b6cc0702c14cb053318f4a01afd75c9ae6931a6993189",
+    "tools/ghidra/experimental/CreateIopUndefinedExportCandidates.java": "9afecf3cbd48bed6d0e7cbab1650a5afd40f07e316ace1713b8333a473cb63eb",
+    "tools/ghidra/experimental/ExportIopCoverage.java": "8218203032c4f9b2338c3ad8fde427ae080d4a742e9783f44d3517c43535c4db",
+    "tools/ghidra/ExportDecompilation.java": "17c2d41f25ae38cf7217d37fb5c6a797833d31317f59e1ec015c091dae558546",
+    "tools/ps2_irx.py": "0ddbe0bcfc3c7c6e770139822096c6a5f4890baf88ecca31eb85fece92ec8f7f",
+    "tools/ps2_executables.py": "6872b9d9af5477fa81a87aab7c326b9f91a270412835145329e5aefccf44461d",
+    "tools/ps2_irx_relocations.py": "d1133bd6e9a1502979a08f92d71889cab82d8ef6a52f496588bb080b4393f4c7",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/export-target-seeds.json": "dd3611f1273e86b2d607eaa72bb1009ccca671136ecd38f7a5437a9baee2a3e9",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/run_persistent_union.py": "e539ae499825f53a6faedfa6ca5d081e1307054af0687b1f1836f2ebab31c554",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/verify_persistent_union.py": "2692190097feb0f58c7404b25a5576079ed93efcb003ca0e1925747b18de7d11",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/audit_persistent_c_exports.py": "00b6e2f02e7c97a28506a06ea71a64e8a6d2e8ad219eac9482777aea788d830e",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/summarize_persistent_union.py": "bd18d153e4336757b02df464970e1bbb1da48c29e528767ddff792c3c2021bcc",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/full-persistent/run_manifest.json": "48f43b6ca829929bc578922a3d35e34468381057045d92ce17c09f147f69898d",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/full-persistent/static-union-verification.json": "028e1d508f57cd99495b5a9f32c4e0a04e7a908a8450ecb515a76ec9af7f153e",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/persistent-c-export-audit.json": "b86d9c01d20cd68b9bd89af9dfda821eac4549ae778a592905c592f533b1f08e",
+    ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/jev-persistent-union-verify.json": "c54a0e3bb44062164376fe0db5dac96528287fec60f872c3eb598ef32288030a"
+  },
+  "claims_limited_to": [
+    "Static relocation-backed export slot provenance and current Ghidra listing/function/body state.",
+    "Function boundaries and decoded CFGs are provisional; metadata export address does not prove callable function semantics.",
+    "No runtime invocation, module registration, actual loader sequence, original source recovery, exact function identity, or semantic equivalence is claimed.",
+    "All full C files are in ignored scratch; durable metadata contains hashes/counts and does not reproduce code."
+  ],
+  "historical_superseded_run": {
+    "path": ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/full-bounded",
+    "reason": "Multiple accepted undefined candidates and a later rejection were attempted in one process; Ghidra nested transaction behavior rolled back earlier accepted edits. This was superseded by the per-seed persistent union. Preserve as historical, not final."
+  },
+  "prior_static_receipt": {
+    "path": ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/full-persistent/run_manifest.json",
+    "sha256": "48f43b6ca829929bc578922a3d35e34468381057045d92ce17c09f147f69898d"
+  },
+  "jev_receipt": {
+    "path": ".scratch/mesh/codex-audit/iop-export-relocation-audit/target-recovery/jev-persistent-union-verify.json",
+    "sha256": "c54a0e3bb44062164376fe0db5dac96528287fec60f872c3eb598ef32288030a",
+    "summary": "6 claims verified; 1 overclaim about runtime invocation/original symbol identity contradicted."
+  },
+  "post_union_script_guard_update": {
+    "path": "tools/ghidra/experimental/CreateIopUndefinedExportCandidates.java",
+    "sha256": "3a7b959696748043de57d0c9755310db391d31a8b25952800f7759024ddcb88d",
+    "change": "Requires explicit target offset if more than one unique undefined export seed exists; corrects class comment to describe saved writable-copy mode.",
+    "negative_guard_receipt": "negative-multiseed-guard.json",
+    "negative_guard_receipt_sha256": "924e731b5c32141c02dc77e9598ca11b40a28c6cfb811bcb5f3eb29c488a5781",
+    "jev_gate_receipt": "jev-single-seed-guard-gate.json",
+    "jev_gate_receipt_sha256": "5979f88259ef2ad4a6dd9638790eca90d37e84790c290c6d693892f704003cd0",
+    "jev_gate_action": "escalate",
+    "jev_gate_note": "One verification claim in the gate intentionally/incorrectly asserted that the preserved union was regenerated; Jev contradicted that claim. The union was not regenerated, consistent with preserving its historical run receipt; the test claims about the new guard and negative run were verified/reviewed. No second gate call was made."
+  }
+}

@@ -1,0 +1,8 @@
+Exact Jev tool response summary (jev_review, typesafe/jev-1.13, OpenRouter):
+mode=per-file; action=escalate; composite=0.338875; safe_to_apply=0.1; reason_codes=[confidence_below_review, safe_to_apply_below_review]; truncated=false.
+
+File tools/ps2_irx_catalog.py: action=escalate; safe_to_apply=0.1; composite=0.22574999999999998; limiting_rubrics=[blast_radius]. Scores: correctness 0.24 confidence 0.64 (p0=.82,p1=.12,p2=.06); spec_match 0.8 confidence .18 (p0=.37,p1=.46,p2=.17); test_gap 1.91 confidence .86 (p0=.04,p1=.02,p2=.94); blast_radius 1.32 confidence 0 (p0=.22,p1=.24,p2=.54).
+
+File tools/test_ps2_irx_catalog.py: action=escalate; safe_to_apply=.22; composite=.452; limiting_rubrics=[spec_match]. Scores: correctness .94 confidence .47 (p0=.21,p1=.65,p2=.14); spec_match .84 confidence .45 (p0=.26,p1=.63,p2=.11); test_gap 1.88 confidence .83 (p0=.02,p1=.08,p2=.9); blast_radius .28 confidence .57 (p0=.78,p1=.16,p2=.06).
+
+Usage: input_tokens=1674, output_tokens=186. Focused test output supplied to Jev: 7 passed.

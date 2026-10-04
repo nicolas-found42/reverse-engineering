@@ -1,0 +1,41 @@
+{
+  "arguments": {
+    "claims": [
+      "The saved overlay-5 VU instruction stream has E on pair 214, an ordinary nop in pair 215 as the one-instruction E delay slot, and XTOP VI01 at pair 216, the instruction after that slot.",
+      "In pinned PCSX2 VIF1 code, each MSCNT calls the execMicro path with address -1; that path first latches TOP from TOPS, then updates TOPS based on DBF, BASE, and OFFSET. The -1 value preserves the continuation address rather than starting a new microprogram.",
+      "FUN_00128e88 appends STMOD 0 and STCYCL 4/4, then MSCNT, followed by BASE 0x3aa or 0x388 and OFFSET 0 in that output-buffer order.",
+      "Because FUN_00128e88 emits its BASE and OFFSET after its MSCNT, those two commands do not establish the TOP latched by that same MSCNT; any TOP value used by its resumed XTOP depends on the TOPS state already present when MSCNT is reached.",
+      "FUN_0010f8f8 explicitly appends a FLUSHA word, a DIRECT word and two following qwords, a data-dependent 64-bit word, and 0x4e, but its function body contains no literal STCYCL, STMOD, STROW, BASE, OFFSET, or MSCNT command word."
+    ],
+    "evidence": [
+      {
+        "id": "sony-vu-manual-p51",
+        "text": "Sony Computer Entertainment, VU User\u2019s Manual v6.0, \u00a73.4, Figure 3-19: The E bit marks termination of a micro subroutine; the next one instruction is executed in the E-bit delay slot, after which execution stops and the address of the following instruction is stored in TPC. Certain instructions including XTOP cannot occupy the delay slot."
+      },
+      {
+        "id": "overlay5-selected-pairs",
+        "text": "Saved static VU overlay-5 pairs indexed from 0: pair 214 is `nop[e] nop`; pair 215 is `nop nop`; pair 216 is `nop xtop vi01`. The instruction text is from the locally saved assembly view of the exact uploaded overlay."
+      },
+      {
+        "id": "pcsx2-pinned-vif-control",
+        "text": "Pinned PCSX2 source commit 81526d4dc7cc70e4ae75abb35a789417456c6d43, Vif_Codes.cpp: `vuExecMicro` for VIF1 sets `vifRegs.top = vifRegs.tops & 0x3ff`; then if DBF it updates TOPS=BASE and clears DBF, else updates TOPS=BASE+OFST and sets DBF. `vifCode_MSCNT` calls `vuExecMicro(idx, -1, false)`. The `addr==-1` branch preserves -1 in queued_pc, used by VU to continue the prior microprogram. `vifCode_Offset` clears DBF, sets OFST from immediate and sets TOPS=BASE."
+      },
+      {
+        "id": "game-static-28e88-tail",
+        "text": "Saved Ghidra export FUN_00128e88 writes words by repeatedly storing at the current `*puGpffff9220` address and advancing it. Its tail is in this order: STMOD `0x05000000`; zero words; STCYCL `0x01000404`; MSCNT `0x17000000`; BASE `0x030003aa` or `0x03000388` by branch on `uGpffff921c`; OFFSET `0x02000000`; then two zero words."
+      },
+      {
+        "id": "game-static-10f8f8",
+        "text": "Saved Ghidra export FUN_0010f8f8 stores `0x13000000` at the output cursor, then `0x50000002`, then qwords `0x1000000000008001` and `0xe`, then a computed 64-bit word from `DAT_002324fa`, `DAT_002324ec`, and `iGpffff911c==0`, then qword `0x4e`. It patches a DMA tag count. Its body has no stores of the state-command literals listed in the claim."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 5,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The saved overlay-5 VU instruction stream has E on pair 214, an ordinary nop in pair 215 as the one-instruction E delay slot, and XTOP VI01 at pair 216, the instruction after that slot.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.73,\n        \"contradicts\": 0.27,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.59,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"overlay5-selected-pairs\",\n      \"same_subject\": 0.91\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"In pinned PCSX2 VIF1 code, each MSCNT calls the execMicro path with address -1; that path first latches TOP from TOPS, then updates TOPS based on DBF, BASE, and OFFSET. The -1 value preserves the continuation address rather than starting a new microprogram.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.99,\n        \"contradicts\": 0.01,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"pcsx2-pinned-vif-control\",\n      \"same_subject\": 0.84\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"FUN_00128e88 appends STMOD 0 and STCYCL 4/4, then MSCNT, followed by BASE 0x3aa or 0x388 and OFFSET 0 in that output-buffer order.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.95,\n        \"contradicts\": 0.05,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.92,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"game-static-28e88-tail\",\n      \"same_subject\": 0.91\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"Because FUN_00128e88 emits its BASE and OFFSET after its MSCNT, those two commands do not establish the TOP latched by that same MSCNT; any TOP value used by its resumed XTOP depends on the TOPS state already present when MSCNT is reached.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.96,\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0.01\n      },\n      \"confidence\": 0.94,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"pcsx2-pinned-vif-control\",\n      \"same_subject\": 0.65\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"FUN_0010f8f8 explicitly appends a FLUSHA word, a DIRECT word and two following qwords, a data-dependent 64-bit word, and 0x4e, but its function body contains no literal STCYCL, STMOD, STROW, BASE, OFFSET, or MSCNT command word.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.97,\n        \"contradicts\": 0.03,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.95,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"game-static-10f8f8\",\n      \"same_subject\": 0.91\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 3357,\n    \"output_tokens\": 820\n  }\n}"
+      }
+    ]
+  }
+}

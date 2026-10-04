@@ -1,0 +1,182 @@
+{
+  "tool": "jev_review",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "mode": "per-file",
+  "action": "escalate",
+  "composite": 0.9295833333333334,
+  "safe_to_apply": 0.66,
+  "reason_codes": [
+    "confidence_below_review"
+  ],
+  "limiting": [
+    {
+      "file": "tools/recomp/experimental/headless-link-check/README.md",
+      "rubrics": [
+        "test_gap"
+      ]
+    },
+    {
+      "file": "notes/evidence/fr2-link-interface-audit/build/README.md",
+      "rubrics": [
+        "test_gap"
+      ]
+    },
+    {
+      "file": "notes/evidence/fr2-link-interface-audit/build/preflight.json",
+      "rubrics": [
+        "test_gap"
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "tools/recomp/experimental/headless-link-check/README.md",
+      "safe_to_apply": 0.67,
+      "scores": {
+        "correctness": {
+          "score": 1.91,
+          "confidence": 0.86,
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.05,
+            "2": 0.93
+          }
+        },
+        "spec_match": {
+          "score": 1.89,
+          "confidence": 0.84,
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.08,
+            "2": 0.9
+          }
+        },
+        "test_gap": {
+          "score": 0.47,
+          "confidence": 0.29,
+          "probabilities": {
+            "0": 0.74,
+            "1": 0.05,
+            "2": 0.21
+          }
+        },
+        "blast_radius": {
+          "score": 0.06,
+          "confidence": 0.91,
+          "probabilities": {
+            "0": 0.96,
+            "1": 0.03,
+            "2": 0.01
+          }
+        }
+      },
+      "action": "escalate",
+      "composite": 0.92575
+    },
+    {
+      "path": "notes/evidence/fr2-link-interface-audit/build/README.md",
+      "safe_to_apply": 0.72,
+      "scores": {
+        "correctness": {
+          "score": 1.95,
+          "confidence": 0.92,
+          "probabilities": {
+            "0": 0.01,
+            "1": 0.03,
+            "2": 0.96
+          }
+        },
+        "spec_match": {
+          "score": 1.93,
+          "confidence": 0.9,
+          "probabilities": {
+            "0": 0.01,
+            "1": 0.05,
+            "2": 0.94
+          }
+        },
+        "test_gap": {
+          "score": 0.46,
+          "confidence": 0.31,
+          "probabilities": {
+            "0": 0.74,
+            "1": 0.07,
+            "2": 0.19
+          }
+        },
+        "blast_radius": {
+          "score": 0.04,
+          "confidence": 0.94,
+          "probabilities": {
+            "0": 0.97,
+            "1": 0.02,
+            "2": 0.01
+          }
+        }
+      },
+      "action": "escalate",
+      "composite": 0.942
+    },
+    {
+      "path": "notes/evidence/fr2-link-interface-audit/build/preflight.json",
+      "safe_to_apply": 0.66,
+      "scores": {
+        "correctness": {
+          "score": 1.92,
+          "confidence": 0.88,
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.04,
+            "2": 0.94
+          }
+        },
+        "spec_match": {
+          "score": 1.9,
+          "confidence": 0.84,
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.07,
+            "2": 0.91
+          }
+        },
+        "test_gap": {
+          "score": 0.57,
+          "confidence": 0.14,
+          "probabilities": {
+            "0": 0.68,
+            "1": 0.07,
+            "2": 0.25
+          }
+        },
+        "blast_radius": {
+          "score": 0.07,
+          "confidence": 0.89,
+          "probabilities": {
+            "0": 0.94,
+            "1": 0.04,
+            "2": 0.02
+          }
+        }
+      },
+      "action": "escalate",
+      "composite": 0.921
+    }
+  ],
+  "weights": {
+    "correctness": 0.4,
+    "spec_match": 0.3,
+    "test_gap": 0.15,
+    "blast_radius": 0.15
+  },
+  "thresholds": {
+    "auto_accept": 0.8,
+    "review_at": 0.5,
+    "composite_floor": 0.7
+  },
+  "usage": {
+    "input_tokens": 4065,
+    "output_tokens": 277
+  },
+  "disposition": "Preserved Jev's confidence escalation. The files are a static preflight report and an untested prospective plan because the local CMake and raylib prerequisites are absent; no claim of link success is made."
+}

@@ -1,0 +1,116 @@
+{
+  "title": "Static mip upload descriptor audit",
+  "status": "bounded corpus and source-anchored static result",
+  "files": [
+    "README.md",
+    "archive-bound-coverage-correction-01.json",
+    "jev-mip-upload-verify-request.json",
+    "jev-mip-upload-verify.json",
+    "jev-mip-all56-coverage-verify-request.json",
+    "jev-mip-all56-coverage-verify.json"
+  ],
+  "ignored_scratch": {
+    "script": ".scratch/mesh/codex-root/texture-independent-review/audit_mip_upload_static.py",
+    "script_sha256": "f92d8087c2fca237197ed59e1f62eebdaee5c8f4008aa70f700a119b08734d4c",
+    "result": ".scratch/mesh/codex-root/texture-independent-review/independent-mip-upload-static-audit.json",
+    "result_sha256": "7b47a504feddeed90aeec1862320ade9b323a2a12949e78dd07da34b1d98f05a"
+  },
+  "measurements": {
+    "historical_uppercase_glob_subset": {
+      "model_files": 54,
+      "textures": 2353,
+      "extra_mip_levels": 2553,
+      "total_image_levels": 4906,
+      "mip_count_distribution": {
+        "0": 1022,
+        "1": 109,
+        "2": 1222
+      },
+      "matched_source_and_predicted_transfer_bytes": 79571296,
+      "serialized_mip_records_with_zero_word_at_offset_8": 2553
+    },
+    "archive_bound_all56": {
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+      "model_files": 56,
+      "textures": 2370,
+      "extra_mip_levels": 2571,
+      "total_image_levels": 4941,
+      "mip_count_distribution": {
+        "0": 1027,
+        "1": 115,
+        "2": 1228
+      },
+      "matched_source_and_predicted_transfer_bytes": 79708000,
+      "serialized_mip_records_with_zero_word_at_offset_8": 2571,
+      "script_sha256": "639b43e90379135c2578a905dd065d802b7d91c50a2ed3c7cc3b117c79037130",
+      "result_sha256": "3f4f6e31f5508e2a361b38a6e273a864817a87a3949ee7c5e9d55149311e820c"
+    }
+  },
+  "limits": [
+    "Static dimensions and byte counts only; no runtime GS upload or rendering.",
+    "Serialized mip record fields are not fully interpreted.",
+    "The corpus max is two extra levels; parser limit eight is not a loader-support claim."
+  ],
+  "jev_all56_receipt_status": {
+    "file": "jev-mip-all56-coverage-verify.json",
+    "completeness": "abbreviated_agent_reported_summary",
+    "complete_raw_result_found": false,
+    "missing_fields": [
+      "per-claim probability distributions",
+      "same_subject values"
+    ],
+    "disposition": "Do not treat the compact receipt as the complete immutable tool result; original request remains preserved; unchanged claims were not rerun."
+  },
+  "artifacts": [
+    {
+      "path": "README.md",
+      "bytes": 7587,
+      "sha256": "8d4405a7561e7a3df02a2e9caebdacdb036ad7f9cf79e47d3f24a36f341044e7"
+    },
+    {
+      "path": "archive-bound-all56-result.json",
+      "bytes": 6723,
+      "sha256": "3f4f6e31f5508e2a361b38a6e273a864817a87a3949ee7c5e9d55149311e820c"
+    },
+    {
+      "path": "archive-bound-coverage-correction-01.json",
+      "bytes": 2603,
+      "sha256": "3c5eb4ed0541f30155a89ecbf3f5d7245a303e69e2f6f4f9f52245840664f04b"
+    },
+    {
+      "path": "jev-mip-all56-coverage-verify-request.json",
+      "bytes": 2252,
+      "sha256": "eb611accd0e36e0091e19348a423bdf659f213920783f94eb3039cebe705ecc0"
+    },
+    {
+      "path": "jev-mip-all56-coverage-verify.json",
+      "bytes": 1550,
+      "sha256": "1270a04cb0729fba45316065f07f511b25d958be876a4b7e839759bd140ff493"
+    },
+    {
+      "path": "jev-mip-upload-verify-request.json",
+      "bytes": 4222,
+      "sha256": "d66125049ea4c81e6d5d7e9e2140ff376a8037e6bd0dcf74cc8f7b820afa3bf7"
+    },
+    {
+      "path": "jev-mip-upload-verify.json",
+      "bytes": 1791,
+      "sha256": "4f836b4eeb7bd148c4ca7af12362a15880d26be257b5d48a9591031273c6a413"
+    },
+    {
+      "path": "root-jev-gate.json",
+      "bytes": 22485,
+      "sha256": "3153a8159aceef6ea856c2e47ca90af4301e18fd10fdafdd9d200de9cd7df3e9"
+    },
+    {
+      "path": "root-manual-disposition.json",
+      "bytes": 1214,
+      "sha256": "75ef2f20dd3458e4e8d9a3375f6e7bfb725fe8d9e93183efcd9caeb170372d4f"
+    },
+    {
+      "path": "root-validation.json",
+      "bytes": 3260,
+      "sha256": "66b8a6c0a371736eab58976e8c4bf6549079b2e8277b70ff991c8b495c809e51"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "root_receipts": [
+    {
+      "receipt": "jev/r039-recomp-build-screen.json",
+      "tool": "jev_screen",
+      "action": "pass",
+      "verification": null,
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r040-recomp-dependencies-screen.json",
+      "tool": "jev_screen",
+      "action": "pass",
+      "verification": null,
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r041-recomp-config-screen.json",
+      "tool": "jev_screen",
+      "action": "pass",
+      "verification": null,
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r042-recomp-firecrawl-screen.json",
+      "tool": "jev_screen",
+      "action": "pass",
+      "verification": null,
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r043-recomp-comparison-verification.json",
+      "tool": "jev_verify",
+      "action": null,
+      "verification": {
+        "verified": 2,
+        "contradicted": 1,
+        "unsupported": 0,
+        "needs_review": 1
+      },
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r044-recomp-bss-scope.json",
+      "tool": "jev_verify",
+      "action": null,
+      "verification": {
+        "verified": 2,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 1
+      },
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r045-recomp-artifact-review.json",
+      "tool": "jev_review",
+      "action": "escalate",
+      "verification": null,
+      "limiting": [
+        {
+          "file": "tools/verify_recompilation.py",
+          "rubrics": [
+            "blast_radius"
+          ]
+        },
+        {
+          "file": "tools/test_verify_recompilation.py",
+          "rubrics": [
+            "test_gap"
+          ]
+        }
+      ],
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r046-clang-ubsan-screen.json",
+      "tool": "jev_screen",
+      "action": "pass",
+      "verification": null,
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r047-recomp-overflow-scope.json",
+      "tool": "jev_verify",
+      "action": null,
+      "verification": {
+        "verified": 1,
+        "contradicted": 1,
+        "unsupported": 1,
+        "needs_review": 1
+      },
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r048-raw-string-fix-review.json",
+      "tool": "jev_review",
+      "action": "escalate",
+      "verification": null,
+      "limiting": [
+        "blast_radius"
+      ],
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    },
+    {
+      "receipt": "jev/r049-independent-artifact-milestone-gate.json",
+      "tool": "jev_gate",
+      "action": "escalate",
+      "verification": {
+        "verified": 2,
+        "contradicted": 0,
+        "unsupported": 1,
+        "needs_review": 2,
+        "invalid_response": 0
+      },
+      "limiting": null,
+      "disposition": "Original result retained; screened sources inspected as data, bounded claims checked against byte/compilation/test evidence. Escalations remain escalated; no thresholds lowered or whole-goal approval inferred."
+    }
+  ],
+  "notes": [
+    "r045 preceded independently reproduced raw-string defect; fixed withregressions and reviewedr048.",
+    "r049 retainedunsupported aggregate testclaim and lowconfidence compileclaim despite independently storedpositive logs/nativeobjects; no favorableclaim retry.",
+    "r043/r047 deliberatefullfunction/original-source/equivalenceoverclaims are retained negative controls.",
+    "Some claim text inr049 lackedwordspaces; thisprompt-quality defect is retained alongside result rather than rewritingitsinput."
+  ]
+}

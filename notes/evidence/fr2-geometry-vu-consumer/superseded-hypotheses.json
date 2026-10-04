@@ -1,0 +1,21 @@
+{
+  "schema": "fr2-geometry-vu-consumer-superseded-v1",
+  "items": [
+    {
+      "former_statement": "All eight vectors emitted by FUN_00128ca0 came from the caller's param_1 buffer.",
+      "status": "superseded static-analysis hypothesis; not supported by saved source",
+      "correction": "The first four vectors come from param_1 offsets 0, 0x10, 0x20, and 0x30. The last four are loaded from EE scratchpad 0x70003160, 0x70003170, 0x70003180, and 0x70003190; their writer path is 00126c18(4) -> 00127c00(1) -> 00128518 -> 00115560.",
+      "receipt_note": "No separate Jev result is attributed to the former statement. The corrected source paths are recorded in the tag-audit and preamble bundles."
+    },
+    {
+      "former_statement": "The VU loads at 0x2f20, 0x2f28, and 0x2f68 were pairs 232, 233, and 236.",
+      "status": "superseded pair-index arithmetic error",
+      "correction": "With section base 0x2800 and 8-byte pairs, they are pair 228, pair 229, and pair 237 respectively. Raw-byte validation uses file offset pair_index*8."
+    },
+    {
+      "former_statement": "uVar14 0x208/0x2c8 is an XGKICK output-buffer pointer.",
+      "status": "unsupported; do not use",
+      "correction": "The saved overlay has no XGKICK after pair 215; its XGKICK instructions precede the E stop and use vi11 or vi08. The Jev result retained in jev-verify-vu0-payload-link.json flags this as unsupported with a contradiction relation."
+    }
+  ]
+}

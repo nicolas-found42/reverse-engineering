@@ -1,0 +1,183 @@
+--- tools/ghidra/experimental/CreateEeClosureCandidate00200e70V1.java	2026-10-04 13:30:47
++++ .scratch/mesh/codex-audit/frontier-3844-01/guard-proposal/CreateEeCandidate001ff038V2.java	2026-10-04 14:14:24
+@@ -17,3 +17,3 @@
+ /**
+- * Experimental single-seed 00200e70 candidate guard. Do not run until the parent has
++ * Experimental single-seed 001ff038 candidate guard. Do not run until the parent has
+  * reviewed this source and the exact baseline project copy. This adds no source
+@@ -21,12 +21,12 @@
+  */
+-public class CreateEeClosureCandidate00200e70V1 extends GhidraScript {
++public class CreateEeCandidate001ff038V2 extends GhidraScript {
+     private static final String EXE_SHA = "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95";
+-    private static final String MANIFEST_SHA = "3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8";
+-    private static final String INVENTORY_SHA = "41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716";
+-    private static final String COVERAGE_SHA = "5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44";
+-    private static final String WINDOW_SHA = "9e1d5d1fed414999b4224049a3f654ab2f2503ca1488429fb3b4566d0c791d0c";
+-    private static final String ENTRY = "00200e70";
+-    private static final long START = 0x00200e70L, END = 0x00201124L, MAX_END = 0x00201128L;
++    private static final String MANIFEST_SHA = "1e3f425e7c1a653183a284a240b28f6ff2b2918250b1e1882b0dade4cf9c4ef4";
++    private static final String INVENTORY_SHA = "b23698a1e4e6bfb61f7d4ca9932b80971f1eb4527f57bb5219d14196586c4a9d";
++    private static final String COVERAGE_SHA = "2ff0ed89839dc6e4e26f7c8b93f1df7ee111f3c1205385e8c52f2640f13df1f0";
++    private static final String WINDOW_SHA = "16d48e8843225c3e399cb0b062641b0199c6870d685c79badaf65c4c3cf8c3a1";
++    private static final String ENTRY = "001ff038";
++    private static final long START = 0x001ff038L, END = 0x001ff140L, MAX_END = 0x001ff140L;
+     private static final long TEXT_VA = 0x00100000L, TEXT_FILE = 0x1000L, TEXT_SIZE = 0x00117bd4L;
+-    private static final int INVENTORY_COUNT = 3843;
++    private static final int INVENTORY_COUNT = 3844;
+     private static final String LANGUAGE = "r5900:LE:32:default";
+@@ -87,3 +87,3 @@
+         Set<Long> undefined=new HashSet<>();for(JsonElement e:block.getAsJsonArray("undefined_ranges")){JsonObject r=e.getAsJsonObject();long a=Long.parseUnsignedLong(r.get("start").getAsString(),16),b=Long.parseUnsignedLong(r.get("end").getAsString(),16);for(long x=a;x<=b;x++)undefined.add(x);}
+-        for(long pc=START;pc<MAX_END;pc++)req(undefined.contains(pc),"baseline coverage does not classify candidate byte as undefined at "+hex(pc));
++        for(long pc=START;pc<END;pc++)req(undefined.contains(pc),"baseline coverage does not classify candidate byte as undefined at "+hex(pc));
+     }
+@@ -95,3 +95,3 @@
+         Map<String,JsonObject> expected=new TreeMap<>(); for(JsonElement e:fs){JsonObject f=e.getAsJsonObject();expected.put(f.get("entry").getAsString(),f);}
+-        FunctionManager fm=currentProgram.getFunctionManager(); req(fm.getFunctionCount()==INVENTORY_COUNT,"live function count differs from final-3843 snapshot");
++        FunctionManager fm=currentProgram.getFunctionManager(); req(fm.getFunctionCount()==INVENTORY_COUNT,"live function count differs from final-3844 snapshot");
+         Map<String,String> live=functionSnapshot(); req(live.size()==INVENTORY_COUNT && expected.size()==INVENTORY_COUNT,"function entry inventory cardinality mismatch");
+@@ -116,9 +116,17 @@
+         if(op==0 && fn==8)return "computed_jump"; if(op==0 && fn==9)return "computed_call";
++        if(op==0 && (fn==12||fn==13||fn==48||fn==49||fn==50||fn==51||fn==52||fn==54))return "unsupported_trap";
++        if(op==0 && (fn==32||fn==34||fn==44||fn==46))return "unsupported_trap";
++        if(op==8||op==24)return "unsupported_trap"; // ADDI and DADDI may take overflow exceptions.
+         if(op==2)return "jump"; if(op==3)return "call";
+-        if(op==1 && (rt==0||rt==1||rt==2||rt==3||rt==16||rt==17||rt==18||rt==19))return (rt==2||rt==3||rt==18||rt==19)?"conditional_likely":"conditional";
++        if(op==1) {
++            if(rt==8||rt==9||rt==10||rt==11||rt==12||rt==14)return "unsupported_trap";
++            if(rt==0||rt==1||rt==2||rt==3||rt==16||rt==17||rt==18||rt==19)return (rt==2||rt==3||rt==18||rt==19)?"conditional_likely":"conditional";
++            return "unsupported_encoding";
++        }
+         if(op==4 && rs==0 && rt==0)return "unconditional_branch";
+-        if(op==4||op==5||op==6||op==7)return "conditional";
++        if(op==4||op==5)return "conditional";
++        if((op==6||op==7||op==22||op==23)&&rt!=0)return "unsupported_encoding";
++        if(op==6||op==7)return "conditional";
+         if(op==20||op==21||op==22||op==23)return "conditional_likely";
+         if((op==16||op==17||op==18||op==19)&&rs==8)return ((rt&2)!=0)?"conditional_likely":"conditional";
+-        if((op==0&&(fn==12||fn==13))||(op==1&&(rt==8||rt==9||rt==10||rt==11||rt==12||rt==14)))return "unsupported_trap";
+         return "linear";
+@@ -152,2 +160,64 @@
+     }
++    private void checkCandidateFlowProfile(JsonObject cfg, byte[] raw) {
++        Map<String,String> expectedCalls=new TreeMap<>();
++        expectedCalls.put("001ff08c","001ff270"); expectedCalls.put("001ff0a8","001ffd70");
++        expectedCalls.put("001ff0b0","001feb80"); expectedCalls.put("001ff0fc","001fdb88");
++        expectedCalls.put("001ff114","001fc4e0");
++        Map<String,String> actualCalls=new TreeMap<>(); int likely=0;
++        for(JsonElement e:cfg.getAsJsonArray("edges")) {
++            JsonObject edge=e.getAsJsonObject(); String kind=edge.get("kind").getAsString();
++            if(kind.equals("call"))actualCalls.put(edge.get("site").getAsString(),edge.get("target").getAsString());
++            if(kind.equals("conditional_likely"))likely++;
++        }
++        req(actualCalls.equals(expectedCalls),"five outgoing JAL sites/targets differ from the pinned raw profile");
++        req(likely==0,"unexpected branch-likely site; re-review taken-delay/not-taken-annul semantics");
++        req(wordAt(raw,0x001ff084L)==0&&wordAt(raw,0x001ff0a4L)==0&&wordAt(raw,0x001ff0dcL)==0&&wordAt(raw,0x001ff0e0L)==0&&wordAt(raw,0x001ff0e8L)==0,"one of the five reachable zero words differs from pinned NOP bytes");
++    }
++    private Set<String> functionSet(Set<Function> functions) {
++        Set<String> out=new TreeSet<>(); for(Function f:functions)out.add(canonical(f.getEntryPoint())); return out;
++    }
++    private Map<String,Set<String>> calledGraph() throws Exception {
++        Map<String,Set<String>> out=new TreeMap<>(); for(Function f:currentProgram.getFunctionManager().getFunctions(true))out.put(canonical(f.getEntryPoint()),functionSet(f.getCalledFunctions(monitor))); return out;
++    }
++    private Map<String,Set<String>> callerGraph() throws Exception {
++        Map<String,Set<String>> out=new TreeMap<>(); for(Function f:currentProgram.getFunctionManager().getFunctions(true))out.put(canonical(f.getEntryPoint()),functionSet(f.getCallingFunctions(monitor))); return out;
++    }
++    private Set<String> referenceSnapshot() {
++        Set<String> out=new TreeSet<>();
++        for(Instruction i:currentProgram.getListing().getInstructions(true))for(Reference r:i.getReferencesFrom())out.add(referenceKey(r));
++        for(Data d:currentProgram.getListing().getDefinedData(true))for(Reference r:d.getReferencesFrom())out.add(referenceKey(r));
++        return out;
++    }
++    private String referenceKey(Reference r) { return canonical(r.getFromAddress())+"|"+canonical(r.getToAddress())+"|"+r.getReferenceType()+"|"+r.getSource(); }
++    private Set<String> expectedNewFlowReferences(JsonObject cfg) {
++        Set<String> out=new TreeSet<>();
++        for(JsonElement e:cfg.getAsJsonArray("edges")) {
++            JsonObject x=e.getAsJsonObject(); String k=x.get("kind").getAsString(); if(k.equals("return"))continue;
++            String type=(k.equals("call"))?"UNCONDITIONAL_CALL":(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
++            out.add(x.get("site").getAsString()+"|"+x.get("target").getAsString()+"|"+type+"|DEFAULT");
++        }
++        return out;
++    }
++    private void checkReferenceAndCallGraphDeltas(Set<String> beforeRefs, Map<String,Set<String>> beforeCalled, Map<String,Set<String>> beforeCallers, JsonObject cfg) throws Exception {
++        Set<String> afterRefs=referenceSnapshot(); Set<String> additions=new TreeSet<>(afterRefs); additions.removeAll(beforeRefs);
++        req(additions.equals(expectedNewFlowReferences(cfg)),"new reference set differs from the exact raw CFG flow edges: "+additions);
++        for(String ref:beforeRefs)req(afterRefs.contains(ref),"old global reference removed or changed: "+ref);
++        Map<String,Set<String>> afterCalled=calledGraph(), afterCallers=callerGraph(); String entry=ENTRY, owner="00200d10";
++        Set<String> expectedKnownCallees=new TreeSet<>(Arrays.asList("001ffd70","001fc4e0"));
++        req(afterCalled.get(entry).equals(expectedKnownCallees),"candidate reciprocal callee graph differs from the two preexisting function targets");
++        req(afterCallers.get(entry).equals(new TreeSet<>(Arrays.asList(owner))),"candidate caller graph differs from sole existing provisional caller");
++        for(String old:beforeCalled.keySet()) {
++            Set<String> expectedCallees=new TreeSet<>(beforeCalled.get(old));
++            if(old.equals(owner))expectedCallees.add(entry);
++            req(Objects.equals(expectedCallees,afterCalled.get(old)),"existing caller's callee graph changed unexpectedly at "+old);
++            Set<String> expectedCallers=new TreeSet<>(beforeCallers.get(old));
++            if(expectedKnownCallees.contains(old))expectedCallers.add(entry);
++            req(Objects.equals(expectedCallers,afterCallers.get(old)),"existing callee's caller graph changed unexpectedly at "+old);
++        }
++        for(String unresolved:Arrays.asList("001ff270","001feb80","001fdb88")) {
++            Address u=at(Long.parseUnsignedLong(unresolved,16));
++            req(currentProgram.getFunctionManager().getFunctionAt(u)==null&&currentProgram.getFunctionManager().getFunctionContaining(u)==null,"unresolved outgoing callee was created/claimed at "+unresolved);
++            req(currentProgram.getListing().getInstructionAt(u)==null&&currentProgram.getListing().getDefinedDataContaining(u)==null,"unresolved outgoing callee bytes were decoded/typed at "+unresolved);
++        }
++    }
+     private void checkDecoderFlow(JsonObject cfg) {
+@@ -173,12 +243,24 @@
+     }
+-    private AddressSet decodeAndCreate(byte[] elf, byte[] raw, JsonObject cfg, Map<String,String> beforeInstructions, Map<String,String> beforeData, String beforeMemory, Map<String,String> beforeFunctions, JsonArray calls) throws Exception {
++    private AddressSet decodeAndCreate(byte[] elf, byte[] raw, JsonObject cfg, Map<String,String> beforeInstructions, Map<String,String> beforeData, String beforeMemory, Map<String,String> beforeFunctions, Set<String> beforeRefs, Map<String,Set<String>> beforeCalled, Map<String,Set<String>> beforeCallers, JsonArray calls) throws Exception {
+         Address start=at(START), lastInstruction=at(Long.parseUnsignedLong(cfg.get("body_end_inclusive").getAsString(),16)); FunctionManager fm=currentProgram.getFunctionManager();
+-        req(lastInstruction.getOffset()==END-4,"raw CFG body end differs from exact 173-word body boundary");
++        req(lastInstruction.getOffset()==END-4,"raw CFG body end differs from exact 66-word / 264-byte body boundary");
+         req(fm.getFunctionAt(start)==null&&fm.getFunctionContaining(start)==null,"candidate entry already belongs to a function");
+-        req(currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null&&fm.getFunctionContaining(at(END))==null,"excluded terminal zero is already listed or owned");
++        req(currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null&&fm.getFunctionContaining(at(END))==null,"next word at 001ff140 is already listed or owned");
+         for(long pc=START;pc<END;pc+=4){Address a=at(pc);req(currentProgram.getListing().getInstructionAt(a)==null&&currentProgram.getListing().getInstructionContaining(a)==null,"candidate maximum span overlaps decoded instruction at "+hex(pc));req(currentProgram.getListing().getDefinedDataContaining(a)==null,"candidate maximum span overlaps defined data at "+hex(pc));req(fm.getFunctionContaining(a)==null,"candidate span overlaps saved function at "+hex(pc));}
+         Set<String> sites=new TreeSet<>(); for(JsonElement e:calls){JsonObject r=e.getAsJsonObject();req("UNCONDITIONAL_CALL".equals(r.get("type").getAsString()),"reference into candidate interval is not an unconditional call");req(ENTRY.equals(r.get("to").getAsString()),"reference targets an interior candidate address");sites.add(r.get("from").getAsString());}
+-        req(calls.size()==4&&sites.equals(new TreeSet<>(Arrays.asList("001fc008","001fc02c","001fc174","001fc1dc"))),"complete references-to-every-byte scan differs from exactly four entry calls");
+-        for(String site:sites){long pc=Long.parseUnsignedLong(site,16);byte[] loaded=new byte[4];currentProgram.getMemory().getBytes(at(pc),loaded);long fileOffset=TEXT_FILE+pc-TEXT_VA;byte[] fileBytes=Arrays.copyOfRange(elf,Math.toIntExact(fileOffset),Math.toIntExact(fileOffset+4));req(Arrays.equals(loaded,fileBytes),"loaded incoming JAL bytes differ from pinned ELF at "+site);long w=word(fileBytes,0);long target=((pc+4)&0xf0000000L)|((w&0x03ffffffL)<<2);req((w>>>26)==3&&target==START,"saved incoming call does not decode to candidate from raw ELF bytes at "+site);Function owner=fm.getFunctionContaining(at(pc));String expectedOwner=(site.equals("001fc008")||site.equals("001fc02c"))?"candidate_ee_001fbfb8":"candidate_ee_001fc118";req(owner!=null&&owner.getName().equals(expectedOwner)&&owner.getSymbol().getSource()==SourceType.ANALYSIS,"incoming callsite is not owned by its pinned provisional candidate: "+site);}
+-        AddressSet expected=new AddressSet(); for(JsonElement a:cfg.getAsJsonArray("instruction_addresses")){Address ia=at(Long.parseUnsignedLong(a.getAsString(),16));expected.addRange(ia,ia.add(3));} req(expected.getNumAddresses()==692,"CFG body instruction ranges do not cover exactly 173 words / 692 body bytes"); int tx=currentProgram.startTransaction("guarded single EE candidate "+ENTRY); boolean commit=false;
++        req(calls.size()==1&&sites.equals(new TreeSet<>(Arrays.asList("00200dac"))),"complete references-to-every-byte scan differs from exactly one entry call");
++        for(String site:sites){
++            long pc=Long.parseUnsignedLong(site,16); byte[] loaded=new byte[4]; currentProgram.getMemory().getBytes(at(pc),loaded);
++            long fileOffset=TEXT_FILE+pc-TEXT_VA; byte[] fileBytes=Arrays.copyOfRange(elf,Math.toIntExact(fileOffset),Math.toIntExact(fileOffset+4));
++            req(Arrays.equals(loaded,fileBytes),"loaded incoming JAL bytes differ from pinned ELF at "+site);
++            long w=word(fileBytes,0), target=((pc+4)&0xf0000000L)|((w&0x03ffffffL)<<2);
++            req((w>>>26)==3&&target==START,"saved incoming call does not decode to candidate from raw ELF bytes at "+site);
++            Function owner=fm.getFunctionContaining(at(pc));
++            req(owner!=null&&owner.getEntryPoint().getOffset()==0x00200d10L&&owner.getName().equals("candidate_ee_00200d10")&&owner.getSymbol().getSource()==SourceType.ANALYSIS,"incoming callsite is not owned by pinned ANALYSIS candidate 00200d10");
++            Instruction call=currentProgram.getListing().getInstructionAt(at(pc));
++            req(call!=null&&call.getFlowType().isCall()&&call.getFlows().length==1&&call.getFlows()[0].getOffset()==START,"live incoming call instruction flow differs from the raw JAL");
++            boolean found=false; for(Reference r:currentProgram.getReferenceManager().getReferencesTo(start)) if(r.getFromAddress().equals(at(pc))&&r.getReferenceType().toString().equals("UNCONDITIONAL_CALL")&&r.getSource()==SourceType.DEFAULT)found=true;
++            req(found,"incoming JAL reference lacks exact DEFAULT disassembler-flow provenance");
++        }
++        AddressSet expected=new AddressSet(); for(JsonElement a:cfg.getAsJsonArray("instruction_addresses")){Address ia=at(Long.parseUnsignedLong(a.getAsString(),16));expected.addRange(ia,ia.add(3));} req(expected.getNumAddresses()==264,"CFG body instruction ranges do not cover exactly 66 words / 264 body bytes"); int tx=currentProgram.startTransaction("guarded single EE candidate "+ENTRY); boolean commit=false;
+         try {
+@@ -196,3 +278,3 @@
+             Map<String,String> fnow=functionSnapshot();for(Map.Entry<String,String> e:beforeFunctions.entrySet())req(Objects.equals(fnow.get(e.getKey()),e.getValue()),"old function name/source/body changed at "+e.getKey());
+-            req(fm.getFunctionCount()==INVENTORY_COUNT+1,"function count did not increase by exactly one");req(fm.getFunctionContaining(at(END))==null&&currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null,"terminal zero entered a function or listing");commit=true;
++            req(fm.getFunctionCount()==INVENTORY_COUNT+1,"function count did not increase by exactly one");req(fm.getFunctionContaining(at(END))==null&&currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null,"next word at 001ff140 entered a function or listing");checkReferenceAndCallGraphDeltas(beforeRefs,beforeCalled,beforeCallers,cfg);commit=true;
+         } finally { currentProgram.endTransaction(tx,commit); }
+@@ -206,11 +288,16 @@
+         try {
+-            req(EXE_SHA.equals(sha(elf))&&EXE_SHA.equals(currentProgram.getExecutableSHA256()),"pinned executable identity mismatch");req(MANIFEST_SHA.equals(sha(mb)),"final-3843 manifest hash mismatch");req(INVENTORY_SHA.equals(sha(ib)),"final-3843 inventory hash mismatch");req(COVERAGE_SHA.equals(sha(cb)),"final-3843 coverage hash mismatch");req(LANGUAGE.equals(currentProgram.getLanguageID().toString()),"program is not R5900 little-endian");
++            req(EXE_SHA.equals(sha(elf))&&EXE_SHA.equals(currentProgram.getExecutableSHA256()),"pinned executable identity mismatch");req(MANIFEST_SHA.equals(sha(mb)),"final-3844 manifest hash mismatch");req(INVENTORY_SHA.equals(sha(ib)),"final-3844 inventory hash mismatch");req(COVERAGE_SHA.equals(sha(cb)),"final-3844 coverage hash mismatch");req(LANGUAGE.equals(currentProgram.getLanguageID().toString()),"program is not R5900 little-endian");
+             JsonObject manifest=JsonParser.parseString(new String(mb,StandardCharsets.UTF_8)).getAsJsonObject(), inventory=JsonParser.parseString(new String(ib,StandardCharsets.UTF_8)).getAsJsonObject(), coverage=JsonParser.parseString(new String(cb,StandardCharsets.UTF_8)).getAsJsonObject();
+             MemoryBlock text=currentProgram.getMemory().getBlock(at(TEXT_VA));req(text!=null&&text.getName().equals(".text")&&text.isInitialized()&&text.isExecute()&&text.getStart().getOffset()==TEXT_VA&&text.getSize()==TEXT_SIZE,"loaded .text block differs from exact ELF map");
+-            long file=TEXT_FILE+START-TEXT_VA;byte[] window=Arrays.copyOfRange(elf,Math.toIntExact(file),Math.toIntExact(file+MAX_END-START));req(window.length==696&&sha(window).equals(WINDOW_SHA),"candidate 696-byte maximum-window hash mismatch");req(bytes(at(START),window.length).equals(HexFormat.of().formatHex(window)),"loaded program bytes differ from ELF maximum candidate span");byte[] tail=Arrays.copyOfRange(window,Math.toIntExact(END-START),window.length);req(tail.length==4&&word(tail,0)==0,"terminal word at 00201124 is not the pinned zero word");byte[] raw=Arrays.copyOf(window,Math.toIntExact(END-START));
+-            checkBaseline(manifest,inventory);checkCoverage(coverage);Map<String,String> functions=functionSnapshot(),instructions=instructionSnapshot(),data=dataSnapshot();String memory=memoryHash();JsonArray refs=incomingCalls();JsonObject cfg=traverse(raw);req(cfg.get("instruction_count_including_delay_slots").getAsInt()==173,"raw CFG is not the exact 173-word body");for(JsonElement edge:cfg.getAsJsonArray("edges"))req(!"call".equals(edge.getAsJsonObject().get("kind").getAsString()),"unexpected outgoing direct call in candidate CFG");
+-            AddressSet body=decodeAndCreate(elf,raw,cfg,instructions,data,memory,functions,refs);req(currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null&&currentProgram.getFunctionManager().getFunctionContaining(at(END))==null,"excluded terminal zero at 00201124 must remain unowned and undecoded");
+-            out.addProperty("status","created_single_bounded_candidate");out.add("cfg",cfg);out.add("incoming_references",refs);out.addProperty("body_bytes",body.getNumAddresses());out.addProperty("maximum_window_bytes",MAX_END-START);out.addProperty("excluded_terminal_zero","00201124");out.addProperty("excluded_terminal_zero_hex","00000000");out.addProperty("function_count_after",currentProgram.getFunctionManager().getFunctionCount());out.addProperty("old_function_snapshot_preserved",true);out.addProperty("initialized_memory_preserved",true);out.addProperty("defined_data_preserved",true);out.addProperty("scope","Static provisional candidate only. No original function identity, semantics, runtime reachability, or whole-game completeness is established.");
++            long file=TEXT_FILE+START-TEXT_VA;byte[] raw=Arrays.copyOfRange(elf,Math.toIntExact(file),Math.toIntExact(file+END-START));
++            req(raw.length==264&&sha(raw).equals(WINDOW_SHA),"candidate [001ff038,001ff140) SHA/length mismatch");
++            req(word(raw,0)==0x27bdffa0L&&word(raw,raw.length-4)==0x27bd0060L&&word(raw,raw.length-8)==0x03e00008L,"candidate initial/terminal/delay words differ from exact pins");
++            req(bytes(at(START),raw.length).equals(HexFormat.of().formatHex(raw)),"loaded program bytes differ from exact ELF candidate span");
++            long nextFile=file+(END-START);byte[] next=Arrays.copyOfRange(elf,Math.toIntExact(nextFile),Math.toIntExact(nextFile+4));
++            req(word(next,0)==0x27bdff90L&&bytes(at(END),4).equals(HexFormat.of().formatHex(next)),"pinned next word at 001ff140 differs or is unavailable; it remains outside the candidate span");
++            checkBaseline(manifest,inventory);checkCoverage(coverage);Map<String,String> functions=functionSnapshot(),instructions=instructionSnapshot(),data=dataSnapshot();String memory=memoryHash();Set<String> refsBefore=referenceSnapshot();Map<String,Set<String>> calledBefore=calledGraph(),callersBefore=callerGraph();JsonArray refs=incomingCalls();JsonObject cfg=traverse(raw);req(cfg.get("instruction_count_including_delay_slots").getAsInt()==66,"raw CFG is not the exact 66-word body");checkCandidateFlowProfile(cfg,raw);
++            AddressSet body=decodeAndCreate(elf,raw,cfg,instructions,data,memory,functions,refsBefore,calledBefore,callersBefore,refs);req(currentProgram.getListing().getInstructionAt(at(END))==null&&currentProgram.getListing().getDefinedDataContaining(at(END))==null&&currentProgram.getFunctionManager().getFunctionContaining(at(END))==null,"next word at 001ff140 must remain unowned and undecoded");
++            out.addProperty("status","created_single_bounded_candidate");out.add("cfg",cfg);out.addProperty("call_graph_limit","five JALs: two resolve to preexisting functions, three unresolved targets remain uncreated");out.add("incoming_references",refs);out.addProperty("body_bytes",body.getNumAddresses());out.addProperty("body_interval_bytes",END-START);out.addProperty("excluded_next_word","001ff140");out.addProperty("excluded_next_word_hex","27bdff90");out.addProperty("function_count_after",currentProgram.getFunctionManager().getFunctionCount());out.addProperty("old_function_snapshot_preserved",true);out.addProperty("initialized_memory_preserved",true);out.addProperty("defined_data_preserved",true);out.addProperty("scope","Static provisional candidate only. No original function identity, semantics, runtime reachability, or whole-game completeness is established.");
+         } catch(Exception e) { out.addProperty("status","rejected_or_failed");out.addProperty("failure",e.getClass().getSimpleName()+": "+String.valueOf(e.getMessage()));write(output,out);throw e; }
+-        write(output,out);println("EE_CLOSURE_CANDIDATE_OK entry="+ENTRY+" body_bytes=692 function_count_delta=1 terminal_zero_excluded=00201124");
++        write(output,out);println("EE_CLOSURE_CANDIDATE_OK entry="+ENTRY+" body_bytes=264 function_count_delta=1 next_word_excluded=001ff140");
+     }

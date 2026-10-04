@@ -1,0 +1,14 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {"verified": 3, "contradicted": 0, "unsupported": 0, "needs_review": 0},
+  "results": [
+    {"claim": "The current environment cannot run CMake because `cmake --version` fails with `command not found`, so no CMake link-check configuration or link was performed.", "verdict": "verified", "probabilities": {"supports": 1, "says_nothing": 0, "contradicts": 0}, "confidence": 1, "action": "auto", "supporting_evidence": null, "same_subject": 0.97},
+    {"claim": "The direct syntax-only compile of the actual PS2Runtime source failed at `ps2_host_backend.h` because `raylib.h` is absent; this failure occurred before the runtime translation unit could be checked.", "verdict": "verified", "probabilities": {"supports": 1, "says_nothing": 0, "contradicts": 0}, "confidence": 0.99, "action": "auto", "supporting_evidence": null, "same_subject": 0.97},
+    {"claim": "The prebuilt generated objects are Mach-O 64-bit arm64, and adding them directly as external object sources before the runtime static library is a proposed static-link ordering approach rather than a validated link result.", "verdict": "verified", "probabilities": {"supports": 0.87, "says_nothing": 0.12, "contradicts": 0.01}, "confidence": 0.81, "action": "auto", "supporting_evidence": null, "same_subject": 0.9}
+  ],
+  "usage": {"input_tokens": 1512, "output_tokens": 187}
+}

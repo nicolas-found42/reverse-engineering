@@ -1,0 +1,67 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "summary": {
+    "verified": 7,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 1
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "verdict": "verified",
+      "supports": 0.99,
+      "confidence": 0.98,
+      "action": "auto"
+    },
+    {
+      "id": "claim1",
+      "verdict": "verified",
+      "supports": 0.78,
+      "confidence": 0.67,
+      "action": "review"
+    },
+    {
+      "id": "claim2",
+      "verdict": "verified",
+      "supports": 0.98,
+      "confidence": 0.97,
+      "action": "auto"
+    },
+    {
+      "id": "claim3",
+      "verdict": "verified",
+      "supports": 0.98,
+      "confidence": 0.97,
+      "action": "auto"
+    },
+    {
+      "id": "claim4",
+      "verdict": "verified",
+      "supports": 1.0,
+      "confidence": 1.0,
+      "action": "auto"
+    },
+    {
+      "id": "claim5",
+      "verdict": "verified",
+      "supports": 1.0,
+      "confidence": 1.0,
+      "action": "auto"
+    },
+    {
+      "id": "claim6",
+      "verdict": "verified",
+      "supports": 1.0,
+      "confidence": 0.99,
+      "action": "auto"
+    }
+  ],
+  "claim1_contradicts_probability": 0.22,
+  "usage": {
+    "input_tokens": 4424,
+    "output_tokens": 843
+  },
+  "root_disposition": "claim1 (compound: raw ELF match and next word undefined) was flagged review at confidence 0.67; both halves are deterministic: reconcile_3844_3845.py checks all 66 words and the next-word coverage, and root check_ee_3845_root_01.py rechecks all 66 words against unique ELF PT_LOAD mappings. Not retried."
+}

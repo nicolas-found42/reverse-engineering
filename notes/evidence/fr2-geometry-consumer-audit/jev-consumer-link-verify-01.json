@@ -1,0 +1,91 @@
+{
+  "tool": "mcp__jev__jev_verify",
+  "arguments": {
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "claims": [
+      "FUN_0011ed90 walks a serialized geometry section whose top-level table uses 0x34-byte records and takes two separate u16 header counts from each record at offsets +0x1c and +0x28.",
+      "FUN_0011ed90 reads each per-group header's count from +2 and flags from +0, then computes aligned payload positions using a mandatory 6-byte plane, optional 20-byte plane for flag 0x800, 4-byte plane, an extra 4-byte plane when the third u16 is not 0xffff, and optional 4-byte planes for flags 0x40 and 0x80.",
+      "FUN_0012d4b8 loads and parses a .PS2 resource with FUN_0011ed90, resolves named entries SKYDOME and MINI_SKYDOME, and in its later object-processing loop passes three float parameters to FUN_00113aa8, which invokes VU0 vcallms immediate 0x4d (byte VMA 0x268). This supports a parsed-object-to-VU0-transform linkage at object/float level.",
+      "The available evidence does not establish that any particular six-byte or four-byte serialized geometry plane contains vertices, indices, normals, texture references, or that those exact plane bytes are submitted to VIF1/VU1."
+    ],
+    "evidence": [
+      {
+        "id": "FUN_0011ed90-disassembly",
+        "text": "Pinned static-export.json instruction records for FUN_0011ed90: 0011ee90 lhu v1,0x1c(a0); 0011ee98 lhu v0,0x28(a0); 0011ee9c addiu a0,a0,0x34; loop at 0011eea0-0011eea8 sums both halfword counts. Group A at 0011ef38 lhu v0,0x1c(v1); group header read at 0011ef64 lhu a2,0x2(s2), 0011ef68 lhu v0,0(s2); output pointers at 0011ef4c sw s2,0x20(v1) and 0011ef54 sw s1,0x24(v1); advances for 6*n and conditional planes based on flags 0x800,0x40,0x80 and third halfword sentinel at 0011ef64-0011eff4; calls FUN_00121420 at 0011eff8; group B at 0011f044 lhu v1,0x28(a0); writes pointer fields +0x2c/+0x30 at 0011f05c/0011f064. It also calls FUN_00123908 at 0011ee30 and FUN_0022ba30 at 0011ee3c."
+      },
+      {
+        "id": "ps2_sections-geometry",
+        "text": "tools/ps2_sections.py geometry(): reads a u32 table count at next_section.offset, then count records with stride 0x34. For each record it reads unsigned little-endian halfwords at offsets +0x1c and +0x28 and sums header counts. header(): 8-byte prefix decoded as four u16 values; count is second word, flags is first. For each header the extraction records a 6-byte-per-count plane, optional 20-byte plane when flags&0x800, 4-byte plane, extra 4-byte plane unless third==0xffff, optional 4-byte planes for flags 0x40 and 0x80; every plane is aligned to 16 bytes."
+      },
+      {
+        "id": "model-consumer-c",
+        "text": "Static C export FUN_0012d4b8: formats a path at call 0012d558 and calls FUN_0011ed90 at 0012d568, stores the returned parsed object at context offset 0x188, looks up the names SKYDOME and MINI_SKYDOME through FUN_00124cb8 at 0012d57c/0012d590, and later loops over object records. At 0012dd70-0012dd88 it loads float arguments from the current record and calls FUN_00113aa8. Static C export FUN_00113aa8 invokes _vcallms(0x268) for nonzero param_1, param_2, param_3 and stores packed components into its output buffer."
+      },
+      {
+        "id": "geometry-corpus-sample",
+        "text": "Model 3DDATA/CARS/49COUPE.PS2;1 has SHA-256 62e3de6688791e6af88d65bebe7156ee2d1f1ec83911316cafddf3173259f381 and length 1,146,656. Existing exact-EOF result maps the next-section record table to offset 933,940, count 39, stride 52 (0x34); geometry headers start 935,968; payload starts 938,880; loader68 section starts 1,143,232. Offline ps2_sections parse of first geometry header found offset 935,968, count 64, flags 0xC008, third 0; the following 6-byte plane is offset 938,880 count 64 size 384; next 4-byte plane offset 939,264 count 64 size 256; third 4-byte plane offset 939,520 count 64 size 256."
+      },
+      {
+        "id": "VU0-mapping-existing",
+        "text": "Prior exact static overlay evidence establishes that VU0 vcallms immediate values are multiplied by 8 to get byte VMAs; immediate 0x4d therefore targets byte VMA 0x268. This establishes address mapping only, not matrix or geometry semantics."
+      }
+    ]
+  },
+  "result": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "provider": "openrouter",
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "summary": {
+      "verified": 4,
+      "contradicted": 0,
+      "unsupported": 0,
+      "needs_review": 0
+    },
+    "results": [
+      {
+        "id": "claim0",
+        "claim": "FUN_0011ed90 walks a serialized geometry section whose top-level table uses 0x34-byte records and takes two separate u16 header counts from each record at offsets +0x1c and +0x28.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0, "supports": 1, "contradicts": 0},
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "FUN_0011ed90-disassembly",
+        "same_subject": 0.84
+      },
+      {
+        "id": "claim1",
+        "claim": "FUN_0011ed90 reads each per-group header's count from +2 and flags from +0, then computes aligned payload positions using a mandatory 6-byte plane, optional 20-byte plane for flag 0x800, 4-byte plane, an extra 4-byte plane when the third u16 is not 0xffff, and optional 4-byte planes for flags 0x40 and 0x80.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0, "supports": 1, "contradicts": 0},
+        "confidence": 0.99,
+        "action": "auto",
+        "supporting_evidence": "ps2_sections-geometry",
+        "same_subject": 0.72
+      },
+      {
+        "id": "claim2",
+        "claim": "FUN_0012d4b8 loads and parses a .PS2 resource with FUN_0011ed90, resolves named entries SKYDOME and MINI_SKYDOME, and in its later object-processing loop passes three float parameters to FUN_00113aa8, which invokes VU0 vcallms immediate 0x4d (byte VMA 0x268). This supports a parsed-object-to-VU0-transform linkage at object/float level.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0, "supports": 1, "contradicts": 0},
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "model-consumer-c",
+        "same_subject": 0.52
+      },
+      {
+        "id": "claim3",
+        "claim": "The available evidence does not establish that any particular six-byte or four-byte serialized geometry plane contains vertices, indices, normals, texture references, or that those exact plane bytes are submitted to VIF1/VU1.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0.05, "supports": 0.93, "contradicts": 0.02},
+        "confidence": 0.89,
+        "action": "auto",
+        "supporting_evidence": null,
+        "same_subject": 0.42
+      }
+    ],
+    "usage": {"input_tokens": 3359, "output_tokens": 623}
+  }
+}

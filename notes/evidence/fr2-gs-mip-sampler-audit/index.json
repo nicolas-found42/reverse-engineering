@@ -1,0 +1,152 @@
+{
+  "schema_version": 1,
+  "scope": "Authored public CPU memory drawing versus manually reviewed fixed-LOD specification",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3922,
+      "sha256": "03043af28557b3aec5f456bac16f75ebc8d609c299164f610b748ce3b7bc294b"
+    },
+    {
+      "path": "binary-preflight.json",
+      "bytes": 604,
+      "sha256": "719f86745126933de2e37dc25742c482637ff4fb8b0586e6d58f5a3be93e70b4"
+    },
+    {
+      "path": "compile-recheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "manual-lod-visual.json",
+      "bytes": 1820,
+      "sha256": "c94602ecc4d2c2bd6530418cdb320390d1edf7a87263fc98142f95609bb17805"
+    },
+    {
+      "path": "pcsx2-firecrawl-source-metadata.json",
+      "bytes": 736,
+      "sha256": "511128b07406c295679dcf4f9de6093bb7a3360c3e1bb97e3511b0d13ea80150"
+    },
+    {
+      "path": "probe.cpp",
+      "bytes": 2744,
+      "sha256": "56fa90df6c7c6d79eecb7bf030f6e50c38c817232152ff06a6d957b3758c551b"
+    },
+    {
+      "path": "r095-public-sampler-source-screen.json",
+      "bytes": 8270,
+      "sha256": "84df3b4cbe83c109c16e45348e51cdb0a29e88dda9f488e4e8ac4062425b0e18"
+    },
+    {
+      "path": "r098-mip-sampler-verify.json",
+      "bytes": 18218,
+      "sha256": "0335034a979a0c1bd00fd420de17d457d4923b395cabf615efa1f6e55324039c"
+    },
+    {
+      "path": "r099-blocked-research-disposition.json",
+      "bytes": 1075,
+      "sha256": "d286e0d2ebb3893303c1e557b72fd24e950727a5575f4a9fffb23b66c2676c7a"
+    },
+    {
+      "path": "result.json",
+      "bytes": 9746,
+      "sha256": "c9720cd9a0cb2b30d9bff52e704225fd15d637aab47cdb4f698064abb2a7f2ed"
+    },
+    {
+      "path": "run.stderr",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "run.stdout",
+      "bytes": 1420,
+      "sha256": "aa7303c12779c4b4ebbf522c036f6fa7e522496da25e8bb075e202eec7410b9a"
+    },
+    {
+      "path": "run_probe.py",
+      "bytes": 5836,
+      "sha256": "edc2a884f36261b829745b7a2a442a7d6ed48d859ce70aad5f9d35550b9a5b51"
+    }
+  ],
+  "q_sweep_02": {
+    "scope": "LCM=0 homogeneous-Q sprite sweep; 16 actual authored cases, 8 manual disagreements (4 fixed, 4 Q-based)",
+    "result_sha256": "7d7143919204d642968b75e672d128af5a64a02e83462ab69c8ce5037ec9f427",
+    "files": [
+      {
+        "path": "q-sweep-02/01-preservation-before.json",
+        "bytes": 3041,
+        "sha256": "c953c77766f98d7e7bc900b7cea5851d6629a9ad4d647bbc6317947bb9b986b1"
+      },
+      {
+        "path": "q-sweep-02/README.md",
+        "bytes": 2676,
+        "sha256": "e7989169c3a8ba6afde4a5c646e704a029e970fba992e644848d3f0659a1f072"
+      },
+      {
+        "path": "q-sweep-02/binary-preflight.json",
+        "bytes": 590,
+        "sha256": "19ca08c8f8da0b378e38aa078c1328643aea701303e2ebcb9c8abff88c77a7ce"
+      },
+      {
+        "path": "q-sweep-02/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "q-sweep-02/failed-attempt-01/NOTE.txt",
+        "bytes": 178,
+        "sha256": "9594364d536efe1d13ca3692698f741f798cfd190b5780049b3bcb0f44f6bc17"
+      },
+      {
+        "path": "q-sweep-02/failed-attempt-01/compile.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "q-sweep-02/failed-attempt-01/run.stderr",
+        "bytes": 31,
+        "sha256": "b86718f63d6c002fdfffd7bbab17e8b1c3849d6126520b206927e18c66c9439e"
+      },
+      {
+        "path": "q-sweep-02/jev-verify-r100-request.json",
+        "bytes": 1318,
+        "sha256": "0a246e7e6f74c4b36f30f7451ff93c2d27c643ca6e3962395febf40a23630669"
+      },
+      {
+        "path": "q-sweep-02/jev-verify-r100-result.json",
+        "bytes": 1421,
+        "sha256": "7b2baea5b84037f377ee3b1269f923a616da0a6a010b51bbe23dd67ceac7c8e6"
+      },
+      {
+        "path": "q-sweep-02/probe-draft-original.cpp",
+        "bytes": 9475,
+        "sha256": "6346bf720477256209d19578347bad9254d8737015da35b9fd51ad31f0336850"
+      },
+      {
+        "path": "q-sweep-02/probe.cpp",
+        "bytes": 9242,
+        "sha256": "abfaa4c50dcd068eaf537d6015dd0b3f5a416128bafc601bf4f3d6357cf3fa89"
+      },
+      {
+        "path": "q-sweep-02/result.json",
+        "bytes": 9248,
+        "sha256": "7d7143919204d642968b75e672d128af5a64a02e83462ab69c8ce5037ec9f427"
+      },
+      {
+        "path": "q-sweep-02/run.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "q-sweep-02/run.stdout",
+        "bytes": 2674,
+        "sha256": "7b877ea39188aced0b43cc4c40f4ba5ad836497ee028695603a4becfd391e883"
+      },
+      {
+        "path": "q-sweep-02/run_probe_02.py",
+        "bytes": 5867,
+        "sha256": "5089f347fe72bf5144e34adc04e9b27855a742c9540aa16ebcba58a0d9e568db"
+      }
+    ]
+  }
+}

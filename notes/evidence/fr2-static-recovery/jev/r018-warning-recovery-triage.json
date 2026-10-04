@@ -1,0 +1,86 @@
+{
+  "id": "r018-warning-recovery-triage",
+  "tool": "mcp__jev__jev_classify",
+  "arguments": {
+    "purpose": "Route categories of observed Ghidra pseudocode warnings to the first static evidence check required before accepting reconstructed behavior. This is investigation routing, not declaring the C correct.",
+    "classes": [
+      {
+        "id": "control_flow",
+        "description": "Check the machine CFG, reachable case labels, indirect targets and branch delay slots. Includes missing jump tables, case labels, incorrect noreturn inference, and dead-code/infinite-loop interpretations."
+      },
+      {
+        "id": "decode",
+        "description": "Check processor selection, instruction boundaries and architecture p-code semantics first. Overlapping instruction decoding belongs here."
+      },
+      {
+        "id": "types",
+        "description": "Check storage aliasing, global variable extent and propagated types before assigning semantic structure. Overlapping global symbols and unsettled types belong here."
+      },
+      {
+        "id": "engine_limit",
+        "description": "Examine decompiler restart or heritage phase limits, keeping output provisional and comparing underlying machine flow."
+      },
+      {
+        "id": "manual_review",
+        "description": "The excerpt does not support choosing one of the named first checks."
+      }
+    ],
+    "items": [
+      {
+        "id": "no-return",
+        "text": "WARNING: Subroutine does not return (454 comments across 306 functions). No correctness observation supplied; may be true exit/abort or wrong inference."
+      },
+      {
+        "id": "overlap-global",
+        "text": "WARNING: Globals starting with '_' overlap smaller symbols at the same address (77 functions)."
+      },
+      {
+        "id": "unreachable",
+        "text": "WARNING: Removing unreachable block (69 comments across 44 functions)."
+      },
+      {
+        "id": "infinite-loop",
+        "text": "WARNING: Do nothing block with infinite loop (7 comments across 4 functions)."
+      },
+      {
+        "id": "type-propagation",
+        "text": "WARNING: Type propagation algorithm not settling (3 functions)."
+      },
+      {
+        "id": "restart",
+        "text": "WARNING: Decompilation restarted to delay deadcode elimination or recover space (2 functions); one restart-limit warning."
+      },
+      {
+        "id": "case-labels",
+        "text": "WARNING: Could not calculate case labels correctly; recovered jump table and indirect jump treated as call warnings."
+      },
+      {
+        "id": "decode-overlap",
+        "text": "WARNING: Instruction at one address overlaps instruction at another address."
+      },
+      {
+        "id": "heritage",
+        "text": "WARNING: Heritage AFTER dead code removal. The exact opcode/CFG semantics remain unverified."
+      },
+      {
+        "id": "PIC",
+        "text": "WARNING: This function may have its own PIC construction; no imported original compiler information."
+      }
+    ],
+    "context": {
+      "counts_source": ".scratch/evidence/decompilation-verifier/20261004T084648Z-48edb60f54ad40b6aadfb2ee93f6b2a5/result.json",
+      "rules": "A classification routes investigation only. Each output C remains provisional until source checks. Preserve all low-confidence decisions; no threshold changes."
+    }
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_classify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"summary\": {\n    \"items\": 10,\n    \"auto\": 9,\n    \"review\": 1,\n    \"invalid_response\": 0,\n    \"by_class\": {\n      \"control_flow\": 4,\n      \"types\": 2,\n      \"engine_limit\": 2,\n      \"decode\": 1,\n      \"manual_review\": 1\n    }\n  },\n  \"thresholds\": {\n    \"auto_accept\": 0.85,\n    \"minimum_margin\": 0.5\n  },\n  \"results\": [\n    {\n      \"id\": \"no-return\",\n      \"classification\": \"control_flow\",\n      \"probabilities\": {\n        \"control_flow\": 1,\n        \"decode\": 0,\n        \"types\": 0,\n        \"engine_limit\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.99,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"overlap-global\",\n      \"classification\": \"types\",\n      \"probabilities\": {\n        \"control_flow\": 0,\n        \"decode\": 0,\n        \"types\": 1,\n        \"engine_limit\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 1,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"unreachable\",\n      \"classification\": \"control_flow\",\n      \"probabilities\": {\n        \"control_flow\": 0.95,\n        \"decode\": 0,\n        \"types\": 0,\n        \"engine_limit\": 0.01,\n        \"manual_review\": 0.04\n      },\n      \"confidence\": 0.93,\n      \"margin\": 0.9099999999999999,\n      \"top_probability\": 0.95,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"infinite-loop\",\n      \"classification\": \"control_flow\",\n      \"probabilities\": {\n        \"control_flow\": 1,\n        \"decode\": 0,\n        \"types\": 0,\n        \"engine_limit\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.99,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"type-propagation\",\n      \"classification\": \"types\",\n      \"probabilities\": {\n        \"control_flow\": 0,\n        \"decode\": 0,\n        \"types\": 1,\n        \"engine_limit\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.99,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"restart\",\n      \"classification\": \"engine_limit\",\n      \"probabilities\": {\n        \"control_flow\": 0,\n        \"decode\": 0,\n        \"types\": 0,\n        \"engine_limit\": 1,\n        \"manual_review\": 0\n      },\n      \"confidence\": 1,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"case-labels\",\n      \"classification\": \"control_flow\",\n      \"probabilities\": {\n        \"control_flow\": 1,\n        \"decode\": 0,\n        \"types\": 0,\n        \"engine_limit\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 1,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"decode-overlap\",\n      \"classification\": \"decode\",\n      \"probabilities\": {\n        \"control_flow\": 0,\n        \"decode\": 1,\n        \"types\": 0,\n        \"engine_limit\": 0,\n        \"manual_review\": 0\n      },\n      \"confidence\": 1,\n      \"margin\": 1,\n      \"top_probability\": 1,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"heritage\",\n      \"classification\": \"engine_limit\",\n      \"probabilities\": {\n        \"control_flow\": 0.02,\n        \"decode\": 0,\n        \"types\": 0,\n        \"engine_limit\": 0.98,\n        \"manual_review\": 0\n      },\n      \"confidence\": 0.98,\n      \"margin\": 0.96,\n      \"top_probability\": 0.98,\n      \"decision\": \"auto\"\n    },\n    {\n      \"id\": \"PIC\",\n      \"classification\": \"manual_review\",\n      \"probabilities\": {\n        \"control_flow\": 0.01,\n        \"decode\": 0.06,\n        \"types\": 0.14,\n        \"engine_limit\": 0.31,\n        \"manual_review\": 0.48\n      },\n      \"confidence\": 0.35,\n      \"margin\": 0.16999999999999998,\n      \"top_probability\": 0.48,\n      \"decision\": \"review\"\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1634,\n    \"output_tokens\": 563\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.198,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

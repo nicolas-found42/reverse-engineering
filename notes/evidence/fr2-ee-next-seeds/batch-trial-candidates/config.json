@@ -1,0 +1,170 @@
+{
+ "schema_version": 2,
+ "baseline": {
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "manifest_sha256": "2bb667565968fb11c421b3dda83b904f2485be9e6451797ceda68a2c05827341",
+  "inventory_sha256": "1aa3444a5cc2b9d077e02c7f2635d981ba3c3a8e5f3815975795cfe044285c2e",
+  "coverage_sha256": "100abf4d044c96d55945a6492d904fe6b6dcc4a6dc8a0e3c25bdc6dbc7229628",
+  "inventory_count": 3863
+ },
+ "seeds": [
+  {
+   "entry": "00101b58",
+   "start": "00101b58",
+   "end": "00101cc0",
+   "words": 90,
+   "bytes": 360,
+   "window_sha256": "72a5a34fa7c73e6cc11dce403f0b8761b0e66dcf53aca3246a4ca82bcd9cfd24",
+   "first_word": "00a0482d",
+   "delay_word": "00000000",
+   "next_word": "3c020029",
+   "next_state": "undefined",
+   "likely_count": 2,
+   "expected_calls": {},
+   "known_callees": [],
+   "batch_callees": [],
+   "unresolved_callees": [],
+   "zero_words": [
+    "00101b7c",
+    "00101c80",
+    "00101cbc"
+   ],
+   "computed_calls": [],
+   "tail_jumps": {},
+   "delay_breaks": [
+    "00101c98"
+   ],
+   "decoded_ranges": [
+    [
+     "00101b58",
+     "00101cc0"
+    ]
+   ],
+   "incoming": []
+  },
+  {
+   "entry": "001034e8",
+   "start": "001034e8",
+   "end": "0010352c",
+   "words": 17,
+   "bytes": 68,
+   "window_sha256": "dab5854ab9ac7b6c4e14f88717cc0fde233e4c18adc2e3f94fd58bc0943e8675",
+   "first_word": "27bdffe0",
+   "delay_word": "27bd0020",
+   "next_word": "00000000",
+   "next_state": "undefined",
+   "likely_count": 0,
+   "expected_calls": {
+    "00103500": "0020c74c"
+   },
+   "known_callees": [
+    "0020c74c"
+   ],
+   "batch_callees": [],
+   "unresolved_callees": [],
+   "zero_words": [],
+   "computed_calls": [],
+   "tail_jumps": {},
+   "delay_breaks": [],
+   "decoded_ranges": [],
+   "incoming": []
+  },
+  {
+   "entry": "00105c30",
+   "start": "00105c30",
+   "end": "00105c38",
+   "words": 2,
+   "bytes": 8,
+   "window_sha256": "d9c5d6001eac8bac666caa5a2a77cb24a6c3b5e808993d605dba13046c202a39",
+   "first_word": "03e00008",
+   "delay_word": "af848f38",
+   "next_word": "27bdffe0",
+   "next_state": "undefined",
+   "likely_count": 0,
+   "expected_calls": {},
+   "known_callees": [],
+   "batch_callees": [],
+   "unresolved_callees": [],
+   "zero_words": [],
+   "computed_calls": [],
+   "tail_jumps": {},
+   "delay_breaks": [],
+   "decoded_ranges": [],
+   "incoming": []
+  },
+  {
+   "entry": "001080b8",
+   "start": "001080b8",
+   "end": "001080e4",
+   "words": 11,
+   "bytes": 44,
+   "window_sha256": "fbce3c512d53ee22772a9c7dfa49e7fd91a08b080938b8e89bf86c1639a7807d",
+   "first_word": "8f838f7c",
+   "delay_word": "34420002",
+   "next_word": "00000000",
+   "next_state": "undefined",
+   "likely_count": 1,
+   "expected_calls": {},
+   "known_callees": [],
+   "batch_callees": [],
+   "unresolved_callees": [],
+   "zero_words": [],
+   "computed_calls": [],
+   "tail_jumps": {},
+   "delay_breaks": [],
+   "decoded_ranges": [
+    [
+     "001080b8",
+     "001080e4"
+    ]
+   ],
+   "incoming": []
+  },
+  {
+   "entry": "0010a710",
+   "start": "0010a710",
+   "end": "0010a718",
+   "words": 2,
+   "bytes": 8,
+   "window_sha256": "5294e5f49e88b156511d4cd0e4eda8e0389c9c3d94b9fe937bb80344895d1259",
+   "first_word": "03e00008",
+   "delay_word": "24020002",
+   "next_word": "03e00008",
+   "next_state": "batch_entry",
+   "likely_count": 0,
+   "expected_calls": {},
+   "known_callees": [],
+   "batch_callees": [],
+   "unresolved_callees": [],
+   "zero_words": [],
+   "computed_calls": [],
+   "tail_jumps": {},
+   "delay_breaks": [],
+   "decoded_ranges": [],
+   "incoming": []
+  },
+  {
+   "entry": "0010a718",
+   "start": "0010a718",
+   "end": "0010a720",
+   "words": 2,
+   "bytes": 8,
+   "window_sha256": "5ce5ad86d452c4d2422bd63e15223d5d6b3dfb77f224a88c1f476e9fb34e359d",
+   "first_word": "03e00008",
+   "delay_word": "24020001",
+   "next_word": "8f838fa8",
+   "next_state": "undefined",
+   "likely_count": 0,
+   "expected_calls": {},
+   "known_callees": [],
+   "batch_callees": [],
+   "unresolved_callees": [],
+   "zero_words": [],
+   "computed_calls": [],
+   "tail_jumps": {},
+   "delay_breaks": [],
+   "decoded_ranges": [],
+   "incoming": []
+  }
+ ]
+}

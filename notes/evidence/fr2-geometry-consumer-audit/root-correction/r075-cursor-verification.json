@@ -1,0 +1,26 @@
+{
+  "arguments": {
+    "claims": [
+      "The earlier serialized float mapping +0x04/+0x08/+0x0c/+0x10 to runtime +0x0c/+0x10/+0x14/+0x18 correctly accounts for the loader cursor updates.",
+      "Taking S as the first byte of the parser's expanded_24 row, the loader's first four float loads read S+0x08,S+0x0c,S+0x10,S+0x14, and store them at runtime +0x0c,+0x10,+0x14,+0x18."
+    ],
+    "evidence": [
+      {
+        "id": "exact-saved-producer-instructions",
+        "text": "Executable SHA216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95; static export SHA554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383. Prior row count:0011f90c addiu s1,s1,0x4;0011f914 lhu v0,-0x4(s1), count. Therefore loop entry s1 points at first row byte S.0011f950 addiu s1,s1,0x4;0011f958 lhu a2,-0x4(s1);0011f95c addiu s1,s1,0x2;0011f960 lhu a1,-0x2(s1);0011f964 addiu s1,s1,0x2;0011f968 lhu a3,-0x2(s1);0011f96c addiu s1,s1,0x4;0011f970 lwc1 f0,-0x4(s1);0011f974 addiu s1,s1,0x4;0011f980 swc1 f0,0xc(v0);0011f990 lwc1 f0,-0x4(s1);0011f994 addiu s1,s1,0x4;0011f9a0 swc1 f0,0x10(v0);0011f9a8 lwc1 f1,-0x4(s1);0011f9ac addiu s1,s1,0x4;0011f9b4 swc1 f1,0x14(v0);0011f9b8 lwc1 f0,-0x4(s1);0011f9bc addiu s1,s1,0x4;0011f9c0 swc1 f0,0x18(v0). Cursor offsets at the four loads are12,16,20,24; all use -4."
+      },
+      {
+        "id": "parser-row-base",
+        "text": "ps2_sections.py lines166..169: signed=r.count('signed-halfword entries',0xffff); reject signed>=0x8000; entry['expanded_24']=r.span(signed,32,'0x24 memory entries'). r.count consumes4bytes; r.span offset is the cursor immediately after that count word, matching S after0011f90c."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 2,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 2\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The earlier serialized float mapping +0x04/+0x08/+0x0c/+0x10 to runtime +0x0c/+0x10/+0x14/+0x18 correctly accounts for the loader cursor updates.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.41,\n        \"says_nothing\": 0.01,\n        \"supports\": 0.58\n      },\n      \"confidence\": 0.37,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"exact-saved-producer-instructions\",\n      \"same_subject\": 0.73\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"Taking S as the first byte of the parser's expanded_24 row, the loader's first four float loads read S+0x08,S+0x0c,S+0x10,S+0x14, and store them at runtime +0x0c,+0x10,+0x14,+0x18.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.4,\n        \"supports\": 0.59,\n        \"says_nothing\": 0.01\n      },\n      \"confidence\": 0.4,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"exact-saved-producer-instructions\",\n      \"same_subject\": 0.72\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1839,\n    \"output_tokens\": 235\n  }\n}"
+      }
+    ]
+  }
+}

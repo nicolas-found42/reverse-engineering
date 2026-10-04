@@ -1,0 +1,29 @@
+{
+  "command": [
+    "clang++",
+    "-std=c++20",
+    "-DUSE_SSE2NEON",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/src/lib/Kernel",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xIOP/include",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-independent-01",
+    "-c",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-objects-01/batch-00.cpp",
+    "-o",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-registration-02.o"
+  ],
+  "returncode": 0,
+  "error": null,
+  "seconds": 86.84879562499918,
+  "prior_attempt": "recomp-objects-01/result.json batch0 timed out at60 seconds, preserve as failed attempt",
+  "object": {
+    "bytes": 1911904,
+    "sha256": "37a330e045cce2075b81a32b3c3066558433f210beb09b9ea830ae84f60f3821"
+  }
+}

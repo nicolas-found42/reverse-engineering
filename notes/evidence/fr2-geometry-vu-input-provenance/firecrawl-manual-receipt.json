@@ -1,0 +1,38 @@
+{
+  "tool": "firecrawl_scrape",
+  "arguments": {
+    "url": "https://docs.alexrp.com/mips/ee_vu.pdf",
+    "formats": ["markdown"],
+    "parsers": ["pdf"],
+    "pdfOptions": {"maxPages": 368},
+    "onlyMainContent": true,
+    "queryOptions": {
+      "mode": "freeform",
+      "prompt": "Return only the exact relevant manual passages and page numbers for FTOI4 operation and examples, ITOF instruction definitions if they clarify how fixed-point conversions work, and XTOP's operation reading the VIF TOP register. Keep the source wording intact within the page and do not infer anything about the game."
+    }
+  },
+  "result_metadata": {
+    "success": true,
+    "source_url": "https://docs.alexrp.com/mips/ee_vu.pdf",
+    "title": "VU User’s Manual",
+    "content_type": "application/pdf",
+    "status_code": 200,
+    "num_pages": 368,
+    "total_pages": 368,
+    "scrape_id": "01a10773-bac6-7150-940a-68d8e5473486",
+    "cache_state": "hit",
+    "cached_at": "2026-10-04T08:44:04.557Z",
+    "credits_used": 368
+  },
+  "relevant_source_locator": {
+    "document": "Sony Computer Entertainment, VU User's Manual Version 6.0, 2002",
+    "pages": [77, 78, 197],
+    "bounded_facts": [
+      "FTOI4 converts to fixed point with four fractional bits; examples include 0.45 -> 7, 0.55 -> 8, and 123.45 -> 1975.",
+      "The manual's general conversion section says float-to-fixed conversion truncates toward zero.",
+      "XTOP reads the VIF TOP register into VI[it]."
+    ],
+    "citation_url": "https://docs.alexrp.com/mips/ee_vu.pdf"
+  },
+  "retention_note": "The requested query did not narrow the PDF extraction; Firecrawl returned the full 368-page manual. The complete extracted document was not copied into the repository. This receipt preserves the exact request, call identifier, response metadata, and only the bounded source locator/facts used by this trace."
+}

@@ -1,0 +1,620 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "scope": "one bounded provisional static candidate; not original identity, semantics, runtime reachability, behavior, call-closure beyond listed callee states, or whole-game completeness",
+  "config_sha256": "54086c9bb550434b3ca3fcd19f9f3b3c375e1480bbf2d1c4efb9a7d6bbbb7c21",
+  "checks": [
+    {
+      "check": "pinned baseline and ELF hashes equal the config pins",
+      "passed": true,
+      "detail": {
+        "exe": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+        "manifest": "82ddf8cb755df79f8d96dbf7ffda6c30f0fdea460efaa374b0a14248a7b6c081",
+        "inventory": "84c0489aa2584926febf0bcc5e1c1cb846c27902a01c4e5ca319ac6fb2b70f8c",
+        "coverage": "f995bf2473a777c4fddb69a3c8825e0e7c18ae0a54a11a346b593bd3123a99f5"
+      }
+    },
+    {
+      "check": "new export identity and reusable verifier pass",
+      "passed": true,
+      "detail": {
+        "verifier": "pass",
+        "inventory_count": 3856,
+        "processed": 3856,
+        "generated": 3856,
+        "failed": 0
+      }
+    },
+    {
+      "check": "exactly one new function and no removals",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "candidate identity and exact 376-byte / 94-word body",
+      "passed": true,
+      "detail": {
+        "name": "candidate_ee_001ffec8",
+        "size": 376,
+        "blocks": [
+          {
+            "start": "001ffec8",
+            "end": "001fff0f"
+          },
+          {
+            "start": "001fff10",
+            "end": "001fff17"
+          },
+          {
+            "start": "001fff18",
+            "end": "001fff27"
+          },
+          {
+            "start": "001fff28",
+            "end": "001fff33"
+          },
+          {
+            "start": "001fff34",
+            "end": "001fff57"
+          },
+          {
+            "start": "001fff58",
+            "end": "001fff5f"
+          },
+          {
+            "start": "001fff60",
+            "end": "001fff6b"
+          },
+          {
+            "start": "001fff6c",
+            "end": "001fff97"
+          },
+          {
+            "start": "001fff98",
+            "end": "001fffa7"
+          },
+          {
+            "start": "001fffa8",
+            "end": "001fffb3"
+          },
+          {
+            "start": "001fffb4",
+            "end": "001fffbf"
+          },
+          {
+            "start": "001fffc0",
+            "end": "001fffcb"
+          },
+          {
+            "start": "001fffcc",
+            "end": "001fffef"
+          },
+          {
+            "start": "001ffff0",
+            "end": "001fffff"
+          },
+          {
+            "start": "00200000",
+            "end": "00200003"
+          },
+          {
+            "start": "00200004",
+            "end": "0020003f"
+          }
+        ]
+      }
+    },
+    {
+      "check": "all 94 candidate instruction words match raw ELF",
+      "passed": true,
+      "detail": {
+        "raw_sha256": "133b84df9f0d4f97810724da9632087635c1fd54f82dc64b0954d75706bdb845",
+        "config_window_sha256": "133b84df9f0d4f97810724da9632087635c1fd54f82dc64b0954d75706bdb845"
+      }
+    },
+    {
+      "check": "next word after the span is the entry of a saved function in both exports and keeps its entry address and word",
+      "passed": true,
+      "detail": {
+        "word": "27bdffc0",
+        "next_function": "FUN_00200040"
+      }
+    },
+    {
+      "check": "all 3855 prior names, sizes, blocks and instruction address/text/bytes preserved",
+      "passed": true,
+      "detail": {
+        "old_function_count": 3855
+      }
+    },
+    {
+      "check": "only the pinned incoming call-site reference annotations change, and now resolve to the new function",
+      "passed": true,
+      "detail": [
+        {
+          "caller": "001fed80",
+          "site": "001fed88",
+          "old": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL"
+            }
+          ],
+          "new": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001ffec8"
+            }
+          ]
+        },
+        {
+          "caller": "001fef28",
+          "site": "001fef70",
+          "old": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL"
+            }
+          ],
+          "new": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001ffec8"
+            }
+          ]
+        },
+        {
+          "caller": "001ff520",
+          "site": "001ff594",
+          "old": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL"
+            }
+          ],
+          "new": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001ffec8"
+            }
+          ]
+        },
+        {
+          "caller": "001ffbf0",
+          "site": "001ffc3c",
+          "old": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL"
+            }
+          ],
+          "new": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001ffec8"
+            }
+          ]
+        },
+        {
+          "caller": "001ffbf0",
+          "site": "001ffc94",
+          "old": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL"
+            }
+          ],
+          "new": [
+            {
+              "to": "001ffec8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001ffec8"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "check": "exactly the predicted reciprocal graph additions",
+      "passed": true,
+      "detail": [
+        {
+          "entry": "001fbcc0",
+          "relation": "callers",
+          "added": "001ffec8"
+        },
+        {
+          "entry": "001fed80",
+          "relation": "callees",
+          "added": "001ffec8"
+        },
+        {
+          "entry": "001fef28",
+          "relation": "callees",
+          "added": "001ffec8"
+        },
+        {
+          "entry": "001ff520",
+          "relation": "callees",
+          "added": "001ffec8"
+        },
+        {
+          "entry": "001ffbf0",
+          "relation": "callees",
+          "added": "001ffec8"
+        }
+      ]
+    },
+    {
+      "check": "candidate caller set equals the incoming owners and callee set equals the saved callees",
+      "passed": true,
+      "detail": {
+        "callers": [
+          "001fef28",
+          "001ffbf0",
+          "001ff520",
+          "001fed80"
+        ],
+        "callees": [
+          "001fbcc0"
+        ]
+      }
+    },
+    {
+      "check": "new export manifest reports every function generated",
+      "passed": true,
+      "detail": {
+        "rows": 3856,
+        "failed": 0,
+        "status": "generated"
+      }
+    },
+    {
+      "check": "every changed old C output differs only by label substitution (plus decompiler line reflow when the longer name wraps) and the changed set is within the incoming owners",
+      "passed": true,
+      "detail": [
+        {
+          "entry": "001fed80",
+          "old_sha256": "4d928ed61b8d95da98fd5c942fd7a10350098c6911d44f163c864c8cf0fb92ea",
+          "new_sha256": "047db1d6dbb3657571b43fbb9b3ffd4a056238720c2c5a84fdd83448fe88c379",
+          "replacement_count": 1,
+          "whitespace_reflow_only_beyond_label": false
+        },
+        {
+          "entry": "001fef28",
+          "old_sha256": "957e6b65a6dba2a86e4c150d8448add566ee94263aa2050365d8303146c0c243",
+          "new_sha256": "490ffbc4f03be5a000100f03f9ee1315c9426db5d418db2f6490d8c777d0bdd8",
+          "replacement_count": 1,
+          "whitespace_reflow_only_beyond_label": false
+        },
+        {
+          "entry": "001ff520",
+          "old_sha256": "d73e87274987c7c96156529e272a0ef7143a699cc740b60a357644d881c381f3",
+          "new_sha256": "c1e6ddcf12c478e2bdf8b72c20b86f6572b34654b2098b72c77c60ab69d0851d",
+          "replacement_count": 1,
+          "whitespace_reflow_only_beyond_label": false
+        },
+        {
+          "entry": "001ffbf0",
+          "old_sha256": "3e39255ca15c69a64958d488133dd80d1168e2793564675333dde24a8ea3e8ff",
+          "new_sha256": "56ce5e8419828ec3d67449642fcd418645246116377db076598d0761c13b9eb8",
+          "replacement_count": 2,
+          "whitespace_reflow_only_beyond_label": false
+        }
+      ]
+    },
+    {
+      "check": "new candidate C artifact matches manifest SHA and byte count",
+      "passed": true,
+      "detail": {
+        "entry": "001ffec8",
+        "name": "candidate_ee_001ffec8",
+        "body_bytes": 376,
+        "external": false,
+        "thunk": false,
+        "completed": true,
+        "message": "",
+        "status": "generated",
+        "path": "functions/001ffec8.c",
+        "sha256": "5ee9bb0cb6089c37a42bc4ddbdfbd73d960ab56ee301d3e8b172a4692349e5fa",
+        "bytes": 1090,
+        "milliseconds": 3
+      }
+    },
+    {
+      "check": "initialized memory metadata unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "string values and references unchanged",
+      "passed": true,
+      "detail": {
+        "strings": 3318
+      }
+    },
+    {
+      "check": "coverage block identity and bookmarks unchanged",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "coverage adds exactly 94 instructions / 376 owned bytes; undefined ranges change only inside the body",
+      "passed": true,
+      "detail": [
+        {
+          "field": "instruction_count",
+          "old": 249133,
+          "new": 249227,
+          "delta": 94
+        },
+        {
+          "field": "instruction_bytes",
+          "old": 996532,
+          "new": 996908,
+          "delta": 376
+        },
+        {
+          "field": "function_instruction_bytes",
+          "old": 865380,
+          "new": 865756,
+          "delta": 376
+        },
+        {
+          "field": "unowned_instruction_count",
+          "old": 32788,
+          "new": 32788,
+          "delta": 0
+        },
+        {
+          "field": "unowned_instruction_bytes",
+          "old": 131152,
+          "new": 131152,
+          "delta": 0
+        },
+        {
+          "field": "defined_data_bytes",
+          "old": 6,
+          "new": 6,
+          "delta": 0
+        },
+        {
+          "field": "undefined_bytes",
+          "old": 149274,
+          "new": 148898,
+          "delta": -376
+        }
+      ]
+    }
+  ],
+  "check_count": 17,
+  "passed_count": 17,
+  "baseline": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/seed-001fef28/export-3855/decompilation/manifest.json": {
+      "bytes": 1476171,
+      "sha256": "82ddf8cb755df79f8d96dbf7ffda6c30f0fdea460efaa374b0a14248a7b6c081"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/seed-001fef28/export-3855/inventory.json": {
+      "bytes": 45723809,
+      "sha256": "84c0489aa2584926febf0bcc5e1c1cb846c27902a01c4e5ca319ac6fb2b70f8c"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/seed-001fef28/export-3855/coverage.json": {
+      "bytes": 1008145,
+      "sha256": "f995bf2473a777c4fddb69a3c8825e0e7c18ae0a54a11a346b593bd3123a99f5"
+    }
+  },
+  "new": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/seed-001ffec8/export-3856/decompilation/manifest.json": {
+      "bytes": 1476568,
+      "sha256": "2164a6c6e69708e7cd8d474279262783cb61be7c9c35ff27983f64d54fc42d76"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/seed-001ffec8/export-3856/inventory.json": {
+      "bytes": 45741271,
+      "sha256": "28f165cb0ad39d36003ccc330eae167a1f58bd2e1df675f1025942c1ae1bd4b8"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/seed-001ffec8/export-3856/coverage.json": {
+      "bytes": 1008041,
+      "sha256": "bb950a0fd46f09dafe52e55bc955611ab102483a8ac0d260d9e04673c1b26f1f"
+    }
+  },
+  "verifier_result": {
+    "path": ".scratch/evidence/decompilation/20261004T183605Z-a5d7f6ee9e8d4c70b486cb4cba302947/result.json",
+    "sha256": "e4064dfdc0fe2d0542ab8ee49a3070b2da86186f6b4255c00a9a8fd8cb5ac34e",
+    "status": "pass",
+    "warning_comment_count": 606
+  },
+  "old_function_count": 3855,
+  "new_function_count": 3856,
+  "changed_old_C": [
+    {
+      "entry": "001fed80",
+      "old_sha256": "4d928ed61b8d95da98fd5c942fd7a10350098c6911d44f163c864c8cf0fb92ea",
+      "new_sha256": "047db1d6dbb3657571b43fbb9b3ffd4a056238720c2c5a84fdd83448fe88c379",
+      "replacement_count": 1,
+      "whitespace_reflow_only_beyond_label": false
+    },
+    {
+      "entry": "001fef28",
+      "old_sha256": "957e6b65a6dba2a86e4c150d8448add566ee94263aa2050365d8303146c0c243",
+      "new_sha256": "490ffbc4f03be5a000100f03f9ee1315c9426db5d418db2f6490d8c777d0bdd8",
+      "replacement_count": 1,
+      "whitespace_reflow_only_beyond_label": false
+    },
+    {
+      "entry": "001ff520",
+      "old_sha256": "d73e87274987c7c96156529e272a0ef7143a699cc740b60a357644d881c381f3",
+      "new_sha256": "c1e6ddcf12c478e2bdf8b72c20b86f6572b34654b2098b72c77c60ab69d0851d",
+      "replacement_count": 1,
+      "whitespace_reflow_only_beyond_label": false
+    },
+    {
+      "entry": "001ffbf0",
+      "old_sha256": "3e39255ca15c69a64958d488133dd80d1168e2793564675333dde24a8ea3e8ff",
+      "new_sha256": "56ce5e8419828ec3d67449642fcd418645246116377db076598d0761c13b9eb8",
+      "replacement_count": 2,
+      "whitespace_reflow_only_beyond_label": false
+    }
+  ],
+  "reference_deltas": [
+    {
+      "caller": "001fed80",
+      "site": "001fed88",
+      "old": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL"
+        }
+      ],
+      "new": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL",
+          "function": "001ffec8"
+        }
+      ]
+    },
+    {
+      "caller": "001fef28",
+      "site": "001fef70",
+      "old": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL"
+        }
+      ],
+      "new": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL",
+          "function": "001ffec8"
+        }
+      ]
+    },
+    {
+      "caller": "001ff520",
+      "site": "001ff594",
+      "old": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL"
+        }
+      ],
+      "new": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL",
+          "function": "001ffec8"
+        }
+      ]
+    },
+    {
+      "caller": "001ffbf0",
+      "site": "001ffc3c",
+      "old": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL"
+        }
+      ],
+      "new": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL",
+          "function": "001ffec8"
+        }
+      ]
+    },
+    {
+      "caller": "001ffbf0",
+      "site": "001ffc94",
+      "old": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL"
+        }
+      ],
+      "new": [
+        {
+          "to": "001ffec8",
+          "type": "UNCONDITIONAL_CALL",
+          "function": "001ffec8"
+        }
+      ]
+    }
+  ],
+  "callgraph_deltas": [
+    {
+      "entry": "001fbcc0",
+      "relation": "callers",
+      "added": "001ffec8"
+    },
+    {
+      "entry": "001fed80",
+      "relation": "callees",
+      "added": "001ffec8"
+    },
+    {
+      "entry": "001fef28",
+      "relation": "callees",
+      "added": "001ffec8"
+    },
+    {
+      "entry": "001ff520",
+      "relation": "callees",
+      "added": "001ffec8"
+    },
+    {
+      "entry": "001ffbf0",
+      "relation": "callees",
+      "added": "001ffec8"
+    }
+  ],
+  "coverage_delta": [
+    {
+      "field": "instruction_count",
+      "old": 249133,
+      "new": 249227,
+      "delta": 94
+    },
+    {
+      "field": "instruction_bytes",
+      "old": 996532,
+      "new": 996908,
+      "delta": 376
+    },
+    {
+      "field": "function_instruction_bytes",
+      "old": 865380,
+      "new": 865756,
+      "delta": 376
+    },
+    {
+      "field": "unowned_instruction_count",
+      "old": 32788,
+      "new": 32788,
+      "delta": 0
+    },
+    {
+      "field": "unowned_instruction_bytes",
+      "old": 131152,
+      "new": 131152,
+      "delta": 0
+    },
+    {
+      "field": "defined_data_bytes",
+      "old": 6,
+      "new": 6,
+      "delta": 0
+    },
+    {
+      "field": "undefined_bytes",
+      "old": 149274,
+      "new": 148898,
+      "delta": -376
+    }
+  ]
+}

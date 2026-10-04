@@ -1,0 +1,47 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "summary": {
+    "verified": 5,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 1
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "supports": 1.0,
+      "confidence": 0.99
+    },
+    {
+      "id": "claim1",
+      "supports": 0.96,
+      "contradicts": 0.04,
+      "confidence": 0.94
+    },
+    {
+      "id": "claim2",
+      "supports": 1.0,
+      "confidence": 1.0
+    },
+    {
+      "id": "claim3",
+      "supports": 1.0,
+      "confidence": 0.99
+    },
+    {
+      "id": "claim4",
+      "supports": 0.63,
+      "says_nothing": 0.36,
+      "contradicts": 0.01,
+      "confidence": 0.45,
+      "action": "review",
+      "supporting_evidence": null
+    }
+  ],
+  "usage": {
+    "input_tokens": 3311,
+    "output_tokens": 555
+  },
+  "root_disposition": "claim4 is a scope limitation with no cited evidence, so Jev found little to verify it against (confidence 0.45, review). It is stated as a limit in the README and is not an evidence-backed result. Not retried."
+}

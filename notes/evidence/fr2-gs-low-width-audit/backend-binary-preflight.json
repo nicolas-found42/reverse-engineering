@@ -1,0 +1,7 @@
+{
+  "binary_sha256": "c6889e565f16cd049b9ae6970596c602d18eca050623e0713db9d03e43f0194a",
+  "generated_guest_names_checked_absent": 4746,
+  "registration_and_display_audio_entry_symbols_absent": true,
+  "symbols_sha256": "32c4152f8dbbebbf8c861bdd3420aac7d5526a5cfc3b7700a2aab623b3b1b4fa",
+  "source_review": "Probe only constructs and initializes CPU VRAM, submits direction-zero transfers, uploads synthetic labels and writes VRAM to stdout. Constructor/Initialize/Reset and transfer path reviewed; no draw/display/audio initialization invoked."
+}

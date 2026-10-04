@@ -1,0 +1,7 @@
+Exact Jev tool response summary (jev_verify, typesafe/jev-1.13, OpenRouter): verified=2, contradicted=0, unsupported=1, needs_review=2; auto_accept=.8.
+
+claim0: verified, confidence=.99, action=auto, P(supports)=1, P(contradicts)=0, P(says_nothing)=0: decimal-only BEGIN regex does not parse DECLARE_EXPORT_TABLE(secrman, 0x01, 0x04).
+claim1: verified, confidence=.73, action=review, P(supports)=.82, P(contradicts)=.1, P(says_nothing)=.08: unrecognized declaration triggers file exclusion.
+claim2: unsupported, confidence=.24, action=review, P(supports)=.46, P(contradicts)=.05, P(says_nothing)=.49: exact matching/ambiguity claim, due incomplete evidence supplied in that call.
+
+Usage: input_tokens=1807, output_tokens=316.

@@ -1,0 +1,66 @@
+{
+  "id": "d035-decide-mesh-phase-bar",
+  "purpose": "Choose the measurable bar for the mesh/VU/render phase",
+  "tool": "jev_decide",
+  "server_package": "@jkudish/jev-mcp@0.13.0",
+  "arguments": {
+    "decision": "What measurable bar should define progress and completion of the mesh/VU/render reconstruction phase?",
+    "evidence": "Owner chose to extend the effort to mesh, VU and render reconstruction; it needs its own measurable bar (completion matrix says it is defined in next-phase.md). Measured: texture-library section of .PS2 models translated from the game's loader and validated on 56/56 files (2370 textures; formats 1/3/4 = 350/1551/469; 1856 level-0 images decoded; next section begins with a count of 0x34-byte records that fits in 56/56). Still untranslated: that record table, later loops in FUN_0011ed90 (including 0x70-byte records with float reads), the geometry/VU consumers. Offline/static only; no emulator oracle; hardware/playback claims never made. Earlier areas were completed under criterion 2: executable check with real-corpus pass, negative/boundary tests, bounded claims, independent oracle where one exists, Jev claim checks, unresolved list.",
+    "priorities": "Falsifiable on all 56 real files; claims limited to measured; incremental deliverables; user observations recorded as observations.",
+    "candidates": [
+      {
+        "id": "chain_then_geometry_invariants",
+        "description": "Bar in stages: (1) the translated section chain consumes every one of the 56 models exactly to end-of-file with validated counts, negative tests and a pinned result; (2) for each recovered geometry section, extraction with machine-checkable invariants (indices within vertex counts, finite floats, bounding boxes consistent across files, texture indices within the library); (3) a rendered preview of selected models reviewed by the owner, recorded as a user observation, not as proof. Claims stay limited to what each stage measured."
+      },
+      {
+        "id": "render_looks_right",
+        "description": "Declare the phase complete when a rendered model looks plausible to the author, without exhaustive file coverage or invariants."
+      },
+      {
+        "id": "whole_game_bar",
+        "description": "Declare the phase complete only when every game asset type and the VU1 pipeline are reconstructed and the game renders identically."
+      },
+      {
+        "id": "texture_only_stop",
+        "description": "Stop the mesh phase at the texture library and call mesh reconstruction out of scope."
+      },
+      {
+        "id": "ask_user_bar",
+        "description": "Ask the project owner to define the bar before continuing."
+      }
+    ],
+    "requirements": [
+      "The bar must be testable on the real corpus so that it can fail.",
+      "The bar must not rely on a person's visual impression as the only evidence for any factual claim.",
+      "The bar must be reachable by offline static work without a debugger window or hardware oracle, and must not set an untestable whole-game condition."
+    ]
+  },
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/tex/d035-args.json",
+  "args_sha256": "034978c75c02d152e2c1be176586d3c29edc53630d0e3710091802243fb0d96a",
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/tex/d035-evidence.txt",
+      "sha256": "14b2cb7e4dd0a9128f98940cfbebbdcba985556a48aaf3bff9e8f81fcafac032",
+      "bytes": 843
+    }
+  ],
+  "started_utc": "2026-10-04T07:41:58.689Z",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "seconds": 0.501,
+  "rpc_error": null,
+  "is_error": false,
+  "non_json_stdout_lines": [],
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_decide\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"recommendation\": {\n    \"selected\": \"chain_then_geometry_invariants\",\n    \"escaped\": false,\n    \"confidence\": 1,\n    \"probabilities\": {\n      \"ask_user\": 0,\n      \"none\": 0,\n      \"chain_then_geometry_invariants\": 1,\n      \"ask_user_bar\": 0,\n      \"investigate\": 0,\n      \"whole_game_bar\": 0,\n      \"render_looks_right\": 0,\n      \"texture_only_stop\": 0\n    },\n    \"contradicted_requirements\": []\n  },\n  \"requirements_checked\": 3,\n  \"checks\": [\n    {\n      \"candidate\": \"chain_then_geometry_invariants\",\n      \"requirement\": 0,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"chain_then_geometry_invariants\",\n      \"requirement\": 1,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"chain_then_geometry_invariants\",\n      \"requirement\": 2,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"render_looks_right\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"render_looks_right\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"render_looks_right\",\n      \"requirement\": 2,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"whole_game_bar\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"whole_game_bar\",\n      \"requirement\": 1,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"whole_game_bar\",\n      \"requirement\": 2,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"texture_only_stop\",\n      \"requirement\": 0,\n      \"answer\": \"contradicted\"\n    },\n    {\n      \"candidate\": \"texture_only_stop\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"texture_only_stop\",\n      \"requirement\": 2,\n      \"answer\": \"supported\"\n    },\n    {\n      \"candidate\": \"ask_user_bar\",\n      \"requirement\": 0,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"ask_user_bar\",\n      \"requirement\": 1,\n      \"answer\": \"unknown\"\n    },\n    {\n      \"candidate\": \"ask_user_bar\",\n      \"requirement\": 2,\n      \"answer\": \"unknown\"\n    }\n  ],\n  \"warnings\": [],\n  \"usage\": {\n    \"input_tokens\": 3206,\n    \"output_tokens\": 743\n  }\n}"
+      }
+    ]
+  }
+}

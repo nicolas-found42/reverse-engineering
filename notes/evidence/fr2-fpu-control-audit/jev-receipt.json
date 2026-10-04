@@ -1,0 +1,182 @@
+{
+  "screening": [
+    {
+      "source": "Sony EE Core Instruction Set Manual v6.0 excerpt, printed pages 345-354",
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "probabilities": {
+        "injection": 0.24,
+        "substance": 0.99,
+        "relevance": 0.98
+      },
+      "recommendation": "pass",
+      "usage": {
+        "input_tokens": 4609,
+        "output_tokens": 57
+      }
+    },
+    {
+      "source": "Pinned PCSX2 FPU.cpp at 81526d4dc7cc70e4ae75abb35a789417456c6d43",
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "probabilities": {
+        "injection": 0.04,
+        "substance": 0.98,
+        "relevance": 0.97
+      },
+      "recommendation": "pass",
+      "usage": {
+        "input_tokens": 5301,
+        "output_tokens": 57
+      }
+    }
+  ],
+  "verification": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "summary": {
+      "verified": 3,
+      "contradicted": 0,
+      "unsupported": 1,
+      "needs_review": 1
+    },
+    "results": [
+      {
+        "claim": "For finite supported values, C.EQ.S/C.LT.S/C.LE.S update FCR31 condition bit 23 from the comparisons while preserving other bits; signed zero compares equal.",
+        "verdict": "verified",
+        "confidence": 0.99,
+        "action": "auto",
+        "probabilities": {
+          "says_nothing": 0,
+          "supports": 0.99,
+          "contradicts": 0.01
+        }
+      },
+      {
+        "claim": "BC1F/BC1T test or invert bit 23, and BC1FL/BC1TL emit the delay slot only on the taken path, matching the manual.",
+        "verdict": "verified",
+        "confidence": 0.99,
+        "action": "auto",
+        "probabilities": {
+          "says_nothing": 0,
+          "supports": 1,
+          "contradicts": 0
+        }
+      },
+      {
+        "claim": "CFC1 of FCR31 sign-extends the 32-bit value into the 64-bit GPR.",
+        "verdict": "verified",
+        "confidence": 0.98,
+        "action": "auto",
+        "probabilities": {
+          "says_nothing": 0,
+          "supports": 0.99,
+          "contradicts": 0.01
+        }
+      },
+      {
+        "claim": "CFC1 FCR0 returning zero is a proven Sony EE mismatch because the manual identifies an implementation/revision register.",
+        "verdict": "unsupported",
+        "confidence": 0.54,
+        "action": "review",
+        "relation_verdict": "contradicted",
+        "probabilities": {
+          "says_nothing": 0.05,
+          "supports": 0.25,
+          "contradicts": 0.7
+        }
+      }
+    ],
+    "usage": {
+      "input_tokens": 2769,
+      "output_tokens": 417
+    },
+    "disposition": "No FCR0 numeric-value mismatch claimed; manual does not specify that value, and corpus has no CFC1."
+  },
+  "supplemental_user_manual_check": {
+    "source": "Sony EE Core User's Manual v6.0, printed page 158, Table 8-1, https://docs.alexrp.com/mips/ee.pdf",
+    "screening": {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Screen the Sony EE Core User Manual FCR0 field excerpt as evidence for an audit note about the documented implementation byte and variable revision byte.",
+      "probabilities": {
+        "injection": 0.02,
+        "substance": 0.97,
+        "relevance": 0.97
+      },
+      "thresholds": {
+        "block_at": 0.75,
+        "review_at": 0.25
+      },
+      "recommendation": {
+        "action": "pass",
+        "reason": "no signals above thresholds"
+      },
+      "usage": {
+        "input_tokens": 714,
+        "output_tokens": 57
+      },
+      "exact_screened_text": "Sony Computer Entertainment Inc., EE Core User's Manual, Version 6.0, printed page 158, section 8.3.1, Table 8-1 (PDF source https://docs.alexrp.com/mips/ee.pdf): Lines 5089-5092 state that FCR0 is read-only and contains an FPU implementation number and revision number. Table 8-1 (lines 5097-5106) lists bits 31:16 as fixed zero with initial value 0; Imp bits 15:8 as implementation number with initial value 0x2E; and Rev bits 7:0 as revision number, with bits 7:4 major and bits 3:0 minor. It does not give a numeric revision value."
+    },
+    "verification": {
+      "tool": "jev_verify",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "auto_accept": 0.8,
+      "subject_at": 0.5,
+      "summary": {
+        "verified": 3,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "claims": [
+        {
+          "claim": "Sony's EE Core User's Manual v6.0 documents FCR0 bits 15:8 as implementation field Imp with initial value 0x2E, bits 31:16 fixed zero, and bits 7:0 as a variable major/minor revision byte without giving a specific revision value.",
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0,
+            "contradicts": 0,
+            "supports": 1
+          },
+          "confidence": 0.99,
+          "action": "auto",
+          "supporting_evidence": "sony-ee-core-users-manual-v6-table-8-1-printed-p158",
+          "same_subject": 0.86
+        },
+        {
+          "claim": "At pinned PS2Recomp commit c5a9d02573410a2085a4b4b831b0b68ba3515440, the CFC1 translation for fs == 0 emits SET_GPR_U32(ctx, ft, 0x00000000), so it omits the manual's documented nonzero implementation field in bits 15:8.",
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0,
+            "contradicts": 0,
+            "supports": 1
+          },
+          "confidence": 0.99,
+          "action": "auto",
+          "supporting_evidence": "pinned-ps2recomp-source-and-inventory",
+          "same_subject": 0.95
+        },
+        {
+          "claim": "This FCR0 field mismatch is outside the measured inventory because the inventory contains no CFC1 instruction; the manual does not justify claiming the full correct FCR0 value is 0x2E00.",
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0.01,
+            "contradicts": 0.04,
+            "supports": 0.95
+          },
+          "confidence": 0.92,
+          "action": "auto",
+          "supporting_evidence": "pinned-ps2recomp-source-and-inventory",
+          "same_subject": 0.94
+        }
+      ],
+      "usage": {
+        "input_tokens": 2242,
+        "output_tokens": 437
+      },
+      "disposition": "Separate supplemental claim verified against the Sony User Manual. The prior instruction-manual-only verification remains unchanged and correctly marked the numeric-value claim unsupported on that evidence."
+    }
+  }
+}

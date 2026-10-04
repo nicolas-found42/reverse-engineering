@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "java_sha256": "85cb6d9597569eeb5482c85dba076528413f9cc1241b9f09273a245cec38292f",
+  "checker_sha256": "be369e66b50ba4de3a19ba2f9850599f96863199d13abe8c451e2e3f8017e064",
+  "edge_counts": {
+    "call": 5,
+    "conditional": 5,
+    "return": 1
+  },
+  "expected_new_reference_keys": [
+    "001ff08c|001ff270|UNCONDITIONAL_CALL|DEFAULT",
+    "001ff098|001ff08c|CONDITIONAL_JUMP|DEFAULT",
+    "001ff0a0|001ff088|CONDITIONAL_JUMP|DEFAULT",
+    "001ff0a8|001ffd70|UNCONDITIONAL_CALL|DEFAULT",
+    "001ff0b0|001feb80|UNCONDITIONAL_CALL|DEFAULT",
+    "001ff0e4|001ff0d0|CONDITIONAL_JUMP|DEFAULT",
+    "001ff0ec|001ff108|CONDITIONAL_JUMP|DEFAULT",
+    "001ff0fc|001fdb88|UNCONDITIONAL_CALL|DEFAULT",
+    "001ff108|001ff11c|CONDITIONAL_JUMP|DEFAULT",
+    "001ff114|001fc4e0|UNCONDITIONAL_CALL|DEFAULT"
+  ],
+  "zero_words": [
+    "001ff084",
+    "001ff0a4",
+    "001ff0dc",
+    "001ff0e0",
+    "001ff0e8"
+  ],
+  "scope": "Port of the draft guard classifier and constants against raw ELF PT_LOAD bytes. It does not validate Ghidra reference sources or decoded flow, which require a read-only Ghidra inspection."
+}

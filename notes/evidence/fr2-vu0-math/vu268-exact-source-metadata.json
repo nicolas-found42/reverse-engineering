@@ -1,0 +1,122 @@
+{
+  "status": "pass",
+  "model_LOI_table_matches_source_bits": true,
+  "exe_path_relative": "games/ford-racing-2/extracted/SLES_517.05",
+  "exe_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "overlay_index": 7,
+  "overlay_name": ".DVP.overlay..0x0.495278677.35.0",
+  "overlay_vma": 0,
+  "overlay_load_address": 2206960,
+  "overlay_bytes": 1120,
+  "overlay_pairs": 140,
+  "source_section": ".vutext",
+  "source_offset": 1162480,
+  "overlay_sha256": "2093b6946baea64312037ec6a6dce16a7451b7729f4cf7e88042ac90895422e1",
+  "instruction_span_start_pair": 77,
+  "instruction_span_end_pair_exclusive": 102,
+  "instruction_span_source_offset": 1163096,
+  "instruction_span_bytes": 200,
+  "instruction_span_sha256": "24fbedaf59f41ea50e1f3507e7ca7a2ad15642e22c7a05b3cd955576c4b83611",
+  "loads": [
+    {
+      "pair": 78,
+      "file_offset": 1163104,
+      "name": "pi_over_2",
+      "lower_word_hex": "3fc90fdb",
+      "value_f32": 1.5707963705062866,
+      "upper_word_hex": "8030041a",
+      "I_flag": true
+    },
+    {
+      "pair": 80,
+      "file_offset": 1163120,
+      "name": "minus_inv_tau",
+      "lower_word_hex": "be22f983",
+      "value_f32": -0.15915493667125702,
+      "upper_word_hex": "81f081fd",
+      "I_flag": true
+    },
+    {
+      "pair": 82,
+      "file_offset": 1163136,
+      "name": "magic_12582912",
+      "lower_word_hex": "4b400000",
+      "value_f32": 12582912.0,
+      "upper_word_hex": "81e081fe",
+      "I_flag": true
+    },
+    {
+      "pair": 84,
+      "file_offset": 1163152,
+      "name": "minus_inv_tau_again",
+      "lower_word_hex": "be22f983",
+      "value_f32": -0.15915493667125702,
+      "upper_word_hex": "81e08a3f",
+      "I_flag": true
+    },
+    {
+      "pair": 85,
+      "file_offset": 1163160,
+      "name": "half",
+      "lower_word_hex": "3f000000",
+      "value_f32": 0.5,
+      "upper_word_hex": "81e0827f",
+      "I_flag": true
+    },
+    {
+      "pair": 87,
+      "file_offset": 1163176,
+      "name": "quarter",
+      "lower_word_hex": "3e800000",
+      "value_f32": 0.25,
+      "upper_word_hex": "81f081fd",
+      "I_flag": true
+    },
+    {
+      "pair": 89,
+      "file_offset": 1163192,
+      "name": "coefficient_minus_76_5749588",
+      "lower_word_hex": "c2992661",
+      "value_f32": -76.57495880126953,
+      "upper_word_hex": "81f0846a",
+      "I_flag": true
+    },
+    {
+      "pair": 90,
+      "file_offset": 1163200,
+      "name": "coefficient_minus_41_3416748",
+      "lower_word_hex": "c2255de0",
+      "value_f32": -41.3416748046875,
+      "upper_word_hex": "81e0855e",
+      "I_flag": true
+    },
+    {
+      "pair": 91,
+      "file_offset": 1163208,
+      "name": "coefficient_81_6022263",
+      "lower_word_hex": "42a33457",
+      "value_f32": 81.60222625732422,
+      "upper_word_hex": "81e084de",
+      "I_flag": true
+    },
+    {
+      "pair": 95,
+      "file_offset": 1163240,
+      "name": "coefficient_39_710659",
+      "lower_word_hex": "421ed7b7",
+      "value_f32": 39.71065902709961,
+      "upper_word_hex": "81f19abe",
+      "I_flag": true
+    },
+    {
+      "pair": 99,
+      "file_offset": 1163272,
+      "name": "coefficient_6_28318501",
+      "lower_word_hex": "40c90fda",
+      "value_f32": 6.283185005187988,
+      "upper_word_hex": "81f2a2bd",
+      "I_flag": true
+    }
+  ],
+  "claim_limit": "The parser proves identity, overlay span and raw LOI payload bits only; instruction semantics are a separate interpretation."
+}

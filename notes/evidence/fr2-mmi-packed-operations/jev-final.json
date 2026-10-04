@@ -1,0 +1,84 @@
+{
+  "arguments": {
+    "claims": [
+      "At pinned PS2Recomp commit c5a9d02573410a2085a4b4b831b0b68ba3515440, the 13 listed packed-register templates and runtime macros extract under the recorded file hashes.",
+      "The source-pinned synthetic probe checks 80096 cases for each of the 13 listed operations and reports zero mismatches under UBSan.",
+      "The check covers only the extracted host vector templates, tested aliases and the modeled zero-register macros; it does not establish instruction flags, timing, decoder behavior, full emulator behavior, or game equivalence.",
+      "The earlier audit's compile failure was an unused PCPYH wrapper parameter under -Werror, and its second run's mismatches came from a wrong test-oracle source-buffer selection; the corrected harness changed that test setup and passed."
+    ],
+    "evidence": [
+      {
+        "id": "pinned-source",
+        "text": "Pinned PS2Recomp commit c5a9d02573410a2085a4b4b831b0b68ba3515440. Header ps2xRuntime/include/ps2_runtime_macros.h SHA-256 c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e. Helper ps2xRecomp/src/lib/mmi_translation_helpers.cpp SHA-256 1402bdb9f81923a8c91c7fa790399a2563ebc5f7cd0c899b7c29cb7c6bafc5ee. sse2neon.h SHA-256 78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed."
+      },
+      {
+        "id": "probe-result",
+        "text": "The final source-pinned verifier compiled actual generated templates with Clang -std=c++20 -Wall -Wextra -Werror -fsanitize=undefined and the pinned SSE2NEON header. It reported names [PCPYLD, PCPYUD, PCPYH, PEXTLW, PEXTUW, PEXTLH, PEXTLB, PAND, POR, PNOR, PXOR, PSUBB, PSUBW], checks 80096 for each, mismatches 0 for each, run exit 0, empty stderr."
+      },
+      {
+        "id": "scope",
+        "text": "Probe inputs are synthetic vectors: four basis cases, eight deterministic boundary/pattern cases, and 10,000 seeded random pairs. Eight register modes include distinct registers, rd==rs, rd==rt, rd==0 with sentinel, rs==0, rt==0, both sources zero, and rd==rs==rt. This verifies only these extracted template expressions in this host probe; it does not exercise game routines, instruction decode, flags, timing, or complete emulation."
+      },
+      {
+        "id": "superseded",
+        "text": "The first scratch harness compile failed only because PCPYH's generated wrapper did not mark unused RS as used while -Werror was enabled. The second scratch harness executed but mismatched because expected-input setup selected the wrong source vector in a register mode. The final harness corrected the test-only input-buffer selection; no upstream source was changed."
+      }
+    ]
+  },
+  "result": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "provider": "openrouter",
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "summary": {
+      "verified": 4,
+      "contradicted": 0,
+      "unsupported": 0,
+      "needs_review": 1
+    },
+    "results": [
+      {
+        "id": "claim0",
+        "claim": "At pinned PS2Recomp commit c5a9d02573410a2085a4b4b831b0b68ba3515440, the 13 listed packed-register templates and runtime macros extract under the recorded file hashes.",
+        "verdict": "verified",
+        "probabilities": {"contradicts": 0.02, "says_nothing": 0.16, "supports": 0.82},
+        "confidence": 0.73,
+        "action": "review",
+        "supporting_evidence": "pinned-source",
+        "same_subject": 0.54
+      },
+      {
+        "id": "claim1",
+        "claim": "The source-pinned synthetic probe checks 80096 cases for each of the 13 listed operations and reports zero mismatches under UBSan.",
+        "verdict": "verified",
+        "probabilities": {"contradicts": 0, "says_nothing": 0, "supports": 1},
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "probe-result",
+        "same_subject": 0.96
+      },
+      {
+        "id": "claim2",
+        "claim": "The check covers only the extracted host vector templates, tested aliases and the modeled zero-register macros; it does not establish instruction flags, timing, decoder behavior, full emulator behavior, or game equivalence.",
+        "verdict": "verified",
+        "probabilities": {"contradicts": 0, "says_nothing": 0, "supports": 1},
+        "confidence": 0.99,
+        "action": "auto",
+        "supporting_evidence": "scope",
+        "same_subject": 0.93
+      },
+      {
+        "id": "claim3",
+        "claim": "The earlier audit's compile failure was an unused PCPYH wrapper parameter under -Werror, and its second run's mismatches came from a wrong test-oracle source-buffer selection; the corrected harness changed that test setup and passed.",
+        "verdict": "verified",
+        "probabilities": {"contradicts": 0, "says_nothing": 0, "supports": 1},
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "superseded",
+        "same_subject": 0.86
+      }
+    ],
+    "usage": {"input_tokens": 2582, "output_tokens": 481}
+  }
+}

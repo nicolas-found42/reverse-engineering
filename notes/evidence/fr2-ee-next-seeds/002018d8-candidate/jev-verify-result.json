@@ -1,0 +1,49 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "summary": {
+    "verified": 5,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 4
+  },
+  "results": [
+    {
+      "id": "claim0 (four additions and reconciliation)",
+      "supports": 0.69,
+      "contradicts": 0.28,
+      "confidence": 0.53,
+      "action": "review"
+    },
+    {
+      "id": "claim1 (callee states)",
+      "confidence": 0.94
+    },
+    {
+      "id": "claim2 (incoming sites, old-C changes, rehash, verifier)",
+      "supports": 0.65,
+      "contradicts": 0.33,
+      "confidence": 0.47,
+      "action": "review"
+    },
+    {
+      "id": "claim3 (001feda0 returns and first word)",
+      "supports": 0.74,
+      "contradicts": 0.12,
+      "confidence": 0.6,
+      "action": "review"
+    },
+    {
+      "id": "claim4 (limits)",
+      "supports": 0.53,
+      "says_nothing": 0.39,
+      "confidence": 0.29,
+      "action": "review"
+    }
+  ],
+  "usage": {
+    "input_tokens": 2913,
+    "output_tokens": 309
+  },
+  "root_disposition": "Four review flags on compound multi-seed claims (confidence 0.29-0.6); no contradicted or unsupported verdict. Every component is covered by deterministic per-seed checks in each bundle: config re-derivation, in-guard checks, reconciliation (19/17/17/17 of N passed), root rehash and verifier results. claim2 as phrased was convoluted about which caller C files changed; the per-bundle reconciliation.json changed_old_C lists are authoritative. Single-seed claims should be used in future batches. Not retried."
+}

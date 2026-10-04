@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "experiment": "Bounded manual-derived EE COP1 FPU semantics proposal",
+  "upstream": {
+    "project": "PS2Recomp",
+    "commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "baseline_source_sha256": {
+      "ps2xRecomp/src/lib/fpu_translator.cpp": "8675ddde6b708dd2d06a680f7d62b41c286776fee3340d530b56271fdc281726",
+      "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e"
+    },
+    "checkout_clean": true,
+    "experiment_left_pinned_checkout_unmodified": true
+  },
+  "inventory": {
+    "path": ".scratch/mesh/codex-fpu-audit-01/inventory.json",
+    "sha256": "637e91c53f8b8b5977eb4778c28e8b2179aff2b9ebbfb8696454c46d17239bda",
+    "source_inventory_sha256": "1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "saved_functions": 3837,
+    "instruction_occurrence_counts": {
+      "adda.s": 1,
+      "swc1": 3551,
+      "mov.s": 2459,
+      "lwc1": 5737,
+      "cvt.s.w": 659,
+      "mtc1": 2719,
+      "sub.s": 1160,
+      "div.s": 391,
+      "c.le.s": 425,
+      "mul.s": 2258,
+      "min.s": 264,
+      "cvt.w.s": 487,
+      "mfc1": 1390,
+      "add.s": 1235,
+      "c.lt.s": 734,
+      "abs.s": 210,
+      "neg.s": 251,
+      "c.eq.s": 112,
+      "sqrt.s": 14,
+      "max.s": 105
+    }
+  },
+  "patch": {
+    "path": "tools/recomp/experimental/ee-fpu-semantics.patch",
+    "sha256": "c25899e99c4f57ed6e26cb7d721f36f975701b5039c18e259e5648af06209c1f",
+    "changed_paths": [
+      "ps2xRuntime/include/ps2_runtime_macros.h",
+      "ps2xRuntime/include/ee_fpu_experimental_helpers.h",
+      "ps2xRecomp/src/lib/fpu_translator.cpp"
+    ],
+    "applied_file_sha256": {
+      "ps2xRuntime/include/ee_fpu_experimental_helpers.h": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf",
+      "ps2xRuntime/include/ps2_runtime_macros.h": "487e7528ce9de850f6cdd6bba57f75dd996f857c0dff2a0e4434276e06368a42",
+      "ps2xRecomp/src/lib/fpu_translator.cpp": "98c253124ddcc83684c220673b384ba5bd258129135ee57dd8c5db86dd048b0c"
+    },
+    "dry_run_applies": true,
+    "baseline_templates": {
+      "macro_cvt": "#define FPU_CVT_W_S(a) ((int32_t)nearbyintf((float)(a)))",
+      "macro_sqrt": "#define FPU_SQRT_S(a) sqrtf((float)(a))",
+      "emit_cvt": "return fmt::format(\"{{ int32_t tmp = FPU_CVT_W_S(ctx->f[{}]); std::memcpy(&ctx->f[{}], &tmp, sizeof(tmp)); }}\", fs, fd);",
+      "emit_sqrt": "return fmt::format(\"ctx->f[{}] = FPU_SQRT_S(ctx->f[{}]);\", fd, fs);",
+      "emit_min": "return fmt::format(\"ctx->f[{}] = std::min(ctx->f[{}], ctx->f[{}]);\", fd, fs, ft);",
+      "emit_max": "return fmt::format(\"ctx->f[{}] = std::max(ctx->f[{}], ctx->f[{}]);\", fd, fs, ft);"
+    },
+    "patched_helper_sha256": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf",
+    "flag_policy": {
+      "CVT.W.S": "no FCR31 writes; manual overflow-flag sources conflict and remain unresolved",
+      "MIN.S/MAX.S": "clear O/U cause bits 15/14 only; preserve other cause/sticky/control bits",
+      "SQRT.S": "clear I/D cause bits 17/16; tested negative normal exact root sets I/SI; preserve unrelated bits; arbitrary sqrt rounding unproved"
+    }
+  },
+  "dependencies": {
+    "python": "3.14.7",
+    "python_dependency": "standard library only",
+    "compiler": "Apple clang++",
+    "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "compiler_driver_path": "/usr/bin/clang++",
+    "compiler_driver_sha256": "12bed4523661307059b879b9b54e77a73176e9d27d27a0e40363271d8f0668ba",
+    "compile_flags": [
+      "-std=c++17",
+      "-O1",
+      "-g",
+      "-fsanitize=undefined,float-cast-overflow",
+      "-fno-sanitize-recover=all"
+    ],
+    "external_cpp_libraries": "none",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O",
+    "note": "Apple C++ standard library and platform SDK are not separately pinned."
+  },
+  "source_evidence": [
+    {
+      "source": "Sony EE Core Instruction Set Manual v6.0",
+      "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+      "printed_pages": [
+        356,
+        365,
+        376
+      ]
+    },
+    {
+      "source": "Sony EE Core User's Manual v6.0",
+      "url": "https://docs.alexrp.com/mips/ee.pdf",
+      "printed_pages": [
+        162,
+        163,
+        164,
+        165
+      ]
+    },
+    {
+      "source": "PCSX2 FPU.cpp software comparator, not hardware oracle",
+      "url": "https://raw.githubusercontent.com/PCSX2/pcsx2/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/FPU.cpp",
+      "commit": "81526d4dc7cc70e4ae75abb35a789417456c6d43"
+    }
+  ],
+  "review_dispositions": {
+    "historical_div_sqrt": "Earlier handoff says both required review; unresolved. Exact prior receipt unavailable in this agent turn.",
+    "r067_manual_verification": "3 verified, 0 contradicted, 0 unsupported, 1 human review; SQRT compound claim confidence 0.63. Original root receipt copied unchanged."
+  },
+  "artifact_sha256": {
+    "tools/recomp/experimental/ee-fpu-semantics.patch": "c25899e99c4f57ed6e26cb7d721f36f975701b5039c18e259e5648af06209c1f",
+    "tools/recomp/experimental/ee_fpu_helpers.hpp": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf",
+    "tools/recomp/experimental/probe.cpp": "2a23298de4c677300891435e7a904ad37945d2ea67760e4d2df5d025046e3c24",
+    "tools/recomp/experimental/verify_ee_fpu_experiment.py": "5d85d67b4099b5db60a7d24da7f22c6cbb54379d8ef3a02c760b532b2382b0e4",
+    "tools/recomp/experimental/README.md": "d5f0c7e51727f2fd1f2ff7cca985a0a7290ebc2f247b88aeced38339f1085e3e",
+    "tools/test_recomp_fpu_experimental.py": "482922eb944d6db12016052b99744da1436e3d7cc95de56383f60d408c71bfcb",
+    "notes/evidence/fr2-fpu-static-audit/README.md": "6b3a6ef87d338af0cb144b368a53808ca407244d6777b9bddab439ca36b82e25",
+    "notes/evidence/fr2-fpu-static-audit/metadata.json": "6d367dddc8ff66fd2f7e40ddab1413c8131e55720ac9bc1ee1b0e5f76dfa3f1a",
+    "notes/evidence/fr2-fpu-static-audit/jev-receipt.json": "bdeeda85bf066300662778521766c14e8b6aca09d9783daccb27e5548b41adac",
+    "notes/evidence/fr2-fpu-static-audit/jev-patch-receipt.json": "ef4427212b593cf1383864f47a3e258c470b012a2fefb30114975bc44e820e8f",
+    "notes/evidence/fr2-fpu-static-audit/r067-fpu-manual-verification.json": "319d347e21cdab5bec6947112526e64af2477f6781074a7715ee97fa5f9bb87e",
+    "notes/evidence/fr2-fpu-static-audit/validation-superseded-independent-probe.json": "fd1788e2a62f62231de9a4aec2c80852f822b52e3c8ab19c8ee0b4e154a5a21f",
+    ".scratch/mesh/codex-fpu-audit-01/inventory.json": "637e91c53f8b8b5977eb4778c28e8b2179aff2b9ebbfb8696454c46d17239bda",
+    "notes/evidence/fr2-fpu-static-audit/actual-template-validation-superseded-02.json": "c92a40d655c9b2cbbed706412be4f91e5516d98a2316ff61970700f72a8aa50a"
+  },
+  "outcome": {
+    "patch_applied_to_upstream": false,
+    "full_recompiler_build": false,
+    "game_or_emulator_execution": false,
+    "hardware_equivalence_claim": false
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "summary": {
+    "verified": 6,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "results": [
+    {
+      "id": "claim0 (001ffbf0)",
+      "supports": 0.9,
+      "contradicts": 0.1,
+      "confidence": 0.85
+    },
+    {
+      "id": "claim1 (001fed80)",
+      "confidence": 0.99
+    },
+    {
+      "id": "claim2 (001ff9c8)",
+      "confidence": 0.99
+    },
+    {
+      "id": "claim3 (00200408)",
+      "confidence": 0.99
+    },
+    {
+      "id": "claim4 (all four old-C and verifier)",
+      "supports": 0.94,
+      "contradicts": 0.05,
+      "confidence": 0.91
+    },
+    {
+      "id": "claim5 (limits)",
+      "confidence": 1.0
+    }
+  ],
+  "usage": {
+    "input_tokens": 3386,
+    "output_tokens": 370
+  },
+  "root_disposition": "single batched call shared by the four bundles; no review flags"
+}

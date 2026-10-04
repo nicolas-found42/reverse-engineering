@@ -1,0 +1,16 @@
+E
+======================================================================
+ERROR: test_format4_256_entry_palette_keeps_first_sixteen_raw_colors (test_ps2_textures.Parser.test_format4_256_entry_palette_keeps_first_sixteen_raw_colors)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_ps2_textures.py", line 139, in test_format4_256_entry_palette_keeps_first_sixteen_raw_colors
+    self.assertEqual(ps2_container.decode_rgba(data, texture)[:64], palette[:64])
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_container.py", line 185, in decode_rgba
+    raise Unsupported(f"format {item['format']} needs a {count}-entry palette block")
+ps2_container.Unsupported: format 4 needs a 16-entry palette block
+
+----------------------------------------------------------------------
+Ran 1 test in 0.001s
+
+FAILED (errors=1)

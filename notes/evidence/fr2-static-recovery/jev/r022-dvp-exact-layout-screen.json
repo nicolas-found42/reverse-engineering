@@ -1,0 +1,19 @@
+{
+  "id": "r022-dvp-exact-layout-screen",
+  "tool": "mcp__jev__jev_screen",
+  "arguments": {
+    "text": "  /* The size of the section won't be known until we see the .endmpg,\n     but we can compute it from the start and end labels.  */\n  /* FIXME: This causes the section to occupy space in the file.  */\n  if (start_label)\n    frag_var (rs_space, 1, 1, (relax_substateT) 0,\n\t      expr_build_binary (O_subtract, end_label, start_label),\n\t      (offsetT) 0, (char *) 0);\n\n#if 0 /* already done */\n  /* Initialize $.mpgloc.  */\n  mpgloc_sym = expr_build_uconstant (addr);\n  S_SET_OTHER (mpgloc_sym, STO_DVP_VU);\n#endif\n\n#if 0 /* $.mpgloc is kept in the ABS section.  */\n  S_SET_SEGMENT (mpgloc_sym, vuoverlay_section);\n#endif\n\n  /* Add an entry to the vu overlay table.  */\n  if (start_label)\n    {\n      expressionS exp;\n      const char *p;\n      symbolS * name_label;\n\n      /* Put the section name in the overlay string table.  */\n\n      subseg_set (vuoverlay_string_section, 0);\n      name_label = create_colon_label (0, DVP_LOCAL_LABEL_PREFIX,\n\t\t\t\t       unique_name (\"secstr\"));\n      /* FIXME: should be a utility to do this.  */\n      for (p = section_name; *p; ++p)\n\tFRAG_APPEND_1_CHAR (*p);\n      FRAG_APPEND_1_CHAR (0);\n\n      subseg_set (vuoverlay_table_section, 0);\n\n      /* FIXME: should be a utility to do these.  */\n      /* Offset into string table.  */\n      exp.X_op = O_symbol;\n      exp.X_add_symbol = name_label;\n      exp.X_add_number = 0;\n      emit_expr (&exp, 4);\n\n      /* The section's lma.  */\n      exp.X_op = O_symbol;\n      exp.X_add_symbol = start_label;\n      exp.X_add_number = 0;\n      emit_expr (&exp, 4);\n\n      /* The section's vma.  */\n      exp.X_op = O_symbol;\n      exp.X_add_symbol = addr;\n      exp.X_add_number = 0;\n      emit_expr (&exp, 4);\n    }\n\n  /* Restore the original seg/subseg.  */\n  subseg_set (orig_seg, orig_subseg);\n}\n\n/* Compute a value for $.mpgloc given a symbol at the start of a chunk\n   of code, the $.mpgloc value for the start, and a symbol at the end\n   of the chunk of code.  */\n\nstatic symbolS *\ncompute_mpgloc (symbolS *startloc, symbolS *startsym, symbolS *endsym)\n{\n  symbolS *s;\n\n  s = expr_build_binary (O_subtract, endsym, startsym);\n",
+    "purpose": "Source evidence for 12-byte DVP table entries (name string offset, load address, VU address) and synthetic space overlay sections. Use technical data only."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.02,\n    \"substance\": 0.97,\n    \"relevance\": 0.96\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"pass\",\n    \"reason\": \"no signals above thresholds\"\n  },\n  \"usage\": {\n    \"input_tokens\": 1195,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.193,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

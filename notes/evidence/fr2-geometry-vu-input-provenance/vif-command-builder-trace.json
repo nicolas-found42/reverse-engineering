@@ -1,0 +1,348 @@
+{
+  "schema": "fr2-geometry-vu-vif-command-builders/v1",
+  "scope": "Selected static command construction and call-order provenance; no runtime scheduling, DMA completion, or VIF register state reconstruction.",
+  "source_static_export_sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+  "selected_functions": [
+    {
+      "entry": "00128ca0",
+      "name": "FUN_00128ca0",
+      "selected_instructions": [
+        {
+          "address": "00128cc8",
+          "text": "jal 0x0010fa70",
+          "bytes": "9c3e040c",
+          "references": [
+            {
+              "to": "0010fa70",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "0010fa70"
+            }
+          ]
+        },
+        {
+          "address": "00128cd0",
+          "text": "jal 0x0010f8f8",
+          "bytes": "3e3e040c",
+          "references": [
+            {
+              "to": "0010f8f8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "0010f8f8"
+            }
+          ]
+        },
+        {
+          "address": "00128d3c",
+          "text": "sw t2,0x0(v0)",
+          "bytes": "00004aac",
+          "references": []
+        },
+        {
+          "address": "00128e14",
+          "text": "sw v0,0x0(v1)",
+          "bytes": "000062ac",
+          "references": []
+        },
+        {
+          "address": "00128e20",
+          "text": "lw a0,-0x6de0(gp)",
+          "bytes": "2092848f",
+          "references": []
+        }
+      ]
+    },
+    {
+      "entry": "0010f8f8",
+      "name": "FUN_0010f8f8",
+      "selected_instructions": [
+        {
+          "address": "0010f910",
+          "text": "sw v0,0xc(a3)",
+          "bytes": "0c00e2ac",
+          "references": []
+        },
+        {
+          "address": "0010f914",
+          "text": "ori t2,t2,0x2",
+          "bytes": "02004a35",
+          "references": []
+        },
+        {
+          "address": "0010f93c",
+          "text": "ori t5,t5,0x8001",
+          "bytes": "0180ad35",
+          "references": []
+        },
+        {
+          "address": "0010f9b0",
+          "text": "lw v1,-0x6de0(gp)",
+          "bytes": "2092838f",
+          "references": []
+        },
+        {
+          "address": "0010f9f0",
+          "text": "lw a2,0x8(v1)",
+          "bytes": "0800668c",
+          "references": []
+        }
+      ]
+    },
+    {
+      "entry": "001124c0",
+      "name": "FUN_001124c0",
+      "selected_instructions": [
+        {
+          "address": "001124cc",
+          "text": "jal 0x001132b8",
+          "bytes": "ae4c040c",
+          "references": [
+            {
+              "to": "001132b8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001132b8"
+            }
+          ]
+        },
+        {
+          "address": "001124ec",
+          "text": "lui a1,0x300",
+          "bytes": "0003053c",
+          "references": []
+        },
+        {
+          "address": "00112500",
+          "text": "ori a1,a1,0x388",
+          "bytes": "8803a534",
+          "references": []
+        },
+        {
+          "address": "00112520",
+          "text": "sw v1,0x0(a3)",
+          "bytes": "0000e3ac",
+          "references": []
+        },
+        {
+          "address": "00112528",
+          "text": "sw t0,0xc(a0)",
+          "bytes": "0c0088ac",
+          "references": []
+        },
+        {
+          "address": "00112540",
+          "text": "sw v1,0x0(t1)",
+          "bytes": "000023ad",
+          "references": []
+        },
+        {
+          "address": "00112550",
+          "text": "jal 0x0021b5b0",
+          "bytes": "6c6d080c",
+          "references": [
+            {
+              "to": "0021b5b0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "0021b5b0"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "entry": "0022fc90",
+      "name": "FUN_0022fc90",
+      "selected_instructions": [
+        {
+          "address": "0022fcac",
+          "text": "jal 0x0022fd48",
+          "bytes": "52bf080c",
+          "references": [
+            {
+              "to": "0022fd48",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "0022fd48"
+            }
+          ]
+        },
+        {
+          "address": "0022fd40",
+          "text": "j 0x001124c0",
+          "bytes": "30490408",
+          "references": [
+            {
+              "to": "001124c0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001124c0"
+            }
+          ]
+        },
+        {
+          "address": "0022fd44",
+          "text": "_addiu sp,sp,0x10",
+          "bytes": "1000bd27",
+          "references": []
+        }
+      ]
+    },
+    {
+      "entry": "001ce288",
+      "name": "FUN_001ce288",
+      "selected_instructions": [
+        {
+          "address": "001ce48c",
+          "text": "jal 0x00128ca0",
+          "bytes": "28a3040c",
+          "references": [
+            {
+              "to": "00128ca0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "00128ca0"
+            }
+          ]
+        },
+        {
+          "address": "001ce490",
+          "text": "_nop",
+          "bytes": "00000000",
+          "references": []
+        },
+        {
+          "address": "001ce494",
+          "text": "jal 0x001335f8",
+          "bytes": "7ecd040c",
+          "references": [
+            {
+              "to": "001335f8",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001335f8"
+            }
+          ]
+        },
+        {
+          "address": "001ce4b8",
+          "text": "jal 0x001288b0",
+          "bytes": "2ca2040c",
+          "references": [
+            {
+              "to": "001288b0",
+              "type": "UNCONDITIONAL_CALL",
+              "function": "001288b0"
+            }
+          ]
+        },
+        {
+          "address": "001ce4bc",
+          "text": "_addiu a2,sp,0x70",
+          "bytes": "7000a627",
+          "references": []
+        }
+      ]
+    },
+    {
+      "entry": "00128e88",
+      "name": "FUN_00128e88",
+      "selected_instructions": [
+        {
+          "address": "00128ed4",
+          "text": "lui t6,0x6c05",
+          "bytes": "056c0e3c",
+          "references": []
+        },
+        {
+          "address": "00128edc",
+          "text": "ori t6,t6,0x8000",
+          "bytes": "0080ce35",
+          "references": []
+        },
+        {
+          "address": "00128f0c",
+          "text": "ori v0,a0,0x8000",
+          "bytes": "00808234",
+          "references": []
+        },
+        {
+          "address": "00129124",
+          "text": "sw s2,0x0(v0)",
+          "bytes": "000052ac",
+          "references": []
+        },
+        {
+          "address": "00129134",
+          "text": "lw v0,0x0(a0)",
+          "bytes": "0000828c",
+          "references": []
+        },
+        {
+          "address": "00129138",
+          "text": "sw s6,0x0(v0)",
+          "bytes": "000056ac",
+          "references": []
+        },
+        {
+          "address": "0012914c",
+          "text": "sw t7,0x0(v0)",
+          "bytes": "00004fac",
+          "references": []
+        },
+        {
+          "address": "00129160",
+          "text": "sw t7,0x0(v0)",
+          "bytes": "00004fac",
+          "references": []
+        },
+        {
+          "address": "001292d4",
+          "text": "lw a0,-0x6de0(gp)",
+          "bytes": "2092848f",
+          "references": []
+        }
+      ]
+    }
+  ],
+  "bounded_findings": [
+    {
+      "claim": "FUN_00128ca0 calls FUN_0010f8f8 before emitting its V4-32 command/data and MSCAL.",
+      "evidence": [
+        "00128ca0:00128cd0",
+        "00128ca0:00128d3c",
+        "00128ca0:00128e14"
+      ],
+      "limit": "The helper emits DMA setup and preceding VIF state is not fully decoded from this excerpt."
+    },
+    {
+      "claim": "FUN_001124c0 constructs command words for BASE selected from 0x388/0x3aa, OFFSET=0, and MSCAL 0.",
+      "evidence": [
+        "001124c0:001124ec",
+        "001124c0:00112520",
+        "001124c0:00112528",
+        "001124c0:00112540"
+      ],
+      "limit": "This initialization path is called from 0022fc90, itself called by 0022dbb8; no static temporal proof connects that startup BASE/OFFSET state or DBF state to a later MSCAL 0x5cc."
+    },
+    {
+      "claim": "FUN_001ce288 calls FUN_00128ca0 before its geometry call into FUN_001288b0; FUN_00128e88 appends BASE/OFFSET after the current geometry transfer commands/MSCNT.",
+      "evidence": [
+        "001ce288:001ce48c",
+        "001ce288:001ce4b8",
+        "00128e88:00128ed4",
+        "00128e88:00129124",
+        "00128e88:00129134"
+      ],
+      "limit": "Later BASE/OFFSET affects subsequent VIF state, not the earlier MSCAL TOP value at 0x5cc; exact VIF instance and ordering/completion remain unproved."
+    },
+    {
+      "claim": "The selected VU entry executes XTOP VI01. No ITOP command was decoded among the explicit known command words in the traced 0x5cc/geometry buffers; this does not exclude ITOP in prior helper traffic or elsewhere in the program.",
+      "evidence": [
+        "overlay5 pair215 XTOP as retained in static-trace.json"
+      ],
+      "limit": "No whole-path or whole-program ITOP absence claim is made; helper packet words are not all decoded."
+    }
+  ],
+  "state_unknowns": [
+    "VIF instance for the 0x5cc packet",
+    "effective STCYCL and STMOD state",
+    "ROW and MASK state",
+    "TOP/TOPS and DBF immediately before MSCAL",
+    "whether startup initialization state persists to the object-builder call",
+    "the exact command meanings of every word emitted by FUN_0010f8f8"
+  ]
+}

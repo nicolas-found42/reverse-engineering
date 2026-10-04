@@ -1,0 +1,27 @@
+{
+  "arguments": {
+    "claims": [
+      "All 13 entry-zero candidates preserved the old function entry/name/body sets, initialized bytes and instruction listing; their bodies equal existing instruction-unit address sets exactly.",
+      "The 13 candidate-bearing modules produced 720 hashed C exports with zero API failures; this checkpoint does not freshly export all 24 modules.",
+      "The four old pseudocode changes demonstrate runtime calls to IOPMOD_ENTRY_00000000_PROVISIONAL."
+    ],
+    "evidence": [
+      {
+        "id": "root-deterministic-validation",
+        "text": "Root independently loaded 24 strict coverage receipts and rehashed raw ELF SHA pins. For all 13 strict candidate receipts it compared before/after function dictionaries, exact new-entry set {00000000}, +1 inventory, before/after initialized memory JSON, and listing SHA. All identical old rows. All 13 exact address-set flags true, both difference ranges and existing-body collisions empty; total candidate body 3832 bytes. Root rehashed every C export in 13 manifests: 720 generated, zero failed; matching manifest hashes from durable strict summary. Full 24-module union not freshly exported."
+      },
+      {
+        "id": "old-pseudocode-delta",
+        "text": "Compared new exports to earlier 24-module manifests. Exactly four old C files changed: CDVDMAN.irx entry0000227c five `(code *)0x0` comparisons become IOPMOD_ENTRY_00000000_PROVISIONAL comparisons; FILEIO.irx000018f0 a `(code *)0x0` assignment becomes that function name; LOADFILE.irx0000134c four null comparisons become that function name; SIFMAN.irx00000348 one null comparison becomes that function name. No changed line invokes the function. Static .text and function are base zero; symbols at address zero collide with null presentation. Raw .iopmod entry0 only supplies metadata, no observed code reference to0. No module/game routine executed."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 2,\n    \"contradicted\": 1,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"All 13 entry-zero candidates preserved the old function entry/name/body sets, initialized bytes and instruction listing; their bodies equal existing instruction-unit address sets exactly.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 0.99,\n        \"contradicts\": 0.01\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"root-deterministic-validation\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The 13 candidate-bearing modules produced 720 hashed C exports with zero API failures; this checkpoint does not freshly export all 24 modules.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 1,\n        \"contradicts\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"root-deterministic-validation\",\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"The four old pseudocode changes demonstrate runtime calls to IOPMOD_ENTRY_00000000_PROVISIONAL.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 0,\n        \"contradicts\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"old-pseudocode-delta\",\n      \"same_subject\": 0.88\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1828,\n    \"output_tokens\": 352\n  }\n}"
+      }
+    ]
+  }
+}

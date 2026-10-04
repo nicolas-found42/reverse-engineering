@@ -1,0 +1,21 @@
+{
+  "tool": "jev_verify",
+  "arguments": {
+    "claims": [
+      "Across the inspected PAL model corpus, the texture count is 2,353 and the parser profiles 4,906 total image levels, including 2,553 extra mip levels; no texture has more than two extra mips.",
+      "The static loader allocates level zero at descriptor+0x28 and stores the extra-level record array at descriptor+0x2c, with 0x10 bytes per mip record; it halves each level's dimensions and sizes source bytes by format.",
+      "For the measured corpus, direct-upload descriptors use logical dimensions and format-specific PSM/bpp, while bit-8 packed descriptors use half-width/half-height and table-selected PSM/bpp; the resulting predicted transfer byte count equals the parsed source-plane byte count for all 4,906 levels (79,571,296 bytes).",
+      "The function that emits per-level image transfers loops over exactly three extra-level slots, and the corpus maximum of two extra levels fits that loop.",
+      "The existing parser structurally skips serialized 16-byte mip records, although all 2,553 records contain some nonzero data and the static uploader reads record fields; the complete semantics of all record words remain unresolved.",
+      "These results establish static descriptor and byte-count relationships only; they do not establish GS memory contents, rendering, or hardware behavior."
+    ],
+    "evidence": [
+      {"id": "corpus-static-audit", "text": "54 model files; 2,353 textures; 4,906 levels; 2,553 extra mip levels; counts by extra mip count are 0:1,022, 1:109, 2:1,222. Maximum extra mips=2. Predicted transfer bytes=79,571,296 and parsed source-plane bytes=79,571,296 across all levels; every checked level passes dimension, alignment, size, and QWC assertions. Minimum level bytes=32. Mip records=2,553; serialized uint32 word index2 is zero in all 2,553; distinct counts by uint32 word=[9,75,1,3]."},
+      {"id": "loader-static", "text": "Raw instruction anchors in FUN_0022ba30: at 0022bdd8 load mip count from descriptor+0x35; at 0022bde8 store mip-record pointer at descriptor+0x2c; at 0022bf20 store level-zero image pointer at descriptor+0x28; at 0022bf38 store extra-level source pointer at recordbase + level*0x10 - 8 (record's +8); at 0022bfbc/0022bfc0 halve the two dimensions each iteration; per-format size branches span 0022bf40..0022bfb0."},
+      {"id": "upload-static", "text": "FUN_00222358: base upload call at 0022244c; reads extra-mip count at 00222454; halves dimensions at 00222488 and 00222490; records are indexed at recordbase + level*0x10; reads transfer source pointer from record+8 at 002224c8; fixed loop guard is `slti v0,s4,0x3` at 00222504. FUN_00222110 computes transfer QWC from width*height*bpp then shifts right by 7; first calculation instructions are 00222110..00222148. FUN_0022c660 updates each mip record's halfword at +2 and has a loop over descriptor mip count."},
+      {"id": "table-fields", "text": "Pinned format table rows: format1 [PSM 0, bpp 32]; format3 [direct PSM 19, direct bpp 8, packed PSM 0, packed bpp 32]; format4 [direct PSM 20, direct bpp 4, packed PSM 2, packed bpp 16]. The transfer builder FUN_00222358 tests descriptor Q-word bit8. The audit checks bit8=false uses bits15/19 logical dimensions; bit8=true uses bits23/27, which are each one exponent lower for all corpus entries. Across every level, level dimensions halve, source bytes by format equal transfer width*height*bpp/8, and calculated QWC*16 equals those bytes."},
+      {"id": "parser-limits", "text": "Current tools/ps2_container.py reads mip count from descriptor+0x35 and skips descriptor+0x40+0x10*mips before image planes. It records computed level spans but does not decode the serialized 16-byte records. The static functions load/use record fields: FUN_00222358 reads record+2, +4, +8, and +12; FUN_0022c660 writes record+2; FUN_0022ba30 writes the source pointer at record+8. The audit explicitly leaves full record-word semantics open."},
+      {"id": "scope", "text": "Audit was offline and static. It proves matching descriptor-derived byte counts under the observed corpus/profile, not actual GS uploads, GS memory contents, rendered pixels, or hardware equivalence."}
+    ]
+  }
+}

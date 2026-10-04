@@ -1,0 +1,55 @@
+{
+  "PS2Recomp_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "PCSX2_commit": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+  "PCSX2_source_url": "https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/MMI.cpp",
+  "Sony_manual_url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+  "Sony_manual_pdf_pages": {
+    "PEXCW": 199,
+    "PEXEW": 201,
+    "PROT3W": 260
+  },
+  "saved_byte_verified_inventory_counts": {
+    "PEXEW": 26,
+    "PEXCW": 2,
+    "PROT3W": 157
+  },
+  "fetches": [
+    {
+      "path": ".scratch/mesh/codex-root/firecrawl-pcsx2-mmi.json",
+      "sha256": "a1a40a7ba862fc1d85f6b2fcb1d3ecee574215a2c1a4b18de4143d7f382b22e6",
+      "HTTP_status": 200,
+      "endpoint": "scrape",
+      "arguments": {
+        "url": "https://raw.githubusercontent.com/PCSX2/pcsx2/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/MMI.cpp",
+        "formats": [
+          "markdown"
+        ],
+        "onlyMainContent": true
+      }
+    },
+    {
+      "path": ".scratch/mesh/codex-root/firecrawl-ee-shuffle-search.json",
+      "sha256": "ea8dcaed7f200cfb687b9fe5bb1c169e2f7e323d2e3dd43042eec438669ae8c3",
+      "HTTP_status": 200,
+      "endpoint": "search",
+      "arguments": {
+        "query": "Emotion Engine Core User Manual PROT3W PEXEW PEXCW Sony",
+        "limit": 5
+      }
+    },
+    {
+      "path": ".scratch/mesh/codex-root/firecrawl-ee-shuffle-search-02.json",
+      "sha256": "ae3a9443e80324865324fc7d4c2fb0d8377047c088ffa8f607c56c2a88f71420",
+      "HTTP_status": 200,
+      "endpoint": "search",
+      "arguments": {
+        "query": "\"PROT3W\" \"manual\"",
+        "limit": 5
+      }
+    }
+  ],
+  "saved_inventory_sha256": "ca1a05874479b59f842f825436b22895d4e4043ba379f149e125c5a5e60f8ac8",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "site_count_rule": "unique byte-verified saved instruction addresses",
+  "independent_review_receipt_sha256": "cc80400a247c52b81d50f30becbbbe61bde72d4dd21912bbc02ec89ee6621da7"
+}

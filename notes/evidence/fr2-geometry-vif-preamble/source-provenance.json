@@ -1,0 +1,128 @@
+{
+  "bundle": "fr2-geometry-vif-preamble",
+  "purpose": "Static audit of VIF preamble helper, geometry writer command ordering, and E-bit MSCNT continuation. No game routine or emulator execution.",
+  "artifacts": [
+    {
+      "path": ".scratch/evidence/static-export.json",
+      "role": "Original static export index referenced by prior saved function export work.",
+      "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/0010f8f8.c",
+      "role": "Saved static decompilation of DMA packet preamble helper.",
+      "sha256": "a25a5f01733663727f887478c7cde8fc0a80f7cb7e968aa7a60595b0ac83c991"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00128ca0.c",
+      "role": "Saved static caller; invokes 0010f8f8 before its V4-32 and MSCAL words.",
+      "sha256": "631551ebd2d0b25da4721fdc3b38c26f3af998e41feff47edcf6ec4d4545ac59"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/001288b0.c",
+      "role": "Saved static builder; conditional group-count loops call 00128e88.",
+      "sha256": "9e7d1c5ae7b1660549e3625a206eeee600268ce3b9c1e54ba72b73db27ed8764"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00128e88.c",
+      "role": "Saved static geometry packet builder; exact output cursor order and state words.",
+      "sha256": "db45fd58871c3e44f227855cae71c6b3e9715e394c923d830c6a0520bdb3aae6"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/001ce288.c",
+      "role": "Saved static outer caller/loop; 00128ca0 precedes 001288b0 in each iteration.",
+      "sha256": "6dc72fda5b92f3f441eb73d4028d63b9d2f9db129e53e805060851d6ad085ba4"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00127c00.c",
+      "role": "Render-path producer called with 1 before 00128ca0; sources scratchpad vector setup and calls 00128518.",
+      "sha256": "82ef70163bb9c2ee57ca0625a7c9e9916ba1e1608bc6321caa1e1575929eaee9"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00128518.c",
+      "role": "Writes scratchpad outputs at 0x700031e0 and 0x70003220, then calls 00115560 to populate output at 0x70003160.",
+      "sha256": "5e2471f3d77edd17052bcf7939bd8abfdae9b813003f20ab73884822092c0e7b"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00115560.c",
+      "role": "Writes four result vectors to the caller-provided 0x70003160 output block.",
+      "sha256": "b0179444cbab130501bd40a9f31523f8fcb9fd2ce9f4ff3626effde516712f55"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/00115518.c",
+      "role": "Local input shuffle called by 00128ca0; its local result is not subsequently read in the saved pseudocode.",
+      "sha256": "852865c1978054549a215a245e8384f0ea7121df4adbd10bf8b2f53b8575f218"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/0021b5b0.c",
+      "role": "Bounded VIF1 submitter writing QWC 0 at 0x10009020, TADR at 0x10009030, CHCR 0x145 at 0x10009000.",
+      "sha256": "a2a92f30a404a0154b1930f51cbd14f97927206900402b1ca1a7f7dc4d19af49"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/functions/001124c0.c",
+      "role": "Initialization chain builder/submitter caller; reset states and exact END/BASE/OFFSET/MSCAL packet order.",
+      "sha256": "9aa16bae77d325f91a3aaf9f15b40373f02aa0fc17f1b000c331bcfa39e9de3a"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/vif1-dma-pinned-81526d4.cpp",
+      "role": "Pinned PCSX2 VIF1 TTE forwarding source; commit 81526d4dc7cc70e4ae75abb35a789417456c6d43.",
+      "sha256": "681d80c62eccdb481b4ad31ae03d983d0747579a475d430d6f51d4c73a2819ac"
+    },
+    {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.bin",
+      "role": "Raw saved overlay-5 binary used to resolve the E/delay/XTOP byte offsets.",
+      "bytes": 2048,
+      "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c"
+    },
+    {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5-disassemble.stdout",
+      "role": "Saved disassembler output; `.data` base is 0x2800 and pair addresses are 8-byte spaced.",
+      "sha256": "238c0c15af277ddcc8cfc15a0111d6de8dd884b53151cfc27865ad1b75ed0e8a"
+    },
+    {
+      "path": ".scratch/evidence/vu/private-work-016dac24781c4c9ea7c99aa0fa79c310/overlay-5.s",
+      "role": "Saved assembly view; only three adjacent pair labels are summarized in this bundle.",
+      "sha256": "f5e195d23ec624026e31caae2c31d7af6cce10ec36158632f8624eeb640499d5"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/Vif_Codes.cpp-pinned.txt",
+      "role": "Pinned PCSX2 VIF code excerpt, commit 81526d4dc7cc70e4ae75abb35a789417456c6d43; contains execMicro, MSCNT, BASE/OFFSET, STMOD/STCYCL handling.",
+      "sha256": "ba028ed1cb9d6546eb641412664cb398fcee4f7eddad70a9f31472f492f1f09c"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/github-raw-Vif_Codes.cpp",
+      "role": "Raw pinned upstream source response for the PCSX2 excerpt; see root source pin list.",
+      "sha256": "659e95720d49b7f047f499fa31770e522dccb610c2d595647231e1f28748396c"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/ps2sdk/common/include/vif_codes.h",
+      "role": "Pinned PS2SDK VIF opcode and immediate field macros.",
+      "sha256": "b28a4d58edf1245c54fd7bfa8276b9d59ae5a369a27db57ba09938b5f8c4adfb"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/ps2sdk/ee/dma/include/dma_tags.h",
+      "role": "Pinned PS2SDK DMA tag layout definitions; used to distinguish DMATAG bits from VIF opcodes.",
+      "sha256": "43392c08dcf8499fa411bd123a33376d417f5c1144bef649d32430312e34d302"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/ps2sdk/ee/dma/include/dma_registers.h",
+      "role": "Pinned PS2SDK DMA register bit definitions; confirms TTE bit 6 and STR bit 8 in CHCR.",
+      "sha256": "e5c3c8c73a365fed0c4960cf88c55300deee99736f6dc239c0af8e9b2bc631a7"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/ps2sdk/common/include/gs_gp.h",
+      "role": "Pinned PS2SDK GS register identifiers; names register address 0x4e as ZBUF_1.",
+      "sha256": "3e93c3d7a16028bbae8894c07423964b263328b44a0c43bab3ec92c725b778a4"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/ps2sdk/common/include/gif_tags.h",
+      "role": "Pinned PS2SDK GIF tag field and register descriptor definitions.",
+      "sha256": "ebb22d20e27d7ee2f822e343358dc8644042b3fde9f39ddd2f13b317ab84169f"
+    }
+  ],
+  "primary_manual": {
+    "title": "Sony Computer Entertainment, VU User's Manual Version 6.0",
+    "section": "3.4, Figure 3-19 (manual page 51 in the PDF extract)",
+    "url": "https://docs.alexrp.com/mips/ee_vu.pdf",
+    "claim_scope": "E bit, one instruction delay slot, continuation address in TPC only."
+  }
+}

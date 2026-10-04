@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "config_sha256": "14add4d8bc29a119c44a225be23f94820c3cf430720b72d0bc49665e4389acfa",
+  "checker_sha256": "6a1c2b9b045b8ffdc053ee77ee678231304537a0c8b0ea2039c5137643081f38",
+  "entry": "001fd060",
+  "span": [
+    "001fd060",
+    "001fd764"
+  ],
+  "words": 449,
+  "edge_counts": {
+    "conditional": 18,
+    "conditional_likely": 5,
+    "call": 18,
+    "unconditional_branch": 12,
+    "return": 1
+  },
+  "calls": {
+    "001fd2e4": "001fc4a8",
+    "001fd72c": "001fc4a8",
+    "001fd1e0": "001feda0",
+    "001fd520": "001fd768",
+    "001fd174": "001fd768",
+    "001fd538": "001fc4a8",
+    "001fd674": "001fd768",
+    "001fd61c": "001fd768",
+    "001fd6cc": "001fd768",
+    "001fd5dc": "001fd768",
+    "001fd488": "001feda0",
+    "001fd220": "001fd768",
+    "001fd1b4": "001fd768",
+    "001fd3e8": "001fd768",
+    "001fd714": "001fd768",
+    "001fd25c": "001fd768",
+    "001fd4d0": "001fd768",
+    "001fd29c": "001fd768"
+  },
+  "computed_calls": [],
+  "tail_jumps": {},
+  "delay_breaks": [],
+  "next_word_function_entry": false,
+  "known_callees": [
+    "001fc4a8"
+  ],
+  "unresolved_callees": [
+    "001fd768",
+    "001feda0"
+  ],
+  "zero_words": [
+    "001fd0fc"
+  ],
+  "incoming_raw_jal_sites": [
+    "001fcef4"
+  ],
+  "scope": "Independent raw-byte re-derivation of the guard config. Structural union only; no identity, feasibility, execution, or call-closure beyond the listed callee states."
+}

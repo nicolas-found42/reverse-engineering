@@ -1,0 +1,45 @@
+{
+  "tool": "jev_verify",
+  "arguments": {
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "claims": [
+      "In FUN_00222358, record word 0's low 16 bits at offset +0 are replaced by FUN_00222080's return value, and all 2,571 archive-bound serialized mip records have that halfword initially zero.",
+      "Record word 0's high 16 bits at offset +2 provide the allocation increment to FUN_00222080; FUN_0022c660 recomputes a mip allocation size through FUN_0022c9f0 and stores it at the same +2 offset.",
+      "Record word 1's low 16 bits at offset +4 are used as mip-buffer-width inputs packed into the MIPTBP1 register fields TBW1, TBW2, and TBW3.",
+      "Record word 2 at offset +8 is written as a source pointer by FUN_0022ba30 and then read as the source-address argument for FUN_00222110.",
+      "Record word 3's low 16 bits at offset +12 are passed to FUN_00222110 as its DBW input and occupy the BITBLTBUF DBW field position in the packet builder.",
+      "FUN_00222358 selects PSM and bits-per-pixel from the bit-8 branch once before its mip loop, halves transfer width and height for each mip, and reuses that PSM/bpp selection for base and mip uploads."
+    ],
+    "evidence": [
+      {
+        "id": "loader-word-pointer-write",
+        "text": "Static listing anchor 0022ba30: 0022bf38 `sw s1,-0x8(v1)`; v1 is a per-level record address formed from descriptor mip-array pointer + level*16. This stores at record+8."
+      },
+      {
+        "id": "upload-mip-fields",
+        "text": "Static listing anchors in FUN_00222358: 00222494 `jal FUN_00222080`, delay slot 00222498 `_lhu a0,0x2(s0)`; 0022249c `lhu v1,0x4(s0)`; 002224a0 `sh v0,0x0(s0)`; 002224ac `lhu a3,0xc(s0)`; 002224c8 `lw a1,0x8(s0)`. s0 is the current record pointer at descriptor mip array + index*16. After collecting three returned allocation addresses and the three offset+4 halfwords, instructions 00222528/00222540/00222554 pack and store the six fields at descriptor+0x20."
+      },
+      {
+        "id": "allocation-recompute",
+        "text": "Static listing anchors in FUN_0022c660: 0022c7a8 calls FUN_0022c9f0 with the current mip dimensions; the loop's store at 0022c7c0 is `sh v1,0x2(s0)` where s0 is mip-record base + index*16. FUN_00222080 reads the old cursor, adds argument a0 to the cursor at 002220a8/002220b0, and returns the previous cursor. FUN_00222358's call delay slot passes record+2 as a0."
+      },
+      {
+        "id": "transfer-packet-builder",
+        "text": "Static listing FUN_00222110: takes the mip transfer parameters and constructs a packet qword; anchor 00222118 begins construction from argument a2, and 0022213c combines input fields before packet stores. Its decompiler dataflow labels arg4 (a3) as the BITBLTBUF destination width input. GSRegs-pinned.h BITBLTBUF declaration: SBP:14 bits, SBW:6, SPSM:6, DBP:14, DBW:6, DPSM:6."
+      },
+      {
+        "id": "miptbp-register",
+        "text": "GSRegs-pinned.h MIPTBP1 declaration: TBP1:14, TBW1:6, TBP2:14, TBW2:6, TBP3:14, TBW3:6, pad4. FUN_00222358 decompiler extracts each record's ushort at +4 and places successive values into the positions corresponding to TBW1/2/3."
+      },
+      {
+        "id": "branch-and-dimensions",
+        "text": "Static FUN_00222358 listing: bit-8 branch at 002223a8 selects table values before the base upload call at 0022244c. Mip loop calls the same FUN_00222110 with those saved table values, while width and height registers are each shifted right by one at 00222488 and 00222490. No per-level bit-8 branch appears within the loop."
+      },
+      {
+        "id": "archive-word-observation",
+        "text": "Independent archive-bound audit loaded all 56 .ps2;1 entries through Baseline.entries and Entry.load and counted 2,571 mip records. Word0 low16=0 in all records; word2=0 in all records. Word1 low16 distribution: 1:498, 2:2060, 4:13. Word3 low16: 0:224, 1:1939, 2:408. These are input corpus values, not proof of hardware acceptance."
+      }
+    ]
+  }
+}

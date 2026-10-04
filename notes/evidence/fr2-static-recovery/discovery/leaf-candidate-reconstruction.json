@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "status": "isolated-provisional-leaf-candidate-created",
+  "date": "2026-10-04",
+  "candidate": {
+    "entry": "0022a180",
+    "name": "candidate_leaf_0022a180",
+    "source_type": "ANALYSIS",
+    "body_start": "0022a180",
+    "body_end_inclusive": "0022a1c7",
+    "body_bytes": 72,
+    "already_decoded_instructions": 18,
+    "candidate_is_original_identity": false,
+    "runtime_reachability": "unproved"
+  },
+  "provenance": {
+    "executable_path": "games/ford-racing-2/extracted/SLES_517.05",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "ELF_section": {
+      "name": ".user_section_uncommon",
+      "type": 1,
+      "flags": 6,
+      "address": "22a180",
+      "file_offset": "12b180",
+      "size": "27f4"
+    },
+    "file_offset": "0012b180",
+    "span_sha256": "c5a281fb5648f92c515ee4e524f9b7b6514add1f3d162237ca78c54094b0f7a9",
+    "baseline_manifest_sha256": "39302b3579c4c88f688a962fc794a6f9c6d652730c4f09794e7a40b29001192e",
+    "baseline_entries": 3837,
+    "after_entries": 3838,
+    "project_copy": "ghidra-project/codex-leaf-candidate-pristine-20261004/fr2.rep (read-only; changes discarded)"
+  },
+  "guards_and_deltas": {
+    "section_file_mapping_verified": true,
+    "entry_added": "0022a180",
+    "no_other_entry_or_body_changed": true,
+    "listing_count_before_after": [
+      268374,
+      268374
+    ],
+    "listing_unchanged": true,
+    "defined_data_units_unchanged": true,
+    "memory_hash_before_after": [
+      "4ab510286f2f70e755d98a1d8ece0e6456d5a91c194ffc16a516266c4577d858",
+      "4ab510286f2f70e755d98a1d8ece0e6456d5a91c194ffc16a516266c4577d858"
+    ],
+    "neighbors_before": {
+      "0022a1c8": "0022a1c8",
+      "0022a1cc": "0022a1c8"
+    },
+    "neighbors_after": {
+      "0022a180": "0022a180",
+      "0022a1c8": "0022a1c8",
+      "0022a1cc": "0022a1c8"
+    },
+    "incoming_entry_reference": {
+      "references": [
+        {
+          "from": "_elfSectionHeaders::00000264",
+          "type": "DATA",
+          "source": "IMPORTED"
+        }
+      ]
+    },
+    "no_disassembly_or_memory_edits": true
+  },
+  "candidate_C": {
+    "path": ".scratch/mesh/codex-helpers/leaf-candidate-reconstruction-20261004/functions/candidate_leaf_0022a180.c",
+    "sha256": "2475bc5f1b389431e7fa2f6f9a6193a9381482b67476eb164080bf228957328f",
+    "bytes": 251,
+    "claim_limits": "Generated C for a provisional static body only."
+  },
+  "arithmetic_reference": {
+    "module": "tools/ghidra/experimental/argb1555_candidate.py",
+    "function": "uint32_to_argb1555_candidate",
+    "formula": "((b2 >> 3) & 31) | (((b1 >> 3) & 31) << 5) | (((b0 >> 3) & 31) << 10) | ((b3 != 0) << 15)",
+    "input_byte_order": "uint32 low-to-high bytes b0,b1,b2,b3",
+    "semantic_label": "A1R5G5B5-style packing hypothesis; not a recovered renderer contract"
+  },
+  "synthetic_tests": {
+    "test_file": "tools/ghidra/experimental/test_argb1555_candidate.py",
+    "command": "python3 -m unittest discover -s tools -p 'test_argb1555_candidate.py' -v",
+    "result": "7 tests passed through top-level tools discovery; includes exhaustive 256 input values per channel/alpha, boundaries, combined channels, and invalid-domain cases",
+    "game_binary_or_original_routine_executed": false,
+    "prior_command": "PYTHONPATH=tools/ghidra/experimental python3 -m unittest discover -s tools/ghidra/experimental -p test_argb1555_candidate.py -v"
+  },
+  "reference_findings": {
+    "direct_JAL_JALX_or_conditional_branch_target": false,
+    "aligned_file_backed_pointer_to_span": false,
+    "sole_Ghidra_incoming_reference": {
+      "references": [
+        {
+          "from": "_elfSectionHeaders::00000264",
+          "type": "DATA",
+          "source": "IMPORTED"
+        }
+      ]
+    },
+    "raw_scan_details": ".scratch/mesh/codex-helpers/leaf-candidate-audit-20261004.json"
+  },
+  "jev": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "summary": {
+      "verified": 4,
+      "contradicted": 1,
+      "unsupported": 0,
+      "needs_review": 1
+    },
+    "verified": [
+      "exact 72-byte provisional body added without disassembly or memory edits",
+      "all prior entries/bodies/listing/data/memory/outside-neighbor ownership unchanged",
+      "sole Ghidra incoming reference is imported ELF metadata; reachability unproved"
+    ],
+    "review": "ARGB1555-style semantic label received verified with 0.61 confidence and action review; keep it explicitly provisional.",
+    "contradicted_negative_control": "claim that synthetic tests executed the original PAL routine"
+  },
+  "sha256": {
+    ".scratch/mesh/codex-helpers/leaf-candidate-reconstruction-20261004/manifest.json": "38f02057d7bc5cfadda875ec760cf61fad7a5ea436d096f3159438e5a421c636",
+    ".scratch/mesh/codex-helpers/leaf-candidate-reconstruction-20261004/inventory.json": "7e5b4d4ca3f9118ac7cbf701ed490f87c6a91b7ead9f2d62dfefb3a78790b6fc",
+    ".scratch/mesh/codex-helpers/leaf-candidate-reconstruction-20261004/functions/candidate_leaf_0022a180.c": "2475bc5f1b389431e7fa2f6f9a6193a9381482b67476eb164080bf228957328f",
+    ".scratch/mesh/codex-helpers/CreateProvisionalLeafCandidate.java": "6defa7cea739b32a7e5f88121cc862afae4192df4f16f8bb281200eddbab293a",
+    "tools/ghidra/experimental/argb1555_candidate.py": "c95b6fdfe5fb55007705df30e71945cbe3b5d65fbebcb06ae08ce75623f37039",
+    "tools/ghidra/experimental/test_argb1555_candidate.py": "cb116edb55cb8e8e8e7339ece600883a47557c4bd0d7b88dfb37ae25fc0435bf",
+    "tools/ghidra/experimental/README.md": "08beb910ca48d415d0e90bd4bbc5e2863999200c5c17fcbeeb8ff6907912427b",
+    "games/ford-racing-2/extracted/SLES_517.05": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    ".scratch/mesh/codex-root/decompile-guarded-3837-01/manifest.json": "39302b3579c4c88f688a962fc794a6f9c6d652730c4f09794e7a40b29001192e",
+    "tools/ghidra/experimental/CreateProvisionalLeafCandidate.java": "d13f621b353092f00309f8a423ba9183893bdf3cf4815a88470daf6696dc7c47",
+    "tools/test_argb1555_candidate.py": "950c9b081fe6c414a7a1b6917295f8faff4dc87a65241e75b5040aa18e0b6b9a"
+  },
+  "claim_limits": "Provisional entry/body hypothesis only; not an original symbol/name, call-site recovery, runtime-use claim, renderer contract, or whole-game source equivalence.",
+  "promotion_validation": {
+    "date": "2026-10-04",
+    "script": "tools/ghidra/experimental/CreateProvisionalLeafCandidate.java",
+    "script_sha256": "d13f621b353092f00309f8a423ba9183893bdf3cf4815a88470daf6696dc7c47",
+    "source_basis_sha256": "9c60c34dba5d57e9ef956a1a9559323ab58c12a8a65adadbc4d854ee10f15a21",
+    "project_copy": "ghidra-project/codex-leaf-candidate-provenance-20261004/fr2.rep",
+    "mode": "Ghidra 12.1.3 -noanalysis -readOnly",
+    "baseline_entry_set_equal_to_pinned_manifest": true,
+    "baseline_entry_set_comparison": "The script parsed all 3,837 pinned manifest entries and required exact equality with pre-candidate Ghidra function-entry keys; only current-project before/after bodies are compared, so already-applied body-only dispatch repairs remain compatible.",
+    "native_decompiler_path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/Ghidra/Features/Decompiler/os/mac_arm_64/decompile",
+    "native_decompiler_sha256": "f028f42715840233c2685351e6a01ca291e4090aefc48e2e33fd2d9e5965a759",
+    "result": "PROVISIONAL_LEAF_OK entry=0022a180 bytes=72 original_entries=3837 new_entries=3838 listing_unchanged=true memory_unchanged=true",
+    "output_directory": ".scratch/mesh/codex-helpers/leaf-candidate-provenance-20261004",
+    "output_sha256": {
+      "manifest.json": "196b90774919ba360430f1c30c2d42bcc09c524c2ede9c1c43ab51744a382ce9",
+      "inventory.json": "7e5b4d4ca3f9118ac7cbf701ed490f87c6a91b7ead9f2d62dfefb3a78790b6fc",
+      "functions/candidate_leaf_0022a180.c": "2475bc5f1b389431e7fa2f6f9a6193a9381482b67476eb164080bf228957328f"
+    },
+    "log": {
+      "path": ".scratch/mesh/codex-helpers/leaf-candidate-provenance-20261004.log",
+      "sha256": "8cd3f5a4eb3ccc501720ed4d5ab072ac28ed613c5aace739305038f183f0b7d1"
+    }
+  },
+  "top_level_test_discovery": {
+    "shim": "tools/test_argb1555_candidate.py",
+    "command": "python3 -m unittest discover -s tools -p 'test_argb1555_candidate.py' -v",
+    "result": "7 tests passed",
+    "original_game_routine_executed": false
+  },
+  "jev_promotion_review": {
+    "tool": "jev_gate",
+    "action": "escalate",
+    "composite": 0.88771875,
+    "safe_to_apply": 0.25,
+    "verification_summary": {
+      "verified": 4,
+      "contradicted": 0,
+      "unsupported": 1,
+      "needs_review": 3
+    },
+    "disposition": "Raw-source and test claims were supported; exact Ghidra delta claims had review-level confidence and one broad claim about all interpretation details was unsupported. This does not establish positive runtime or identity evidence; retain provisional limits."
+  },
+  "durable_note": "notes/evidence/fr2-static-recovery/discovery/leaf-candidate-reconstruction.md",
+  "jev_provenance_verification": {
+    "tool": "jev_verify",
+    "summary": {
+      "verified": 2,
+      "contradicted": 1,
+      "unsupported": 0,
+      "needs_review": 1
+    },
+    "verified_claims": [
+      "exact baseline entry-set guard",
+      "Ghidra/native decompiler path and SHA metadata"
+    ],
+    "review_disposition": "A broad claim that fresh validation preserved functions/listing/memory was returned contradicted at 0.61 confidence with action review. The direct headless success marker and generated manifest record exact set equality, original bodies unchanged, unchanged instruction/data state, and identical memory hashes. Preserve this as a low-confidence Jev review result; deterministic run artifacts are the primary evidence."
+  }
+}

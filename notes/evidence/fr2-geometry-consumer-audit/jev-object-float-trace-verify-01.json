@@ -1,0 +1,71 @@
+{
+  "tool": "mcp__jev__jev_verify",
+  "arguments": {
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "claims": [
+      "In static export FUN_0012d4b8, an object pointer obtained from a parsed-resource object list is passed through FUN_00121590, then fields at offsets +0x18, +0x0c, +0x10 and +0x14 are passed to FUN_00113aa8 as angle/position inputs.",
+      "FUN_00113aa8 invokes the VU0 microprogram at byte VMA 0x268 for nonzero angle parameters, then writes four packed 4-word groups through its output pointer.",
+      "These exports establish a parsed-resource object-to-VU0 transform path, but they do not show that the values at those object offsets came from a particular 0x34-byte geometry record plane."
+    ],
+    "evidence": [
+      {
+        "id": "FUN_0012d4b8-object-loop",
+        "text": "Static Ghidra decompilation excerpt from function FUN_0012d4b8, lines 455-468:\n`iVar36 = FUN_00131c10(lVar10,iStack_b0);`\n`lVar10 = (long)(int)*(undefined4 **)(iVar36 + 8);`\n`if (lVar10 != 0) {`\n`  iVar7 = FUN_00121590(**(undefined4 **)(iVar36 + 8),uVar32);`\n`  ...`\n`  FUN_00113aa8(*(undefined4 *)(iVar7 + 0x18),0,0,*(undefined4 *)(iVar7 + 0xc),*(undefined4 *)(iVar7 + 0x10),*(undefined4 *)(iVar7 + 0x14),iVar7 + 0x10);`\n`}`\nThe same function earlier calls FUN_0011ed90 to create/store its parsed resource root and resolves names SKYDOME and MINI_SKYDOME."
+      },
+      {
+        "id": "FUN_00113aa8-helper",
+        "text": "Static decompilation of FUN_00113aa8: param_1/param_2/param_3 are each tested against zero. A nonzero parameter is loaded through _qmtc2, passed to `_vcallms(0x268)`, then read back through `_qmfc2` and `_prot3w`. It stores packed output words through `param_7[0xc..0xf]`, `param_7[4..7]`, `param_7[0..3]`, and `param_7[8..0xb]`. This describes the helper's dataflow/output shape, not the geometry plane's meaning."
+      },
+      {
+        "id": "instruction-call-sites",
+        "text": "Static instruction export: FUN_0012d4b8 calls FUN_0011ed90 at 0012d568 and FUN_00113aa8 at multiple sites including 0012dd84 and 0012ddd0. In FUN_00113aa8, vcallms 0x4d appears at 00113ae8, 00113b20, 00113b58. Previously verified VU0 address rule is immediate times 8, so byte VMA=0x268."
+      },
+      {
+        "id": "limits",
+        "text": "The serialized geometry decoder labels the 0x34-table child payloads only by raw stride/condition: 6, 20, and 4 bytes, with optional fields and 16-byte alignment. No evidence supplied maps those payload bytes to the named-object fields +0x18/+0xc/+0x10/+0x14. No exact VIF1/VU1 packet-source pointer is recovered."
+      }
+    ]
+  },
+  "result": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13",
+    "provider": "openrouter",
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "summary": {"verified": 3, "contradicted": 0, "unsupported": 0, "needs_review": 0},
+    "results": [
+      {
+        "id": "claim0",
+        "claim": "In static export FUN_0012d4b8, an object pointer obtained from a parsed-resource object list is passed through FUN_00121590, then fields at offsets +0x18, +0x0c, +0x10 and +0x14 are passed to FUN_00113aa8 as angle/position inputs.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0, "contradicts": 0.01, "supports": 0.99},
+        "confidence": 0.99,
+        "action": "auto",
+        "supporting_evidence": "FUN_0012d4b8-object-loop",
+        "same_subject": 0.83
+      },
+      {
+        "id": "claim1",
+        "claim": "FUN_00113aa8 invokes the VU0 microprogram at byte VMA 0x268 for nonzero angle parameters, then writes four packed 4-word groups through its output pointer.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0, "contradicts": 0, "supports": 1},
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "FUN_00113aa8-helper",
+        "same_subject": 0.64
+      },
+      {
+        "id": "claim2",
+        "claim": "These exports establish a parsed-resource object-to-VU0 transform path, but they do not show that the values at those object offsets came from a particular 0x34-byte geometry record plane.",
+        "verdict": "verified",
+        "probabilities": {"says_nothing": 0, "contradicts": 0, "supports": 1},
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "limits",
+        "same_subject": 0.6
+      }
+    ],
+    "usage": {"input_tokens": 2326, "output_tokens": 428}
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "r027-vu-ownership-claims",
+  "tool": "mcp__jev__jev_verify",
+  "arguments": {
+    "claims": [
+      "The static upload routines route the first seven recovered chunks through DMA channel 1/VIF1 and the eighth through channel 0/VIF0, when those routines execute.",
+      "The packet MPG counts and destinations match 1558 instruction pairs at VU1 byte addresses0..12464 and140pairs atVU0 byteaddress0.",
+      "These static checks prove runtime uploads occurred and fully recover VU scheduling and geometry semantics."
+    ],
+    "evidence": "Exact PAL executable SHA 216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95. Function 0022fd48: jal001f4138 at0022fd54 with delay li a0,1 (01000424); lui/addiu constructs a1=00217be0; flag bit0x40 set; calls001f4468. Function00114fe0: jal001f4138 at00115020 with delay move a0,zero (2d200000); lui/addiu constructs a1=0021ace0; bit0x40 set; calls001f4468. 001f4138 indexes pointer table0024d0b8; first two raw words are 10008000 and10009000, corresponding DMA VIF0/VIF1 channel CHCR addresses in installed R5900 register labeling. 001f4468 writes TADR offset0x30, QWCoffset0x20 zero, CHCR=(CHCR&fffffff3)|105; previous bit40 retained (tag-transfer-enable). f40d8 passes these non-scratchpad pointers unchanged. Packet00217be0 firsttag1000030e, upper two words0 and4a000000. Following MPG headers before exact recovered chunks0..6:4a000000,4a000100,4a000200,4a000300,4a000400,4a000500,4a160600. Binutils-DVP pinned source MPG opcode4a: NUM bits16..23, count0=>256; IMM low16 VUinstructionaddress; eachpair8bytes. CNTQWC782 endaddress21acd0; ENDtag70000000 allremainingzeros. Packet21ace0 firsttag10000046 upperwords0 and4a8c0000:140pairsVUaddress0, exactchunk7 spans21acf0..21b150; ENDtag at21b150. Static source/bytes establish setup and destinations conditional on functions executed; no runtime execution demonstrated. No VU scheduling/geometry meaning or equivalence oracle."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 2,\n    \"contradicted\": 1,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The static upload routines route the first seven recovered chunks through DMA channel 1/VIF1 and the eighth through channel 0/VIF0, when those routines execute.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"supports\": 0.82,\n        \"contradicts\": 0.17\n      },\n      \"confidence\": 0.73,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.66\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The packet MPG counts and destinations match 1558 instruction pairs at VU1 byte addresses0..12464 and140pairs atVU0 byteaddress0.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"supports\": 0.89,\n        \"contradicts\": 0.1\n      },\n      \"confidence\": 0.83,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.8\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"These static checks prove runtime uploads occurred and fully recover VU scheduling and geometry semantics.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"supports\": 0,\n        \"contradicts\": 1\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.58\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1817,\n    \"output_tokens\": 189\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.221,
+  "evidence_files": [
+    ".scratch/mesh/codex-root/vu-immediate-refs-01.json"
+  ],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "status": "read_only_candidate_crosswalk_3842_complete",
+  "scope": "Historical read-only crosswalk refreshed against the reopened 3842 Ghidra inventory after provisional 00200d10 was added. No Ghidra project or game code was executed or modified in this scan.",
+  "pins": {
+    "scan_script_sha256": "ea173ab7abd88f18cd278134e61be049a53361e94ce1db0bf532c55330513a1a",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "final_manifest_sha256": "c571939e2acc3dd7c30f8195f7b3a5132924992a9a1746ef59b21c279c6f5e5c",
+    "final_inventory_sha256": "5fb12ad397252a5e716bb1db41884f4a06914e743af05adf05b8bc6aef2de048",
+    "final_coverage_sha256": "39e07d14cc8fb1ea359254e1667b0a172e26b88ca38d30971f0acf033977c076",
+    "baseline_manifest_sha256": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce",
+    "ps2recomp_base_revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "ps2recomp_tree_patch_sha256": "cb1d87c470769f85ae8f5b502aa0b41638942fe1b3f515152202da0b78c5018a",
+    "generated_function_source_file_count": 4746,
+    "generated_function_sources_tree_canonical_sha256": "d99b24d5537fb3a0548ccbf6396fcebe180fd68cf62109b4ed2d420fab63e61c",
+    "build_result_sha256": "6ee8e0d599a8221f02bf6ae9bc95de95df69d14027f23c8992d7f41c52133778",
+    "jgrep_function_interval_receipt_sha256": "02317983878b82f066990b3b511e7012c3101be73e737276edc060a27b7f475f",
+    "jgrep_function_entry_discovery_receipt_sha256": "f530fb125e9e2bca6b81b80e79c6f42a2ba108405e1f35151c8bb5cc396c7d43"
+  },
+  "coverage_summary": {
+    "defined_unowned_instruction_addresses": 32788,
+    "saved_unconditional_call_references": 13842,
+    "direct_call_targets_to_nonentry_addresses": 7,
+    "baseline_function_call_references_to_nonentry_targets": 0,
+    "unowned_nonzero_direct_call_targets_matching_ps2recomp_entry": 0,
+    "candidate_entries": 3
+  },
+  "candidates": [
+    {
+      "entry": "001ff038",
+      "raw_first_word": "27bdffa0",
+      "target_is_existing_function_entry": false,
+      "target_has_instruction_defined": false,
+      "target_is_unowned_defined_instruction": false,
+      "target_is_undefined_in_ghidra_listing": true,
+      "incoming_calls": [
+        {
+          "caller": "00200d10",
+          "site": "00200dac",
+          "raw_call_bytes": "0efc070c"
+        }
+      ],
+      "baseline_function_callers": [],
+      "provisional_function_callers": [
+        {
+          "caller": "00200d10",
+          "site": "00200dac",
+          "raw_call_bytes": "0efc070c"
+        }
+      ],
+      "ps2recomp_intervals": [
+        {
+          "file": ".scratch/mesh/codex-root/recomp-fpu-01/sub_001FF038_0x1ff038.cpp",
+          "source_sha256": "1cae029129c7b9f92ebe33c79db60fa37e7c919edc7732b7819663240aa5dc37",
+          "start": "001ff038",
+          "end_exclusive": "001ff140",
+          "instruction_count": 64,
+          "instruction_bytes": 256,
+          "contiguous_address_comments": false,
+          "every_commented_raw_word_matches_elf": true
+        }
+      ]
+    },
+    {
+      "entry": "00200de0",
+      "raw_first_word": "27bdffe0",
+      "target_is_existing_function_entry": false,
+      "target_has_instruction_defined": false,
+      "target_is_unowned_defined_instruction": false,
+      "target_is_undefined_in_ghidra_listing": true,
+      "incoming_calls": [
+        {
+          "caller": "001fbfb8",
+          "site": "001fc04c",
+          "raw_call_bytes": "7803080c"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc210",
+          "raw_call_bytes": "7803080c"
+        }
+      ],
+      "baseline_function_callers": [],
+      "provisional_function_callers": [
+        {
+          "caller": "001fbfb8",
+          "site": "001fc04c",
+          "raw_call_bytes": "7803080c"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc210",
+          "raw_call_bytes": "7803080c"
+        }
+      ],
+      "ps2recomp_intervals": [
+        {
+          "file": ".scratch/mesh/codex-root/recomp-fpu-01/sub_00200DE0_0x200de0.cpp",
+          "source_sha256": "4902c4dbf8f8cb2dea8d696357bec5f3bf3f40da2d84d3065499745401e66435",
+          "start": "00200de0",
+          "end_exclusive": "00200e70",
+          "instruction_count": 36,
+          "instruction_bytes": 144,
+          "contiguous_address_comments": true,
+          "every_commented_raw_word_matches_elf": true
+        }
+      ]
+    },
+    {
+      "entry": "00200e70",
+      "raw_first_word": "0080382d",
+      "target_is_existing_function_entry": false,
+      "target_has_instruction_defined": false,
+      "target_is_unowned_defined_instruction": false,
+      "target_is_undefined_in_ghidra_listing": true,
+      "incoming_calls": [
+        {
+          "caller": "001fbfb8",
+          "site": "001fc008",
+          "raw_call_bytes": "9c03080c"
+        },
+        {
+          "caller": "001fbfb8",
+          "site": "001fc02c",
+          "raw_call_bytes": "9c03080c"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc174",
+          "raw_call_bytes": "9c03080c"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc1dc",
+          "raw_call_bytes": "9c03080c"
+        }
+      ],
+      "baseline_function_callers": [],
+      "provisional_function_callers": [
+        {
+          "caller": "001fbfb8",
+          "site": "001fc008",
+          "raw_call_bytes": "9c03080c"
+        },
+        {
+          "caller": "001fbfb8",
+          "site": "001fc02c",
+          "raw_call_bytes": "9c03080c"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc174",
+          "raw_call_bytes": "9c03080c"
+        },
+        {
+          "caller": "001fc118",
+          "site": "001fc1dc",
+          "raw_call_bytes": "9c03080c"
+        }
+      ],
+      "ps2recomp_intervals": [
+        {
+          "file": ".scratch/mesh/codex-root/recomp-fpu-01/sub_00200E70_0x200e70.cpp",
+          "source_sha256": "e6fc814e6a413aa48150f170953f540565d5c469389603597850de7a454a62c8",
+          "start": "00200e70",
+          "end_exclusive": "00201128",
+          "instruction_count": 174,
+          "instruction_bytes": 696,
+          "contiguous_address_comments": true,
+          "every_commented_raw_word_matches_elf": true
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "The primary requested category\u2014defined unowned nonzero instruction entries with a saved direct incoming call\u2014has zero matches in this export.",
+    "The listed fallback targets are Ghidra-undefined, not defined/unowned instructions, and all their current incoming references originate in provisional candidates from the immediately preceding recovery; they have no baseline caller in the saved inventory.",
+    "PS2Recomp fallback function starts can be seeded by direct JAL scanning and other address heuristics, so its reported function boundaries are hypotheses rather than independent identity proof.",
+    "PS2Recomp interval and raw-comment agreement do not establish correct function identity, semantic equivalence, runtime reachability, or source-level recovery."
+  ]
+}

@@ -1,0 +1,610 @@
+{
+  "schema_version": 1,
+  "receipts": [
+    {
+      "tool": "jev_classify",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Classify decompiler warning-comment categories by the kind of static follow-up they warrant; classifications are triage only, not proof that output is wrong.",
+      "input_summary": "Nine verifier categories: non-return 463/315 functions; overlapping globals 77/77; unreachable blocks 49/42; do-nothing infinite loops 7/4; manually overridden switches 3/3; type propagation 3/3; decompiler restarts 2/2; heritage 1/1; overlapping instruction decode 1/1.",
+      "thresholds": {
+        "auto_accept": 0.85,
+        "minimum_margin": 0.5
+      },
+      "summary": {
+        "items": 9,
+        "auto": 9,
+        "review": 0,
+        "invalid_response": 0
+      },
+      "results": [
+        {
+          "id": "subroutine does not return (463)",
+          "classification": "control_flow_noreturn",
+          "probabilities": {
+            "control_flow_noreturn": 0.94,
+            "control_flow_reachability": 0.03,
+            "analysis_or_type_limit": 0.03
+          },
+          "confidence": 0.92,
+          "margin": 0.91,
+          "decision": "auto"
+        },
+        {
+          "id": "overlapping global symbols (77)",
+          "classification": "symbol_rendering",
+          "probabilities": {
+            "symbol_rendering": 1
+          },
+          "confidence": 1,
+          "margin": 1,
+          "decision": "auto"
+        },
+        {
+          "id": "unreachable block (49)",
+          "classification": "control_flow_reachability",
+          "probabilities": {
+            "control_flow_reachability": 0.98,
+            "control_flow_noreturn": 0.01,
+            "analysis_or_type_limit": 0.01
+          },
+          "confidence": 0.97,
+          "margin": 0.97,
+          "decision": "auto"
+        },
+        {
+          "id": "infinite-loop do-nothing block (7)",
+          "classification": "control_flow_reachability",
+          "probabilities": {
+            "control_flow_reachability": 1
+          },
+          "confidence": 0.99,
+          "margin": 1,
+          "decision": "auto"
+        },
+        {
+          "id": "other warning: manually overridden switch (3)",
+          "classification": "manual_control_flow",
+          "probabilities": {
+            "manual_control_flow": 1
+          },
+          "confidence": 1,
+          "margin": 1,
+          "decision": "auto"
+        },
+        {
+          "id": "type propagation did not settle (3)",
+          "classification": "analysis_or_type_limit",
+          "probabilities": {
+            "analysis_or_type_limit": 1
+          },
+          "confidence": 1,
+          "margin": 1,
+          "decision": "auto"
+        },
+        {
+          "id": "decompiler restarted for space (2)",
+          "classification": "analysis_or_type_limit",
+          "probabilities": {
+            "analysis_or_type_limit": 1
+          },
+          "confidence": 1,
+          "margin": 1,
+          "decision": "auto"
+        },
+        {
+          "id": "heritage after dead removal (1)",
+          "classification": "analysis_or_type_limit",
+          "probabilities": {
+            "analysis_or_type_limit": 1
+          },
+          "confidence": 1,
+          "margin": 1,
+          "decision": "auto"
+        },
+        {
+          "id": "overlapping instruction decode (1)",
+          "classification": "decode_integrity",
+          "probabilities": {
+            "decode_integrity": 1
+          },
+          "confidence": 1,
+          "margin": 1,
+          "decision": "auto"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1708,
+        "output_tokens": 651
+      },
+      "disposition": "Advisory classifications only; raw byte and CFG checks govern conclusions."
+    },
+    {
+      "tool": "jev_verify",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "claims": [
+        "The recorded 606 warning annotations are divided into 463 non-return warnings, 77 overlapping-global-symbol warnings, 49 unreachable-block warnings, 7 do-nothing infinite-loop warnings, 3 manually overridden switch warnings, 3 type-propagation warnings, 2 decompiler-restart warnings, 1 heritage warning, and 1 overlapping-instruction warning.",
+        "In examined callers, the frequent 'Subroutine does not return' annotation is attached to calls to FUN_00105888, whose exported instructions end in an unconditional branch back to an earlier address and have no return instruction in the inventory.",
+        "At 0x001f36f0 and 0x001f36f4, the executable stores two adjacent, distinct four-byte instruction words matching the static inventory; the overlap warning alone does not establish an overlapping machine instruction.",
+        "In FUN_00202a70, a branch targets 0x00202d88, but the preceding address arithmetic yields mask value 4, making the branch-to-0x00202d88 condition false for those constant operands."
+      ],
+      "summary": {
+        "verified": 4,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "results": [
+        {
+          "claim_index": 0,
+          "verdict": "verified",
+          "probabilities": {
+            "supports": 1,
+            "contradicts": 0,
+            "says_nothing": 0
+          },
+          "confidence": 0.99,
+          "action": "auto",
+          "supporting_evidence": "verifier-counts"
+        },
+        {
+          "claim_index": 1,
+          "verdict": "verified",
+          "probabilities": {
+            "supports": 1,
+            "says_nothing": 0,
+            "contradicts": 0
+          },
+          "confidence": 0.99,
+          "action": "auto",
+          "supporting_evidence": "nonreturn-static-inventory"
+        },
+        {
+          "claim_index": 2,
+          "verdict": "verified",
+          "probabilities": {
+            "supports": 0.96,
+            "contradicts": 0.04,
+            "says_nothing": 0
+          },
+          "confidence": 0.94,
+          "action": "auto",
+          "supporting_evidence": "overlap-static-elf-bytes"
+        },
+        {
+          "claim_index": 3,
+          "verdict": "verified",
+          "probabilities": {
+            "supports": 0.97,
+            "contradicts": 0.03,
+            "says_nothing": 0
+          },
+          "confidence": 0.95,
+          "action": "auto",
+          "supporting_evidence": "unreachable-constant-path"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2848,
+        "output_tokens": 566
+      },
+      "disposition": "All four evidence claims verified; Jev is a cross-check, not a substitute for source evidence."
+    },
+    {
+      "tool": "jev_find",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "query": "Which item is the strongest byte-backed candidate for a targeted static review of possible decompiler control-flow or instruction-decoding misrepresentation, without assuming the warning itself is a bug?",
+      "exists": 0.93,
+      "exists_verdict": "answered",
+      "top": [
+        {
+          "id": "overlap_001f36a0",
+          "probability": 1
+        },
+        {
+          "id": "unreachable_00202a70",
+          "probability": 0
+        },
+        {
+          "id": "noreturn_00105888",
+          "probability": 0
+        },
+        {
+          "id": "manual_indirect_switches",
+          "probability": 0
+        },
+        {
+          "id": "type_propagation",
+          "probability": 0
+        }
+      ],
+      "usage": {
+        "input_tokens": 1213,
+        "output_tokens": 152
+      },
+      "disposition": "Prioritization only; the top item has distinct adjacent instruction words and no demonstrated semantic defect."
+    },
+    {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Select official Ghidra primary-source material about MIPS delay-slot decoding/control flow for a static decompiler audit.",
+      "source": "Firecrawl search results for official Ghidra MIPS delay-slot source.",
+      "probabilities": {
+        "injection": 0.07,
+        "substance": 0.88,
+        "relevance": 0.51
+      },
+      "recommendation": "pass",
+      "reason": "no signals above thresholds",
+      "usage": {
+        "input_tokens": 799,
+        "output_tokens": 57
+      },
+      "disposition": "Search result used only to locate official sources."
+    },
+    {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Find official Ghidra release source for matching MIPS delay-slot behavior.",
+      "source": "Firecrawl release search result set.",
+      "probabilities": {
+        "injection": 0.05,
+        "substance": 0.21,
+        "relevance": 0.04
+      },
+      "recommendation": "skip",
+      "reason": "little substantive content (substance 0.21)",
+      "usage": {
+        "input_tokens": 567,
+        "output_tokens": 57
+      },
+      "disposition": "Skipped; no search-result text was used as evidence."
+    },
+    {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Check official Ghidra MIPS processor-language source for branch delay-slot declarations and semantics.",
+      "source": "Official raw Ghidra 12.1.3 MIPS processor language source, scrapeId 01a106b9-85eb-73c9-852e-77146f45401a.",
+      "probabilities": {
+        "injection": 0.02,
+        "substance": 0.98,
+        "relevance": 0.95
+      },
+      "recommendation": "pass",
+      "reason": "no signals above thresholds",
+      "usage": {
+        "input_tokens": 10038,
+        "output_tokens": 57
+      },
+      "disposition": "Read relevant branch declarations as source data after pass."
+    },
+    {
+      "tool": "jev_verify",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "claims": [
+        "The fresh isolated Ghidra 12.1.3 run used a project copy, -noanalysis, and only probed function 0x001f36a0; it did not rerun whole-program auto-analysis.",
+        "The fresh copied-project decompilation exactly matches the existing exported function artifact by SHA-256 and byte length, and it reproduces the overlap warning.",
+        "Ghidra separately decodes the words at 0x001f36f0 and 0x001f36f4 as distinct 4-byte instructions, identifies 0x001f36f4 as the delay-slot instruction, and gives the branch at 0x001f373c an explicit flow target of 0x001f36f4.",
+        "The Ghidra BasicBlockModel maps target 0x001f36f4 to the containing block starting at 0x001f36f0; the decompiler still emits the same C artifact despite the warning.",
+        "Official Ghidra 12.1.3 MIPS source declares one delay-slot instruction for both beq and bgtz, matching the instruction behavior observed in the copied project."
+      ],
+      "summary": {
+        "verified": 5,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "results": [
+        {
+          "claim_index": 0,
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0,
+            "contradicts": 0,
+            "supports": 1
+          },
+          "confidence": 1,
+          "action": "auto",
+          "supporting_evidence": "isolated-run"
+        },
+        {
+          "claim_index": 1,
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0,
+            "contradicts": 0,
+            "supports": 1
+          },
+          "confidence": 1,
+          "action": "auto",
+          "supporting_evidence": "hash-comparison"
+        },
+        {
+          "claim_index": 2,
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0.01,
+            "contradicts": 0.06,
+            "supports": 0.93
+          },
+          "confidence": 0.9,
+          "action": "auto",
+          "supporting_evidence": "decoded-branch-slot"
+        },
+        {
+          "claim_index": 3,
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0.01,
+            "contradicts": 0.01,
+            "supports": 0.98
+          },
+          "confidence": 0.98,
+          "action": "auto",
+          "supporting_evidence": "decoded-branch-slot"
+        },
+        {
+          "claim_index": 4,
+          "verdict": "verified",
+          "probabilities": {
+            "says_nothing": 0,
+            "contradicts": 0,
+            "supports": 1
+          },
+          "confidence": 1,
+          "action": "auto",
+          "supporting_evidence": "official-ghidra-source"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3312,
+        "output_tokens": 638
+      },
+      "disposition": "All five factual claims verified against the copied-project probe logs, hashes, and official source; this does not prove whole-function or runtime equivalence."
+    },
+    {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Verify the official Ghidra decompiler source path that emits the exact instruction-overlap warning for a control-flow target inside a translated instruction span.",
+      "source": "Official Ghidra 12.1.3 flow.cc from Firecrawl scrape 01a106c0-d84e-7230-9d1c-c6c146b90060.",
+      "probabilities": {
+        "injection": 0.03,
+        "substance": 0.99,
+        "relevance": 0.91
+      },
+      "recommendation": "pass",
+      "reason": "no signals above thresholds",
+      "usage": {
+        "input_tokens": 14850,
+        "output_tokens": 57
+      },
+      "disposition": "Read only relevant official source functions after pass."
+    },
+    {
+      "tool": "jev_screen",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Verify the official Ghidra SLEIGH decompiler source behavior when translating an instruction with delay slots.",
+      "source": "Official Ghidra 12.1.3 sleigh.cc from Firecrawl scrape 01a106c1-2174-7588-9a7b-297987d53c82.",
+      "probabilities": {
+        "injection": 0.02,
+        "substance": 0.99,
+        "relevance": 0.95
+      },
+      "recommendation": "pass",
+      "reason": "no signals above thresholds",
+      "usage": {
+        "input_tokens": 8738,
+        "output_tokens": 57
+      },
+      "disposition": "Read only relevant official source function after pass."
+    },
+    {
+      "tool": "jev_verify",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "claims": [
+        "Ghidra 12.1.3's official Sleigh::oneInstruction reads the encoded delay-slot instruction(s), increases the translated instruction span to include them, and returns that combined byte length.",
+        "Ghidra 12.1.3 FlowInfo records the returned translation length as the visited instruction size, and its setFallthruBound calls reinterpreted when a requested flow address falls inside an earlier visited span.",
+        "For this routine, the branch at 0x001f36f0 and its 4-byte delay slot at 0x001f36f4 form an 8-byte translated span [0x001f36f0,0x001f36f8); the loop's 0x001f373c target 0x001f36f4 is inside that span, explaining the exact warning without overlapping machine instruction bytes.",
+        "The overlap warning in this case is triggered by Ghidra's decompiler flow traversal treating a delay-slot branch bundle as a translated span while another branch targets the slot; it is not evidence that the R5900 listing decoded overlapping byte ranges."
+      ],
+      "summary": {
+        "verified": 4,
+        "contradicted": 0,
+        "unsupported": 0,
+        "needs_review": 0
+      },
+      "results": [
+        {
+          "claim_index": 0,
+          "verdict": "verified",
+          "probabilities": {
+            "contradicts": 0,
+            "supports": 1,
+            "says_nothing": 0
+          },
+          "confidence": 1,
+          "action": "auto",
+          "supporting_evidence": "ghidra-sleigh-oneinstruction"
+        },
+        {
+          "claim_index": 1,
+          "verdict": "verified",
+          "probabilities": {
+            "contradicts": 0,
+            "supports": 1,
+            "says_nothing": 0
+          },
+          "confidence": 1,
+          "action": "auto",
+          "supporting_evidence": "ghidra-flow-oneinstruction"
+        },
+        {
+          "claim_index": 2,
+          "verdict": "verified",
+          "probabilities": {
+            "supports": 0.98,
+            "contradicts": 0.02,
+            "says_nothing": 0
+          },
+          "confidence": 0.97,
+          "action": "auto",
+          "supporting_evidence": "program-probe"
+        },
+        {
+          "claim_index": 3,
+          "verdict": "verified",
+          "probabilities": {
+            "supports": 1,
+            "contradicts": 0,
+            "says_nothing": 0
+          },
+          "confidence": 0.99,
+          "action": "auto",
+          "supporting_evidence": "program-probe"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2727,
+        "output_tokens": 515
+      },
+      "disposition": "The specific diagnostic cause is supported by version-matched source and probe evidence; this does not prove the decompiled function fully correct."
+    },
+    {
+      "tool": "jev_gate",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Review the promoted warning-audit evidence note and verify its factual completion claims.",
+      "attempt": 1,
+      "action": "escalate",
+      "review": {
+        "safe_to_apply": 0.46,
+        "composite": 0.7525,
+        "limiting_rubrics": [
+          "test_gap"
+        ]
+      },
+      "verification": {
+        "verified": 0,
+        "unsupported": 5,
+        "needs_review": 5,
+        "contradicted": 0
+      },
+      "reason_codes": [
+        "confidence_below_review",
+        "safe_to_apply_below_review",
+        "review_escalated",
+        "claims_unsupported",
+        "claim_confidence_low",
+        "claim_confidence_below_auto_accept"
+      ],
+      "usage": {
+        "input_tokens": 6025,
+        "output_tokens": 278
+      },
+      "disposition": "Superseded: first evidence bundle summarized rather than quoting direct probe/source evidence; no repository action was taken based on this judgment."
+    },
+    {
+      "tool": "jev_gate",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Review the promoted warning-audit evidence note and verify its factual completion claims.",
+      "attempt": 2,
+      "action": "escalate",
+      "review": {
+        "safe_to_apply": 0.65,
+        "composite": 0.8735,
+        "limiting_rubrics": [
+          "test_gap"
+        ]
+      },
+      "verification": {
+        "verified": 5,
+        "unsupported": 0,
+        "needs_review": 2,
+        "contradicted": 0
+      },
+      "reason_codes": [
+        "confidence_below_review",
+        "review_escalated",
+        "claim_confidence_low",
+        "claim_confidence_below_auto_accept"
+      ],
+      "usage": {
+        "input_tokens": 6801,
+        "output_tokens": 278
+      },
+      "disposition": "Superseded: evidence supported factual claims; two combined claims included unsupported negative language/no-fix assertion, which was removed from the final factual set."
+    },
+    {
+      "tool": "jev_gate",
+      "model": "typesafe/jev-1.13",
+      "provider": "openrouter",
+      "purpose": "Review a provenance-backed static warning audit evidence note; the change documents a bounded experiment and makes no equivalence or fix claim.",
+      "attempt": 3,
+      "action": "review",
+      "review": {
+        "safe_to_apply": 0.79,
+        "composite": 0.97,
+        "scores": {
+          "correctness": {
+            "score": 1.94,
+            "confidence": 0.91
+          },
+          "spec_match": {
+            "score": 1.97,
+            "confidence": 0.96
+          },
+          "test_gap": {
+            "score": 0.17,
+            "confidence": 0.75
+          },
+          "blast_radius": {
+            "score": 0.01,
+            "confidence": 0.98
+          }
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "limiting_rubrics": [
+          "test_gap"
+        ]
+      },
+      "verification": {
+        "verified": 6,
+        "unsupported": 0,
+        "needs_review": 0,
+        "contradicted": 0,
+        "claims_confidence": [
+          0.95,
+          0.97,
+          0.98,
+          0.97,
+          0.99,
+          0.99
+        ]
+      },
+      "reason_codes": [
+        "safe_to_apply_below_auto_accept",
+        "confidence_below_auto_accept",
+        "review_required"
+      ],
+      "usage": {
+        "input_tokens": 6731,
+        "output_tokens": 318
+      },
+      "disposition": "All six factual claims auto-verified; composite passes, but aggregate action remains review and safe_to_apply is 0.01 below the 0.80 auto threshold. No production code was changed."
+    }
+  ]
+}

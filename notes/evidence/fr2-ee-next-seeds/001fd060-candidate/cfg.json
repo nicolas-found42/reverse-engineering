@@ -1,0 +1,544 @@
+{
+  "seed": "001fd060",
+  "span": {
+    "start": "001fd060",
+    "end_exclusive": "001fd764",
+    "bytes": 1796,
+    "sha256": "97411396dc8ef3ab15de93fb69c519725d53365d56f96ef911ad032c09142bf5"
+  },
+  "reachable_count": 449,
+  "span_words": 449,
+  "gap_words": [],
+  "next_word": "00000000",
+  "next_word_state": "undefined",
+  "edges": [
+    {
+      "site": "001fd0c4",
+      "word": "15800005",
+      "kind": "conditional",
+      "delay": "001fd0c8",
+      "target": "001fd0dc",
+      "fallthrough": "001fd0cc"
+    },
+    {
+      "site": "001fd0d4",
+      "word": "1462011c",
+      "kind": "conditional",
+      "delay": "001fd0d8",
+      "target": "001fd548",
+      "fallthrough": "001fd0dc"
+    },
+    {
+      "site": "001fd0e4",
+      "word": "14620083",
+      "kind": "conditional",
+      "delay": "001fd0e8",
+      "target": "001fd2f4",
+      "fallthrough": "001fd0ec"
+    },
+    {
+      "site": "001fd0f0",
+      "word": "52820004",
+      "kind": "conditional_likely",
+      "delay": "001fd0f4",
+      "target": "001fd104",
+      "fallthrough": "001fd0f8"
+    },
+    {
+      "site": "001fd0f8",
+      "word": "1580000f",
+      "kind": "conditional",
+      "delay": "001fd0fc",
+      "target": "001fd138",
+      "fallthrough": "001fd100"
+    },
+    {
+      "site": "001fd130",
+      "word": "100000fb",
+      "kind": "unconditional_branch",
+      "delay": "001fd134",
+      "target": "001fd520"
+    },
+    {
+      "site": "001fd520",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd524",
+      "target": "001fd768",
+      "fallthrough": "001fd528"
+    },
+    {
+      "site": "001fd528",
+      "word": "10000006",
+      "kind": "unconditional_branch",
+      "delay": "001fd52c",
+      "target": "001fd544"
+    },
+    {
+      "site": "001fd54c",
+      "word": "10400079",
+      "kind": "conditional",
+      "delay": "001fd550",
+      "target": "001fd734",
+      "fallthrough": "001fd554"
+    },
+    {
+      "site": "001fd558",
+      "word": "14620034",
+      "kind": "conditional",
+      "delay": "001fd55c",
+      "target": "001fd62c",
+      "fallthrough": "001fd560"
+    },
+    {
+      "site": "001fd564",
+      "word": "1682000f",
+      "kind": "conditional",
+      "delay": "001fd568",
+      "target": "001fd5a4",
+      "fallthrough": "001fd56c"
+    },
+    {
+      "site": "001fd59c",
+      "word": "1000001f",
+      "kind": "unconditional_branch",
+      "delay": "001fd5a0",
+      "target": "001fd61c"
+    },
+    {
+      "site": "001fd61c",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd620",
+      "target": "001fd768",
+      "fallthrough": "001fd624"
+    },
+    {
+      "site": "001fd624",
+      "word": "10000044",
+      "kind": "unconditional_branch",
+      "delay": "001fd628",
+      "target": "001fd738"
+    },
+    {
+      "site": "001fd75c",
+      "word": "03e00008",
+      "kind": "return",
+      "delay": "001fd760"
+    },
+    {
+      "site": "001fd5dc",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd5e0",
+      "target": "001fd768",
+      "fallthrough": "001fd5e4"
+    },
+    {
+      "site": "001fd62c",
+      "word": "16820015",
+      "kind": "conditional",
+      "delay": "001fd630",
+      "target": "001fd684",
+      "fallthrough": "001fd634"
+    },
+    {
+      "site": "001fd638",
+      "word": "50400002",
+      "kind": "conditional_likely",
+      "delay": "001fd63c",
+      "target": "001fd644",
+      "fallthrough": "001fd640"
+    },
+    {
+      "site": "001fd674",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd678",
+      "target": "001fd768",
+      "fallthrough": "001fd67c"
+    },
+    {
+      "site": "001fd67c",
+      "word": "1000002e",
+      "kind": "unconditional_branch",
+      "delay": "001fd680",
+      "target": "001fd738"
+    },
+    {
+      "site": "001fd684",
+      "word": "16820027",
+      "kind": "conditional",
+      "delay": "001fd688",
+      "target": "001fd724",
+      "fallthrough": "001fd68c"
+    },
+    {
+      "site": "001fd690",
+      "word": "50400002",
+      "kind": "conditional_likely",
+      "delay": "001fd694",
+      "target": "001fd69c",
+      "fallthrough": "001fd698"
+    },
+    {
+      "site": "001fd6cc",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd6d0",
+      "target": "001fd768",
+      "fallthrough": "001fd6d4"
+    },
+    {
+      "site": "001fd6d8",
+      "word": "50400002",
+      "kind": "conditional_likely",
+      "delay": "001fd6dc",
+      "target": "001fd6e4",
+      "fallthrough": "001fd6e0"
+    },
+    {
+      "site": "001fd714",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd718",
+      "target": "001fd768",
+      "fallthrough": "001fd71c"
+    },
+    {
+      "site": "001fd71c",
+      "word": "10000006",
+      "kind": "unconditional_branch",
+      "delay": "001fd720",
+      "target": "001fd738"
+    },
+    {
+      "site": "001fd72c",
+      "word": "0c07f12a",
+      "kind": "call",
+      "delay": "001fd730",
+      "target": "001fc4a8",
+      "fallthrough": "001fd734"
+    },
+    {
+      "site": "001fd138",
+      "word": "16930022",
+      "kind": "conditional",
+      "delay": "001fd13c",
+      "target": "001fd1c4",
+      "fallthrough": "001fd140"
+    },
+    {
+      "site": "001fd174",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd178",
+      "target": "001fd768",
+      "fallthrough": "001fd17c"
+    },
+    {
+      "site": "001fd1b4",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd1b8",
+      "target": "001fd768",
+      "fallthrough": "001fd1bc"
+    },
+    {
+      "site": "001fd1bc",
+      "word": "100000e1",
+      "kind": "unconditional_branch",
+      "delay": "001fd1c0",
+      "target": "001fd544"
+    },
+    {
+      "site": "001fd1c4",
+      "word": "16830045",
+      "kind": "conditional",
+      "delay": "001fd1c8",
+      "target": "001fd2dc",
+      "fallthrough": "001fd1cc"
+    },
+    {
+      "site": "001fd1e0",
+      "word": "0c07fb68",
+      "kind": "call",
+      "delay": "001fd1e4",
+      "target": "001feda0",
+      "fallthrough": "001fd1e8"
+    },
+    {
+      "site": "001fd220",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd224",
+      "target": "001fd768",
+      "fallthrough": "001fd228"
+    },
+    {
+      "site": "001fd25c",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd260",
+      "target": "001fd768",
+      "fallthrough": "001fd264"
+    },
+    {
+      "site": "001fd29c",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd2a0",
+      "target": "001fd768",
+      "fallthrough": "001fd2a4"
+    },
+    {
+      "site": "001fd2d4",
+      "word": "10000092",
+      "kind": "unconditional_branch",
+      "delay": "001fd2d8",
+      "target": "001fd520"
+    },
+    {
+      "site": "001fd2e4",
+      "word": "0c07f12a",
+      "kind": "call",
+      "delay": "001fd2e8",
+      "target": "001fc4a8",
+      "fallthrough": "001fd2ec"
+    },
+    {
+      "site": "001fd2ec",
+      "word": "10000095",
+      "kind": "unconditional_branch",
+      "delay": "001fd2f0",
+      "target": "001fd544"
+    },
+    {
+      "site": "001fd320",
+      "word": "14460007",
+      "kind": "conditional",
+      "delay": "001fd324",
+      "target": "001fd340",
+      "fallthrough": "001fd328"
+    },
+    {
+      "site": "001fd32c",
+      "word": "10400005",
+      "kind": "conditional",
+      "delay": "001fd330",
+      "target": "001fd344",
+      "fallthrough": "001fd334"
+    },
+    {
+      "site": "001fd344",
+      "word": "52820004",
+      "kind": "conditional_likely",
+      "delay": "001fd348",
+      "target": "001fd358",
+      "fallthrough": "001fd34c"
+    },
+    {
+      "site": "001fd34c",
+      "word": "15800011",
+      "kind": "conditional",
+      "delay": "001fd350",
+      "target": "001fd394",
+      "fallthrough": "001fd354"
+    },
+    {
+      "site": "001fd38c",
+      "word": "10000061",
+      "kind": "unconditional_branch",
+      "delay": "001fd390",
+      "target": "001fd514"
+    },
+    {
+      "site": "001fd394",
+      "word": "16820033",
+      "kind": "conditional",
+      "delay": "001fd398",
+      "target": "001fd464",
+      "fallthrough": "001fd39c"
+    },
+    {
+      "site": "001fd3e8",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd3ec",
+      "target": "001fd768",
+      "fallthrough": "001fd3f0"
+    },
+    {
+      "site": "001fd3f4",
+      "word": "14540008",
+      "kind": "conditional",
+      "delay": "001fd3f8",
+      "target": "001fd418",
+      "fallthrough": "001fd3fc"
+    },
+    {
+      "site": "001fd400",
+      "word": "10400006",
+      "kind": "conditional",
+      "delay": "001fd404",
+      "target": "001fd41c",
+      "fallthrough": "001fd408"
+    },
+    {
+      "site": "001fd410",
+      "word": "10000002",
+      "kind": "unconditional_branch",
+      "delay": "001fd414",
+      "target": "001fd41c"
+    },
+    {
+      "site": "001fd45c",
+      "word": "10000030",
+      "kind": "unconditional_branch",
+      "delay": "001fd460",
+      "target": "001fd520"
+    },
+    {
+      "site": "001fd464",
+      "word": "16820032",
+      "kind": "conditional",
+      "delay": "001fd468",
+      "target": "001fd530",
+      "fallthrough": "001fd46c"
+    },
+    {
+      "site": "001fd488",
+      "word": "0c07fb68",
+      "kind": "call",
+      "delay": "001fd48c",
+      "target": "001feda0",
+      "fallthrough": "001fd490"
+    },
+    {
+      "site": "001fd4d0",
+      "word": "0c07f5da",
+      "kind": "call",
+      "delay": "001fd4d4",
+      "target": "001fd768",
+      "fallthrough": "001fd4d8"
+    },
+    {
+      "site": "001fd538",
+      "word": "0c07f12a",
+      "kind": "call",
+      "delay": "001fd53c",
+      "target": "001fc4a8",
+      "fallthrough": "001fd540"
+    }
+  ],
+  "edge_counts": {
+    "call": 18,
+    "conditional": 18,
+    "conditional_likely": 5,
+    "return": 1,
+    "unconditional_branch": 12
+  },
+  "computed_calls": [],
+  "tail_jumps": {},
+  "delay_breaks": [],
+  "calls": [
+    {
+      "site": "001fd520",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd61c",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd5dc",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd674",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd6cc",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd714",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd72c",
+      "target": "001fc4a8",
+      "saved_entry": true
+    },
+    {
+      "site": "001fd174",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd1b4",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd1e0",
+      "target": "001feda0",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd220",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd25c",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd29c",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd2e4",
+      "target": "001fc4a8",
+      "saved_entry": true
+    },
+    {
+      "site": "001fd3e8",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd488",
+      "target": "001feda0",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd4d0",
+      "target": "001fd768",
+      "saved_entry": false
+    },
+    {
+      "site": "001fd538",
+      "target": "001fc4a8",
+      "saved_entry": true
+    }
+  ],
+  "returns": [
+    "001fd75c"
+  ],
+  "rejects": [],
+  "zero_words_reached": [
+    "001fd0fc"
+  ],
+  "scope": "Structural union walk; not feasible execution, identity, or exact original boundaries."
+}

@@ -1,0 +1,31 @@
+{
+  "tool": "jev_verify",
+  "arguments": {
+    "claims": [
+      "Under the static format-3 configuration derived from FUN_0022f948 and FUN_0022c660, the selected fields are PSMT8 (19), CPSM=PSMCT32 (0), CSM=0, CSA=0.",
+      "Composing the pinned PCSX2 clutTableT32I8 block selection and clutTableT32I4 sub-block mapping with the PSMCT32 physical upload map yields identity labels 0 through 255 after the game's bits-3/4 permutation.",
+      "Without applying the game's bits-3/4 permutation, the same format-3 mapping is not identity, so the negative control distinguishes the transformation.",
+      "For format 4, the independent static mapping yields identity labels 0 through 15 for the selected first-16-color CLUT on both 8x2 and 16x16 transfer shapes, and the 16x16 case requires the game bits-3/4 permutation.",
+      "The 19 observed format-4 palette references of 0x400 bytes are all classified in palette group A by the bounded corpus parser.",
+      "The mapping calculations establish address/index ordering only; they do not establish rendered RGBA colors, alpha behavior, or runtime reachability."
+    ],
+    "evidence": [
+      {
+        "id": "independent-run",
+        "text": "Fresh deterministic audit output: status=pass. Format3 row has PSM=19 (PSMT8), CPSM=0 (PSMCT32), CSM=0, CSA=0. psmt8_256_entry_map equals [0,1,...,255]. psmt8_without_game_bit_swap_negative_control differs from identity (e.g. entries 8..15 map 16..23 and 16..23 map 8..15); all 256 values remain unique. Format4 maps: 8x2_identity=[0..15], 16x16_bit_swap=[0..15], and no-bit-swap negative control begins [0..7,16..23]. Corpus: 19 format4 0x400-byte palette references; group A=19."
+      },
+      {
+        "id": "pinned-gs-source",
+        "text": "Pinned PCSX2 GSClut.cpp WriteCLUT_T32_I8_CSM1: off=i<<4; s=clutTableT32I8[off & 0x70] | (off & 0x80); then WriteCLUT_T32_I4_CSM1(&src[s], &clut[off]). Pinned GS source dispatch selects WriteCLUT32_I8_CSM1 for CSM=0 and PSMCT32 with 8-bit texture selector. The independent script parses GSTables.cpp arrays _blockTable32, columnTable32, clutTableT32I8 and clutTableT32I4."
+      },
+      {
+        "id": "game-static-fields",
+        "text": "The game's FUN_0022f948 initializer reconstructs format3 table row+9=19,row+10=0 and format4 row+9=20,row+10=0 from exact byte-store instruction operands. FUN_0022c660 loads row+9 into TEX0 PSM bits20..25, row+10 into CPSM bits19..22, ORs constant 0x20000004, and the descriptor term is bounded to two low bits; thus the reconstructed selected fields are PSMT8/CPSM32/CSM0/CSA0 for format3 and PSMT4/CPSM32/CSM0/CSA0 for format4."
+      },
+      {
+        "id": "scope",
+        "text": "Audit limits: mapping is a static composition of game instruction/table evidence and pinned GS reference tables, not game/emulator execution or rendering. No claim is made about alpha semantics or runtime reachability."
+      }
+    ]
+  }
+}

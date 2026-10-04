@@ -1,0 +1,54 @@
+{
+  "topic": "VU0 entry 0x268 float32 reference reconstruction",
+  "current_artifacts": {
+    "model": "tools/vu/vu268_reference.py",
+    "exact_source_guard": "tools/vu/vu268_source_guard.py",
+    "current_results": "notes/evidence/fr2-vu0-math/vu268-numeric-results.json",
+    "exact_source_metadata": "notes/evidence/fr2-vu0-math/vu268-exact-source-metadata.json",
+    "report": "notes/evidence/fr2-vu0-math/README.md"
+  },
+  "superseded_artifacts": [
+    {
+      "path": "vu268-f32-reference-wrong-load-rounding.py",
+      "reason": "Applied RTZ arithmetic conversion to raw LOI and QMTC2 data loads."
+    },
+    {
+      "path": "vu268-f32-results-01-superseded.json",
+      "reason": "Results from the wrong-load-rounding model."
+    },
+    {
+      "path": "vu268-f32-results-02-superseded.json",
+      "reason": "Results from the wrong-load-rounding model."
+    },
+    {
+      "path": "vu268-f32-results-03-superseded.json",
+      "reason": "Results from the wrong-load-rounding model."
+    },
+    {
+      "path": "jev-vu268-model-verify-01.json",
+      "reason": "Verified numeric claims generated from the wrong-load-rounding model; retain only as historical audit."
+    },
+    {
+      "path": "jev-vu268-model-review-01.json",
+      "reason": "Review was on the wrong-load-rounding model."
+    },
+    {
+      "path": "jev-vu268-model-verify-02.json",
+      "reason": "Verification was run before the raw LOI/QMTC2 load semantics correction."
+    },
+    {
+      "path": "jev-vu268-assembly-extraction-audit-01.json",
+      "reason": "The wording asked Jev to validate inferred instruction-to-coefficient relationships in a short listing excerpt; it flagged two records. A later exact-literal audit passed and root review identified the real independent LOI-bit issue. Do not interpret this audit as validating the float-load model."
+    },
+    {
+      "path": "jev-vu268-model-review-02.json",
+      "reason": "Review was run before LOI/input bit-pattern correction."
+    },
+    {
+      "path": "jev-vu268-source-guard-review-01.json",
+      "reason": "Review preceded the final pinned pair-span SHA-256 assertion; see source-guard-review-02."
+    }
+  ],
+  "historical_disposition": "All original receipts/results are preserved. Use only the exact-load model and exact-load source guard for current numeric claims. Numeric fit does not establish PS2 hardware equivalence.",
+  "historical_artifact_base": ".scratch/mesh/codex-geometry/vu0/"
+}

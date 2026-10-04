@@ -1,0 +1,51 @@
+{
+  "id": "d032-verify-texture-claims",
+  "purpose": "Verify texture-library claims against the real-corpus run; claims 5 and 6 are deliberate overclaims",
+  "tool": "jev_verify",
+  "server_package": "@jkudish/jev-mcp@0.13.0",
+  "arguments": {
+    "claims": [
+      "The texture-library section parser in ps2_container.py walks the texture library of all 56 corpus .PS2 models without error, finding 2370 textures, and in all 56 models the section ends exactly where a count of 0x34-byte records for the next section begins and that record table fits in the file.",
+      "Texture formats in the corpus are 1 (350 textures), 3 (1551) and 4 (469); pixel decoding is implemented for format 1 (linear RGBA) and format 3 (GS 8-bit block layout with a raw-order palette), giving 1856 decoded level-0 images, and the 45 undecoded format-1/3 images are exactly those with a side shorter than 16.",
+      "Two decoded images (the 512x256 49 coupe atlas and a 64x64 Cobra wheel image) were checked visually as recognizable, and their pixel hashes are pinned in a regression test that fails when width and height handling is swapped.",
+      "The verifier reports the unresolved items explicitly, including that the 4-bit pixel layout, mip level pixels and later model sections are not decoded.",
+      "All 4-bit (format 4) textures in the corpus are decoded correctly.",
+      "The 3D geometry of the models, including vertices and triangles, has been recovered.",
+      "The 12 texture tests, the full 83-test Python suite and pyright all pass."
+    ],
+    "evidence": [
+      {
+        "id": "texture-corpus-run-and-checks",
+        "text": "{\"result_file\": \".scratch/evidence/textures/20261004T073740Z-e11dd4f2d2744d63a74579e0431a64d0/result.json\", \"status\": \"pass\", \"diagnostics\": [], \"models\": 56, \"texture_count\": 2370, \"formats\": {\"1\": 350, \"3\": 1551, \"4\": 469}, \"decoded_level0_images\": 1856, \"next_section_records_fit\": 56, \"unresolved\": [\"format 4 (4-bit) pixel layout: structure is checked, pixels are not decoded\", \"format 2 (16-bit): handled by the parser's size rules but absent from the corpus\", \"mip levels above level 0: sizes are checked, pixels are not decoded\", \"contents of the 12-byte palette table entries (only hashed) and the extra word after the texture count\", \"every section after the texture library, including geometry and the 0x34-byte records\"], \"tests\": \"83 Python tests OK (incl. 12 texture tests, real-corpus integration pinning two decode hashes); pyright 0 errors on the 3 new files; width/height swap mutation fails the corpus test\", \"visual\": \"512x256 49COUPE atlas and 64x64 Cobra wheel image decoded and viewed: recognizable\", \"source\": \"loader translated from Ghidra export of FUN_0022ba30 and FUN_0011ed90\"}"
+      }
+    ]
+  },
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/tex/d032-args.json",
+  "args_sha256": "2c27269dc20ee341516a7f330973f3d67c6c3e92911122efb188eb1d4cb17143",
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/tex/evidence-result.json",
+      "sha256": "f11d5162d019c6f284674303eab64016d47c046a4ad17f99c0b0fd9bc4097afa",
+      "bytes": 1142
+    }
+  ],
+  "started_utc": "2026-10-04T07:41:06.726Z",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "seconds": 0.827,
+  "rpc_error": null,
+  "is_error": false,
+  "non_json_stdout_lines": [],
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 5,\n    \"contradicted\": 1,\n    \"unsupported\": 1,\n    \"needs_review\": 2\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The texture-library section parser in ps2_container.py walks the texture library of all 56 corpus .PS2 models without error, finding 2370 textures, and in all 56 models the section ends exactly where a count of 0x34-byte records for the next section begins and that record table fits in the file.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"contradicts\": 0.03,\n        \"supports\": 0.96\n      },\n      \"confidence\": 0.95,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.86\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"Texture formats in the corpus are 1 (350 textures), 3 (1551) and 4 (469); pixel decoding is implemented for format 1 (linear RGBA) and format 3 (GS 8-bit block layout with a raw-order palette), giving 1856 decoded level-0 images, and the 45 undecoded format-1/3 images are exactly those with a side shorter than 16.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.31,\n        \"contradicts\": 0.26,\n        \"supports\": 0.43\n      },\n      \"confidence\": 0.14,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.69\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Two decoded images (the 512x256 49 coupe atlas and a 64x64 Cobra wheel image) were checked visually as recognizable, and their pixel hashes are pinned in a regression test that fails when width and height handling is swapped.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The verifier reports the unresolved items explicitly, including that the 4-bit pixel layout, mip level pixels and later model sections are not decoded.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"contradicts\": 0,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.92\n    },\n    {\n      \"id\": \"claim4\",\n      \"claim\": \"All 4-bit (format 4) textures in the corpus are decoded correctly.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 1,\n        \"supports\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.86\n    },\n    {\n      \"id\": \"claim5\",\n      \"claim\": \"The 3D geometry of the models, including vertices and triangles, has been recovered.\",\n      \"verdict\": \"unsupported\",\n      \"relation_verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 1,\n        \"supports\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.49\n    },\n    {\n      \"id\": \"claim6\",\n      \"claim\": \"The 12 texture tests, the full 83-test Python suite and pyright all pass.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0,\n        \"supports\": 1\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.96\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2826,\n    \"output_tokens\": 435\n  }\n}"
+      }
+    ]
+  }
+}

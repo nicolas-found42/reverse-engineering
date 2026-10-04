@@ -1,0 +1,3003 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T114332Z-04d04d3e46344ecb82355eaaa7bf74e8",
+  "check": "decompilation",
+  "command": [
+    "tools/verify_decompilation.py",
+    "--manifest",
+    ".scratch/mesh/codex-root/decompile-combined-3838-01/manifest.json",
+    "--static-export",
+    ".scratch/mesh/codex-root/decompile-combined-3838-01/inventory.json",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--output",
+    ".scratch/evidence/decompilation"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-root/decompile-combined-3838-01/manifest.json": {
+      "bytes": 1469501,
+      "sha256": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce"
+    },
+    ".scratch/mesh/codex-root/decompile-combined-3838-01/inventory.json": {
+      "bytes": 45451085,
+      "sha256": "15488c325db2c87f6e5b08a93b07fe92daff9feb711dc12b4451d39a86dc98be"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "program": "SLES_517.05",
+    "language": "r5900:LE:32:default",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "static_inventory_sha256": "15488c325db2c87f6e5b08a93b07fe92daff9feb711dc12b4451d39a86dc98be",
+    "manifest_sha256": "d699eaa1cb98cb87d732a90fc4c7610e614424d9dc30c5e04ba487252b0fefce",
+    "inventory_count": 3838,
+    "processed_count": 3838,
+    "generated_count": 3838,
+    "failed_count": 0,
+    "decompile_failures": [],
+    "failed_functions": [],
+    "missing_inventory_entry_count": 0,
+    "missing_inventory_entry_sample": [],
+    "missing_selected_entries": [],
+    "warning_comment_count": 606,
+    "warning_comments": [
+      {
+        "entry": "00100348",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001006f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001006f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00100aa0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00100f70",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001014c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00101ea8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00101ff0) */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00104c00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00105480",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00105888",
+        "text": "/* WARNING: Do nothing block with infinite loop */"
+      },
+      {
+        "entry": "00105cb0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00105df0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00105df0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001061f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001061f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001061f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001061f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00106448",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00106448",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001065c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001065c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001065c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00106700",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001067f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001069f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00106c48",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00106c48",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00106ef8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00106ef8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00107fd0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001084e0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109200",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109358",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109358",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109358",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109358",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001095d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001095d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001095d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001095d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109860",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109860",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109950",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109950",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109950",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109950",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109950",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109950",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109cf0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00109cf0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010bb18",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010bc58",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010c060",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010c9f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010d020",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010d5b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010d600",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010d6b0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010dc20",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0010dc40) */"
+      },
+      {
+        "entry": "0010dc20",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0010dc44) */"
+      },
+      {
+        "entry": "0010dc20",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0010dc98) */"
+      },
+      {
+        "entry": "0010deb8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010ee18",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010ee18",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010ee18",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010efc0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010efc0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0010efc0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00110890",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00110aa8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00110d80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00111040",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00111238",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00111408",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001114e8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001114e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001114e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001114e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00111e40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00112210",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00114fe0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00115008) */"
+      },
+      {
+        "entry": "00115110",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00115a38",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00115e18",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00115f38) */"
+      },
+      {
+        "entry": "00115fd0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001161a8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001161a8",
+        "text": "/* WARNING: Switch is manually overridden */"
+      },
+      {
+        "entry": "00116738",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00116738",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00116738",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001169c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001169c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001169c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00116ca8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00116ca8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00117b40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00117ba0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00117c58",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00117cb8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00117d18",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00117dd8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00117e38",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001185c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001185c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00118710",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00118f60",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00118f60",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001190c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00119240",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00119288",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011cac8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011ccc0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011cd00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011cd40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011d748",
+        "text": "/* WARNING: Type propagation algorithm not settling */"
+      },
+      {
+        "entry": "0011e298",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011eae0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011ec48",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0011ecd0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011ed90",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0011ed90",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00121590",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00122300",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00122648",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00122b08",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00122d90",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00123590",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00123820",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00123f18",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00123fa8) */"
+      },
+      {
+        "entry": "001242e0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00124370) */"
+      },
+      {
+        "entry": "001248a0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00124940) */"
+      },
+      {
+        "entry": "00124a88",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00124b28) */"
+      },
+      {
+        "entry": "00125700",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00125768) */"
+      },
+      {
+        "entry": "00125dc8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00125e40) */"
+      },
+      {
+        "entry": "00126688",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00126c18",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00126c18",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00126ee0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00127c00",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00127fa8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00129f40",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0012a4b8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0012cad0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0012cb28) */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012d4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012f630",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0012fc30",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00130430",
+        "text": "/* WARNING: Heritage AFTER dead removal. Example location: r0x00340424 : 0x0013062c */"
+      },
+      {
+        "entry": "00130430",
+        "text": "/* WARNING: Restarted to delay deadcode elimination for space: ram */"
+      },
+      {
+        "entry": "00130430",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00131298",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0013174c) */"
+      },
+      {
+        "entry": "00131298",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00131d78",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00132300",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00132310",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00132400",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00133ca0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00133ca0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00134240",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001349d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00136c40",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00137160",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00138188",
+        "text": "/* WARNING: Do nothing block with infinite loop */"
+      },
+      {
+        "entry": "0013fb28",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0013fd00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0013fec8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001400a8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00140208",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001402d4) */"
+      },
+      {
+        "entry": "00140208",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00140360) */"
+      },
+      {
+        "entry": "00140208",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001403b0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001403fc) */"
+      },
+      {
+        "entry": "001404b8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00140568) */"
+      },
+      {
+        "entry": "001404b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001412f0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001413f0) */"
+      },
+      {
+        "entry": "001415a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00142080",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001422e8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0014233c) */"
+      },
+      {
+        "entry": "001424f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001424f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001424f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001424f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001429d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00142a40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00142f28",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00144518",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001447d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00144a60",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00144a60",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00144a60",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001458b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001458b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00145b08",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00145b08",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0014ed38",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0014f138",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0014f538",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0014f938",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00150a88",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00158820",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015d148",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015ee28",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015ef30",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015ef30",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015ef30",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015f0c0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0015f418) */"
+      },
+      {
+        "entry": "0015f0c0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0015f22c) */"
+      },
+      {
+        "entry": "0015f0c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015f0c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015f0c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015f0c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015f908",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0015fb70",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0015fbb4) */"
+      },
+      {
+        "entry": "0015fbe0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00160038",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00160038",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00160038",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00160520",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00160f58",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00161728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00163f88",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00164bf0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00167210",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0016c8f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0016eac0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00170940",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00171358",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00175d70",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00175d70",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00176b80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00176f90",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00177390",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00178250",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0017a888",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0017a888",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0017ce98",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0017d9b0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0017d9b0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0017ee68",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0017f510",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0017f510",
+        "text": "/* WARNING: Switch is manually overridden */"
+      },
+      {
+        "entry": "00180a28",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00181190",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00181190",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00181190",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00183470",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00183470",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00183fb8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00183fb8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00184258",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001863c8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00187b50",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00189368",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018ac40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018ac40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018ac40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018ac40",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018b460",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018b460",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018b840",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018c158",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018d5d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018dec0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018e310",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018e418",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018e6b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018f678",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018fd30",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018fe08",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0018fee0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00190020",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001900f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001901d0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001902a8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001904b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00190798",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001912b0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001917f8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00191f70",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00192120",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00192448",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00192c80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00193030",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00193108",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00193188",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00193208",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00193d68",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001942e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001947c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001947c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00195220",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001958e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00196a90",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00196ec0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001974e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00197748",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001979f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00197ea0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00199458",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00199ab0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0019a508",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0019ae58",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0019aef4) */"
+      },
+      {
+        "entry": "0019b230",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0019b3e8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0019b544) */"
+      },
+      {
+        "entry": "0019b3e8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0019b600) */"
+      },
+      {
+        "entry": "0019c208",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0019c2e4) */"
+      },
+      {
+        "entry": "0019c310",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0019c680",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0019db58",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0019dd58",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0019e3b8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0019e758) */"
+      },
+      {
+        "entry": "001a19c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a19c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a1f48",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a2b00",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a45c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a5d80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a66d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a6838",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a6a48",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a6d48",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a6fd8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a7aa8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a7fc8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001a91f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001aa1d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001aa508",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001aa768",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001aa840",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001aa840",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001ab7c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001abb78",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001acdf8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001acf7c) */"
+      },
+      {
+        "entry": "001ae6b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001aef90",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001af638",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001af820",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001afe48",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001afe98",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001afee8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b0770",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b1168",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b1250",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b27d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b41b0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b45b0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b4cd0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b5ec8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b6c30",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b6f58",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b7378",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b7538",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b87b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b8b98",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b9a10",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b9b50",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001b9c80) */"
+      },
+      {
+        "entry": "001b9b50",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001b9d90",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001b9d90",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bae98",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bb0d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bb4b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bb5b0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bb750",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bb9b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bbaf0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bbce0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001bd860",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001bfea8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c07a8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c2580",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c3368",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c4250",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c4ff8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c52e8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001c5578) */"
+      },
+      {
+        "entry": "001c6388",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001c64f8) */"
+      },
+      {
+        "entry": "001c65c0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c6be8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c6be8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c8f10",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001c9800",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001cd0e8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001ce518",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d1408",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d1408",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d1408",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d1408",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d1800",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d1ba8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001d1dd0",
+        "text": "/* WARNING: Type propagation algorithm not settling */"
+      },
+      {
+        "entry": "001d1f68",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001d3468",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d43d0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d44a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d4b50",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d4bf0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d4c98",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d4d50",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d4eb8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d52d0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001d5334) */"
+      },
+      {
+        "entry": "001d52d0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d5638",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d6198",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d64a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d78d0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d7950",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d8180",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d87a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d8eb0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d8eb0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d8eb0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d8eb0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d8eb0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d8eb0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d9390",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d9728",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d9b80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001d9b80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001da270",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001da660",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001da8c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001da8c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001db228",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd3e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd630",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd790",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd790",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd8a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd8a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd8a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001dd8a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001ddd60",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001de1a0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001de258",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001de618",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001def88",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e1138",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e2018",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e3ba8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001e5470",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e5510",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001e552c) */"
+      },
+      {
+        "entry": "001e5588",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001e5594) */"
+      },
+      {
+        "entry": "001e6b38",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e6c88",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e6eb8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e7138",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e8670",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e9228",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e93e0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "001e9798",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001eafe0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001eb128",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001eb1a8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001ed7d8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001ed97c) */"
+      },
+      {
+        "entry": "001ee018",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001ee144) */"
+      },
+      {
+        "entry": "001f2350",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f36a0",
+        "text": "/* WARNING: Instruction at (ram,0x001f36f4) overlaps instruction at (ram,0x001f36f0)\n    */"
+      },
+      {
+        "entry": "001f59c0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f7268",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f75a0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f77a8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f7848",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f78b8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f7a28",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f7d08",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f7fc8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f82d8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f8390",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f85c8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001f8a68",
+        "text": "/* WARNING: Do nothing block with infinite loop */"
+      },
+      {
+        "entry": "001fa5c8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x001fa5d8) */"
+      },
+      {
+        "entry": "001fb1d8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "001fbe48",
+        "text": "/* WARNING: Switch is manually overridden */"
+      },
+      {
+        "entry": "00200648",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00201d38",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00201d70) */"
+      },
+      {
+        "entry": "00202838",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00202a70",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00202d88) */"
+      },
+      {
+        "entry": "00202a70",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00202dbc) */"
+      },
+      {
+        "entry": "00202a70",
+        "text": "/* WARNING: Do nothing block with infinite loop */"
+      },
+      {
+        "entry": "00202a70",
+        "text": "/* WARNING: Do nothing block with infinite loop */"
+      },
+      {
+        "entry": "00202a70",
+        "text": "/* WARNING: Do nothing block with infinite loop */"
+      },
+      {
+        "entry": "00202a70",
+        "text": "/* WARNING: Do nothing block with infinite loop */"
+      },
+      {
+        "entry": "0020bf90",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0020c2b4) */"
+      },
+      {
+        "entry": "0020bf90",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0020c330) */"
+      },
+      {
+        "entry": "0020e720",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0020f9f0",
+        "text": "/* WARNING: Type propagation algorithm not settling */"
+      },
+      {
+        "entry": "00211298",
+        "text": "/* WARNING: Removing unreachable block (ram,0x002112e4) */"
+      },
+      {
+        "entry": "00213cb0",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00213f10) */"
+      },
+      {
+        "entry": "00214868",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00214f18",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00214f54) */"
+      },
+      {
+        "entry": "0021b2a8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0021bc18",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0021bdf8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0021bf28",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0021c248",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0021c3e0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0021d510",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0021d640",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0021d8c8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0021da90",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0021db90",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0021f1b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0021f790",
+        "text": "/* WARNING: Restarted to delay deadcode elimination for space: gp */"
+      },
+      {
+        "entry": "0021f790",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00221d80",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00224b58",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00224e08",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00225508",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "002264f0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00226ba8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x00226ce0) */"
+      },
+      {
+        "entry": "00226ba8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "002273a8",
+        "text": "/* WARNING: Removing unreachable block (ram,0x002273f8) */"
+      },
+      {
+        "entry": "00228480",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "002284c0",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00228758",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "00229080",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "002296c8",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0022a110",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0022a200",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022a200",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022a910",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022a910",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022abf8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022acc8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022b660",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022b7a8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022ba30",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022c2d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022c9f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022c9f0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022d568",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0022d870",
+        "text": "/* WARNING: Globals starting with '_' overlap smaller symbols at the same address */"
+      },
+      {
+        "entry": "0022dca0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022df80",
+        "text": "/* WARNING: Removing unreachable block (ram,0x0022e028) */"
+      },
+      {
+        "entry": "0022df80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022df80",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022e080",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022e080",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022e8e8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022f1b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022f1b8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022f4d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022f4d8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022fdf8",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "0022fff0",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00230608",
+        "text": "/* WARNING: Subroutine does not return */"
+      },
+      {
+        "entry": "00230998",
+        "text": "/* WARNING: Subroutine does not return */"
+      }
+    ],
+    "warning_categories": [
+      {
+        "category": "subroutine does not return",
+        "count": 463,
+        "affected_function_count": 315,
+        "entries": [
+          "00100348",
+          "001006f0",
+          "00100aa0",
+          "00100f70",
+          "001014c8",
+          "00104c00",
+          "00105480",
+          "00105cb0",
+          "00105df0",
+          "001061f8",
+          "00106448",
+          "001065c8",
+          "00106700",
+          "001067f8",
+          "001069f0",
+          "00106c48",
+          "00106ef8",
+          "00107fd0",
+          "001084e0",
+          "00109200",
+          "00109358",
+          "001095d8",
+          "00109860",
+          "00109950",
+          "00109cf0",
+          "0010bb18",
+          "0010bc58",
+          "0010c060",
+          "0010c9f8",
+          "0010d020",
+          "0010d5b8",
+          "0010d600",
+          "0010d6b0",
+          "0010deb8",
+          "0010ee18",
+          "0010efc0",
+          "00110890",
+          "00110aa8",
+          "00110d80",
+          "00111408",
+          "001114e8",
+          "00111e40",
+          "00112210",
+          "00115a38",
+          "00115fd0",
+          "001161a8",
+          "00116738",
+          "001169c0",
+          "00116ca8",
+          "00117b40",
+          "00117ba0",
+          "00117c58",
+          "00117cb8",
+          "00117d18",
+          "00117dd8",
+          "00117e38",
+          "001185c8",
+          "00118710",
+          "00118f60",
+          "001190c8",
+          "00119240",
+          "00119288",
+          "0011cac8",
+          "0011ccc0",
+          "0011cd00",
+          "0011cd40",
+          "0011e298",
+          "0011eae0",
+          "0011ecd0",
+          "0011ed90",
+          "00121590",
+          "00122300",
+          "00122648",
+          "00123590",
+          "00123820",
+          "00126c18",
+          "00126ee0",
+          "0012d4b8",
+          "0012f630",
+          "00130430",
+          "00131298",
+          "00133ca0",
+          "001349d8",
+          "0013fb28",
+          "0013fd00",
+          "0013fec8",
+          "001400a8",
+          "00140208",
+          "001404b8",
+          "001415a0",
+          "00142080",
+          "001424f0",
+          "001429d8",
+          "00142a40",
+          "00144518",
+          "001447d8",
+          "00144a60",
+          "001458b8",
+          "00145b08",
+          "0014ed38",
+          "0014f138",
+          "0014f538",
+          "0014f938",
+          "00150a88",
+          "00158820",
+          "0015d148",
+          "0015ee28",
+          "0015ef30",
+          "0015f0c0",
+          "0015f908",
+          "0015fbe0",
+          "00160038",
+          "00160520",
+          "00160f58",
+          "00161728",
+          "00163f88",
+          "00164bf0",
+          "00167210",
+          "0016c8f0",
+          "00170940",
+          "00175d70",
+          "00176b80",
+          "00176f90",
+          "00177390",
+          "0017a888",
+          "0017ce98",
+          "0017d9b0",
+          "0017ee68",
+          "0017f510",
+          "00180a28",
+          "00181190",
+          "00183470",
+          "00183fb8",
+          "00184258",
+          "00189368",
+          "0018ac40",
+          "0018b460",
+          "0018b840",
+          "0018c158",
+          "0018d5d8",
+          "0018dec0",
+          "0018e310",
+          "0018e418",
+          "0018e6b8",
+          "0018f678",
+          "0018fd30",
+          "0018fe08",
+          "0018fee0",
+          "00190020",
+          "001900f8",
+          "001901d0",
+          "001902a8",
+          "001904b8",
+          "00190798",
+          "001912b0",
+          "001917f8",
+          "00191f70",
+          "00192120",
+          "00192448",
+          "00192c80",
+          "00193030",
+          "00193108",
+          "00193188",
+          "00193208",
+          "00193d68",
+          "001942e8",
+          "001947c0",
+          "00195220",
+          "001958e8",
+          "00196a90",
+          "00196ec0",
+          "001974e8",
+          "00197748",
+          "001979f0",
+          "00197ea0",
+          "00199458",
+          "00199ab0",
+          "0019a508",
+          "0019b230",
+          "0019c310",
+          "0019c680",
+          "0019db58",
+          "0019dd58",
+          "001a19c0",
+          "001a1f48",
+          "001a2b00",
+          "001a45c8",
+          "001a5d80",
+          "001a66d8",
+          "001a6838",
+          "001a6a48",
+          "001a6d48",
+          "001a6fd8",
+          "001a7aa8",
+          "001a7fc8",
+          "001a91f0",
+          "001aa1d8",
+          "001aa508",
+          "001aa768",
+          "001aa840",
+          "001ab7c8",
+          "001abb78",
+          "001ae6b8",
+          "001aef90",
+          "001af638",
+          "001af820",
+          "001afe48",
+          "001afe98",
+          "001afee8",
+          "001b0770",
+          "001b1168",
+          "001b1250",
+          "001b27d8",
+          "001b41b0",
+          "001b45b0",
+          "001b4cd0",
+          "001b5ec8",
+          "001b6c30",
+          "001b6f58",
+          "001b7378",
+          "001b7538",
+          "001b87b8",
+          "001b8b98",
+          "001b9a10",
+          "001b9b50",
+          "001b9d90",
+          "001bae98",
+          "001bb0d8",
+          "001bb4b8",
+          "001bb5b0",
+          "001bb750",
+          "001bb9b8",
+          "001bbaf0",
+          "001bbce0",
+          "001bfea8",
+          "001c07a8",
+          "001c2580",
+          "001c3368",
+          "001c4250",
+          "001c4ff8",
+          "001c65c0",
+          "001c6be8",
+          "001c8f10",
+          "001c9800",
+          "001ce518",
+          "001d1408",
+          "001d1800",
+          "001d3468",
+          "001d43d0",
+          "001d44a0",
+          "001d4b50",
+          "001d4bf0",
+          "001d4c98",
+          "001d4d50",
+          "001d4eb8",
+          "001d52d0",
+          "001d5638",
+          "001d6198",
+          "001d64a0",
+          "001d78d0",
+          "001d7950",
+          "001d8180",
+          "001d87a0",
+          "001d8eb0",
+          "001d9390",
+          "001d9728",
+          "001d9b80",
+          "001da270",
+          "001da660",
+          "001da8c8",
+          "001db228",
+          "001dd3e8",
+          "001dd630",
+          "001dd790",
+          "001dd8a0",
+          "001ddd60",
+          "001de1a0",
+          "001de258",
+          "001de618",
+          "001def88",
+          "001e1138",
+          "001e2018",
+          "001e5470",
+          "001e6b38",
+          "001e6c88",
+          "001e6eb8",
+          "001e7138",
+          "001e8670",
+          "001e9228",
+          "001e93e0",
+          "0021b2a8",
+          "0021d640",
+          "0021d8c8",
+          "0021da90",
+          "0021f1b8",
+          "0021f790",
+          "0022a200",
+          "0022a910",
+          "0022abf8",
+          "0022acc8",
+          "0022b660",
+          "0022b7a8",
+          "0022ba30",
+          "0022c2d8",
+          "0022c9f0",
+          "0022dca0",
+          "0022df80",
+          "0022e080",
+          "0022e8e8",
+          "0022f1b8",
+          "0022f4d8",
+          "0022fdf8",
+          "0022fff0",
+          "00230608",
+          "00230998"
+        ]
+      },
+      {
+        "category": "overlapping global symbols",
+        "count": 77,
+        "affected_function_count": 77,
+        "entries": [
+          "00111040",
+          "00111238",
+          "001114e8",
+          "00115110",
+          "0011ec48",
+          "00122b08",
+          "00122d90",
+          "00126688",
+          "00127c00",
+          "00127fa8",
+          "00129f40",
+          "0012a4b8",
+          "0012fc30",
+          "00131d78",
+          "00132300",
+          "00132310",
+          "00132400",
+          "00133ca0",
+          "00134240",
+          "00136c40",
+          "00137160",
+          "00142f28",
+          "0016eac0",
+          "00171358",
+          "00178250",
+          "0017d9b0",
+          "001863c8",
+          "00187b50",
+          "001b9d90",
+          "001bd860",
+          "001cd0e8",
+          "001d1ba8",
+          "001d1f68",
+          "001e3ba8",
+          "001e9798",
+          "001eafe0",
+          "001eb128",
+          "001eb1a8",
+          "001f2350",
+          "001f59c0",
+          "001f7268",
+          "001f75a0",
+          "001f77a8",
+          "001f7848",
+          "001f78b8",
+          "001f7a28",
+          "001f7d08",
+          "001f7fc8",
+          "001f82d8",
+          "001f8390",
+          "001f85c8",
+          "001fb1d8",
+          "00200648",
+          "00202838",
+          "0020e720",
+          "00214868",
+          "0021bc18",
+          "0021bdf8",
+          "0021bf28",
+          "0021c248",
+          "0021c3e0",
+          "0021d510",
+          "0021db90",
+          "00221d80",
+          "00224b58",
+          "00224e08",
+          "00225508",
+          "002264f0",
+          "00226ba8",
+          "00228480",
+          "002284c0",
+          "00228758",
+          "00229080",
+          "002296c8",
+          "0022a110",
+          "0022d568",
+          "0022d870"
+        ]
+      },
+      {
+        "category": "unreachable block",
+        "count": 49,
+        "affected_function_count": 42,
+        "entries": [
+          "00101ea8",
+          "0010dc20",
+          "00114fe0",
+          "00115e18",
+          "00123f18",
+          "001242e0",
+          "001248a0",
+          "00124a88",
+          "00125700",
+          "00125dc8",
+          "0012cad0",
+          "00131298",
+          "00140208",
+          "001403b0",
+          "001404b8",
+          "001412f0",
+          "001422e8",
+          "0015f0c0",
+          "0015fb70",
+          "0019ae58",
+          "0019b3e8",
+          "0019c208",
+          "0019e3b8",
+          "001acdf8",
+          "001b9b50",
+          "001c52e8",
+          "001c6388",
+          "001d52d0",
+          "001e5510",
+          "001e5588",
+          "001ed7d8",
+          "001ee018",
+          "001fa5c8",
+          "00201d38",
+          "00202a70",
+          "0020bf90",
+          "00211298",
+          "00213cb0",
+          "00214f18",
+          "00226ba8",
+          "002273a8",
+          "0022df80"
+        ]
+      },
+      {
+        "category": "infinite-loop do-nothing block",
+        "count": 7,
+        "affected_function_count": 4,
+        "entries": [
+          "00105888",
+          "00138188",
+          "001f8a68",
+          "00202a70"
+        ]
+      },
+      {
+        "category": "other warning",
+        "count": 3,
+        "affected_function_count": 3,
+        "entries": [
+          "001161a8",
+          "0017f510",
+          "001fbe48"
+        ]
+      },
+      {
+        "category": "type propagation did not settle",
+        "count": 3,
+        "affected_function_count": 3,
+        "entries": [
+          "0011d748",
+          "001d1dd0",
+          "0020f9f0"
+        ]
+      },
+      {
+        "category": "decompiler restarted for space",
+        "count": 2,
+        "affected_function_count": 2,
+        "entries": [
+          "00130430",
+          "0021f790"
+        ]
+      },
+      {
+        "category": "heritage after dead-code removal",
+        "count": 1,
+        "affected_function_count": 1,
+        "entries": [
+          "00130430"
+        ]
+      },
+      {
+        "category": "overlapping instruction decode",
+        "count": 1,
+        "affected_function_count": 1,
+        "entries": [
+          "001f36a0"
+        ]
+      }
+    ],
+    "scope": "all saved functions",
+    "terminal_reason": "function iteration finished",
+    "claim_limit": "Function inventory coverage is limited to the supplied static export; this check does not prove whole-game code discovery, original-source recovery, or behavioral equivalence.",
+    "status": "pass",
+    "failures": []
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 75092,
+      "sha256": "173eebd062ab30938432827f65a1858f10ce9de6ce786bb82d0786961694f549"
+    }
+  }
+}

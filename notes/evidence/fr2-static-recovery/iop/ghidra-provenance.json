@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "language": "MIPS:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "private_install_copy": " .scratch/mesh/codex-audit/iop-ghidra/ghidra-private (installed Ghidra untouched)",
+  "repair": "Restored official stock MIPS include for base MIPS32; renamed extension reduced include to ee_mips.sinc and changed private R5900 spec to include it.",
+  "evidence": {
+    "official_stock_mips_sinc": {
+      "path": ".scratch/mesh/codex-audit/iop-ghidra/research/official-stock-mips.sinc",
+      "bytes": 38055,
+      "sha256": "f3d4272cbf5a8fc1c2173f91ee41c1ee8ff6018bf9fabec36409f4dda20dbf58"
+    },
+    "private_stock_mips_sinc": {
+      "path": ".scratch/mesh/codex-audit/iop-ghidra/ghidra-private/Ghidra/Processors/MIPS/data/languages/mips.sinc",
+      "bytes": 38055,
+      "sha256": "f3d4272cbf5a8fc1c2173f91ee41c1ee8ff6018bf9fabec36409f4dda20dbf58"
+    },
+    "private_extension_ee_mips_sinc": {
+      "path": ".scratch/mesh/codex-audit/iop-ghidra/ghidra-private/Extensions/Ghidra/ghidra-emotionengine-reloaded/data/languages/ee_mips.sinc",
+      "bytes": 23138,
+      "sha256": "e7ee7475ff766814219cc3b653d11a3ea4ef3a7e96e09ac27439a676df33fd9a"
+    },
+    "private_r5900_spec": {
+      "path": ".scratch/mesh/codex-audit/iop-ghidra/ghidra-private/Extensions/Ghidra/ghidra-emotionengine-reloaded/data/languages/r5900.slaspec",
+      "bytes": 668,
+      "sha256": "b700d475a22868eeb1538ab20fb9d67180075e7df7883ed8f86a177c025b2db9"
+    },
+    "corpus_import_log": {
+      "path": ".scratch/mesh/codex-audit/iop-ghidra/corpus-import-01.log",
+      "bytes": 95449,
+      "sha256": "fe02e54648599c99ee47a7a97a05eb3481e5e3db850622086b61f67adef972ee"
+    },
+    "decompilation_log": {
+      "path": ".scratch/mesh/codex-audit/iop-ghidra/decomp-all-02.log",
+      "bytes": 47241,
+      "sha256": "8b1cdd234c8cf6caddbfca7d0fb45e430a7e2aa16ff91f1d676d61e084f57ae9"
+    }
+  },
+  "limits": [
+    "All 24 IRX inputs imported and analyzed in the repaired private copy; the loader skips .iopmod.",
+    "GP is synthetic section-GOT-base+0x7ff0 fallback when _mips_gp_value is absent, not verified runtime GP.",
+    "ET 0xff80 Sony load-base relocation semantics remain unverified.",
+    "The 2,241 functions are Ghidra saved-function discovery, not proof of complete code discovery or recovered source.",
+    "IOP function imports remain unresolved without the matching library/version/index API catalog."
+  ],
+  "source_catalog": {
+    "repository": "https://github.com/frno7/iopmod",
+    "revision": "12cdf14b78ed5e648ffe1d52e6754f00b3b69001",
+    "revision_date": "2024-12-29",
+    "license": "GPL-2.0",
+    "files_used": [
+      "include/iopmod/irx.h",
+      "include/iopmod/asm/irx.h",
+      "tool/iopmod-info.c"
+    ],
+    "use": "IRX table layout and documented import-link field semantics; numeric IDs remain unresolved without the matching catalog.",
+    "screening": "Source excerpts were screened with Jev before reliance. The irx.h screen returned review (.67 injection probability); manual inspection found only format declarations/comments and no agent-directed content. A later evidence verification rated the structure statement verified at .78 confidence/action review, and exact byte-level corpus observations independently support the enforced profile."
+  }
+}

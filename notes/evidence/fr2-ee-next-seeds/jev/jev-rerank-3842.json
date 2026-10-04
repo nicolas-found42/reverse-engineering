@@ -1,0 +1,23 @@
+{
+  "tool": "jev_rerank",
+  "query": "Prioritize the next bounded static closure candidate from the refreshed 3842 inventory. Prefer exact saved direct calls from baseline functions, then well-supported nonzero target and contiguous ELF-matched source interval. Treat all provisional callers and PS2Recomp start guesses as weak evidence.",
+  "candidate_count": 3,
+  "ranked": [
+    {
+      "rank": 1,
+      "id": "00200e70",
+      "relevance": 0.84
+    },
+    {
+      "rank": 2,
+      "id": "00200de0",
+      "relevance": 0.83
+    },
+    {
+      "rank": 3,
+      "id": "001ff038",
+      "relevance": 0.74
+    }
+  ],
+  "disposition": "advisory ranking only; all candidates have zero baseline callers; no mutation decision."
+}

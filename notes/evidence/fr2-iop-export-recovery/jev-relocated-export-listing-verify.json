@@ -1,0 +1,43 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "summary": {
+    "verified": 3,
+    "contradicted": 1,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "verdict": "verified",
+      "confidence": 1.0,
+      "action": "auto",
+      "claim": "Across the 24 pinned IOP modules, the relocation-aware parser returns exactly 746 export entries, versus 296 links visible to the earlier literal-zero-terminated parser."
+    },
+    {
+      "id": "claim1",
+      "verdict": "verified",
+      "confidence": 0.99,
+      "action": "auto",
+      "claim": "Those 746 relocation-aware entries classify against the pinned Ghidra .text listing as 427 saved function entries, 162 unowned instruction addresses, and 157 undefined addresses."
+    },
+    {
+      "id": "claim2",
+      "verdict": "verified",
+      "confidence": 1.0,
+      "action": "auto",
+      "claim": "Among 450 entries recovered only after synthetic relocation, 246 target saved function entries, 114 target unowned instructions, and 90 target undefined addresses."
+    },
+    {
+      "id": "claim3",
+      "verdict": "contradicted",
+      "confidence": 1.0,
+      "action": "auto",
+      "claim": "The 0x1000 synthetic relocation base and listing classifications establish runtime address/callability."
+    }
+  ],
+  "claim_limits": "Exact structural counts are supported. Synthetic relocation and listing classification do not establish runtime address, callability, symbol identity, or OS registration."
+}

@@ -1,0 +1,36 @@
+{
+  "id": "vif-static-source-verify-002",
+  "tool": "mcp__jev__jev_verify",
+  "input_args": {
+    "claims": [
+      "In the pinned DVP source, MPG NUM=0 decodes to 256 and the command length is one 32-bit word plus two 32-bit words per VU instruction pair.",
+      "In the pinned DVP assembler source, MPG location is converted from dwords to VU byte address by multiplying by eight.",
+      "The pinned executable produces exactly eight MPG spans that match all eight parse_overlays source spans, totaling 1,698 instruction pairs and 13,584 bytes.",
+      "The static upload analysis proves the program actually ran and rendered geometry."
+    ],
+    "evidence": [
+      {
+        "id": "pinned-length-decoder",
+        "text": "ps2dev/binutils-gdb revision 3eb45ea37f0efd498d1de3cf9562de07197aefa8, opcodes/dvp-opc.c:2041-2058: `case 0x40` comments mpg; `len = (insn >> 16) & 0xff`; `return 1 + (len == 0 ? 256 : len) * 2`. opcodes/dvp-opc.c:1767-1771 extracts MPG data length and returns len or 256. These functions give VU upload stream word length; the parser requires 8 bytes per pair."
+      },
+      {
+        "id": "pinned-location-scaling",
+        "text": "ps2dev/binutils-gdb revision 3eb45ea37f0efd498d1de3cf9562de07197aefa8, gas/config/tc-dvp.c:806-818 records the explicitly set MPG location as `mpgloc * 8`, with comment that the value is in bytes while mpgloc is in dwords. The .DVP MPG operands are defined in opcodes/dvp-opc.c:1384-1385 and 1454-1455."
+      },
+      {
+        "id": "machine-matched-packet-result",
+        "text": "Verify run .scratch/mesh/codex-vif/verify-run-002/.../result.json status pass: pinned executable SHA-256 216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95; two CNT/END chains QWC=782 and QWC=70; overlay_count=8, transfer_count=8, matched_count=8, unmatched_overlay_count=0; total_instruction_pairs=1698; total_transferred_bytes=13584. The verifier compares each payload slice to the exact file bytes at parse_overlays source_offset. It explicitly states runtime transfer, VU scheduling, geometry semantics and rendered output are not established."
+      }
+    ],
+    "auto_accept": 0.8,
+    "subject_at": 0.5
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 3,\n    \"contradicted\": 1,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"In the pinned DVP source, MPG NUM=0 decodes to 256 and the command length is one 32-bit word plus two 32-bit words per VU instruction pair.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.89,\n        \"says_nothing\": 0.01,\n        \"contradicts\": 0.1\n      },\n      \"confidence\": 0.84,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"pinned-length-decoder\",\n      \"same_subject\": 0.55\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"In the pinned DVP assembler source, MPG location is converted from dwords to VU byte address by multiplying by eight.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"says_nothing\": 0,\n        \"contradicts\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"pinned-location-scaling\",\n      \"same_subject\": 0.51\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"The pinned executable produces exactly eight MPG spans that match all eight parse_overlays source spans, totaling 1,698 instruction pairs and 13,584 bytes.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"says_nothing\": 0,\n        \"contradicts\": 0\n      },\n      \"confidence\": 0.99,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"machine-matched-packet-result\",\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"The static upload analysis proves the program actually ran and rendered geometry.\",\n      \"verdict\": \"contradicted\",\n      \"probabilities\": {\n        \"supports\": 0.01,\n        \"says_nothing\": 0.09,\n        \"contradicts\": 0.9\n      },\n      \"confidence\": 0.86,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.53\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2440,\n    \"output_tokens\": 515\n  }\n}"
+      }
+    ]
+  }
+}

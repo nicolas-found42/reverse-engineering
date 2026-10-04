@@ -1,0 +1,57 @@
+{
+  "bundle": "fr2-geometry-vif-tag-audit",
+  "scope": "Static packet and VIF1 DMA submission audit only",
+  "executable": {
+    "name": "SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "static_export": {
+    "path": ".scratch/evidence/static-export.json",
+    "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+    "function_count": 3446,
+    "ghidra_version": "12.1.3"
+  },
+  "conclusion": "0010f8f8 emits an inline CNT tag with FLUSHA and DIRECT(2) in the TTE words, followed by a two-qword GIF A+D packet writing GS register 0x4e (ZBUF_1). Its computed qword is GS register data, not a DMA REF descriptor. A separate bounded supplement records static render-loop append order, a preceding STMOD=0/STCYCL=4/4 tail, and path-local alternating selectors; it does not claim runtime DMA/VIF/VU execution.",
+  "direct_submitters": [
+    {"function": "0021b5b0", "evidence": "writes VIF1 QWC=0 at 0x10009020, TADR from selected chain tag address at 0x10009030, and CHCR=0x145 at 0x10009000"},
+    {"function": "001130f8", "evidence": "builds a terminal marker and starts VIF1 with TADR/CHCR=0x145"},
+    {"function": "0021b2a8", "evidence": "queue/rotation path starts the next VIF1 chain using TADR/CHCR=0x145"}
+  ],
+  "initialization_chain": ["0022dbb8", "0022fc90", "001124c0", "0021b5b0"],
+  "limits": [
+    "No runtime execution, emulator execution, or UI launch",
+    "No proof that later geometry MSCNT consumes the initialization BASE/OFFSET state",
+    "Static render append order is not proof of runtime DMA/VIF/VU scheduling or consumption",
+    "No resolved value for the initialization MSCAL immediate or GS payload globals",
+    "No claim that the later 0010f8f8 render packet has been statically followed through queue submission"
+  ],
+  "source_hashes": {
+    "0010f8f8.c": "a25a5f01733663727f887478c7cde8fc0a80f7cb7e968aa7a60595b0ac83c991",
+    "001124c0.c": "9aa16bae77d325f91a3aaf9f15b40373f02aa0fc17f1b000c331bcfa39e9de3a",
+    "0021b5b0.c": "a2a92f30a404a0154b1930f51cbd14f97927206900402b1ca1a7f7dc4d19af49",
+    "PS2SDK commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "PS2SDK dma_registers.h": "e5c3c8c73a365fed0c4960cf88c55300deee99736f6dc239c0af8e9b2bc631a7",
+    "PS2SDK dma_tags.h": "43392c08dcf8499fa411bd123a33376d417f5c1144bef649d32430312e34d302",
+    "PS2SDK gif_tags.h": "ebb22d20e27d7ee2f822e343358dc8644042b3fde9f39ddd2f13b317ab84169f",
+    "PS2SDK gs_gp.h": "3e93c3d7a16028bbae8894c07423964b263328b44a0c43bab3ec92c725b778a4",
+    "PS2SDK vif_codes.h": "b28a4d58edf1245c54fd7bfa8276b9d59ae5a369a27db57ba09938b5f8c4adfb",
+    "pinned PCSX2 Vif1_Dma.cpp": "681d80c62eccdb481b4ad31ae03d983d0747579a475d430d6f51d4c73a2819ac"
+  },
+  "supplements": [
+    {
+      "path": "render-path-mode-cycle-and-buffer-selector.json",
+      "scope": "Static render-loop append order, VIF mode/cycle words, and bounded selector alternation",
+      "limitations": "No execution, queue ordering, TOP proof, world-scale or geometry-label claims"
+    },
+    {
+      "path": "../fr2-geometry-vu-consumer/README.md",
+      "scope": "Raw overlay-5 TOP+3.z consumer and conditional packet-lane linkage",
+      "limitations": "Static only; runtime MODE/cycle/TOPS unproved; no XGKICK-pointer label"
+    }
+  ],
+  "validation": {
+    "type": "instruction-and-packet-layout cross-check",
+    "tests_run": false,
+    "static_only": true
+  }
+}

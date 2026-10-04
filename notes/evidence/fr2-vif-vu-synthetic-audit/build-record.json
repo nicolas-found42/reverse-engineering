@@ -1,0 +1,36 @@
+{
+  "compiler": "clang++",
+  "flags": [
+    "-std=c++20",
+    "-O1",
+    "-DUSE_SSE2NEON"
+  ],
+  "includes": [
+    ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include",
+    ".scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+    ".scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/src"
+  ],
+  "frameworks": [
+    "OpenGL",
+    "Cocoa",
+    "IOKit",
+    "CoreFoundation"
+  ],
+  "source": ".scratch/mesh/codex-root/vif-vu-synthetic-01/probe.cpp",
+  "output": ".scratch/mesh/codex-root/vif-vu-synthetic-01/probe",
+  "compile_log": "compile-02.log",
+  "libraries": [
+    {
+      "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+      "sha256": "923592007bb581846a7659ed3459d43b5a92fdc421f2732d3098262ca8912015"
+    },
+    {
+      "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+      "sha256": "a3f193a7cf8036fa2be98be51f6f4a218e4d0cda02bb45be3e1760a8a600e4df"
+    },
+    {
+      "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+      "sha256": "c5658b264fe8d23fd6046151fb9c111fff0f7f493a531f37a2c239b34541db05"
+    }
+  ]
+}

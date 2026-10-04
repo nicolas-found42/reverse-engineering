@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "Correct the earlier uppercase-only filesystem-glob scope for the static mip audit while retaining its 54-file result as historical evidence.",
+  "historical_54_file_scope": {
+    "method": "Path.rglob('*.PS2;1') on a case-sensitive filesystem",
+    "scratch_result": ".scratch/mesh/codex-root/texture-independent-review/independent-mip-upload-static-audit.json",
+    "scratch_result_sha256": "7b47a504feddeed90aeec1862320ade9b323a2a12949e78dd07da34b1d98f05a",
+    "files": 54,
+    "textures": 2353,
+    "levels": 4906,
+    "extra_mips": 2553,
+    "source_and_predicted_transfer_bytes": 79571296,
+    "disposition": "Retained as a historical uppercase-glob subset result; not represented as archive-complete."
+  },
+  "archive_bound_all56_scope": {
+    "method": "Baseline.entries('.ps2;1') with Entry.load() length and SHA-256 checks against the pinned archive output.",
+    "profile": "fr2-pal-sles-517.05",
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+    "script": ".scratch/mesh/codex-root/texture-independent-review/audit_mip_upload_static_all56.py",
+    "script_sha256": "639b43e90379135c2578a905dd065d802b7d91c50a2ed3c7cc3b117c79037130",
+    "result": ".scratch/mesh/codex-root/texture-independent-review/independent-mip-upload-static-all56-audit.json",
+    "result_sha256": "3f4f6e31f5508e2a361b38a6e273a864817a87a3949ee7c5e9d55149311e820c",
+    "files": 56,
+    "textures": 2370,
+    "levels": 4941,
+    "extra_mips": 2571,
+    "mip_count_distribution": {
+      "0": 1027,
+      "1": 115,
+      "2": 1228
+    },
+    "source_and_predicted_transfer_bytes": 79708000,
+    "records_with_zero_serialized_word_at_offset_8": 2571
+  },
+  "scope_limits": [
+    "The additional 17 textures are from the two archive entries omitted by the uppercase glob.",
+    "Results remain static descriptor/byte-count checks; no GS upload or rendering was executed.",
+    "Serialized mip-record word semantics remain incomplete."
+  ],
+  "jev": {
+    "request": "jev-mip-all56-coverage-verify-request.json",
+    "receipt": "jev-mip-all56-coverage-verify.json",
+    "outcome": "4 verified, 0 contradicted, 0 unsupported, 0 needing review; claims specifically name the archive-bound all-56 scope.",
+    "receipt_completeness": "abbreviated_agent_reported_summary",
+    "complete_raw_result_found": false,
+    "receipt_note": "The linked request is preserved. The linked result is a compact recovered summary; the full original distributions and same_subject fields were not found. This is not a complete immutable Jev result envelope."
+  }
+}

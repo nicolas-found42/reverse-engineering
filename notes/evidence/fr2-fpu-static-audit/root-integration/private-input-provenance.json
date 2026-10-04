@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "private_inputs": [
+    {
+      "path": ".scratch/mesh/codex-root/recomp-fpu-build-01/ps2xRecomp/ps2_recomp",
+      "bytes": 5757832,
+      "sha256": "4413c5dca810b165bde680c397b3c1224352a06a458aabca759041faa516daa6"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-fpu-01.toml",
+      "bytes": 389,
+      "sha256": "381ba5188c02aa7845b3d8fc52cc17a5a4e54610de5df5cdd7aae62ee6a33658"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-fpu-build-01.log",
+      "bytes": 19538,
+      "sha256": "fb2067762a2363ae3d97115aceac48e193cac6fdd2750b3d52f2fe714e70a2ac"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp-fpu-generate-01.log",
+      "bytes": 181411,
+      "sha256": "24452e5abb6731d7f015cc4b3ec7022f4a127ddf08aaaac0a6e23c6d78d47f09"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp_objects_fpu.py",
+      "bytes": 2460,
+      "sha256": "ebfc436110f97639f44a6edcc15c95673afd18938f60ec9eab99195f969fbdd3"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/recomp_registration_fpu.py",
+      "bytes": 1710,
+      "sha256": "d9e7d8254ddfa65798c9d0411a9a9dd119eeea073811c1f6a09f4c4b5549268a"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/ee_fpu_experimental_helpers.h",
+      "bytes": 2201,
+      "sha256": "e451995dd6a5952b190685d14abda3ac49d1fc4e33daba5c54ad7d2f49798aaf"
+    }
+  ],
+  "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+  "source_manifest_sha256": "de9434d0fc83fd0a09212461fc46e7423ac509eb05c892aac2884d047a6ea57d",
+  "experimental_limit": "Four-patch integration includes only bounded manual-derived FPU changes; review remains escalated and general EE arithmetic/hardware equivalence unproved.",
+  "operational_dispositions": [
+    "First artifact command used guessed --generated-dir/--report options and failed argparse; corrected actual --source/--generator-report command passed.",
+    "First generated-header comparison guessed a nonexistent header name; the finalized comparison enumerates both actual .h files and registration file, all identical.",
+    "Initial archive symbol regex expected unmangled names and asserted count0; corrected mangled-T inventory verifies4746 unique definitions on the same successfully created archive."
+  ]
+}

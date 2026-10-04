@@ -1,0 +1,58 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "tools.recomp.verify_integer_multiply",
+        "--upstream",
+        ".scratch/mesh/codex-root/PS2Recomp",
+        "--static-export",
+        ".scratch/evidence/static-export.json",
+        "--fresh-output-dir",
+        ".scratch/mesh/codex-root/integer-multiply-audit-04",
+        "--sse2neon",
+        ".scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src"
+      ],
+      "result": "pass",
+      "result_json_sha256": "5e4230536d2a4c6ca9e6e8911b23a6fca75548dc3b9dc1b2af03ca0c1570f813"
+    },
+    {
+      "argv": [
+        "python3",
+        "-m",
+        "unittest",
+        "tools.test_recomp_integer_multiply",
+        "-v"
+      ],
+      "result": "pass",
+      "output": "test_changed_source_fails_before_output_creation (tools.test_recomp_integer_multiply.MultiplyGuards.test_changed_source_fails_before_output_creation) ... ok\ntest_existing_output_is_preserved_before_source_read (tools.test_recomp_integer_multiply.MultiplyGuards.test_existing_output_is_preserved_before_source_read) ... ok\ntest_inventory_summary_pins_order_and_cardinality (tools.test_recomp_integer_multiply.MultiplyGuards.test_inventory_summary_pins_order_and_cardinality) ... ok\ntest_missing_case_is_rejected (tools.test_recomp_integer_multiply.MultiplyGuards.test_missing_case_is_rejected) ... ok\ntest_pinned_inventory_rejects_mutated_export (tools.test_recomp_integer_multiply.MultiplyGuards.test_pinned_inventory_rejects_mutated_export) ... ok\ntest_wrong_commit_fails_before_source_read (tools.test_recomp_integer_multiply.MultiplyGuards.test_wrong_commit_fails_before_source_read) ... ok\ntest_actual_emitters_cover_signed_unsigned_both_banks_and_rd_zero (tools.test_recomp_integer_multiply.MultiplyPinnedTest.test_actual_emitters_cover_signed_unsigned_both_banks_and_rd_zero) ... ok\ntest_actual_template_probe_and_wrong_bank_mutant (tools.test_recomp_integer_multiply.MultiplyPinnedTest.test_actual_template_probe_and_wrong_bank_mutant) ... ok\ntest_dependency_drift_fails_before_output_creation (tools.test_recomp_integer_multiply.MultiplyPinnedTest.test_dependency_drift_fails_before_output_creation) ... ok\n\n----------------------------------------------------------------------\nRan 9 tests in 3.000s\n\nOK\n"
+    },
+    {
+      "argv": [
+        "pyright",
+        "tools/recomp/verify_integer_multiply.py",
+        "tools/test_recomp_integer_multiply.py"
+      ],
+      "result": "pass",
+      "output": "0 errors, 0 warnings, 0 informations"
+    }
+  ],
+  "test_output_sha256": "b5718fd8f28bc76acd016860f812bc9c4ff9d26aee52db7ee22f03f98ea8ad9f",
+  "test_count": 9,
+  "jgrep": {
+    "argv": [
+      "jgrep",
+      "--json",
+      "compares the generated multiply helper against a widened arithmetic result and verifies register state remains unchanged outside the outputs",
+      "tools/recomp/"
+    ],
+    "exit_code": 0,
+    "matches": 2,
+    "matched_ranges": [
+      "tools/recomp/integer_multiply_probe.cpp:97-136",
+      "tools/recomp/integer_multiply_probe.cpp:137-172"
+    ],
+    "saved_raw_result": false
+  }
+}

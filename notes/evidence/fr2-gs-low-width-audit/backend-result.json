@@ -1,0 +1,330 @@
+{
+  "schema_version": 1,
+  "status": "observed_reference_disagreement",
+  "public_runtime_revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "public_runtime_source_pins": [
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp",
+      "sha256": "3f0fea655726215f56d8c3c9cff8345a7d36a929fe3f845cc96346a247085fa9"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h",
+      "sha256": "46e69da0062b4f9e82cae926f0e3d2012283634fe1647049a9e832ab7a452ed0"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/gs_cpu_backend.h",
+      "sha256": "2de22e260b71f3da317310b38a7ba40a4b3e5e2bab11a6cbc50662d9d9ef85f8"
+    }
+  ],
+  "reference": {
+    "path": ".scratch/mesh/codex-root/github-raw-GSTables.cpp",
+    "sha256": "a9a226297ede32b89177d7bdb04e9d8e21728e7d55799405f6112e97fe4969e8",
+    "revision": "81526d4dc7cc70e4ae75abb35a789417456c6d43"
+  },
+  "authored_probe_sha256": "861801b090d00f354b70b1c92fec261aea4c7805298a34a9e12d264e7bb592c4",
+  "runner_sha256": "8a0636b7e8c476f351c4346e7ace8a23c726400cfd2e7f58888d3f43253be6f3",
+  "compile": {
+    "command": [
+      "clang++",
+      "-std=c++20",
+      "-O1",
+      "-mmacosx-version-min=26.4",
+      "-DUSE_SSE2NEON",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/src",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-backend-width-native-01/probe.cpp",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+      "-framework",
+      "OpenGL",
+      "-framework",
+      "Cocoa",
+      "-framework",
+      "IOKit",
+      "-framework",
+      "CoreFoundation",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-backend-width-native-01/probe"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libraries": [
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+        "sha256": "923592007bb581846a7659ed3459d43b5a92fdc421f2732d3098262ca8912015"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+        "sha256": "a3f193a7cf8036fa2be98be51f6f4a218e4d0cda02bb45be3e1760a8a600e4df"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+        "sha256": "c5658b264fe8d23fd6046151fb9c111fff0f7f493a531f37a2c239b34541db05"
+      }
+    ]
+  },
+  "binary_preflight": {
+    "binary_sha256": "c6889e565f16cd049b9ae6970596c602d18eca050623e0713db9d03e43f0194a",
+    "generated_guest_names_checked_absent": 4746,
+    "registration_and_display_audio_entry_symbols_absent": true,
+    "symbols_sha256": "32c4152f8dbbebbf8c861bdd3420aac7d5526a5cfc3b7700a2aab623b3b1b4fa",
+    "source_review": "Probe only constructs and initializes CPU VRAM, submits direction-zero transfers, uploads synthetic labels and writes VRAM to stdout. Constructor/Initialize/Reset and transfer path reviewed; no draw/display/audio initialization invoked."
+  },
+  "process": {
+    "command": [
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-backend-width-native-01/probe"
+    ],
+    "exit_code": 0,
+    "stderr_bytes": 0,
+    "stdout_bytes": 33554432,
+    "output_sha256": "88a6f1c1762456a14a92d3dacbef3219e307b127360f106bef4130d6e354e205"
+  },
+  "cases": [
+    {
+      "PSM": 0,
+      "bits": 32,
+      "DBP": 33,
+      "DBW": 0,
+      "dimensions": [
+        64,
+        64
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "ad08dcd3b2ef004324d727d788d01382366b4e10861c8b0d2184c231cecdd5e9",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 0,
+          "different_bytes": 16352,
+          "first_difference_byte": 8448,
+          "expected_sha256": "e2dc1f0dba6de6803ec71864e2ebe801c1366565e83ab461e57ef0c3f18e016a"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "ad08dcd3b2ef004324d727d788d01382366b4e10861c8b0d2184c231cecdd5e9"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    },
+    {
+      "PSM": 0,
+      "bits": 32,
+      "DBP": 33,
+      "DBW": 1,
+      "dimensions": [
+        64,
+        64
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "ad08dcd3b2ef004324d727d788d01382366b4e10861c8b0d2184c231cecdd5e9",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "ad08dcd3b2ef004324d727d788d01382366b4e10861c8b0d2184c231cecdd5e9"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "ad08dcd3b2ef004324d727d788d01382366b4e10861c8b0d2184c231cecdd5e9"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    },
+    {
+      "PSM": 2,
+      "bits": 16,
+      "DBP": 33,
+      "DBW": 0,
+      "dimensions": [
+        64,
+        128
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "fdf4b29a282d283622308ed6d1321989b244ec2d7ea049914e9ba57a78e335c5",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 0,
+          "different_bytes": 16351,
+          "first_difference_byte": 8448,
+          "expected_sha256": "8b7e96ba46778cbed7441a050a7cc8f9b27dccaa07183569d513b28f76508932"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "fdf4b29a282d283622308ed6d1321989b244ec2d7ea049914e9ba57a78e335c5"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    },
+    {
+      "PSM": 2,
+      "bits": 16,
+      "DBP": 33,
+      "DBW": 1,
+      "dimensions": [
+        64,
+        128
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "fdf4b29a282d283622308ed6d1321989b244ec2d7ea049914e9ba57a78e335c5",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "fdf4b29a282d283622308ed6d1321989b244ec2d7ea049914e9ba57a78e335c5"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "fdf4b29a282d283622308ed6d1321989b244ec2d7ea049914e9ba57a78e335c5"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    },
+    {
+      "PSM": 19,
+      "bits": 8,
+      "DBP": 33,
+      "DBW": 0,
+      "dimensions": [
+        128,
+        128
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "102660076391413723713c25e54bf051870e6c11e585f14eb4e2e02ba791dc9e",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 0,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "102660076391413723713c25e54bf051870e6c11e585f14eb4e2e02ba791dc9e"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "102660076391413723713c25e54bf051870e6c11e585f14eb4e2e02ba791dc9e"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    },
+    {
+      "PSM": 19,
+      "bits": 8,
+      "DBP": 33,
+      "DBW": 1,
+      "dimensions": [
+        128,
+        128
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "102660076391413723713c25e54bf051870e6c11e585f14eb4e2e02ba791dc9e",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "102660076391413723713c25e54bf051870e6c11e585f14eb4e2e02ba791dc9e"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "102660076391413723713c25e54bf051870e6c11e585f14eb4e2e02ba791dc9e"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    },
+    {
+      "PSM": 20,
+      "bits": 4,
+      "DBP": 33,
+      "DBW": 0,
+      "dimensions": [
+        128,
+        256
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "87d4967bde059e13ea78dd5247b800c5c48fd6bc810b358a6db6f82dedd98c34",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 0,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "87d4967bde059e13ea78dd5247b800c5c48fd6bc810b358a6db6f82dedd98c34"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "87d4967bde059e13ea78dd5247b800c5c48fd6bc810b358a6db6f82dedd98c34"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    },
+    {
+      "PSM": 20,
+      "bits": 4,
+      "DBP": 33,
+      "DBW": 1,
+      "dimensions": [
+        128,
+        256
+      ],
+      "uploaded_bytes": 16384,
+      "whole_vram_bytes_compared": 4194304,
+      "actual_sha256": "87d4967bde059e13ea78dd5247b800c5c48fd6bc810b358a6db6f82dedd98c34",
+      "models": [
+        {
+          "model": "raw_PCSX2_width",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "87d4967bde059e13ea78dd5247b800c5c48fd6bc810b358a6db6f82dedd98c34"
+        },
+        {
+          "model": "backend_max_width_1",
+          "effective_width": 1,
+          "different_bytes": 0,
+          "first_difference_byte": null,
+          "expected_sha256": "87d4967bde059e13ea78dd5247b800c5c48fd6bc810b358a6db6f82dedd98c34"
+        }
+      ],
+      "one_byte_negative_control_different_bytes": 1
+    }
+  ],
+  "scope": "Synthetic labels only, one base block33 and two vertical pages at widths0/1 in four PSMs. Actual CPU upload path equals width-clamped model in all eight whole-memory comparisons. Raw-width model differs for zero-width CT32/CT16 only; indexed widths0/1 yield zero page-row stride in both. No original game routine or payload, generated runner, display/audio, GS hardware, rendering, dynamic game-state or whole-game equivalence claim. Runtime library was built from four-EE-patch experiment tree but tested source files match pristine public revision exactly."
+}

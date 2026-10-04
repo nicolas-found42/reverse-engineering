@@ -1,0 +1,77 @@
+{
+  "schema": 1,
+  "inputs": {
+    "static_export": {"path": ".scratch/evidence/static-export.json", "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383", "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"},
+    "decompiler_manifest": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/manifest.json",
+    "decompiler_note": "Generated pseudocode is used as a locator; packet conclusions are cross-checked against saved instruction words/bytes and pinned PS2SDK encodings."
+  },
+  "instruction_anchors": {
+    "0010f8f8": [
+      ["0010f910", "sw v0,0xc(a3)", "0c00e2ac", "sets prefix 0x10000000 in tag-layout state"],
+      ["0010f918", "sw zero,0x4(t1)", "040020ad", "zeros the CNT tag ADDR word"],
+      ["0010f91c", "addiu v0,t1,0x8", "08002225", "cursor advances to DMA tag upper words"],
+      ["0010f930", "lhu a0,0x27a(a1)", "7a02a494", "reads DAT_002324fa as a halfword"],
+      ["0010f950", "sw t0,0x0(v0)", "000048ac", "writes VIF FLUSHA 0x13000000"],
+      ["0010f980", "sw t2,0x0(v0)", "00004aac", "writes VIF DIRECT(2) 0x50000002"],
+      ["0010f9a4", "sd t5,0x0(v0)", "00004dfc", "writes first GIFtag qword 0x1000000000008001"],
+      ["0010f9b8", "sd t6,0x0(v0)", "00004efc", "writes GIF register descriptor qword 0x0e"],
+      ["0010f968", "lhu v1,0x26c(a1)", "6c02a394", "reads DAT_002324ec as a halfword"],
+      ["0010f98c", "dsra v1,v1,0x18", "3b1e0300", "arithmetic-shifts the halfword after left shift 48; for values below 0x8000 the result is DAT_002324ec<<24"],
+      ["0010f994", "or a0,a0,v1", "25208300", "forms computed A+D data"],
+      ["0010f998", "or a0,a0,a2", "25208600", "adds (iGpffff911c==0) after shift to bit 32"],
+      ["0010f9cc", "sd a0,0x0(v0)", "000044fc", "stores computed A+D data qword"],
+      ["0010f9e0", "sd t4,0x0(v0)", "00004cfc", "stores register address 0x4e"],
+      ["0010f9f0", "lw v0,0x0(v1)", "0000628c", "reads final cursor for QWC span"],
+      ["0010fa1c", "_sw a0,0x0(a2)", "0000c4ac", "patches finalized tag QWC/ID word"]
+    ],
+    "001124c0": [
+      ["001124d4", "sw zero,-0x6de4(gp)", "1c9280af", "sets the BASE selector state to zero before the load at 00112508"],
+      ["001124e4", "sw zero,-0x6de8(gp)", "189280af", "clears a separate state word; it is not the selector read at 00112508"],
+      ["001124f0", "ori v1,v1,0x1", "01006334", "forms END tag ID/QWC prefix 0x70000001"],
+      ["001124f4", "sw zero,0x4(a0)", "040080ac", "sets tag ADDR field to zero"],
+      ["00112500", "ori a1,a1,0x388", "8803a534", "BASE choice 0x388"],
+      ["00112504", "ori v1,v1,0x3aa", "aa036334", "alternate BASE choice 0x3aa"],
+      ["00112508", "lw a2,-0x6de4(gp)", "1c92868f", "selector read; prior store at 001124d4 set it to zero"],
+      ["00112518", "movz v1,a1,a2", "0a18a600", "zero selects BASE word 0x03000388"],
+      ["00112520", "sw v1,0x0(a3)", "0000e3ac", "writes BASE word into tag upper words"],
+      ["00112528", "sw t0,0xc(a0)", "0c0088ac", "writes OFFSET word 0x02000000"],
+      ["00112540", "sw v1,0x0(t1)", "000023ad", "writes MSCAL opcode 0x14 with unresolved low immediate"],
+      ["00112550", "jal 0x0021b5b0", "6c6d080c", "submits the constructed VIF1 chain"]
+    ],
+    "0021b5b0": [
+      ["0021b608", "lui v0,0x1000", "0010023c", "selects EE MMIO base 0x10000000"],
+      ["0021b60c", "ori v0,v0,0x9020", "20904234", "selects VIF1 QWC register 0x10009020"],
+      ["0021b610", "sw zero,0x0(v0)", "000040ac", "clears QWC before setting up the chain"],
+      ["0021b618", "lw a0,0x4(a1)", "0400a48c", "loads current DMA tag address word"],
+      ["0021b62c", "ori v0,v0,0x9030", "30904234", "selects VIF1 TADR register 0x10009030"],
+      ["0021b630", "sw v1,0x0(v0)", "000043ac", "writes TADR"],
+      ["0021b63c", "li v1,0x145", "45010324", "CHCR value"],
+      ["0021b640", "ori v0,v0,0x9000", "00904234", "selects VIF1 CHCR register 0x10009000"],
+      ["0021b644", "sw v1,0x0(v0)", "000043ac", "starts VIF1 chain with CHCR=0x145"]
+    ]
+  },
+  "layouts": {
+    "FUN_0010f8f8": {
+      "dma_tag": ["word0: 0x10000000 | QWC, ID=CNT", "word1: 0", "word2: 0x13000000 (FLUSHA)", "word3: 0x50000002 (DIRECT, immediate=2)"],
+      "qwc_payload": ["GIF tag qword low64=0x1000000000008001", "GIF tag qword high64=0x0e (A+D register descriptor)", "A+D data qword=runtime-computed; A+D address qword=0x4e (GS ZBUF_1)"],
+      "qwc": 2,
+      "qwc_formula": "ceil((cursor - tagStart)/16) - 1; this span includes one 16-byte tag, so for this 32-byte QWC payload the finalized QWC is 2."
+    },
+    "FUN_001124c0": {
+      "dma_tag": ["word0=0x70000001 (ID=END,QWC=1)", "word1=0", "word2=0x03000388 (BASE imm=0x388)", "word3=0x02000000 (OFFSET imm=0)"],
+      "qwc_payload": ["one qword begins with 0x14000000 | (uGpffff920c & 0xffff), followed by zero words"],
+      "submit": "calls FUN_0021b5b0; VIF1 TADR receives tag address, VIF1 CHCR receives 0x145"
+    }
+  },
+  "interpretation": {
+    "chcr_0x145": {"DIR": 1, "MODE": 1, "TTE": 1, "STR": 1, "TIE": 0, "TTE_bit": 6},
+    "gif": {"nloop": 1, "eop": 1, "flg": 0, "nreg": 1, "reg_descriptor": "A+D (0x0e)"},
+    "correction": "The computed qword is the data half of the GIF A+D write to register address 0x4e, not a DMA REF/tag descriptor."
+  },
+  "unknowns": [
+    "runtime values of DAT_002324fa, DAT_002324ec, and iGpffff911c at 0010f8f8",
+    "lower 16-bit MSCAL immediate in 001124c0",
+    "whether the initialization BASE/OFFSET state is relied on by the later geometry consumer",
+    "the concrete queue-submission point for the later 0010f8f8 render path"
+  ]
+}

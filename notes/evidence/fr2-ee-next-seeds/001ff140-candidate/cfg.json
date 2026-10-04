@@ -1,0 +1,157 @@
+{
+  "seed": "001ff140",
+  "span": {
+    "start": "001ff140",
+    "end_exclusive": "001ff26c",
+    "bytes": 300,
+    "sha256": "d87a456e90bc68814776476bf2a51726be1add1344a9fe5a1ebb48d6535e6b7e"
+  },
+  "reachable_count": 75,
+  "span_words": 75,
+  "gap_words": [],
+  "next_word": "00000000",
+  "next_word_state": "undefined",
+  "edges": [
+    {
+      "site": "001ff170",
+      "word": "0c0800e2",
+      "kind": "call",
+      "delay": "001ff174",
+      "target": "00200388",
+      "fallthrough": "001ff178"
+    },
+    {
+      "site": "001ff17c",
+      "word": "0c080010",
+      "kind": "call",
+      "delay": "001ff180",
+      "target": "00200040",
+      "fallthrough": "001ff184"
+    },
+    {
+      "site": "001ff190",
+      "word": "14400007",
+      "kind": "conditional",
+      "delay": "001ff194",
+      "target": "001ff1b0",
+      "fallthrough": "001ff198"
+    },
+    {
+      "site": "001ff1a0",
+      "word": "0c07f12a",
+      "kind": "call",
+      "delay": "001ff1a4",
+      "target": "001fc4a8",
+      "fallthrough": "001ff1a8"
+    },
+    {
+      "site": "001ff1a8",
+      "word": "10000027",
+      "kind": "unconditional_branch",
+      "delay": "001ff1ac",
+      "target": "001ff248"
+    },
+    {
+      "site": "001ff264",
+      "word": "03e00008",
+      "kind": "return",
+      "delay": "001ff268"
+    },
+    {
+      "site": "001ff1b0",
+      "word": "0c080052",
+      "kind": "call",
+      "delay": "001ff1b4",
+      "target": "00200148",
+      "fallthrough": "001ff1b8"
+    },
+    {
+      "site": "001ff1b8",
+      "word": "0c080102",
+      "kind": "call",
+      "delay": "001ff1bc",
+      "target": "00200408",
+      "fallthrough": "001ff1c0"
+    },
+    {
+      "site": "001ff1c4",
+      "word": "0c07fbca",
+      "kind": "call",
+      "delay": "001ff1c8",
+      "target": "001fef28",
+      "fallthrough": "001ff1cc"
+    },
+    {
+      "site": "001ff1d8",
+      "word": "10400006",
+      "kind": "conditional",
+      "delay": "001ff1dc",
+      "target": "001ff1f4",
+      "fallthrough": "001ff1e0"
+    },
+    {
+      "site": "001ff1e4",
+      "word": "0c07f138",
+      "kind": "call",
+      "delay": "001ff1e8",
+      "target": "001fc4e0",
+      "fallthrough": "001ff1ec"
+    },
+    {
+      "site": "001ff1ec",
+      "word": "10000016",
+      "kind": "unconditional_branch",
+      "delay": "001ff1f0",
+      "target": "001ff248"
+    }
+  ],
+  "edge_counts": {
+    "call": 7,
+    "conditional": 2,
+    "return": 1,
+    "unconditional_branch": 2
+  },
+  "calls": [
+    {
+      "site": "001ff170",
+      "target": "00200388",
+      "saved_entry": true
+    },
+    {
+      "site": "001ff17c",
+      "target": "00200040",
+      "saved_entry": true
+    },
+    {
+      "site": "001ff1a0",
+      "target": "001fc4a8",
+      "saved_entry": true
+    },
+    {
+      "site": "001ff1b0",
+      "target": "00200148",
+      "saved_entry": true
+    },
+    {
+      "site": "001ff1b8",
+      "target": "00200408",
+      "saved_entry": false
+    },
+    {
+      "site": "001ff1c4",
+      "target": "001fef28",
+      "saved_entry": false
+    },
+    {
+      "site": "001ff1e4",
+      "target": "001fc4e0",
+      "saved_entry": true
+    }
+  ],
+  "returns": [
+    "001ff264"
+  ],
+  "rejects": [],
+  "zero_words_reached": [],
+  "scope": "Structural union walk; not feasible execution, identity, or exact original boundaries."
+}

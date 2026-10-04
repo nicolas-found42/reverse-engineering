@@ -1,0 +1,31 @@
+{
+  "id": "r003-scratch-limit",
+  "tool": "mcp__jev__jev_verify",
+  "arguments": {
+    "claims": [
+      "The existing walk3 success predicate establishes that parsed headers match precomputed header consumption and leaves at least 12 trailing bytes, but does not establish exact EOF consumption.",
+      "An existing corpus baseline reports bad 0; this is a fresh reproduction of the scratch check, not section-chain completion."
+    ],
+    "evidence": [
+      {
+        "id": "predicate",
+        "text": "ok = r[\"s2_end\"] == r[\"header_end\"] and r[\"end\"] + 12 <= r[\"size\"]"
+      },
+      {
+        "id": "baseline",
+        "text": "oval2.PS2;1 {'records': 859, 'headers': 2293, 'header_end': 2612320, 'data_start': 2612320, 'end': 3782432, 'size': 3930992, 's2_end': 2612320} OK tail_words \noval3.PS2;1 {'records': 689, 'headers': 2031, 'header_end': 1862340, 'data_start': 1862352, 'end': 2930256, 'size': 3053136, 's2_end': 1862340} OK tail_words \nbad 0\n"
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 2,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"The existing walk3 success predicate establishes that parsed headers match precomputed header consumption and leaves at least 12 trailing bytes, but does not establish exact EOF consumption.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"supports\": 0.98,\n        \"contradicts\": 0.01\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"predicate\",\n      \"same_subject\": 0.62\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"An existing corpus baseline reports bad 0; this is a fresh reproduction of the scratch check, not section-chain completion.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.34,\n        \"supports\": 0.54,\n        \"contradicts\": 0.12\n      },\n      \"confidence\": 0.3,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"baseline\",\n      \"same_subject\": 0.71\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1294,\n    \"output_tokens\": 199\n  }\n}"
+      }
+    ]
+  },
+  "seconds": 0.266,
+  "evidence_files": [],
+  "policy": "Preserve full result; independent deterministic/source review required for non-auto; no threshold changes."
+}

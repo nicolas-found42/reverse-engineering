@@ -1,0 +1,46 @@
+{
+  "id": "d033-verify-decode-coverage-atomic",
+  "purpose": "Atomic re-check of d032 claim1 (review, conf 0.14, compound) with the undecoded-image list as evidence",
+  "tool": "jev_verify",
+  "server_package": "@jkudish/jev-mcp@0.13.0",
+  "arguments": {
+    "claims": [
+      "Pixel decoding is implemented for formats 1 and 3 and 1856 level-0 images were decoded; no format 4 image was decoded.",
+      "Every format 1 or 3 texture that was not decoded has a width or height below 16, and every decoded image has both sides at least 16."
+    ],
+    "evidence": [
+      {
+        "id": "decode-coverage",
+        "text": "{\"formats\": {\"1\": 350, \"3\": 1551, \"4\": 469}, \"decoded_level0_images\": 1856, \"decoded_formats\": {\"3\": 1506, \"1\": 350}, \"format_1_and_3_images_without_decode\": 45, \"their_sizes\": {\"fmt3 8x8\": 32, \"fmt3 32x8\": 4, \"fmt3 16x8\": 8, \"fmt3 64x8\": 1}, \"min_side_over_decoded_images\": 16, \"format_4_decoded\": 0}"
+      }
+    ]
+  },
+  "args_file": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/tex/d033-args.json",
+  "args_sha256": "268fbcd1b2a95bf8bb6f706d2b06706a233383a5c227d8dd7b2b714cef3770f5",
+  "evidence_files": [
+    {
+      "path": ".scratch/jev-runs/run-20261004T062248Z-70CBD534/tex/evidence-coverage.json",
+      "sha256": "336a8657affbf97d5a3c19e72cfd7e34b2687be48f0402f32599cc9fd4b18623",
+      "bytes": 337
+    }
+  ],
+  "started_utc": "2026-10-04T07:41:19.564Z",
+  "server": {
+    "name": "jev-mcp",
+    "version": "0.13.0"
+  },
+  "model": "typesafe/jev-1.13",
+  "provider_env": "openrouter",
+  "seconds": 0.548,
+  "rpc_error": null,
+  "is_error": false,
+  "non_json_stdout_lines": [],
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 2,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"Pixel decoding is implemented for formats 1 and 3 and 1856 level-0 images were decoded; no format 4 image was decoded.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.01,\n        \"says_nothing\": 0,\n        \"supports\": 0.99\n      },\n      \"confidence\": 0.98,\n      \"action\": \"auto\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.93\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"Every format 1 or 3 texture that was not decoded has a width or height below 16, and every decoded image has both sides at least 16.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"contradicts\": 0.19,\n        \"says_nothing\": 0,\n        \"supports\": 0.81\n      },\n      \"confidence\": 0.71,\n      \"action\": \"review\",\n      \"supporting_evidence\": null,\n      \"same_subject\": 0.88\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1051,\n    \"output_tokens\": 126\n  }\n}"
+      }
+    ]
+  }
+}

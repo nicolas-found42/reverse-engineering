@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "source_hashes": {
+    "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e",
+    "ps2xRecomp/src/lib/special_translator.cpp": "98adc0305effdd57ca34ea029070f117379bd7e78c9f8944a8e9276c8c7bd3cd",
+    "ps2xRecomp/src/lib/mmi_translator.cpp": "24deb4f0bc0004c42674e0340d80e50e6e676b326f11d6a2df3dd0b60319249f"
+  },
+  "dependency_sha256": "78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed",
+  "verifier_sha256": "0c8852eb14032974588cb7e4e1ae1391774c9e0d64803a0c27dfda45f9574215",
+  "probe_sha256": "579cb92ce7ff4f4e73aff977f74e366d15556b8ae1f968136e32045f56cf02e4",
+  "extracted_sha256": "e0567396d2871efd868768b67c1da7fbdf2e22c3b54e6ad05100cb4b888473ef",
+  "templates": {
+    "DIV": "{ int32_t divisor = GPR_S32(ctx, rt);    int32_t dividend = GPR_S32(ctx, rs);    if (divisor != 0) {        if (divisor == -1 && dividend == INT32_MIN) {            ctx->lo = (uint64_t)(int64_t)INT32_MIN; ctx->hi = 0;        } else {            ctx->lo = (uint64_t)(int64_t)(dividend / divisor);            ctx->hi = (uint64_t)(int64_t)(dividend % divisor);        }    } else {        ctx->lo = (dividend < 0) ? 1ull : 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)dividend;    } }",
+    "DIVU": "{ uint32_t divisor = GPR_U32(ctx, rt); if (divisor != 0) { ctx->lo = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, rs) / divisor); ctx->hi = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, rs) % divisor); } else { ctx->lo = 0xFFFFFFFFFFFFFFFFull; ctx->hi = (uint64_t)(int64_t)(int32_t)GPR_U32(ctx,rs); } }",
+    "DIV1": "{ int32_t divisor = GPR_S32(ctx, rt); int32_t dividend = GPR_S32(ctx, rs); if (divisor != 0) {     if (divisor == -1 && dividend == INT32_MIN) {         ctx->lo1 = (uint64_t)(int64_t)INT32_MIN; ctx->hi1 = 0;     } else {         ctx->lo1 = (uint64_t)(int64_t)(dividend / divisor);         ctx->hi1 = (uint64_t)(int64_t)(dividend % divisor);     } } else {     ctx->lo1 = (dividend < 0) ? 1ull : 0xFFFFFFFFFFFFFFFFull; ctx->hi1 = (uint64_t)(int64_t)dividend; } }",
+    "DIVU1": "{ uint32_t divisor = GPR_U32(ctx, rt); if (divisor != 0) { ctx->lo1 = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, rs) / divisor); ctx->hi1 = (uint64_t)(int64_t)(int32_t)(GPR_U32(ctx, rs) % divisor); } else { ctx->lo1=0xFFFFFFFFFFFFFFFFull; ctx->hi1=(uint64_t)(int64_t)(int32_t)GPR_U32(ctx,rs); } }"
+  },
+  "details": {
+    "names": [
+      "DIV",
+      "DIVU",
+      "DIV1",
+      "DIVU1"
+    ],
+    "checks": [
+      600600,
+      600600,
+      600600,
+      600600
+    ],
+    "mismatches": [
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "compiler_argv": [
+    "clang++",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fsanitize=undefined",
+    "-fno-sanitize-recover=all",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-div-native-01",
+    "-isystem",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/integer_division_probe.cpp",
+    "-o",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-div-native-01/division-probe"
+  ],
+  "negative_control": {
+    "names": [
+      "DIV",
+      "DIVU",
+      "DIV1",
+      "DIVU1"
+    ],
+    "checks": [
+      600600,
+      600600,
+      600600,
+      600600
+    ],
+    "mismatches": [
+      600600,
+      600600,
+      600600,
+      600600
+    ]
+  },
+  "claim_limit": "Synthetic arithmetic, sign extension, zero-register reads, source aliasing and untouched-bank/register checks only. Divide-by-zero follows the pinned software policy; Sony documents its arithmetic result as undefined. No timing, decoder, game execution or hardware equivalence is proved."
+}

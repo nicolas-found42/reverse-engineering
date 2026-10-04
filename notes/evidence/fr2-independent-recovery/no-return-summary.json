@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "purpose": "Read-only Ghidra no-return metadata and decompiler warning audit; no flags were changed.",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "function_count": 3837,
+  "inventory_sha256": "ca1a05874479b59f842f825436b22895d4e4043ba379f149e125c5a5e60f8ac8",
+  "function_flags_export_sha256": "7afa333c871f23f2f2582fa3299f61ea7eef5aa747353746ff0f817a12539f11",
+  "no_return_functions": [
+    {
+      "entry": "00105888",
+      "name": "FUN_00105888",
+      "body_bytes": 564,
+      "jr_ra_count": 0
+    }
+  ],
+  "warning_comment_count": 463,
+  "warning_callee_counts": {
+    "00105888": 463
+  },
+  "raw_transfer_to_00105888_count": 463,
+  "raw_transfer_mnemonic_counts": {
+    "jal": 435,
+    "j": 28
+  },
+  "audit_provenance": {
+    "path": ".scratch/mesh/codex-helpers/noreturn-warning-audit-3837-01.json",
+    "sha256": "87fcfb1a6b4c6ee97b827de79bd7aeb0f74275c1a7b49123438525f65b3a5626"
+  },
+  "terminal_flow": "At00105aa0 calls returning00105ac8; terminal branch00105abc returns to00105aa8 and spins. No jr ra in00105888. No metadata changes were made."
+}

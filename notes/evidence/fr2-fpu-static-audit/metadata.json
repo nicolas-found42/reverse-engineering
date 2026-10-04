@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "scope": "Static audit of corpus-used EE COP1 FPU translators in pinned PS2Recomp; no original game routine, emulator, or hardware execution.",
+  "inventory": {
+    "inventory_path": ".scratch/mesh/codex-root/decompile-dispatch-all-3837-02/inventory.json",
+    "inventory_sha256": "1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "inventory_count": 3837,
+    "source_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "source_sha256": {
+      "ps2xRecomp/src/lib/fpu_translator.cpp": "8675ddde6b708dd2d06a680f7d62b41c286776fee3340d530b56271fdc281726",
+      "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e",
+      "ps2xRuntime/include/ps2_runtime.h": "30f8614adb393d34a2cbc9dc5a2f701b1d2b468e7c4878c9e494fd8341aa2a67",
+      "ps2xRecomp/src/lib/control_flow_emitter.cpp": "44c0204441106b033a6897bfd52e6e6ce551a6d64a12a7004518a76d657eea07"
+    },
+    "instruction_occurrence_counts": {
+      "adda.s": 1,
+      "swc1": 3551,
+      "mov.s": 2459,
+      "lwc1": 5737,
+      "cvt.s.w": 659,
+      "mtc1": 2719,
+      "sub.s": 1160,
+      "div.s": 391,
+      "c.le.s": 425,
+      "mul.s": 2258,
+      "min.s": 264,
+      "cvt.w.s": 487,
+      "mfc1": 1390,
+      "add.s": 1235,
+      "c.lt.s": 734,
+      "abs.s": 210,
+      "neg.s": 251,
+      "c.eq.s": 112,
+      "sqrt.s": 14,
+      "max.s": 105
+    }
+  },
+  "sources": [
+    {
+      "title": "Sony EE Core User's Manual v6.0",
+      "url": "https://docs.alexrp.com/mips/ee.pdf",
+      "pages": "printed 162-165",
+      "claims": [
+        "special-value/exception flags and signed-zero MIN/MAX table",
+        "toward-zero rounding; NaN/Inf/denormals unsupported; custom truncation behavior"
+      ]
+    },
+    {
+      "title": "Sony EE Core Instruction Set Manual v6.0",
+      "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+      "pages": "printed 356, 365, 376",
+      "claims": [
+        "CVT.W.S toward-zero and exponent-based saturation",
+        "MIN.S argument selection and O/U cause clearing",
+        "SQRT.S negative-input absolute-value behavior, I/SI flags, D cause clear"
+      ]
+    },
+    {
+      "title": "PCSX2 FPU.cpp, pinned commit 81526d4dc7cc70e4ae75abb35a789417456c6d43",
+      "url": "https://raw.githubusercontent.com/PCSX2/pcsx2/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/FPU.cpp",
+      "lines": "45-113, 154-179, 237-246, 265-277, 334-349",
+      "claims": [
+        "illustrates FCR31 bits, input normalization, overflow/underflow/divide-by-zero handling, and signed-zero min/max helpers",
+        "SQRT and CVT implementations provide a separate emulator-code comparison only; not silicon validation"
+      ]
+    }
+  ],
+  "baseline_gaps": [
+    {
+      "instruction": "CVT.W.S",
+      "corpus_count": 487,
+      "baseline": "FPU_CVT_W_S uses nearbyintf then casts; source does not implement Sony truncation/saturation contract",
+      "evidence": "manual printed p.356; fractional inputs differ under FE_TONEAREST; out-of-range conversion has no explicit saturation in baseline"
+    },
+    {
+      "instruction": "MIN.S/MAX.S",
+      "corpus_count": {
+        "min": 264,
+        "max": 105
+      },
+      "baseline": "translator emits std::min/std::max",
+      "evidence": "manual signed-zero table requires MIN(+0,-0)=-0 and MAX(-0,+0)=+0; baseline first-operand tie behavior differs"
+    },
+    {
+      "instruction": "SQRT.S",
+      "corpus_count": 14,
+      "baseline": "FPU_SQRT_S delegates to sqrtf; translator emits no FCR31 updates",
+      "evidence": "manual printed p.376 requires SQRT(ABS(x)) for negative x, I/SI set, D cause clear"
+    },
+    {
+      "instruction": "general arithmetic and DIV.S",
+      "corpus_count": {
+        "add": 1235,
+        "sub": 1160,
+        "mul": 2258,
+        "div": 391
+      },
+      "baseline": "host float operators; DIV.S special-cases denominator == 0 to infinity and only ORs one flag bit",
+      "evidence": "manual requires signed finite maximum, specific cause/sticky flags, exponent overflow saturation and underflow flush; custom rounding is also specified"
+    }
+  ],
+  "prototype_probe": {
+    "scratch_source": ".scratch/mesh/codex-fpu-audit-01/probe.cpp",
+    "scratch_runner": ".scratch/mesh/codex-fpu-audit-01/run_probe.py",
+    "result": {
+      "source_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+      "pinned_source_hashes": {
+        "ps2xRecomp/src/lib/fpu_translator.cpp": "8675ddde6b708dd2d06a680f7d62b41c286776fee3340d530b56271fdc281726",
+        "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e"
+      },
+      "source_template_guards": [
+        "FPU_CVT_W_S",
+        "FPU_SQRT_S",
+        "MIN.S",
+        "MAX.S"
+      ],
+      "compile_command": [
+        "clang++",
+        "-std=c++17",
+        "-O1",
+        "-g",
+        "-fsanitize=undefined,float-cast-overflow",
+        "-fno-sanitize-recover=all",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-fpu-audit-01/probe.cpp",
+        "-o",
+        "/var/folders/vj/z460ltg56p122lsl4_s8pd140000gp/T/fpu-static-probe-2pcktz21/probe"
+      ],
+      "compile_exit": 0,
+      "run_exit": 0,
+      "stdout": "PASS: manual-derived bounded reference cases and baseline negative controls\n",
+      "stderr": ""
+    },
+    "interpretation": "Manual-derived reference cases pass and baseline expression negative controls demonstrate selected discrepancies. Candidate code is illustrative and tightly bounded; no general FPU replacement is proposed."
+  },
+  "limitations": [
+    "No silicon or emulator oracle was used.",
+    "Host sqrt/arithmetic is not certified bit-identical to the EE's custom rounding implementation.",
+    "NaN, infinity, denormal, broad overflow/underflow, and complete FCR31 semantics are out of scope.",
+    "MIN/MAX prototype checks finite value results and signed-zero result bits only; it does not model O/U flag clearing.",
+    "SQRT prototype checks exact roots and selected FCR cause/sticky bits only; arbitrary positive-root rounding is not certified.",
+    "DIV.S remains unmodeled because its special cases, signs, saturation, and flags require a source-backed result model."
+  ],
+  "prior_jev_history_note": "Prior six-claim Jev run summarized in the task handoff as verified 6, contradicted 0, unsupported 0, with two claims requiring review (DIV and SQRT); its exact request/result object was not present in this active tool context. Those review dispositions remain unresolved and are not replaced by the separate receipt below.",
+  "comparator_caveat": "PCSX2 is treated as an independent software comparator, not a hardware oracle. Manual statements anchor the bounded semantics; overall EE bit-exactness is unproved.",
+  "promoted_experiment": {
+    "directory": "tools/recomp/experimental",
+    "patch": "tools/recomp/experimental/ee-fpu-semantics.patch",
+    "reference_helper": "tools/recomp/experimental/ee_fpu_helpers.hpp",
+    "probe": "tools/recomp/experimental/probe.cpp",
+    "verifier": "tools/recomp/experimental/verify_ee_fpu_experiment.py",
+    "test": "tools/test_recomp_fpu_experimental.py",
+    "result": "notes/evidence/fr2-fpu-static-audit/actual-template-validation-02.json",
+    "patch_sha256": "c25899e99c4f57ed6e26cb7d721f36f975701b5039c18e259e5648af06209c1f",
+    "patch_applies_to_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+    "changes": [
+      "guarded CVT.W.S toward-zero conversion and exponent saturation",
+      "MIN.S/MAX.S signed-zero selection and O/U cause clear while preserving other FCR31 bits",
+      "SQRT.S signed-zero/negative finite behavior and I/D cause handling for supported finite operands"
+    ],
+    "validation": "Eight focused tests cover source/patch/package guards and fresh output; the refreshed synthetic probe compiles exact pristine and patched CVT/SQRT macros plus CVT/SQRT/MIN/MAX emitted templates, including all four signed-zero pairs for MIN/MAX and positive/negative exact SQRT flag controls.",
+    "not_applied_to_pinned_checkout": true,
+    "full_recompiler_build_not_run": true
+  },
+  "review_dispositions": {
+    "historical_six_claim_jev": "Verified 6, contradicted 0, unsupported 0; DIV and SQRT had human-review action in the earlier task handoff. Exact earlier call/result were not available to this active tool context; dispositions remain unresolved and are not superseded.",
+    "jev-receipt.json": "Fresh three-claim check verified all claims, no human-review escalation; exact arguments/results persisted.",
+    "jev-patch-receipt.json": "Fresh four-claim source/reference check verified all claims, no human-review escalation; exact arguments/results persisted.",
+    "hardware_equivalence": "Not evaluated or claimed.",
+    "r067_manual_verification": "3 verified, 0 contradicted, 0 unsupported, 1 human review; SQRT compound claim confidence 0.63. The exact original call/result is preserved unchanged in r067-fpu-manual-verification.json.",
+    "CVT_W_S_flags": "Unresolved contradiction among Sony Table 8-4, instruction manual p356, and Table 8-6 p165; patch does not alter FCR31 on conversion."
+  },
+  "manual_ambiguities": {
+    "CVT.W.S_conversion_overflow_flags": {
+      "table_8_4": "no cause flag",
+      "instruction_manual_p356": "no flag writes specified",
+      "table_8_6": "I/SI shown set",
+      "disposition": "unresolved; experiment leaves FCR31 unchanged"
+    },
+    "SQRT_S_rounding": {
+      "user_manual_p164": "hardware chopping may differ from IEEE round-toward-zero in least significant bit",
+      "disposition": "host sqrtf exact only for tested perfect squares/zero; arbitrary square-root result unverified"
+    },
+    "review_receipt": "notes/evidence/fr2-fpu-static-audit/r067-fpu-manual-verification.json",
+    "jev_disposition": "3 verified, 0 contradicted, 0 unsupported, 1 human review; SQRT compound claim confidence 0.63"
+  },
+  "superseded_probe_receipt": "notes/evidence/fr2-fpu-static-audit/validation-superseded-independent-probe.json"
+}

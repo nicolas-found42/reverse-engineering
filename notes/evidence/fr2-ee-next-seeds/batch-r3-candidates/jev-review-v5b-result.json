@@ -1,0 +1,35 @@
+{
+ "action": "escalate",
+ "composite": 0.5565,
+ "safe_to_apply": 0.18,
+ "reason_codes": [
+  "confidence_below_review",
+  "safe_to_apply_below_review"
+ ],
+ "limiting": [
+  "test_gap"
+ ],
+ "scores": {
+  "correctness": [
+   1.2,
+   0.55
+  ],
+  "spec_match": [
+   1.79,
+   0.69
+  ],
+  "test_gap": [
+   1.63,
+   0.44
+  ],
+  "blast_radius": [
+   1.73,
+   0.6
+  ]
+ },
+ "usage": {
+  "input_tokens": 2152,
+  "output_tokens": 79
+ },
+ "root_disposition": "Escalated to stronger root review: root re-read the diff (padding is pinned, zero-checked, excluded from body, reachability must match exactly; terminal tail J requires a pinned tail jump at end-8; CALL_TERMINATOR flow and its call-graph effect were observed in batch r2). Execution only on byte-identical disposable copies with rollback by default; independent checker re-derives the config. Not retried."
+}

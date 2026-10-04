@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "claim_limit": "Bounded model, static source guards, host numeric/test results only. Whole game decompilation and hardware equivalence remain unproved.",
+  "sources": [
+    {
+      "path": "tools/vu/__init__.py",
+      "bytes": 43,
+      "sha256": "c121b9ef3e9a632259ee20856f30fb0fbf7b397ae775b8dfe20416987d6f158b"
+    },
+    {
+      "path": "tools/vu/vu268_reference.py",
+      "bytes": 10428,
+      "sha256": "426094e0908c96f63052bc763fb9093f285a088b914ea8eb8a3fdea3810e2bd5"
+    },
+    {
+      "path": "tools/vu/vu268_source_guard.py",
+      "bytes": 8231,
+      "sha256": "c99694f9a74dc8a5d4ebb9f463a3d53fa4ee7fda5343ba9984dd6811a33c1bc5"
+    },
+    {
+      "path": "tools/vu/README.md",
+      "bytes": 1990,
+      "sha256": "ae8ed86d4d92990e59545faf27b2061d5aa788a21d4b9770bcb62531b6c13bf7"
+    },
+    {
+      "path": "tools/test_vu0_reference.py",
+      "bytes": 8094,
+      "sha256": "7a9b285d1d5c6d438388840b299de26a76548eff79a09c1958693e349809e8b2"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "notes/evidence/fr2-vu0-math/README.md",
+      "bytes": 2495,
+      "sha256": "c397f53ccc2e8dba289ae089d98aba4ab2fbee6212ebbd885e8bd7d9c6a02320"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/jev-exact-load-verification.json",
+      "bytes": 5802,
+      "sha256": "108a6c59fddc1d6696bcd6673927e7bef68872cf50c049e6665e71abdf9db334"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/jev-exact-loi-audit.json",
+      "bytes": 8777,
+      "sha256": "e2dbaa2b570b014e327ecedd041cdfb7599ef2a503da55bb125f6fb11ab65e43"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/jev-literal-crosscheck.json",
+      "bytes": 1543,
+      "sha256": "1fed9e03b1440c0c47b2c53c6f9f945deb3ab263052b1c75afa5cc552b6452da"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/jev-model-review.json",
+      "bytes": 14329,
+      "sha256": "73c0c46cfed1d8944c98e7b701671c9d912611a2e3ce82e9a64060e55ec9c7a9"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/jev-promotion-review-02.json",
+      "bytes": 38425,
+      "sha256": "80ab36f37d5767e54afefb4bf7db3af389cc0756854e1408340c4d57dae0e2de"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/jev-promotion-review.json",
+      "bytes": 37880,
+      "sha256": "b73c8ab5fea13df6ba88ecc3ce1e0b2acb5b896588bcb0fac16d3fda21b8f92f"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/jev-source-guard-review.json",
+      "bytes": 6961,
+      "sha256": "85e7ebd9e1e85ecf496759784aac24d4818352f47fa8f9a30dad9688ef67c55c"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/root-focused-tests.log",
+      "bytes": 113,
+      "sha256": "f22ac7a7574c2cef38f677a2d64c6a2ce6262f39802279a5d7280a336ae28d43"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/root-full-python-suite.log",
+      "bytes": 293,
+      "sha256": "5a7a611541b886cfcba748a0158827fa6a73a458de51537e74f881b71093416b"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/root-jev-verification-r053.json",
+      "bytes": 24722,
+      "sha256": "822dae437db3a2191b37f52d96a1f687d97bd1d49d214316141407f675ba0a35"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/root-pyright.log",
+      "bytes": 37,
+      "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/vu268-exact-source-metadata.json",
+      "bytes": 3440,
+      "sha256": "39ba235623e9304f2d4ea13f6eac0adc457950d3ce9ab390531b508f8622f020"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/vu268-numeric-results.json",
+      "bytes": 17544,
+      "sha256": "544d41b48d092eabf159d1a1dcb97b5c861ec5e05a1f64b834be56da97aa3b6f"
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/vu268-superseded-probes-disposition.json",
+      "bytes": 2450,
+      "sha256": "a96fb324827806749df9f1bd7dd477ac1d92ef263f87df08cb7e07ca2387ea1b"
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "claim_limit": "Bounded static and synthetic validation only; whole game source recovery and equivalence remain unproved.",
+  "sources": [
+    {
+      "path": "tools/recomp/translator-semantics.patch",
+      "bytes": 5612,
+      "sha256": "339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006"
+    },
+    {
+      "path": "tools/recomp/translator_semantics_arithmetic.cpp",
+      "bytes": 5460,
+      "sha256": "79dee0484dbbfae51037d59b27449bd81377ffd650477144099dbc442ac8b95d"
+    },
+    {
+      "path": "tools/recomp/verify_translator_semantics.py",
+      "bytes": 19750,
+      "sha256": "75191a54886cf5e9c644764496e66fc0084c3c731f10d4934765b1049a26ceba"
+    },
+    {
+      "path": "tools/test_translator_semantics.py",
+      "bytes": 4342,
+      "sha256": "7933d468405f1f5f1788c65d4f6918840246b03e98471ae8b3b837d0bae73037"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "notes/evidence/fr2-translator-semantics/README.md",
+      "bytes": 4986,
+      "sha256": "53aae8e94bedfcc7d9dab0107071412a5084b13423cf0e85ea717ed1d7d70ecc"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/jev/initial-gate-disposition.json",
+      "bytes": 595,
+      "sha256": "ceaa0f31175f10f12b04f79653486bbf13625912e21ea2f0cacc937b7326771b"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/jev/prior-scratch-gate.json",
+      "bytes": 7204,
+      "sha256": "caa7ce83154725ef2f20041edaf9b16d19f311b68359338d77463510d88c9986"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/jev/promotion-final-gate.json",
+      "bytes": 11299,
+      "sha256": "f927337265ad422da4c197480b9405231abf436be1337c7abda04ca6fb3fb9f3"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/jev/sony-manual-screen.json",
+      "bytes": 503,
+      "sha256": "31d9ec3ceded356dabe40e8462ef1b48f3d810a5fa3414bad196f610fcc1568b"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/provenance.json",
+      "bytes": 3601,
+      "sha256": "b2914753bfec06dffd467440598002c6f9b44ef30d6c16bad7a5cf8a83708bb6"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/results/focused-tests.log",
+      "bytes": 1194,
+      "sha256": "830edb7b2ff4af9838e706e28f76d12e7255948dbe6263206b674153909b0200"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/results/initial-template-ubsan.log",
+      "bytes": 2085,
+      "sha256": "a0552ece8b1369793f2ff5026d9e8c12de102f197d959c508479ae5d863ba6a1"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/results/initial-trap-flow-repro.log",
+      "bytes": 215,
+      "sha256": "689a249c5044acc061f79d4381fc3d41fc39f10edfd4fdfa8bb1c97c0ffac559"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/results/prior-translator-syntax-check.log",
+      "bytes": 706,
+      "sha256": "a72c21b61e3cc7745fa45653bd4a375d2fefa6264d06358d43ed2832c8743663"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/results/translator-validation-9-controls-superseded.json",
+      "bytes": 3592,
+      "sha256": "0f0e4348693a9eb67e8be2fa7497fd5d2ccc4e00d6ca8bc07b2ea280905cc249"
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/results/translator-validation.json",
+      "bytes": 3593,
+      "sha256": "2311d9674d857868687bf470e6e58cd013b211d37ae94d1a033c6d3d8e9feade"
+    }
+  ]
+}

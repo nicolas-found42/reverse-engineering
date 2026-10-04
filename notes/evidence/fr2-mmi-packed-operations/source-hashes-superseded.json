@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "ps2recomp_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "files": {
+    "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e",
+    "ps2xRecomp/src/lib/mmi_translation_helpers.cpp": "1402bdb9f81923a8c91c7fa790399a2563ebc5f7cd0c899b7c29cb7c6bafc5ee",
+    "sse2neon.h": "78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed"
+  },
+  "promoted_tools": {
+    "tools/recomp/verify_mmi_packed.py": "618ea493e943e8542611731ed00149a09dc87193994c573fe5805fa77fa1bd8c",
+    "tools/recomp/mmi_packed_probe.cpp": "92fc2789b8b29e2dbb795639998c8e923ba52f0a440994ec6e6dabf3901e7fd7",
+    "tools/test_recomp_mmi_packed.py": "2c2e63b141437d8f0c98199873a12d31b75fa7792bcd1bcc67c93064ca3992ba"
+  },
+  "passing_run": {
+    "scratch_receipt": ".scratch/mesh/codex-root/mmi-packed-audit-07/result.json",
+    "probe_sha256": "92fc2789b8b29e2dbb795639998c8e923ba52f0a440994ec6e6dabf3901e7fd7",
+    "extracted_templates_sha256": "cadd18e1a5ec24c735d3eb8b06b9f18436983b877cee4bea963244edecce7117",
+    "checks_per_operation": 80096,
+    "mismatches_per_operation": 0,
+    "run_stderr": ""
+  }
+}

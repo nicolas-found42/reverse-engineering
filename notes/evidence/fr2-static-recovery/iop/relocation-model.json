@@ -1,0 +1,552 @@
+{
+  "claim_limits": [
+    "Static byte transformation only; no original IOP module or module entry point executes.",
+    "Synthetic load base 0x1000 is a bounded test placement, not a recovered runtime allocation.",
+    "Pinned ps2sdk source is a mechanism reference; it is not evidence that the game uses that loader revision.",
+    "The 24 modules are the measured corpus subset, not proof of all modules or runtime load behavior.",
+    "Imports are not resolved and relocated code behavior is not tested.",
+    "Only ET 0xff80 and the documented measured profile are modeled; other loader profiles and relocation types are rejected."
+  ],
+  "corpus_crosscheck": {
+    "all_input_hashes_counts_and_load_extents_match_inventory": true,
+    "all_modules_fit_synthetic_base_0x1000_in_2mib_window": true,
+    "embedded_module_count": 15,
+    "max_pt_load_memory_bytes": 179776,
+    "module_count": 24,
+    "modules": [
+      {
+        "entry_offset": 232,
+        "gp_offset": 76352,
+        "load_base": 4096,
+        "load_file_bytes": 43600,
+        "load_memory_bytes": 45072,
+        "modeled_image_sha256": "c517440f0fafefd583e67b8618c45455df708d474ea429cd5cfd55dedd7fc928",
+        "relocation_counts": {
+          "2": 575,
+          "4": 646,
+          "5": 196,
+          "6": 196
+        },
+        "relocation_total": 1613,
+        "source": "games/ford-racing-2/extracted/IRX/LGDEV.IRX",
+        "source_sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f"
+      },
+      {
+        "entry_offset": 176,
+        "gp_offset": 54000,
+        "load_base": 4096,
+        "load_file_bytes": 21248,
+        "load_memory_bytes": 22880,
+        "modeled_image_sha256": "6f141964cef3caa6fe2a7616231a00173f60c6e54b2162d65ded3551967436de",
+        "relocation_counts": {
+          "2": 93,
+          "4": 289,
+          "5": 219,
+          "6": 219
+        },
+        "relocation_total": 820,
+        "source": "games/ford-racing-2/extracted/IRX/LIBSD.IRX",
+        "source_sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10"
+      },
+      {
+        "entry_offset": 376,
+        "gp_offset": 106000,
+        "load_base": 4096,
+        "load_file_bytes": 73248,
+        "load_memory_bytes": 160100,
+        "modeled_image_sha256": "b9d0ec0e9748b20b9b3887c509e40310fd1795a2ff1134c8faa4ae500e02b452",
+        "relocation_counts": {
+          "2": 115,
+          "4": 1189,
+          "5": 693,
+          "6": 693
+        },
+        "relocation_total": 2690,
+        "source": "games/ford-racing-2/extracted/IRX/MCMAN.IRX",
+        "source_sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5"
+      },
+      {
+        "entry_offset": 88,
+        "gp_offset": 37552,
+        "load_base": 4096,
+        "load_file_bytes": 4800,
+        "load_memory_bytes": 14176,
+        "modeled_image_sha256": "44d45512091c41af1daf86cd398038e5c5b8c945031216ed88f6ae005181f08c",
+        "relocation_counts": {
+          "2": 9,
+          "4": 139,
+          "5": 46,
+          "6": 46
+        },
+        "relocation_total": 240,
+        "source": "games/ford-racing-2/extracted/IRX/MCSERV.IRX",
+        "source_sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2"
+      },
+      {
+        "entry_offset": 12836,
+        "gp_offset": 65680,
+        "load_base": 4096,
+        "load_file_bytes": 32928,
+        "load_memory_bytes": 40176,
+        "modeled_image_sha256": "0da1786fad0a5cdd61940a9606b70e94268ff6e79f98982327bd17ca5adc4307",
+        "relocation_counts": {
+          "2": 48,
+          "4": 671,
+          "5": 343,
+          "6": 343
+        },
+        "relocation_total": 1405,
+        "source": "games/ford-racing-2/extracted/IRX/PADMAN.IRX",
+        "source_sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 37552,
+        "load_base": 4096,
+        "load_file_bytes": 4800,
+        "load_memory_bytes": 6696,
+        "modeled_image_sha256": "bee23bbb67c90a828ec85ec53ee9d476d5ba7c5670117d7b11409a619c89ea16",
+        "relocation_counts": {
+          "2": 7,
+          "4": 139,
+          "5": 89,
+          "6": 89
+        },
+        "relocation_total": 324,
+        "source": "games/ford-racing-2/extracted/IRX/SDRDRV.IRX",
+        "source_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2"
+      },
+      {
+        "entry_offset": 1588,
+        "gp_offset": 36736,
+        "load_base": 4096,
+        "load_file_bytes": 3984,
+        "load_memory_bytes": 4032,
+        "modeled_image_sha256": "ebe4411ea871e1b6099b0bf455b71fe34cb6ce47a1e12b32104cdafcc58b9cb4",
+        "relocation_counts": {
+          "2": 64,
+          "4": 104,
+          "5": 33,
+          "6": 33
+        },
+        "relocation_total": 234,
+        "source": "games/ford-racing-2/extracted/IRX/SIO2MAN.IRX",
+        "source_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 176576,
+        "load_base": 4096,
+        "load_file_bytes": 143824,
+        "load_memory_bytes": 179776,
+        "modeled_image_sha256": "29858cdc71cb737cf60c492f5dc2350661d3d5ecbfb6a6ab7723a56db9bbd3fe",
+        "relocation_counts": {
+          "2": 110,
+          "4": 1740,
+          "5": 2603,
+          "6": 2603
+        },
+        "relocation_total": 7056,
+        "source": "games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "source_sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3"
+      },
+      {
+        "entry_offset": 19652,
+        "gp_offset": 58848,
+        "load_base": 4096,
+        "load_file_bytes": 26112,
+        "load_memory_bytes": 26128,
+        "modeled_image_sha256": "07390b437be191a3f9108f5b854383769942bce4b604c4503a5cbb7cde77bae2",
+        "relocation_counts": {
+          "2": 79,
+          "4": 480,
+          "5": 221,
+          "6": 221
+        },
+        "relocation_total": 1001,
+        "source": "games/ford-racing-2/extracted/IRX/USBD.IRX",
+        "source_sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 40368,
+        "load_base": 4096,
+        "load_file_bytes": 7616,
+        "load_memory_bytes": 7716,
+        "modeled_image_sha256": "3c91a70fce988a83b7e984aac0d10685bd3f62b1b7b8a9319d73ca89a7458290",
+        "relocation_counts": {
+          "2": 29,
+          "4": 93,
+          "5": 35,
+          "6": 35
+        },
+        "relocation_total": 192,
+        "source": "IOPRP255.IMG::LOADCORE",
+        "source_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38"
+      },
+      {
+        "entry_offset": 208,
+        "gp_offset": 39840,
+        "load_base": 4096,
+        "load_file_bytes": 7088,
+        "load_memory_bytes": 13920,
+        "modeled_image_sha256": "50f1366dda46a05665fb17673e2d02cc8a611dd0b6fe73d991bdd12089a4f720",
+        "relocation_counts": {
+          "2": 33,
+          "4": 155,
+          "5": 50,
+          "6": 50
+        },
+        "relocation_total": 288,
+        "source": "IOPRP255.IMG::SIFCMD",
+        "source_sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 37104,
+        "load_base": 4096,
+        "load_file_bytes": 4352,
+        "load_memory_bytes": 5952,
+        "modeled_image_sha256": "6c4273e22dbef03316c7bdb49cc8ca3f8a2c274bcf978a0e6512ce23b59301c6",
+        "relocation_counts": {
+          "2": 37,
+          "4": 32,
+          "5": 23,
+          "6": 23
+        },
+        "relocation_total": 115,
+        "source": "IOPRP255.IMG::SIFMAN",
+        "source_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec"
+      },
+      {
+        "entry_offset": 16,
+        "gp_offset": 61568,
+        "load_base": 4096,
+        "load_file_bytes": 28816,
+        "load_memory_bytes": 30052,
+        "modeled_image_sha256": "5f9a01d9567ecaf32e0e4ec144d93fb7b94a6fd4104220ac095162a47ae6abae",
+        "relocation_counts": {
+          "2": 132,
+          "4": 760,
+          "5": 169,
+          "6": 169
+        },
+        "relocation_total": 1230,
+        "source": "IOPRP255.IMG::THREADMAN",
+        "source_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 41024,
+        "load_base": 4096,
+        "load_file_bytes": 8272,
+        "load_memory_bytes": 8928,
+        "modeled_image_sha256": "8d60a263f023105af87104d5ecec4b9c30889427df7e7f734892642508367fa7",
+        "relocation_counts": {
+          "2": 59,
+          "4": 168,
+          "5": 107,
+          "6": 107
+        },
+        "relocation_total": 441,
+        "source": "IOPRP255.IMG::IOMAN",
+        "source_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 46544,
+        "load_base": 4096,
+        "load_file_bytes": 13792,
+        "load_memory_bytes": 13828,
+        "modeled_image_sha256": "13a8bfc51ad49104bbb875d479155a388c19d488a583b8649477ddd4e18c5eda",
+        "relocation_counts": {
+          "2": 56,
+          "4": 300,
+          "5": 37,
+          "6": 37
+        },
+        "relocation_total": 430,
+        "source": "IOPRP255.IMG::MODLOAD",
+        "source_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 44528,
+        "load_base": 4096,
+        "load_file_bytes": 11776,
+        "load_memory_bytes": 15760,
+        "modeled_image_sha256": "7db1c4acf39af7e8d5922c3f1961f241b4e2d12a6476da071f08381b9d106802",
+        "relocation_counts": {
+          "2": 59,
+          "4": 334,
+          "5": 132,
+          "6": 132
+        },
+        "relocation_total": 657,
+        "source": "IOPRP255.IMG::FILEIO",
+        "source_sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 78880,
+        "load_base": 4096,
+        "load_file_bytes": 46128,
+        "load_memory_bytes": 98144,
+        "modeled_image_sha256": "b6c333d1c9b5481cd16f1ae316c4879361331d9f92b8691b95d06b15fe222e5d",
+        "relocation_counts": {
+          "2": 346,
+          "4": 893,
+          "5": 972,
+          "6": 972
+        },
+        "relocation_total": 3183,
+        "source": "IOPRP255.IMG::CDVDMAN",
+        "source_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca"
+      },
+      {
+        "entry_offset": 216,
+        "gp_offset": 57536,
+        "load_base": 4096,
+        "load_file_bytes": 24784,
+        "load_memory_bytes": 69972,
+        "modeled_image_sha256": "6eb04ddf3f7fcc223a669a5ecca61481f93d071a1db30f1c07d7360c8831a9b1",
+        "relocation_counts": {
+          "2": 61,
+          "4": 548,
+          "5": 638,
+          "6": 638
+        },
+        "relocation_total": 1885,
+        "source": "IOPRP255.IMG::CDVDFSV",
+        "source_sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 40992,
+        "load_base": 4096,
+        "load_file_bytes": 8240,
+        "load_memory_bytes": 8908,
+        "modeled_image_sha256": "1325dc3767819a6efef86a3e2631985e59407ae5bb6e3b0f0297e44c066ef337",
+        "relocation_counts": {
+          "2": 12,
+          "4": 145,
+          "5": 86,
+          "6": 86
+        },
+        "relocation_total": 329,
+        "source": "IOPRP255.IMG::LOADFILE",
+        "source_sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 36896,
+        "load_base": 4096,
+        "load_file_bytes": 4144,
+        "load_memory_bytes": 4144,
+        "modeled_image_sha256": "edb9da8de99d04e2b7d2d48f747dffbddfd48892b976b8330aecc9992dce824a",
+        "relocation_counts": {
+          "2": 43,
+          "4": 66,
+          "5": 19,
+          "6": 19
+        },
+        "relocation_total": 147,
+        "source": "IOPRP255.IMG::TIMEMANI",
+        "source_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 35072,
+        "load_base": 4096,
+        "load_file_bytes": 2320,
+        "load_memory_bytes": 2528,
+        "modeled_image_sha256": "48d04a3e8c06c7df2ebd7873aa3cd6120aed234dd4dfcd04874167c00666b757",
+        "relocation_counts": {
+          "2": 27,
+          "4": 37,
+          "5": 22,
+          "6": 22
+        },
+        "relocation_total": 108,
+        "source": "IOPRP255.IMG::ROMDRV",
+        "source_sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 33440,
+        "load_base": 4096,
+        "load_file_bytes": 688,
+        "load_memory_bytes": 688,
+        "modeled_image_sha256": "7d94f57b826b91073122a48712884cd7487445fc30c4ef0d773973f8e18beebc",
+        "relocation_counts": {
+          "2": 7,
+          "4": 9,
+          "5": 2,
+          "6": 2
+        },
+        "relocation_total": 20,
+        "source": "IOPRP255.IMG::EESYNC",
+        "source_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 39904,
+        "load_base": 4096,
+        "load_file_bytes": 7152,
+        "load_memory_bytes": 7152,
+        "modeled_image_sha256": "5206b03b8bbe811cadabf1cb40103457f9613c317e72ead9ed308debe0ad6c5f",
+        "relocation_counts": {
+          "2": 180,
+          "4": 78,
+          "5": 15,
+          "6": 15
+        },
+        "relocation_total": 288,
+        "source": "IOPRP255.IMG::SYSCLIB",
+        "source_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447"
+      },
+      {
+        "entry_offset": 0,
+        "gp_offset": 34688,
+        "load_base": 4096,
+        "load_file_bytes": 1936,
+        "load_memory_bytes": 1952,
+        "modeled_image_sha256": "a47436eeb546e39f7c5fa8981fda524b1f1dc1186422e9bb3a90fabc15aeb080",
+        "relocation_counts": {
+          "2": 16,
+          "4": 45,
+          "5": 13,
+          "6": 13
+        },
+        "relocation_total": 87,
+        "source": "IOPRP255.IMG::STDIO",
+        "source_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081"
+      }
+    ],
+    "relocation_total": 24783,
+    "relocation_type_totals": {
+      "2": 2197,
+      "4": 9060,
+      "5": 6763,
+      "6": 6763
+    },
+    "standalone_count": 9
+  },
+  "date": "2026-10-04",
+  "evidence_inputs": {
+    "executable_boundaries": {
+      "path": ".scratch/mesh/codex-root/executable-boundaries-01.json",
+      "sha256": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102"
+    },
+    "executable_inventory": {
+      "path": ".scratch/mesh/codex-root/executable-inventory-01.json",
+      "sha256": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2"
+    },
+    "jev_source_screen": {
+      "path": ".scratch/mesh/codex-root/jev/r062-iop-loadcore-source-screen.json",
+      "recommendation": "pass"
+    },
+    "relocation_inventory": {
+      "path": ".scratch/mesh/codex-root/iop-relocation-inventory-01.json",
+      "sha256": "2a3ca7c7f569317fdfd44322fad3cae308ab1f045f4802cf50a526e168bf3600"
+    }
+  },
+  "focused_tests": {
+    "command": "python3 -m unittest discover -s tools -p 'test_ps2_irx_relocations.py' -v",
+    "existing_parser_test_path": "tools/test_ps2_irx.py",
+    "existing_parser_test_sha256": "3c362a226a2c4f31f5efdbeb5ace22836d748cbfe5c55e2f799782221003e2f6",
+    "source_path": "tools/test_ps2_irx_relocations.py",
+    "source_sha256": "f8893cc29497fd59f47b23f0bfd37925796023d8bdeb5d85d41689715c386f2a",
+    "status": "passed",
+    "test_count": 9
+  },
+  "jev_review": {
+    "action": "escalate",
+    "claim_review": {
+      "automatically_standing_claims": [
+        {
+          "claim": "Nine new tests and fourteen existing parser/verifier tests pass.",
+          "confidence": 0.95
+        },
+        {
+          "claim": "All 24 hashes, load extents, and relocation counts match inventory.",
+          "confidence": 0.92
+        },
+        {
+          "claim": "Scratch native harness matches synthetic arithmetic; no original code ran.",
+          "confidence": 0.83
+        },
+        {
+          "claim": "Claims are limited to static compatibility, not runtime loader/allocation/API or behavior.",
+          "confidence": 0.96
+        }
+      ],
+      "low_confidence_review_claims": [
+        {
+          "claim": "The model implements the measured ET 0xff80 copy/zero/metadata/relocation behavior.",
+          "confidence": 0.57,
+          "verdict": "verified"
+        },
+        {
+          "claim": "The model rejects listed malformed and unsupported inputs.",
+          "confidence": 0.56,
+          "verdict": "verified"
+        }
+      ],
+      "summary": {
+        "contradicted": 0,
+        "invalid_response": 0,
+        "needs_review": 2,
+        "unsupported": 0,
+        "verified": 6
+      }
+    },
+    "disposition": "Jev did not clear this patch automatically. Manual source arithmetic review and focused executable checks remain the direct evidence; the two low-confidence claims are retained for human review.",
+    "patch_review": {
+      "composite": 0.821,
+      "review_threshold": 0.5,
+      "safe_to_apply": 0.49
+    },
+    "reason_codes": [
+      "confidence_below_review",
+      "safe_to_apply_below_review",
+      "review_escalated",
+      "claim_confidence_below_auto_accept"
+    ],
+    "tool": "jev_gate",
+    "usage_tokens": {
+      "input": 24602,
+      "output": 880
+    }
+  },
+  "model": {
+    "metadata_parser_path": "tools/ps2_irx.py",
+    "metadata_parser_sha256": "0ddbe0bcfc3c7c6e770139822096c6a5f4890baf88ecca31eb85fece92ec8f7f",
+    "original_module_code_executed": false,
+    "path": "tools/ps2_irx_relocations.py",
+    "profile": "measured-iop-et-ff80-single-load-zero-based-v1",
+    "sha256": "c6e9efd4df6407924a9f2d80204109356e96af87a732d8bbb03a875dc831164b",
+    "synthetic_iop_ram_bytes": 2097152,
+    "synthetic_load_base": 4096
+  },
+  "native_source_harness": {
+    "adaptation": "Original ApplyElfRelSection body with explicit synthetic uint32 base argument replacing the 32-bit destination-pointer cast for this 64-bit host.",
+    "binary_path": ".scratch/mesh/codex-helpers/iop-relocation-native-harness",
+    "binary_sha256": "59f839a4082763caf66200ee84183bdceee64f5e498b834afe36a014116f2dcd",
+    "compile_command": "cc -std=c11 -Wall -Wextra -Werror -O0 .scratch/mesh/codex-helpers/iop-relocation-native-harness.c -o .scratch/mesh/codex-helpers/iop-relocation-native-harness",
+    "original_module_code_executed": false,
+    "path": ".scratch/mesh/codex-helpers/iop-relocation-native-harness.c",
+    "sha256": "7474a1ee029ebc5f2e8fd1cc3c804cb8ed65ba2cbdc490a0fb6a32b5020a78ce",
+    "synthetic_output": "00001100 08000440 3c081235 24848800 00001000\n00000000"
+  },
+  "schema_version": 1,
+  "source_basis": {
+    "commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "file": "iop/system/loadcore/src/loadcore.c",
+    "functions": "ProbeExecutableObject lines 1140-1216; loadrelelf 1279-1321; ApplyElfRelSection 1323-1377",
+    "license": "Academic Free License 2.0; no source payload embedded in permanent files",
+    "repository": "ps2dev/ps2sdk",
+    "sha256": "2eb29f11cce431de18f8d5f64c64e4eda22507bfca26487a57b53b63750e0d78"
+  },
+  "status": "bounded-static-profile-validated"
+}

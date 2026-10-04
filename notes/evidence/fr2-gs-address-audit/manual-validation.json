@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "all_synthetic_helpers_only": true,
+  "header_identity_with_four_patch_source": [
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_psmct32.h",
+      "sha256": "9635a40e11bae56189b64d1d9660fb68d0375444d355db43246973adb95e71f7",
+      "same": true
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_psmct16.h",
+      "sha256": "a9a637692da997bc28a750cbf015f517805964bcf25a4ab547ac5929257d484c",
+      "same": true
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_psmt8.h",
+      "sha256": "b6e5a69a8d6d361f05653140454e17d0d348f312cec43fc08ec094f8ed74d282",
+      "same": true
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp-fpu-01/ps2xRuntime/include/runtime/gs/ps2_gs_psmt4.h",
+      "sha256": "fe284803477252f88aad6d40516a5ef5415d7aa42de382e4c6138433e83d6b89",
+      "same": true
+    }
+  ],
+  "jev_disposition": "Review escalation safe_to_apply0.36 retained; all3boundedclaims verified at0.8/0.88/0.93. No favorable retry or automatic patch acceptance. Manual inspection checks full source/output pins, fresh directory guard, structured subprocess arguments/timeouts and exact exit0+empty sanitizer stderr, length/domain enumeration, independent table units/base carry, full mutant mismatch counters. Runtime execution/transfer/hardware equivalence remains unproved."
+}

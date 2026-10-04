@@ -1,0 +1,73 @@
+{
+  "seed": "001ff9c8",
+  "span": {
+    "start": "001ff9c8",
+    "end_exclusive": "001ffa50",
+    "bytes": 136,
+    "sha256": "0218499409522d480f0d5b53d2300f95fded3ab9146afd77e24b8524286c57b6"
+  },
+  "reachable_count": 34,
+  "span_words": 34,
+  "gap_words": [],
+  "next_word": "27bdff50",
+  "next_word_state": "undefined",
+  "edges": [
+    {
+      "site": "001ff9dc",
+      "word": "18c0000c",
+      "kind": "conditional",
+      "delay": "001ff9e0",
+      "target": "001ffa10",
+      "fallthrough": "001ff9e4"
+    },
+    {
+      "site": "001ff9fc",
+      "word": "14600011",
+      "kind": "conditional",
+      "delay": "001ffa00",
+      "target": "001ffa44",
+      "fallthrough": "001ffa04"
+    },
+    {
+      "site": "001ffa08",
+      "word": "1000000d",
+      "kind": "unconditional_branch",
+      "delay": "001ffa0c",
+      "target": "001ffa40"
+    },
+    {
+      "site": "001ffa48",
+      "word": "03e00008",
+      "kind": "return",
+      "delay": "001ffa4c"
+    },
+    {
+      "site": "001ffa10",
+      "word": "04c1000c",
+      "kind": "conditional",
+      "delay": "001ffa14",
+      "target": "001ffa44",
+      "fallthrough": "001ffa18"
+    },
+    {
+      "site": "001ffa34",
+      "word": "10600002",
+      "kind": "conditional",
+      "delay": "001ffa38",
+      "target": "001ffa40",
+      "fallthrough": "001ffa3c"
+    }
+  ],
+  "edge_counts": {
+    "conditional": 4,
+    "return": 1,
+    "unconditional_branch": 1
+  },
+  "calls": [],
+  "returns": [
+    "001ffa48"
+  ],
+  "rejects": [],
+  "zero_words_reached": [],
+  "scope": "Structural union walk; not feasible execution, identity, or exact original boundaries."
+}

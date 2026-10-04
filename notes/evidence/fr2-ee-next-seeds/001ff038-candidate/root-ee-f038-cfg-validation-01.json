@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "status": "pass_static_structural_union",
+  "checker_sha256": "0451453261ae299e93a936d7452888cf83da24363fe4c8e0e1a7d74ae1c52ccc",
+  "ELF_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "method": "Root independent queue scan of raw words using unique ELF PT_LOAD mappings; fail on computed transfer, trap/arithmetic-trap, likely/REGIMM/cop-branch or control in delay slot.",
+  "window": {
+    "start": "001ff038",
+    "exclusive_end": "001ff140",
+    "bytes": 264,
+    "sha256": "16d48e8843225c3e399cb0b062641b0199c6870d685c79badaf65c4c3cf8c3a1"
+  },
+  "baseline_pins": {
+    "decompilation/manifest.json": "1e3f425e7c1a653183a284a240b28f6ff2b2918250b1e1882b0dade4cf9c4ef4",
+    "inventory.json": "b23698a1e4e6bfb61f7d4ca9932b80971f1eb4527f57bb5219d14196586c4a9d",
+    "coverage.json": "2ff0ed89839dc6e4e26f7c8b93f1df7ee111f3c1205385e8c52f2640f13df1f0"
+  },
+  "reachable_instruction_words": 66,
+  "classification_counts": {
+    "linear": 55,
+    "call": 5,
+    "branch": 5,
+    "return": 1
+  },
+  "zero_words_reached": [
+    "001ff084",
+    "001ff0a4",
+    "001ff0dc",
+    "001ff0e0",
+    "001ff0e8"
+  ],
+  "delay_zero_words": [
+    "001ff0a4",
+    "001ff0e8"
+  ],
+  "return": "001ff138",
+  "return_delay_word": "27bd0060",
+  "excluded_next_word": "27bdff90",
+  "incoming_raw_JAL": {
+    "site": "00200dac",
+    "word": "0c07fc0e",
+    "owner": "candidate_ee_00200d10"
+  },
+  "outgoing_calls": [
+    {
+      "site": "001ff08c",
+      "target": "001ff270",
+      "saved_entry": false
+    },
+    {
+      "site": "001ff0a8",
+      "target": "001ffd70",
+      "saved_entry": true
+    },
+    {
+      "site": "001ff0b0",
+      "target": "001feb80",
+      "saved_entry": false
+    },
+    {
+      "site": "001ff114",
+      "target": "001fc4e0",
+      "saved_entry": true
+    },
+    {
+      "site": "001ff0fc",
+      "target": "001fdb88",
+      "saved_entry": false
+    }
+  ],
+  "scope": "Calls are not followed; structural reachability is not execution feasibility, original function identity, exact original boundaries or whole-game completeness. This checker does not open Ghidra or execute original game code."
+}

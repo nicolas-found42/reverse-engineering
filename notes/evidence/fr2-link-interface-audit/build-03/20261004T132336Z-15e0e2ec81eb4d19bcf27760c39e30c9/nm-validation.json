@@ -1,0 +1,47 @@
+{
+  "checks": {
+    "binary_not_executed": true,
+    "file_type": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/ps2EntryRunner: Mach-O 64-bit executable arm64",
+    "binary_sha256": "ecfa7280d4be2be36467cce068f1927c001c15732f57d0cb4932bbd6fb3870e2",
+    "generated_input_count": 17,
+    "distinct_guest_entry_addresses": 4746,
+    "registration_globals": {
+      "g_ps2RecompiledFunctionTable": {
+        "nm_m_external_definition_lines": 1,
+        "nm_gU_global_definition_lines": 1,
+        "binding_lines": [
+          "00000001042e5780 (__DATA,__common) external _g_ps2RecompiledFunctionTable"
+        ]
+      },
+      "g_ps2RecompiledFunctionTableBase": {
+        "nm_m_external_definition_lines": 1,
+        "nm_gU_global_definition_lines": 1,
+        "binding_lines": [
+          "00000001042abb90 (__TEXT,__const) external _g_ps2RecompiledFunctionTableBase"
+        ]
+      },
+      "g_ps2RecompiledFunctionTableEnd": {
+        "nm_m_external_definition_lines": 1,
+        "nm_gU_global_definition_lines": 1,
+        "binding_lines": [
+          "00000001042abb94 (__TEXT,__const) external _g_ps2RecompiledFunctionTableEnd"
+        ]
+      },
+      "g_ps2RecompiledFunctionTableSlotCount": {
+        "nm_m_external_definition_lines": 1,
+        "nm_gU_global_definition_lines": 1,
+        "binding_lines": [
+          "00000001042abb98 (__TEXT,__const) external _g_ps2RecompiledFunctionTableSlotCount"
+        ]
+      }
+    },
+    "all_four_single_external_definition": true
+  },
+  "commands": [
+    "nm -m <linked runner>",
+    "nm -gU <linked runner>",
+    "nm -gU <16 batch objects> <registration object>",
+    "file <linked runner>",
+    "sha256 <linked runner>"
+  ]
+}

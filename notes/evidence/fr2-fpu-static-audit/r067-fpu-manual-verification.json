@@ -1,0 +1,27 @@
+{
+  "arguments": {
+    "claims": [
+      "Sony's signed-zero table specifies a negative minimum when either zero operand is negative, and a negative maximum only when both zero operands are negative.",
+      "The proposed finite-input SQRT handling uses cause I bit 17, cause D bit 16 and sticky I bit 6, preserves negative zero, and returns the square root of the magnitude for a negative nonzero input; this does not establish general EE rounding equivalence.",
+      "Sony's conversion-overflow flag descriptions conflict: Table 8-4 reports no cause flag and CVT.W.S lists no flag assignments, while Table 8-6 reports I/SI set. The experiment leaves conversion flags unresolved."
+    ],
+    "evidence": [
+      {
+        "id": "sony-user-manual-primary",
+        "text": "Source https://docs.alexrp.com/mips/ee.pdf version6 printed159: I bit17, D16, O15,U14, SI6,SD5,SO4,SU3. Printed163 Table8-5: Max(+0,+0),Max(+0,-0),Max(-0,+0) result +0; Max(-0,-0) -0. Min(+0,+0) +0; other three min zero combinations -0. Printed162 Table8-4 conversion overflow cause None. Printed165 Table8-6 floating to integer overflow result 2^31-1 or -2^31, I(SI) set. Printed164: hardware rounding toward0 does not use guard,round,sticky bits and can differ from IEEE RTZ in least significant bit."
+      },
+      {
+        "id": "sony-instruction-manual-primary",
+        "text": "https://docs.alexrp.com/mips/ee_insns.pdf version6 printed356 CVT.W.S converts toward0, clamps when biased exponent>0x9d; no flag assignments in operation. Printed365 MIN clears O/U. Printed376 SQRT(-0)=-0; negative nonzero uses magnitude and sets I/SI, D=0."
+      }
+    ]
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 3,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 1\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"Sony's signed-zero table specifies a negative minimum when either zero operand is negative, and a negative maximum only when both zero operands are negative.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0,\n        \"contradicts\": 0.04,\n        \"supports\": 0.96\n      },\n      \"confidence\": 0.93,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-user-manual-primary\",\n      \"same_subject\": 0.84\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"The proposed finite-input SQRT handling uses cause I bit 17, cause D bit 16 and sticky I bit 6, preserves negative zero, and returns the square root of the magnitude for a negative nonzero input; this does not establish general EE rounding equivalence.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"contradicts\": 0.23,\n        \"supports\": 0.76\n      },\n      \"confidence\": 0.63,\n      \"action\": \"review\",\n      \"supporting_evidence\": \"sony-instruction-manual-primary\",\n      \"same_subject\": 0.44\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Sony's conversion-overflow flag descriptions conflict: Table 8-4 reports no cause flag and CVT.W.S lists no flag assignments, while Table 8-6 reports I/SI set. The experiment leaves conversion flags unresolved.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"says_nothing\": 0.01,\n        \"contradicts\": 0.09,\n        \"supports\": 0.9\n      },\n      \"confidence\": 0.85,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"sony-user-manual-primary\",\n      \"same_subject\": 0.55\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 1817,\n    \"output_tokens\": 354\n  }\n}"
+      }
+    ]
+  }
+}

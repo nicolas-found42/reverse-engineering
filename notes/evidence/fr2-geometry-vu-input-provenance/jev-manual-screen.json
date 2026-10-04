@@ -1,0 +1,16 @@
+{
+  "tool": "jev_screen",
+  "arguments": {
+    "purpose": "Use only the Sony VU User's Manual v6.0 instruction-definition passages to confirm XTOP reads the VIF TOP register and FTOI4 is a fixed-point conversion with four fractional bits. Do not treat the manual as evidence about this game.",
+    "text": "Sony VU User's Manual Version 6.0, PDF pages 77-78: FTOI4 converts the value of VF[fs] into a fixed-point number whose fractional part is 4 bits and stores the result in VF[ft]. Examples: 0.45 maps to 7; 0.55 maps to 8; 123.45 maps to 1975. The manual's general conversion section says floating-point to fixed-point conversion truncates toward zero. Page 197: XTOP reads the value of the TOP register of VIF and stores it in VI[it]; its operation is VI[it]=TOP."
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.29,\n    \"substance\": 0.97,\n    \"relevance\": 0.97\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"review\",\n    \"reason\": \"injection probability 0.29 >= review threshold 0.25\"\n  },\n  \"usage\": {\n    \"input_tokens\": 731,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "disposition": "Retained review decision. Manually inspected the screened text: it consists only of hardware-manual instruction definitions and numeric examples; it contains no agent-directed instructions, requests for secrets, or attempts to override task/tool policy. The external PDF was used only as a bounded instruction specification."
+}

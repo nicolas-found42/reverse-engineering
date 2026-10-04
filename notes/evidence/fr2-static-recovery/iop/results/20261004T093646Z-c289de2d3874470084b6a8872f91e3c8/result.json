@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T093646Z-c289de2d3874470084b6a8872f91e3c8",
+  "check": "iop-irx",
+  "command": [
+    "tools/verify_irx.py",
+    "games/ford-racing-2/extracted",
+    "--inventory",
+    ".scratch/mesh/codex-root/executable-inventory-01.json",
+    "--boundaries",
+    ".scratch/mesh/codex-root/executable-boundaries-01.json",
+    "--output",
+    "notes/evidence/fr2-static-recovery/iop/results"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-root/executable-inventory-01.json": {
+      "bytes": 188052,
+      "sha256": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2"
+    },
+    ".scratch/mesh/codex-root/executable-boundaries-01.json": {
+      "bytes": 138632,
+      "sha256": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102"
+    },
+    "games/ford-racing-2/extracted/IRX/IOPRP255.IMG": {
+      "bytes": 264449,
+      "sha256": "e5762f40f94405d765b99b13b735a044197aab58b91b9f08d7832aa091eef40f"
+    },
+    "games/ford-racing-2/extracted/IRX/LGDEV.IRX": {
+      "bytes": 57425,
+      "sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f"
+    },
+    "games/ford-racing-2/extracted/IRX/LIBSD.IRX": {
+      "bytes": 28573,
+      "sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10"
+    },
+    "games/ford-racing-2/extracted/IRX/MCMAN.IRX": {
+      "bytes": 95517,
+      "sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5"
+    },
+    "games/ford-racing-2/extracted/IRX/MCSERV.IRX": {
+      "bytes": 7417,
+      "sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2"
+    },
+    "games/ford-racing-2/extracted/IRX/PADMAN.IRX": {
+      "bytes": 44917,
+      "sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f"
+    },
+    "games/ford-racing-2/extracted/IRX/SDRDRV.IRX": {
+      "bytes": 8089,
+      "sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2"
+    },
+    "games/ford-racing-2/extracted/IRX/SIO2MAN.IRX": {
+      "bytes": 6553,
+      "sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708"
+    },
+    "games/ford-racing-2/extracted/IRX/STREAM.IRX": {
+      "bytes": 255417,
+      "sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3"
+    },
+    "games/ford-racing-2/extracted/IRX/USBD.IRX": {
+      "bytes": 34969,
+      "sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255"
+    }
+  },
+  "status": "fail",
+  "diagnostics": [
+    "Invalid: IRX module name is not a 1-32 character identifier"
+  ],
+  "details": {},
+  "artifacts": {
+    "report.md": {
+      "bytes": 93,
+      "sha256": "9da8724700ee4a3a1bdb7e82ff8c9984f293f38bb2449d10f965321e7550cb37"
+    }
+  }
+}

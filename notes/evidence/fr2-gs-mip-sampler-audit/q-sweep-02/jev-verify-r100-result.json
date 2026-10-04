@@ -1,0 +1,72 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "summary": {
+    "verified": 5,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "claims": [
+    {
+      "id": "claim0",
+      "verdict": "verified",
+      "probabilities": {
+        "says_nothing": 0.01,
+        "supports": 0.99,
+        "contradicts": 0
+      },
+      "confidence": 0.99,
+      "same_subject": 0.94
+    },
+    {
+      "id": "claim1",
+      "verdict": "verified",
+      "probabilities": {
+        "says_nothing": 0,
+        "supports": 1,
+        "contradicts": 0
+      },
+      "confidence": 1,
+      "same_subject": 0.96
+    },
+    {
+      "id": "claim2",
+      "verdict": "verified",
+      "probabilities": {
+        "says_nothing": 0,
+        "supports": 0.95,
+        "contradicts": 0.05
+      },
+      "confidence": 0.93,
+      "same_subject": 0.95
+    },
+    {
+      "id": "claim3",
+      "verdict": "verified",
+      "probabilities": {
+        "says_nothing": 0,
+        "supports": 0.98,
+        "contradicts": 0.02
+      },
+      "confidence": 0.97,
+      "same_subject": 0.95
+    },
+    {
+      "id": "claim4",
+      "verdict": "verified",
+      "probabilities": {
+        "says_nothing": 0,
+        "supports": 1,
+        "contradicts": 0
+      },
+      "confidence": 0.99,
+      "same_subject": 0.84
+    }
+  ],
+  "usage": {
+    "input_tokens": 3007,
+    "output_tokens": 555
+  },
+  "all_actions": "auto"
+}

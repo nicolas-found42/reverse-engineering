@@ -1,0 +1,12 @@
+{
+  "tool": "jgrep",
+  "command": "jgrep --json \"runs a VU0 microprogram from its loaded code and data, or seeds an idle-success result when that memory is missing or the start address is out of range\" ps2xRuntime/src/lib/ps2_runtime.cpp",
+  "working_directory": ".scratch/mesh/codex-root/PS2Recomp-fpu-01",
+  "exit_code": 0,
+  "summary": "2 hits / 132 chunks; the first match covers executeVU0Microprogram and its missing-memory/out-of-range idle-success branch, and the second covers vu0StartMicroProgram forwarding to it.",
+  "matches": [
+    {"file": "ps2xRuntime/src/lib/ps2_runtime.cpp", "start": 1426, "end": 1448, "probability": 0.98},
+    {"file": "ps2xRuntime/src/lib/ps2_runtime.cpp", "start": 1449, "end": 1454, "probability": 0.88}
+  ],
+  "scope_limit": "A source-path match only; it does not show that this fallback is reached by the measured game calls."
+}

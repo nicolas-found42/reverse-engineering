@@ -1,0 +1,1711 @@
+{
+ "schema_version": 1,
+ "status": "pass",
+ "scope": "bounded provisional static candidates; not original identity, semantics, runtime reachability, behavior, call-closure beyond listed callee states, or whole-game completeness",
+ "config_sha256": "c2f1e00fb8d55c7fe1e1898b6c5f06fbea0cc0168b3f3a524dbec2e53373ad87",
+ "seed_count": 196,
+ "checks": [
+  {
+   "check": "pinned baseline and ELF hashes equal the config pins",
+   "passed": true,
+   "detail": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "manifest_sha256": "9ea58f81eb5a9bbc61febd48b00af1d646d11fc875eb25e5c75035128be7cbe6",
+    "inventory_sha256": "3883fa1757de173010d40e4ca9c8bea955451f0e2ad89b7111bed6d35f93e6ef",
+    "coverage_sha256": "ccd216c9c4e4db3e07db78eb5e1a241ccc725c801e3d621f40c852151682e675"
+   }
+  },
+  {
+   "check": "new export identity and reusable verifier pass",
+   "passed": true,
+   "detail": {
+    "verifier": "pass",
+    "inventory_count": 4542,
+    "processed": 4542,
+    "generated": 4542,
+    "failed": 0
+   }
+  },
+  {
+   "check": "exactly K new functions equal to the seed entries and no removals",
+   "passed": true,
+   "detail": {
+    "K": 196
+   }
+  },
+  {
+   "check": "every candidate has the pinned name, size, address list and raw-ELF-equal words",
+   "passed": true,
+   "detail": {
+    "seeds": 196,
+    "words": 6543,
+    "newly_decoded_words": 1334,
+    "preexisting_decoded_words": 5209
+   }
+  },
+  {
+   "check": "every next word keeps its pinned state in the new export",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "check": "unresolved callees remain uncreated and are not claimed by any function",
+   "passed": true,
+   "detail": []
+  },
+  {
+   "check": "all 4346 prior names, sizes, blocks and instruction address/text/bytes preserved",
+   "passed": true,
+   "detail": {
+    "old_function_count": 4346
+   }
+  },
+  {
+   "check": "only the pinned call-site references and the guard-recorded non-call references to seed entries gain the new function annotation",
+   "passed": true,
+   "detail": {
+    "expected": 219,
+    "actual": 219,
+    "non_call_refs_recorded": 249
+   }
+  },
+  {
+   "check": "call-graph deltas equal the config prediction for every old and new function",
+   "passed": true,
+   "detail": {
+    "old_functions_with_graph_change": 150
+   }
+  },
+  {
+   "check": "new export manifest reports every function generated",
+   "passed": true,
+   "detail": {
+    "rows": 4542,
+    "failed": 0,
+    "status": "generated"
+   }
+  },
+  {
+   "check": "every changed old C output differs only by seed label substitution, line re-wrap, decompiler retyping of undefined types, auto-variable prefix renames and pointer-label renames, and mentions a seed",
+   "passed": true,
+   "detail": {
+    "changed": 26,
+    "owners_by_call": 2,
+    "category_totals": {
+     "type_retyped_undefined_to_typed": 126
+    }
+   }
+  },
+  {
+   "check": "new candidate C artifacts match their manifest SHA and byte counts",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "check": "initialized memory metadata unchanged",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "check": "string values and references unchanged, except that references from newly owned instructions gain a function annotation naming a new function",
+   "passed": true,
+   "detail": {
+    "strings": 3318,
+    "reference_function_annotations_added": 5
+   }
+  },
+  {
+   "check": "coverage block identity and bookmarks unchanged",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "check": "coverage deltas equal the config prediction and range changes occur only inside the bodies",
+   "passed": true,
+   "detail": [
+    {
+     "field": "instruction_count",
+     "old": 252529,
+     "new": 253863,
+     "delta": 1334
+    },
+    {
+     "field": "instruction_bytes",
+     "old": 1010116,
+     "new": 1015452,
+     "delta": 5336
+    },
+    {
+     "field": "function_instruction_bytes",
+     "old": 890200,
+     "new": 916372,
+     "delta": 26172
+    },
+    {
+     "field": "unowned_instruction_count",
+     "old": 29979,
+     "new": 24770,
+     "delta": -5209
+    },
+    {
+     "field": "unowned_instruction_bytes",
+     "old": 119916,
+     "new": 99080,
+     "delta": -20836
+    },
+    {
+     "field": "defined_data_bytes",
+     "old": 6,
+     "new": 6,
+     "delta": 0
+    },
+    {
+     "field": "undefined_bytes",
+     "old": 135690,
+     "new": 130354,
+     "delta": -5336
+    }
+   ]
+  }
+ ],
+ "check_count": 16,
+ "passed_count": 16,
+ "baseline": {
+  ".scratch/mesh/codex-audit/frontier-3845-01/batch-all-1/export-4346/decompilation/manifest.json": {
+   "bytes": 1668004,
+   "sha256": "9ea58f81eb5a9bbc61febd48b00af1d646d11fc875eb25e5c75035128be7cbe6"
+  },
+  ".scratch/mesh/codex-audit/frontier-3845-01/batch-all-1/export-4346/inventory.json": {
+   "bytes": 46923925,
+   "sha256": "3883fa1757de173010d40e4ca9c8bea955451f0e2ad89b7111bed6d35f93e6ef"
+  },
+  ".scratch/mesh/codex-audit/frontier-3845-01/batch-all-1/export-4346/coverage.json": {
+   "bytes": 976499,
+   "sha256": "ccd216c9c4e4db3e07db78eb5e1a241ccc725c801e3d621f40c852151682e675"
+  }
+ },
+ "new": {
+  ".scratch/mesh/codex-audit/frontier-3845-01/batch-r2/export-4542/decompilation/manifest.json": {
+   "bytes": 1744824,
+   "sha256": "5e18063ad8db3c80c806fd8be58f7557decd210e77a99a14c417624975c48db3"
+  },
+  ".scratch/mesh/codex-audit/frontier-3845-01/batch-r2/export-4542/inventory.json": {
+   "bytes": 48166992,
+   "sha256": "752193f77eb00c3700dcfedd9b658de4a9af454266114d07b72b912ee0f3c34b"
+  },
+  ".scratch/mesh/codex-audit/frontier-3845-01/batch-r2/export-4542/coverage.json": {
+   "bytes": 963422,
+   "sha256": "50882dd7f85acacd0b3954eae9dcbd540977e453c9366085a22ec7e4eb094f49"
+  }
+ },
+ "verifier_result": {
+  "path": ".scratch/evidence/decompilation/20261004T191316Z-6042ab76969442e99453aebe4623dabb/result.json",
+  "sha256": "fe4b9e1416a869218b0d308b30100c6b1a5d3f667b731c00c0d887f6cbcfad84",
+  "status": "pass",
+  "warning_comment_count": 613
+ },
+ "old_function_count": 4346,
+ "new_function_count": 4542,
+ "changed_old_C": [
+  {
+   "entry": "0010a720",
+   "old_sha256": "f044e7a075256a7fddad7a3b3fc782b9592abfd8e1a9f6cb4045ecadbaadc74e",
+   "new_sha256": "853be6e25b76c810d1ba98a65f69fb9b00f7c125df6a5b57ea6dbe5616c9dac3",
+   "seed_label_occurrences_in_new": 2,
+   "non_label_change_categories": {}
+  },
+  {
+   "entry": "0014a080",
+   "old_sha256": "ec2491042d7d395a49a5fc3cfa1c7997129cf867c182140fd91205d3aff2eb75",
+   "new_sha256": "d6551899620c22d564d35e4d7100a7caa791bc3d29e9cb78085abe629342f3a8",
+   "seed_label_occurrences_in_new": 9,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 9
+   }
+  },
+  {
+   "entry": "0014a710",
+   "old_sha256": "3cea04bfe07cdde5adc21f79b6b101f8ee79902c16caabc61d03f7f275dc9b8f",
+   "new_sha256": "bc214e0173f4438d22fb42c2d2ca4bd7934efb588444c2a91d8f9b55310a4c55",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {}
+  },
+  {
+   "entry": "0014a980",
+   "old_sha256": "5e526cac1926c16ccb79ee2c8716bf1151b8e8125f3edacbfd20338bdff5f16d",
+   "new_sha256": "babe7ef7265451ecbea6f183b55d48bd102246986edaa51a63969fc80978d0e5",
+   "seed_label_occurrences_in_new": 42,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 42
+   }
+  },
+  {
+   "entry": "0014c3e8",
+   "old_sha256": "fba3c3eb0927a8fe7d29c3c652b6717bd1b7bd2e09885f700cef8336bd46a1d0",
+   "new_sha256": "34c55111abfd689f66b05ef3f532ae5db2f6fbf353d2e00f9fe10a00a41be433",
+   "seed_label_occurrences_in_new": 2,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 2
+   }
+  },
+  {
+   "entry": "0014d1f8",
+   "old_sha256": "c529ebde930f495e10e821e8ab14a7da652583f8c8b00d6ed2b101e887fc25f9",
+   "new_sha256": "403f0bab0ef55e3bdf5cf05a043985a4f02e98d2d73cf2869b60c7afbb2ef5d0",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "0014d5c0",
+   "old_sha256": "09b5bc8c43daf0d9072513fad2dabdd6f863e2a81d92d2073b628c4b0c93059d",
+   "new_sha256": "d269df6700b571b588e74255decc4d79601b8809ffd9cc97c3dd071ec271a3b2",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "0014ddc8",
+   "old_sha256": "ebcff12143f0d55a9d60efaca08619fb18171ed6b29ced172c51fcae9a0bdf1c",
+   "new_sha256": "593a448f4b78521e91014c6ec023d7eeafa2dcddd76b944f1f2b293f18dac3c1",
+   "seed_label_occurrences_in_new": 6,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 6
+   }
+  },
+  {
+   "entry": "00150100",
+   "old_sha256": "7b03b61e53f1661e7401e6986f0cdb2fdc6273bd6eeaf15934d0c8a9516857a8",
+   "new_sha256": "69fe143701f52420cb0b14a81873b63a6657a19599aeab2a2763fa397bd3078d",
+   "seed_label_occurrences_in_new": 11,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 11
+   }
+  },
+  {
+   "entry": "00150c18",
+   "old_sha256": "0597320ff9c95d0a9384ea0ce5c2325e8b666008f72252b2fa21743683fd7aee",
+   "new_sha256": "9d9a7c2f074e5e613a659f628cf4f14125338b65c914137c054c9e4e6a49d301",
+   "seed_label_occurrences_in_new": 2,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 2
+   }
+  },
+  {
+   "entry": "00151368",
+   "old_sha256": "2fa1b8fbc57cf5e5beb09711c0a2fab143469e8b5b514e57306b7b7f15aa05e8",
+   "new_sha256": "8842fb81159883e5fc37f8c3c3baf497f030ab4fda5cdae399832f7b4bd0ddee",
+   "seed_label_occurrences_in_new": 2,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 2
+   }
+  },
+  {
+   "entry": "001514d0",
+   "old_sha256": "3220033578d92a03d3eacf2b032f701e91518bcb86032d8fdb672427396d7659",
+   "new_sha256": "c11c0a14e2abd56081bdc701adefb33505b8c2953242072b40582775334d352c",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "00151618",
+   "old_sha256": "1d99c8dde40cba841cfd5efa8bfe7a0bd629839cdea5dfcff98c2dd590e838f7",
+   "new_sha256": "6f351e7ff3205da2fee6221b97070c4d33d80c8a5310af9534787169fc3bac33",
+   "seed_label_occurrences_in_new": 4,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 4
+   }
+  },
+  {
+   "entry": "00154140",
+   "old_sha256": "68cb0906c454c7d0d610c99bbfe233c6d85730db4305f5f2ff1a3a528370fd7f",
+   "new_sha256": "b4ccf1834e123605431c98ddd7ef4114fa09c43f96169c52bc033299a2201f34",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "00156018",
+   "old_sha256": "be91ce6bc7d208f3f331dd9cb3e17ce0f695b0f67f844bb7b5ef5b5f78576620",
+   "new_sha256": "4518ba7dea4e71075fa117fcfc32338227151254fd41968a76b152fe82d05615",
+   "seed_label_occurrences_in_new": 5,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 5
+   }
+  },
+  {
+   "entry": "00156c60",
+   "old_sha256": "663ba5551ea993bc1daddbf41c4ac4c4c35b1492ffea5bbec1f939891206bb63",
+   "new_sha256": "5d88552266cb04694f2df2aee2dad6d8ace39e047df223cd268391cff727537c",
+   "seed_label_occurrences_in_new": 5,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 5
+   }
+  },
+  {
+   "entry": "00156e28",
+   "old_sha256": "4d55fdad793d14c0f236c7a17d4a3b21173bacdf627b802ad34ce4391c048634",
+   "new_sha256": "5353ebadc6e76a301efe406659498da3fd5e1fc3d50e8ee59773c5e67e9bf4ee",
+   "seed_label_occurrences_in_new": 3,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 3
+   }
+  },
+  {
+   "entry": "00158188",
+   "old_sha256": "46a1005d665a89376ed7700a7e9e3ddf5292af5256d64a86a0b5fbb31c892d62",
+   "new_sha256": "096fa5ad93f6e8ba68d027d49aafaa6ea14a97eaad112c02be2b34fa172f7e05",
+   "seed_label_occurrences_in_new": 5,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 5
+   }
+  },
+  {
+   "entry": "00158a98",
+   "old_sha256": "92ee24d57778e3c28195e19aafc9c15c55a870a72c02843618a3f29774724bf2",
+   "new_sha256": "01d3544ac23cbe0d46306198af79dd01e38d7a63a1e5dcd04de39b28a9886f54",
+   "seed_label_occurrences_in_new": 5,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 5
+   }
+  },
+  {
+   "entry": "00158d20",
+   "old_sha256": "4e3e3a359042c05d91fc834a0ba0a14c717618ee4c12d253996f9916942bff55",
+   "new_sha256": "0e29d4deaf383a1f53a8d67786f1ff33ecc2aad4ac469a050f127f224ed873c5",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "00159b88",
+   "old_sha256": "85841030fdeff599043fd03bf2d13178ec45c2c618fa62ac25db99ab0c4f250e",
+   "new_sha256": "7db10a1d5909134415d50471b15b98c870f9660c5f336accba6a4de366d71684",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "0015a0f0",
+   "old_sha256": "18a75d678d6fa9a44aaf52e08d6082bfbdc48a1ecd0e2e50edf79463d51814df",
+   "new_sha256": "dbc9d97a68438e794e1a73df6bfe9e9a329ee59b6b7c44c3a8a04d8bf7f4a61d",
+   "seed_label_occurrences_in_new": 17,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 17
+   }
+  },
+  {
+   "entry": "001a5160",
+   "old_sha256": "abbf98bae69d387dd1b6bb8441359ce959283efe7d18e13646dc1f4a8d376169",
+   "new_sha256": "45bace7e915abf25da201efaee2d2694e14fd9db7f8cd5aa2120e0df2b6cd7a4",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "001a5268",
+   "old_sha256": "86a592b7b3499b79119b81d853d34ff19456fc202a69406ad612f642d592c4f6",
+   "new_sha256": "a56ef4308399842fc0b091b48addb950ff3259dc63ee224ddaad42f544c80a70",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {
+    "type_retyped_undefined_to_typed": 1
+   }
+  },
+  {
+   "entry": "001f3080",
+   "old_sha256": "dc716b6c274bad1401f7efda6cfa733f1d6fc52951e2741d895aada32cccba62",
+   "new_sha256": "0a01997305c3a761a8892f0f6ea564f3404964a6375d2df16229457daaf71d26",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {}
+  },
+  {
+   "entry": "001f4e90",
+   "old_sha256": "511bf3b01b3de5c541c68782c3dbe5e7d712e0eb2ffd3f518baddd3248bbbcc3",
+   "new_sha256": "f4e8ddc5bfdaaa0e4dc5a24965a4bea1dca0efce7c66e00ffc374d27ab13b270",
+   "seed_label_occurrences_in_new": 1,
+   "non_label_change_categories": {}
+  }
+ ],
+ "reference_deltas": 213,
+ "callgraph_deltas": [
+  {
+   "entry": "00100348",
+   "relation": "callers",
+   "added": [
+    "001785d0",
+    "0017ed78",
+    "00187a48"
+   ]
+  },
+  {
+   "entry": "00100548",
+   "relation": "callers",
+   "added": [
+    "0015e838",
+    "0017d168",
+    "001807a0"
+   ]
+  },
+  {
+   "entry": "00101730",
+   "relation": "callers",
+   "added": [
+    "00170f78"
+   ]
+  },
+  {
+   "entry": "00105888",
+   "relation": "callers",
+   "added": [
+    "00170f78",
+    "001a1e50"
+   ]
+  },
+  {
+   "entry": "00108bf0",
+   "relation": "callers",
+   "added": [
+    "001cc018"
+   ]
+  },
+  {
+   "entry": "0010a720",
+   "relation": "callees",
+   "added": [
+    "0010ae18",
+    "001f9ac8"
+   ]
+  },
+  {
+   "entry": "0010bc28",
+   "relation": "callers",
+   "added": [
+    "0015ea10",
+    "0015ecd8",
+    "00184a70",
+    "001ae578",
+    "001cb2c0"
+   ]
+  },
+  {
+   "entry": "0010bc58",
+   "relation": "callers",
+   "added": [
+    "0015ea10",
+    "0015ecd8",
+    "00184a70",
+    "001ae578",
+    "001cb2c0"
+   ]
+  },
+  {
+   "entry": "0010d100",
+   "relation": "callers",
+   "added": [
+    "001bce50",
+    "001dbb60"
+   ]
+  },
+  {
+   "entry": "0010deb8",
+   "relation": "callers",
+   "added": [
+    "00179e00",
+    "001b5068",
+    "001b5a00",
+    "001b6600",
+    "001b6a58",
+    "001b7278",
+    "001b76d0",
+    "001b7b28",
+    "001b7ed8",
+    "001b8570"
+   ]
+  },
+  {
+   "entry": "0010eb68",
+   "relation": "callers",
+   "added": [
+    "0016cfd8"
+   ]
+  },
+  {
+   "entry": "0010ee18",
+   "relation": "callers",
+   "added": [
+    "0016cfd8",
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "0010eec8",
+   "relation": "callers",
+   "added": [
+    "0016cfd8",
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "0010ef48",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "0010f3d0",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "0010f400",
+   "relation": "callers",
+   "added": [
+    "0016cfd8"
+   ]
+  },
+  {
+   "entry": "0010f438",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "00114900",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "00114d58",
+   "relation": "callers",
+   "added": [
+    "001df558"
+   ]
+  },
+  {
+   "entry": "00114dd8",
+   "relation": "callers",
+   "added": [
+    "001df558"
+   ]
+  },
+  {
+   "entry": "00114f18",
+   "relation": "callers",
+   "added": [
+    "001df558"
+   ]
+  },
+  {
+   "entry": "00118c58",
+   "relation": "callers",
+   "added": [
+    "0018b7e0"
+   ]
+  },
+  {
+   "entry": "0011a970",
+   "relation": "callers",
+   "added": [
+    "0011a7c0"
+   ]
+  },
+  {
+   "entry": "00126c18",
+   "relation": "callers",
+   "added": [
+    "0017d2d8",
+    "001ba088"
+   ]
+  },
+  {
+   "entry": "00126e28",
+   "relation": "callers",
+   "added": [
+    "0017d2d8",
+    "001ba088"
+   ]
+  },
+  {
+   "entry": "00134950",
+   "relation": "callers",
+   "added": [
+    "001bce50"
+   ]
+  },
+  {
+   "entry": "00138330",
+   "relation": "callers",
+   "added": [
+    "0013a708"
+   ]
+  },
+  {
+   "entry": "0013c0c8",
+   "relation": "callers",
+   "added": [
+    "00140bb8"
+   ]
+  },
+  {
+   "entry": "0013c1b0",
+   "relation": "callers",
+   "added": [
+    "00140bb8"
+   ]
+  },
+  {
+   "entry": "0013d7b0",
+   "relation": "callers",
+   "added": [
+    "0013d690"
+   ]
+  },
+  {
+   "entry": "0013fa08",
+   "relation": "callers",
+   "added": [
+    "0011a7c0"
+   ]
+  },
+  {
+   "entry": "00140d98",
+   "relation": "callers",
+   "added": [
+    "0010ae18"
+   ]
+  },
+  {
+   "entry": "00142d40",
+   "relation": "callers",
+   "added": [
+    "001785d0",
+    "0017ed78"
+   ]
+  },
+  {
+   "entry": "001447d8",
+   "relation": "callers",
+   "added": [
+    "001807a0"
+   ]
+  },
+  {
+   "entry": "00149648",
+   "relation": "callers",
+   "added": [
+    "0016cfd8"
+   ]
+  },
+  {
+   "entry": "001497b8",
+   "relation": "callers",
+   "added": [
+    "0016cfd8",
+    "00179e00"
+   ]
+  },
+  {
+   "entry": "00149870",
+   "relation": "callers",
+   "added": [
+    "00179e00"
+   ]
+  },
+  {
+   "entry": "00149f98",
+   "relation": "callers",
+   "added": [
+    "0017d168"
+   ]
+  },
+  {
+   "entry": "0014b670",
+   "relation": "callers",
+   "added": [
+    "0016bc08",
+    "0016bd60",
+    "0016c5d8",
+    "0016c6f8",
+    "001736d8",
+    "0017d168"
+   ]
+  },
+  {
+   "entry": "0014fbb8",
+   "relation": "callers",
+   "added": [
+    "001785d0"
+   ]
+  },
+  {
+   "entry": "00161178",
+   "relation": "callers",
+   "added": [
+    "001b5a00",
+    "001b6a58"
+   ]
+  },
+  {
+   "entry": "001611d8",
+   "relation": "callers",
+   "added": [
+    "0015e838",
+    "0017bed0"
+   ]
+  },
+  {
+   "entry": "00161218",
+   "relation": "callers",
+   "added": [
+    "0015ecd8",
+    "001ae578",
+    "001cb2c0"
+   ]
+  },
+  {
+   "entry": "001614d0",
+   "relation": "callers",
+   "added": [
+    "001b6760",
+    "001b70b0",
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "00161668",
+   "relation": "callers",
+   "added": [
+    "001b6760"
+   ]
+  },
+  {
+   "entry": "001616d8",
+   "relation": "callers",
+   "added": [
+    "0016ea58",
+    "00176300"
+   ]
+  },
+  {
+   "entry": "00165bc8",
+   "relation": "callers",
+   "added": [
+    "00178190"
+   ]
+  },
+  {
+   "entry": "00166498",
+   "relation": "callers",
+   "added": [
+    "0016bc08",
+    "0016bd60"
+   ]
+  },
+  {
+   "entry": "00166738",
+   "relation": "callers",
+   "added": [
+    "001cbb78"
+   ]
+  },
+  {
+   "entry": "001669c8",
+   "relation": "callers",
+   "added": [
+    "001cb2c0"
+   ]
+  },
+  {
+   "entry": "00166a40",
+   "relation": "callers",
+   "added": [
+    "0016bc08",
+    "0016bd60",
+    "001cc018"
+   ]
+  },
+  {
+   "entry": "00167170",
+   "relation": "callers",
+   "added": [
+    "00176300"
+   ]
+  },
+  {
+   "entry": "00167210",
+   "relation": "callers",
+   "added": [
+    "00176300"
+   ]
+  },
+  {
+   "entry": "0016a620",
+   "relation": "callers",
+   "added": [
+    "001736d8"
+   ]
+  },
+  {
+   "entry": "0016ac08",
+   "relation": "callers",
+   "added": [
+    "001736d8",
+    "00179d48"
+   ]
+  },
+  {
+   "entry": "0016b008",
+   "relation": "callers",
+   "added": [
+    "001736d8"
+   ]
+  },
+  {
+   "entry": "0016b480",
+   "relation": "callers",
+   "added": [
+    "00179a30",
+    "0017d090"
+   ]
+  },
+  {
+   "entry": "0016b5c8",
+   "relation": "callers",
+   "added": [
+    "001807a0"
+   ]
+  },
+  {
+   "entry": "0016b5d0",
+   "relation": "callers",
+   "added": [
+    "001807a0"
+   ]
+  },
+  {
+   "entry": "0016c1b8",
+   "relation": "callers",
+   "added": [
+    "0016bc08",
+    "0016bd60",
+    "0016c5d8",
+    "0016c6f8",
+    "00180920",
+    "00180958",
+    "001809c8"
+   ]
+  },
+  {
+   "entry": "0016c3e0",
+   "relation": "callers",
+   "added": [
+    "0016bc08",
+    "0016bd60",
+    "0016c5d8",
+    "0016c6f8",
+    "00176300",
+    "00179a30",
+    "0017d090",
+    "0017ed78",
+    "001807a0"
+   ]
+  },
+  {
+   "entry": "0016c470",
+   "relation": "callers",
+   "added": [
+    "00178190"
+   ]
+  },
+  {
+   "entry": "0016c4d8",
+   "relation": "callers",
+   "added": [
+    "0016bc08",
+    "0016bd60",
+    "0016c5d8",
+    "0016c6f8",
+    "00176300"
+   ]
+  },
+  {
+   "entry": "0016cbc8",
+   "relation": "callers",
+   "added": [
+    "00178118",
+    "00178190",
+    "0017d168",
+    "0017fd98",
+    "0017fe38",
+    "00180898",
+    "00187a48"
+   ]
+  },
+  {
+   "entry": "0016cce8",
+   "relation": "callers",
+   "added": [
+    "0016ea58",
+    "00178118",
+    "00178190",
+    "0017bed0",
+    "0017fd98",
+    "0017fe38",
+    "00180898",
+    "00187a48"
+   ]
+  },
+  {
+   "entry": "0016ccf0",
+   "relation": "callers",
+   "added": [
+    "0015e838"
+   ]
+  },
+  {
+   "entry": "0016ccf8",
+   "relation": "callers",
+   "added": [
+    "0016e440",
+    "0017bed0",
+    "0017d168",
+    "00185120",
+    "001863a0",
+    "001879d8"
+   ]
+  },
+  {
+   "entry": "0016ce70",
+   "relation": "callers",
+   "added": [
+    "00178118",
+    "00178190",
+    "0017d168",
+    "0017fd98",
+    "0017fe38",
+    "00180898",
+    "00187a48"
+   ]
+  },
+  {
+   "entry": "001712d8",
+   "relation": "callers",
+   "added": [
+    "00170f78"
+   ]
+  },
+  {
+   "entry": "00175d70",
+   "relation": "callers",
+   "added": [
+    "00176300"
+   ]
+  },
+  {
+   "entry": "00177d98",
+   "relation": "callers",
+   "added": [
+    "00178190"
+   ]
+  },
+  {
+   "entry": "0017ea00",
+   "relation": "callers",
+   "added": [
+    "0016ea58",
+    "00178118",
+    "00178190",
+    "0017fd98",
+    "0017fe38"
+   ]
+  },
+  {
+   "entry": "00187500",
+   "relation": "callers",
+   "added": [
+    "001879d8"
+   ]
+  },
+  {
+   "entry": "001a5ab0",
+   "relation": "callers",
+   "added": [
+    "001a6060",
+    "001a61a8",
+    "001a6260"
+   ]
+  },
+  {
+   "entry": "001a8610",
+   "relation": "callers",
+   "added": [
+    "001a6060",
+    "001a61a8"
+   ]
+  },
+  {
+   "entry": "001a8a80",
+   "relation": "callers",
+   "added": [
+    "001af478"
+   ]
+  },
+  {
+   "entry": "001a9c88",
+   "relation": "callers",
+   "added": [
+    "001b6760"
+   ]
+  },
+  {
+   "entry": "001ae3b8",
+   "relation": "callers",
+   "added": [
+    "001a1e50",
+    "001af478",
+    "001cb6b8",
+    "001cbb78",
+    "001cbc10",
+    "001cbe60",
+    "001cbfa0",
+    "001cc018",
+    "001cc3f8",
+    "001cc7d8",
+    "001cc868",
+    "001ccaa8"
+   ]
+  },
+  {
+   "entry": "001b1388",
+   "relation": "callers",
+   "added": [
+    "001b6760",
+    "001b70b0",
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "001b2c90",
+   "relation": "callers",
+   "added": [
+    "001b6760",
+    "001b70b0",
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "001b3970",
+   "relation": "callers",
+   "added": [
+    "001b5068",
+    "001b8570"
+   ]
+  },
+  {
+   "entry": "001b3c90",
+   "relation": "callers",
+   "added": [
+    "001b6760",
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "001b3dc0",
+   "relation": "callers",
+   "added": [
+    "001b76d0"
+   ]
+  },
+  {
+   "entry": "001b3f08",
+   "relation": "callers",
+   "added": [
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "001b9508",
+   "relation": "callers",
+   "added": [
+    "00170f78"
+   ]
+  },
+  {
+   "entry": "001bb9b8",
+   "relation": "callers",
+   "added": [
+    "0016cfd8",
+    "0017d2d8",
+    "001b4f80",
+    "001b5068",
+    "001b5a00",
+    "001b65a0",
+    "001b6600",
+    "001b6a58",
+    "001b70b0",
+    "001b7278",
+    "001b7300",
+    "001b76d0",
+    "001b78c0",
+    "001b7b28",
+    "001b7ed8",
+    "001b8098",
+    "001b80f8",
+    "001b8570"
+   ]
+  },
+  {
+   "entry": "001bba40",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "001bd658",
+   "relation": "callers",
+   "added": [
+    "001bce50"
+   ]
+  },
+  {
+   "entry": "001bfdf0",
+   "relation": "callers",
+   "added": [
+    "001bce50"
+   ]
+  },
+  {
+   "entry": "001bffc8",
+   "relation": "callers",
+   "added": [
+    "001bce50"
+   ]
+  },
+  {
+   "entry": "001ca508",
+   "relation": "callers",
+   "added": [
+    "001cc7d8",
+    "001cc868",
+    "001ccaa8"
+   ]
+  },
+  {
+   "entry": "001cbb50",
+   "relation": "callers",
+   "added": [
+    "001cc3f8"
+   ]
+  },
+  {
+   "entry": "001cc228",
+   "relation": "callers",
+   "added": [
+    "001cc018"
+   ]
+  },
+  {
+   "entry": "001d4b10",
+   "relation": "callers",
+   "added": [
+    "0016bc08",
+    "0016bd60",
+    "0016c508",
+    "0016c5d8",
+    "0016c6f8",
+    "00180898",
+    "001b76d0"
+   ]
+  },
+  {
+   "entry": "001d4eb8",
+   "relation": "callers",
+   "added": [
+    "001879d8"
+   ]
+  },
+  {
+   "entry": "001d5008",
+   "relation": "callers",
+   "added": [
+    "00187a48",
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "001d7890",
+   "relation": "callers",
+   "added": [
+    "001cb2c0"
+   ]
+  },
+  {
+   "entry": "001e4cc0",
+   "relation": "callers",
+   "added": [
+    "001b5068",
+    "001b7ed8",
+    "001b8570"
+   ]
+  },
+  {
+   "entry": "001e4df8",
+   "relation": "callers",
+   "added": [
+    "001b5a00",
+    "001b6600",
+    "001b6a58",
+    "001b7ed8",
+    "001b8570"
+   ]
+  },
+  {
+   "entry": "001e4f30",
+   "relation": "callers",
+   "added": [
+    "001b65a0",
+    "001b7278",
+    "001b80f8"
+   ]
+  },
+  {
+   "entry": "001e50a8",
+   "relation": "callers",
+   "added": [
+    "001b4f80",
+    "001b7300",
+    "001b78c0",
+    "001b8098"
+   ]
+  },
+  {
+   "entry": "001e5220",
+   "relation": "callers",
+   "added": [
+    "001b70b0",
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "001e5510",
+   "relation": "callers",
+   "added": [
+    "001b4f80",
+    "001b5a00",
+    "001b65a0",
+    "001b6600",
+    "001b6a58",
+    "001b7300",
+    "001b78c0",
+    "001b7b28",
+    "001b7ed8",
+    "001b8098",
+    "001b80f8",
+    "001b8570"
+   ]
+  },
+  {
+   "entry": "001e5588",
+   "relation": "callers",
+   "added": [
+    "001b7b28"
+   ]
+  },
+  {
+   "entry": "001e8070",
+   "relation": "callers",
+   "added": [
+    "00187a48"
+   ]
+  },
+  {
+   "entry": "001e80b8",
+   "relation": "callers",
+   "added": [
+    "001736d8"
+   ]
+  },
+  {
+   "entry": "001e80f8",
+   "relation": "callers",
+   "added": [
+    "00170f78"
+   ]
+  },
+  {
+   "entry": "001ea298",
+   "relation": "callers",
+   "added": [
+    "0010ae18"
+   ]
+  },
+  {
+   "entry": "001eab60",
+   "relation": "callers",
+   "added": [
+    "001ef3a0"
+   ]
+  },
+  {
+   "entry": "001eab70",
+   "relation": "callers",
+   "added": [
+    "001ef3a0"
+   ]
+  },
+  {
+   "entry": "001eab80",
+   "relation": "callers",
+   "added": [
+    "001f9ac8",
+    "001f9b98"
+   ]
+  },
+  {
+   "entry": "001eab90",
+   "relation": "callers",
+   "added": [
+    "001ecd80"
+   ]
+  },
+  {
+   "entry": "001eaba0",
+   "relation": "callers",
+   "added": [
+    "001ef3a0"
+   ]
+  },
+  {
+   "entry": "001eabb0",
+   "relation": "callers",
+   "added": [
+    "001f9ac8",
+    "001f9b98"
+   ]
+  },
+  {
+   "entry": "001eaf50",
+   "relation": "callers",
+   "added": [
+    "001f3578"
+   ]
+  },
+  {
+   "entry": "001eca20",
+   "relation": "callers",
+   "added": [
+    "001f4050"
+   ]
+  },
+  {
+   "entry": "001eccf0",
+   "relation": "callers",
+   "added": [
+    "001ecd80"
+   ]
+  },
+  {
+   "entry": "001ed2c0",
+   "relation": "callers",
+   "added": [
+    "001ef3a0",
+    "001f17b8",
+    "001f2030",
+    "001f9ac8",
+    "001f9b98"
+   ]
+  },
+  {
+   "entry": "001edf10",
+   "relation": "callers",
+   "added": [
+    "001ef3a0"
+   ]
+  },
+  {
+   "entry": "001edf40",
+   "relation": "callers",
+   "added": [
+    "001ef3a0"
+   ]
+  },
+  {
+   "entry": "001ee018",
+   "relation": "callers",
+   "added": [
+    "001ef3a0"
+   ]
+  },
+  {
+   "entry": "001f15f0",
+   "relation": "callers",
+   "added": [
+    "001f17b8",
+    "001f2030"
+   ]
+  },
+  {
+   "entry": "001f16f0",
+   "relation": "callers",
+   "added": [
+    "001f17b8",
+    "001f2030"
+   ]
+  },
+  {
+   "entry": "001f2648",
+   "relation": "callers",
+   "added": [
+    "001f3578"
+   ]
+  },
+  {
+   "entry": "001f4778",
+   "relation": "callers",
+   "added": [
+    "001f4050"
+   ]
+  },
+  {
+   "entry": "001f4e90",
+   "relation": "callees",
+   "added": [
+    "001f4ca8"
+   ]
+  },
+  {
+   "entry": "001f9490",
+   "relation": "callers",
+   "added": [
+    "0010ae18"
+   ]
+  },
+  {
+   "entry": "001fc4e0",
+   "relation": "callers",
+   "added": [
+    "001fcbe8",
+    "00200ac0"
+   ]
+  },
+  {
+   "entry": "001feb58",
+   "relation": "callers",
+   "added": [
+    "001fcbe8"
+   ]
+  },
+  {
+   "entry": "001ffd40",
+   "relation": "callers",
+   "added": [
+    "00200ac0"
+   ]
+  },
+  {
+   "entry": "001ffd70",
+   "relation": "callers",
+   "added": [
+    "00200ac0"
+   ]
+  },
+  {
+   "entry": "00200238",
+   "relation": "callers",
+   "added": [
+    "001fcbe8",
+    "00200ac0",
+    "00200b88"
+   ]
+  },
+  {
+   "entry": "002094b0",
+   "relation": "callers",
+   "added": [
+    "001b76d0"
+   ]
+  },
+  {
+   "entry": "00209e08",
+   "relation": "callers",
+   "added": [
+    "0020ab60"
+   ]
+  },
+  {
+   "entry": "00209e50",
+   "relation": "callers",
+   "added": [
+    "0020ab60"
+   ]
+  },
+  {
+   "entry": "0020c74c",
+   "relation": "callers",
+   "added": [
+    "001f17b8"
+   ]
+  },
+  {
+   "entry": "0020deb4",
+   "relation": "callers",
+   "added": [
+    "0020ab60"
+   ]
+  },
+  {
+   "entry": "0020e10c",
+   "relation": "callers",
+   "added": [
+    "0020ab60"
+   ]
+  },
+  {
+   "entry": "0020e4d8",
+   "relation": "callers",
+   "added": [
+    "001f2030",
+    "001f9b98"
+   ]
+  },
+  {
+   "entry": "0021ef50",
+   "relation": "callers",
+   "added": [
+    "001ba088"
+   ]
+  },
+  {
+   "entry": "0021fd28",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "002206c8",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "002207d0",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "002209a0",
+   "relation": "callers",
+   "added": [
+    "0017d2d8"
+   ]
+  },
+  {
+   "entry": "002214c0",
+   "relation": "callers",
+   "added": [
+    "0016cfd8"
+   ]
+  },
+  {
+   "entry": "0022a668",
+   "relation": "callers",
+   "added": [
+    "00180920",
+    "00180958",
+    "001809c8"
+   ]
+  },
+  {
+   "entry": "0022a6e8",
+   "relation": "callers",
+   "added": [
+    "00180898"
+   ]
+  },
+  {
+   "entry": "0022a910",
+   "relation": "callers",
+   "added": [
+    "00170f78",
+    "00179a30"
+   ]
+  },
+  {
+   "entry": "0022af98",
+   "relation": "callers",
+   "added": [
+    "00179a30"
+   ]
+  },
+  {
+   "entry": "0022dd70",
+   "relation": "callers",
+   "added": [
+    "00179a30"
+   ]
+  }
+ ],
+ "coverage_delta": [
+  {
+   "field": "instruction_count",
+   "old": 252529,
+   "new": 253863,
+   "delta": 1334
+  },
+  {
+   "field": "instruction_bytes",
+   "old": 1010116,
+   "new": 1015452,
+   "delta": 5336
+  },
+  {
+   "field": "function_instruction_bytes",
+   "old": 890200,
+   "new": 916372,
+   "delta": 26172
+  },
+  {
+   "field": "unowned_instruction_count",
+   "old": 29979,
+   "new": 24770,
+   "delta": -5209
+  },
+  {
+   "field": "unowned_instruction_bytes",
+   "old": 119916,
+   "new": 99080,
+   "delta": -20836
+  },
+  {
+   "field": "defined_data_bytes",
+   "old": 6,
+   "new": 6,
+   "delta": 0
+  },
+  {
+   "field": "undefined_bytes",
+   "old": 135690,
+   "new": 130354,
+   "delta": -5336
+  }
+ ]
+}
