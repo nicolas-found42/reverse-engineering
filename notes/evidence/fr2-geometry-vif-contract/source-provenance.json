@@ -1,0 +1,111 @@
+{
+  "schema": "fr2-geometry-vif-contract/v1",
+  "scope": "Static caller-to-VIF-format trace only; no original routine, emulator, packet writer, or VU program executed.",
+  "game": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "language": "r5900:LE:32:default",
+    "saved_static_export": {
+      "path": ".scratch/evidence/static-export.json",
+      "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+    },
+    "functions": [
+      {
+        "name": "FUN_001288b0",
+        "role": "record/group caller and packet-writer caller",
+        "anchors": ["00128920", "00128930", "00128938", "00128974", "001289f0", "001289f4", "001289f8", "00128af4", "00128b24", "00128b5c", "00128b64", "00128a98", "00128ad8", "00128c10", "00128c50"]
+      },
+      {
+        "name": "FUN_00128e88",
+        "role": "VIF UNPACK/REF packet writer",
+        "anchors": ["00128eec", "00128f30", "00128f40", "00128f70", "00128fac", "00128fd0", "00128fec", "00129000", "00129004", "001290c4", "001290cc", "0012919c", "001291a4", "001291d4", "001291e0", "001291f0", "001292d4"]
+      },
+      {
+        "name": "FUN_0021b710",
+        "role": "record pointer producer, return saved through MIPS delay slot",
+        "anchors": ["00128920", "00128930"]
+      },
+      {
+        "name": "FUN_0021b6e0",
+        "role": "separate helper whose result is saved in s5",
+        "anchors": ["0012892c", "00128938"]
+      }
+    ]
+  },
+  "sdk_reference": {
+    "repository": "https://github.com/ps2dev/ps2sdk",
+    "commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "files": [
+      {
+        "path": "common/include/vif_codes.h",
+        "sha256": "b28a4d58edf1245c54fd7bfa8276b9d59ae5a369a27db57ba09938b5f8c4adfb"
+      },
+      {
+        "path": "ee/packet2/include/packet2_types.h",
+        "sha256": "33b6bda21b63d75da43475175e594a5514e9a2891700a9d396bcc3373faaad84"
+      },
+      {
+        "path": "ee/packet2/include/packet2_vif.h",
+        "sha256": "903863415d2229f6d89ee3717b9a6fafcc3e019048fd6dc5880a7ad2e52e6539"
+      }
+    ]
+  },
+  "external_research": {
+    "firecrawl_receipt": {
+      "path": "notes/evidence/fr2-geometry-vif-contract/firecrawl-ps2sdk-headers.json",
+      "sha256": "fa0960dd6e071dea5cc4ce3c4edc197eda5ec9fff2a99b1e377fb7915c3f8f05"
+    },
+    "jev_screen_receipt": {
+      "path": "notes/evidence/fr2-geometry-vif-contract/jev-ps2sdk-screen.json",
+      "sha256": "14c8951bd793124bc2167fdc8cbdd6299e0a44045e71275c6e6bf7ccf2a65376",
+      "result": "pass; injection 0.09, substance 0.99, relevance 0.88"
+    },
+    "jev_claim_receipt": {
+      "path": "notes/evidence/fr2-geometry-vif-contract/jev-static-vif-claims.json",
+      "sha256": "2dbadb53cca2253122652e88f268eedcdfd137dab2681c14dfe9aaa5688c6c80",
+      "claims": 8,
+      "verified": 8,
+      "contradicted": 0,
+      "unsupported": 0,
+      "review": 0
+    },
+    "jgrep": {
+      "executable": "/Users/Nicolas/.local/bin/jgrep",
+      "arguments": [
+        "--json",
+        "parses VIF command tags and turns them into typed transfer descriptions or validates tag counts",
+        "tools/ps2_sections.py",
+        "tools/ps2_vif.py",
+        "tools/verify_vif.py"
+      ],
+      "exit_code": 0,
+      "matches": 4,
+      "scope_note": "Behavioral search located related parser/validator code; it was not used as evidence for the game-specific VIF format mapping."
+    }
+  },
+  "bounded_findings": {
+    "record_fields": {
+      "first_group": {"count_offset": "0x1c", "header_pointer_offset": "0x20", "payload_pointer_offset": "0x24"},
+      "second_group": {"count_offset": "0x28", "header_pointer_offset": "0x2c", "payload_pointer_offset": "0x30"},
+      "count_reloaded_from_header_offset": "0x2"
+    },
+    "unpack": [
+      {"command_byte": "0x69", "format": "V3-16", "source_bytes_per_count": 6, "ref_qwc": "ceil(6*n/16)"},
+      {"command_byte": "0x6e", "format": "V4-8", "source_bytes_per_count": 4, "ref_qwc": "ceil(4*n/16)"},
+      {"command_byte": "0x65", "format": "V2-16", "source_bytes_per_count": 4, "ref_qwc": "ceil(4*n/16)", "condition": "writer saved a3 != 0"}
+    ],
+    "destination": {
+      "base_by_saved_selector": {"zero": "0x208", "nonzero": "0x2c8"},
+      "offsets": {"V3-16": 0, "V4-8": 1, "V2-16": 2},
+      "unpack_usn_bit14": 0,
+      "unpack_flg_bit15": 0
+    },
+    "dma_tag_id": 3
+  },
+  "limitations": [
+    "Component semantics, axes, units, and world scale are unknown.",
+    "The identity and execution of the consuming VU microprogram are not established by this trace.",
+    "The saved-selector value and optional-V2 branch outcome are runtime-dependent and unproven.",
+    "The PS2SDK headers are encoding references, not proof that the executable was built using those helpers.",
+    "NUM zero special handling exists in the SDK reference but no zero count was established here."
+  ]
+}
