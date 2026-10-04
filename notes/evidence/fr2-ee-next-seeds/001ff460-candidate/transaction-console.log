@@ -1,0 +1,53 @@
+openjdk version "27" 2026-09-15
+OpenJDK Runtime Environment Homebrew (build 27)
+OpenJDK 64-Bit Server VM Homebrew (build 27, mixed mode)
+INFO  Using log config file: jar:file:/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Framework/Generic/lib/Generic.jar!/generic.log4j.xml (LoggingInitialization)  
+INFO  Using log file: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/seed-001ff460/run/transaction-ghidra.log (LoggingInitialization)  
+INFO  Loading user preferences: /Users/Nicolas/Library/ghidra/ghidra_12.1.3_PUBLIC/preferences (Preferences)  
+INFO  Searching for classes... (ClassSearcher)  
+INFO  Class search complete (475 ms) (ClassSearcher)  
+WARNING: Final field name in class ghidra.util.charset.CharsetInfo has been mutated reflectively by class com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2 in unnamed module @2b48a640 (file:/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Framework/Generic/lib/gson-2.13.2.jar)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+INFO  Initializing SSL Context (DefaultSSLContextInitializer)  
+INFO  Initializing Random Number Generator... (SecureRandomFactory)  
+INFO  Random Number Generator initialization complete: NativePRNGNonBlocking (SecureRandomFactory)  
+INFO  Trust manager disabled, cacerts have not been set (DefaultTrustManagerFactory)  
+INFO  Headless startup complete (936 ms) (AnalyzeHeadless)  
+INFO  Class searcher loaded 59 extension points (20 false positives) (ClassSearcher)  
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldOffset has been called by org.apache.felix.framework.util.SecureAction (file:/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Base/lib/org.apache.felix.framework-7.0.5.jar)
+WARNING: Please consider reporting this to the maintainers of class org.apache.felix.framework.util.SecureAction
+WARNING: sun.misc.Unsafe::staticFieldOffset will be removed in a future release
+INFO  HEADLESS Script Paths:
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/Atmel/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Debug/Debugger-rmi-trace/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/BSim/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/GnuDemangler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/SwiftDemangler/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/MicrosoftCodeAnalyzer/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/FunctionID/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/PyGhidra/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/BytePatterns/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/DecompilerDependent/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/VersionTracking/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/PIC/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/guard
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/JVM/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Debug/Debugger/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Base/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/FileFormats/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/PDB/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/DATA/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/SystemEmulation/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Processors/8051/ghidra_scripts
+    /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/WildcardAssembler/ghidra_scripts (HeadlessAnalyzer)  
+INFO  HEADLESS: execution starts (HeadlessAnalyzer)  
+INFO  Opening existing project: /Users/Nicolas/Documents/github/hermes/reverse-engineering/ghidra-project/codex-audit-ee-001ff460-proposal-01/fr2 (HeadlessAnalyzer)  
+INFO  Opening project: /Users/Nicolas/Documents/github/hermes/reverse-engineering/ghidra-project/codex-audit-ee-001ff460-proposal-01/fr2 (HeadlessProject)  
+INFO  REPORT: Processing project file: /SLES_517.05 (HeadlessAnalyzer)  
+INFO  REPORT: Execute script: CreateEeCandidateV3.java '/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/seed-001ff460/run/transaction-result.json' '/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05' '/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/seed-001ff140/export-3848/decompilation/manifest.json' '/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/seed-001ff140/export-3848/inventory.json' '/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/seed-001ff140/export-3848/coverage.json' '/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/seed-001ff460/config.json' '2311977fd1fc02e49b5f63ca2c633b6e11732e6dd7beeb11ceafefaf658178e3'  (HeadlessAnalyzer)  
+INFO  SCRIPT: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/frontier-3845-01/guard/CreateEeCandidateV3.java (HeadlessAnalyzer)  
+INFO  CreateEeCandidateV3.java> EE_CLOSURE_CANDIDATE_OK entry=001ff460 body_bytes=188 function_count_delta=1 next_word_excluded=001ff51c (GhidraScript)  
+INFO  REPORT: Save succeeded for processed file: /SLES_517.05 (HeadlessAnalyzer)  
