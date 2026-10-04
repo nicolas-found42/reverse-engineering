@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "entry": "00200408",
+  "start": "00200408",
+  "end": "0020046c",
+  "words": 25,
+  "bytes": 100,
+  "window_sha256": "84c946629366622550dc1863b4058e100321b61010cff94261e202f1003ac265",
+  "first_word": "27bdffe0",
+  "delay_word": "27bd0020",
+  "next_word": "00000000",
+  "baseline": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "manifest_sha256": "fcec2c25ec7e62b48eb0df4c9da3e842a10ca13fd4d0ff48fcf62880fac2e3e4",
+    "inventory_sha256": "5e5cdcbf18cc167e4ea1d5eb56c3a176afc8c976f0c57e0862077961a58821ad",
+    "coverage_sha256": "99efef163374c76c1b740d39740534d9ef1fe8d52bfa1b8ae0d5a5714a7a5a14",
+    "inventory_count": 3853
+  },
+  "expected_calls": {
+    "00200418": "00200238",
+    "00200428": "00200238",
+    "0020043c": "00200238",
+    "00200448": "00200148",
+    "00200450": "00200960"
+  },
+  "known_callees": [
+    "00200148",
+    "00200238",
+    "00200960"
+  ],
+  "unresolved_callees": [],
+  "zero_words": [],
+  "likely_count": 0,
+  "incoming": [
+    {
+      "site": "001ff1b8",
+      "owner_entry": "001ff140",
+      "owner_name": "candidate_ee_001ff140",
+      "owner_symbol_source": "ANALYSIS"
+    }
+  ]
+}

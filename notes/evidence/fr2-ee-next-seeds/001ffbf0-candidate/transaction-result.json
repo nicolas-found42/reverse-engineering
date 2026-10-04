@@ -1,0 +1,238 @@
+{
+  "schema_version": 1,
+  "config_sha256": "ff9a162334adaf289554eb41c6ca3a41f49af90df2d7abfb2ef1b4e40a80f6d1",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "baseline_manifest_sha256": "bed64922ce4456bc238f6ae65872f4bd05034369a137b20a7f64a85f63864186",
+  "baseline_inventory_sha256": "021825a5b76f9c826d60bea7806ed9883ce64dd34c21b1721ec15004274b45e6",
+  "baseline_coverage_sha256": "9945a9fa5ba89d7390c3509c774e4126ed76d96a4c00c03b54f481ba4e7c8b8a",
+  "language": "r5900:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "entry": "001ffbf0",
+  "status": "created_single_bounded_candidate",
+  "cfg": {
+    "instruction_count_including_delay_slots": 83,
+    "body_end_inclusive": "001ffd38",
+    "instruction_addresses": [
+      "001ffbf0",
+      "001ffbf4",
+      "001ffbf8",
+      "001ffbfc",
+      "001ffc00",
+      "001ffc04",
+      "001ffc08",
+      "001ffc0c",
+      "001ffc10",
+      "001ffc14",
+      "001ffc18",
+      "001ffc1c",
+      "001ffc20",
+      "001ffc24",
+      "001ffc28",
+      "001ffc2c",
+      "001ffc30",
+      "001ffc34",
+      "001ffc38",
+      "001ffc3c",
+      "001ffc40",
+      "001ffc44",
+      "001ffc48",
+      "001ffc4c",
+      "001ffc50",
+      "001ffc54",
+      "001ffc58",
+      "001ffc5c",
+      "001ffc60",
+      "001ffc64",
+      "001ffc68",
+      "001ffc6c",
+      "001ffc70",
+      "001ffc74",
+      "001ffc78",
+      "001ffc7c",
+      "001ffc80",
+      "001ffc84",
+      "001ffc88",
+      "001ffc8c",
+      "001ffc90",
+      "001ffc94",
+      "001ffc98",
+      "001ffc9c",
+      "001ffca0",
+      "001ffca4",
+      "001ffca8",
+      "001ffcac",
+      "001ffcb0",
+      "001ffcb4",
+      "001ffcb8",
+      "001ffcbc",
+      "001ffcc0",
+      "001ffcc4",
+      "001ffcc8",
+      "001ffccc",
+      "001ffcd0",
+      "001ffcd4",
+      "001ffcd8",
+      "001ffcdc",
+      "001ffce0",
+      "001ffce4",
+      "001ffce8",
+      "001ffcec",
+      "001ffcf0",
+      "001ffcf4",
+      "001ffcf8",
+      "001ffcfc",
+      "001ffd00",
+      "001ffd04",
+      "001ffd08",
+      "001ffd0c",
+      "001ffd10",
+      "001ffd14",
+      "001ffd18",
+      "001ffd1c",
+      "001ffd20",
+      "001ffd24",
+      "001ffd28",
+      "001ffd2c",
+      "001ffd30",
+      "001ffd34",
+      "001ffd38"
+    ],
+    "edges": [
+      {
+        "site": "001ffc3c",
+        "kind": "call",
+        "target": "001ffec8",
+        "fallthrough": "001ffc44"
+      },
+      {
+        "site": "001ffc44",
+        "kind": "conditional",
+        "target": "001ffc64",
+        "fallthrough": "001ffc4c"
+      },
+      {
+        "site": "001ffc4c",
+        "kind": "conditional",
+        "target": "001ffc64",
+        "fallthrough": "001ffc54"
+      },
+      {
+        "site": "001ffc54",
+        "kind": "call",
+        "target": "00200238",
+        "fallthrough": "001ffc5c"
+      },
+      {
+        "site": "001ffc5c",
+        "kind": "unconditional_branch",
+        "target": "001ffc68"
+      },
+      {
+        "site": "001ffc74",
+        "kind": "call",
+        "target": "001ff9c8",
+        "fallthrough": "001ffc7c"
+      },
+      {
+        "site": "001ffc7c",
+        "kind": "conditional",
+        "target": "001ffc94",
+        "fallthrough": "001ffc84"
+      },
+      {
+        "site": "001ffc94",
+        "kind": "call",
+        "target": "001ffec8",
+        "fallthrough": "001ffc9c"
+      },
+      {
+        "site": "001ffc84",
+        "kind": "call",
+        "target": "001fed80",
+        "fallthrough": "001ffc8c"
+      },
+      {
+        "site": "001ffc9c",
+        "kind": "conditional",
+        "target": "001ffcbc",
+        "fallthrough": "001ffca4"
+      },
+      {
+        "site": "001ffca4",
+        "kind": "conditional",
+        "target": "001ffcbc",
+        "fallthrough": "001ffcac"
+      },
+      {
+        "site": "001ffcc0",
+        "kind": "conditional",
+        "target": "001ffcd4",
+        "fallthrough": "001ffcc8"
+      },
+      {
+        "site": "001ffcac",
+        "kind": "call",
+        "target": "00200238",
+        "fallthrough": "001ffcb4"
+      },
+      {
+        "site": "001ffcb4",
+        "kind": "unconditional_branch",
+        "target": "001ffcc0"
+      },
+      {
+        "site": "001ffcdc",
+        "kind": "call",
+        "target": "001ff9c8",
+        "fallthrough": "001ffce4"
+      },
+      {
+        "site": "001ffce4",
+        "kind": "conditional",
+        "target": "001ffcf8",
+        "fallthrough": "001ffcec"
+      },
+      {
+        "site": "001ffcf8",
+        "kind": "conditional",
+        "target": "001ffd10",
+        "fallthrough": "001ffd00"
+      },
+      {
+        "site": "001ffd00",
+        "kind": "call",
+        "target": "001fed80",
+        "fallthrough": "001ffd08"
+      },
+      {
+        "site": "001ffd34",
+        "kind": "return"
+      }
+    ],
+    "branch_likely_scope": "For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution."
+  },
+  "call_graph_limit": "known callees [00200238]; unresolved callees left uncreated [001fed80, 001ff9c8, 001ffec8]",
+  "incoming_references": [
+    {
+      "to": "001ffbf0",
+      "from": "001ff778",
+      "type": "UNCONDITIONAL_CALL",
+      "source": "DEFAULT"
+    },
+    {
+      "to": "001ffbf0",
+      "from": "001ff804",
+      "type": "UNCONDITIONAL_CALL",
+      "source": "DEFAULT"
+    }
+  ],
+  "body_bytes": 332,
+  "body_interval_bytes": 332,
+  "excluded_next_word": "001ffd3c",
+  "excluded_next_word_hex": "00000000",
+  "function_count_after": 3851,
+  "old_function_snapshot_preserved": true,
+  "initialized_memory_preserved": true,
+  "defined_data_preserved": true,
+  "scope": "Static provisional candidate only. No original function identity, semantics, runtime reachability, or whole-game completeness is established."
+}

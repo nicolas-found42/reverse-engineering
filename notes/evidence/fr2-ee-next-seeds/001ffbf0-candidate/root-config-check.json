@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "config_sha256": "ff9a162334adaf289554eb41c6ca3a41f49af90df2d7abfb2ef1b4e40a80f6d1",
+  "checker_sha256": "fd7a98d7178759e01eeed21775c529c725c3f5aae2d924172d0e80d18488ab8a",
+  "entry": "001ffbf0",
+  "span": [
+    "001ffbf0",
+    "001ffd3c"
+  ],
+  "words": 83,
+  "edge_counts": {
+    "call": 8,
+    "conditional": 8,
+    "unconditional_branch": 2,
+    "return": 1
+  },
+  "calls": {
+    "001ffc3c": "001ffec8",
+    "001ffc54": "00200238",
+    "001ffc74": "001ff9c8",
+    "001ffc94": "001ffec8",
+    "001ffc84": "001fed80",
+    "001ffcac": "00200238",
+    "001ffcdc": "001ff9c8",
+    "001ffd00": "001fed80"
+  },
+  "known_callees": [
+    "00200238"
+  ],
+  "unresolved_callees": [
+    "001fed80",
+    "001ff9c8",
+    "001ffec8"
+  ],
+  "zero_words": [
+    "001ffce8"
+  ],
+  "incoming_raw_jal_sites": [
+    "001ff778",
+    "001ff804"
+  ],
+  "scope": "Independent raw-byte re-derivation of the guard config. Structural union only; no identity, feasibility, execution, or call-closure beyond the listed callee states."
+}
