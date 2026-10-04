@@ -1,0 +1,27 @@
+{
+  "source_pdf_sha256": "daf72c776f6e27721149f28dc46ad47443e560b22a04f3d8ff4bcf74f254bf12",
+  "source_pdf_path": ".scratch/mesh/codex-root/gs-manual-visual-01/source.pdf",
+  "source_revision": "PS2Docs a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369",
+  "manual_version": "Sony GS Users Manual v6.0 April2002",
+  "review_method": "Root visually inspected rendered printed/PDF pages62 and127 after pypdf locator search. No PDF or page image copied into public evidence.",
+  "rendered_pages": [
+    {
+      "page": 62,
+      "sha256": "0a9452e90a47855177942fcc202e9120dbb49277dfed50e79205b1b033bf29fc",
+      "path": ".scratch/mesh/codex-root/gs-mip-sampler-native-01/manual-page-62.png"
+    },
+    {
+      "page": 127,
+      "sha256": "c57e14e47b6aaadaa0aed4f3bab1a7a056c3447044f69825ba2293fe024c0817",
+      "path": ".scratch/mesh/codex-root/gs-mip-sampler-native-01/manual-page-127.png"
+    }
+  ],
+  "bounded_paraphrase": [
+    "LCM bit0 chooses fixedLOD=K when1. K occupies TEX1 bits43:32 with a signed format containing four fractional bits.",
+    "MXL occupies bits4:2; MMIN bits8:6 value2 chooses point samples with nearest mip level. MTBA bit9 zero uses explicit MIPTBP registers.",
+    "At fixed integerLOD1 or2 with MXL2 and MMIN2, the specified level is1 or2; level0 at LOD0.",
+    "The manual separately cautions against bilinear/trilinear use at widths/heights4orless. Authored fixture uses point sampling MMIN2 and MMAG0."
+  ],
+  "render_attempt_history": "First command accidentally included python/bin/override in bundled path and failed127 before rendering; corrected exact dependency/bin/override path rendered both pages successfully. Missing-image views from failed attempt made no content judgment.",
+  "limits": "Manual specified behavior reference only. No observed GS hardware or original game state."
+}

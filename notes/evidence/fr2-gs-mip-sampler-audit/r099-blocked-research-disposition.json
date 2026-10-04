@@ -1,0 +1,13 @@
+{
+  "request_sha256": "fa6b3cc51975a438af843698f756abf9459df3fe17c1391be7c34cd346cf3552",
+  "full_envelope_ignored_path": ".scratch/mesh/codex-root/gs-mip-sampler-native-01/r099-pcsx2-lod-screen.json",
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.89,\n    \"substance\": 0.98,\n    \"relevance\": 0.96\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"block\",\n    \"reason\": \"injection probability 0.89 >= block threshold 0.75\"\n  },\n  \"usage\": {\n    \"input_tokens\": 2907,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "disposition": "Blocked fetched PCSX2 excerpt was not read or used for semantic conclusions. Root showed recommendation/probabilities to user per Jev skill and continued independent authored-native and manually reviewed Sony manual evidence. No unchanged screening retry."
+}

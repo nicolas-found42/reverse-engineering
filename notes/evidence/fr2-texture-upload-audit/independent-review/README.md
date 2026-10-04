@@ -98,3 +98,34 @@ profiles and compares indexed bytes with decoded corpus indices. It reports
 1,321 packed format-3 items and 441 packed format-4 items, checking 57,782,272
 and 15,067,968 pixel indices respectively. It is linked here for parent review;
 this note does not independently promote or broaden those claims.
+
+## Texture object identity and draw-side mip state
+
+The bounded loader-to-draw descriptor-pointer trace and TEX1/MIPTBP1 packing
+analysis are recorded in [`mip-draw-object-identity-01.md`](mip-draw-object-identity-01.md),
+with machine-readable provenance in [`mip-draw-object-identity-01.json`](mip-draw-object-identity-01.json).
+The static trace establishes a shared descriptor pointer through the group
+`+0xec` table for valid indexed commands, and identifies the source words that
+reach TEX1 and MIPTBP1. It does not prove that every row is submitted or that
+a draw selects any particular mip level. The corrected all-56 conditional
+profile is 75 matching 8x8 rows (15 with MXL 1, 60 with MXL 2); selector bits
+are retained as raw values. Historical identity-unproved and unsupported LCM/
+actual-sampling receipts remain unchanged in ignored scratch.
+
+The descriptor selector bytes also configure TEST_1: selector 1 yields ATST=GEQUAL,
+AREF=0x40; selector 2 yields ATST=GREATER, AREF=0. The GS field mapping and
+encoded bytes are recorded in the supplement. Per-vertex Q remains unresolved: a
+separate buffer-building helper and VU call were inspected, but no evidence links
+those output words to the `0021d180` textured-command path or identifies them as Q.
+
+`00228b38` is itself a direct caller of `0021b850` and then submits a
+12-word-per-vertex buffer. Its two computed output words and VU input/output
+layout are not mapped to GS Q, so this remains a separate candidate textured
+path with unresolved Q semantics.
+
+Root's independent static check of the identity trace is
+[`check_mip_identity_root_01.py`](check_mip_identity_root_01.py) with result
+[`root-mip-identity-validation-01.json`](root-mip-identity-validation-01.json): 276
+instruction occurrences across 11 spans matched saved text/bytes and unique ELF
+PT_LOAD mappings. The exact PCPYLD macro line equals the pristine public header;
+the whole patched and pristine headers are not equal and are not claimed to be.

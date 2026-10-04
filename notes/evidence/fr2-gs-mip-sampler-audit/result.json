@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "status": "observed_public_CPU_mip_selection_gap",
+  "public_revision": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "source_pins": [
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp",
+      "sha256": "3f0fea655726215f56d8c3c9cff8345a7d36a929fe3f845cc96346a247085fa9"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h",
+      "sha256": "46e69da0062b4f9e82cae926f0e3d2012283634fe1647049a9e832ab7a452ed0"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/gs_cpu_backend.h",
+      "sha256": "2de22e260b71f3da317310b38a7ba40a4b3e5e2bab11a6cbc50662d9d9ef85f8"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/gs_types.h",
+      "sha256": "ec42ebfb1d1f20f748ba46510fa6a857fb5cd917405dcf338711a465feb40937"
+    },
+    {
+      "path": ".scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include/runtime/gs/gs_texture_page_cache.h",
+      "sha256": "51bef021981a9834cc7bcadc9a4527d3588b058c481212353499e7936d12a3e6"
+    }
+  ],
+  "authored_probe_sha256": "56fa90df6c7c6d79eecb7bf030f6e50c38c817232152ff06a6d957b3758c551b",
+  "runner_sha256": "edc2a884f36261b829745b7a2a442a7d6ed48d859ce70aad5f9d35550b9a5b51",
+  "compile": {
+    "command": [
+      "clang++",
+      "-std=c++20",
+      "-O1",
+      "-mmacosx-version-min=26.4",
+      "-DUSE_SSE2NEON",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp/ps2xRuntime/include",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/deps/raylib-src/src",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-mip-sampler-native-01/probe.cpp",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+      "-framework",
+      "OpenGL",
+      "-framework",
+      "Cocoa",
+      "-framework",
+      "IOKit",
+      "-framework",
+      "CoreFoundation",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-mip-sampler-native-01/probe"
+    ],
+    "exit_code": 0,
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "libraries": [
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xRuntime/libps2_runtime.a",
+        "sha256": "923592007bb581846a7659ed3459d43b5a92fdc421f2732d3098262ca8912015"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/_deps/raylib-build/raylib/libraylib.a",
+        "sha256": "a3f193a7cf8036fa2be98be51f6f4a218e4d0cda02bb45be3e1760a8a600e4df"
+      },
+      {
+        "path": ".scratch/mesh/codex-audit/headless-link-build-02/build-make-02/ps2x/ps2xIOP/libps2_iop.a",
+        "sha256": "c5658b264fe8d23fd6046151fb9c111fff0f7f493a531f37a2c239b34541db05"
+      }
+    ]
+  },
+  "binary_preflight": {
+    "binary_sha256": "13724fe42b0d94415ba29cea84d67cb3044ae48ca9a2c8f2ab6ee001e1661261",
+    "generated_guest_names_checked_absent": 4746,
+    "registration_and_display_audio_entry_symbols_absent": true,
+    "symbols_sha256": "900c35ba24fed48ce510e62afc93f5fe7ab46fe04ff84e60dd2e0a2fb0f238d5",
+    "source_review": "Probe only initializes CPU VRAM, writes three authored constant color planes, submits authored sprites to CPU memory and reads four output pixels. Submit/DrawPrimitive/DrawSprite/SampleTexture/WritePixel reviewed; no display, presentation or audio initialization. Original guest names absent."
+  },
+  "process": {
+    "command": [
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/gs-mip-sampler-native-01/probe"
+    ],
+    "exit_code": 0,
+    "stderr_bytes": 0,
+    "stdout_sha256": "aa7303c12779c4b4ebbf522c036f6fa7e522496da25e8bb075e202eec7410b9a"
+  },
+  "cases": [
+    {
+      "fst": 0,
+      "fixed_LOD": 0,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_fixed_LOD_rgba": 2147483903,
+      "TEX1": 137,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 0,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_fixed_LOD_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 0,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2147548928,
+      "manual_fixed_LOD_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 0,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_fixed_LOD_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 0,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2164195328,
+      "manual_fixed_LOD_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 1,
+      "fixed_LOD": 0,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_fixed_LOD_rgba": 2147483903,
+      "TEX1": 137,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 1,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_fixed_LOD_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 1,
+      "fixed_LOD": 1,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2147548928,
+      "manual_fixed_LOD_rgba": 2147548928,
+      "TEX1": 68719476873,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 1,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 0,
+      "actual_rgba": 2147483903,
+      "manual_fixed_LOD_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    },
+    {
+      "fst": 1,
+      "fixed_LOD": 2,
+      "TEX0_redirect": 1,
+      "actual_rgba": 2164195328,
+      "manual_fixed_LOD_rgba": 2164195328,
+      "TEX1": 137438953609,
+      "MIPTBP1": 17280548928
+    }
+  ],
+  "manual_visual_review": {
+    "source_pdf_sha256": "daf72c776f6e27721149f28dc46ad47443e560b22a04f3d8ff4bcf74f254bf12",
+    "source_pdf_path": ".scratch/mesh/codex-root/gs-manual-visual-01/source.pdf",
+    "source_revision": "PS2Docs a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369",
+    "manual_version": "Sony GS Users Manual v6.0 April2002",
+    "review_method": "Root visually inspected rendered printed/PDF pages62 and127 after pypdf locator search. No PDF or page image copied into public evidence.",
+    "rendered_pages": [
+      {
+        "page": 62,
+        "sha256": "0a9452e90a47855177942fcc202e9120dbb49277dfed50e79205b1b033bf29fc",
+        "path": ".scratch/mesh/codex-root/gs-mip-sampler-native-01/manual-page-62.png"
+      },
+      {
+        "page": 127,
+        "sha256": "c57e14e47b6aaadaa0aed4f3bab1a7a056c3447044f69825ba2293fe024c0817",
+        "path": ".scratch/mesh/codex-root/gs-mip-sampler-native-01/manual-page-127.png"
+      }
+    ],
+    "bounded_paraphrase": [
+      "LCM bit0 chooses fixedLOD=K when1. K occupies TEX1 bits43:32 with a signed format containing four fractional bits.",
+      "MXL occupies bits4:2; MMIN bits8:6 value2 chooses point samples with nearest mip level. MTBA bit9 zero uses explicit MIPTBP registers.",
+      "At fixed integerLOD1 or2 with MXL2 and MMIN2, the specified level is1 or2; level0 at LOD0.",
+      "The manual separately cautions against bilinear/trilinear use at widths/heights4orless. Authored fixture uses point sampling MMIN2 and MMAG0."
+    ],
+    "render_attempt_history": "First command accidentally included python/bin/override in bundled path and failed127 before rendering; corrected exact dependency/bin/override path rendered both pages successfully. Missing-image views from failed attempt made no content judgment.",
+    "limits": "Manual specified behavior reference only. No observed GS hardware or original game state."
+  },
+  "fixed_LOD_reference_disagreements": 4,
+  "scope": "Authored constant-color CT32 mip planes8x8/4x4/2x2 at blocks32/64/96, width1; LCM1,MXL2,MMIN2,MTBA0,K0/16/32. UV and ST sprites draw only into CPU VRAM, no display or original game. ActualCPU sampler reads TEX0level0 for all six unredirected cases, contrary to manual fixedLOD1/2 in four cases. Four TEX0 redirect controls prove green/blue planes can be read. This is bounded public backend behavior and manual reference, not observed hardware or original-game state.",
+  "prior_source_screen": "r095 source screen flagged injection probability0.56; source comments were manually treated as data, and complete function tail was inspected after initial bounded slice ended before final return. No unchanged screening retry.",
+  "limits": [
+    "Direct backend GSDrawState synthetic entry only; full original game frontend/submission/use not executed.",
+    "Constant-color, point-sampled CT32 fixedLOD integer cases only; no general filtering, palette, ST derivative, GS timing or full texture correctness claim.",
+    "No public runtime patch applied. The linked runtime archive is from the four-EE-patch experiment tree; testedGS files equal pristine pinned public source."
+  ]
+}

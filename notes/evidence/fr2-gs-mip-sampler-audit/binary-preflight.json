@@ -1,0 +1,7 @@
+{
+  "binary_sha256": "13724fe42b0d94415ba29cea84d67cb3044ae48ca9a2c8f2ab6ee001e1661261",
+  "generated_guest_names_checked_absent": 4746,
+  "registration_and_display_audio_entry_symbols_absent": true,
+  "symbols_sha256": "900c35ba24fed48ce510e62afc93f5fe7ab46fe04ff84e60dd2e0a2fb0f238d5",
+  "source_review": "Probe only initializes CPU VRAM, writes three authored constant color planes, submits authored sprites to CPU memory and reads four output pixels. Submit/DrawPrimitive/DrawSprite/SampleTexture/WritePixel reviewed; no display, presentation or audio initialization. Original guest names absent."
+}

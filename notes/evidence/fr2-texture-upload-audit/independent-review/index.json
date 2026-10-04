@@ -4,7 +4,11 @@
   "files": [
     "README.md",
     "jev-format3-format4-verify.json",
-    "jev-format3-format4-verify-request.json"
+    "jev-format3-format4-verify-request.json",
+    "mip-draw-object-identity-01.md",
+    "mip-draw-object-identity-01.json",
+    "check_mip_identity_root_01.py",
+    "root-mip-identity-validation-01.json"
   ],
   "ignored_scratch": {
     "script": ".scratch/mesh/codex-root/texture-independent-review/audit_clut4_first16.py",
@@ -77,5 +81,41 @@
       "bytes": 1791,
       "sha256": "0e9c24953f2260f3212b09829cab4b3973b7267826309f054c2a15b71fa2bc75"
     }
-  ]
+  ],
+  "mip_draw_object_identity": {
+    "status": "bounded static relationship; no per-draw mip-selection proof",
+    "note": "mip-draw-object-identity-01.md",
+    "note_sha256": "c9b57f0d23b5074679ed811e0c18104e9f1f112c26e5f62aab6dc507cda21104",
+    "metadata": "mip-draw-object-identity-01.json",
+    "metadata_sha256": "ac94d8716f002fff101dfd61a4caa67ac4a10da558fd0876757977e6d094869d",
+    "ignored_scratch_capture": ".scratch/mesh/codex-root/texture-independent-review/mip-loader-draw-object-identity-raw-02.json",
+    "ignored_scratch_capture_sha256": "47224a61953f22773aa0cad8e497f393bcde5193b9a43c273cbbf50996a8ff46",
+    "all56_counts": {
+      "files": 56,
+      "filtered_rows": 75,
+      "mip_count_1": 15,
+      "mip_count_2": 60,
+      "raw_selector_0": 56,
+      "raw_selector_1": 19
+    },
+    "limits": [
+      "Conditional valid-index/non-null path.",
+      "No per-draw LOD or actual sampling proof.",
+      "Static only; no game/emulator/runtime execution."
+    ],
+    "test_q_capture": ".scratch/mesh/codex-root/texture-independent-review/mip-test-q-path-raw-03.json",
+    "test_q_capture_sha256": "92c776cc0b507429b76b8fbe6e1c2e647454e29bbd050cfde30ca013fa575401",
+    "jev_test_fields_verify": ".scratch/mesh/codex-root/texture-independent-review/jev-mip-test-fields-verify-01.json",
+    "jev_test_fields_verify_sha256": "b724ed616920969b192a075fd9b72d24fff6da70d63a2035e700ad5a5cd15bf1",
+    "test_fields_verified": {
+      "selector_1": "TEST_1 ATST=GEQUAL, AREF=0x40",
+      "selector_2": "TEST_1 ATST=GREATER, AREF=0"
+    },
+    "q_source": "unresolved; 00228b38 is a separate direct caller of 0021b850 and submits an unmapped per-vertex buffer",
+    "root_validator": "check_mip_identity_root_01.py",
+    "root_validator_sha256": "5e63e08b9da0028c9a3e9deb726f73c70a30d3d87555cfe2d67fd520e56c0fbc",
+    "root_validation_result": "root-mip-identity-validation-01.json",
+    "root_validation_result_sha256": "90d12b6c958f27d2e0b9038272e1c4e6ac73f31dd4380196715716a15ae6f955",
+    "root_validation_scope": "276 instruction occurrences across 11 spans against saved text/bytes and unique ELF PT_LOAD mappings; exact PCPYLD macro line equals pristine public header (whole headers differ)"
+  }
 }

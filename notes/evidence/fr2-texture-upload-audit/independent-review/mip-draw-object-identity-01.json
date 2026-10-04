@@ -1,0 +1,56 @@
+{
+  "title": "Texture descriptor identity and draw-side TEX1/MIPTBP1 path",
+  "status": "bounded static relationship; no per-draw mip-selection proof",
+  "note": "mip-draw-object-identity-01.md",
+  "ignored_scratch": {
+    "capture_script": ".scratch/mesh/codex-root/texture-independent-review/capture_mip_loader_draw_identity_02.py",
+    "capture_script_sha256": "b15d460bc81d26eff26d105aabd9ec763b7762abb911b2b660ee8396fd68c333",
+    "raw_instruction_capture": ".scratch/mesh/codex-root/texture-independent-review/mip-loader-draw-object-identity-raw-02.json",
+    "raw_instruction_capture_sha256": "47224a61953f22773aa0cad8e497f393bcde5193b9a43c273cbbf50996a8ff46",
+    "all56_profile_result": ".scratch/mesh/codex-root/texture-independent-review/mip-sample-selector-counts-all56-02.json",
+    "all56_profile_result_sha256": "8fd895264453a1ea95947b01af2de5271a7fbe3fb81a994f494201fbc04eba41",
+    "jev_request_result": ".scratch/mesh/codex-root/texture-independent-review/jev-mip-object-identity-verify-01.json",
+    "jev_request_result_sha256": "f928c3b66a2adee004fa816c4a87d85730e63565136dcf738f8d42a76ddf3a9a",
+    "historical_identity_unproved": ".scratch/mesh/codex-root/texture-independent-review/mip-draw-state-path-raw-01.json",
+    "inventory_sha256": "1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "gsregs_sha256": "b063ccbf49f8b3cc351dbd32ea1ae9a60950c72f4ac4c3acb7465e30b8ceee32",
+    "pcpyld_header_sha256": "180b12c3230dafa29ed618fea3f754c67e9500341b426e5fde1f61d8f3be929b",
+    "test_q_capture": ".scratch/mesh/codex-root/texture-independent-review/mip-test-q-path-raw-03.json",
+    "test_q_capture_sha256": "92c776cc0b507429b76b8fbe6e1c2e647454e29bbd050cfde30ca013fa575401",
+    "test_q_capture_script": ".scratch/mesh/codex-root/texture-independent-review/capture_mip_test_q_path_03.py",
+    "test_q_capture_script_sha256": "2de44748e31f4d0d7767be858a077ae67497fca2e438ed34b177631c5fca8d8d",
+    "jev_test_fields_verify": ".scratch/mesh/codex-root/texture-independent-review/jev-mip-test-fields-verify-01.json",
+    "jev_test_fields_verify_sha256": "b724ed616920969b192a075fd9b72d24fff6da70d63a2035e700ad5a5cd15bf1"
+  },
+  "results": {
+    "archive_bound_files": 56,
+    "filtered_8x8_mip_rows": 75,
+    "mip_count_1": 15,
+    "mip_count_2": 60,
+    "raw_selector_0": 56,
+    "raw_selector_1": 19
+  },
+  "limits": [
+    "Valid indexed and non-null command path only.",
+    "No per-draw LOD evaluation or actual-sampling proof.",
+    "Static analysis only; no game/emulator/runtime execution."
+  ],
+  "test_fields": {
+    "raw_selector_1": {
+      "ATST": 5,
+      "ATST_name": "GEQUAL",
+      "AREF": 64
+    },
+    "raw_selector_2": {
+      "ATST": 6,
+      "ATST_name": "GREATER",
+      "AREF": 0
+    },
+    "ATE": "descriptor +0x38 bit0",
+    "ZTE": "set",
+    "ZTST": "global-dependent 1 or 2",
+    "register": "TEST_1 selector 0x47"
+  },
+  "q_source_status": "unresolved: 00228b38 directly calls 0021b850, builds and submits a 12-word-per-vertex buffer, and conditionally calls VU microprogram 0x268. The evidence does not map the two computed output words to GS Q or establish the VU input/output layout. This is a separate candidate textured path, not proof of Q flow for 0021d180."
+}
