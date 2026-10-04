@@ -57,8 +57,13 @@ class QualityTest(unittest.TestCase):
         result = self.measure({"00100000.c": TWO_ARGS, "00100100.c": CALLER, "00100200.c": WARNED})
         self.assertEqual(result["functions"], 3)
         self.assertEqual(result["undefined_type_tokens"], 4)
-        self.assertEqual(result["gp_unresolved"], {"tokens": 2, "functions": 1})
+        self.assertEqual(result["gp_unresolved"], {"tokens": 3, "functions": 1})
         self.assertEqual(result["warnings"], {"Subroutine does not return": 1, "Globals starting with": 1})
+
+    def test_gp_offset_names_count_as_unresolved_in_both_spellings(self):
+        text = "void f(void)\n{\n  uGpffff9118 = 1;\n  x = (&gp0xffffa920)[i];\n  pcGp00000010 = 0;\n  y = DAT_0028ee88;\n}\n"
+        result = self.measure({"00100400.c": text})
+        self.assertEqual(result["gp_unresolved"], {"tokens": 3, "functions": 1})
 
     def test_call_arity_is_compared_with_the_callee_header(self):
         result = self.measure({"00100000.c": TWO_ARGS, "00100100.c": CALLER, "00100200.c": WARNED})

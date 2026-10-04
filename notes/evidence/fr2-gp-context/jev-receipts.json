@@ -1,0 +1,22 @@
+{
+ "tool": "jev_verify",
+ "model": "typesafe/jev-1.13",
+ "verdicts": {
+  "removed all 13,609 gp names in 1,871 functions": "verified 0.99",
+  "no listing/body/name change; 3,583 non-gp functions identical": "verified 0.99",
+  "every gp offset lands in .sdata/.lit4/.sbss": "verified 0.95",
+  "warnings and undefined types reduced": "contradicted 0.93 (warnings +11, undefined +50)",
+  "correct types for all small-data globals": "unsupported (contradicted relation 0.75)",
+  "gp holds for every thread": "unsupported 0.63 (evidence silent)"
+ },
+ "decision": {
+  "tool": "jev_decide",
+  "selected": "program_gp_context",
+  "confidence": 0.91,
+  "rejected": [
+   "per_function_gp_context 0.07",
+   "post_process_names 0 (contradicted: changes names not analysis)",
+   "investigate_more 0"
+  ]
+ }
+}

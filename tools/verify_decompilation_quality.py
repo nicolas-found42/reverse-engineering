@@ -19,7 +19,7 @@ from evidence_common import Incomplete, write_result
 
 COMMENT = re.compile(r'/\*.*?\*/', re.DOTALL)
 UNDEFINED = re.compile(r'\bundefined[0-9]*\b')
-GP_TOKEN = re.compile(r'\bgp0x[0-9a-f]+')
+GP_TOKEN = re.compile(r'\bgp0x[0-9a-f]+|\b[a-zA-Z]{1,6}Gp[0-9a-f]{8}\b')
 WARNING = re.compile(r"WARNING: ([^\n]*?)(?: '| \*/|$)", re.MULTILINE)
 HEADER_NAME = re.compile(r'(\w+)\s*\(([^)]*)\)$', re.DOTALL)
 CALL = re.compile(r'\b([A-Za-z_]\w*)\(')

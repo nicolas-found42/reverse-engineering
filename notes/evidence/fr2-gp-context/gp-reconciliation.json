@@ -1,0 +1,66 @@
+{
+ "schema_version": 1,
+ "status": "pass",
+ "gp_value": "00295d70",
+ "gp_names_before": 13609,
+ "gp_names_after": 0,
+ "functions_with_gp_names_before": 1871,
+ "check_count": 6,
+ "passed_count": 6,
+ "checks": [
+  {
+   "check": "same function entries",
+   "passed": true,
+   "detail": {
+    "old": 5454,
+    "new": 5454
+   }
+  },
+  {
+   "check": "every function keeps size, blocks and instructions",
+   "passed": true,
+   "detail": []
+  },
+  {
+   "check": "functions without gp names keep identical pseudocode",
+   "passed": true,
+   "detail": {
+    "identical": 3583,
+    "changed": 0,
+    "examples": []
+   }
+  },
+  {
+   "check": "no gp-relative names remain",
+   "passed": true,
+   "detail": {
+    "before": 13609,
+    "after": 0,
+    "functions_still_named": []
+   }
+  },
+  {
+   "check": "resolved addresses match the gp prediction",
+   "passed": true,
+   "detail": {
+    "functions_with_gp_names": 1871,
+    "all_predicted_addresses_shown": 1870,
+    "mismatched": 1,
+    "mismatch_rate": 0.0005344735435595938,
+    "limit": 0.05,
+    "examples": [
+     "00107588"
+    ]
+   }
+  },
+  {
+   "check": "new manifest reports every function generated",
+   "passed": true,
+   "detail": {
+    "generated": 5454,
+    "failed": 0
+   }
+  }
+ ],
+ "scope": "decompiler context only; no identity, behavior or original-name claim"
+}
