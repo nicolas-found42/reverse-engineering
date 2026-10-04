@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source_commit": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+  "source_hashes": {
+    "ps2xRuntime/include/ps2_runtime_macros.h": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e",
+    "ps2xRecomp/src/lib/special_translator.cpp": "98adc0305effdd57ca34ea029070f117379bd7e78c9f8944a8e9276c8c7bd3cd",
+    "ps2xRecomp/src/lib/mmi_translator.cpp": "24deb4f0bc0004c42674e0340d80e50e6e676b326f11d6a2df3dd0b60319249f"
+  },
+  "dependency_sha256": "78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed",
+  "static_export": {
+    "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "function_count": 3446,
+    "instruction_inventory": {
+      "MULT": {
+        "count": 241,
+        "ordered_addresses_sha256": "7d6e5b1738872ae65198d1adf57181a4a4b6f5d2aacd32b9537a1d3e41429c19"
+      },
+      "MULTU": {
+        "count": 5,
+        "ordered_addresses_sha256": "bd728079c12bb6c3226ba531692e74316d1203467129f4b039982df620bda42e"
+      },
+      "MULT1": {
+        "count": 24,
+        "ordered_addresses_sha256": "0fbb839095c73977ecce58819abc6cf3cf3ed48c9f515e038503f3694191fb12"
+      },
+      "MADD": {
+        "count": 3,
+        "ordered_addresses_sha256": "992a189836187425ad71f297ec285cd76cd75a7d5c15dac57221d8e7fde0a03f"
+      }
+    },
+    "counts": {
+      "MULT": 241,
+      "MULTU": 5,
+      "MULT1": 24,
+      "MADD": 3
+    }
+  },
+  "verifier_sha256": "6b0ef4256093a6d496c49c94d6b7718b7689f4f8cc27075323c67130d5879b8f",
+  "probe_sha256": "0e930558c8f808b71c6639f5276bb5924a687d67c63083c5fe46dc6c2b27d60c",
+  "extracted_sha256": "4933f4806870eeab7a88e0f5ce4a0e1cc07b9d4fcd075f96e7bfd8dbde964243",
+  "templates": {
+    "MULT_RD": "{ int64_t result = (int64_t)GPR_S32(ctx, rs) * (int64_t)GPR_S32(ctx, rt); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); SET_GPR_S32(ctx, rd, (int32_t)result); }",
+    "MULT_R0": "{ int64_t result = (int64_t)GPR_S32(ctx, rs) * (int64_t)GPR_S32(ctx, rt); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); }",
+    "MULTU_RD": "{ uint64_t result = (uint64_t)GPR_U32(ctx, rs) * (uint64_t)GPR_U32(ctx, rt); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); SET_GPR_S32(ctx, rd, (int32_t)result); }",
+    "MULTU_R0": "{ uint64_t result = (uint64_t)GPR_U32(ctx, rs) * (uint64_t)GPR_U32(ctx, rt); ctx->lo = (uint64_t)(int64_t)(int32_t)result; ctx->hi = (uint64_t)(int64_t)(int32_t)(result >> 32); }",
+    "MULT1_RD": "{ int64_t result = (int64_t)GPR_S32(ctx, rs) * (int64_t)GPR_S32(ctx, rt); ctx->lo1 = (uint64_t)(int64_t)(int32_t)result; ctx->hi1 = (uint64_t)(int64_t)(int32_t)(result >> 32); SET_GPR_S32(ctx, rd, (int32_t)result); }",
+    "MULT1_R0": "{ int64_t result = (int64_t)GPR_S32(ctx, rs) * (int64_t)GPR_S32(ctx, rt); ctx->lo1 = (uint64_t)(int64_t)(int32_t)result; ctx->hi1 = (uint64_t)(int64_t)(int32_t)(result >> 32); }",
+    "MADD_RD": "{ uint64_t acc = Ps2HiLoToU64(ctx->hi, ctx->lo); int64_t prod = (int64_t)GPR_S32(ctx, rs) * (int64_t)GPR_S32(ctx, rt); int64_t result = acc + prod; ctx->lo = Ps2SignExt32ToU64((uint32_t)result); ctx->hi = Ps2SignExt32ToU64((uint32_t)(result >> 32)); SET_GPR_S32(ctx, rd, (int32_t)result); }",
+    "MADD_R0": "{ uint64_t acc = Ps2HiLoToU64(ctx->hi, ctx->lo); int64_t prod = (int64_t)GPR_S32(ctx, rs) * (int64_t)GPR_S32(ctx, rt); int64_t result = acc + prod; ctx->lo = Ps2SignExt32ToU64((uint32_t)result); ctx->hi = Ps2SignExt32ToU64((uint32_t)(result >> 32)); }"
+  },
+  "details": {
+    "names": [
+      "MULT_RD",
+      "MULT_R0",
+      "MULTU_RD",
+      "MULTU_R0",
+      "MULT1_RD",
+      "MULT1_R0",
+      "MADD_RD",
+      "MADD_R0"
+    ],
+    "checks": [
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440
+    ],
+    "mismatches": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "checks_per_emitted_branch": 201440,
+  "compiler_argv": [
+    "clang++",
+    "-std=c++20",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-fsanitize=undefined",
+    "-fno-sanitize-recover=all",
+    "-I",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-root-01",
+    "-isystem",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/integer_multiply_probe.cpp",
+    "-o",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-root-01/multiply-probe"
+  ],
+  "mutant": {
+    "names": [
+      "MULT_RD",
+      "MULT_R0",
+      "MULTU_RD",
+      "MULTU_R0",
+      "MULT1_RD",
+      "MULT1_R0",
+      "MADD_RD",
+      "MADD_R0"
+    ],
+    "checks": [
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440
+    ],
+    "mismatches": [
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440,
+      201440
+    ]
+  },
+  "manual": {
+    "url": "https://docs.alexrp.com/mips/ee_insns.pdf",
+    "printed_pages": {
+      "MADD": 142,
+      "MULT": 154,
+      "MULT1": 155,
+      "MULTU": 156
+    },
+    "pdf_sha256": "104205afc6f5a5071168d8bf693a6c8b4db9a02e1aa66eb51a828e8951f5c069"
+  },
+  "claim_limit": "Synthetic source-pinned expression checks for valid sign-extended 32-bit operands, low-64 HI/LO state, both register banks, rd=0, source aliases and register preservation. This does not test decoder behavior, asynchronous timing/interlocks, flags, execution of game code, or silicon equivalence."
+}

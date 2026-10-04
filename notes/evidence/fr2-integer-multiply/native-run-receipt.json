@@ -1,0 +1,76 @@
+{
+  "command": [
+    "python3",
+    "-m",
+    "tools.recomp.verify_integer_multiply",
+    "--upstream",
+    ".scratch/mesh/codex-root/PS2Recomp",
+    "--static-export",
+    ".scratch/evidence/static-export.json",
+    "--fresh-output-dir",
+    ".scratch/mesh/codex-root/integer-multiply-audit-04",
+    "--sse2neon",
+    ".scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src"
+  ],
+  "compile": {
+    "argv": [
+      "clang++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-audit-04",
+      "-isystem",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/integer_multiply_probe.cpp",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-audit-04/multiply-probe"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "baseline_run": {
+    "argv": [
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-audit-04/multiply-probe"
+    ],
+    "returncode": 0,
+    "stdout": "{\"names\":[\"MULT_RD\",\"MULT_R0\",\"MULTU_RD\",\"MULTU_R0\",\"MULT1_RD\",\"MULT1_R0\",\"MADD_RD\",\"MADD_R0\"],\"checks\":[201440,201440,201440,201440,201440,201440,201440,201440],\"mismatches\":[0,0,0,0,0,0,0,0]}\n",
+    "stderr": ""
+  },
+  "mutant_compile": {
+    "argv": [
+      "clang++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=undefined",
+      "-fno-sanitize-recover=all",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-audit-04/mutant",
+      "-isystem",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/recomp/integer_multiply_probe.cpp",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-audit-04/mutant/multiply-probe"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "mutant_run": {
+    "argv": [
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/integer-multiply-audit-04/mutant/multiply-probe"
+    ],
+    "returncode": 1,
+    "stdout": "{\"names\":[\"MULT_RD\",\"MULT_R0\",\"MULTU_RD\",\"MULTU_R0\",\"MULT1_RD\",\"MULT1_R0\",\"MADD_RD\",\"MADD_R0\"],\"checks\":[201440,201440,201440,201440,201440,201440,201440,201440],\"mismatches\":[201440,201440,201440,201440,201440,201440,201440,201440]}\n",
+    "stderr": ""
+  },
+  "result_sha256": "5e4230536d2a4c6ca9e6e8911b23a6fca75548dc3b9dc1b2af03ca0c1570f813",
+  "fresh_output": ".scratch/mesh/codex-root/integer-multiply-audit-04",
+  "claim_limit": "Synthetic source-pinned template checks only. No original game routine or emulator executed."
+}
