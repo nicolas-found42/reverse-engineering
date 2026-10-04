@@ -98,3 +98,11 @@ all256 I8 labels and16 I4 labels for both palette upload shapes. Its unrelated
 format4 row+14 error (2 instead of128) is retained as a superseded result; the
 selected PSM/CPSM fields were unchanged. See
 [root independent validation](root-independent-validation.json).
+
+The separate [static mip byte-count audit](mip-upload-static-audit/README.md)
+now reconciles all 56 archive-bound models: 4,941 levels, including 2,571 extra
+mips, and 79,708,000 equal source/predicted-transfer bytes. This establishes
+a descriptor and byte-count relationship. The decoder verified above still
+covers level zero; full mip record address semantics and pixel decoding remain
+open. The prior 54-file uppercase-glob result and incomplete abbreviated Jev
+receipt remain explicitly historical.

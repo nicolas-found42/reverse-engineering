@@ -1,0 +1,49 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "summary": {
+    "verified": 4,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "verdict": "verified",
+      "confidence": 1.0,
+      "action": "auto",
+      "supporting_evidence": "archive-bound-mip-result"
+    },
+    {
+      "id": "claim1",
+      "verdict": "verified",
+      "confidence": 1.0,
+      "action": "auto",
+      "supporting_evidence": "archive-bound-mip-result"
+    },
+    {
+      "id": "claim2",
+      "verdict": "verified",
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "archive-bound-palette-result"
+    },
+    {
+      "id": "claim3",
+      "verdict": "verified",
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "archive-bound-palette-result"
+    }
+  ],
+  "usage": {
+    "input_tokens": 2376,
+    "output_tokens": 525
+  },
+  "note": "These are fresh all-56 archive-bound claims, not a retry of the prior 54-file claims. Jev corroborates but does not replace archive/hash and deterministic checks.",
+  "receipt_completeness": "abbreviated_agent_reported_summary",
+  "receipt_limit": "The full original Jev result envelope, including its probability distributions and same_subject values, was not found in available scratch or transcript sources. This compact file preserves only the fields present in the recovered receipt; it is not a complete immutable raw result.",
+  "raw_result_recovery": "not_found"
+}

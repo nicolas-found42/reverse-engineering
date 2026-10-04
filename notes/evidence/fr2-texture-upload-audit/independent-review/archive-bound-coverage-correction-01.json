@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "purpose": "Reconcile the earlier uppercase-only texture palette scan against all archive-bound .ps2;1 models without replacing the historical 54-file receipt.",
+  "historical_54_file_scope": {
+    "method": "Path.rglob('*.PS2;1') on a case-sensitive filesystem",
+    "scratch_result": ".scratch/mesh/codex-root/texture-independent-review/independent-clut-upload-audit.json",
+    "scratch_result_sha256": "eba8ded52faee5a46b75374a07f786f5e105bd6ec189e559c4d651726482acb0",
+    "files": 54,
+    "textures": 2353,
+    "format4_0x400_palette_references": 19,
+    "format4_0x400_palette_references_in_group_A": 19
+  },
+  "archive_bound_all56_scope": {
+    "method": "Baseline.entries('.ps2;1') with Entry.load() length and SHA-256 checks against the pinned archive output.",
+    "profile": "fr2-pal-sles-517.05",
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+    "script": ".scratch/mesh/codex-root/texture-independent-review/audit_palette_references_all56.py",
+    "script_sha256": "eb568503da4bcd6ac3719213c91f4446be8a94122e0065cd412988046c1dcc3e",
+    "result": ".scratch/mesh/codex-root/texture-independent-review/independent-palette-references-all56.json",
+    "result_sha256": "0e7182f6ff2e1b4cc74ffa3160d6ebcf4935206e56cef82ee1ef0326647c1dd8",
+    "files": 56,
+    "textures": 2370,
+    "format1_textures": 350,
+    "format3_textures": 1551,
+    "format4_textures": 469,
+    "format4_0x400_palette_references": 19,
+    "format4_0x400_palette_references_in_group_A": 19,
+    "new_0x400_format4_references_vs_old_set": 0,
+    "omitted_archive_paths": [
+      "/3DDATA/debug.ps2;1",
+      "/3DDATA/misc.ps2;1"
+    ],
+    "textures_in_omitted_files": 17,
+    "palette_reference_set_reconciles_exactly": true
+  },
+  "scope_limits": [
+    "This reconciles archive-complete reference counts and group membership only.",
+    "It does not establish palette color semantics, RGBA correctness, or rendering."
+  ],
+  "jev": {
+    "request": "../mip-upload-static-audit/jev-mip-all56-coverage-verify-request.json",
+    "receipt": "../mip-upload-static-audit/jev-mip-all56-coverage-verify.json",
+    "outcome": "4 verified, 0 contradicted, 0 unsupported, 0 needing review; claims explicitly address archive-bound 56-file coverage.",
+    "receipt_completeness": "abbreviated_agent_reported_summary",
+    "complete_raw_result_found": false,
+    "receipt_note": "The linked request is preserved. The linked result is a compact recovered summary; the full original distributions and same_subject fields were not found. This is not a complete immutable Jev result envelope."
+  }
+}

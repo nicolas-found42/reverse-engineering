@@ -1,0 +1,69 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "summary": {
+    "verified": 6,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "verdict": "verified",
+      "confidence": 1.0,
+      "action": "auto",
+      "supporting_evidence": "corpus-static-audit"
+    },
+    {
+      "id": "claim1",
+      "verdict": "verified",
+      "confidence": 0.94,
+      "action": "auto",
+      "supporting_evidence": "loader-static"
+    },
+    {
+      "id": "claim2",
+      "verdict": "verified",
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "table-fields"
+    },
+    {
+      "id": "claim3",
+      "verdict": "verified",
+      "confidence": 0.98,
+      "action": "auto",
+      "supporting_evidence": "upload-static"
+    },
+    {
+      "id": "claim4",
+      "verdict": "verified",
+      "confidence": 0.95,
+      "action": "auto",
+      "supporting_evidence": "parser-limits"
+    },
+    {
+      "id": "claim5",
+      "verdict": "verified",
+      "confidence": 1.0,
+      "action": "auto",
+      "supporting_evidence": "scope"
+    }
+  ],
+  "usage": {
+    "input_tokens": 3846,
+    "output_tokens": 822
+  },
+  "note": "Compact durable receipt; use the linked exact request and ignored-scratch deterministic result to audit the bounded claims. Jev is corroboration, not proof.",
+  "receipt_limit": {
+    "kind": "abbreviated_agent_report",
+    "complete_immutable_tool_result": false,
+    "missing_fields": [
+      "full_probability_distributions",
+      "same_subject"
+    ],
+    "disposition": "Preserved historical 54-file summary only; the complete raw tool result is not bundled or indexed here. This is not treated as a complete calibrated judgment receipt."
+  }
+}

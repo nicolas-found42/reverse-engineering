@@ -1,0 +1,17 @@
+{
+  "tool": "jev_verify",
+  "arguments": {
+    "claims": [
+      "Using Baseline.entries('.ps2;1') and verifying each file against the pinned archive yields 56 model files and 2,370 texture records.",
+      "The archive-bound all-56 texture corpus has 4,941 levels and 2,571 extra mip levels; all levels satisfy the same static source-plane/transfer-byte equality profile with total 79,708,000 bytes.",
+      "The prior uppercase-glob scan covered 54 files and omitted only /3DDATA/debug.ps2;1 and /3DDATA/misc.ps2;1, containing 17 additional textures.",
+      "All 19 format-4 references to 0x400-byte palette blocks in the archive-bound all-56 corpus are in palette group A, and the all-56 set adds zero such references relative to the previous 54-file receipt."
+    ],
+    "evidence": [
+      {"id": "archive-bound-mip-result", "text": "Fresh static audit enumerated Baseline.entries('.ps2;1') and loaded each via Entry.load() archive byte/hash verification. Result: archive_bound_entry_count=56; model_files=56; textures=2370; levels=4941; extra mip uploads=2571; mip count distribution 0=1027,1=115,2=1228; source and predicted transfer bytes both 79,708,000. Every level passed assertions."},
+      {"id": "archive-bound-palette-result", "text": "Fresh all56 palette reconciliation used Baseline.entries('.ps2;1') and archive-verified file loads. It reports 56 archive entries, previous uppercase filesystem glob=54, omitted archive paths ['/3DDATA/debug.ps2;1','/3DDATA/misc.ps2;1'], 17 textures in the omitted files, all56 textures=2370, 19 format4 0x400 palette references, group A=19, prior ref set is a subset, full ref set adds zero references."},
+      {"id": "historical-scoped-results", "text": "The historical 54-file static mip result remains in scratch as independent-mip-upload-static-audit.json, and the corrected palette result was produced by the earlier 54-file uppercase glob scan. Those results are retained as scoped history; the new archive-bound receipts explicitly widen the measured corpus."},
+      {"id": "scope", "text": "These claims are about archive-bound static corpus inventory and descriptor byte-count checks only; no original game routine or emulator was executed, and no rendering claim is made."}
+    ]
+  }
+}
