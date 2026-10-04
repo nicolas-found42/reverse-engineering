@@ -2,7 +2,7 @@
 usage: make_batch_config.py EXPORT_DIR OUT_CONFIG SEEDS_JSON [REPORT_JSON]  (SEEDS_JSON: list of hex entries). Static only."""
 import json,hashlib,struct,sys
 from pathlib import Path
-sys.path.insert(0,'.scratch/mesh/codex-audit/frontier-3845-01')
+sys.path.insert(0,str(Path(__file__).resolve().parent))
 import seedlib
 export,out,seeds_p=sys.argv[1],Path(sys.argv[2]),sys.argv[3];report_p=Path(sys.argv[4]) if len(sys.argv)>4 else None
 seedlib.load(export);R=Path.cwd();exp=R/export

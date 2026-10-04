@@ -249,10 +249,11 @@ public class CreateEeCandidateV5 extends GhidraScript {
             req(fm.getFunctionCount() == INVENTORY_COUNT + SEEDS.size(), "function count did not increase by exactly the batch size");
             for (SeedCfg s : SEEDS) req(nextWordOk(s), "next word after " + s.entry + " is not in its pinned state after creation");
             phase("state-checks"); checkBatchDeltas(beforeRefs, beforeCalled, beforeCallers); phase("batch-deltas");
+            for (SeedCfg s : SEEDS) { Function p = fm.getFunctionAt(at(s.start)); req(p != null && p.getName().equals("candidate_ee_" + s.entry) && p.getBody().getNumAddresses() == s.bytes - 4L * s.padding.size(), "candidate absent or altered before transaction commit: " + s.entry); }
             commit = true;
         } finally { currentProgram.endTransaction(tx, commit); }
         JsonArray summary = new JsonArray();
-        for (SeedCfg s : SEEDS) { Function p = fm.getFunctionAt(at(s.start)); req(p != null && p.getName().equals("candidate_ee_" + s.entry) && p.getBody().getNumAddresses() == s.bytes - 4L * s.padding.size(), "candidate absent or altered after transaction commit: " + s.entry);
+        for (SeedCfg s : SEEDS) {
             JsonObject o = new JsonObject(); o.addProperty("entry", s.entry); o.addProperty("words", s.words); o.addProperty("padding_words", s.padding.size()); o.addProperty("decoded_preexisting_words", s.decoded.size()); o.addProperty("incoming_sites", s.incoming.size()); o.addProperty("next_state", s.nextState); JsonArray orr = new JsonArray(); for (String k : s.preOther) orr.add(k); o.add("non_call_references_into_entry", orr); JsonObject tf = new JsonObject(); for (Map.Entry<String,String> tj : s.tails.entrySet()) tf.addProperty(tj.getKey(), tj.getValue() + "|" + TAIL_FLOW.getOrDefault(tj.getKey(), "?")); o.add("tail_jumps_with_flow_type", tf); summary.add(o); }
         out.add("seeds", summary);
     }

@@ -1,15 +1,15 @@
 """Run do_batch.sh repeatedly; when the guard rejects, drop the seed named by the failure (an 8-hex address inside a seed span) and retry. Each retry uses a fresh byte-identical project copy; failed attempts are archived. Static only."""
-import json,re,subprocess,sys,shutil,time
+import json,os,re,subprocess,sys,shutil,time
 from pathlib import Path
 name,seeds,prev,base=sys.argv[1:5];maxit=int(sys.argv[5]) if len(sys.argv)>5 else 40
-D=Path('.scratch/mesh/codex-audit/frontier-3845-01');S=D/f'batch-{name}';proj=Path('ghidra-project')/f'codex-audit-ee-batch-{name}-proposal-01'
+PIPE=Path(__file__).resolve().parent;D=Path(os.environ.get('FR2_WORK','.scratch/mesh/codex-audit/frontier-3845-01'));S=D/f'batch-{name}';proj=Path('ghidra-project')/f'codex-audit-ee-batch-{name}-proposal-01'
 excl=json.loads((S/'exclude.json').read_text()) if (S/'exclude.json').exists() else []
 for it in range(maxit):
  if proj.exists():shutil.rmtree(proj)
  shutil.rmtree(S/'run',ignore_errors=True)
  for f in S.glob('export-*'):shutil.rmtree(f)
  (S/'verify-stdout.json').unlink(missing_ok=True);(S/'run').mkdir(parents=True,exist_ok=True)
- r=subprocess.run([str(D/'do_batch.sh'),name,seeds,prev,base],capture_output=True,text=True)
+ r=subprocess.run([str(PIPE/'do_batch.sh'),name,seeds,prev,base],capture_output=True,text=True)
  (S/f'iteration-{it:02d}.out').write_text(r.stdout+r.stderr)
  res=json.loads((S/'run/transaction-result.json').read_text()) if (S/'run/transaction-result.json').exists() else {}
  if res.get('status')=='created_batch_bounded_candidates':

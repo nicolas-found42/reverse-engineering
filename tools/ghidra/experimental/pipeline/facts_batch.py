@@ -1,5 +1,5 @@
-import json,collections,sys,glob,re
-S='.scratch/mesh/codex-audit/frontier-3845-01/batch-%s/'%sys.argv[1]
+import json,collections,os,sys,glob,re
+S=os.environ.get('FR2_WORK','.scratch/mesh/codex-audit/frontier-3845-01')+'/batch-%s/'%sys.argv[1]
 c=json.load(open(S+'config.json'));t=json.load(open(S+'run/transaction-result.json'));r=json.load(open(S+'reconciliation.json'));x=json.load(open(S+'root-export-check.json'));k=json.load(open(S+'root-config-check.json'));rep=json.load(open(S+'config-report.json'))
 seeds=c['seeds'];K=len(seeds);pad=sum(len(s.get('padding_words',[])) for s in seeds)
 print('K',K,'span words',sum(s['words'] for s in seeds),'padding',pad,'body words',sum(s['words'] for s in seeds)-pad,'decoded_pre',rep['decoded_words'],'with_incoming',rep['with_incoming'],'incoming_sites',sum(len(s['incoming']) for s in seeds),'checker',k['seed_count'],k['words_checked'],k['incoming_sites'])

@@ -1,5 +1,5 @@
 """Read-only raw-word structural walk from one seed without a preset window. Union semantics; no feasibility, identity or execution claim."""
-import json,struct,hashlib,sys
+import json,os,struct,hashlib,sys
 from pathlib import Path
 R=Path.cwd();elf_p=R/'games/ford-racing-2/extracted/SLES_517.05';elf=elf_p.read_bytes()
 exp=R/sys.argv[2];inv=json.loads((exp/'inventory.json').read_text());cov=json.loads((exp/'coverage.json').read_text())
@@ -61,5 +61,5 @@ while pending:
 lo,hi=min(seen),max(seen)+4
 gaps=[pc for pc in range(lo,hi,4) if pc not in seen]
 res={'seed':f'{seed:08x}','span':{'start':f'{lo:08x}','end_exclusive':f'{hi:08x}','bytes':hi-lo,'sha256':hashlib.sha256(elf[0x1000+lo-0x100000:0x1000+hi-0x100000]).hexdigest()},'reachable_count':len(seen),'span_words':(hi-lo)//4,'gap_words':[{'address':f'{pc:08x}','word':f'{get(pc):08x}'} for pc in gaps],'next_word':f'{get(hi):08x}','next_word_state':'owned '+owned[hi] if hi in owned else 'undefined' if hi in undef else 'other','edges':edges,'edge_counts':{k:sum(1 for e in edges if e['kind']==k) for k in sorted({e['kind'] for e in edges})},'computed_calls':[e['site'] for e in edges if e['kind']=='computed_call'],'tail_jumps':{e['site']:e['target'] for e in edges if e.get('tail_jump')},'delay_breaks':delay_breaks,'calls':[{'site':e['site'],'target':e['target'],'saved_entry':e['target'] in entries} for e in edges if e['kind']=='call'],'returns':[e['site'] for e in edges if e['kind']=='return'],'rejects':rejects,'zero_words_reached':[f'{pc:08x}' for pc in sorted(seen) if get(pc)==0],'scope':'Structural union walk; not feasible execution, identity, or exact original boundaries.'}
-out=R/f'.scratch/mesh/codex-audit/frontier-3845-01/cfg-{seed:08x}.json';out.write_text(json.dumps(res,indent=2)+'\n')
+out=R/Path(os.environ.get('FR2_WORK','.scratch/mesh/codex-audit/frontier-3845-01'))/f'cfg-{seed:08x}.json';out.write_text(json.dumps(res,indent=2)+'\n')
 print(json.dumps({k:res[k] for k in('seed','computed_calls','tail_jumps','delay_breaks','span','reachable_count','span_words','gap_words','next_word','next_word_state','edge_counts','calls','returns','rejects','zero_words_reached')},indent=1))

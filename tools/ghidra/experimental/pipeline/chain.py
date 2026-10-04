@@ -1,18 +1,18 @@
 """Run the single-seed pipeline repeatedly over feasible frontier seeds (lowest address first). Static only.
 usage: chain.py PREV_PROJECT_NAME BASE_EXPORT_DIR MAX_SEEDS  -> appends to chain-log.jsonl; stops at MAX or when no feasible seed remains."""
-import json,subprocess,sys,re
+import json,os,subprocess,sys,re
 from pathlib import Path
-D=Path('.scratch/mesh/codex-audit/frontier-3845-01');proj,export,maxn=sys.argv[1],sys.argv[2],int(sys.argv[3])
+PIPE=Path(__file__).resolve().parent;D=Path(os.environ.get('FR2_WORK','.scratch/mesh/codex-audit/frontier-3845-01'));proj,export,maxn=sys.argv[1],sys.argv[2],int(sys.argv[3])
 log=D/'chain-log.jsonl';blocked_p=D/'blocked.json';blocked=json.loads(blocked_p.read_text()) if blocked_p.exists() else {}
 def sh(*a):return subprocess.run(a,capture_output=True,text=True)
 done=0
 while done<maxn:
- r=sh('python3',str(D/'scan.py'),export,str(D/'scan-chain.json'));assert r.returncode==0,r.stderr
+ r=sh(sys.executable,str(PIPE/'scan.py'),export,str(D/'scan-chain.json'));assert r.returncode==0,r.stderr
  rows=json.loads((D/'scan-chain.json').read_text())['undefined_or_unowned_direct_transfers']
  cands=sorted((x['target'] for x in rows if x['op']=='jal' and x['target'] not in blocked))
  picked=None
  for t in cands:
-  r=sh('python3',str(D/'cfg_seed.py'),t,export)
+  r=sh(sys.executable,str(PIPE/'cfg_seed.py'),t,export)
   if r.returncode!=0:blocked[t]={'why':'cfg_seed error','detail':r.stderr[-300:]};continue
   c=json.loads((D/f'cfg-{t}.json').read_text())
   why=None
@@ -25,7 +25,7 @@ while done<maxn:
   picked=t;break
  blocked_p.write_text(json.dumps(blocked,indent=1,sort_keys=True)+'\n')
  if not picked:print('no feasible seed remains; blocked:',len(blocked));break
- r=sh(str(D/'do_seed.sh'),picked,proj,export)
+ r=sh(str(PIPE/'do_seed.sh'),picked,proj,export)
  ok=r.returncode==0 and 'EXPORT_DIR=' in r.stdout
  entry={'seed':picked,'ok':ok,'tail':r.stdout[-600:] if not ok else '', 'stderr':r.stderr[-400:] if not ok else ''}
  if ok:
