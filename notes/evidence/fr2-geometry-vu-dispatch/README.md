@@ -10,8 +10,9 @@ rendering semantics, or a serialized-coordinate scale.
 
 During initialization, `FUN_0022fc90` calls `FUN_0022fd48`, then
 `FUN_0022fda8`, then `FUN_00230180`, and finally tail-calls `FUN_001124c0`.
-The first helper sets up the guarded VIF1 upload chain documented in the
-[earlier VIF bundle](../fr2-geometry-vif-contract/README.md). `FUN_0022fda8`
+The initialization call anchors are preserved in `static-trace.json`; this
+sequence is separate from the per-object VIF writer traced in the
+[earlier bundle](../fr2-geometry-vif-contract/README.md). `FUN_0022fda8`
 stores `0x5cc` in the global at `gp-0x6dec`: its instructions materialize
 `0x2e60` and shift right by three. The object packet builder
 `FUN_00128ca0` later reads this global and ORs it with `0x14000000`, then
