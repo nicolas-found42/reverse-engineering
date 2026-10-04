@@ -1,0 +1,1356 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T221340Z-ed02db9b0e224fa1a0c498b72f6ecc88",
+  "check": "syscall-stubs",
+  "command": [
+    "tools/verify_syscall_stubs.py",
+    "--static-export",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--sdk-root",
+    ".scratch/mesh/codex-root/ps2sdk",
+    "--output",
+    ".scratch/evidence/syscall-stubs"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json": {
+      "bytes": 54860858,
+      "sha256": "29f08df42d6d0a1599ebd3a5c289efc1365fc07b309392fc2113cbefa437c4d8"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "stubs": [
+      {
+        "address": "001e98a0",
+        "number": 128,
+        "names": [
+          "_GetGsDxDyOffset"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea740",
+        "number": 0,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea750",
+        "number": 1,
+        "names": [
+          "ResetEE"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea760",
+        "number": 2,
+        "names": [
+          "SetGsCrt"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea770",
+        "number": 3,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea780",
+        "number": 4,
+        "names": [
+          "KExit"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea790",
+        "number": 5,
+        "names": [
+          "ResumeIntrDispatch"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea7a0",
+        "number": 6,
+        "names": [
+          "_LoadExecPS2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea7b0",
+        "number": 7,
+        "names": [
+          "_ExecPS2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea7c0",
+        "number": 8,
+        "names": [
+          "ResumeT3IntrDispatch"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea7d0",
+        "number": 9,
+        "names": [
+          "RFU009"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea7e0",
+        "number": 10,
+        "names": [
+          "AddSbusIntcHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea7f0",
+        "number": 11,
+        "names": [
+          "RemoveSbusIntcHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea800",
+        "number": 12,
+        "names": [
+          "Interrupt2Iop"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea810",
+        "number": 13,
+        "names": [
+          "SetVTLBRefillHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea820",
+        "number": 14,
+        "names": [
+          "SetVCommonHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea830",
+        "number": 15,
+        "names": [
+          "SetVInterruptHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea840",
+        "number": 16,
+        "names": [
+          "AddIntcHandler",
+          "AddIntcHandler2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea850",
+        "number": 16,
+        "names": [
+          "AddIntcHandler",
+          "AddIntcHandler2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea860",
+        "number": 17,
+        "names": [
+          "RemoveIntcHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea870",
+        "number": 18,
+        "names": [
+          "AddDmacHandler",
+          "AddDmacHandler2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea880",
+        "number": 18,
+        "names": [
+          "AddDmacHandler",
+          "AddDmacHandler2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea890",
+        "number": 19,
+        "names": [
+          "RemoveDmacHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea8a0",
+        "number": 20,
+        "names": [
+          "_EnableIntc"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea8b0",
+        "number": 21,
+        "names": [
+          "_DisableIntc"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea8c0",
+        "number": 22,
+        "names": [
+          "_EnableDmac"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea8d0",
+        "number": 23,
+        "names": [
+          "_DisableDmac"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea8e0",
+        "number": 252,
+        "names": [
+          "SetAlarm"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea8f0",
+        "number": 253,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea900",
+        "number": -26,
+        "names": [
+          "_iEnableIntc"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea910",
+        "number": -27,
+        "names": [
+          "_iDisableIntc"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea920",
+        "number": -28,
+        "names": [
+          "_iEnableDmac"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea930",
+        "number": -29,
+        "names": [
+          "_iDisableDmac"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea940",
+        "number": -254,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea950",
+        "number": -255,
+        "names": [
+          "iReleaseAlarm"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea960",
+        "number": 32,
+        "names": [
+          "CreateThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea970",
+        "number": 33,
+        "names": [
+          "DeleteThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea980",
+        "number": 34,
+        "names": [
+          "StartThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea990",
+        "number": 35,
+        "names": [
+          "ExitThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea9a0",
+        "number": 36,
+        "names": [
+          "ExitDeleteThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea9b0",
+        "number": 37,
+        "names": [
+          "TerminateThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea9c0",
+        "number": -38,
+        "names": [
+          "iTerminateThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea9d0",
+        "number": 39,
+        "names": [
+          "DisableDispatchThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea9e0",
+        "number": 40,
+        "names": [
+          "EnableDispatchThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ea9f0",
+        "number": 41,
+        "names": [
+          "ChangeThreadPriority"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa00",
+        "number": -42,
+        "names": [
+          "iChangeThreadPriority"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa10",
+        "number": 43,
+        "names": [
+          "RotateThreadReadyQueue"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa20",
+        "number": -44,
+        "names": [
+          "_iRotateThreadReadyQueue"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa30",
+        "number": 45,
+        "names": [
+          "ReleaseWaitThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa40",
+        "number": -46,
+        "names": [
+          "iReleaseWaitThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa50",
+        "number": 47,
+        "names": [
+          "GetThreadId"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa60",
+        "number": 48,
+        "names": [
+          "ReferThreadStatus"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa70",
+        "number": -49,
+        "names": [
+          "iReferThreadStatus"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa80",
+        "number": 50,
+        "names": [
+          "SleepThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaa90",
+        "number": 51,
+        "names": [
+          "WakeupThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaaa0",
+        "number": -52,
+        "names": [
+          "_iWakeupThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaab0",
+        "number": 53,
+        "names": [
+          "CancelWakeupThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaac0",
+        "number": -54,
+        "names": [
+          "iCancelWakeupThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaad0",
+        "number": 55,
+        "names": [
+          "SuspendThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaae0",
+        "number": -56,
+        "names": [
+          "_iSuspendThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaaf0",
+        "number": 57,
+        "names": [
+          "ResumeThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab00",
+        "number": -58,
+        "names": [
+          "iResumeThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab10",
+        "number": 59,
+        "names": [
+          "RFU059"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab20",
+        "number": 60,
+        "names": [
+          "RFU060",
+          "SetupThread"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab30",
+        "number": 61,
+        "names": [
+          "RFU061",
+          "SetupHeap"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab40",
+        "number": 62,
+        "names": [
+          "EndOfHeap"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab50",
+        "number": 63,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab60",
+        "number": 64,
+        "names": [
+          "CreateSema"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab70",
+        "number": 65,
+        "names": [
+          "DeleteSema"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab80",
+        "number": 66,
+        "names": [
+          "SignalSema"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eab90",
+        "number": -67,
+        "names": [
+          "iSignalSema"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaba0",
+        "number": 68,
+        "names": [
+          "WaitSema"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eabb0",
+        "number": 69,
+        "names": [
+          "PollSema"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eabc0",
+        "number": -70,
+        "names": [
+          "iPollSema"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eabd0",
+        "number": 71,
+        "names": [
+          "ReferSemaStatus"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eabe0",
+        "number": -72,
+        "names": [
+          "iReferSemaStatus"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eabf0",
+        "number": 73,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac00",
+        "number": 74,
+        "names": [
+          "SetOsdConfigParam"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac10",
+        "number": 75,
+        "names": [
+          "GetOsdConfigParam"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac20",
+        "number": 76,
+        "names": [
+          "GetGsHParam"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac30",
+        "number": 77,
+        "names": [
+          "GetGsVParam"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac40",
+        "number": 78,
+        "names": [
+          "SetGsHParam"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac50",
+        "number": 79,
+        "names": [
+          "SetGsVParam"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac60",
+        "number": 80,
+        "names": [
+          "CreateEventFlag"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac70",
+        "number": 81,
+        "names": [
+          "DeleteEventFlag"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac80",
+        "number": 82,
+        "names": [
+          "SetEventFlag"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eac90",
+        "number": -83,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaca0",
+        "number": 84,
+        "names": [
+          "xlaunch"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eacb0",
+        "number": -85,
+        "names": [
+          "iPutTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eacc0",
+        "number": 86,
+        "names": [
+          "_SetTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eacd0",
+        "number": 87,
+        "names": [
+          "GetTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eace0",
+        "number": -88,
+        "names": [
+          "iProbeTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eacf0",
+        "number": 89,
+        "names": [
+          "ExpandScratchPad"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead00",
+        "number": -90,
+        "names": [],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead10",
+        "number": 91,
+        "names": [
+          "GetEntryAddress"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead20",
+        "number": 92,
+        "names": [
+          "EnableIntcHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead30",
+        "number": -92,
+        "names": [
+          "iEnableIntcHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead40",
+        "number": 93,
+        "names": [
+          "DisableIntcHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead50",
+        "number": -93,
+        "names": [
+          "iDisableIntcHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead60",
+        "number": 94,
+        "names": [
+          "EnableDmacHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead70",
+        "number": -94,
+        "names": [
+          "iEnableDmacHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead80",
+        "number": 95,
+        "names": [
+          "DisableDmacHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001ead90",
+        "number": -95,
+        "names": [
+          "iDisableDmacHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eada0",
+        "number": 96,
+        "names": [
+          "KSeg0"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eadb0",
+        "number": 97,
+        "names": [
+          "EnableCache"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eadc0",
+        "number": 98,
+        "names": [
+          "DisableCache"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eadd0",
+        "number": 99,
+        "names": [
+          "GetCop0"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eade0",
+        "number": 100,
+        "names": [
+          "FlushCache"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eadf0",
+        "number": 102,
+        "names": [
+          "CpuConfig"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae00",
+        "number": -103,
+        "names": [
+          "iGetCop0"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae10",
+        "number": -104,
+        "names": [
+          "iFlushCache"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae20",
+        "number": -106,
+        "names": [
+          "iCpuConfig"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae30",
+        "number": 107,
+        "names": [
+          "sceSifStopDma",
+          "SifStopDma"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae40",
+        "number": 108,
+        "names": [
+          "SetCPUTimerHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae50",
+        "number": 109,
+        "names": [
+          "SetCPUTimer"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae60",
+        "number": 110,
+        "names": [
+          "SetOsdConfigParam2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae70",
+        "number": 111,
+        "names": [
+          "GetOsdConfigParam2"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae80",
+        "number": 112,
+        "names": [
+          "GsGetIMR"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eae90",
+        "number": -112,
+        "names": [
+          "iGsGetIMR"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaea0",
+        "number": 113,
+        "names": [
+          "GsPutIMR"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaeb0",
+        "number": -113,
+        "names": [
+          "iGsPutIMR"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaec0",
+        "number": 114,
+        "names": [
+          "SetPgifHandler"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaed0",
+        "number": 115,
+        "names": [
+          "SetVSyncFlag"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaee0",
+        "number": 116,
+        "names": [
+          "SetSyscall"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaef0",
+        "number": 117,
+        "names": [
+          "_print"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf00",
+        "number": 118,
+        "names": [
+          "sceSifDmaStat",
+          "SifDmaStat"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf10",
+        "number": -118,
+        "names": [
+          "isceSifDmaStat",
+          "iSifDmaStat"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf20",
+        "number": 119,
+        "names": [
+          "sceSifSetDma",
+          "SifSetDma"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf30",
+        "number": -119,
+        "names": [
+          "isceSifSetDma",
+          "iSifSetDma"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf40",
+        "number": 120,
+        "names": [
+          "sceSifSetDChain",
+          "SifSetDChain"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf50",
+        "number": -120,
+        "names": [
+          "isceSifSetDChain",
+          "iSifSetDChain"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf60",
+        "number": 121,
+        "names": [
+          "sceSifSetReg",
+          "SifSetReg"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf70",
+        "number": 122,
+        "names": [
+          "sceSifGetReg",
+          "SifGetReg"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf80",
+        "number": 123,
+        "names": [
+          "_ExecOSD"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eaf90",
+        "number": 124,
+        "names": [
+          "Deci2Call"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eafa0",
+        "number": 125,
+        "names": [
+          "PSMode"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eafb0",
+        "number": 126,
+        "names": [
+          "MachineType"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eafc0",
+        "number": 127,
+        "names": [
+          "GetMemorySize"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001eafd0",
+        "number": 130,
+        "names": [
+          "_InitTLB"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f26a8",
+        "number": 90,
+        "names": [
+          "Copy"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2730",
+        "number": 131,
+        "names": [
+          "FindAddress"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2878",
+        "number": 116,
+        "names": [
+          "SetSyscall"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f28c8",
+        "number": 116,
+        "names": [
+          "SetSyscall"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f28d8",
+        "number": 90,
+        "names": [
+          "Copy"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2920",
+        "number": 91,
+        "names": [
+          "GetEntryAddress"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2a48",
+        "number": 90,
+        "names": [
+          "Copy"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2a88",
+        "number": 116,
+        "names": [
+          "SetSyscall"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2ce8",
+        "number": 116,
+        "names": [
+          "SetSyscall"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2cf8",
+        "number": 90,
+        "names": [
+          "Copy"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f2d40",
+        "number": 91,
+        "names": [
+          "GetEntryAddress"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3838",
+        "number": 90,
+        "names": [
+          "Copy"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3880",
+        "number": 91,
+        "names": [
+          "GetEntryAddress"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3890",
+        "number": 116,
+        "names": [
+          "SetSyscall"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3968",
+        "number": 85,
+        "names": [
+          "PutTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3978",
+        "number": -85,
+        "names": [
+          "iPutTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3988",
+        "number": 86,
+        "names": [
+          "_SetTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f39c8",
+        "number": -86,
+        "names": [
+          "iSetTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f39d8",
+        "number": 87,
+        "names": [
+          "GetTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f39e8",
+        "number": -87,
+        "names": [
+          "iGetTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f39f8",
+        "number": 88,
+        "names": [
+          "ProbeTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3a08",
+        "number": -88,
+        "names": [
+          "iProbeTLBEntry"
+        ],
+        "ownership": "saved_function"
+      },
+      {
+        "address": "001f3a18",
+        "number": 89,
+        "names": [
+          "ExpandScratchPad"
+        ],
+        "ownership": "saved_function"
+      }
+    ],
+    "summary": {
+      "stubs": 162,
+      "saved_function": 162,
+      "partial": 0,
+      "unowned": 0,
+      "unknown_number": 8,
+      "ambiguous": 15
+    },
+    "whole_game_decompiled": false,
+    "claim_limits": [
+      "Names are candidates from the public PS2SDK syscall numbers, not verified original symbols.",
+      "The kernel library version the game linked is not known; aliases are all listed.",
+      "A stub shape and number establish a kernel call wrapper, not what the BIOS does."
+    ],
+    "sdk": {
+      "commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+      "header_sha256": "573f0c3276eaae064f0da04990126133b434259b3b235e53ed8f013694300edc"
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 24896,
+      "sha256": "584ba4ff20d85551a8bad4e778013ff7d54aab31f49df42f6e37e7966cd98d59"
+    }
+  }
+}

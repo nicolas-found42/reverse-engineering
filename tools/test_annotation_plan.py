@@ -56,3 +56,16 @@ class PlanTest(unittest.TestCase):
         entry = {e["entry"]: e for e in build_plan(SOURCE_MAP, stubs, SHA)["entries"]}["00001000"]
         self.assertIn("../m/a.c", entry["comment"])
         self.assertIn("SetGsCrt", entry["comment"])
+
+
+class DuplicateStubTest(unittest.TestCase):
+    def test_two_stubs_with_the_same_sdk_name_are_not_renamed_so_names_stay_unique(self):
+        stubs = {"stubs": [
+            {"address": "00002000", "number": 2, "names": ["SetGsCrt"], "ownership": "saved_function"},
+            {"address": "00002100", "number": 2, "names": ["SetGsCrt"], "ownership": "saved_function"},
+            {"address": "00002200", "number": 3, "names": ["Other"], "ownership": "saved_function"}]}
+        plan = {e["entry"]: e for e in build_plan({"files": [], "string_attribution": {"functions": []}}, stubs, SHA)["entries"]}
+        self.assertNotIn("rename", plan["00002000"])
+        self.assertNotIn("rename", plan["00002100"])
+        self.assertIn("SetGsCrt", plan["00002100"]["comment"])
+        self.assertEqual(plan["00002200"]["rename"], "ps2sdk_Other")

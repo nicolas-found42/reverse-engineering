@@ -9,6 +9,7 @@ original symbol. The plan is data for a guarded Ghidra transaction; nothing is
 applied here and no game code is run.
 """
 import argparse
+import collections
 import json
 import re
 from pathlib import Path
@@ -41,6 +42,8 @@ def build_plan(source_map: dict, stubs: dict, executable_sha256: str) -> dict:
             'not a verified original symbol.')
         if len(names) == 1 and not PLACEHOLDER.match(names[0]):
             renames[entry] = PREFIX + names[0]
+    taken = collections.Counter(renames.values())
+    renames = {entry: name for entry, name in renames.items() if taken[name] == 1}
     entries = []
     for entry in sorted(comments):
         row = {'entry': entry, 'comment': '\n'.join(comments[entry])}

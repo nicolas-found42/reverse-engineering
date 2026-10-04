@@ -1,0 +1,61 @@
+{
+ "schema_version": 1,
+ "status": "pass",
+ "plan_entries": 665,
+ "renames": 112,
+ "check_count": 8,
+ "passed_count": 8,
+ "checks": [
+  {
+   "check": "same function count",
+   "passed": true,
+   "detail": {
+    "old": 5454,
+    "new": 5454
+   }
+  },
+  {
+   "check": "same entries",
+   "passed": true,
+   "detail": null
+  },
+  {
+   "check": "every function keeps size, blocks and instruction address/text/bytes",
+   "passed": true,
+   "detail": []
+  },
+  {
+   "check": "names change only as planned",
+   "passed": true,
+   "detail": []
+  },
+  {
+   "check": "planned renames present",
+   "passed": true,
+   "detail": 112
+  },
+  {
+   "check": "every function has a pseudocode file in both exports",
+   "passed": true,
+   "detail": []
+  },
+  {
+   "check": "pseudocode identical after stripping comments and mapping planned names back",
+   "passed": true,
+   "detail": {
+    "identical": 5454,
+    "differ": 0,
+    "examples": []
+   }
+  },
+  {
+   "check": "new manifest reports every function generated",
+   "passed": true,
+   "detail": {
+    "generated": 5454,
+    "failed": 0
+   }
+  }
+ ],
+ "scope": "name and comment annotation only; no identity, behavior or original-name claim"
+}

@@ -1,6 +1,6 @@
 """Compare two exports around one guarded annotation. usage: check_annotation.py PLAN OLD_EXPORT NEW_EXPORT OUT_JSON
 Functions, instruction bytes and text must be identical; names may change only as planned; pseudocode must match once
-comments are stripped and planned names are mapped back. Static only."""
+comments are stripped, planned names are mapped back and all whitespace is removed (a longer name re-wraps lines). Static only."""
 import json,re,sys
 from pathlib import Path
 plan_p,old_p,new_p,out_p=sys.argv[1:5]
@@ -18,13 +18,13 @@ check('every function keeps size, blocks and instruction address/text/bytes',not
 badname=[e for e in of if e in nf and nf[e]['name']!=renames.get(e,of[e]['name'])]
 check('names change only as planned',not badname,badname[:10])
 check('planned renames present',all(nf[e]['name']==n for e,n in renames.items() if e in nf),len(renames))
-rev={n:'FUN_'+e for e,n in renames.items()}
+rev={n:of[e]['name'] for e,n in renames.items() if e in of}
 pat=re.compile('|'.join(re.escape(n) for n in sorted(rev,key=len,reverse=True))) if rev else None
 COM=re.compile(r'/\*.*?\*/',re.S)
 def norm(t,m=False):
     t=COM.sub('',t)
     if m and pat: t=pat.sub(lambda x:rev[x.group(0)],t)
-    return ' '.join(t.split())
+    return ''.join(t.split())
 differ=[];same=0;missing=[]
 for e in of:
     po=old/'decompilation/functions'/f'{e}.c';pn=new/'decompilation/functions'/f'{e}.c'

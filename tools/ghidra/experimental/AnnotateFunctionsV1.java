@@ -12,7 +12,7 @@ import java.util.*;
 
 /**
  * Experimental guarded annotation (V1). One transaction applies a SHA-pinned plan of function plate comments and candidate
- * renames to saved functions. A rename is allowed only on a function whose name is still the default FUN_xxxxxxxx; a comment
+ * renames to saved functions. A rename is allowed only on a function whose name is still a default (FUN_xxxxxxxx or the batch guard's candidate_ee_xxxxxxxx); a comment
  * only on a function without one. Afterwards every function's entry, body and instruction count must be unchanged and only
  * the planned names and comments may differ; any drift rolls the transaction back. No identity claim is made.
  */
@@ -59,7 +59,8 @@ public class AnnotateFunctionsV1 extends GhidraScript {
                 req(before.get(entry).comment == null || before.get(entry).comment.isEmpty(), "function already has a comment: " + entry);
                 comments.put(entry, o.get("comment").getAsString());
                 if (o.has("rename")) {
-                    req(before.get(entry).name.equals("FUN_" + entry), "rename target is not a default-named function: " + entry);
+                    String current = before.get(entry).name;
+                    req(current.equals("FUN_" + entry) || current.equals("candidate_ee_" + entry), "rename target is not a default-named function: " + entry);
                     renames.put(entry, o.get("rename").getAsString());
                 }
             }
