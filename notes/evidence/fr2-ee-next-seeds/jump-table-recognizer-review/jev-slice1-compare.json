@@ -1,0 +1,62 @@
+{
+  "tool": "jev_compare",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "overall": {
+    "relation": "same_fact",
+    "probabilities": {
+      "different_facts": 0,
+      "same_fact": 1,
+      "contradicts": 0
+    },
+    "confidence": 1,
+    "margin": 1,
+    "decision": "auto"
+  },
+  "aspects": [
+    {
+      "aspect": "seed and site counts",
+      "relation": "same_fact",
+      "probabilities": {
+        "different_facts": 0,
+        "same_fact": 1,
+        "contradicts": 0
+      },
+      "confidence": 1,
+      "margin": 1,
+      "decision": "auto"
+    },
+    {
+      "aspect": "matched count",
+      "relation": "same_fact",
+      "probabilities": {
+        "different_facts": 0,
+        "same_fact": 1,
+        "contradicts": 0
+      },
+      "confidence": 1,
+      "margin": 1,
+      "decision": "auto"
+    },
+    {
+      "aspect": "saved-function change scope",
+      "relation": "same_fact",
+      "probabilities": {
+        "different_facts": 0,
+        "same_fact": 1,
+        "contradicts": 0
+      },
+      "confidence": 1,
+      "margin": 1,
+      "decision": "auto"
+    }
+  ],
+  "thresholds": {
+    "auto_accept": 0.85,
+    "minimum_margin": 0.5
+  },
+  "usage": {
+    "input_tokens": 875,
+    "output_tokens": 173
+  }
+}

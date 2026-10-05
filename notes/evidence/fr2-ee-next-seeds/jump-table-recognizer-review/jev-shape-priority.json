@@ -1,0 +1,46 @@
+{
+  "tool": "jev_rerank",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "query": "Order further static investigation of unrecognized switch sites by likelihood of a small safe extension to the verified local table profile. Keep unresolved bounds fail closed.",
+  "summary": {
+    "candidates": 5,
+    "returned": 5
+  },
+  "ranked": [
+    {
+      "rank": 1,
+      "id": "split_guard",
+      "relevance": 0.83,
+      "text": "One site 0x20ae54: SLTIU in earlier branch delay, multiple intervening branches and flag reuse; local dispatch path needs further proof."
+    },
+    {
+      "rank": 2,
+      "id": "cop1",
+      "relevance": 0.77,
+      "text": "One site 0x11830c: SLTIU/BEQ shape includes MTC1 COP1 rs4, which writes floating register but is conservatively unmodelled."
+    },
+    {
+      "rank": 3,
+      "id": "call_bound",
+      "relevance": 0.72,
+      "text": "One site 0x175cbc: call result then BEQ; bounded window has no local SLTIU."
+    },
+    {
+      "rank": 4,
+      "id": "likely_simple",
+      "relevance": 0.63,
+      "text": "One site 0x11bae0: SLTIU plus BEQL, delay LUI unrelated to index, otherwise shift/table/load/jump."
+    },
+    {
+      "rank": 5,
+      "id": "likely_index",
+      "relevance": 0.63,
+      "text": "One site 0x123cb4: BEQL taken delay overwrites bounded index, requiring annul semantics to exclude that write on dispatch path."
+    }
+  ],
+  "usage": {
+    "input_tokens": 806,
+    "output_tokens": 94
+  }
+}

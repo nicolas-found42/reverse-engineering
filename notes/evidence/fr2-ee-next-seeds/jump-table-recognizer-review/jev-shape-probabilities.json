@@ -1,0 +1,29 @@
+{
+  "tool": "jev_noul",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "status": "ok",
+  "results": [
+    {
+      "id": "proposition0",
+      "proposition": "The unrecognized JR at 0x175cbc could be table dispatch whose index bound is established by a called routine.",
+      "probability": 0.51,
+      "label": "uncertain",
+      "auto": false
+    },
+    {
+      "id": "proposition1",
+      "proposition": "Supporting branch-likely bounds checks would require explicit handling of an index write in the annulled delay slot.",
+      "probability": 0.73,
+      "label": "uncertain",
+      "auto": false
+    }
+  ],
+  "thresholds": {
+    "auto_accept": 0.85
+  },
+  "usage": {
+    "input_tokens": 664,
+    "output_tokens": 46
+  }
+}

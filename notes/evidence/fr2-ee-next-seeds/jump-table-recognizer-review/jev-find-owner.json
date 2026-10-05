@@ -1,0 +1,19 @@
+{
+  "tool": "jev_find",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "query": "Which script owns independent re-derivation of schema-2 batch candidates from raw executable bytes and coverage, before any Ghidra modification?",
+  "exists": 0.96,
+  "exists_verdict": "answered",
+  "top": [
+    {
+      "id": "check_batch_config_root.py",
+      "probability": 1,
+      "text": "Independently reads ELF PT_LOAD, decodes and traverses every pinned schema-2 candidate, checks hashes and coverage states, rescans incoming references."
+    }
+  ],
+  "usage": {
+    "input_tokens": 599,
+    "output_tokens": 73
+  }
+}

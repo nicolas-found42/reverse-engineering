@@ -1,0 +1,22 @@
+{
+  "tool": "jev_screen",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "probabilities": {
+    "injection": 0.02,
+    "substance": 0.88,
+    "relevance": 0.89
+  },
+  "thresholds": {
+    "block_at": 0.75,
+    "review_at": 0.25
+  },
+  "recommendation": {
+    "action": "pass",
+    "reason": "no signals above thresholds"
+  },
+  "usage": {
+    "input_tokens": 4663,
+    "output_tokens": 57
+  }
+}

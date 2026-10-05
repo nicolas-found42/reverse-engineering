@@ -1,0 +1,57 @@
+{
+  "tool": "jev_decide",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "recommendation": {
+    "selected": "reject_owned",
+    "escaped": false,
+    "confidence": 0.55,
+    "probabilities": {
+      "accept_interior": 0,
+      "reject_owned": 0.62,
+      "entry_tail": 0.37,
+      "investigate": 0.01,
+      "none": 0,
+      "ask_user": 0
+    },
+    "contradicted_requirements": []
+  },
+  "requirements_checked": 2,
+  "checks": [
+    {
+      "candidate": "reject_owned",
+      "requirement": 0,
+      "answer": "supported"
+    },
+    {
+      "candidate": "reject_owned",
+      "requirement": 1,
+      "answer": "supported"
+    },
+    {
+      "candidate": "entry_tail",
+      "requirement": 0,
+      "answer": "supported"
+    },
+    {
+      "candidate": "entry_tail",
+      "requirement": 1,
+      "answer": "contradicted"
+    },
+    {
+      "candidate": "accept_interior",
+      "requirement": 0,
+      "answer": "contradicted"
+    },
+    {
+      "candidate": "accept_interior",
+      "requirement": 1,
+      "answer": "contradicted"
+    }
+  ],
+  "warnings": [],
+  "usage": {
+    "input_tokens": 1576,
+    "output_tokens": 335
+  }
+}
