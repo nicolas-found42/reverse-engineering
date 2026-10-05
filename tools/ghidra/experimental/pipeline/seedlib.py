@@ -77,6 +77,18 @@ def walk(seed_hex,LIMIT=0x2000):
      elif k in('jump','unconditional_branch'):pending.extend(((pc+4,True),(t,False)))
      elif k=='return':pending.append((pc+4,True))
     lo,hi=min(seen),max(seen)+4
+    # The terminal exception for spans ending in an in-span jump exists only for
+    # a shared return: when the last reachable word is an in-span jump or
+    # unconditional branch, its exact target must be a reached return word. A
+    # looping terminal transfer (notably the last case jumping to itself) is
+    # rejected. This is a walk-level scope rule, not feasibility evidence.
+    if jump_tables:
+     lastw=get(hi-8);lop,lastt=dec(hi-8,lastw)[0],None
+     if lop in('jump','unconditional_branch'):
+      lastt=dec(hi-8,lastw)[1]
+      rets={int(e['site'],16) for e in edges if e['kind']=='return'}
+      if lastt is not None and lo<=lastt<hi and lastt not in rets:
+       rejects.append({'address':f'{hi-8:08x}','target':f'{lastt:08x}','why':'terminal transfer is neither the last return, a pinned tail jump, nor a jump to a shared return'})
     # Every path into the dispatch must enter at its bounds instruction.
     for table in jump_tables:
      guard,site=int(table['guard_site'],16),int(table['site'],16)

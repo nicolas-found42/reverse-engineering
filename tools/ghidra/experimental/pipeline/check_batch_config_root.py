@@ -117,6 +117,18 @@ for s in C['seeds']:
  JT={p['site']:p for p in s.get('jump_tables',[])};assert len(JT)==len(s.get('jump_tables',[]))
  assert w(END-8)==0x03e00008 or (f'{END-8:08x}' in s['tail_jumps'] and w(END-8)>>26==2) or (JT and flow(w(END-8)) in('jump','unconditional_branch','computed_jump'))
  CC=set(s['computed_calls']);TJ=s['tail_jumps'];DB=set(s['delay_breaks'])
+ # Independent re-derivation of the terminal exception: when the last reachable
+ # word is an in-span jump/unconditional-branch/switch, its exact target must be
+ # a word the checker itself classifies as a return (JR RA), i.e. a shared
+ # return. A looping terminal transfer (the last case jumping to itself) fails
+ # this re-derivation. Matches the walker scope rule without importing it.
+ JTL=s.get('jump_tables') or []
+ if JTL and w(END-8)!=0x03e00008 and f'{END-8:08x}' not in TJ:
+  k=flow(w(END-8))
+  if k in('jump','unconditional_branch'):
+   t=((END-4)&0xf0000000)|((w(END-8)&0x3ffffff)<<2) if k!='unconditional_branch' else END-4+struct.unpack('<h',struct.pack('<H',w(END-8)&0xffff))[0]*4
+   if START<=t<END and w(t)!=0x03e00008:
+    raise AssertionError((s['entry'],'shared-return terminal exception does not re-derive: the in-span terminal transfer does not target a JR RA word',hex(t)))
  seen={};edges=[];breaks=[];switches={};q=collections.deque([(START,False)])
  while q:
   pc,d=q.popleft();assert START<=pc<END and pc%4==0

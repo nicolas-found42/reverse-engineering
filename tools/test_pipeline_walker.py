@@ -89,3 +89,19 @@ class SwitchWalkerTest(unittest.TestCase):
         with self.fixture(words=words,targets=[BASE+44,BASE+44]):
             result=seedlib.walk(f'{BASE:08x}')
         self.assertTrue(result['rejects'])
+
+    def test_the_last_switch_case_cannot_loop_to_itself(self):
+        # One case returns; the last case jumps to itself. The terminal exception
+        # exists for a shared return, so a looping terminal transfer must reject.
+        words=list(self.words());words[11]=2 << 26 | ((BASE+44) >> 2)
+        with self.fixture(words=words,targets=[BASE+36,BASE+44]):
+            result=seedlib.walk(f'{BASE:08x}')
+        self.assertIn('terminal transfer is neither the last return, a pinned tail jump, nor a jump to a shared return',
+                      [r['why'] for r in result['rejects']])
+
+    def test_the_last_case_keeping_a_jump_to_a_shared_return_still_walks(self):
+        # The intended exception: the last case jumps to a word whose class is a reached return.
+        words=list(self.words());words[11]=2 << 26 | ((BASE+36) >> 2)
+        with self.fixture(words=words,targets=[BASE+36,BASE+44]):
+            result=seedlib.walk(f'{BASE:08x}')
+        self.assertEqual(result['rejects'],[])

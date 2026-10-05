@@ -13,6 +13,15 @@ excl=set(json.loads(Path(sys.argv[5]).read_text())) if len(sys.argv)>5 else set(
 seeds=[x for x in seeds if x not in excl]
 dropped={}
 walks={}
+def terminal_loop(c,end):
+ """True when the last reachable word is an in-span jump/unconditional-branch/switch
+ whose target is NOT a word the walker classified as a return (a shared return).
+ Returns False otherwise, including when the shape is unsupported."""
+ start=int(c['span']['start'],16)
+ k,_,t=seedlib.dec(end-8,get(end-8))
+ if k not in('jump','unconditional_branch','computed_jump'):return False
+ if t is None or not(start<=t<end):return False
+ return not any(e['site']==f'{t:08x}' and e['kind']=='return' for e in c['edges'])
 for s in seeds:
  try:c=seedlib.walk(s)
  except Exception as e:dropped[s]='walk error '+str(e)[:60];continue
@@ -24,6 +33,7 @@ for s in seeds:
  elif c['next_word_state'] not in('undefined','unowned_instruction') and c['next_word_state']!='owned '+c['span']['end_exclusive']:why='next '+c['next_word_state']
  elif not (bool(c['jump_tables']) and bool(c['returns'] or c['tail_jumps']) and any(e['site']==f'{end-8:08x}' and e['kind'] in ('jump','unconditional_branch','switch') for e in c['edges'])) and not ((f'{end-8:08x}' in c['returns'] and max(c['returns'])==f'{end-8:08x}' and get(end-8)==0x03e00008) or (f'{end-8:08x}' in c['tail_jumps'] and (get(end-8)>>26)==2 and all(r<f'{end-8:08x}' for r in c['returns']))):why='terminal transfer is neither the last return nor a pinned tail jump'
  elif any(e['kind']=='jump' and not e.get('tail_jump') and not (int(c['span']['start'],16)<=int(e['target'],16)<end) for e in c['edges']):why='J leaves span'
+ elif c['jump_tables'] and f'{end-8:08x}' not in c['returns'] and f'{end-8:08x}' not in c['tail_jumps'] and terminal_loop(c,end):why='terminal transfer is neither the last return, a pinned tail jump, nor a jump to a shared return'
  if not why and any(e['kind']=='call' and e['target']==c['span']['start'] for e in c['edges']):why='self-call (unsupported)'
  if why:dropped[s]=why;continue
  walks[s]=c
