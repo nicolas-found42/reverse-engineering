@@ -85,6 +85,33 @@ class BatchSwitchConfigTest(unittest.TestCase):
         run = self.run_script('check_batch_config_root.py', 'config.json', 'export', 'checked.json')
         self.assertNotEqual(run.returncode, 0)
 
+    def test_a_terminal_last_case_looping_to_itself_is_dropped_with_a_reason(self):
+        data = bytearray(self.data)
+        struct.pack_into('<I', data, 0x1000+44, 2 << 26 | (0x10002c >> 2))
+        (self.root / 'games/ford-racing-2/extracted/SLES_517.05').write_bytes(data)
+        run = self.run_script('make_batch_config.py', 'export', 'config.json', 'seeds.json', 'report.json')
+        self.assertEqual(run.returncode, 0, run.stderr)
+        dropped = json.loads((self.root / 'report.json').read_text())['dropped']
+        self.assertEqual(json.loads(self.config.read_text())['seeds'], [])
+        self.assertIn('shared return', ' | '.join(dropped.values()))
+
+    def test_the_checker_rejects_a_forged_config_hiding_a_terminal_loop(self):
+        # Start from the accepted shared-return shape, then change the terminal
+        # target to the self-loop word and re-pin only the window hash, as a
+        # forged config would.
+        data = bytearray(self.data)
+        struct.pack_into('<I', data, 0x1000+44, 2 << 26 | (0x100024 >> 2))
+        (self.root / 'games/ford-racing-2/extracted/SLES_517.05').write_bytes(data)
+        config = self.generate()
+        struct.pack_into('<I', data, 0x1000+44, 2 << 26 | (0x10002c >> 2))
+        (self.root / 'games/ford-racing-2/extracted/SLES_517.05').write_bytes(data)
+        config['seeds'][0]['window_sha256'] = hashlib.sha256(bytes(data[0x1000:0x1034])).hexdigest()
+        config['baseline']['executable_sha256'] = hashlib.sha256(bytes(data)).hexdigest()
+        self.config.write_text(json.dumps(config))
+        run = self.run_script('check_batch_config_root.py', 'config.json', 'export', 'checked.json')
+        self.assertNotEqual(run.returncode, 0)
+        self.assertIn('shared-return terminal', run.stderr)
+
     def test_a_missing_pin_is_rejected(self):
         config = self.generate();config['seeds'][0]['jump_tables']=[]
         self.config.write_text(json.dumps(config))
