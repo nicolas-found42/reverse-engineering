@@ -1,0 +1,366 @@
+{
+  "schema_version": 1,
+  "run_id": "20261005T051027Z-9c4f4c89d78749ffb67e9702ebdff736",
+  "check": "matching-sections",
+  "command": [
+    "tools/matching_sections.py",
+    "games/ford-racing-2",
+    "--output",
+    "notes/evidence/fr2-matching-harness/results"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "section_count": 38,
+    "sections": [
+      {
+        "section": ".DVP.overlay..0x0.4149910390.48.0",
+        "address": "00000000",
+        "file_offset": "00192194",
+        "bytes": 2048,
+        "has_file_bytes": true,
+        "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "section": ".DVP.overlay..0x0.495278677.35.0",
+        "address": "00000000",
+        "file_offset": "00195244",
+        "bytes": 1120,
+        "has_file_bytes": true,
+        "sha256": "5cc201eb697e57027dcf74bac0995467bc9b787848be4c0d740956a97ddf65a5"
+      },
+      {
+        "section": ".DVP.overlay..unknvma.4149910390.1384.2",
+        "address": "00000000",
+        "file_offset": "00193194",
+        "bytes": 2048,
+        "has_file_bytes": true,
+        "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "section": ".DVP.overlay..unknvma.4149910390.1992.3",
+        "address": "00000000",
+        "file_offset": "00193994",
+        "bytes": 2048,
+        "has_file_bytes": true,
+        "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "section": ".DVP.overlay..unknvma.4149910390.2613.4",
+        "address": "00000000",
+        "file_offset": "00194194",
+        "bytes": 2048,
+        "has_file_bytes": true,
+        "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "section": ".DVP.overlay..unknvma.4149910390.3243.5",
+        "address": "00000000",
+        "file_offset": "00194994",
+        "bytes": 2048,
+        "has_file_bytes": true,
+        "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "section": ".DVP.overlay..unknvma.4149910390.3827.6",
+        "address": "00000000",
+        "file_offset": "00195194",
+        "bytes": 176,
+        "has_file_bytes": true,
+        "sha256": "86d2cf5b090f43ee54d8f7c1dcf746a853951191457ff6dac96269a9d24860b9"
+      },
+      {
+        "section": ".DVP.overlay..unknvma.4149910390.784.1",
+        "address": "00000000",
+        "file_offset": "00192994",
+        "bytes": 2048,
+        "has_file_bytes": true,
+        "sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "section": ".DVP.ovlystrtab",
+        "address": "00000000",
+        "file_offset": "00192060",
+        "bytes": 308,
+        "has_file_bytes": true,
+        "sha256": "c410e2532cef2d942d59a697f6aaa1a5b6ae5f11605054cad86d81597c3f217e"
+      },
+      {
+        "section": ".DVP.ovlytab",
+        "address": "00000000",
+        "file_offset": "00192000",
+        "bytes": 96,
+        "has_file_bytes": true,
+        "sha256": "2533423e6bafb22c9900e2ce3ca6e2fdb2db8d6b10f68141627502e6999f08cf"
+      },
+      {
+        "section": ".bss",
+        "address": "00290b80",
+        "file_offset": "0019165c",
+        "bytes": 1075656,
+        "has_file_bytes": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "section": ".ctors",
+        "address": "0021b160",
+        "file_offset": "0011c160",
+        "bytes": 8,
+        "has_file_bytes": true,
+        "sha256": "72a4fa3544e43a836ffcb268ce06ccdbc55d44d5e6b1b1c19216a53ea98301fd"
+      },
+      {
+        "section": ".data",
+        "address": "00230c00",
+        "file_offset": "00131c00",
+        "bytes": 126188,
+        "has_file_bytes": true,
+        "sha256": "eecbfea06de9fce9516a41a806743db4b6f72d246ad768495787050fb75ad7ef"
+      },
+      {
+        "section": ".dtors",
+        "address": "0021b168",
+        "file_offset": "0011c168",
+        "bytes": 8,
+        "has_file_bytes": true,
+        "sha256": "72a4fa3544e43a836ffcb268ce06ccdbc55d44d5e6b1b1c19216a53ea98301fd"
+      },
+      {
+        "section": ".eh_frame",
+        "address": "0024f8f0",
+        "file_offset": "001508f0",
+        "bytes": 4,
+        "has_file_bytes": true,
+        "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      },
+      {
+        "section": ".lit4",
+        "address": "0028dd80",
+        "file_offset": "0018ed80",
+        "bytes": 3652,
+        "has_file_bytes": true,
+        "sha256": "7eb59618a0147610d0421b0cce282f021bb7e19e8a3c32e28dbc8ccef4478746"
+      },
+      {
+        "section": ".mdebug.eabi64",
+        "address": "00000000",
+        "file_offset": "00192000",
+        "bytes": 0,
+        "has_file_bytes": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "section": ".reginfo",
+        "address": "0021b170",
+        "file_offset": "0011c170",
+        "bytes": 24,
+        "has_file_bytes": true,
+        "sha256": "c42665d011907f152218428753a5b4cb295b6eaf907eff0c2dbae0a8904250d6"
+      },
+      {
+        "section": ".rodata",
+        "address": "0024f900",
+        "file_offset": "00150900",
+        "bytes": 255028,
+        "has_file_bytes": true,
+        "sha256": "297925b687190a35c6cecfb26a96596a2a57885016c7c21f70e84426d7377a9e"
+      },
+      {
+        "section": ".sbss",
+        "address": "00290600",
+        "file_offset": "00191600",
+        "bytes": 1316,
+        "has_file_bytes": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "section": ".sdata",
+        "address": "0028ec00",
+        "file_offset": "0018fc00",
+        "bytes": 6599,
+        "has_file_bytes": true,
+        "sha256": "0cd2bab2868de351bf402331cba0143bfaad1df6d3ba31782f378f5ce6e5e5d5"
+      },
+      {
+        "section": ".shstrtab",
+        "address": "00000000",
+        "file_offset": "001956a4",
+        "bytes": 661,
+        "has_file_bytes": true,
+        "sha256": "5bad7beaf97307bb354b78c9868366e28fb7176462e6a8f3b1e11624bcf89c99"
+      },
+      {
+        "section": ".spad",
+        "address": "70003000",
+        "file_offset": "00192000",
+        "bytes": 1488,
+        "has_file_bytes": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "section": ".text",
+        "address": "00100000",
+        "file_offset": "00001000",
+        "bytes": 1145812,
+        "has_file_bytes": true,
+        "sha256": "10e32dafef6f5b1b8676e68fd9ec552d2729fe4f754d32fb85106b4e971ae422"
+      },
+      {
+        "section": ".user_section1",
+        "address": "0021b200",
+        "file_offset": "0011c200",
+        "bytes": 7944,
+        "has_file_bytes": true,
+        "sha256": "7102cf99c05be042253d5beb60ad1f58a88e5d24e96d18a4e20481d8bbbda62a"
+      },
+      {
+        "section": ".user_section19",
+        "address": "00229080",
+        "file_offset": "0012a080",
+        "bytes": 4308,
+        "has_file_bytes": true,
+        "sha256": "fd3732d862a187654466cb79415d4653f99bb68179438ce2a4844144286ff074"
+      },
+      {
+        "section": ".user_section2",
+        "address": "0021d180",
+        "file_offset": "0011e180",
+        "bytes": 272,
+        "has_file_bytes": true,
+        "sha256": "44c08ec753e08a2a79f67aad2a43ef10bc3463892b474083b813a4d6e4fffbca"
+      },
+      {
+        "section": ".user_section3",
+        "address": "0021d300",
+        "file_offset": "0011e300",
+        "bytes": 1768,
+        "has_file_bytes": true,
+        "sha256": "af635865be34635a09c2b7c9ed7ea0f2195c2fc876e2dcbd09a9889c00ce1bfe"
+      },
+      {
+        "section": ".user_section4",
+        "address": "0021da00",
+        "file_offset": "0011ea00",
+        "bytes": 1108,
+        "has_file_bytes": true,
+        "sha256": "f2242e76429ab82e3a03c80a93754fcf8f064e2c697c8f9a4f07fd3cf9c5d71a"
+      },
+      {
+        "section": ".user_section5",
+        "address": "0021de80",
+        "file_offset": "0011ee80",
+        "bytes": 14348,
+        "has_file_bytes": true,
+        "sha256": "2ad7712ae483faaaae4a3c4721c7cf503e17a638c0ef0d3ce976562ccf882104"
+      },
+      {
+        "section": ".user_section6",
+        "address": "00221700",
+        "file_offset": "00122700",
+        "bytes": 2352,
+        "has_file_bytes": true,
+        "sha256": "45f6b99da0ec3698e1db06d096da88a2cf0930ec12fbf488f70a75d3b25fca79"
+      },
+      {
+        "section": ".user_section7",
+        "address": "00222080",
+        "file_offset": "00123080",
+        "bytes": 2624,
+        "has_file_bytes": true,
+        "sha256": "342f9b1d63d2ec7f2c63f38532b1a8d7bd174d8ad232381e98e90676c2beb6b1"
+      },
+      {
+        "section": ".user_section8",
+        "address": "00222b00",
+        "file_offset": "00123b00",
+        "bytes": 25904,
+        "has_file_bytes": true,
+        "sha256": "c3f6697b9b0a18d8985a4a2555738ca55d1897ffbc60e00461ed513e42ac31ad"
+      },
+      {
+        "section": ".user_section_init",
+        "address": "0022c980",
+        "file_offset": "0012d980",
+        "bytes": 16964,
+        "has_file_bytes": true,
+        "sha256": "7a2d6d95ba3323504dafc75ddcdaa6b7ac44001ee213c7b8ebcc14df438e11f2"
+      },
+      {
+        "section": ".user_section_uncommon",
+        "address": "0022a180",
+        "file_offset": "0012b180",
+        "bytes": 10228,
+        "has_file_bytes": true,
+        "sha256": "097b7a00259712250134d0f145379dfab06f230a869340217b3812f6b192393e"
+      },
+      {
+        "section": ".vubss",
+        "address": "00397548",
+        "file_offset": "0019165c",
+        "bytes": 0,
+        "has_file_bytes": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "section": ".vudata",
+        "address": "0024f8f4",
+        "file_offset": "001508f4",
+        "bytes": 0,
+        "has_file_bytes": false,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "section": ".vutext",
+        "address": "00217be0",
+        "file_offset": "00118be0",
+        "bytes": 13696,
+        "has_file_bytes": true,
+        "sha256": "be08c8c66f6ed84ec82cd000209741b22bb79ed68cb6d85b1bee6357e0ffc2c9"
+      }
+    ],
+    "file_backed_section_bytes": 1653488,
+    "claim_limits": [
+      "Section boundaries, bytes and hashes only.",
+      "Nothing here classifies a section as game-owned or SDK code.",
+      "Nothing here compiles, links or executes anything."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 10677,
+      "sha256": "6c3787aa50691cc25d3f5d4ae1025ee034e40996977cc695549a214361060a6b"
+    }
+  }
+}

@@ -121,3 +121,37 @@ _Avoid_: Constants table
 **Reference site**:
 A word in an IOP module that holds an address, listed in the module's relocation table: a pointer, a jump target, or the high half of a `lui`/`addiu` pair. It gives the target exactly, with no data-flow guess.
 _Avoid_: Xref, link
+
+## Completion and validation
+
+**Completion target**:
+The measurable finish line the owner named for the broader effort: a byte-exact matching rebuild of the whole PAL corpus, each stage carrying a check that can fail on the unchanged corpus.
+_Avoid_: Goal, definition of done
+
+**Byte-exact rebuild** (matching decompilation):
+A source tree that, compiled with the corpus's own open-source toolchain, reproduces the retail ELF byte for byte under an ELF-hash gate scoped to game-owned sections.
+_Avoid_: Faithful rebuild, approximate port
+
+**Game-owned**:
+Code and data authored for the game, as distinct from SDK/library regions. The boundary between game-owned and SDK code is a recorded decision, not a guess.
+_Avoid_: Original code, game code
+
+**Substitute region**:
+A region satisfied by an open-source reimplementation (ps2sdk) instead of a byte match. Explicitly labelled; never counted as matched.
+_Avoid_: Ported library, stand-in
+
+**Mixed section**:
+A section of the retail executable whose bytes interleave game-owned and SDK code or data. Its byte-diff verdict is reported but none of its bytes count as matched until a range-level split is measured.
+_Avoid_: Partially owned, shared section
+
+**Readable reconstruction**:
+A source tree that compiles and is structurally faithful (types, signatures, names) but is not required to be byte-exact.
+_Avoid_: Soft match, approximate decompilation
+
+**Headless execution oracle**:
+Permission to execute the game or rebuilt code in a windowless, focus-free emulator or runner, used only to validate behavior, never to produce static evidence.
+_Avoid_: Dynamic analysis, running the game
+
+**Function-owned bytes**:
+Executable bytes owned by a saved function. A byte-accounting measure; it is not a percentage of decompilation completeness or correctness.
+_Avoid_: Coverage, completion percentage

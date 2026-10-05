@@ -36,3 +36,14 @@ games/**/*.img
 games/**/*.elf
 *.sav
 *.mcd
+
+# ADR-0004: Sony-derived and corpus artifacts are never committed (see docs/LEGAL.md).
+*.irx
+*.IRX
+*.a
+*.o
+SLES_*
+SLUS_*
+FILES.DAT
+FILES.HDR
+build/
