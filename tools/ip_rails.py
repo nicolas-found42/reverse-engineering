@@ -2,7 +2,7 @@
 """Refuse to commit a PS2 boot executable or any Sony-derived artifact (ADR-0004).
 
 Reads the staged blobs, not the working tree, so `git commit -a` and partial staging cannot
-slip a corpus file through. Intended as the body of `tools/hooks/pre-commit`.
+slip a corpus file through. Intended as the body of `tools/hooks/pre-commit`; `--tree` scans every tracked file (CI).
 """
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ import re
 import struct
 import subprocess
 import sys
+from pathlib import Path
 
 EE_MACHINE = 8
 EE_MACH_BITS = 0x00920000  # EF_MIPS_MACH for the R5900, ICO and the retail e_flags
@@ -58,8 +59,23 @@ def staged() -> list[tuple[str, bytes]]:
     return blobs
 
 
+def tracked_violations(root: Path) -> dict[str, list[str]]:
+    """Every tracked file that breaks a rule: the CI check, independent of any local hook."""
+    names = subprocess.run(["git", "-C", str(root), "ls-files", "-z"], capture_output=True,
+                           check=True).stdout.split(b"\0")
+    found = {}
+    for raw in filter(None, names):
+        path = root / raw.decode()
+        if path.is_file() and (why := violations(raw.decode(), path.read_bytes())):
+            found[raw.decode()] = why
+    return found
+
+
 def main() -> int:
-    refused = {path: why for path, data in staged() if (why := violations(path, data))}
+    if "--tree" in sys.argv[1:]:
+        refused = tracked_violations(Path.cwd())
+    else:
+        refused = {path: why for path, data in staged() if (why := violations(path, data))}
     for path, reasons in refused.items():
         print(f"refused {path}: " + "; ".join(reasons), file=sys.stderr)
     if refused:

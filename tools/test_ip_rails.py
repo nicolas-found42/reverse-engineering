@@ -54,5 +54,26 @@ class ContentRuleTest(unittest.TestCase):
         self.assertEqual(violations("tools/test_sdk_stamps.py", source), [])
 
 
+class TreeScanTest(unittest.TestCase):
+    def repo(self, files):
+        import subprocess, tempfile
+        from pathlib import Path
+        root = Path(tempfile.mkdtemp())
+        subprocess.run(["git", "init", "-q", str(root)], check=True)
+        for name, data in files.items():
+            (root / name).write_bytes(data)
+        subprocess.run(["git", "-C", str(root), "add", "-A"], check=True)
+        return root
+
+    def test_a_tracked_ee_elf_is_found_even_though_the_hook_never_saw_it(self):
+        from ip_rails import tracked_violations
+        root = self.repo({"ok.txt": b"fine\n", "notes.dat": elf()})
+        self.assertEqual(sorted(tracked_violations(root)), ["notes.dat"])
+
+    def test_a_clean_tree_has_no_violations(self):
+        from ip_rails import tracked_violations
+        self.assertEqual(tracked_violations(self.repo({"ok.txt": b"fine\n"})), {})
+
+
 if __name__ == "__main__":
     unittest.main()

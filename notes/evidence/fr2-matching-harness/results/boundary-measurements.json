@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "run_id": "20261005T052631Z-6e1c439255214ae9adf9fb3c5cdb6e97",
+  "check": "boundary-measurements",
+  "command": [
+    "tools/boundary_measurements.py",
+    "games/ford-racing-2",
+    "--output",
+    "notes/evidence/fr2-matching-harness/results"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "source_paths": {
+      "distinct": 165,
+      "by_prefix": {
+        "modules4": 56,
+        "fr2": 109
+      },
+      "by_section": {
+        ".rodata": 165
+      }
+    },
+    "sdk_stamps": {
+      "total": 10,
+      "by_section": {
+        ".data": 10
+      },
+      "libraries": [
+        "libcdvd",
+        "libdma",
+        "libgraph",
+        "libipu",
+        "libkernl",
+        "libmc",
+        "libmpeg",
+        "libpad",
+        "libscf",
+        "libsdr"
+      ]
+    },
+    "reproduce": "python3.14 tools/boundary_measurements.py <corpus> --output <dir>",
+    "claim_limits": [
+      "Counts strings and the section holding each; no address range is attributed to the game or the SDK."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 1613,
+      "sha256": "4311871d4ef473dccdc5c8fb3121249addf86cdc8b07530ab46697f900d0882e"
+    }
+  }
+}

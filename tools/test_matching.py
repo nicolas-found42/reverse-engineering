@@ -1,41 +1,20 @@
 import hashlib
-import struct
 import unittest
 
+from elf_fixture import Spec, build_elf
 from matching_diff import Scope, compare, ledger, scope_of
 from matching_sections import Section, pinned_executable, sections
 
 BASE = 0x100000
 TEXT = bytes.fromhex("27bdffe8afbe0004") + bytes(8)
 RODATA = b"abcd" * 4
-NAMES = b"\0.text\0.rodata\0.sbss\0.shstrtab\0"
 
 
 def retail() -> bytes:
-    """An EE ELF carrying .text, .rodata and a NOBITS .sbsn, like the pinned corpus."""
-    data = bytearray(0x800)
-    headers = 52 + 2 * 32
-    offsets, cursor = {}, 0x200
-    for name, blob in ((".text", TEXT), (".rodata", RODATA)):
-        offsets[name] = cursor
-        data[cursor:cursor + len(blob)] = blob
-        cursor = (cursor + len(blob) + 15) & ~15
-    data[:16] = b"\x7fELF\x01\x01\x01" + bytes(9)
-    struct.pack_into("<HHIIIIIHHHHHH", data, 16, 2, 8, 1, BASE, 52, 116, 0, 52, 32, 2,
-                     40, 5, 4)
-    struct.pack_into("<8I", data, 52, 1, 0, BASE, BASE, 0x400, 0x400, 5, 4)
-    struct.pack_into("<8I", data, 84, 1, 0x400, 0x290000, 0x290000, 0, 0x8000, 6, 4)
-    for index, (name, kind, flags, size) in enumerate(((".text", 1, 6, len(TEXT)),
-                                                        (".rodata", 1, 2, len(RODATA)),
-                                                        (".sbss", 8, 3, 0))):
-        struct.pack_into("<10I", data, headers + 40 * (index + 1), NAMES.index(name.encode()),
-                         kind, flags, BASE + 0x100 * (index + 1), offsets.get(name, 0), size,
-                         0, 0, 16 if kind == 1 else 8, 0)
-    strtab = headers + 5 * 40
-    struct.pack_into("<10I", data, headers + 160, NAMES.index(b".shstrtab"), 3, 0, 0,
-                     strtab, len(NAMES), 0, 0, 1, 0)
-    data[strtab:strtab + len(NAMES)] = NAMES
-    return bytes(data)
+    """An EE ELF carrying .text, .rodata and a NOBITS .sbss, like the pinned corpus."""
+    return build_elf([Spec(".text", TEXT, flags=6, address=BASE + 0x100),
+                      Spec(".rodata", RODATA, address=BASE + 0x200),
+                      Spec(".sbss", b"", kind=8, flags=3, address=BASE + 0x300)])
 
 
 class SectionExtractionTest(unittest.TestCase):
@@ -43,7 +22,7 @@ class SectionExtractionTest(unittest.TestCase):
         found = sections(retail())
         self.assertEqual(found[".text"].data, TEXT)
         self.assertEqual(found[".text"].address, BASE + 0x100)
-        self.assertEqual(found[".text"].offset, 0x200)
+        self.assertEqual(retail()[found[".text"].offset:][:len(TEXT)], TEXT)
         self.assertEqual(found[".text"].size, len(TEXT))
         self.assertEqual(found[".text"].sha256, hashlib.sha256(TEXT).hexdigest())
 

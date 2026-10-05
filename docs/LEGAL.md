@@ -16,6 +16,6 @@ The tooling and reconstruction source in this repository are MIT licensed (`LICE
 - Raw dumps, generated C or assembly produced from the corpus, memory cards and saves.
 - Any file carrying a Sony SDK library stamp (`PsII…`) in binary form.
 
-`tools/ip_rails.py` enforces this on the staged blobs. Enable it with `git config core.hooksPath tools/hooks`. `.gitignore` keeps the same paths out of `git status`. The hook is a guard rail, not a licence review: a refusal means stop and ask, not rename the file.
+`tools/ip_rails.py` enforces this on the staged blobs, and CI runs `tools/ip_rails.py --tree` over every tracked file, so a skipped hook is still caught. Enable it with `git config core.hooksPath tools/hooks`. `.gitignore` keeps the same paths out of `git status`. The hook is a guard rail, not a licence review: a refusal means stop and ask, not rename the file.
 
 The corpus and PCSX2 are the two named exceptions to "completely open source" ([ADR-0003](adr/0003-open-source-only.md)); neither is redistributed.
