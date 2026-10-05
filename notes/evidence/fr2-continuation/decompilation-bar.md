@@ -38,3 +38,7 @@ The EE executable's gp value was never set, so 13,609 global-pointer-relative op
 The two IOP game modules were profiled: STREAM.IRX is `multi_streamer` v6.2 with intact symbol tables (211 procedure names matched against two independent sources); LGDEV.IRX is a stripped wheel driver. Plate comments were applied to 211 and 114 functions.
 
 Open in D3/D4: 3,940 call-arity mismatches (mostly variadic report calls and wrapper functions), 23,142 undefined-type tokens, 709 integer-or-pointer small-data words, 22 of 24 IOP modules unprofiled, EE-to-IOP name transfer.
+
+## Option B review checkpoint
+
+The bounded jump-table recognizer and table reader are committed in `2aadda6`. Pipeline integration and [its checkpoint](../fr2-ee-next-seeds/jump-table-pipeline-review/README.md) are committed at the user's explicit request to commit and push all pending changes. The checkpoint records 499 tests run with the suite passing (one skipped), four intended live rejections, and a postmutation rollback verified after reopening the project. Jev's pipeline review escalated at `safe_to_apply=0.15`. A synthetic last switch case that jumps to itself also exposes an unresolved terminal-exception scope question. Publication does not clear those issues. Batch g4, export reconciliation and new coverage measurements remain unrun. The saved-function baseline stays 5,454; no gain is claimed.

@@ -21,9 +21,33 @@ from pathlib import Path
 from evidence_common import Invalid, write_result
 from gap_seeds import gap_seeds
 from verify_gap_candidates import assess_candidates
+from jump_table import recognize, read_table
+from ps2_executables import parse_elf
+import struct
 
 WORD = 4
 PIPELINE = Path(__file__).resolve().parent / 'ghidra/experimental/pipeline'
+
+
+def switch_functions(data: bytes, static: dict) -> set[str]:
+    """Saved entries with a readable dispatch in the currently supported profile."""
+    sections=[s for s in parse_elf(data)['sections'] if s['type']==1 and s['flags']&4]
+    def get(pc):
+        matches=[s for s in sections if s['address']<=pc and pc+4<=s['address']+s['size']]
+        if len(matches)!=1:raise Invalid('switch instruction has no unique executable section')
+        s=matches[0];return struct.unpack_from('<I',data,s['offset']+pc-s['address'])[0]
+    found=set()
+    for function in static['functions']:
+        floor=int(function['entry'],16)
+        for instruction in function['instructions']:
+            pc=int(instruction['address'],16);word=get(pc)
+            if word>>26!=0 or word&63!=8 or word==0x03e00008:continue
+            pin=recognize(get,pc,floor)
+            if pin is None:continue
+            try:read_table(data,pin['table'],pin['count'])
+            except ValueError:continue
+            found.add(function['entry']);break
+    return found
 
 
 def contiguous_functions(static: dict, without_callers: bool = False) -> list[tuple[int, int]]:
@@ -116,8 +140,12 @@ def score_candidates(held: list[tuple[int, int]], rows: list[dict], tier_of: dic
 
 
 def run_holdout(data: bytes, static: dict, coverage: dict, manifest: Path, *, fraction: float, seed: int,
-                work: Path, without_callers: bool = False) -> dict:
-    held = choose_holdout(contiguous_functions(static, without_callers), fraction, seed)
+                work: Path, without_callers: bool = False, switches_only: bool = False) -> dict:
+    population=contiguous_functions(static, without_callers)
+    if switches_only:
+        entries=switch_functions(data,static)
+        population=[p for p in population if f'{p[0]:08x}' in entries]
+    held = choose_holdout(population, fraction, seed)
     reduced = holdout_static(static, held)
     work.mkdir(parents=True, exist_ok=True)
     (work / 'decompilation').mkdir(exist_ok=True)
@@ -133,7 +161,7 @@ def run_holdout(data: bytes, static: dict, coverage: dict, manifest: Path, *, fr
     assessed = assess_candidates(data, reduced, config)
     score = score_candidates(held, config['seeds'], {c['entry']: c['tier'] for c in assessed['candidates']},
                              {c['entry']: c for c in assessed['candidates']})
-    return {'fraction': fraction, 'seed': seed, 'without_callers': without_callers, 'seeds_generated': len(seeds), 'guard_accepted': len(config['seeds']),
+    return {'fraction': fraction, 'seed': seed, 'without_callers': without_callers, 'switches_only':switches_only, 'eligible_functions':len(population), 'seeds_generated': len(seeds), 'guard_accepted': len(config['seeds']),
             'tiers_all_candidates': assessed['summary']['tiers'], 'score': score,
             'claim_limits': ['Ground truth is the saved functions, themselves provisional structural candidates.',
                              'Only contiguous saved functions can be held out; split bodies are not tested.',
@@ -148,6 +176,7 @@ def main() -> int:
     parser.add_argument('--fraction', type=float, default=0.2)
     parser.add_argument('--seed', type=int, default=1)
     parser.add_argument('--without-callers', action='store_true', help='hold out only functions with no listed direct caller')
+    parser.add_argument('--switches-only', action='store_true', help='hold out only contiguous saved functions with a readable switch in the supported profile')
     parser.add_argument('--work-dir', type=Path, required=True, help='scratch directory relative to the repository root')
     parser.add_argument('--output', type=Path, default=Path('.scratch/evidence/holdout-gap-method'))
     args = parser.parse_args()
@@ -157,7 +186,7 @@ def main() -> int:
                             json.loads((args.export_dir / 'coverage.json').read_text()),
                             args.export_dir / 'decompilation/manifest.json',
                             fraction=args.fraction, seed=args.seed, work=args.work_dir,
-                            without_callers=args.without_callers),
+                            without_callers=args.without_callers, switches_only=args.switches_only),
         [args.export_dir / 'inventory.json', args.export_dir / 'coverage.json', args.executable])
 
 

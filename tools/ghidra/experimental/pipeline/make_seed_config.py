@@ -3,6 +3,7 @@ import json,hashlib,os,struct,sys
 from pathlib import Path
 R=Path.cwd();seed=sys.argv[1];D=R/Path(os.environ.get('FR2_WORK','.scratch/mesh/codex-audit/frontier-3845-01'));exp=Path(sys.argv[2]);out=Path(sys.argv[3])
 cfg=json.loads((D/f'cfg-{seed}.json').read_text());inv=json.loads((exp/'inventory.json').read_text())
+assert not cfg.get('jump_tables'), 'switch candidates require the schema-2 V5 batch guard'
 elf_p=R/'games/ford-racing-2/extracted/SLES_517.05';elf=elf_p.read_bytes()
 sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
 get=lambda pc:struct.unpack_from('<I',elf,0x1000+pc-0x100000)[0]

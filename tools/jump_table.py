@@ -116,7 +116,7 @@ def recognize(get, site: int, floor: int) -> dict | None:
     if guard is None:
         return None
     guard_pc, guard_word = guard
-    if guard_pc >= scale_pc:
+    if guard_pc >= scale_pc or high_pc <= guard_pc:
         return None
     flag = guard_word >> 16 & 31
     if any(_destination(get(p)) == -1 or (get(p) >> 26 == 0 and get(p) & 63 in (8, 9, 12, 13))

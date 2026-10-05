@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "run_id": "20261005T003629Z-0b9d170581c54f5aa81c3fde171280c8",
+  "check": "holdout-gap-method",
+  "command": [
+    "tools/holdout_gap_method.py",
+    "--export-dir",
+    ".scratch/mesh/codex-audit/frontier-3845-01/gp-g2/export-5454-po",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--fraction",
+    "0.8",
+    "--seed",
+    "3",
+    "--work-dir",
+    ".scratch/fr2-option-b/holdout-final-switch-3",
+    "--output",
+    ".scratch/fr2-option-b/holdout-final-switch-results",
+    "--switches-only"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/gp-g2/export-5454-po/inventory.json": {
+      "bytes": 54861128,
+      "sha256": "9f26099cadca18aaac0720bc67430474ed70a357a4de4919563a9570f27583db"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/gp-g2/export-5454-po/coverage.json": {
+      "bytes": 965007,
+      "sha256": "820b83daf649b6d52cdeb16bed67c77d5f3908dd9b4d46152456faa1b24ca18a"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "fraction": 0.8,
+    "seed": 3,
+    "without_callers": false,
+    "switches_only": true,
+    "eligible_functions": 6,
+    "seeds_generated": 443,
+    "guard_accepted": 45,
+    "tiers_all_candidates": {
+      "A": 34,
+      "B": 9,
+      "C": 2
+    },
+    "score": {
+      "held_out": 5,
+      "recovered": {
+        "exact": 4,
+        "start_only": 0,
+        "missed": 1
+      },
+      "inside_held_spans": {
+        "candidates": 4,
+        "exact": 4,
+        "start_only": 0,
+        "false_start": 0
+      },
+      "straddling": 0,
+      "by_tier": {
+        "A": {
+          "candidates": 4,
+          "exact": 4,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "by_evidence": {
+        "frame+layout": {
+          "candidates": 3,
+          "exact": 3,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "frame+reference": {
+          "candidates": 1,
+          "exact": 1,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "by_frame": {
+        "frame_consistent": {
+          "candidates": 4,
+          "exact": 4,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "exact_precision": 1.0,
+      "exact_recall": 0.8
+    },
+    "claim_limits": [
+      "Ground truth is the saved functions, themselves provisional structural candidates.",
+      "Only contiguous saved functions can be held out; split bodies are not tested.",
+      "Held-out bytes are marked undefined; real gaps are partly decoded unowned instructions.",
+      "Recall and precision measure agreement with saved functions, not original boundaries."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 1561,
+      "sha256": "76cd81b7b39f946b835b1a2cacfadf48b357bb7a6e6e2ad541607a2ebf3f6360"
+    }
+  }
+}

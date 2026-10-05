@@ -1,0 +1,52 @@
+[
+  {
+    "case": "count",
+    "status": "pass",
+    "failure": "IllegalStateException: PRE_CHECK_FAILURES 1 SEED_FAILURE 001820f0: pinned switch bound/count differs at 001821fc",
+    "project_copy_identical_before": true,
+    "source_project_preserved": true,
+    "rollback_verified": false,
+    "guard_sha256": "63f0119c011586ed22a5e26dad6dc9866a147a08a2e644f1db6fbe89ac4749a8",
+    "config_sha256": "55e94a1cef9f12b2b58ff3f1e1a32664a673cc48185f967c4bed092dffebf5f4"
+  },
+  {
+    "case": "hash",
+    "status": "pass",
+    "failure": "IllegalStateException: PRE_CHECK_FAILURES 1 SEED_FAILURE 001820f0: pinned switch table memory/ELF/hash differs at 00182218",
+    "project_copy_identical_before": true,
+    "source_project_preserved": true,
+    "rollback_verified": false,
+    "guard_sha256": "63f0119c011586ed22a5e26dad6dc9866a147a08a2e644f1db6fbe89ac4749a8",
+    "config_sha256": "f4cc0ab7c5e5b8112f35f555c4c0dd5118eb4b7b77ce176120688dbdf709415a"
+  },
+  {
+    "case": "ordered_targets",
+    "status": "pass",
+    "failure": "IllegalStateException: PRE_CHECK_FAILURES 1 SEED_FAILURE 001820f0: pinned ordered switch targets differ from table words at 00182218",
+    "project_copy_identical_before": true,
+    "source_project_preserved": true,
+    "rollback_verified": false,
+    "guard_sha256": "63f0119c011586ed22a5e26dad6dc9866a147a08a2e644f1db6fbe89ac4749a8",
+    "config_sha256": "547ee2231e0bbe1ca2eae2174de6089d1a0bcaac4911f1a8ec5ccbb9960feed6"
+  },
+  {
+    "case": "missing_pin",
+    "status": "pass",
+    "failure": "IllegalStateException: PRE_CHECK_FAILURES 1 SEED_FAILURE 001820f0: computed jump is not pinned at 00182218",
+    "project_copy_identical_before": true,
+    "source_project_preserved": true,
+    "rollback_verified": false,
+    "guard_sha256": "63f0119c011586ed22a5e26dad6dc9866a147a08a2e644f1db6fbe89ac4749a8",
+    "config_sha256": "77e005d7ead0acf7ac531f17a584fea92cf5e6fda2c351a5d93441dcc1d921b9"
+  },
+  {
+    "case": "rollback_after_refs",
+    "status": "pass",
+    "failure": "IllegalStateException: NEGATIVE_CONTROL_AFTER_SWITCH_REFERENCES",
+    "project_copy_identical_before": true,
+    "source_project_preserved": true,
+    "rollback_verified": true,
+    "guard_sha256": "eafad9e8cd8d0c7a937b35f8a4ecd9983ddc7006e70da251fe898ba9eac300b2",
+    "config_sha256": "3f3f62dd16c6680fb70dc4b4e7ff4a8d944711d078401e2c7b5e7c5f1522fd31"
+  }
+]

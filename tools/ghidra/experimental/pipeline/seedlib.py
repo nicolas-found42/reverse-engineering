@@ -1,5 +1,6 @@
 import json,struct,hashlib,sys
 from pathlib import Path
+from jump_table import recognize, read_table
 def load(export):
     global R,elf,inv,cov,text,undef,owned,entries,get,unowned
     R=Path.cwd();elf_p=R/'games/ford-racing-2/extracted/SLES_517.05';elf=elf_p.read_bytes()
@@ -37,7 +38,7 @@ def dec(pc,w):
 
 def walk(seed_hex,LIMIT=0x2000):
     seed=int(seed_hex,16)
-    pending=[(seed,False)];seen={};edges=[];rejects=[];delay_breaks=[];last_kind={}
+    pending=[(seed,False)];seen={};edges=[];rejects=[];delay_breaks=[];last_kind={};jump_tables=[]
     while pending:
      pc,d=pending.pop()
      if pc in seen:
@@ -51,6 +52,16 @@ def walk(seed_hex,LIMIT=0x2000):
       if k=='trap' and (w>>26)==0 and (w&63)==13 and last_kind.get(pc-4) in('conditional_likely','cop_branch_likely'):delay_breaks.append(f'{pc:08x}');continue
       if k not in('linear','arithmetic_trap'):rejects.append({'address':f'{pc:08x}','word':f'{w:08x}','why':'control/trap in delay slot','kind':k})
       continue
+     if k=='computed_jump':
+      found=recognize(get,pc,max(seed,0x100000))
+      if found is not None:
+       try:targets=read_table(elf,found['table'],found['count'])
+       except (ValueError,struct.error):targets=[]
+       if targets and all(0x100000<=a<0x217bd4 and a%4==0 and abs(a-seed)<=LIMIT and a not in owned and (a in undef or a in unowned) for a in targets):
+        pin={key:f'{found[key]:08x}' for key in ('site','table','guard_site')}
+        pin.update(count=found['count'],targets=[f'{a:08x}' for a in targets],table_sha256=hashlib.sha256(struct.pack(f'<{len(targets)}I',*targets)).hexdigest())
+        jump_tables.append(pin);edges.append({'site':f'{pc:08x}','word':f'{w:08x}','kind':'switch','delay':f'{pc+4:08x}','targets':pin['targets']})
+        pending.append((pc+4,True));pending.extend((a,False) for a in set(targets));continue
      if k in('unsupported','computed_jump','trap'):rejects.append({'address':f'{pc:08x}','word':f'{w:08x}','why':k});continue
      last_kind[pc]=k
      if k in('linear','arithmetic_trap'):pending.append((f,False));continue
@@ -66,6 +77,16 @@ def walk(seed_hex,LIMIT=0x2000):
      elif k in('jump','unconditional_branch'):pending.extend(((pc+4,True),(t,False)))
      elif k=='return':pending.append((pc+4,True))
     lo,hi=min(seen),max(seen)+4
+    # Every path into the dispatch must enter at its bounds instruction.
+    for table in jump_tables:
+     guard,site=int(table['guard_site'],16),int(table['site'],16)
+     if seen.get(guard) is not False or any(a not in seen for a in range(guard,site+4,4)):
+      rejects.append({'address':table['site'],'why':'switch bounds region is not fully reached'})
+     for edge in edges:
+      targets=edge.get('targets',[]) if edge['kind']=='switch' else [edge['target']] if 'target' in edge else []
+      if any(guard<int(a,16)<=site+4 for a in targets):
+       rejects.append({'address':edge['site'],'why':'flow bypasses switch bounds'})
     gaps=[pc for pc in range(lo,hi,4) if pc not in seen]
     res={'seed':f'{seed:08x}','span':{'start':f'{lo:08x}','end_exclusive':f'{hi:08x}','bytes':hi-lo,'sha256':hashlib.sha256(elf[0x1000+lo-0x100000:0x1000+hi-0x100000]).hexdigest()},'reachable_count':len(seen),'span_words':(hi-lo)//4,'gap_words':[{'address':f'{pc:08x}','word':f'{get(pc):08x}'} for pc in gaps],'next_word':f'{get(hi):08x}','next_word_state':'owned '+owned[hi] if hi in owned else 'undefined' if hi in undef else 'unowned_instruction' if hi in unowned else 'other','decoded_words':[f'{pc:08x}' for pc in sorted(seen) if pc in unowned],'span_unowned_words':sum(1 for pc in range(lo,hi,4) if pc in unowned),'edges':edges,'edge_counts':{k:sum(1 for e in edges if e['kind']==k) for k in sorted({e['kind'] for e in edges})},'computed_calls':[e['site'] for e in edges if e['kind']=='computed_call'],'tail_jumps':{e['site']:e['target'] for e in edges if e.get('tail_jump')},'delay_breaks':delay_breaks,'calls':[{'site':e['site'],'target':e['target'],'saved_entry':e['target'] in entries} for e in edges if e['kind']=='call'],'returns':[e['site'] for e in edges if e['kind']=='return'],'rejects':rejects,'zero_words_reached':[f'{pc:08x}' for pc in sorted(seen) if get(pc)==0],'scope':'Structural union walk; not feasible execution, identity, or exact original boundaries.'}
+    res['jump_tables']=sorted(jump_tables,key=lambda t:t['site'])
     return res

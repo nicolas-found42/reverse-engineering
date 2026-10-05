@@ -1,4 +1,7 @@
 import unittest
+import holdout_gap_method
+import test_pipeline_walker as fixtures
+import seedlib
 
 from holdout_gap_method import (
     choose_holdout,
@@ -19,6 +22,12 @@ def static_of(*functions):
 
 
 class ContiguousFunctionsTest(unittest.TestCase):
+    def test_switch_holdout_population_uses_the_actual_dispatch_words(self):
+        with fixtures.SwitchWalkerTest().fixture():
+            data=seedlib.elf
+        switch=fn(0x100000,13);ordinary=fn(0x100080,2)
+        self.assertEqual(holdout_gap_method.switch_functions(data,static_of(switch,ordinary)), {'00100000'})
+
     def test_only_functions_with_gap_free_bodies_are_ground_truth(self):
         gappy = fn(0x2000, 4)
         del gappy["instructions"][1]
