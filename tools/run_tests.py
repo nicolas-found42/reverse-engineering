@@ -6,10 +6,11 @@
 
 Puts `tools/` and the repository root on sys.path (tests import flat modules and `tools.*`).
 In a whole-suite run, a test module whose import fails because a third-party module is
-missing is skipped and named in the summary; named modules are never skipped; any other import failure, failure or error stays red.
+missing is skipped and named in the summary; named modules are never skipped; with CI set, modules in NEEDS_LOCAL_INPUTS are skipped by name; any other import failure, failure or error stays red.
 """
 from __future__ import annotations
 
+import os
 import re
 import sys
 import unittest
@@ -26,6 +27,24 @@ def leaves(suite):
             yield from leaves(item)
         else:
             yield item
+
+
+# Tests that read gitignored local inputs (.scratch exports, the corpus). In CI they are skipped
+# by name; locally they run. Move a module off this list once it builds its own fixtures.
+NEEDS_LOCAL_INPUTS = frozenset({"test_batch_switch_config", "test_recomp_fpu_experimental"})
+
+
+def skip_local_inputs(suite: unittest.TestSuite) -> tuple[unittest.TestSuite, list[str]]:
+    kept, skipped = unittest.TestSuite(), []
+    for test in leaves(suite):
+        module = type(test).__module__
+        if module in NEEDS_LOCAL_INPUTS:
+            note = f"{module} (needs local inputs: .scratch or the corpus)"
+            if note not in skipped:
+                skipped.append(note)
+            continue
+        kept.addTest(test)
+    return kept, skipped
 
 
 def local_module(name: str) -> bool:
@@ -57,6 +76,9 @@ def main(argv: list[str]) -> int:
     else:
         suite = loader.discover(str(TOOLS), pattern="test_*.py", top_level_dir=str(TOOLS))
         suite, skipped = skip_missing_dependencies(suite)
+        if os.environ.get("CI"):
+            suite, ci_skipped = skip_local_inputs(suite)
+            skipped += ci_skipped
     result = unittest.TextTestRunner(verbosity=1).run(suite)
     for line in skipped:
         print(f"SKIPPED (missing dependency): {line}")
