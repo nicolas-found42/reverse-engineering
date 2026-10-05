@@ -11,3 +11,7 @@ Use the default labels: `needs-triage`, `needs-info`, `ready-for-agent`, `ready-
 ### Domain docs
 
 Use the single-context `GLOSSARY.md` and `docs/adr/` layout. See `docs/agents/domain.md`.
+
+### Tests and review
+
+Run `tools/check.sh` (whole suite) or `tools/check.sh test_matching` (one module). Review against `CODING_STANDARDS.md`.

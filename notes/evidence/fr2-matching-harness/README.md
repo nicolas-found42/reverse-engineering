@@ -9,13 +9,15 @@ Corpus: PAL `SLES_517.05`, SHA-256 `2167…ea95`, behind `corpus_contract.corpus
 | Boundary decision (#10) | `docs/adr/0005-game-owned-sdk-boundary.md` | every loadable section is `mixed`; `matched_bytes` is 0 until a range split is measured |
 | IP rails (#17) | `LICENSE`, `docs/LEGAL.md`, `tools/ip_rails.py`, `tools/hooks/pre-commit` | refuses staged MIPS ELFs, Sony-stamped binary blobs and never-commit paths (case-insensitive). A heuristic guard rail: inert until `git config core.hooksPath tools/hooks`, bypassable with `--no-verify`, blind to repacked or compressed containers. Re-checked against every tracked file: none refused |
 
-Tests: `cd tools && python3.14 -m unittest test_matching test_ip_rails` (24 tests: positive fixture, negative control, incomplete control per rule).
+Tests: `tools/check.sh test_matching test_ip_rails` (24+ tests: positive fixture, negative control, incomplete control per rule).
 
-## Real-corpus runs (not committed: they embed section bytes' hashes only, rerun to reproduce)
+## Real-corpus runs (reproduce with the commands shown)
 
-- Units sliced from the retail ELF for every byte-bearing, non-metadata section: **pass**, exit 0. `matched_bytes` 0, `mixed_bytes_identical` 1,652,399. `.bss .sbss .spad .vubss .vudata` have no file bytes and are listed under `sections_without_file_bytes`.
-- Same units with `.rodata` bytes 0x40–0x43 replaced by `deadbeef`: **fail**, exit 1, first difference at address `0024f940`, file offset `00150940`, expected `65272061`, actual `deadbeef`.
-- A one-word change to `.text` at offset 0x1234: **fail** at `00101234`.
+Inventory (38 sections, 32 file-backed): `python3.14 tools/matching_sections.py games/ford-racing-2 --output <dir>`.
+ADR-0005 counts (165 distinct source paths, 109 `fr2` / 56 `modules4`, all in `.rodata`; 10 SDK stamps, all in `.data`): `python3.14 tools/boundary_measurements.py games/ford-racing-2 --output <dir>`.
+
+- Identical units: `python3.14 tools/slice_units.py games/ford-racing-2 DIR && python3.14 tools/matching_diff.py games/ford-racing-2 DIR` gives **pass**, exit 0, `matched_bytes` 0, `mixed_bytes_identical` 1,652,399. `.bss .sbss .spad .vubss .vudata` have no file bytes and are listed under `sections_without_file_bytes`.
+- One word changed: `python3.14 tools/slice_units.py games/ford-racing-2 DIR --corrupt .text:0x1234`, then the gate: **fail**, exit 1, first difference at `00101234`.
 
 ## Not established
 
