@@ -48,6 +48,14 @@ public class ExportDecompilation extends GhidraScript {
         JsonArray rows = new JsonArray();
         manifest.add("functions", rows);
         DecompInterface decompiler = new DecompInterface();
+        // Opt-in: FR2_DECOMP_OPTIONS=program loads the program's decompiler options, which respect read-only and constant data.
+        boolean programOptions = "program".equals(System.getenv("FR2_DECOMP_OPTIONS"));
+        manifest.addProperty("decompiler_options", programOptions ? "program" : "default");
+        if (programOptions) {
+            DecompileOptions options = new DecompileOptions();
+            options.grabFromProgram(currentProgram);
+            decompiler.setOptions(options);
+        }
         int successes = 0, failures = 0;
         Set<String> visited = new HashSet<>();
         boolean normalCompletion = false;

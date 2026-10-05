@@ -1,0 +1,421 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T215156Z-4d83040786a64e3bb51428aa2772835b",
+  "check": "sdk-stamps",
+  "command": [
+    "tools/sdk_stamps.py",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "games/ford-racing-2/extracted/IRX/IOPRP255.IMG",
+    "games/ford-racing-2/extracted/IRX/LGDEV.IRX",
+    "games/ford-racing-2/extracted/IRX/LIBSD.IRX",
+    "games/ford-racing-2/extracted/IRX/MCMAN.IRX",
+    "games/ford-racing-2/extracted/IRX/MCSERV.IRX",
+    "games/ford-racing-2/extracted/IRX/PADMAN.IRX",
+    "games/ford-racing-2/extracted/IRX/SDRDRV.IRX",
+    "games/ford-racing-2/extracted/IRX/SIO2MAN.IRX",
+    "games/ford-racing-2/extracted/IRX/STREAM.IRX",
+    "games/ford-racing-2/extracted/IRX/USBD.IRX"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "games/ford-racing-2/extracted/IRX/IOPRP255.IMG": {
+      "bytes": 264449,
+      "sha256": "e5762f40f94405d765b99b13b735a044197aab58b91b9f08d7832aa091eef40f"
+    },
+    "games/ford-racing-2/extracted/IRX/LGDEV.IRX": {
+      "bytes": 57425,
+      "sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f"
+    },
+    "games/ford-racing-2/extracted/IRX/LIBSD.IRX": {
+      "bytes": 28573,
+      "sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10"
+    },
+    "games/ford-racing-2/extracted/IRX/MCMAN.IRX": {
+      "bytes": 95517,
+      "sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5"
+    },
+    "games/ford-racing-2/extracted/IRX/MCSERV.IRX": {
+      "bytes": 7417,
+      "sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2"
+    },
+    "games/ford-racing-2/extracted/IRX/PADMAN.IRX": {
+      "bytes": 44917,
+      "sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f"
+    },
+    "games/ford-racing-2/extracted/IRX/SDRDRV.IRX": {
+      "bytes": 8089,
+      "sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2"
+    },
+    "games/ford-racing-2/extracted/IRX/SIO2MAN.IRX": {
+      "bytes": 6553,
+      "sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708"
+    },
+    "games/ford-racing-2/extracted/IRX/STREAM.IRX": {
+      "bytes": 255417,
+      "sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3"
+    },
+    "games/ford-racing-2/extracted/IRX/USBD.IRX": {
+      "bytes": 34969,
+      "sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "files_scanned": 11,
+    "files_with_stamps": 9,
+    "libraries": {
+      "cdvdfsv": [
+        "2550"
+      ],
+      "cdvdman": [
+        "2550"
+      ],
+      "eesync": [
+        "2550"
+      ],
+      "fileio": [
+        "2550"
+      ],
+      "ioman": [
+        "2550"
+      ],
+      "libcdvd": [
+        "2530"
+      ],
+      "libdma": [
+        "2500"
+      ],
+      "libgraph": [
+        "2500"
+      ],
+      "libipu": [
+        "2500"
+      ],
+      "libkernl": [
+        "2550"
+      ],
+      "libmc": [
+        "2540"
+      ],
+      "libmpeg": [
+        "2500"
+      ],
+      "libpad": [
+        "2500"
+      ],
+      "libscf": [
+        "2500"
+      ],
+      "libsd": [
+        "2500"
+      ],
+      "libsdr": [
+        "2530"
+      ],
+      "loadcore": [
+        "2550"
+      ],
+      "loadfile": [
+        "2550"
+      ],
+      "mcman": [
+        "2540"
+      ],
+      "mcserv": [
+        "2540"
+      ],
+      "modload": [
+        "2550"
+      ],
+      "padman": [
+        "2500"
+      ],
+      "romdrv": [
+        "2550"
+      ],
+      "sdrdrv": [
+        "2530"
+      ],
+      "sifcmd": [
+        "2550"
+      ],
+      "sifman": [
+        "2550"
+      ],
+      "sio2man": [
+        "2500"
+      ],
+      "stdio": [
+        "2550"
+      ],
+      "sysclib": [
+        "2550"
+      ],
+      "threadma": [
+        "2550"
+      ],
+      "timemani": [
+        "2550"
+      ],
+      "usbd": [
+        "2500"
+      ]
+    },
+    "files": [
+      {
+        "path": "SLES_517.05",
+        "bytes": 1662804,
+        "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+        "stamps": [
+          {
+            "offset": 1362352,
+            "library": "libgraph",
+            "version": "2500"
+          },
+          {
+            "offset": 1362416,
+            "library": "libkernl",
+            "version": "2550"
+          },
+          {
+            "offset": 1368232,
+            "library": "libdma",
+            "version": "2500"
+          },
+          {
+            "offset": 1368288,
+            "library": "libpad",
+            "version": "2500"
+          },
+          {
+            "offset": 1368384,
+            "library": "libcdvd",
+            "version": "2530"
+          },
+          {
+            "offset": 1375152,
+            "library": "libsdr",
+            "version": "2530"
+          },
+          {
+            "offset": 1375208,
+            "library": "libmc",
+            "version": "2540"
+          },
+          {
+            "offset": 1375232,
+            "library": "libscf",
+            "version": "2500"
+          },
+          {
+            "offset": 1375432,
+            "library": "libmpeg",
+            "version": "2500"
+          },
+          {
+            "offset": 1375792,
+            "library": "libipu",
+            "version": "2500"
+          }
+        ]
+      },
+      {
+        "path": "IOPRP255.IMG",
+        "bytes": 264449,
+        "sha256": "e5762f40f94405d765b99b13b735a044197aab58b91b9f08d7832aa091eef40f",
+        "stamps": [
+          {
+            "offset": 8616,
+            "library": "loadcore",
+            "version": "2550"
+          },
+          {
+            "offset": 17936,
+            "library": "sifcmd",
+            "version": "2550"
+          },
+          {
+            "offset": 25312,
+            "library": "sifman",
+            "version": "2550"
+          },
+          {
+            "offset": 55784,
+            "library": "threadma",
+            "version": "2550"
+          },
+          {
+            "offset": 74376,
+            "library": "ioman",
+            "version": "2550"
+          },
+          {
+            "offset": 92712,
+            "library": "modload",
+            "version": "2550"
+          },
+          {
+            "offset": 108560,
+            "library": "fileio",
+            "version": "2550"
+          },
+          {
+            "offset": 160576,
+            "library": "cdvdman",
+            "version": "2550"
+          },
+          {
+            "offset": 211888,
+            "library": "cdvdfsv",
+            "version": "2550"
+          },
+          {
+            "offset": 235984,
+            "library": "loadfile",
+            "version": "2550"
+          },
+          {
+            "offset": 243312,
+            "library": "timemani",
+            "version": "2550"
+          },
+          {
+            "offset": 247752,
+            "library": "romdrv",
+            "version": "2550"
+          },
+          {
+            "offset": 250128,
+            "library": "eesync",
+            "version": "2550"
+          },
+          {
+            "offset": 257992,
+            "library": "sysclib",
+            "version": "2550"
+          },
+          {
+            "offset": 263144,
+            "library": "stdio",
+            "version": "2550"
+          }
+        ]
+      },
+      {
+        "path": "LGDEV.IRX",
+        "bytes": 57425,
+        "sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f",
+        "stamps": []
+      },
+      {
+        "path": "LIBSD.IRX",
+        "bytes": 28573,
+        "sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10",
+        "stamps": [
+          {
+            "offset": 20944,
+            "library": "libsd",
+            "version": "2500"
+          }
+        ]
+      },
+      {
+        "path": "MCMAN.IRX",
+        "bytes": 95517,
+        "sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5",
+        "stamps": [
+          {
+            "offset": 72896,
+            "library": "mcman",
+            "version": "2540"
+          }
+        ]
+      },
+      {
+        "path": "MCSERV.IRX",
+        "bytes": 7417,
+        "sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2",
+        "stamps": [
+          {
+            "offset": 4928,
+            "library": "mcserv",
+            "version": "2540"
+          }
+        ]
+      },
+      {
+        "path": "PADMAN.IRX",
+        "bytes": 44917,
+        "sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f",
+        "stamps": [
+          {
+            "offset": 33024,
+            "library": "padman",
+            "version": "2500"
+          }
+        ]
+      },
+      {
+        "path": "SDRDRV.IRX",
+        "bytes": 8089,
+        "sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+        "stamps": [
+          {
+            "offset": 4928,
+            "library": "sdrdrv",
+            "version": "2530"
+          }
+        ]
+      },
+      {
+        "path": "SIO2MAN.IRX",
+        "bytes": 6553,
+        "sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+        "stamps": [
+          {
+            "offset": 4112,
+            "library": "sio2man",
+            "version": "2500"
+          }
+        ]
+      },
+      {
+        "path": "STREAM.IRX",
+        "bytes": 255417,
+        "sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3",
+        "stamps": []
+      },
+      {
+        "path": "USBD.IRX",
+        "bytes": 34969,
+        "sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255",
+        "stamps": [
+          {
+            "offset": 26000,
+            "library": "usbd",
+            "version": "2500"
+          }
+        ]
+      }
+    ],
+    "claim_limits": [
+      "Stamps date SDK libraries, not the game compiler or any function identity.",
+      "A file without a stamp is not shown to lack the library.",
+      "The mapping from a stamp to a named SDK release is community knowledge, not established here."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 6900,
+      "sha256": "ca438fe01f2fee45df34767b0a90a7b7315f4e5260759b6a6bc6d4eafa084c6b"
+    }
+  }
+}

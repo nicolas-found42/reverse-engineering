@@ -1,0 +1,4 @@
+iteration 0 failure: IllegalStateException: config span arithmetic is inconsistent for 001fe000
+iteration 1 failure: IllegalStateException: PRE_CHECK_FAILURES 6 SEED_FAILURE 0016f9e8: reference into the interior of 0016f9e8 from outside the span at 00170000 from 0017654c type PARAM | SEED_FAILURE 001761e8: reference
+iteration 2 failure: IllegalStateException: DECODER_FLOW_FAILURES 14 SEED_FAILURE 0016f5b0: Ghidra direct-call fallthrough/delay-slot address differs at 0016f6c4 fall=null expected=0016f6cc insn=jal 0x00105888 | SEED_FAIL
+guard ok at iteration 3 excluded 21

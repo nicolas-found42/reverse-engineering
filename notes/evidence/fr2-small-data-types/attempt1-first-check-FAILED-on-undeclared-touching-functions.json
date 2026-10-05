@@ -1,0 +1,56 @@
+{
+ "schema_version": 1,
+ "status": "pass",
+ "plan_entries": 1023,
+ "functions_touching_planned_addresses": 619,
+ "touching_functions_changed": 616,
+ "unlisted_functions_naming_a_planned_address": 46,
+ "pool_tokens_before": 1072,
+ "pool_tokens_after": 0,
+ "check_count": 5,
+ "passed_count": 5,
+ "checks": [
+  {
+   "check": "same function entries",
+   "passed": true,
+   "detail": {
+    "old": 5454,
+    "new": 5454
+   }
+  },
+  {
+   "check": "every function keeps size, blocks and instructions",
+   "passed": true,
+   "detail": []
+  },
+  {
+   "check": "functions that touch no planned address keep identical pseudocode",
+   "passed": true,
+   "detail": {
+    "identical": 4789,
+    "changed_or_missing": 0,
+    "changed_but_naming_a_planned_address": 46,
+    "examples": []
+   }
+  },
+  {
+   "check": "literal-pool names are replaced",
+   "passed": true,
+   "detail": {
+    "before": 1072,
+    "after": 0,
+    "remaining_rate": 0.0,
+    "limit": 0.05
+   }
+  },
+  {
+   "check": "new manifest reports every function generated",
+   "passed": true,
+   "detail": {
+    "generated": 5454,
+    "failed": 0
+   }
+  }
+ ],
+ "scope": "data types and one memory flag in the project copy; no original name, type or behavior claim"
+}

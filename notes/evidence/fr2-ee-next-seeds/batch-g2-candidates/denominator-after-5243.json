@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T214404Z-e7e3d62587304a86a1614efa99ef5c85",
+  "check": "text-denominator",
+  "command": [
+    "tools/verify_text_denominator.py",
+    "--static-export",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/inventory.json",
+    "--coverage",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/coverage.json",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--output",
+    ".scratch/evidence/text-denominator"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/inventory.json": {
+      "bytes": 53647638,
+      "sha256": "5df11681a4c52a47db73c018551d400c250ac6b08a7638527f2fc2dbe62246d1"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/coverage.json": {
+      "bytes": 949491,
+      "sha256": "4f8865b7703efd339b2c48742883789204eabd3b0560f8c1a0d70741f6eef227"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "mapped_executable_bytes": 1247328,
+    "function_owned_bytes": 1114672,
+    "classes": {
+      "zero_fill": {
+        "bytes": 18496,
+        "spans": 4609,
+        "zero_words": 4624,
+        "with_return": 0
+      },
+      "code_shaped": {
+        "bytes": 100344,
+        "spans": 320,
+        "zero_words": 1572,
+        "with_return": 247
+      },
+      "sparse_nonzero": {
+        "bytes": 232,
+        "spans": 26,
+        "zero_words": 32,
+        "with_return": 9
+      },
+      "vu_microcode": {
+        "bytes": 13584,
+        "spans": 8,
+        "zero_words": 0,
+        "with_return": 0
+      }
+    },
+    "controls": {
+      "owned": {
+        "nonzero_words": 270099,
+        "plausible": 270099
+      },
+      "data": {
+        "nonzero_words": 73180,
+        "plausible": 59330
+      }
+    },
+    "whole_game_decompiled": false,
+    "claim_limits": [
+      "Classes describe byte structure only; reachability, identity and behavior are not established.",
+      "code_shaped means every nonzero word passes a field-level R5900 filter that data words often pass; see controls.data.",
+      "zero_fill words may be real nops inside code or alignment padding.",
+      "vu_microcode bytes are the DVP overlay sources; VU semantics are separate."
+    ],
+    "coverage_cross_check": {
+      ".text": 113224,
+      ".vutext": 13696,
+      ".user_section1": 148,
+      ".user_section2": 0,
+      ".user_section3": 80,
+      ".user_section4": 20,
+      ".user_section5": 1724,
+      ".user_section6": 32,
+      ".user_section7": 44,
+      ".user_section8": 2680,
+      ".user_section19": 44,
+      ".user_section_uncommon": 516,
+      ".user_section_init": 448
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 1694,
+      "sha256": "c00e69fca27506b35b99b08c85b86532798f81e315f2dcc7d25a4b98153b3d64"
+    }
+  }
+}

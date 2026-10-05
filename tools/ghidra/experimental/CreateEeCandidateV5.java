@@ -37,18 +37,26 @@ public class CreateEeCandidateV5 extends GhidraScript {
     private final List<SeedCfg> SEEDS = new ArrayList<>();
     private final Map<String,String> TAIL_FLOW = new TreeMap<>();
     private final Set<Long> PADDING = new TreeSet<>();
+    private final Map<String,SwitchPin> SWITCHES = new TreeMap<>();
+
+    private static final class SwitchPin {
+        String site, table, guard, tableSha; int count; final List<Long> targets = new ArrayList<>();
+        final Map<Long,String> referenceSources = new TreeMap<>();
+    }
 
     private static final class SeedCfg {
         String entry, windowSha, nextState; long start, end, firstWord, delayWord, nextWord; int words, bytes, likely;
         final Map<String,String> calls = new TreeMap<>(), tails = new TreeMap<>(); final Set<Long> zeros = new TreeSet<>(), decoded = new TreeSet<>();
         final Set<String> known = new TreeSet<>(), batch = new TreeSet<>(), unresolved = new TreeSet<>(), ccalls = new TreeSet<>(), breaks = new TreeSet<>();
         final List<JsonObject> incoming = new ArrayList<>(); final Set<Long> padding = new TreeSet<>(); final Set<String> preOther = new TreeSet<>(); JsonObject cfg; byte[] raw;
+        final Map<String,SwitchPin> switches = new TreeMap<>();
     }
     private long hx(JsonObject o, String k) { return Long.parseUnsignedLong(o.get(k).getAsString(), 16); }
     private void use(SeedCfg c) {
         ENTRY = c.entry; START = c.start; END = c.end; MAX_END = c.end; WORDS = c.words; BYTES = c.bytes; WINDOW_SHA = c.windowSha;
         FIRST_WORD = c.firstWord; DELAY_WORD = c.delayWord; NEXT_WORD = c.nextWord; LIKELY_COUNT = c.likely;
         EXPECTED_CALLS.clear(); EXPECTED_CALLS.putAll(c.calls); TAIL_JUMPS.clear(); TAIL_JUMPS.putAll(c.tails);
+        SWITCHES.clear(); SWITCHES.putAll(c.switches);
         ZERO_WORDS.clear(); ZERO_WORDS.addAll(c.zeros); PADDING.clear(); PADDING.addAll(c.padding); COMPUTED_CALLS.clear(); COMPUTED_CALLS.addAll(c.ccalls); DELAY_BREAKS.clear(); DELAY_BREAKS.addAll(c.breaks);
     }
     private void loadConfig(byte[] cb) {
@@ -73,6 +81,16 @@ public class CreateEeCandidateV5 extends GhidraScript {
             for (JsonElement e : o.getAsJsonArray("batch_callees")) s.batch.add(e.getAsString());
             for (JsonElement e : o.getAsJsonArray("unresolved_callees")) s.unresolved.add(e.getAsString());
             for (JsonElement e : o.getAsJsonArray("computed_calls")) s.ccalls.add(e.getAsString());
+            if (o.has("jump_tables")) for (JsonElement e : o.getAsJsonArray("jump_tables")) {
+                JsonObject p = e.getAsJsonObject(); SwitchPin pin = new SwitchPin();
+                pin.site = p.get("site").getAsString(); pin.table = p.get("table").getAsString(); pin.guard = p.get("guard_site").getAsString();
+                pin.count = p.get("count").getAsInt(); pin.tableSha = p.get("table_sha256").getAsString();
+                long site = Long.parseUnsignedLong(pin.site,16), table = Long.parseUnsignedLong(pin.table,16), guard = Long.parseUnsignedLong(pin.guard,16);
+                req(site>=s.start&&site+8<=s.end&&(site&3)==0&&guard>=s.start&&guard<site&&(guard&3)==0&&site-guard<=56,"switch instruction interval differs from supported profile for "+s.entry);
+                req(pin.count>=1&&pin.count<=256&&(table&3)==0,"unsupported switch count/alignment for "+s.entry);
+                for (JsonElement t : p.getAsJsonArray("targets")) { long a=Long.parseUnsignedLong(t.getAsString(),16); req(a>=s.start&&a<s.end&&(a&3)==0,"switch target leaves exact candidate span for "+s.entry); pin.targets.add(a); }
+                req(pin.targets.size()==pin.count&&s.switches.put(pin.site,pin)==null,"switch count or duplicate site differs for "+s.entry);
+            }
             for (JsonElement e : o.getAsJsonArray("delay_breaks")) s.breaks.add(e.getAsString());
             for (JsonElement e : o.getAsJsonArray("decoded_ranges")) { JsonArray r = e.getAsJsonArray(); long a = Long.parseUnsignedLong(r.get(0).getAsString(), 16), z = Long.parseUnsignedLong(r.get(1).getAsString(), 16); for (long pc = a; pc < z; pc += 4) s.decoded.add(pc); }
             for (JsonElement e : o.getAsJsonArray("incoming")) s.incoming.add(e.getAsJsonObject());
@@ -121,7 +139,19 @@ public class CreateEeCandidateV5 extends GhidraScript {
         use(s); FunctionManager fm = currentProgram.getFunctionManager(); Listing l = currentProgram.getListing();
         long file = TEXT_FILE + START - TEXT_VA; byte[] raw = Arrays.copyOfRange(elf, Math.toIntExact(file), Math.toIntExact(file + BYTES)); s.raw = raw;
         req(sha(raw).equals(WINDOW_SHA), "candidate span SHA mismatch for " + ENTRY);
-        req(word(raw, 0) == FIRST_WORD && word(raw, raw.length - 4) == DELAY_WORD && (word(raw, raw.length - 8) == 0x03e00008L || (s.tails.containsKey(hex(END - 8)) && (word(raw, raw.length - 8) >>> 26) == 2)), "candidate initial/terminal/delay words differ from exact pins for " + ENTRY);
+        String lastKind=flowKind(word(raw,raw.length-8));
+        boolean switchLast=!s.switches.isEmpty()&&Arrays.asList("jump","unconditional_branch","computed_jump").contains(lastKind);
+        req(word(raw, 0) == FIRST_WORD && word(raw, raw.length - 4) == DELAY_WORD && (word(raw, raw.length - 8) == 0x03e00008L || (s.tails.containsKey(hex(END - 8)) && (word(raw, raw.length - 8) >>> 26) == 2) || switchLast), "candidate initial/terminal/delay words differ from exact pins for " + ENTRY);
+        for(SwitchPin pin:s.switches.values())checkSwitchMemory(pin,elf);
+        for(SwitchPin pin:s.switches.values()) {
+            Instruction dispatch=l.getInstructionAt(at(Long.parseUnsignedLong(pin.site,16)));
+            for(long target:pin.targets)pin.referenceSources.put(target,"ANALYSIS");
+            if(dispatch!=null)for(Reference ref:dispatch.getReferencesFrom())if(ref.getReferenceType().isFlow()) {
+                long target=ref.getToAddress().getOffset();
+                req(ref.getReferenceType()==RefType.COMPUTED_JUMP&&pin.targets.contains(target),"pre-existing switch flow references differ from pinned targets at "+pin.site+" type="+ref.getReferenceType()+" target="+hex(target));
+                pin.referenceSources.put(target,ref.getSource().toString());
+            }
+        }
         req(bytes(at(START), raw.length).equals(HexFormat.of().formatHex(raw)), "loaded program bytes differ from exact ELF candidate span for " + ENTRY);
         long nf = file + BYTES; byte[] next = Arrays.copyOfRange(elf, Math.toIntExact(nf), Math.toIntExact(nf + 4));
         req(word(next, 0) == NEXT_WORD && bytes(at(END), 4).equals(HexFormat.of().formatHex(next)), "pinned next word differs for " + ENTRY);
@@ -149,14 +179,39 @@ public class CreateEeCandidateV5 extends GhidraScript {
         req(cfg.get("instruction_count_including_delay_slots").getAsInt() == WORDS - PADDING.size(), "raw CFG is not the exact pinned word count for " + ENTRY);
         checkCandidateFlowProfile(cfg, raw);
     }
-    // Partition every reference into the span's bytes: JAL to the entry, branch/jump refs from inside the span, and non-call refs to the entry from outside.
+    private void checkSwitchMemory(SwitchPin pin, byte[] elf) throws Exception {
+        long site=Long.parseUnsignedLong(pin.site,16),guard=Long.parseUnsignedLong(pin.guard,16),table=Long.parseUnsignedLong(pin.table,16);
+        byte[] gb=new byte[4],jb=new byte[4];currentProgram.getMemory().getBytes(at(guard),gb);currentProgram.getMemory().getBytes(at(site),jb);
+        long gw=word(gb,0),jw=word(jb,0);int index=(int)(gw>>>21)&31,flag=(int)(gw>>>16)&31,jreg=(int)(jw>>>21)&31;
+        req((jw>>>26)==0&&(jw&0x1fffff)==8&&jreg!=0&&jreg!=31,"pinned switch is not an exact non-return JR at "+pin.site);
+        req((gw>>>26)==11&&(gw&65535)==pin.count&&index!=0&&flag!=0&&index!=flag,"pinned switch bound/count differs at "+pin.guard);
+        long shoff=word(elf,32);int stride=(elf[46]&255)|((elf[47]&255)<<8),count=(elf[48]&255)|((elf[49]&255)<<8);
+        req(stride==40&&shoff+(long)stride*count<=elf.length,"ELF section table differs from supported map");
+        long file=-1;int matches=0;
+        for(int n=0;n<count;n++) {
+            int off=Math.toIntExact(shoff+(long)n*stride);long type=word(elf,off+4),flags=word(elf,off+8),address=word(elf,off+12),offset=word(elf,off+16),size=word(elf,off+20);
+            if(type==1&&(flags&2)!=0&&(flags&4)==0&&address<=table&&table+4L*pin.count<=address+size){file=offset+table-address;matches++;}
+        }
+        req(matches==1&&file>=0&&file+4L*pin.count<=elf.length,"pinned switch table has no unique ELF data-section mapping at "+pin.table);
+        MemoryBlock block=currentProgram.getMemory().getBlock(at(table));
+        req(block!=null&&block.isInitialized()&&!block.isExecute()&&block.contains(at(table+4L*pin.count-1)),"pinned switch table does not fit an initialized data block at "+pin.table);
+        byte[] raw=Arrays.copyOfRange(elf,Math.toIntExact(file),Math.toIntExact(file+4L*pin.count)),memory=new byte[pin.count*4];
+        req(currentProgram.getMemory().getBytes(at(table),memory)==memory.length&&Arrays.equals(memory,raw)&&sha(raw).equals(pin.tableSha),"pinned switch table memory/ELF/hash differs at "+pin.site);
+        for(int n=0;n<pin.count;n++)req(word(raw,n*4)==pin.targets.get(n),"pinned ordered switch targets differ from table words at "+pin.site);
+    }
+    // Outside references may point only to the entry or from the pinned table
+    // word corresponding exactly to an in-span case target.
     private void classifyRefs(SeedCfg s, Set<String> callSites, Set<String> intra, Set<String> other) {
         ReferenceManager rm = currentProgram.getReferenceManager();
         for (long pc = s.start; pc < s.end; pc++) for (Reference r : rm.getReferencesTo(at(pc))) {
             long from = r.getFromAddress().getOffset(); boolean inSpan = from >= s.start && from < s.end; String type = r.getReferenceType().toString();
             if (type.equals("UNCONDITIONAL_CALL") && pc == s.start) callSites.add(canonical(r.getFromAddress()));
             else if (inSpan) intra.add(canonical(r.getFromAddress()) + "|" + hex(pc) + "|" + type);
-            else { req(pc == s.start, "reference into the interior of " + s.entry + " from outside the span at " + hex(pc) + " from " + r.getFromAddress() + " type " + type); other.add(referenceKey(r)); }
+            else {
+                boolean pinnedTableWord=false;
+                for(SwitchPin pin:s.switches.values())for(int index=0;index<pin.count;index++)if(from==Long.parseUnsignedLong(pin.table,16)+4L*index&&pc==pin.targets.get(index)&&type.equals("DATA"))pinnedTableWord=true;
+                req(pc == s.start || pinnedTableWord, "reference into the interior of " + s.entry + " from outside the span at " + hex(pc) + " from " + r.getFromAddress() + " type " + type); other.add(referenceKey(r));
+            }
         }
     }
     private Set<String> expectedIntraRefs(SeedCfg s) {
@@ -166,13 +221,14 @@ public class CreateEeCandidateV5 extends GhidraScript {
     }
     private Set<String> expectedBatchFlowReferences() {
         Set<String> out = new TreeSet<>();
-        for (SeedCfg s : SEEDS) { use(s); for (String k : expectedNewFlowReferences(s.cfg)) { long site = Long.parseUnsignedLong(k.substring(0, 8), 16); if (!s.decoded.contains(site)) out.add(k); } }
+        for (SeedCfg s : SEEDS) { use(s); for (String k : expectedNewFlowReferences(s.cfg)) { long site = Long.parseUnsignedLong(k.substring(0, 8), 16); if (!s.decoded.contains(site)||k.contains("|COMPUTED_JUMP|")) out.add(k); } }
         return out;
     }
     private void checkBatchDeltas(Set<String> beforeRefs, Map<String,Set<String>> beforeCalled, Map<String,Set<String>> beforeCallers) throws Exception {
         FunctionManager fm = currentProgram.getFunctionManager(); ReferenceManager rm = currentProgram.getReferenceManager();
         Set<String> afterRefs = referenceSnapshot(); Set<String> additions = new TreeSet<>(afterRefs); additions.removeAll(beforeRefs);
-        req(additions.equals(expectedBatchFlowReferences()), "new reference set differs from the exact raw CFG flow edges of newly decoded words: " + additions);
+        Set<String> expectedAdditions=expectedBatchFlowReferences();expectedAdditions.removeAll(beforeRefs);
+        req(additions.equals(expectedAdditions), "new reference set differs from the exact raw CFG flow edges of newly decoded words and pinned switch targets: " + additions);
         for (String ref : beforeRefs) req(afterRefs.contains(ref), "old global reference removed or changed: " + ref);
         Map<String,Set<String>> expCalled = new TreeMap<>(), expCallers = new TreeMap<>();
         for (Map.Entry<String,Set<String>> e : beforeCalled.entrySet()) expCalled.put(e.getKey(), new TreeSet<>(e.getValue()));
@@ -224,6 +280,15 @@ public class CreateEeCandidateV5 extends GhidraScript {
                 }
             }
             phase("disassembly");
+            for (SeedCfg s : SEEDS) { use(s); for (SwitchPin pin:s.switches.values()) {
+                checkSwitchMemory(pin,elf);
+                Instruction dispatch=l.getInstructionAt(at(Long.parseUnsignedLong(pin.site,16)));
+                req(dispatch!=null,"switch dispatch is not decoded for "+s.entry);
+                for(long target:new TreeSet<>(pin.targets)) {
+                    boolean exists=false;for(Reference ref:dispatch.getReferencesFrom())if(ref.getReferenceType()==RefType.COMPUTED_JUMP&&ref.getToAddress().equals(at(target)))exists=true;
+                    if(!exists)dispatch.addOperandReference(0,at(target),RefType.COMPUTED_JUMP,SourceType.ANALYSIS);
+                }
+            } }
             List<String> flowFailures = new ArrayList<>();
             for (SeedCfg s : SEEDS) { use(s); try { checkDecoderFlow(s.cfg); } catch (Exception e) { flowFailures.add("SEED_FAILURE " + s.entry + ": " + e.getMessage()); } }
             req(flowFailures.isEmpty(), "DECODER_FLOW_FAILURES " + flowFailures.size() + " " + String.join(" | ", flowFailures.subList(0, Math.min(flowFailures.size(), 400))));
@@ -357,7 +422,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
         int op=(int)(w>>>26), rs=(int)((w>>>21)&31), rt=(int)((w>>>16)&31), fn=(int)(w&63);
         if(op==0 && fn==8 && w==0x03e00008L)return "return";
         if(op==0 && fn==8)return "computed_jump"; if(op==0 && fn==9)return "computed_call";
-        if(op==0 && (fn==12||fn==13||fn==48||fn==49||fn==50||fn==51||fn==52||fn==54))return "unsupported_trap";
+        if(op==0 && (fn==13||fn==48||fn==49||fn==50||fn==51||fn==52||fn==54))return "unsupported_trap";
         if(op==0 && (fn==32||fn==34||fn==44||fn==46))return "unsupported_trap";
         if(op==8||op==24)return "unsupported_trap"; // ADDI and DADDI may take overflow exceptions.
         if(op==2)return "jump"; if(op==3)return "call";
@@ -387,7 +452,13 @@ public class CreateEeCandidateV5 extends GhidraScript {
             boolean tail=false; long target=((n.pc+4)&0xf0000000L)|((w&0x03ffffffL)<<2), fall=n.pc+8;
             if(k.equals("linear")){q.add(new Node(n.pc+4,false));continue;}
             if(k.equals("computed_call"))req(COMPUTED_CALLS.contains(hex(n.pc)),"computed call is not pinned in the config at "+hex(n.pc));
-            if(k.equals("computed_jump")||k.equals("unsupported_trap")||k.equals("unsupported_encoding"))throw new IllegalStateException("unsupported computed/trap transfer at "+hex(n.pc)+" kind="+k);
+            if(k.equals("computed_jump")) {
+                SwitchPin pin=SWITCHES.get(hex(n.pc));req(pin!=null,"computed jump is not pinned at "+hex(n.pc));
+                q.add(new Node(n.pc+4,true));JsonArray targets=new JsonArray();
+                for(long t:pin.targets){req(t>=START&&t<END&&(t&3)==0,"switch target leaves exact interval at "+hex(n.pc));q.add(new Node(t,false));targets.add(hex(t));}
+                JsonObject edge=new JsonObject();edge.addProperty("site",hex(n.pc));edge.addProperty("kind","switch");edge.add("targets",targets);edges.add(edge);continue;
+            }
+            if(k.equals("unsupported_trap")||k.equals("unsupported_encoding"))throw new IllegalStateException("unsupported computed/trap transfer at "+hex(n.pc)+" kind="+k);
             if(k.equals("conditional")||k.equals("conditional_likely")){target=branchTarget(n.pc,w);q.add(new Node(n.pc+4,true));q.add(new Node(target,false));q.add(new Node(fall,false));}
             else if(k.equals("unconditional_branch")){target=branchTarget(n.pc,w);q.add(new Node(n.pc+4,true));q.add(new Node(target,false));}
             else if(k.equals("call")||k.equals("computed_call")){q.add(new Node(n.pc+4,true));q.add(new Node(fall,false));}
@@ -400,6 +471,16 @@ public class CreateEeCandidateV5 extends GhidraScript {
             if(k.equals("conditional_likely"))e.addProperty("not_taken_annuls_delay_slot",true);edges.add(e);
         }
         req(seen.size()+PADDING.size()==(END-START)/4,"reachable CFG plus pinned padding does not cover every word in the exact interval: "+seen.size());
+        Set<String> foundSwitches=new TreeSet<>();boolean terminal=false;
+        for(JsonElement e:edges){JsonObject edge=e.getAsJsonObject();String k=edge.get("kind").getAsString();if(k.equals("switch"))foundSwitches.add(edge.get("site").getAsString());if(k.equals("return")||edge.has("tail_jump"))terminal=true;}
+        req(foundSwitches.equals(SWITCHES.keySet()),"computed jump sites differ from pinned switch profile");
+        req(SWITCHES.isEmpty()||terminal,"switch CFG has no return or tail terminal");
+        for(SwitchPin pin:SWITCHES.values()) {
+            long guard=Long.parseUnsignedLong(pin.guard,16),site=Long.parseUnsignedLong(pin.site,16);
+            req(Boolean.FALSE.equals(seen.get(guard)),"switch bound is not reached in ordinary context at "+pin.guard);
+            for(long pc=guard;pc<=site;pc+=4)req(seen.containsKey(pc),"switch bounds region is not fully reached at "+hex(pc));
+            for(JsonElement e:edges){JsonObject edge=e.getAsJsonObject();if(edge.has("targets")){for(JsonElement t:edge.getAsJsonArray("targets")){long a=Long.parseUnsignedLong(t.getAsString(),16);req(!(guard<a&&a<=site+4),"flow bypasses switch bound at "+edge.get("site"));}}else if(edge.has("target")){long a=Long.parseUnsignedLong(edge.get("target").getAsString(),16);req(!(guard<a&&a<=site+4),"flow bypasses switch bound at "+edge.get("site"));}}
+        }
         for(long pc=START;pc<END;pc+=4){req(seen.containsKey(pc)!=PADDING.contains(pc),"CFG reachability differs from the pinned padding set at "+hex(pc));}
         JsonArray addresses=new JsonArray();for(long pc:seen.keySet())addresses.add(hex(pc));
         JsonObject out=new JsonObject();out.addProperty("instruction_count_including_delay_slots",seen.size());out.addProperty("body_end_inclusive",hex(seen.lastKey()));out.add("instruction_addresses",addresses);out.add("edges",edges);out.add("delay_breaks",breaks);out.addProperty("branch_likely_scope","For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution.");return out;
@@ -446,6 +527,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
         Set<String> out=new TreeSet<>();
         for(JsonElement e:cfg.getAsJsonArray("edges")) {
             JsonObject x=e.getAsJsonObject(); String k=x.get("kind").getAsString(); if(k.equals("return")||k.equals("computed_call"))continue;
+            if(k.equals("switch")){SwitchPin pin=SWITCHES.get(x.get("site").getAsString());for(JsonElement t:x.getAsJsonArray("targets"))out.add(pin.site+"|"+t.getAsString()+"|COMPUTED_JUMP|"+pin.referenceSources.get(Long.parseUnsignedLong(t.getAsString(),16)));continue;}
             String type=(k.equals("call"))?"UNCONDITIONAL_CALL":x.has("tail_jump")?TAIL_FLOW.getOrDefault(x.get("site").getAsString(),TAIL_REF_TYPE):(k.equals("unconditional_branch")||k.equals("jump"))?"UNCONDITIONAL_JUMP":"CONDITIONAL_JUMP";
             out.add(x.get("site").getAsString()+"|"+x.get("target").getAsString()+"|"+type+"|DEFAULT");
         }
@@ -473,6 +555,10 @@ public class CreateEeCandidateV5 extends GhidraScript {
             } else if(kind.equals("computed_call")) {
                 req(actual.isCall()&&actual.isComputed()&&targets.length==0,"Ghidra does not classify raw computed call consistently at "+hex(pc));
                 req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra computed-call fallthrough/delay-slot address differs at "+hex(pc));
+            } else if(kind.equals("switch")) {
+                req(actual.isJump()&&actual.isComputed()&&!actual.isConditional(),"Ghidra switch classification differs at "+hex(pc));
+                Set<Long> expected=new TreeSet<>(SWITCHES.get(hex(pc)).targets),found=new TreeSet<>();for(Address t:targets)found.add(t.getOffset());
+                req(found.equals(expected),"Ghidra switch targets differ from pinned table at "+hex(pc));
             } else if(kind.equals("return")) {
                 req(actual.isTerminal()&&ins.getMnemonicString().toLowerCase(Locale.ROOT).startsWith("jr"),"Ghidra return classification differs from exact JR RA word at "+hex(pc));
             }

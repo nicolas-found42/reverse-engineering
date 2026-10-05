@@ -1,0 +1,25 @@
+{
+ "tool": "jev_verify",
+ "verified_auto": [
+  "STREAM symtab + mdebug give 211 procedure names, all matching ELF function symbols (0.96)",
+  "one constant address offset per object file; sizes equal 211/211 (0.97)",
+  "debug frame size equals prologue addiu sp for 210/211, exception is an assembly routine (0.99)",
+  "all 71 import stubs named by the module symbol table; 32 catalog candidates confirmed, 0 contradicted, 39 new (1.00)"
+ ],
+ "review": [
+  "annotation applied 211+114 comments, reconciliation 8/8 each (0.52)",
+  "LGDEV has no recoverable names because its symbol table is empty (0.28; softened in the README to \"no names in its symbol table\")"
+ ],
+ "contradicted_as_planned": [
+  "mdebug provides local variable names and struct types (0.99)",
+  "EE calls into STREAM mapped to named IOP handlers (0.99)"
+ ],
+ "role_crosscheck": {
+  "tool": "jev_classify",
+  "sample": 46,
+  "auto": 30,
+  "auto_agree_with_rules": 27,
+  "all_agree": 32,
+  "finding": "rule priority order forced one role on mixed-import functions where Jev declined; the plan lists every matching tag instead"
+ }
+}

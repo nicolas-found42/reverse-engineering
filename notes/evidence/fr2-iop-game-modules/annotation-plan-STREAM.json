@@ -1,0 +1,856 @@
+{
+ "schema_version": 1,
+ "executable_sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3",
+ "module": "multi_streamer",
+ "entries": [
+  {
+   "entry": "00000000",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSifCheckInit (read from the module symbol table), sceSifInit (read from the module symbol table), sceSifInitRpc (read from the module symbol table), CreateThread (read from the module symbol table), StartThread (read from the module symbol table), QueryMaxFreeMemSize (read from the module symbol table), QueryTotalFreeMemSize (read from the module symbol table), printf (read from the module symbol table).\nRole tags from imports (all that match): thread_control, sif_dma, memory.\nDebug symbols place this procedure in object file entry.c, frame 64 bytes, size 256 bytes.\nReferences strings: 'MultiStream v6.2\\n'; 'IOP system memory  0x%x(%d) bytes free, Max free block size 0x%x\\n'; 'Exit MultiStream V6.2 Thread Load\\n'.\nNo identity claim."
+  },
+  {
+   "entry": "00000100",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file bgm_r2s.s, frame 0 bytes, size 312 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00000240",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 84 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00000294",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CreateSema (read from the module symbol table), StartThread (read from the module symbol table), sceSdSetTransIntrHandler (read from the module symbol table).\nRole tags from imports (all that match): thread_control, semaphore, sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 900 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00000618",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: FreeHardTimer (read from the module symbol table), DeleteSema (read from the module symbol table), TerminateThread (read from the module symbol table), DeleteThread (read from the module symbol table).\nRole tags from imports (all that match): timer, thread_control, semaphore.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 184 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000006d0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 176 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00000780",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CreateThread (read from the module symbol table).\nRole tags from imports (all that match): thread_control.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 112 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000007f0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table), sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 1500 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00000dcc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 2552 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000017c4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 4788 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00002a78",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 1084 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00002eb4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 284 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00002fd0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: USec2SysClock (read from the module symbol table), AllocHardTimer (read from the module symbol table), SetTimerHandler (read from the module symbol table), SetupHardTimer (read from the module symbol table).\nRole tags from imports (all that match): timer.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 212 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000030a4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: StartHardTimer (read from the module symbol table).\nRole tags from imports (all that match): timer.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 68 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000030e8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: iSignalSema (read from the module symbol table).\nRole tags from imports (all that match): semaphore.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 104 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00003150",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: iSignalSema (read from the module symbol table).\nRole tags from imports (all that match): semaphore.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 92 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000031ac",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: open (read from the module symbol table).\nRole tags from imports (all that match): file_io.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 880 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000351c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: iSignalSema (read from the module symbol table).\nRole tags from imports (all that match): semaphore.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 116 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00003590",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 884 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00003904",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: memcpy (read from the module symbol table), close (read from the module symbol table), open (read from the module symbol table), lseek (read from the module symbol table), read (read from the module symbol table), sceCdRead (read from the module symbol table).\nRole tags from imports (all that match): c_library, cd_driver, file_io.\nDebug symbols place this procedure in object file stream.c, frame 80 bytes, size 5240 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00004d7c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 332 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00004ec8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 148 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00004f5c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 148 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00004ff0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 148 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00005084",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 156 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00005120",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 148 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000051b4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 144 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00005244",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table), sceSdSetAddr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 352 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000053a4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 1208 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000585c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetAddr (read from the module symbol table), sceSdSetAddr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 2232 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00006114",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 240 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00006204",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: printf (read from the module symbol table).\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 88 bytes.\nReferences strings: 'ERROR: SOUND_StopDTS\\n'; 'DTS Not supported\\n'; 'Set SOUND_DTS_ENABLE to 1\\n'; 'Also requires DTS Middleware solution\\n'.\nNo identity claim."
+  },
+  {
+   "entry": "0000625c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 128 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000062dc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: WakeupThread (read from the module symbol table), WaitSema (read from the module symbol table).\nRole tags from imports (all that match): thread_control, semaphore.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 2132 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00006b30",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 384 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00006cb0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdBlockTransStatus (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 876 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000701c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 496 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000720c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 1776 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000078fc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 572 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00007b38",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 1500 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00008114",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceCdDiskReady (read from the module symbol table).\nRole tags from imports (all that match): cd_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 216 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000081ec",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 180 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000082a0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceCdDiskReady (read from the module symbol table).\nRole tags from imports (all that match): cd_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 88 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000082f8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetAddr (read from the module symbol table), sceSdGetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 692 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000085ac",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: SignalSema (read from the module symbol table).\nRole tags from imports (all that match): semaphore.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 1164 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00008a38",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 520 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00008c40",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 64 bytes, size 2936 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000097b8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 904 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00009b40",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 1408 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000a0c0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 456 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000a288",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 304 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000a3b8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 732 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000a694",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 4488 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000b81c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 284 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000b938",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 184 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000b9f0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 184 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000baa8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 184 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000bb60",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 56 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000bb98",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 376 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000bd10",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 136 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000bd98",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 1036 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000c1a4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 2036 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000c998",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 776 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000cca0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 116 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000cd14",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), AllocSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 568 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000cf4c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 420 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000d0f0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 576 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000d330",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdInit (read from the module symbol table), sceSdSetCoreAttr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 132 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000d3b4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: printf (read from the module symbol table).\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 92 bytes.\nReferences strings: 'ERROR: SOUND_SetDTSMode\\n'; 'DTS Not supported\\n'; 'Set SOUND_DTS_ENABLE to 1\\n'; 'Also requires DTS Middleware solution\\n'.\nNo identity claim."
+  },
+  {
+   "entry": "0000d410",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 132 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000d494",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSifInitRpc (read from the module symbol table), GetThreadId (read from the module symbol table), sceSifSetRpcQueue (read from the module symbol table), sceSifRegisterRpc (read from the module symbol table), sceSifRpcLoop (read from the module symbol table).\nRole tags from imports (all that match): rpc_server, sif_dma.\nDebug symbols place this procedure in object file stream.c, frame 136 bytes, size 136 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000d51c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdBlockTransStatus (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 4940 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000e868",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 176 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000e918",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 260 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000ea1c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table), sceSdSetAddr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 64 bytes, size 592 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000ec6c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 152 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000ed04",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 600 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000ef5c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 168 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000f004",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), sceSdGetParam (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 1368 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000f55c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 796 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000f878",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), sceSdGetParam (read from the module symbol table), sceSdSetParam (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 1872 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0000ffc8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table), sceSdGetAddr (read from the module symbol table), sceSdSetAddr (read from the module symbol table), sceSdProcBatch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 64 bytes, size 3736 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00010e60",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table), sceSdGetAddr (read from the module symbol table), sceSdSetAddr (read from the module symbol table), sceSdProcBatch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 64 bytes, size 3768 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00011d18",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: DelayThread (read from the module symbol table).\nRole tags from imports (all that match): thread_control.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 44 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00011d44",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: SleepThread (read from the module symbol table), printf (read from the module symbol table), sceSdSetSwitch (read from the module symbol table), sceSdGetParam (read from the module symbol table), CpuSuspendIntr (read from the module symbol table), FreeSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table), SignalSema (read from the module symbol table).\nRole tags from imports (all that match): thread_control, semaphore, interrupt_guard, memory, sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 600 bytes, size 5964 bytes.\nReferences strings: '---------------------------------\\n'; 'MULTISTREAM ERROR\\n'; 'EE and IOP versions do not match\\n'; 'EE version  = %d.%d\\n'; 'IOP version = %d.%d\\n'; '(IOP Stream.C file is older than EE Sound.C)\\n'; '(EE Sound.C file is older than IOP Stream.C)\\n'.\nNo identity claim."
+  },
+  {
+   "entry": "00013490",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 804 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000137b4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdBlockTransStatus (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 2352 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000140e4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 96 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014144",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 36 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014168",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 640 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000143e8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 400 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014578",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetSwitch (read from the module symbol table), sceSdSetAddr (read from the module symbol table), sceSdSetParam (read from the module symbol table), sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 764 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014874",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetAddr (read from the module symbol table), sceSdSetEffectAttr (read from the module symbol table), sceSdClearEffectWorkArea (read from the module symbol table), sceSdSetCoreAttr (read from the module symbol table), sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 640 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014af4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetCoreAttr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014b70",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 112 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014be0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 264 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014ce8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 268 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014df4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 140 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014e80",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00014efc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 1036 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00015308",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 188 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000153c4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: QueryMaxFreeMemSize (read from the module symbol table).\nRole tags from imports (all that match): memory.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 108 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00015430",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: strncmp (read from the module symbol table), open (read from the module symbol table), lseek (read from the module symbol table), close (read from the module symbol table), strstr (read from the module symbol table), strcat (read from the module symbol table), sceCdSync (read from the module symbol table), sceCdSearchFile (read from the module symbol table).\nRole tags from imports (all that match): c_library, cd_driver, file_io.\nDebug symbols place this procedure in object file stream.c, frame 88 bytes, size 412 bytes.\nReferences strings: 'host0:'; 'cdrom0:'.\nNo identity claim."
+  },
+  {
+   "entry": "000155cc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: strlen (read from the module symbol table), CpuSuspendIntr (read from the module symbol table), AllocSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table), strcpy (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, c_library, memory.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 344 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00015724",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 208 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000157f4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 408 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001598c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), FreeSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 584 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00015bd4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 228 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00015cb8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), FreeSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 440 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00015e70",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), AllocSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 404 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016004",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), FreeSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 132 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016088",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), AllocSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 252 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016184",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), FreeSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016200",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 160 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000162a0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 188 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001635c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 244 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016450",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 156 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000164ec",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 332 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016638",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceCdInit (read from the module symbol table), sceCdMmode (read from the module symbol table), sceCdDiskReady (read from the module symbol table), sceCdCallback (read from the module symbol table).\nRole tags from imports (all that match): cd_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 356 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001679c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceCdCallback (read from the module symbol table).\nRole tags from imports (all that match): cd_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 44 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000167c8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTransStatus (read from the module symbol table), sceSdSetTransIntrHandler (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 64 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016808",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTransStatus (read from the module symbol table), sceSdSetTransIntrHandler (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 80 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016858",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 104 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000168c0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetCoreAttr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 48 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000168f0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetCoreAttr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 48 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00016920",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 2396 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001727c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetAddr (read from the module symbol table), sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 96 bytes, size 8308 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000192f0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 740 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000195d4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 72 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001961c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 92 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00019678",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 560 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000198a8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 104 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00019910",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 336 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00019a60",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 80 bytes, size 4196 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001aac4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 280 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001abdc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 936 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001af84",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), sceSifSetDma (read from the module symbol table), CpuResumeIntr (read from the module symbol table), sceSifDmaStat (read from the module symbol table), DelayThread (read from the module symbol table).\nRole tags from imports (all that match): thread_control, sif_dma, interrupt_guard.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 240 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b074",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 176 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b124",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 188 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b1e0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTrans (read from the module symbol table), sceSdVoiceTransStatus (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 256 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b2e0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 96 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b340",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 84 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b394",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 284 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b4b0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 268 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b5bc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 148 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b650",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), AllocSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table), sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory, sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 456 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b818",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), AllocSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table), sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory, sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 232 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001b900",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 320 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001ba40",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: CpuSuspendIntr (read from the module symbol table), FreeSysMemory (read from the module symbol table), CpuResumeIntr (read from the module symbol table).\nRole tags from imports (all that match): interrupt_guard, memory.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 168 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001bae8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdBlockTrans (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 184 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001bba0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdBlockTrans (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001bc1c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table), sceSdBlockTransStatus (read from the module symbol table), sceSdBlockTrans (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001bc98",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdBlockTrans (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 148 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001bd2c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: memcpy (read from the module symbol table), memset (read from the module symbol table).\nRole tags from imports (all that match): c_library.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 1060 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001c150",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 300 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001c27c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSifCallRpc (read from the module symbol table), SignalSema (read from the module symbol table).\nRole tags from imports (all that match): rpc_client, semaphore.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 852 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001c5d0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSifBindRpc (read from the module symbol table), printf (read from the module symbol table).\nRole tags from imports (all that match): rpc_client.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 356 bytes.\nReferences strings: 'DCache ON!\\n'.\nNo identity claim."
+  },
+  {
+   "entry": "0001c734",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 40 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001c75c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 36 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001c780",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 264 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001c888",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 268 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001c994",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 140 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001ca20",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001ca9c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 60 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001cad8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 60 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001cb14",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 1492 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001d0e8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 692 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001d39c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 224 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001d47c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTransStatus (read from the module symbol table), sceSdVoiceTrans (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 48 bytes, size 588 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001d6c8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTransStatus (read from the module symbol table), sceSdVoiceTrans (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 836 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001da0c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 640 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001dc8c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 448 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001de4c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTransStatus (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 1548 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001e458",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 276 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001e56c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTransStatus (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 200 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001e634",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdVoiceTransStatus (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 328 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001e77c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 840 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001eac4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 176 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001eb74",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 132 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001ebf8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 668 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001ee94",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 412 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001f030",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 268 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001f13c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetAddr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 216 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001f214",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 400 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001f3a4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 532 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001f5b8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 584 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001f800",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 604 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001fa5c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 584 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0001fca4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetAddr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 2392 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000205fc",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetSwitch (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00020678",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000206f4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetAddr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00020770",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetCoreAttr (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 124 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000207ec",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdBlockTrans (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 104 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00020854",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 164 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000208f8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 8 bytes, size 104 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00020960",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 104 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000209c8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 312 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00020b00",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 56 bytes, size 1076 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00020f34",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdGetParam (read from the module symbol table), sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 80 bytes, size 1648 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000215a4",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 220 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00021680",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: sceSdSetParam (read from the module symbol table).\nRole tags from imports (all that match): sound_driver.\nDebug symbols place this procedure in object file stream.c, frame 152 bytes, size 584 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000218c8",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: ChangeThreadPriority (read from the module symbol table).\nRole tags from imports (all that match): thread_control.\nDebug symbols place this procedure in object file stream.c, frame 24 bytes, size 88 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00021920",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 160 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "000219c0",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 172 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00021a6c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 996 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00021e50",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 832 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00022190",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 16 bytes, size 396 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "0002231c",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: open (read from the module symbol table).\nRole tags from imports (all that match): file_io.\nDebug symbols place this procedure in object file stream.c, frame 40 bytes, size 284 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00022438",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nCalls imports: close (read from the module symbol table).\nRole tags from imports (all that match): file_io.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 232 bytes.\nNo identity claim."
+  },
+  {
+   "entry": "00022520",
+   "comment": "Static facts from relocation tables and import/export tables; no code was run.\nDebug symbols place this procedure in object file stream.c, frame 32 bytes, size 144 bytes.\nNo identity claim."
+  }
+ ],
+ "claim_limits": [
+  "Comments restate static tables; role tags are import-derived hints, not identities.",
+  "Import names are candidates from pinned public SDK tables.",
+  "A rename needs one self-naming error string, no other claimant and a default current name."
+ ]
+}

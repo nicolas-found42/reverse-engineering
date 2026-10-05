@@ -1,0 +1,1171 @@
+{
+  "schema_version": 2,
+  "config_sha256": "a56d9d85cd26375b1c183140e863f9596ec485fda843b18c7714a7a693326c54",
+  "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "baseline_manifest_sha256": "f462085de93ea7fa0f52b800a83bd28c5a2e391fdb5eacd7e6e3713c0711878f",
+  "baseline_inventory_sha256": "b409f1068223c9ecf32dd919f797ad77252831bd5ee60c3bd9f43aa91cd2b4a1",
+  "baseline_coverage_sha256": "64c742c9479329322f9cd1b4fef413e5a8bc49b75b353db64e9c282564633284",
+  "language": "r5900:LE:32:default",
+  "ghidra_version": "12.1.3",
+  "seed_count": 113,
+  "seeds": [
+    {
+      "entry": "00101cf0",
+      "words": 7,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "00101d04": "0020b938|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "001026a8",
+      "words": 16,
+      "padding_words": 1,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "001026e0": "00103530|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "00119e30",
+      "words": 132,
+      "padding_words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "00119fb4": "0011aad8|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "0015e8d8",
+      "words": 14,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "0015e900": "001e76f0|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "001ba478",
+      "words": 102,
+      "padding_words": 2,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "001ba608": "0010a380|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "001cc908",
+      "words": 28,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "001cc960": "001cc628|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "001cc978",
+      "words": 28,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "001cc9d0": "001cc6f0|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "001dbd48",
+      "words": 48,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "001dbde0": "001dbfc8|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "001ea740",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea750",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea770",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea790",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea7a0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea7b0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea7c0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea7d0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea7e0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea7f0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea800",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea810",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea820",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea830",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea850",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea8f0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea900",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 1,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea910",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 1,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea920",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 1,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea930",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 1,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea940",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea950",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea990",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea9a0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea9c0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea9d0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ea9e0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaa00",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaa20",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaa30",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaa40",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaa70",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaab0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaac0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaae0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 1,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaaf0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eab00",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eab10",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eab20",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eab30",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eab50",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eabc0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eabd0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eabe0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eabf0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac20",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac30",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac40",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac50",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac60",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac70",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac80",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eac90",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaca0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eacb0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eacc0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eacd0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eace0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eacf0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead00",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead10",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead20",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead30",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead40",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead50",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead60",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead70",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead80",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ead90",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eada0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eadb0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eadc0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eadd0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eadf0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae00",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae10",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae20",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae40",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae50",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae60",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae80",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eae90",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaeb0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaec0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaee0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaef0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaf10",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eaf80",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eafa0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001eafb0",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001ebb28",
+      "words": 38,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f26a8",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f2a48",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 4,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f2a88",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 1,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f3968",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f3978",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f39c8",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f39d8",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f39e8",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f39f8",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f3a08",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "batch_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001f3a18",
+      "words": 4,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {}
+    },
+    {
+      "entry": "001fba40",
+      "words": 9,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "001fba5c": "001fc538|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "0020c9c0",
+      "words": 7,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "undefined",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "0020c9d4": "00214a28|UNCONDITIONAL_JUMP"
+      }
+    },
+    {
+      "entry": "0020d8c0",
+      "words": 8,
+      "padding_words": 0,
+      "decoded_preexisting_words": 0,
+      "incoming_sites": 0,
+      "next_state": "function_entry",
+      "non_call_references_into_entry": [],
+      "tail_jumps_with_flow_type": {
+        "0020d8d8": "0020d7c0|UNCONDITIONAL_JUMP"
+      }
+    }
+  ],
+  "status": "created_batch_bounded_candidates",
+  "function_count_after": 5243,
+  "old_function_snapshot_preserved": true,
+  "initialized_memory_preserved": true,
+  "defined_data_preserved": true,
+  "scope": "Static provisional candidates only. No original function identity, semantics, runtime reachability, or whole-game completeness is established."
+}

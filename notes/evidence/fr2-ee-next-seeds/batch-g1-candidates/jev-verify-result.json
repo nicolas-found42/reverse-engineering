@@ -1,0 +1,14 @@
+{
+ "tool": "jev_verify",
+ "note": "Claims and evidence items were passed as separate texts quoting the preserved files (iterate.log, transaction-result.json, verifier-summary.json, reconciliation.json, denominator and references results). Claim 6 is a deliberate overclaim.",
+ "summary": {"verified": 6, "contradicted": 1, "unsupported": 0, "needs_review": 0},
+ "results": [
+  {"claim": "412 functions created in one guarded V5 transaction (4718->5130) after three rejected iterations that excluded 21 of 433 tier A seeds", "verdict": "verified", "confidence": 0.85},
+  {"claim": "re-export 5130 processed, 5130 generated, 0 failed, verifier pass", "verdict": "verified", "confidence": 0.98},
+  {"claim": "reconciliation 16/16 incl. 4718 prior functions preserved and 14953 new words equal the ELF", "verdict": "verified", "confidence": 1.0},
+  {"claim": "function-owned bytes 1,051,516 -> 1,111,328 of 1,247,328 (84.3% -> 89.1%); code-shaped unlisted 164,512 -> 103,776", "verdict": "verified", "confidence": 1.0},
+  {"claim": "354 code-shaped spans left: 58 anchored (52,152 B), 7 reached only via anchored (1,372 B), 289 unreferenced (50,252 B)", "verdict": "verified", "confidence": 1.0},
+  {"claim": "the 412 new functions are identified as the original game functions", "verdict": "contradicted", "confidence": 0.99, "disposition": "overclaim recorded as contradicted; not made"},
+  {"claim": "warning comments rose from 620 to 685", "verdict": "verified", "confidence": 1.0}
+ ]
+}

@@ -1,0 +1,47 @@
+{
+  "tool": "jev_extract",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "summary": {
+    "fields": 2,
+    "extracted": 2,
+    "auto": 2,
+    "review": 0,
+    "not_found": 0,
+    "invalid": 0
+  },
+  "thresholds": {
+    "auto_accept": 0.85,
+    "minimum_margin": 0.5
+  },
+  "results": [
+    {
+      "id": "tests_run",
+      "value": "475",
+      "status": "auto",
+      "reason": null,
+      "confidence": 0.99,
+      "top_probability": 1,
+      "margin": 1,
+      "candidates_considered": 1,
+      "candidates_truncated": false,
+      "matches_skipped_too_long": 0
+    },
+    {
+      "id": "tests_skipped",
+      "value": "1",
+      "status": "auto",
+      "reason": null,
+      "confidence": 0.99,
+      "top_probability": 0.99,
+      "margin": 0.98,
+      "candidates_considered": 1,
+      "candidates_truncated": false,
+      "matches_skipped_too_long": 0
+    }
+  ],
+  "usage": {
+    "input_tokens": 658,
+    "output_tokens": 71
+  }
+}

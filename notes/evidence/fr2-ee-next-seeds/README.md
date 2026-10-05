@@ -60,5 +60,10 @@ Each bundle records one isolated transaction on a byte-identical Ghidra project 
 | 4,346 | [`batch-all-1-candidates`](batch-all-1-candidates/README.md) | 477 |
 | 4,542 | [`batch-r2-candidates`](batch-r2-candidates/README.md) | 196 |
 | 4,718 | [`batch-r3-candidates`](batch-r3-candidates/README.md) | 176 |
+| 5,130 | [`batch-g1-candidates`](batch-g1-candidates/README.md) | 412 |
+| 5,243 | [`batch-g2-candidates`](batch-g2-candidates/README.md) | 113 |
+| 5,454 | [`batch-g3-candidates`](batch-g3-candidates/README.md) | 211 |
 
 The three large batches add PS2Recomp function-table entries that were not saved functions. Their evidence per seed is table membership plus raw-word CFG validation; where available, direct JAL callers and non-call (address-taken) references into the entry are recorded and verified unchanged. In 96 saved functions' decompiled output (64, 26 and 6 across the three batches) address-of-label stores and pointer labels are now printed with the new function symbols (many are table-initializer functions storing code addresses), which is consistent with these being address-taken code but does not identify them. The V5 guard reviews escalated; see each bundle's `jev-review-*` receipts and root dispositions.
+
+Batch `g1` (2026-10-04) differs in kind: its 412 candidates are gap-fill seeds from executable bytes no saved function owned, not PS2Recomp table entries, and none has a known direct caller. Their evidence classes (closed control-flow walk, stack-frame consistency, boundary layout, static reference) and the Jev decisions behind the set are in the bundle README.

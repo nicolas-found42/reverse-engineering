@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T214921Z-f2cb018555394fbfb1359b957fa8c897",
+  "check": "holdout-gap-method",
+  "command": [
+    "tools/holdout_gap_method.py",
+    "--export-dir",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--fraction",
+    "0.5",
+    "--seed",
+    "3",
+    "--without-callers",
+    "--work-dir",
+    ".scratch/mesh/codex-audit/frontier-3845-01/holdout-g2-3",
+    "--output",
+    ".scratch/evidence/holdout-gap-method"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/inventory.json": {
+      "bytes": 53647638,
+      "sha256": "5df11681a4c52a47db73c018551d400c250ac6b08a7638527f2fc2dbe62246d1"
+    },
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g2/export-5243/coverage.json": {
+      "bytes": 949491,
+      "sha256": "4f8865b7703efd339b2c48742883789204eabd3b0560f8c1a0d70741f6eef227"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "fraction": 0.5,
+    "seed": 3,
+    "without_callers": true,
+    "seeds_generated": 1317,
+    "guard_accepted": 860,
+    "tiers_all_candidates": {
+      "A": 622,
+      "B": 203,
+      "C": 35
+    },
+    "score": {
+      "held_out": 734,
+      "recovered": {
+        "exact": 624,
+        "start_only": 0,
+        "missed": 110
+      },
+      "inside_held_spans": {
+        "candidates": 627,
+        "exact": 624,
+        "start_only": 0,
+        "false_start": 3
+      },
+      "straddling": 0,
+      "by_tier": {
+        "A": {
+          "candidates": 601,
+          "exact": 598,
+          "start_only": 0,
+          "false_start": 3
+        },
+        "B": {
+          "candidates": 26,
+          "exact": 26,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "by_evidence": {
+        "frame+layout": {
+          "candidates": 346,
+          "exact": 343,
+          "start_only": 0,
+          "false_start": 3
+        },
+        "frame+layout+reference": {
+          "candidates": 135,
+          "exact": 135,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "frame+reference": {
+          "candidates": 114,
+          "exact": 114,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "reference": {
+          "candidates": 3,
+          "exact": 3,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "frame": {
+          "candidates": 23,
+          "exact": 23,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "layout+reference": {
+          "candidates": 6,
+          "exact": 6,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "by_frame": {
+        "leaf_consistent": {
+          "candidates": 267,
+          "exact": 267,
+          "start_only": 0,
+          "false_start": 0
+        },
+        "frame_consistent": {
+          "candidates": 235,
+          "exact": 234,
+          "start_only": 0,
+          "false_start": 1
+        },
+        "no_return": {
+          "candidates": 116,
+          "exact": 114,
+          "start_only": 0,
+          "false_start": 2
+        },
+        "leaf_with_sp_use": {
+          "candidates": 9,
+          "exact": 9,
+          "start_only": 0,
+          "false_start": 0
+        }
+      },
+      "exact_precision": 0.9952153110047847,
+      "exact_recall": 0.8501362397820164
+    },
+    "claim_limits": [
+      "Ground truth is the saved functions, themselves provisional structural candidates.",
+      "Only contiguous saved functions can be held out; split bodies are not tested.",
+      "Held-out bytes are marked undefined; real gaps are partly decoded unowned instructions.",
+      "Recall and precision measure agreement with saved functions, not original boundaries."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 2607,
+      "sha256": "6af2d48a465d2effdc8bc381b71d0770765b0104499469b2879f9ce7ca3c7288"
+    }
+  }
+}

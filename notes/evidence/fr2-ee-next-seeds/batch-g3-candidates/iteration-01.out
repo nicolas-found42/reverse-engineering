@@ -1,0 +1,5 @@
+{"config": ".scratch/mesh/codex-audit/frontier-3845-01/batch-g3/config.json", "config_sha256": "61ea646333fd8be93ad11560a412a4af8326bcef79e8aab8097b7e097e4cf1a9", "seed_count": 214, "seeds": ["00101340", "00101480", "00101d10", "001023b0", "00107a80", "00107ab8", "00107b98", "00108c98", "00108d5c", "00108e58", "0010d000", "0010d7c8", "0010db64", "0010f4a0", "0010f5f0", "00112fc0", "00117120", "001
+CONFIG_CHECK_PASS
+COPY_IDENTICAL
+exit=0
+rejected_or_failed IllegalStateException: DECODER_FLOW_FAILURES 2 SEED_FAILURE 001796b0: Ghidra direct-call fallthrough/delay-slot address differs at 00179788 fall=null expected=00179790 insn=jal 0x00105888 | SEED_FAILURE 001802e8: Ghidra direct-call fallthrough/delay-slot address differs at 00180340 fall=null expected=00180348 insn=jal 0x00105888 None

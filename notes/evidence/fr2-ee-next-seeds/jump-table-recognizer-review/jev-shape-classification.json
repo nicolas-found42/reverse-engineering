@@ -1,0 +1,91 @@
+{
+  "tool": "jev_classify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "summary": {
+    "items": 5,
+    "auto": 5,
+    "review": 0,
+    "invalid_response": 0,
+    "by_class": {
+      "unmodelled_cop": 1,
+      "unsupported_likely": 2,
+      "nonlocal_bound": 2
+    }
+  },
+  "thresholds": {
+    "auto_accept": 0.85,
+    "minimum_margin": 0.5
+  },
+  "results": [
+    {
+      "id": "0011830c",
+      "classification": "unmodelled_cop",
+      "probabilities": {
+        "unsupported_likely": 0.07,
+        "unmodelled_cop": 0.92,
+        "nonlocal_bound": 0.01
+      },
+      "confidence": 0.87,
+      "margin": 0.8500000000000001,
+      "top_probability": 0.92,
+      "decision": "auto"
+    },
+    {
+      "id": "0011bae0",
+      "classification": "unsupported_likely",
+      "probabilities": {
+        "unsupported_likely": 0.98,
+        "unmodelled_cop": 0,
+        "nonlocal_bound": 0.02
+      },
+      "confidence": 0.97,
+      "margin": 0.96,
+      "top_probability": 0.98,
+      "decision": "auto"
+    },
+    {
+      "id": "00123cb4",
+      "classification": "unsupported_likely",
+      "probabilities": {
+        "unsupported_likely": 0.98,
+        "unmodelled_cop": 0,
+        "nonlocal_bound": 0.02
+      },
+      "confidence": 0.97,
+      "margin": 0.96,
+      "top_probability": 0.98,
+      "decision": "auto"
+    },
+    {
+      "id": "00175cbc",
+      "classification": "nonlocal_bound",
+      "probabilities": {
+        "unsupported_likely": 0.04,
+        "unmodelled_cop": 0.06,
+        "nonlocal_bound": 0.9
+      },
+      "confidence": 0.85,
+      "margin": 0.8400000000000001,
+      "top_probability": 0.9,
+      "decision": "auto"
+    },
+    {
+      "id": "0020ae54",
+      "classification": "nonlocal_bound",
+      "probabilities": {
+        "unsupported_likely": 0.06,
+        "unmodelled_cop": 0.01,
+        "nonlocal_bound": 0.9299999999999999
+      },
+      "confidence": 0.91,
+      "margin": 0.8699999999999999,
+      "top_probability": 0.9299999999999999,
+      "decision": "auto"
+    }
+  ],
+  "usage": {
+    "input_tokens": 1008,
+    "output_tokens": 203
+  }
+}

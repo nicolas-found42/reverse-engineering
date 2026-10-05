@@ -79,3 +79,79 @@ _Avoid_: Material table
 **Texture format**:
 The one-byte code in a texture descriptor. Format 1 is 32-bit RGBA stored linearly, format 3 is 8-bit indexed pixels in the PS2 graphics chip's block order with a 256-entry palette, and format 4 is 4-bit (pixel layout unresolved).
 _Avoid_: Pixel type
+
+## Executable code
+
+**Saved function**:
+A function entry stored in the Ghidra project, with the instruction words it owns. Saved functions are provisional structural candidates, not recovered original functions.
+_Avoid_: Recovered function, decompiled function
+
+**Unlisted bytes**:
+Executable bytes that no saved function owns. They are the denominator for any claim of code coverage and are classified by structure only.
+_Avoid_: Dead code, missing code
+
+**Code-shaped span**:
+A run of unlisted bytes whose nonzero words all pass a field-level R5900 filter. The filter passes some data words too, so the class is measured against function-owned and data-section controls.
+_Avoid_: Code, undiscovered functions
+
+**Anchored span**:
+A code-shaped span with a static reference from owned code or data. A span reached only through anchored spans is reachable from them; the rest has no static reference at all.
+_Avoid_: Live span, reachable code
+
+**Gap-fill candidate**:
+A seed whose raw-word control-flow walk closes inside unlisted bytes and ends in a return or pinned tail jump. It becomes a saved function only through a guarded batch.
+_Avoid_: Recovered function
+
+**Evidence class**:
+One independent static check a gap-fill candidate passes: stack-frame consistency, boundary layout, or a static reference to its entry. A tier counts classes; it does not establish identity or behavior.
+_Avoid_: Confidence, score
+
+**gp context**:
+The value the Ghidra project holds for the `gp` register. With it set, the decompiler shows a global-pointer-relative access as an absolute address; without it, as an offset name such as `uGpffff9118`. For the EE executable it is `0x295d70`, the value the entry routine loads and `.reginfo` records.
+_Avoid_: Global pointer fix
+
+**Small-data global**:
+A variable in `.sdata` or `.sbss`, reached by a load or store whose base is `gp`. Its access width and kind (float load, signed byte load) are the static evidence for a data type. An address used as an array or structure base gets no type.
+_Avoid_: Variable, field
+
+**Literal pool**:
+The `.lit4` block of float constants. The ELF marks it writable; the project marks its items constant only because no saved function writes any of them. Unsaved code could still write.
+_Avoid_: Constants table
+
+**Reference site**:
+A word in an IOP module that holds an address, listed in the module's relocation table: a pointer, a jump target, or the high half of a `lui`/`addiu` pair. It gives the target exactly, with no data-flow guess.
+_Avoid_: Xref, link
+
+## Completion and validation
+
+**Completion target**:
+The measurable finish line the owner named for the broader effort: a byte-exact matching rebuild of the whole PAL corpus, each stage carrying a check that can fail on the unchanged corpus.
+_Avoid_: Goal, definition of done
+
+**Byte-exact rebuild** (matching decompilation):
+A source tree that, compiled with the corpus's own open-source toolchain, reproduces the retail ELF byte for byte under an ELF-hash gate scoped to game-owned sections.
+_Avoid_: Faithful rebuild, approximate port
+
+**Game-owned**:
+Code and data authored for the game, as distinct from SDK/library regions. The boundary between game-owned and SDK code is a recorded decision, not a guess.
+_Avoid_: Original code, game code
+
+**Substitute region**:
+A region satisfied by an open-source reimplementation (ps2sdk) instead of a byte match. Explicitly labelled; never counted as matched.
+_Avoid_: Ported library, stand-in
+
+**Mixed section**:
+A section of the retail executable whose bytes interleave game-owned and SDK code or data. Its byte-diff verdict is reported but none of its bytes count as matched until a range-level split is measured.
+_Avoid_: Partially owned, shared section
+
+**Readable reconstruction**:
+A source tree that compiles and is structurally faithful (types, signatures, names) but is not required to be byte-exact.
+_Avoid_: Soft match, approximate decompilation
+
+**Headless execution oracle**:
+Permission to execute the game or rebuilt code in a windowless, focus-free emulator or runner, used only to validate behavior, never to produce static evidence.
+_Avoid_: Dynamic analysis, running the game
+
+**Function-owned bytes**:
+Executable bytes owned by a saved function. A byte-accounting measure; it is not a percentage of decompilation completeness or correctness.
+_Avoid_: Coverage, completion percentage

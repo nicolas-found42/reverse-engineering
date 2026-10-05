@@ -1,0 +1,5892 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T221347Z-140fbcf093c748369c96386c4af656b2",
+  "check": "source-map",
+  "command": [
+    "tools/verify_source_map.py",
+    "--static-export",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json",
+    "--output",
+    ".scratch/evidence/source-map"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json": {
+      "bytes": 54860858,
+      "sha256": "29f08df42d6d0a1599ebd3a5c289efc1365fc07b309392fc2113cbefa437c4d8"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "files": [
+      {
+        "path": "../modules4/system/ev_stack.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00100348",
+            "last": "00100348",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00100348",
+            "lines": [
+              359
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/memalloc.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001006f0",
+            "last": "00100f70",
+            "referencing_functions": 3,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001006f0",
+            "lines": [
+              587,
+              628
+            ]
+          },
+          {
+            "entry": "00100aa0",
+            "lines": []
+          },
+          {
+            "entry": "00100f70",
+            "lines": [
+              774
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/mfile.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001014c8",
+            "last": "001014c8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001014c8",
+            "lines": [
+              118
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/startup.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00104c00",
+            "last": "00104c00",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00104c00",
+            "lines": [
+              207
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/asyncf.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00105480",
+            "last": "00105480",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00105480",
+            "lines": [
+              97
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/debug.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00105cb0",
+            "last": "00105df0",
+            "referencing_functions": 2,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00105cb0",
+            "lines": [
+              357
+            ]
+          },
+          {
+            "entry": "00105df0",
+            "lines": [
+              386,
+              412
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/file.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001061f8",
+            "last": "00107fd0",
+            "referencing_functions": 9,
+            "functions_in_range": 40
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001061f8",
+            "lines": [
+              282,
+              316,
+              332,
+              349
+            ]
+          },
+          {
+            "entry": "00106448",
+            "lines": [
+              561,
+              762
+            ]
+          },
+          {
+            "entry": "001065c8",
+            "lines": [
+              561,
+              840,
+              849
+            ]
+          },
+          {
+            "entry": "00106700",
+            "lines": [
+              952
+            ]
+          },
+          {
+            "entry": "001067f8",
+            "lines": [
+              1421
+            ]
+          },
+          {
+            "entry": "001069f0",
+            "lines": [
+              1467
+            ]
+          },
+          {
+            "entry": "00106c48",
+            "lines": [
+              1591,
+              1606
+            ]
+          },
+          {
+            "entry": "00106ef8",
+            "lines": [
+              1786,
+              1917
+            ]
+          },
+          {
+            "entry": "00107fd0",
+            "lines": [
+              2023
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/gtforce.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001084e0",
+            "last": "001084e0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001084e0",
+            "lines": [
+              733
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/memcard.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00109200",
+            "last": "00109cf0",
+            "referencing_functions": 6,
+            "functions_in_range": 6
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00109200",
+            "lines": [
+              281
+            ]
+          },
+          {
+            "entry": "00109358",
+            "lines": [
+              281
+            ]
+          },
+          {
+            "entry": "001095d8",
+            "lines": [
+              281
+            ]
+          },
+          {
+            "entry": "00109860",
+            "lines": [
+              269,
+              281
+            ]
+          },
+          {
+            "entry": "00109950",
+            "lines": [
+              281
+            ]
+          },
+          {
+            "entry": "00109cf0",
+            "lines": [
+              269,
+              281
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/padevent.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0010bb18",
+            "last": "0010bc58",
+            "referencing_functions": 2,
+            "functions_in_range": 5
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0010bb18",
+            "lines": [
+              504
+            ]
+          },
+          {
+            "entry": "0010bc58",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/pad.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0010c060",
+            "last": "0010c9f8",
+            "referencing_functions": 2,
+            "functions_in_range": 10
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0010c060",
+            "lines": [
+              785
+            ]
+          },
+          {
+            "entry": "0010c9f8",
+            "lines": [
+              1195
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/safemem.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0010d020",
+            "last": "0010d020",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0010d020",
+            "lines": [
+              99
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/strfile.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0010d5b8",
+            "last": "0010d5b8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0010d5b8",
+            "lines": [
+              227
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/systimer.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0010d600",
+            "last": "0010d6b0",
+            "referencing_functions": 2,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0010d600",
+            "lines": [
+              73
+            ]
+          },
+          {
+            "entry": "0010d6b0",
+            "lines": [
+              160
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/system/ps2/wstring.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0010deb8",
+            "last": "0010deb8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0010deb8",
+            "lines": [
+              829
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/fontsys.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0010ee18",
+            "last": "0010efc0",
+            "referencing_functions": 2,
+            "functions_in_range": 9
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0010ee18",
+            "lines": [
+              96,
+              101,
+              106
+            ]
+          },
+          {
+            "entry": "0010efc0",
+            "lines": [
+              96,
+              101,
+              106
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/screen.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00110890",
+            "last": "00110aa8",
+            "referencing_functions": 2,
+            "functions_in_range": 6
+          },
+          {
+            "block": ".user_section_init",
+            "first": "0022dca0",
+            "last": "0022dca0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00110890",
+            "lines": [
+              463
+            ]
+          },
+          {
+            "entry": "00110aa8",
+            "lines": [
+              821
+            ]
+          },
+          {
+            "entry": "0022dca0",
+            "lines": [
+              434
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/texfont.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00110d80",
+            "last": "00111408",
+            "referencing_functions": 2,
+            "functions_in_range": 5
+          },
+          {
+            "block": ".user_section5",
+            "first": "0021f1b8",
+            "last": "0021f790",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          },
+          {
+            "block": ".user_section_init",
+            "first": "0022df80",
+            "last": "0022e080",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00110d80",
+            "lines": [
+              585
+            ]
+          },
+          {
+            "entry": "00111408",
+            "lines": []
+          },
+          {
+            "entry": "0021f1b8",
+            "lines": [
+              796
+            ]
+          },
+          {
+            "entry": "0021f790",
+            "lines": [
+              1335
+            ]
+          },
+          {
+            "entry": "0022df80",
+            "lines": [
+              111,
+              116
+            ]
+          },
+          {
+            "entry": "0022e080",
+            "lines": [
+              198
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/texgraph.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001114e8",
+            "last": "00111e40",
+            "referencing_functions": 2,
+            "functions_in_range": 4
+          },
+          {
+            "block": ".user_section_uncommon",
+            "first": "0022a910",
+            "last": "0022acc8",
+            "referencing_functions": 3,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001114e8",
+            "lines": [
+              288,
+              357,
+              366
+            ]
+          },
+          {
+            "entry": "00111e40",
+            "lines": [
+              1501
+            ]
+          },
+          {
+            "entry": "0022a910",
+            "lines": [
+              119,
+              126
+            ]
+          },
+          {
+            "entry": "0022abf8",
+            "lines": [
+              580
+            ]
+          },
+          {
+            "entry": "0022acc8",
+            "lines": [
+              650
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/textman.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00112210",
+            "last": "00112210",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          },
+          {
+            "block": ".user_section_init",
+            "first": "0022e8e8",
+            "last": "0022e8e8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00112210",
+            "lines": [
+              789
+            ]
+          },
+          {
+            "entry": "0022e8e8",
+            "lines": [
+              157
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/maths/ps2/vu0micro.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00114fe0",
+            "last": "00114fe0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00114fe0",
+            "lines": [
+              28
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/misc/file_asc.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00115a38",
+            "last": "00116ca8",
+            "referencing_functions": 6,
+            "functions_in_range": 8
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00115a38",
+            "lines": [
+              190
+            ]
+          },
+          {
+            "entry": "00115fd0",
+            "lines": [
+              381
+            ]
+          },
+          {
+            "entry": "001161a8",
+            "lines": [
+              462
+            ]
+          },
+          {
+            "entry": "00116738",
+            "lines": [
+              577,
+              586,
+              597
+            ]
+          },
+          {
+            "entry": "001169c0",
+            "lines": [
+              704,
+              717,
+              725
+            ]
+          },
+          {
+            "entry": "00116ca8",
+            "lines": [
+              796,
+              821
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/misc/file_tag.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00117b40",
+            "last": "00117e38",
+            "referencing_functions": 7,
+            "functions_in_range": 8
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00117b40",
+            "lines": [
+              471
+            ]
+          },
+          {
+            "entry": "00117ba0",
+            "lines": [
+              530
+            ]
+          },
+          {
+            "entry": "00117c58",
+            "lines": [
+              794
+            ]
+          },
+          {
+            "entry": "00117cb8",
+            "lines": [
+              618
+            ]
+          },
+          {
+            "entry": "00117d18",
+            "lines": [
+              574
+            ]
+          },
+          {
+            "entry": "00117dd8",
+            "lines": [
+              706
+            ]
+          },
+          {
+            "entry": "00117e38",
+            "lines": [
+              750
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/misc/file_man.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001185c8",
+            "last": "001185c8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001185c8",
+            "lines": [
+              120,
+              137
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/misc/file_uni.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00118710",
+            "last": "00118710",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00118710",
+            "lines": [
+              103
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/mpeg/ps2/mpegstr.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00118f60",
+            "last": "00119288",
+            "referencing_functions": 4,
+            "functions_in_range": 5
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00118f60",
+            "lines": [
+              87,
+              92
+            ]
+          },
+          {
+            "entry": "001190c8",
+            "lines": [
+              213
+            ]
+          },
+          {
+            "entry": "00119240",
+            "lines": [
+              65
+            ]
+          },
+          {
+            "entry": "00119288",
+            "lines": [
+              170
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/3dview.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0011cac8",
+            "last": "0011cd40",
+            "referencing_functions": 4,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0011cac8",
+            "lines": [
+              201
+            ]
+          },
+          {
+            "entry": "0011ccc0",
+            "lines": [
+              226
+            ]
+          },
+          {
+            "entry": "0011cd00",
+            "lines": [
+              255
+            ]
+          },
+          {
+            "entry": "0011cd40",
+            "lines": [
+              290
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/3dcamera.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0011e298",
+            "last": "0011e298",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0011e298",
+            "lines": [
+              1187
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/3drelist.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0011eae0",
+            "last": "0011eae0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0011eae0",
+            "lines": [
+              218
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/3dobjdb.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0011ecd0",
+            "last": "0011ed90",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0011ecd0",
+            "lines": [
+              248
+            ]
+          },
+          {
+            "entry": "0011ed90",
+            "lines": [
+              415,
+              1018
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/3dconstr.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00121590",
+            "last": "00121590",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00121590",
+            "lines": [
+              217
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/3dsubobj.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00122300",
+            "last": "00123820",
+            "referencing_functions": 4,
+            "functions_in_range": 13
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00122300",
+            "lines": [
+              77
+            ]
+          },
+          {
+            "entry": "00122648",
+            "lines": [
+              372
+            ]
+          },
+          {
+            "entry": "00123590",
+            "lines": [
+              283
+            ]
+          },
+          {
+            "entry": "00123820",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/ps2/3dscene.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00126c18",
+            "last": "00126ee0",
+            "referencing_functions": 2,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00126c18",
+            "lines": [
+              1,
+              170
+            ]
+          },
+          {
+            "entry": "00126ee0",
+            "lines": [
+              230
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/track/trackini.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0012d4b8",
+            "last": "00131298",
+            "referencing_functions": 4,
+            "functions_in_range": 15
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0012d4b8",
+            "lines": [
+              618,
+              657,
+              1122,
+              1162,
+              1177,
+              1228,
+              1236,
+              1242,
+              1500,
+              1623
+            ]
+          },
+          {
+            "entry": "0012f630",
+            "lines": [
+              2389
+            ]
+          },
+          {
+            "entry": "00130430",
+            "lines": [
+              2875
+            ]
+          },
+          {
+            "entry": "00131298",
+            "lines": [
+              3816
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/track/trackele.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00133ca0",
+            "last": "001349d8",
+            "referencing_functions": 2,
+            "functions_in_range": 9
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00133ca0",
+            "lines": [
+              431
+            ]
+          },
+          {
+            "entry": "001349d8",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../modules4/sound/ps2/soundman.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0013fb28",
+            "last": "001404b8",
+            "referencing_functions": 6,
+            "functions_in_range": 7
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0013fb28",
+            "lines": [
+              442
+            ]
+          },
+          {
+            "entry": "0013fd00",
+            "lines": [
+              527
+            ]
+          },
+          {
+            "entry": "0013fec8",
+            "lines": [
+              657
+            ]
+          },
+          {
+            "entry": "001400a8",
+            "lines": [
+              736
+            ]
+          },
+          {
+            "entry": "00140208",
+            "lines": [
+              833
+            ]
+          },
+          {
+            "entry": "001404b8",
+            "lines": [
+              1243
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/sound/ps2/soundins.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001415a0",
+            "last": "00142080",
+            "referencing_functions": 2,
+            "functions_in_range": 7
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001415a0",
+            "lines": [
+              800
+            ]
+          },
+          {
+            "entry": "00142080",
+            "lines": [
+              235
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/sound/ps2/speech.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001429d8",
+            "last": "00142a40",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001429d8",
+            "lines": [
+              47
+            ]
+          },
+          {
+            "entry": "00142a40",
+            "lines": [
+              87
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/ui/ui_sys/uiscript.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00144a60",
+            "last": "00144a60",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00144a60",
+            "lines": [
+              1151,
+              1629,
+              1639
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/ui/ui_sys/uigfx.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001458b8",
+            "last": "001458b8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001458b8",
+            "lines": [
+              113,
+              129
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/ui/ui_sys/ui_attrs/ui_attrs.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00145b08",
+            "last": "00145b08",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00145b08",
+            "lines": [
+              284,
+              2287
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/ui/ui_obj/basic/basic.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0014ed38",
+            "last": "0014f938",
+            "referencing_functions": 4,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0014ed38",
+            "lines": []
+          },
+          {
+            "entry": "0014f138",
+            "lines": []
+          },
+          {
+            "entry": "0014f538",
+            "lines": []
+          },
+          {
+            "entry": "0014f938",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../modules4/ui/ui_obj/basic/ba_fns.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00150a88",
+            "last": "00150a88",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00150a88",
+            "lines": [
+              252
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/ui/ui_obj/movie/mo_draw.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00158820",
+            "last": "00158820",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00158820",
+            "lines": [
+              75
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/ui/ui_draw/uifont.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0015d148",
+            "last": "0015d148",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0015d148",
+            "lines": [
+              294
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/game/gf_atrct.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0015ee28",
+            "last": "0015f908",
+            "referencing_functions": 4,
+            "functions_in_range": 15
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0015ee28",
+            "lines": [
+              274
+            ]
+          },
+          {
+            "entry": "0015ef30",
+            "lines": [
+              350,
+              814,
+              867
+            ]
+          },
+          {
+            "entry": "0015f0c0",
+            "lines": [
+              350,
+              1112
+            ]
+          },
+          {
+            "entry": "0015f908",
+            "lines": [
+              753
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/game/gameloop.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0015fbe0",
+            "last": "0015fbe0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0015fbe0",
+            "lines": [
+              209
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/game/gf_manag.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00160038",
+            "last": "00160f58",
+            "referencing_functions": 3,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00160038",
+            "lines": [
+              427,
+              443,
+              479
+            ]
+          },
+          {
+            "entry": "00160520",
+            "lines": []
+          },
+          {
+            "entry": "00160f58",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/game/gf_intrp.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00161728",
+            "last": "00161728",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00161728",
+            "lines": [
+              502,
+              559,
+              621,
+              694,
+              704,
+              765,
+              811,
+              957,
+              1042,
+              1050,
+              1151,
+              1159,
+              1223,
+              1262,
+              1331,
+              1341,
+              1591,
+              1680,
+              1908,
+              2011,
+              2363,
+              2592,
+              2821,
+              2914,
+              2996,
+              3008,
+              3098,
+              3160,
+              3222,
+              3333,
+              3343
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/game/gf_extrn.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00163f88",
+            "last": "00163f88",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00163f88",
+            "lines": [
+              571
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/game/gf_main.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00164bf0",
+            "last": "00164bf0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00164bf0",
+            "lines": [
+              1605
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/gamedata/gd_funcs.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00167210",
+            "last": "00167210",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00167210",
+            "lines": [
+              2812
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_inter.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0016c8f0",
+            "last": "0016c8f0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0016c8f0",
+            "lines": [
+              351
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_car.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00170940",
+            "last": "00170940",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00170940",
+            "lines": [
+              1584
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_ctrls.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00175d70",
+            "last": "00175d70",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00175d70",
+            "lines": [
+              1008
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_disp.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00176b80",
+            "last": "00176b80",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00176b80",
+            "lines": [
+              500
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_drdet.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00176f90",
+            "last": "00176f90",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00176f90",
+            "lines": [
+              101
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_drivr.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00177390",
+            "last": "00177390",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00177390",
+            "lines": [
+              86
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_gmopt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0017a888",
+            "last": "0017a888",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0017a888",
+            "lines": [
+              258,
+              385
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_lang.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0017ce98",
+            "last": "0017ce98",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0017ce98",
+            "lines": [
+              107
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_msgbx.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0017d9b0",
+            "last": "0017d9b0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0017d9b0",
+            "lines": [
+              60
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_opts.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0017ee68",
+            "last": "0017ee68",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0017ee68",
+            "lines": [
+              104
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_pause.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0017f510",
+            "last": "0017f510",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0017f510",
+            "lines": [
+              135
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_rcend.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00180a28",
+            "last": "00180a28",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00180a28",
+            "lines": [
+              96
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_rcres.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00181190",
+            "last": "00181190",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00181190",
+            "lines": [
+              457,
+              493,
+              748
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_ropt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00183470",
+            "last": "00183470",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00183470",
+            "lines": [
+              338
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_pscon.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00183fb8",
+            "last": "00184258",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00183fb8",
+            "lines": [
+              380,
+              458
+            ]
+          },
+          {
+            "entry": "00184258",
+            "lines": [
+              733
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ui/ui_scrns/ui_troph.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00189368",
+            "last": "00189368",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00189368",
+            "lines": [
+              939
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/parser/parser.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018ac40",
+            "last": "0018b840",
+            "referencing_functions": 3,
+            "functions_in_range": 8
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018ac40",
+            "lines": [
+              488,
+              628,
+              673,
+              682
+            ]
+          },
+          {
+            "entry": "0018b460",
+            "lines": [
+              870,
+              879
+            ]
+          },
+          {
+            "entry": "0018b840",
+            "lines": [
+              736
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/set_frst.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bba8",
+            "last": "001b2440",
+            "referencing_functions": 9,
+            "functions_in_range": 807
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bba8",
+            "lines": []
+          },
+          {
+            "entry": "0018c3b8",
+            "lines": []
+          },
+          {
+            "entry": "0018cf90",
+            "lines": []
+          },
+          {
+            "entry": "0019d710",
+            "lines": []
+          },
+          {
+            "entry": "001a1280",
+            "lines": []
+          },
+          {
+            "entry": "001a9ef0",
+            "lines": []
+          },
+          {
+            "entry": "001aec18",
+            "lines": []
+          },
+          {
+            "entry": "001b1c08",
+            "lines": []
+          },
+          {
+            "entry": "001b2440",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/get_frst.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bbe8",
+            "last": "001b24b8",
+            "referencing_functions": 9,
+            "functions_in_range": 807
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bbe8",
+            "lines": []
+          },
+          {
+            "entry": "0018c430",
+            "lines": []
+          },
+          {
+            "entry": "0018cfd0",
+            "lines": []
+          },
+          {
+            "entry": "0019d758",
+            "lines": []
+          },
+          {
+            "entry": "001a12f8",
+            "lines": []
+          },
+          {
+            "entry": "001a9f30",
+            "lines": []
+          },
+          {
+            "entry": "001aec90",
+            "lines": []
+          },
+          {
+            "entry": "001b1c48",
+            "lines": []
+          },
+          {
+            "entry": "001b24b8",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/set_prnt.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bc28",
+            "last": "001b3200",
+            "referencing_functions": 15,
+            "functions_in_range": 850
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bc28",
+            "lines": []
+          },
+          {
+            "entry": "0018c658",
+            "lines": []
+          },
+          {
+            "entry": "0018d010",
+            "lines": []
+          },
+          {
+            "entry": "00190c80",
+            "lines": []
+          },
+          {
+            "entry": "00193820",
+            "lines": []
+          },
+          {
+            "entry": "00199270",
+            "lines": []
+          },
+          {
+            "entry": "001998e0",
+            "lines": []
+          },
+          {
+            "entry": "0019d7a8",
+            "lines": []
+          },
+          {
+            "entry": "0019f8b0",
+            "lines": []
+          },
+          {
+            "entry": "001a1370",
+            "lines": []
+          },
+          {
+            "entry": "001a9f70",
+            "lines": []
+          },
+          {
+            "entry": "001aed10",
+            "lines": []
+          },
+          {
+            "entry": "001b1c88",
+            "lines": []
+          },
+          {
+            "entry": "001b2538",
+            "lines": []
+          },
+          {
+            "entry": "001b3200",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/get_prnt.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bc68",
+            "last": "001b3248",
+            "referencing_functions": 15,
+            "functions_in_range": 850
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bc68",
+            "lines": []
+          },
+          {
+            "entry": "0018c698",
+            "lines": []
+          },
+          {
+            "entry": "0018d078",
+            "lines": []
+          },
+          {
+            "entry": "00190cc8",
+            "lines": []
+          },
+          {
+            "entry": "00193860",
+            "lines": []
+          },
+          {
+            "entry": "001992b0",
+            "lines": []
+          },
+          {
+            "entry": "00199920",
+            "lines": []
+          },
+          {
+            "entry": "0019d820",
+            "lines": []
+          },
+          {
+            "entry": "0019f918",
+            "lines": []
+          },
+          {
+            "entry": "001a13b8",
+            "lines": []
+          },
+          {
+            "entry": "001a9fb8",
+            "lines": []
+          },
+          {
+            "entry": "001aed58",
+            "lines": []
+          },
+          {
+            "entry": "001b1cf0",
+            "lines": []
+          },
+          {
+            "entry": "001b2580",
+            "lines": []
+          },
+          {
+            "entry": "001b3248",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/set_succ.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bca8",
+            "last": "001b3298",
+            "referencing_functions": 15,
+            "functions_in_range": 850
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bca8",
+            "lines": []
+          },
+          {
+            "entry": "0018c6d8",
+            "lines": []
+          },
+          {
+            "entry": "0018d0e8",
+            "lines": []
+          },
+          {
+            "entry": "00190d18",
+            "lines": []
+          },
+          {
+            "entry": "001938a0",
+            "lines": []
+          },
+          {
+            "entry": "001992f0",
+            "lines": []
+          },
+          {
+            "entry": "00199960",
+            "lines": []
+          },
+          {
+            "entry": "0019d8a0",
+            "lines": []
+          },
+          {
+            "entry": "0019f988",
+            "lines": []
+          },
+          {
+            "entry": "001a1408",
+            "lines": []
+          },
+          {
+            "entry": "001aa008",
+            "lines": []
+          },
+          {
+            "entry": "001aeda8",
+            "lines": []
+          },
+          {
+            "entry": "001b1d60",
+            "lines": []
+          },
+          {
+            "entry": "001b25d0",
+            "lines": []
+          },
+          {
+            "entry": "001b3298",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/get_succ.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bce8",
+            "last": "001b32e0",
+            "referencing_functions": 15,
+            "functions_in_range": 850
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bce8",
+            "lines": []
+          },
+          {
+            "entry": "0018c718",
+            "lines": []
+          },
+          {
+            "entry": "0018d150",
+            "lines": []
+          },
+          {
+            "entry": "00190d60",
+            "lines": []
+          },
+          {
+            "entry": "001938e0",
+            "lines": []
+          },
+          {
+            "entry": "00199330",
+            "lines": []
+          },
+          {
+            "entry": "001999a0",
+            "lines": []
+          },
+          {
+            "entry": "0019d918",
+            "lines": []
+          },
+          {
+            "entry": "0019f9f0",
+            "lines": []
+          },
+          {
+            "entry": "001a1450",
+            "lines": []
+          },
+          {
+            "entry": "001aa050",
+            "lines": []
+          },
+          {
+            "entry": "001aedf0",
+            "lines": []
+          },
+          {
+            "entry": "001b1dc8",
+            "lines": []
+          },
+          {
+            "entry": "001b2618",
+            "lines": []
+          },
+          {
+            "entry": "001b32e0",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/set_pred.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bd28",
+            "last": "001b3330",
+            "referencing_functions": 15,
+            "functions_in_range": 850
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bd28",
+            "lines": []
+          },
+          {
+            "entry": "0018c758",
+            "lines": []
+          },
+          {
+            "entry": "0018d1c0",
+            "lines": []
+          },
+          {
+            "entry": "00190db0",
+            "lines": []
+          },
+          {
+            "entry": "00193920",
+            "lines": []
+          },
+          {
+            "entry": "00199370",
+            "lines": []
+          },
+          {
+            "entry": "001999e0",
+            "lines": []
+          },
+          {
+            "entry": "0019d998",
+            "lines": []
+          },
+          {
+            "entry": "0019fa60",
+            "lines": []
+          },
+          {
+            "entry": "001a14a0",
+            "lines": []
+          },
+          {
+            "entry": "001aa0a0",
+            "lines": []
+          },
+          {
+            "entry": "001aee40",
+            "lines": []
+          },
+          {
+            "entry": "001b1e38",
+            "lines": []
+          },
+          {
+            "entry": "001b2668",
+            "lines": []
+          },
+          {
+            "entry": "001b3330",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/get_pred.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bd68",
+            "last": "001b3378",
+            "referencing_functions": 15,
+            "functions_in_range": 850
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bd68",
+            "lines": []
+          },
+          {
+            "entry": "0018c798",
+            "lines": []
+          },
+          {
+            "entry": "0018d228",
+            "lines": []
+          },
+          {
+            "entry": "00190df8",
+            "lines": []
+          },
+          {
+            "entry": "00193960",
+            "lines": []
+          },
+          {
+            "entry": "001993b0",
+            "lines": []
+          },
+          {
+            "entry": "00199a20",
+            "lines": []
+          },
+          {
+            "entry": "0019da10",
+            "lines": []
+          },
+          {
+            "entry": "0019fac8",
+            "lines": []
+          },
+          {
+            "entry": "001a14e8",
+            "lines": []
+          },
+          {
+            "entry": "001aa0e8",
+            "lines": []
+          },
+          {
+            "entry": "001aee88",
+            "lines": []
+          },
+          {
+            "entry": "001b1ea0",
+            "lines": []
+          },
+          {
+            "entry": "001b26b0",
+            "lines": []
+          },
+          {
+            "entry": "001b3378",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/get_link.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bda8",
+            "last": "001b33c8",
+            "referencing_functions": 15,
+            "functions_in_range": 850
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bda8",
+            "lines": []
+          },
+          {
+            "entry": "0018c7d8",
+            "lines": []
+          },
+          {
+            "entry": "0018d298",
+            "lines": []
+          },
+          {
+            "entry": "00190e48",
+            "lines": []
+          },
+          {
+            "entry": "001939a0",
+            "lines": []
+          },
+          {
+            "entry": "001993f0",
+            "lines": []
+          },
+          {
+            "entry": "00199a60",
+            "lines": []
+          },
+          {
+            "entry": "0019da90",
+            "lines": []
+          },
+          {
+            "entry": "0019fb38",
+            "lines": []
+          },
+          {
+            "entry": "001a1538",
+            "lines": []
+          },
+          {
+            "entry": "001aa138",
+            "lines": []
+          },
+          {
+            "entry": "001aeed8",
+            "lines": []
+          },
+          {
+            "entry": "001b1f10",
+            "lines": []
+          },
+          {
+            "entry": "001b2700",
+            "lines": []
+          },
+          {
+            "entry": "001b33c8",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list/get_root.h",
+        "kind": "header",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018bde0",
+            "last": "001b2748",
+            "referencing_functions": 9,
+            "functions_in_range": 807
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018bde0",
+            "lines": []
+          },
+          {
+            "entry": "0018c4b0",
+            "lines": []
+          },
+          {
+            "entry": "0018d2f8",
+            "lines": []
+          },
+          {
+            "entry": "0019daf8",
+            "lines": []
+          },
+          {
+            "entry": "001a1580",
+            "lines": []
+          },
+          {
+            "entry": "001aa180",
+            "lines": []
+          },
+          {
+            "entry": "001aef20",
+            "lines": []
+          },
+          {
+            "entry": "001b1f70",
+            "lines": []
+          },
+          {
+            "entry": "001b2748",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/general/world/wo_init.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018c158",
+            "last": "0018c158",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018c158",
+            "lines": [
+              151
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/camera/ca_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018d5d8",
+            "last": "0018d5d8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018d5d8",
+            "lines": [
+              770
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/camera/camera.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0018dec0",
+            "last": "00190798",
+            "referencing_functions": 14,
+            "functions_in_range": 43
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0018dec0",
+            "lines": [
+              568
+            ]
+          },
+          {
+            "entry": "0018e310",
+            "lines": [
+              634
+            ]
+          },
+          {
+            "entry": "0018e418",
+            "lines": [
+              801
+            ]
+          },
+          {
+            "entry": "0018e6b8",
+            "lines": [
+              1025
+            ]
+          },
+          {
+            "entry": "0018f678",
+            "lines": [
+              3396
+            ]
+          },
+          {
+            "entry": "0018fd30",
+            "lines": [
+              2716
+            ]
+          },
+          {
+            "entry": "0018fe08",
+            "lines": [
+              2564
+            ]
+          },
+          {
+            "entry": "0018fee0",
+            "lines": [
+              2640
+            ]
+          },
+          {
+            "entry": "00190020",
+            "lines": [
+              3099
+            ]
+          },
+          {
+            "entry": "001900f8",
+            "lines": [
+              3174
+            ]
+          },
+          {
+            "entry": "001901d0",
+            "lines": [
+              3244
+            ]
+          },
+          {
+            "entry": "001902a8",
+            "lines": [
+              3313
+            ]
+          },
+          {
+            "entry": "001904b8",
+            "lines": [
+              738
+            ]
+          },
+          {
+            "entry": "00190798",
+            "lines": [
+              1515
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/mounting/mo_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001912b0",
+            "last": "00191f70",
+            "referencing_functions": 3,
+            "functions_in_range": 11
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001912b0",
+            "lines": [
+              472
+            ]
+          },
+          {
+            "entry": "001917f8",
+            "lines": [
+              772
+            ]
+          },
+          {
+            "entry": "00191f70",
+            "lines": [
+              885
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/mounting/mounting.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00192120",
+            "last": "00193208",
+            "referencing_functions": 7,
+            "functions_in_range": 22
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00192120",
+            "lines": [
+              262
+            ]
+          },
+          {
+            "entry": "00192448",
+            "lines": [
+              482
+            ]
+          },
+          {
+            "entry": "00192c80",
+            "lines": [
+              1086
+            ]
+          },
+          {
+            "entry": "00193030",
+            "lines": [
+              1173
+            ]
+          },
+          {
+            "entry": "00193108",
+            "lines": [
+              1312
+            ]
+          },
+          {
+            "entry": "00193188",
+            "lines": [
+              1376
+            ]
+          },
+          {
+            "entry": "00193208",
+            "lines": [
+              1440
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/obstacle/obstacle.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00193d68",
+            "last": "001942e8",
+            "referencing_functions": 2,
+            "functions_in_range": 5
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00193d68",
+            "lines": [
+              239
+            ]
+          },
+          {
+            "entry": "001942e8",
+            "lines": [
+              674
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/soundeff/soundeff.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001947c0",
+            "last": "00195220",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001947c0",
+            "lines": [
+              447,
+              462
+            ]
+          },
+          {
+            "entry": "00195220",
+            "lines": [
+              565
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/soundeff/se_car.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001958e8",
+            "last": "00196a90",
+            "referencing_functions": 2,
+            "functions_in_range": 6
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001958e8",
+            "lines": [
+              400
+            ]
+          },
+          {
+            "entry": "00196a90",
+            "lines": [
+              1497
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/soundeff/se_env.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00196ec0",
+            "last": "00197ea0",
+            "referencing_functions": 5,
+            "functions_in_range": 11
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00196ec0",
+            "lines": [
+              228
+            ]
+          },
+          {
+            "entry": "001974e8",
+            "lines": [
+              719
+            ]
+          },
+          {
+            "entry": "00197748",
+            "lines": [
+              810
+            ]
+          },
+          {
+            "entry": "001979f0",
+            "lines": []
+          },
+          {
+            "entry": "00197ea0",
+            "lines": [
+              1833
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/soundeff/se_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00199458",
+            "last": "00199458",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00199458",
+            "lines": [
+              49
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/trigger/action/action.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "00199ab0",
+            "last": "00199ab0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00199ab0",
+            "lines": [
+              76
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/vehicle/car/car.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0019a508",
+            "last": "0019b230",
+            "referencing_functions": 2,
+            "functions_in_range": 8
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0019a508",
+            "lines": [
+              297
+            ]
+          },
+          {
+            "entry": "0019b230",
+            "lines": [
+              1078
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/vehicle/car/cr_creat.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0019c310",
+            "last": "0019c680",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0019c310",
+            "lines": [
+              292
+            ]
+          },
+          {
+            "entry": "0019c680",
+            "lines": [
+              491
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/mobile/vehicle/car/cr_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "0019db58",
+            "last": "0019dd58",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0019db58",
+            "lines": [
+              140
+            ]
+          },
+          {
+            "entry": "0019dd58",
+            "lines": [
+              303
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/director/dt_subj.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001a19c0",
+            "last": "001a1f48",
+            "referencing_functions": 2,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001a19c0",
+            "lines": [
+              591,
+              604
+            ]
+          },
+          {
+            "entry": "001a1f48",
+            "lines": [
+              922
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/director/dt_tv.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001a2b00",
+            "last": "001a2b00",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001a2b00",
+            "lines": [
+              663
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/director/dt_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001a45c8",
+            "last": "001a5d80",
+            "referencing_functions": 2,
+            "functions_in_range": 43
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001a45c8",
+            "lines": [
+              4928
+            ]
+          },
+          {
+            "entry": "001a5d80",
+            "lines": [
+              5230
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/director/director.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001a66d8",
+            "last": "001a91f0",
+            "referencing_functions": 8,
+            "functions_in_range": 41
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001a66d8",
+            "lines": [
+              772
+            ]
+          },
+          {
+            "entry": "001a6838",
+            "lines": []
+          },
+          {
+            "entry": "001a6a48",
+            "lines": [
+              1211
+            ]
+          },
+          {
+            "entry": "001a6d48",
+            "lines": [
+              1526
+            ]
+          },
+          {
+            "entry": "001a6fd8",
+            "lines": []
+          },
+          {
+            "entry": "001a7aa8",
+            "lines": [
+              4970
+            ]
+          },
+          {
+            "entry": "001a7fc8",
+            "lines": [
+              5497
+            ]
+          },
+          {
+            "entry": "001a91f0",
+            "lines": [
+              1374
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/driver/dr_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001aa1d8",
+            "last": "001aa1d8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001aa1d8",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/driver/ai/ai_ig.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001aa508",
+            "last": "001aa508",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001aa508",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/driver/ai/ai_init.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001aa768",
+            "last": "001aa768",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001aa768",
+            "lines": [
+              103
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/driver/ai/ai_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001aa840",
+            "last": "001aa840",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001aa840",
+            "lines": [
+              134,
+              160
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/people/driver/ai/behave/bh_highl.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001ab7c8",
+            "last": "001abb78",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001ab7c8",
+            "lines": [
+              1229
+            ]
+          },
+          {
+            "entry": "001abb78",
+            "lines": [
+              1390
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/session/ss_init.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001ae6b8",
+            "last": "001ae6b8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001ae6b8",
+            "lines": [
+              262
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/session/ss_updt.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001aef90",
+            "last": "001aef90",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001aef90",
+            "lines": [
+              204
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_attrs/en_attrs.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001af638",
+            "last": "001af638",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001af638",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_creat.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001af820",
+            "last": "001af820",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001af820",
+            "lines": [
+              95
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_dstry.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001afe48",
+            "last": "001afee8",
+            "referencing_functions": 3,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001afe48",
+            "lines": []
+          },
+          {
+            "entry": "001afe98",
+            "lines": []
+          },
+          {
+            "entry": "001afee8",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_funcs/en_list.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b0770",
+            "last": "001b0d88",
+            "referencing_functions": 11,
+            "functions_in_range": 19
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b0770",
+            "lines": []
+          },
+          {
+            "entry": "001b0c40",
+            "lines": []
+          },
+          {
+            "entry": "001b0c60",
+            "lines": []
+          },
+          {
+            "entry": "001b0c88",
+            "lines": []
+          },
+          {
+            "entry": "001b0ca8",
+            "lines": []
+          },
+          {
+            "entry": "001b0cd0",
+            "lines": []
+          },
+          {
+            "entry": "001b0cf0",
+            "lines": []
+          },
+          {
+            "entry": "001b0d18",
+            "lines": []
+          },
+          {
+            "entry": "001b0d38",
+            "lines": []
+          },
+          {
+            "entry": "001b0d60",
+            "lines": []
+          },
+          {
+            "entry": "001b0d88",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/system/en_main/en_heap.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b1168",
+            "last": "001b1250",
+            "referencing_functions": 2,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b1168",
+            "lines": [
+              66
+            ]
+          },
+          {
+            "entry": "001b1250",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/gameplay/gameplay.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b27d8",
+            "last": "001b27d8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b27d8",
+            "lines": [
+              150
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/gameplay/gp_misc.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b41b0",
+            "last": "001b41b0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b41b0",
+            "lines": [
+              1095
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/gameplay/gamemode/catch.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b45b0",
+            "last": "001b4cd0",
+            "referencing_functions": 2,
+            "functions_in_range": 5
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b45b0",
+            "lines": [
+              182
+            ]
+          },
+          {
+            "entry": "001b4cd0",
+            "lines": [
+              616
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/gameplay/gamemode/raceline.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b5ec8",
+            "last": "001b5ec8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b5ec8",
+            "lines": [
+              160
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/gameplay/gamemode/skills.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b6c30",
+            "last": "001b6f58",
+            "referencing_functions": 2,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b6c30",
+            "lines": [
+              167
+            ]
+          },
+          {
+            "entry": "001b6f58",
+            "lines": [
+              475
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/entity/gameplay/gamemode/smash.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b7378",
+            "last": "001b7538",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b7378",
+            "lines": [
+              160
+            ]
+          },
+          {
+            "entry": "001b7538",
+            "lines": [
+              454
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/fader/fader.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b87b8",
+            "last": "001b8b98",
+            "referencing_functions": 2,
+            "functions_in_range": 6
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b87b8",
+            "lines": []
+          },
+          {
+            "entry": "001b8b98",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/misc/save.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001b9a10",
+            "last": "001b9d90",
+            "referencing_functions": 3,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001b9a10",
+            "lines": [
+              825
+            ]
+          },
+          {
+            "entry": "001b9b50",
+            "lines": [
+              436,
+              960
+            ]
+          },
+          {
+            "entry": "001b9d90",
+            "lines": [
+              1053
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/misc/timeaccl.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001bae98",
+            "last": "001bb0d8",
+            "referencing_functions": 2,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001bae98",
+            "lines": []
+          },
+          {
+            "entry": "001bb0d8",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/misc/translat.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001bb4b8",
+            "last": "001bbaf0",
+            "referencing_functions": 5,
+            "functions_in_range": 11
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001bb4b8",
+            "lines": [
+              234
+            ]
+          },
+          {
+            "entry": "001bb5b0",
+            "lines": [
+              321
+            ]
+          },
+          {
+            "entry": "001bb750",
+            "lines": [
+              321
+            ]
+          },
+          {
+            "entry": "001bb9b8",
+            "lines": [
+              321
+            ]
+          },
+          {
+            "entry": "001bbaf0",
+            "lines": [
+              347
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/physics/physics.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001bbce0",
+            "last": "001bfea8",
+            "referencing_functions": 2,
+            "functions_in_range": 32
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001bbce0",
+            "lines": [
+              764
+            ]
+          },
+          {
+            "entry": "001bfea8",
+            "lines": [
+              3323
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/physics/phy_coll.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001c07a8",
+            "last": "001c3368",
+            "referencing_functions": 3,
+            "functions_in_range": 13
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001c07a8",
+            "lines": [
+              876
+            ]
+          },
+          {
+            "entry": "001c2580",
+            "lines": [
+              2206
+            ]
+          },
+          {
+            "entry": "001c3368",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/model/model.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001c4250",
+            "last": "001c9800",
+            "referencing_functions": 6,
+            "functions_in_range": 27
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001c4250",
+            "lines": [
+              707
+            ]
+          },
+          {
+            "entry": "001c4ff8",
+            "lines": []
+          },
+          {
+            "entry": "001c65c0",
+            "lines": [
+              2942
+            ]
+          },
+          {
+            "entry": "001c6be8",
+            "lines": [
+              3108,
+              3153
+            ]
+          },
+          {
+            "entry": "001c8f10",
+            "lines": [
+              5518
+            ]
+          },
+          {
+            "entry": "001c9800",
+            "lines": [
+              6290
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/app3d/app3d.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001ce518",
+            "last": "001ce518",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001ce518",
+            "lines": [
+              2067
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/app3d/misc3d.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d1408",
+            "last": "001d1800",
+            "referencing_functions": 2,
+            "functions_in_range": 5
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d1408",
+            "lines": [
+              45,
+              104,
+              131,
+              144
+            ]
+          },
+          {
+            "entry": "001d1800",
+            "lines": [
+              188
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/app3d/efftex.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d3468",
+            "last": "001d3468",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d3468",
+            "lines": [
+              31
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/appsound/snd_init.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d43d0",
+            "last": "001d4eb8",
+            "referencing_functions": 7,
+            "functions_in_range": 24
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d43d0",
+            "lines": [
+              836
+            ]
+          },
+          {
+            "entry": "001d44a0",
+            "lines": [
+              1053
+            ]
+          },
+          {
+            "entry": "001d4b50",
+            "lines": []
+          },
+          {
+            "entry": "001d4bf0",
+            "lines": [
+              592
+            ]
+          },
+          {
+            "entry": "001d4c98",
+            "lines": [
+              702
+            ]
+          },
+          {
+            "entry": "001d4d50",
+            "lines": [
+              641
+            ]
+          },
+          {
+            "entry": "001d4eb8",
+            "lines": [
+              757
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/appsound/music.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d52d0",
+            "last": "001d52d0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d52d0",
+            "lines": [
+              113
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_body.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d5638",
+            "last": "001d5638",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d5638",
+            "lines": [
+              436
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_brake.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d6198",
+            "last": "001d6198",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d6198",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_car.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d64a0",
+            "last": "001d64a0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d64a0",
+            "lines": [
+              149,
+              234,
+              249,
+              264,
+              279,
+              294,
+              309,
+              324,
+              339,
+              354,
+              369,
+              384,
+              497
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_cont.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d78d0",
+            "last": "001d78d0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d78d0",
+            "lines": [
+              544
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_crsnd.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d7950",
+            "last": "001d7950",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d7950",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_ctrl.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d8180",
+            "last": "001d8180",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d8180",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_engin.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d87a0",
+            "last": "001d87a0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d87a0",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_game.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d8eb0",
+            "last": "001d8eb0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d8eb0",
+            "lines": [
+              126,
+              143,
+              160,
+              177,
+              210,
+              275
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_gearb.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d9390",
+            "last": "001d9390",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d9390",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_over.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d9728",
+            "last": "001d9728",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d9728",
+            "lines": []
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_setup.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001d9b80",
+            "last": "001da270",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001d9b80",
+            "lines": [
+              284,
+              649
+            ]
+          },
+          {
+            "entry": "001da270",
+            "lines": [
+              765
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_spch.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001da660",
+            "last": "001da660",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001da660",
+            "lines": [
+              116
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_track.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001da8c8",
+            "last": "001da8c8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001da8c8",
+            "lines": [
+              172,
+              275
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/database/db_tyre.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001db228",
+            "last": "001db228",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001db228",
+            "lines": [
+              377
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/backrend/backrend.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001dd3e8",
+            "last": "001dd790",
+            "referencing_functions": 3,
+            "functions_in_range": 4
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001dd3e8",
+            "lines": [
+              361
+            ]
+          },
+          {
+            "entry": "001dd630",
+            "lines": []
+          },
+          {
+            "entry": "001dd790",
+            "lines": [
+              130,
+              247
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/racesche/schedule.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001dd8a0",
+            "last": "001de258",
+            "referencing_functions": 4,
+            "functions_in_range": 8
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001dd8a0",
+            "lines": [
+              175,
+              255
+            ]
+          },
+          {
+            "entry": "001ddd60",
+            "lines": [
+              509
+            ]
+          },
+          {
+            "entry": "001de1a0",
+            "lines": [
+              775
+            ]
+          },
+          {
+            "entry": "001de258",
+            "lines": [
+              16
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/ai_track/ai_track.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001de618",
+            "last": "001def88",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001de618",
+            "lines": [
+              581
+            ]
+          },
+          {
+            "entry": "001def88",
+            "lines": [
+              211
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/overlay/overlay.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001e1138",
+            "last": "001e5470",
+            "referencing_functions": 3,
+            "functions_in_range": 39
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001e1138",
+            "lines": [
+              458
+            ]
+          },
+          {
+            "entry": "001e2018",
+            "lines": [
+              1262
+            ]
+          },
+          {
+            "entry": "001e5470",
+            "lines": [
+              2689
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/unlocked/unl_sche.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001e6b38",
+            "last": "001e6c88",
+            "referencing_functions": 2,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001e6b38",
+            "lines": [
+              730
+            ]
+          },
+          {
+            "entry": "001e6c88",
+            "lines": [
+              620
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/unlocked/unlocked.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001e6eb8",
+            "last": "001e8670",
+            "referencing_functions": 3,
+            "functions_in_range": 40
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001e6eb8",
+            "lines": [
+              662
+            ]
+          },
+          {
+            "entry": "001e7138",
+            "lines": [
+              1462
+            ]
+          },
+          {
+            "entry": "001e8670",
+            "lines": [
+              1804
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../fr2/source/hscore/hscore.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".text",
+            "first": "001e9228",
+            "last": "001e93e0",
+            "referencing_functions": 2,
+            "functions_in_range": 8
+          }
+        ],
+        "functions": [
+          {
+            "entry": "001e9228",
+            "lines": [
+              665
+            ]
+          },
+          {
+            "entry": "001e93e0",
+            "lines": [
+              547
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/vu1pack.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section1",
+            "first": "0021b2a8",
+            "last": "0021b2a8",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          },
+          {
+            "block": ".user_section_init",
+            "first": "0022fdf8",
+            "last": "0022fff0",
+            "referencing_functions": 2,
+            "functions_in_range": 3
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0021b2a8",
+            "lines": [
+              364
+            ]
+          },
+          {
+            "entry": "0022fdf8",
+            "lines": [
+              125
+            ]
+          },
+          {
+            "entry": "0022fff0",
+            "lines": [
+              171
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/ps2/3dobjbuf.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section3",
+            "first": "0021d640",
+            "last": "0021d8c8",
+            "referencing_functions": 2,
+            "functions_in_range": 3
+          },
+          {
+            "block": ".user_section4",
+            "first": "0021da90",
+            "last": "0021da90",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0021d640",
+            "lines": [
+              537
+            ]
+          },
+          {
+            "entry": "0021d8c8",
+            "lines": [
+              324
+            ]
+          },
+          {
+            "entry": "0021da90",
+            "lines": [
+              649
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/autoscrn.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section_uncommon",
+            "first": "0022a200",
+            "last": "0022a200",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0022a200",
+            "lines": [
+              149,
+              160
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/vu1rend.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section_uncommon",
+            "first": "0022b660",
+            "last": "0022b7a8",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0022b660",
+            "lines": [
+              212
+            ]
+          },
+          {
+            "entry": "0022b7a8",
+            "lines": [
+              212
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/ps2/3dobjtex.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section_uncommon",
+            "first": "0022ba30",
+            "last": "0022c2d8",
+            "referencing_functions": 2,
+            "functions_in_range": 3
+          },
+          {
+            "block": ".user_section_init",
+            "first": "00230608",
+            "last": "00230608",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0022ba30",
+            "lines": []
+          },
+          {
+            "entry": "0022c2d8",
+            "lines": [
+              1489
+            ]
+          },
+          {
+            "entry": "00230608",
+            "lines": [
+              607
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/textpage.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section_init",
+            "first": "0022c9f0",
+            "last": "0022c9f0",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0022c9f0",
+            "lines": [
+              172,
+              260
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/graphics/ps2/textswiz.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section_init",
+            "first": "0022f1b8",
+            "last": "0022f4d8",
+            "referencing_functions": 2,
+            "functions_in_range": 2
+          }
+        ],
+        "functions": [
+          {
+            "entry": "0022f1b8",
+            "lines": [
+              526,
+              546
+            ]
+          },
+          {
+            "entry": "0022f4d8",
+            "lines": [
+              651,
+              668
+            ]
+          }
+        ]
+      },
+      {
+        "path": "../modules4/3d/ps2/3dflare.c",
+        "kind": "unit",
+        "ranges": [
+          {
+            "block": ".user_section_init",
+            "first": "00230998",
+            "last": "00230998",
+            "referencing_functions": 1,
+            "functions_in_range": 1
+          }
+        ],
+        "functions": [
+          {
+            "entry": "00230998",
+            "lines": [
+              168
+            ]
+          }
+        ]
+      }
+    ],
+    "summary": {
+      "files": 156,
+      "referencing_functions": 455,
+      "call_sites_with_line": 417,
+      "references_without_line": 220,
+      "overlapping_file_pairs": 0,
+      "translation_units": 146,
+      "headers": 10
+    },
+    "string_attribution": {
+      "agree": 267,
+      "disagree": 21,
+      "ties": 24,
+      "known_without_other_strings": 11,
+      "functions": [
+        {
+          "entry": "001001e0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00101690",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00103b60",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 2
+        },
+        {
+          "entry": "00103c48",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 5
+        },
+        {
+          "entry": "00104830",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 2
+        },
+        {
+          "entry": "00105888",
+          "unit": "../modules4/system/ps2/asyncf.c",
+          "votes": 2
+        },
+        {
+          "entry": "00105bf0",
+          "unit": "../modules4/system/ps2/asyncf.c",
+          "votes": 1
+        },
+        {
+          "entry": "00107268",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001077f0",
+          "unit": "../modules4/system/ps2/file.c",
+          "votes": 2
+        },
+        {
+          "entry": "00109e10",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "00119358",
+          "unit": "../modules4/mpeg/ps2/mpegstr.c",
+          "votes": 1
+        },
+        {
+          "entry": "0012f310",
+          "unit": "../modules4/track/trackini.c",
+          "votes": 3
+        },
+        {
+          "entry": "0012f3c0",
+          "unit": "../modules4/track/trackini.c",
+          "votes": 4
+        },
+        {
+          "entry": "00130190",
+          "unit": "../modules4/track/trackini.c",
+          "votes": 10
+        },
+        {
+          "entry": "00130700",
+          "unit": "../modules4/track/trackini.c",
+          "votes": 6
+        },
+        {
+          "entry": "00130f90",
+          "unit": "../modules4/track/trackini.c",
+          "votes": 2
+        },
+        {
+          "entry": "001326c8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "00138128",
+          "unit": "../modules4/track/trackele.c",
+          "votes": 1
+        },
+        {
+          "entry": "001424f0",
+          "unit": "../modules4/sound/ps2/soundins.c",
+          "votes": 4
+        },
+        {
+          "entry": "00144518",
+          "unit": "../modules4/sound/ps2/speech.c",
+          "votes": 1
+        },
+        {
+          "entry": "001447d8",
+          "unit": "../modules4/sound/ps2/speech.c",
+          "votes": 1
+        },
+        {
+          "entry": "0015e580",
+          "unit": "../modules4/ui/ui_draw/uifont.c",
+          "votes": 4
+        },
+        {
+          "entry": "0015e838",
+          "unit": "../modules4/ui/ui_draw/uifont.c",
+          "votes": 1
+        },
+        {
+          "entry": "0015fa10",
+          "unit": "../fr2/source/game/gf_atrct.c",
+          "votes": 1
+        },
+        {
+          "entry": "00163e40",
+          "unit": "../fr2/source/game/gf_intrp.c",
+          "votes": 1
+        },
+        {
+          "entry": "001647e0",
+          "unit": "../fr2/source/game/gf_intrp.c",
+          "votes": 1
+        },
+        {
+          "entry": "00164858",
+          "unit": "../fr2/source/game/gf_extrn.c",
+          "votes": 1
+        },
+        {
+          "entry": "00164f80",
+          "unit": "../fr2/source/game/gf_extrn.c",
+          "votes": 4
+        },
+        {
+          "entry": "00165328",
+          "unit": "../fr2/source/game/gf_extrn.c",
+          "votes": 3
+        },
+        {
+          "entry": "00165990",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00165a48",
+          "unit": "../fr2/source/game/gf_extrn.c",
+          "votes": 1
+        },
+        {
+          "entry": "00165b10",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "00169cd8",
+          "unit": "../fr2/source/gamedata/gd_funcs.c",
+          "votes": 25
+        },
+        {
+          "entry": "0016c398",
+          "unit": "../fr2/source/gamedata/gd_funcs.c",
+          "votes": 1
+        },
+        {
+          "entry": "0016cbd0",
+          "unit": "../fr2/source/ui/ui_inter.c",
+          "votes": 1
+        },
+        {
+          "entry": "0016eac0",
+          "unit": "../fr2/source/ui/ui_inter.c",
+          "votes": 2
+        },
+        {
+          "entry": "00171358",
+          "unit": "../fr2/source/ui/ui_scrns/ui_car.c",
+          "votes": 2
+        },
+        {
+          "entry": "001718f0",
+          "unit": "../fr2/source/ui/ui_scrns/ui_car.c",
+          "votes": 2
+        },
+        {
+          "entry": "00171c88",
+          "unit": "../fr2/source/ui/ui_scrns/ui_car.c",
+          "votes": 3
+        },
+        {
+          "entry": "001728d0",
+          "unit": "../fr2/source/ui/ui_scrns/ui_car.c",
+          "votes": 1
+        },
+        {
+          "entry": "001731b8",
+          "unit": "../fr2/source/ui/ui_scrns/ui_car.c",
+          "votes": 1
+        },
+        {
+          "entry": "00177be8",
+          "unit": "../fr2/source/ui/ui_scrns/ui_drivr.c",
+          "votes": 1
+        },
+        {
+          "entry": "00179a30",
+          "unit": "../fr2/source/ui/ui_scrns/ui_drivr.c",
+          "votes": 1
+        },
+        {
+          "entry": "0017c070",
+          "unit": "../fr2/source/ui/ui_scrns/ui_gmopt.c",
+          "votes": 1
+        },
+        {
+          "entry": "0017cd58",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "0017d168",
+          "unit": "../fr2/source/ui/ui_scrns/ui_lang.c",
+          "votes": 1
+        },
+        {
+          "entry": "0017d568",
+          "unit": "../fr2/source/ui/ui_scrns/ui_lang.c",
+          "votes": 1
+        },
+        {
+          "entry": "0017d850",
+          "unit": "../fr2/source/ui/ui_scrns/ui_lang.c",
+          "votes": 3
+        },
+        {
+          "entry": "0017f700",
+          "unit": "../fr2/source/ui/ui_scrns/ui_pause.c",
+          "votes": 2
+        },
+        {
+          "entry": "001807a0",
+          "unit": "../fr2/source/ui/ui_scrns/ui_pause.c",
+          "votes": 1
+        },
+        {
+          "entry": "001828e0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "00184a00",
+          "unit": "../fr2/source/ui/ui_scrns/ui_pscon.c",
+          "votes": 1
+        },
+        {
+          "entry": "001863c8",
+          "unit": "../fr2/source/ui/ui_scrns/ui_pscon.c",
+          "votes": 1
+        },
+        {
+          "entry": "001872a0",
+          "unit": "../fr2/source/ui/ui_scrns/ui_pscon.c",
+          "votes": 1
+        },
+        {
+          "entry": "00187500",
+          "unit": "../fr2/source/ui/ui_scrns/ui_pscon.c",
+          "votes": 1
+        },
+        {
+          "entry": "00187b50",
+          "unit": "../fr2/source/ui/ui_scrns/ui_pscon.c",
+          "votes": 1
+        },
+        {
+          "entry": "0018b640",
+          "unit": "../fr2/source/parser/parser.c",
+          "votes": 1
+        },
+        {
+          "entry": "0018ffb8",
+          "unit": "../fr2/source/entity/mobile/camera/camera.c",
+          "votes": 1
+        },
+        {
+          "entry": "00191148",
+          "unit": "../fr2/source/entity/mobile/camera/camera.c",
+          "votes": 1
+        },
+        {
+          "entry": "00194548",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "00197910",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 8
+        },
+        {
+          "entry": "00197b70",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 1
+        },
+        {
+          "entry": "00197d08",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 10
+        },
+        {
+          "entry": "001985a0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 4
+        },
+        {
+          "entry": "001987b8",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 2
+        },
+        {
+          "entry": "00198c80",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 1
+        },
+        {
+          "entry": "00198d40",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 6
+        },
+        {
+          "entry": "00198df8",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 6
+        },
+        {
+          "entry": "00198eb0",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 6
+        },
+        {
+          "entry": "00198f68",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 6
+        },
+        {
+          "entry": "00199020",
+          "unit": "../fr2/source/entity/mobile/soundeff/se_env.c",
+          "votes": 1
+        },
+        {
+          "entry": "0019b900",
+          "unit": "../fr2/source/entity/mobile/vehicle/car/car.c",
+          "votes": 2
+        },
+        {
+          "entry": "0019e3b8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "0019eb90",
+          "unit": "../fr2/source/entity/mobile/vehicle/car/cr_updt.c",
+          "votes": 1
+        },
+        {
+          "entry": "0019ecd8",
+          "unit": "../fr2/source/entity/mobile/vehicle/car/cr_updt.c",
+          "votes": 6
+        },
+        {
+          "entry": "001a0020",
+          "unit": "../fr2/source/entity/mobile/vehicle/car/cr_updt.c",
+          "votes": 3
+        },
+        {
+          "entry": "001a0750",
+          "unit": "../fr2/source/entity/mobile/vehicle/car/cr_updt.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a07a8",
+          "unit": "../fr2/source/entity/mobile/vehicle/car/cr_updt.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a2d48",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "001a30a8",
+          "unit": "../fr2/source/entity/people/director/dt_tv.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a3290",
+          "unit": "../fr2/source/entity/people/director/dt_subj.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a3470",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a63b0",
+          "unit": "../fr2/source/entity/people/director/dt_updt.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a64b0",
+          "unit": "../fr2/source/entity/people/director/dt_updt.c",
+          "votes": 4
+        },
+        {
+          "entry": "001a75c8",
+          "unit": "../fr2/source/entity/people/director/director.c",
+          "votes": 2
+        },
+        {
+          "entry": "001a83c0",
+          "unit": "../fr2/source/entity/people/director/director.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a8d00",
+          "unit": "../fr2/source/entity/people/director/director.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a8e18",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 10
+        },
+        {
+          "entry": "001a8f58",
+          "unit": "../fr2/source/entity/people/director/director.c",
+          "votes": 1
+        },
+        {
+          "entry": "001a9658",
+          "unit": "../fr2/source/entity/people/director/director.c",
+          "votes": 1
+        },
+        {
+          "entry": "001ac6a8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001ad3f8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001af188",
+          "unit": "../fr2/source/entity/session/ss_updt.c",
+          "votes": 1
+        },
+        {
+          "entry": "001b06f8",
+          "unit": "../fr2/source/entity/system/en_funcs/en_dstry.c",
+          "votes": 2
+        },
+        {
+          "entry": "001b1758",
+          "unit": "../fr2/source/entity/system/en_main/en_heap.c",
+          "votes": 2
+        },
+        {
+          "entry": "001b9eb0",
+          "unit": "../fr2/source/fader/fader.c",
+          "votes": 19
+        },
+        {
+          "entry": "001ba280",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "001ba348",
+          "unit": "../fr2/source/fader/fader.c",
+          "votes": 3
+        },
+        {
+          "entry": "001ba3e0",
+          "unit": "../fr2/source/fader/fader.c",
+          "votes": 3
+        },
+        {
+          "entry": "001bb458",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001bfb18",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001bfbe8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001bfc38",
+          "unit": "../fr2/source/misc/translat.c",
+          "votes": 1
+        },
+        {
+          "entry": "001c9c68",
+          "unit": "../fr2/source/physics/phy_coll.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d38f8",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 2
+        },
+        {
+          "entry": "001d3c58",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d40a0",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d41e8",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d4760",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d4830",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d4f60",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d5008",
+          "unit": "../fr2/source/app3d/efftex.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d5210",
+          "unit": "../fr2/source/appsound/snd_init.c",
+          "votes": 5
+        },
+        {
+          "entry": "001d5280",
+          "unit": "../fr2/source/appsound/snd_init.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d53d0",
+          "unit": "../fr2/source/appsound/snd_init.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d5420",
+          "unit": "../fr2/source/appsound/snd_init.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d5520",
+          "unit": "../fr2/source/appsound/snd_init.c",
+          "votes": 1
+        },
+        {
+          "entry": "001d5da0",
+          "unit": "../fr2/source/database/db_body.c",
+          "votes": 2
+        },
+        {
+          "entry": "001d7830",
+          "unit": "../fr2/source/database/db_car.c",
+          "votes": 1
+        },
+        {
+          "entry": "001dad20",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001db178",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 4
+        },
+        {
+          "entry": "001dc4a0",
+          "unit": "../fr2/source/database/db_tyre.c",
+          "votes": 1
+        },
+        {
+          "entry": "001e7a70",
+          "unit": "../fr2/source/unlocked/unl_sche.c",
+          "votes": 1
+        },
+        {
+          "entry": "001e8ac8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001e9800",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001e98b0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001e9f18",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001ea330",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 15
+        },
+        {
+          "entry": "001eafe0",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "001eb860",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001ebc68",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 4
+        },
+        {
+          "entry": "001ecc20",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "001ee6f0",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 2
+        },
+        {
+          "entry": "001ee928",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 4
+        },
+        {
+          "entry": "001eeb88",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 3
+        },
+        {
+          "entry": "001f24f0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "001f2998",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f3080",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 13
+        },
+        {
+          "entry": "001f3a68",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 4
+        },
+        {
+          "entry": "001f3fe0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f58a8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f59c0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "001f5c20",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "001f7008",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f71b0",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f7268",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 5
+        },
+        {
+          "entry": "001f75a0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "001f77a8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f7848",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f78b8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "001f7a28",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 6
+        },
+        {
+          "entry": "001f7d08",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "001f7fc8",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 6
+        },
+        {
+          "entry": "001f82d8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f8390",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "001f8488",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001f8a68",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "001fa260",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "001fb830",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001fbdc0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001fbe48",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001fc2f0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001fc498",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001fc658",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001fcdb8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "001fcdd8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00201128",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00201d38",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00202a70",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 13
+        },
+        {
+          "entry": "00202e38",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00202e90",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "00202fa0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "00203088",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00203228",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "002035d0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "00203758",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 3
+        },
+        {
+          "entry": "002038c8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00203aa8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00204050",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "002040f8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "002047e8",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        },
+        {
+          "entry": "00205db0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 2
+        },
+        {
+          "entry": "00209328",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "0020bd38",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "0020c940",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "0020d520",
+          "unit": "../modules4/system/mfile.c",
+          "votes": 1
+        },
+        {
+          "entry": "0020f9f0",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 24
+        },
+        {
+          "entry": "00212518",
+          "unit": "../fr2/source/hscore/hscore.c",
+          "votes": 1
+        }
+      ]
+    },
+    "line_order": {
+      "pairs": 144,
+      "inversions": 27,
+      "inversion_rate": 0.1875,
+      "shuffled_inversion_rate": 0.4776736111111111,
+      "control_trials": 200,
+      "seed": 1
+    },
+    "whole_game_decompiled": false,
+    "claim_limits": [
+      "A reference shows a function mentions a source path; it does not prove the function was written in that file.",
+      "Line numbers are the immediate loaded into a1 near the call; other call shapes are counted as without a line.",
+      "Functions never referencing a path are unmapped; their file is not inferred here.",
+      "Source paths are strings from the game; they say nothing about code behavior or original function names."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 118769,
+      "sha256": "96134a8c9153d6111ea63836301b89afcf0e41a2fb5d9756a9b0e4f434dfb8d9"
+    }
+  }
+}

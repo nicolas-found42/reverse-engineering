@@ -1,0 +1,39 @@
+{
+ "tool": "jev_verify",
+ "summary": {
+  "verified": 4,
+  "unsupported": 1,
+  "needs_review": 2
+ },
+ "results": [
+  {
+   "claim": "211 functions created (5243->5454) from 215 seeds with 4 excluded",
+   "verdict": "verified",
+   "confidence": 0.72,
+   "action": "review",
+   "disposition": "review flag came from clumsy wording; exact facts: three rejected iterations, then a clean run; seeds 00123cc0, 001796b0 and 001802e8 excluded by the guard, 0020ca60 by root"
+  },
+  {
+   "claim": "5454 generated, 0 failed, 757 warnings; reconciliation 16/16; 6338 new words equal the ELF",
+   "verdict": "verified",
+   "confidence": 1.0
+  },
+  {
+   "claim": "function-owned bytes 1,114,672 -> 1,140,024 (89.4% -> 91.4%)",
+   "verdict": "verified",
+   "confidence": 1.0
+  },
+  {
+   "claim": "code-shaped unlisted 100,344 -> 73,756; unreferenced spans 259 -> 155",
+   "verdict": "verified",
+   "confidence": 0.99
+  },
+  {
+   "claim": "the 211 functions are the original game functions",
+   "verdict": "unsupported",
+   "relation": "contradicted 0.93",
+   "confidence": 0.89,
+   "disposition": "overclaim recorded; not made"
+  }
+ ]
+}

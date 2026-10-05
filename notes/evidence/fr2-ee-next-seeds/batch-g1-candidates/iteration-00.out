@@ -1,0 +1,9 @@
+{"config": ".scratch/mesh/codex-audit/frontier-3845-01/batch-g1/config.json", "config_sha256": "f00f3b69778317423faea74a2688531f468e6f100611d7b02741d0e540633ff2", "seed_count": 433, "seeds": ["001004f0", "00101008", "00101010", "001010d0", "001010f0", "00101110", "00101278", "00101a18", "00101cc0", "00102558", "00102628", "00103530", "00105c38", "00105d28", "00105da0", "00106138", "001079e8", "001
+COPY_IDENTICAL
+exit=0
+rejected_or_failed IllegalStateException: config span arithmetic is inconsistent for 001fe000 None
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ghidra/experimental/pipeline/check_batch_config_root.py", line 47, in <module>
+    START,END=int(s['start'],16),int(s['end'],16);assert s['entry']==s['start'] and s['words']*4==s['bytes']==END-START
+                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

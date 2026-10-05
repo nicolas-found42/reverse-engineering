@@ -1,0 +1,2620 @@
+{
+  "schema_version": 1,
+  "run_id": "20261004T221331Z-df2c3a487341459ea3bf8ad524ffe67b",
+  "check": "text-references",
+  "command": [
+    "tools/verify_text_references.py",
+    "--static-export",
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json",
+    "--executable",
+    "games/ford-racing-2/extracted/SLES_517.05",
+    "--output",
+    ".scratch/evidence/text-references"
+  ],
+  "tools": {
+    "python": "3.12.14",
+    "platform": "macOS-26.4.1-arm64-arm-64bit"
+  },
+  "inputs": {
+    ".scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json": {
+      "bytes": 54860858,
+      "sha256": "29f08df42d6d0a1599ebd3a5c289efc1365fc07b309392fc2113cbefa437c4d8"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "spans": [
+      {
+        "address": "001001d0",
+        "bytes": 8,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00100534",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010105c",
+        "bytes": 116,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00101194",
+        "bytes": 92,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00101ccc",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00101ef4",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 9
+        },
+        "targets": [
+          "00101ef8"
+        ],
+        "anchored": false,
+        "reached": true
+      },
+      {
+        "address": "00101f28",
+        "bytes": 1128,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 14
+        },
+        "targets": [
+          "00101f28",
+          "00101fbc",
+          "00102054",
+          "00102098",
+          "001020e4",
+          "00102130",
+          "00102188",
+          "001021a8",
+          "00102224",
+          "00102268",
+          "001022b4",
+          "00102300",
+          "00102380",
+          "00102388"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0010275c",
+        "bytes": 244,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 7
+        },
+        "targets": [
+          "00102760",
+          "00102780",
+          "001027c0",
+          "001027d8",
+          "001027f8",
+          "00102818",
+          "00102830"
+        ],
+        "anchored": false,
+        "reached": true
+      },
+      {
+        "address": "0010287c",
+        "bytes": 2516,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 6,
+          "data_pointer": 10
+        },
+        "targets": [
+          "00102880",
+          "001029d8",
+          "00102a58",
+          "00102b80",
+          "00102c58",
+          "00102ddc",
+          "00103110",
+          "001031c4",
+          "001031f0",
+          "00103210",
+          "00103228",
+          "0010323c"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00103eac",
+        "bytes": 84,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 3
+        },
+        "targets": [
+          "00103eb0",
+          "00103ec8",
+          "00103ee0"
+        ],
+        "anchored": false,
+        "reached": true
+      },
+      {
+        "address": "00103f30",
+        "bytes": 1704,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 3,
+          "data_pointer": 10
+        },
+        "targets": [
+          "00103f30",
+          "00103ffc",
+          "00104110",
+          "0010418c",
+          "00104288",
+          "00104338",
+          "00104460",
+          "00104538",
+          "00104578",
+          "00104598",
+          "001045b0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00108fe4",
+        "bytes": 92,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010a6d4",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010a894",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010ac7c",
+        "bytes": 84,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010bd5c",
+        "bytes": 52,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010d26c",
+        "bytes": 172,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010e3b4",
+        "bytes": 84,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010f4c8",
+        "bytes": 8,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0010f5e4",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00110a84",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00110b14",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00111f0c",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00112144",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001121ec",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0011230c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00112338",
+        "bytes": 8,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00112fa4",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0011338c",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0011362c",
+        "bytes": 1148,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0011453c",
+        "bytes": 244,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00114954",
+        "bytes": 76,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00115204",
+        "bytes": 52,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001152d4",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00115324",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001172d8",
+        "bytes": 40,
+        "region": ".text",
+        "incoming": {
+          "owned_direct": 1
+        },
+        "targets": [
+          "001172d8"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001182dc",
+        "bytes": 244,
+        "region": ".text",
+        "incoming": {
+          "owned_direct": 1,
+          "data_pointer": 8
+        },
+        "targets": [
+          "001182e0",
+          "00118318",
+          "00118328",
+          "00118348",
+          "00118358",
+          "00118378",
+          "00118380",
+          "00118388",
+          "00118390"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0011a394",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0011ba30",
+        "bytes": 408,
+        "region": ".text",
+        "incoming": {
+          "owned_direct": 1,
+          "span_direct": 1,
+          "data_pointer": 6
+        },
+        "targets": [
+          "0011ba30",
+          "0011bae8",
+          "0011baf0",
+          "0011baf8",
+          "0011bb00",
+          "0011bb08",
+          "0011bb10"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0011c470",
+        "bytes": 240,
+        "region": ".text",
+        "incoming": {
+          "owned_direct": 1
+        },
+        "targets": [
+          "0011c470"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0011cdb4",
+        "bytes": 60,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0011d1b4",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0011d284",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00122254",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00123ba4",
+        "bytes": 884,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 13
+        },
+        "targets": [
+          "00123cc0",
+          "00123cf0",
+          "00123d20",
+          "00123d50",
+          "00123d80",
+          "00123db0",
+          "00123de0",
+          "00123e10",
+          "00123e40",
+          "00123e70",
+          "00123ea0",
+          "00123ed0",
+          "00123f00"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00125ce8",
+        "bytes": 224,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00126eb0",
+        "bytes": 24,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013216c",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001322bc",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013580c",
+        "bytes": 244,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013c5a8",
+        "bytes": 32,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013cb44",
+        "bytes": 52,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013cf0c",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013d04c",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013d9f4",
+        "bytes": 76,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013e094",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013e60c",
+        "bytes": 48,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013e81c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013e8ac",
+        "bytes": 16,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013eb0c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013ebc4",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013ec7c",
+        "bytes": 92,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013ed34",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013ee04",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013eeac",
+        "bytes": 68,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013f19c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013f26c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013f600",
+        "bytes": 40,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013f854",
+        "bytes": 124,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0013f9fc",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00140ae4",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00140e74",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0014227c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00142c4c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001447c4",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0014588c",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00145afc",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0014f9d0",
+        "bytes": 396,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 5
+        },
+        "targets": [
+          "0014f9d0",
+          "0014fa50",
+          "0014fad0",
+          "0014fb58"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0014fb90",
+        "bytes": 40,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 1
+        },
+        "targets": [
+          "0014fb90"
+        ],
+        "anchored": false,
+        "reached": true
+      },
+      {
+        "address": "001578a4",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0015e534",
+        "bytes": 76,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0015ff6c",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0015ff8c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00161204",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0016160c",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00165494",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0016c38c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0016d50c",
+        "bytes": 3884,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 32
+        },
+        "targets": [
+          "0016d5a8",
+          "0016d5b0",
+          "0016d5b8",
+          "0016d5c0",
+          "0016d5f0",
+          "0016d620",
+          "0016d668",
+          "0016d688",
+          "0016d8f8",
+          "0016d960",
+          "0016d990",
+          "0016da10",
+          "0016da78",
+          "0016dab0",
+          "0016dae0",
+          "0016db30",
+          "0016dc00",
+          "0016dc18",
+          "0016dc30",
+          "0016dc48",
+          "0016dc60",
+          "0016dc78",
+          "0016dc90",
+          "0016dca8"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0016e718",
+        "bytes": 488,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 1
+        },
+        "targets": [
+          "0016e718"
+        ],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0016ea04",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0016f5b0",
+        "bytes": 5008,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 3
+        },
+        "targets": [
+          "0016f9e8",
+          "00170688"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001711ec",
+        "bytes": 236,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00175aec",
+        "bytes": 644,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1,
+          "data_pointer": 14
+        },
+        "targets": [
+          "00175af0",
+          "00175b90",
+          "00175bd8",
+          "00175c30",
+          "00175c88",
+          "00175cc8",
+          "00175ce0",
+          "00175cf8",
+          "00175d10",
+          "00175d28",
+          "00175d40",
+          "00175d58"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00175dc8",
+        "bytes": 660,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 4
+        },
+        "targets": [
+          "00175dc8",
+          "00175fb8",
+          "00175fd0",
+          "00176058"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00176070",
+        "bytes": 368,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 3,
+          "data_pointer": 3
+        },
+        "targets": [
+          "00176070",
+          "00176074"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001761e8",
+        "bytes": 280,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 2
+        },
+        "targets": [
+          "001761e8",
+          "001762d0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00176910",
+        "bytes": 624,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1,
+          "data_pointer": 12
+        },
+        "targets": [
+          "00176910",
+          "00176a00",
+          "00176a20",
+          "00176a58",
+          "00176a90",
+          "00176aa8",
+          "00176ae0",
+          "00176af8",
+          "00176b10",
+          "00176b28",
+          "00176b40",
+          "00176b58"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00176bd0",
+        "bytes": 60,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 6
+        },
+        "targets": [
+          "00176bd0",
+          "00176be8",
+          "00176c00",
+          "00176c08"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00176c20",
+        "bytes": 584,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 3
+        },
+        "targets": [
+          "00176c20"
+        ],
+        "anchored": false,
+        "reached": true
+      },
+      {
+        "address": "00176e70",
+        "bytes": 288,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "00176f18"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017709c",
+        "bytes": 124,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 5
+        },
+        "targets": [
+          "001770a0",
+          "001770b0",
+          "001770c0",
+          "001770d0",
+          "001770e0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00177130",
+        "bytes": 76,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 1
+        },
+        "targets": [
+          "00177130"
+        ],
+        "anchored": false,
+        "reached": true
+      },
+      {
+        "address": "001771a8",
+        "bytes": 144,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001772b0",
+        "bytes": 40,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 2
+        },
+        "targets": [
+          "001772b0",
+          "001772c8"
+        ],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00177784",
+        "bytes": 276,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001788ec",
+        "bytes": 332,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 4
+        },
+        "targets": [
+          "001788f0"
+        ],
+        "anchored": false,
+        "reached": true
+      },
+      {
+        "address": "00178e80",
+        "bytes": 280,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "00178e80"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00179038",
+        "bytes": 240,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001792d8",
+        "bytes": 120,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 5
+        },
+        "targets": [
+          "001792d8"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017936c",
+        "bytes": 124,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001796ac",
+        "bytes": 484,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "001797a0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00179b98",
+        "bytes": 424,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0017a284",
+        "bytes": 516,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 2
+        },
+        "targets": [
+          "0017a288",
+          "0017a380"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017aa7c",
+        "bytes": 296,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 6
+        },
+        "targets": [
+          "0017aa80",
+          "0017aa98",
+          "0017aab0",
+          "0017aad8",
+          "0017ab00",
+          "0017aba0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017abb8",
+        "bytes": 696,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 1,
+          "data_pointer": 12
+        },
+        "targets": [
+          "0017abb8",
+          "0017acb0",
+          "0017ad18",
+          "0017ad38",
+          "0017ad58",
+          "0017ad78",
+          "0017ad98",
+          "0017add0",
+          "0017ade8",
+          "0017ae00",
+          "0017ae18",
+          "0017ae30",
+          "0017ae48"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017ae78",
+        "bytes": 272,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "0017aee0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017b270",
+        "bytes": 3160,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 2
+        },
+        "targets": [
+          "0017b270",
+          "0017b598"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017c440",
+        "bytes": 480,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0017cf70",
+        "bytes": 120,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 5
+        },
+        "targets": [
+          "0017cf70",
+          "0017cf80",
+          "0017cf90",
+          "0017cfa0",
+          "0017cfb0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017cffc",
+        "bytes": 84,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 1,
+          "data_pointer": 1
+        },
+        "targets": [
+          "0017d000",
+          "0017d008"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017ecfc",
+        "bytes": 116,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 3
+        },
+        "targets": [
+          "0017ed00"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017ef68",
+        "bytes": 120,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 5
+        },
+        "targets": [
+          "0017ef68",
+          "0017ef78",
+          "0017ef88",
+          "0017ef98",
+          "0017efa8"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017eff4",
+        "bytes": 84,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 1,
+          "data_pointer": 1
+        },
+        "targets": [
+          "0017eff8",
+          "0017f000"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017f374",
+        "bytes": 148,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0017f480",
+        "bytes": 40,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 2,
+          "data_pointer": 1
+        },
+        "targets": [
+          "0017f480",
+          "0017f498"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017f5e4",
+        "bytes": 124,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 6
+        },
+        "targets": [
+          "0017f5e8",
+          "0017f5f8",
+          "0017f608",
+          "0017f618",
+          "0017f628"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0017f674",
+        "bytes": 84,
+        "region": ".text",
+        "incoming": {
+          "span_direct": 1,
+          "data_pointer": 1
+        },
+        "targets": [
+          "0017f678",
+          "0017f680"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00180128",
+        "bytes": 336,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "00180128"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001802e8",
+        "bytes": 144,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00180ea8",
+        "bytes": 744,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001820f0",
+        "bytes": 2032,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 10
+        },
+        "targets": [
+          "00182220",
+          "00182258",
+          "00182298",
+          "001822d0",
+          "00182380",
+          "001823a8",
+          "001823e0",
+          "00182418",
+          "00182450",
+          "00182488"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00183534",
+        "bytes": 372,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 2
+        },
+        "targets": [
+          "00183538",
+          "001835e0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001838ac",
+        "bytes": 844,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 10
+        },
+        "targets": [
+          "00183928",
+          "001839c0",
+          "00183a58",
+          "00183ab0",
+          "00183b20",
+          "00183b58",
+          "00183b70",
+          "00183b88",
+          "00183ba0",
+          "00183bb8"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0018486c",
+        "bytes": 68,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001852c4",
+        "bytes": 4108,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00186cd8",
+        "bytes": 1480,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 6
+        },
+        "targets": [
+          "00187018",
+          "00187030",
+          "00187048",
+          "00187060",
+          "00187078",
+          "00187090"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001880e0",
+        "bytes": 4744,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "00188cb0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00189dfc",
+        "bytes": 3484,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1,
+          "span_direct": 1,
+          "data_pointer": 28
+        },
+        "targets": [
+          "00189ea8",
+          "00189eb8",
+          "00189ec8",
+          "00189ee8",
+          "00189ef8",
+          "00189f38",
+          "00189fa8",
+          "0018a500",
+          "0018a5a0",
+          "0018a608",
+          "0018a688",
+          "0018a6f0",
+          "0018a770",
+          "0018a788",
+          "0018a7a0",
+          "0018a7b8",
+          "0018a7d0",
+          "0018a7e8",
+          "0018a800",
+          "0018a838",
+          "0018aac0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0018aba0",
+        "bytes": 160,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0018bf9c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0018fc6c",
+        "bytes": 76,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00196264",
+        "bytes": 708,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 10
+        },
+        "targets": [
+          "00196268",
+          "001962f8",
+          "00196318",
+          "00196338",
+          "00196358",
+          "001963a0",
+          "001963f0",
+          "00196450",
+          "00196480",
+          "001964d8"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0019683c",
+        "bytes": 324,
+        "region": ".text",
+        "incoming": {
+          "data_pointer": 15
+        },
+        "targets": [
+          "00196840",
+          "00196888"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0019876c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00198794",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00199a98",
+        "bytes": 24,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0019fbb0",
+        "bytes": 1112,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1,
+          "data_pointer": 1
+        },
+        "targets": [
+          "0019fbb0",
+          "001a0000"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001a884c",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001ada4c",
+        "bytes": 164,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001af904",
+        "bytes": 52,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "001af908"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001b1a0c",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001ba83c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001ba9bc",
+        "bytes": 260,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001bb308",
+        "bytes": 8,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001bb374",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001bb3bc",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001ca84c",
+        "bytes": 156,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "001ca850"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001cba2c",
+        "bytes": 76,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001cba9c",
+        "bytes": 100,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001d543c",
+        "bytes": 228,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "001d5440"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001d7888",
+        "bytes": 8,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001d7d5c",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001db0dc",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001dd28c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001dd2ac",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001dd894",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001e0894",
+        "bytes": 252,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001e55ec",
+        "bytes": 40,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001eb4d4",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001eb614",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001edb34",
+        "bytes": 908,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1,
+          "data_pointer": 25
+        },
+        "targets": [
+          "001edb38",
+          "001edc00",
+          "001edc88",
+          "001edd54",
+          "001eddf0",
+          "001ede38"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001efe70",
+        "bytes": 416,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f306c",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f3334",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f3c5c",
+        "bytes": 900,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 3,
+          "data_pointer": 1
+        },
+        "targets": [
+          "001f3c80",
+          "001f3dc0",
+          "001f3ec0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001f4854",
+        "bytes": 64,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f4d04",
+        "bytes": 64,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f525c",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f558c",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f5844",
+        "bytes": 92,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f5e04",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f6974",
+        "bytes": 24,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f6d2c",
+        "bytes": 356,
+        "region": ".text",
+        "incoming": {
+          "owned_address_constant": 1,
+          "span_direct": 1
+        },
+        "targets": [
+          "001f6d30",
+          "001f6dd0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "001f6f64",
+        "bytes": 164,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001f85b4",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001fa92c",
+        "bytes": 12,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001fbb5c",
+        "bytes": 36,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001fbb8c",
+        "bytes": 20,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001fbce4",
+        "bytes": 44,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001fbd1c",
+        "bytes": 84,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001fbe2c",
+        "bytes": 28,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "001fdb84",
+        "bytes": 4052,
+        "region": ".text",
+        "incoming": {
+          "owned_direct": 2,
+          "data_pointer": 25
+        },
+        "targets": [
+          "001fdb88",
+          "001fdda8",
+          "001fde20",
+          "001fdeb8",
+          "001fdf70",
+          "001fe000",
+          "001fe040",
+          "001fe0f0",
+          "001fe1a8",
+          "001fe2a0",
+          "001fe3a0",
+          "001fe440",
+          "001fe4f0",
+          "001fe5d0",
+          "001fe6b8",
+          "001fe790",
+          "001fe860",
+          "001fe980"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0020a618",
+        "bytes": 48,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0020ad90",
+        "bytes": 1104,
+        "region": ".text",
+        "incoming": {
+          "owned_direct": 2,
+          "data_pointer": 48
+        },
+        "targets": [
+          "0020ad90",
+          "0020ae60",
+          "0020ae78",
+          "0020ae88",
+          "0020aeb0",
+          "0020aed0",
+          "0020af28",
+          "0020af48",
+          "0020af88",
+          "0020afb8",
+          "0020afd8",
+          "0020aff8",
+          "0020b050",
+          "0020b0a0",
+          "0020b0f8",
+          "0020b148",
+          "0020b168",
+          "0020b1b8",
+          "0020b1c0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0020ca40",
+        "bytes": 128,
+        "region": ".text",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "002166cc",
+        "bytes": 3188,
+        "region": ".text",
+        "incoming": {
+          "owned_direct": 2,
+          "data_pointer": 89
+        },
+        "targets": [
+          "002166d0",
+          "00216900",
+          "00216918",
+          "00216920",
+          "00216934",
+          "00216940",
+          "00216950",
+          "002169d0",
+          "002169d8",
+          "00216a10",
+          "00216a18",
+          "00216a2c",
+          "00216a40",
+          "00216a60",
+          "00216a64",
+          "00216ab8",
+          "00216b18",
+          "00216b1c",
+          "00216b60",
+          "00216b88",
+          "00216be8",
+          "00216bec",
+          "00216c30",
+          "00216c40",
+          "00216dc0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "00217be0",
+        "bytes": 16,
+        "region": ".vutext",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "00217be0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0021acd0",
+        "bytes": 32,
+        "region": ".vutext",
+        "incoming": {
+          "owned_address_constant": 1
+        },
+        "targets": [
+          "0021ace0"
+        ],
+        "anchored": true,
+        "reached": true
+      },
+      {
+        "address": "0021b660",
+        "bytes": 32,
+        "region": ".user_section1",
+        "incoming": {
+          "span_direct": 1
+        },
+        "targets": [
+          "0021b660"
+        ],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0021b764",
+        "bytes": 68,
+        "region": ".user_section1",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0021d320",
+        "bytes": 56,
+        "region": ".user_section3",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0021de80",
+        "bytes": 472,
+        "region": ".user_section5",
+        "incoming": {
+          "span_direct": 1
+        },
+        "targets": [
+          "0021de80"
+        ],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0021e384",
+        "bytes": 708,
+        "region": ".user_section5",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0021f144",
+        "bytes": 116,
+        "region": ".user_section5",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0022077c",
+        "bytes": 84,
+        "region": ".user_section5",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00220888",
+        "bytes": 64,
+        "region": ".user_section5",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "002209b4",
+        "bytes": 36,
+        "region": ".user_section5",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00221434",
+        "bytes": 140,
+        "region": ".user_section5",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00225e2c",
+        "bytes": 1732,
+        "region": ".user_section8",
+        "incoming": {
+          "span_direct": 1
+        },
+        "targets": [
+          "00225e30"
+        ],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0022821c",
+        "bytes": 612,
+        "region": ".user_section8",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00228614",
+        "bytes": 204,
+        "region": ".user_section8",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "00228fd8",
+        "bytes": 24,
+        "region": ".user_section8",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0022a6d4",
+        "bytes": 20,
+        "region": ".user_section_uncommon",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0022a8d4",
+        "bytes": 60,
+        "region": ".user_section_uncommon",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0022b098",
+        "bytes": 24,
+        "region": ".user_section_uncommon",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0022b960",
+        "bytes": 208,
+        "region": ".user_section_uncommon",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "0022f8bc",
+        "bytes": 140,
+        "region": ".user_section_init",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      },
+      {
+        "address": "002300b8",
+        "bytes": 96,
+        "region": ".user_section_init",
+        "incoming": {},
+        "targets": [],
+        "anchored": false,
+        "reached": false
+      }
+    ],
+    "summary": {
+      "anchored": {
+        "spans": 56,
+        "bytes": 52524
+      },
+      "reached_via_spans_only": {
+        "spans": 7,
+        "bytes": 1372
+      },
+      "unreferenced": {
+        "spans": 155,
+        "bytes": 19860
+      }
+    },
+    "controls": {
+      "owned": {
+        "nonzero_words": 276264,
+        "plausible": 276264
+      },
+      "data": {
+        "nonzero_words": 73180,
+        "plausible": 59330
+      },
+      "data_words_in_executable_range": {
+        "aligned": 2771,
+        "misaligned": 10
+      },
+      "data_words_at_function_entries": 138
+    },
+    "whole_game_decompiled": false,
+    "claim_limits": [
+      "A reference is a candidate entry address, not a function boundary, identity or runtime reachability.",
+      "lui+addiu/ori pairs are matched by register within a short window and can be false positives.",
+      "Data pointers are aligned words in non-executable sections; see controls for the misaligned baseline.",
+      "Spans with no static reference may still be reached by computed jumps or be dead code."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 50531,
+      "sha256": "8b3f6100bf2b862719156a656aa60db2e3201b92759e5ff8369fdee05f92e368"
+    }
+  }
+}

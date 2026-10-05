@@ -1,0 +1,75 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+    "verified": 2,
+    "contradicted": 0,
+    "unsupported": 2,
+    "needs_review": 2
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "claim": "The full suite ran 475 tests and passed with one skipped test.",
+      "verdict": "verified",
+      "probabilities": {
+        "contradicts": 0,
+        "supports": 1,
+        "says_nothing": 0
+      },
+      "confidence": 0.99,
+      "action": "auto",
+      "supporting_evidence": "real_suite_log",
+      "same_subject": 0.95
+    },
+    {
+      "id": "claim1",
+      "claim": "The new recognizer matched 24 of the 29 computed-JR sites scanned across 408 seeds.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.98,
+        "contradicts": 0.01,
+        "says_nothing": 0.01
+      },
+      "confidence": 0.97,
+      "action": "auto",
+      "supporting_evidence": "raw_measurement_summary",
+      "same_subject": 0.92
+    },
+    {
+      "id": "claim2",
+      "claim": "Control: This slice recovered 24 original game functions.",
+      "verdict": "unsupported",
+      "probabilities": {
+        "contradicts": 0.14,
+        "supports": 0.02,
+        "says_nothing": 0.84
+      },
+      "confidence": 0.76,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.07
+    },
+    {
+      "id": "claim3",
+      "claim": "Control: Every switch variant in the executable is now supported.",
+      "verdict": "unsupported",
+      "probabilities": {
+        "contradicts": 0.26,
+        "supports": 0,
+        "says_nothing": 0.74
+      },
+      "confidence": 0.61,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.06
+    }
+  ],
+  "usage": {
+    "input_tokens": 1917,
+    "output_tokens": 438
+  }
+}

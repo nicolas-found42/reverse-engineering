@@ -1,0 +1,43 @@
+{
+  "tool": "jev_audit",
+  "model": "typesafe/jev-1.13",
+  "provider": "openrouter",
+  "action": "pass",
+  "wrong_at": 0.7,
+  "truncated": false,
+  "summary": {
+    "records": 2,
+    "flagged": 0,
+    "invalid": 0
+  },
+  "records": [
+    {
+      "id": "suite_count",
+      "value": "475",
+      "checks": {
+        "hallucinated": 0.03,
+        "off_target": 0.06,
+        "incomplete": 0.05,
+        "format": 0.08
+      },
+      "p_wrong": 0.08,
+      "action": "ok"
+    },
+    {
+      "id": "skips",
+      "value": "1",
+      "checks": {
+        "hallucinated": 0.02,
+        "off_target": 0.05,
+        "incomplete": 0.04,
+        "format": 0.05
+      },
+      "p_wrong": 0.05,
+      "action": "ok"
+    }
+  ],
+  "usage": {
+    "input_tokens": 1203,
+    "output_tokens": 168
+  }
+}

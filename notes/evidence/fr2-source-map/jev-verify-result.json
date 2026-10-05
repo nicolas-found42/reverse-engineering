@@ -1,0 +1,33 @@
+{
+ "tool": "jev_verify",
+ "summary": {
+  "verified": 2,
+  "contradicted": 2,
+  "needs_review": 1
+ },
+ "results": [
+  {
+   "claim": "665 comments and 112 renames in one guarded transaction, count 5454 before and after",
+   "verdict": "verified",
+   "confidence": 0.98
+  },
+  {
+   "claim": "comparison passed 8 of 8; pseudocode identical for all 5454 after stripping comments, mapping planned names back and removing whitespace",
+   "verdict": "verified",
+   "confidence": 0.99
+  },
+  {
+   "claim": "every renamed function carries the ps2sdk_ prefix and a comment that says the name is not a verified original symbol",
+   "verdict": "contradicted",
+   "confidence": 0.61,
+   "action": "review",
+   "disposition": "Resolved by a direct check of plan and export: 112 of 112 renames start with ps2sdk_, 112 of 112 comments contain 'not a verified original symbol', 112 of 112 exported names equal the planned names. The Jev judgment is kept as returned."
+  },
+  {
+   "claim": "the comments and names prove the original function names and source files",
+   "verdict": "contradicted",
+   "confidence": 0.98,
+   "disposition": "overclaim recorded; not made"
+  }
+ ]
+}
