@@ -7,10 +7,11 @@ extern void report_error(const char *, int, const char *, ...) __attribute__((no
 int fr2_parser_lookup(int key)
 {
     struct fr2_parser_entry *entry = fr2_parser_table;
-    while (entry->key != key) {
+    do {
+        if (entry->key == key)
+            return entry->value;
         if (entry->key == 5)
             report_error(fr2_parser_file, 736, fr2_parser_message, key);
         ++entry;
-    }
-    return entry->value;
+    } while (1);
 }

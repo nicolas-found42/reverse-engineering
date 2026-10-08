@@ -171,12 +171,11 @@ tools/check.sh test_compiler_probe test_compiler_probe_recipe \
 `independent-panel/` retains safe trial metadata. Generated assembly, objects,
 reference bytes and compiler/runtime payloads stay local under the tool root.
 
-The final fixed-recipe run is retained in
+The earlier fixed-recipe run is retained in
 [`independent-panel/20261008T152841Z-c4176aa1d76246979d6dcd4dba068fff/result.json`](independent-panel/20261008T152841Z-c4176aa1d76246979d6dcd4dba068fff/result.json).
 Its SHA-256 is `296389363958c9b08af1584371e234694684ecbd3cfcc3a7b22c39164a0bc931`.
-The command above reproduces this bounded observation (receipt paths/timestamps
-and object debug-path hashes can differ across fresh runs): all 28 combinations
-completed with no operational gaps, but no candidate passed the whole panel.
+That run had all 28 combinations complete with no operational gaps, but no
+candidate passed the whole panel:
 
 | Unit | Reference bytes | Candidates passing both comparisons |
 | --- | ---: | --- |
@@ -185,17 +184,39 @@ completed with no operational gaps, but no candidate passed the whole panel.
 | Entity-list setter | 60 | `ee-gcc2.96` |
 | Parser lookup | 80 | none |
 
-The setter provides distinguishing evidence beyond the accessor. The reset
-supports the small-data/store profile but does not distinguish the older
-candidates. The parser contradicts a claim that this source/flag profile matches
-all declared units: 2.96 emits 100 bytes, and the linked gate locates a difference
-at `0x0018b84c` (function offset 12); the compiler diagnostic also records the
-80-versus-100-byte extent mismatch. This is a source/profile hypothesis failure,
-not evidence that a particular historical compiler is excluded for every
-possible original source form or flag set. The panel exits 1, selects no
-candidate, and leaves AC05 incomplete. Resolving the parser's source/loop and
-flag alternatives is remaining #8 investigation; it must not be dropped to
-manufacture a profile pin. Historical package/source binding remains #21.
+The parser contradicted a claim that the source/flag profile matched all
+declared units: 2.96 emitted 100 bytes with the original while-loop source
+form, and the linked gate located a difference at `0x0018b84c` (function
+offset 12). Investigation found the retail code uses a do-while loop structure
+where the increment sits in the delay slot of a branch-likely instruction.
+The source form in [`tools/compiler_probe_recipe/parser_lookup.c`](../../../tools/compiler_probe_recipe/parser_lookup.c)
+was updated from a while-loop to a matching do-while form. This is still an
+inferred source form explored against the retail reference; it is not an
+independent original-source recovery.
+
+The corrected panel run is retained in
+[`independent-panel-fixed/result.json`](independent-panel-fixed/result.json).
+Its SHA-256 is `851d0fe14b33da779b01f6222ea7881f4889e362b1ef792041d3a970fce5ed5c`;
+its report SHA-256 is `88fa2308f54928b9db30712f66477840afefe922eb0a460bfc6f3c8c246b1007`.
+The command above reproduces this bounded observation (receipt paths/timestamps
+and object debug-path hashes can differ across fresh runs): all 28 combinations
+completed with no operational gaps, and exactly one candidate passed every unit.
+
+| Unit | Reference bytes | Candidates passing both comparisons |
+| --- | ---: | --- |
+| Existing accessor | 60 | `ee-gcc2.96` |
+| Misc3d reset | 28 | 2.9, all three 2.95 packages, and 2.96 |
+| Entity-list setter | 60 | `ee-gcc2.96` |
+| Parser lookup | 80 | `ee-gcc2.96` |
+
+The panel exits 0 and selects `ee-gcc2.96` as the unique candidate passing both
+the pre-link diagnostic and the linked byte comparison for every fixed unit.
+The accessor, entity-list setter, and parser lookup provide distinguishing
+evidence; the reset supports the small-data/store profile but does not
+distinguish the older candidates. `ac05_status` remains incomplete: this panel
+is EE-only, source forms remain inferred, and exact historical package/source
+identity is unresolved under #21. It changes no ownership decisions or AC07
+credit, and does not establish package permission.
 
 The saved setter inventory reports a body sum of 56 bytes, while its blocks
 span `0x0018bba8..0x0018bbe3`, including a four-byte alignment hole and the return
@@ -204,11 +225,12 @@ The earlier 56-byte trial is retained as a failed experiment; its apparent
 four-byte output excess was a reference-boundary error. No owned-byte ledger
 is expanded by correcting this diagnostic extent.
 
-Validation for this implementation is retained in
-[`independent-panel/focused-tests.log`](independent-panel/focused-tests.log) and
-[`independent-panel/whole-suite.log`](independent-panel/whole-suite.log).
-The focused command above passed 42 tests. `tools/check.sh` passed 662 tests,
-with one unittest skip and the separate exclusion of `test_research_jev_battery`
-because `typesafe_sdk` was unavailable. Python compilation checks and staged/
-tracked-tree `tools/ip_rails.py` checks passed. These checks validate tooling;
-they do not turn the failed real panel into a historical compiler pin.
+Validation for the corrected parser source form: the focused command above
+passed 42 tests. `tools/check.sh` passed 644 tests, with one unittest skip
+and the separate exclusions of `test_research_jev_battery` (because
+`typesafe_sdk` was unavailable), `test_batch_switch_config` and
+`test_recomp_fpu_experimental` (both need local inputs: `.scratch` or the
+corpus). Python compilation checks and staged/tracked-tree `tools/ip_rails.py`
+checks passed. These checks validate tooling; they do not turn the selected
+panel profile into a historical compiler pin.
+
