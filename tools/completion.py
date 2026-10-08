@@ -77,6 +77,8 @@ def run_child(name: str, arguments: list[str], output: Path) -> tuple[dict, dict
     output.mkdir(parents=True, exist_ok=False)
     command = [sys.executable, str(TOOLS / name), *arguments, '--output', str(output)]
     try:
+        if not (TOOLS / name).is_file():
+            raise FileNotFoundError(name)
         process = subprocess.run(command, capture_output=True, text=True, timeout=300)
     except (OSError, subprocess.TimeoutExpired) as exc:
         # Retain an ordinary incomplete child receipt even when launch is unavailable.
@@ -104,7 +106,8 @@ def run_child(name: str, arguments: list[str], output: Path) -> tuple[dict, dict
             'status': status, 'diagnostics': result.get('diagnostics', [])}, result
 
 
-def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None) -> dict:
+def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None,
+          compiler_tools: Path) -> dict:
     children_root = output / ('children-' + uuid.uuid4().hex)
     jobs = [('ranges', 'matching_ranges.py', ['corpus', str(game)]),
             ('archive', 'verify_formats.py', ['corpus', str(game)])]
@@ -116,6 +119,7 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     jobs.append(('vu', 'verify_vu.py', vu_arguments))
     jobs.append(('assets', 'verify_asset_contracts.py',
                  ['archive', str(game / 'extracted/FILES.HDR'), str(game / 'extracted/FILES.DAT')]))
+    jobs.append(('compiler', 'compiler_probe_recipe/run.py', [str(game), str(compiler_tools)]))
     children, results = [], {}
     for key, tool, arguments in jobs:
         child, result = run_child(tool, arguments, children_root / key)
@@ -134,6 +138,10 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
            else 'incomplete', 'Pinned load images, all VU identities, and archive/extracted inventory.', [0, 1])
     record(4, 'fail' if ranges['status'] == 'fail' else 'incomplete',
            'Load-image inventory retained; ownership remains mixed/unresolved under ADR-0005.', [0])
+    compiler = results['compiler']
+    record(5, 'fail' if compiler['status'] == 'fail' else 'incomplete',
+           'Exploratory candidate comparison retained; independent ownership and additional '
+           'EE/IOP distinguishing probes are still required.', [4])
     record(18, archive['status'], 'Independent archive/extracted comparison; format support is separate.', [1])
     vu_details = vu['details']
     encoding = vu_details.get('exact_roundtrip_overlays') == 8 and all(
@@ -163,6 +171,7 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
         'vu_coverage': {'exact_overlays': vu_details.get('exact_roundtrip_overlays', 0),
                         'entry_map': vu_details.get('entry_map', {}),
                         'interfaces': vu_details.get('interface_status', 'incomplete')},
+        'compiler_coverage': compiler['details'],
         'behavioral': {'status': 'incomplete', 'readiness': 'incomplete', 'observations': [],
                        'reason': 'No verified headless original/rebuilt runner or observations.'},
         'real_corpus_completion': status == 'pass',
@@ -191,9 +200,12 @@ def main() -> int:
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--assembler', type=Path)
     parser.add_argument('--objdump', type=Path)
+    parser.add_argument('--compiler-tools', type=Path,
+                        default=TOOLS.parent / '.scratch/compiler-probe-tools')
     args = parser.parse_args()
     return write_result(args.output, 'fr2-completion',
-                        lambda: check(args.game, args.output, args.assembler, args.objdump),
+                        lambda: check(args.game, args.output, args.assembler, args.objdump,
+                                      args.compiler_tools),
                         [Path(__file__), *(TOOLS / name for name in
                           ('matching_ranges.py', 'verify_formats.py', 'verify_vu.py',
                            'verify_asset_contracts.py', 'corpus_contract.py'))])

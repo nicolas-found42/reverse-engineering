@@ -36,6 +36,8 @@ class CompletionCli(unittest.TestCase):
         self.assertEqual([c['id'] for c in details['criteria']],
                          [f'AC{n:02d}' for n in range(1, 33)])
         self.assertEqual(details['behavioral']['status'], 'incomplete')
+        self.assertTrue(details['criteria'][4]['evidence'])
+        self.assertEqual(details['criteria'][4]['status'], 'incomplete')
         self.assertEqual(details['ledger']['matched_bytes'], 0)
         self.assertFalse(details['real_corpus_completion'])
         self.assertTrue(details['children'])

@@ -11,8 +11,13 @@ python3 tools/completion.py games/ford-racing-2 \
 
 Native DVP tools may alternatively be on PATH; the explicit options select
 executables, never scope or acceptance thresholds. They require independent
-permitted-source provenance. The command runs independent load-image, archive,
-VU, and asset-contract checks in fresh child directories and retains their
+permitted-source provenance. Compiler tools default to the declared local
+`.scratch/compiler-probe-tools` directory; `--compiler-tools` may name a different
+installed tool directory. The fixed exploratory recipe still chooses its
+recorded candidate set, source and reference range. No compiler probe supplies
+ownership attribution or an exact original-compiler pin. The command runs
+independent load-image, archive, VU, asset-contract and exploratory compiler
+checks in fresh child directories and retains their
 receipt/report identities. It reports all AC01–AC32 criteria from issue #5.
 Reconstruction and behavioral results have separate scopes. AC25/AC26 do not
 contribute static matching evidence. Missing source builds, attribution,
