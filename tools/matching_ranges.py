@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Inventory every PT_LOAD byte, including section gaps and zero-fill layout.
+"""Inventory every PT_LOAD byte and apply the one identity-pinned ADR-0005 split.
 
-This is structural accounting, not game/SDK attribution. ADR-0005 leaves the
-entire load image unresolved until measured range decisions are committed.
-The file command accepts synthetic ELF fixtures; it cannot earn corpus credit.
+Structural accounting alone earns no matching credit. Corpus mode records the
+first measured source-unit range; completion.py separately validates its fresh
+build receipt. The file command accepts synthetic ELF fixtures and cannot earn
+corpus ownership or matching credit.
 """
 from __future__ import annotations
 
@@ -12,13 +13,95 @@ import json
 from pathlib import Path
 
 from corpus_contract import corpus_identity
-from evidence_common import Incomplete, Invalid, sha256, write_result
+from evidence_common import Incomplete, Invalid, identity, sha256, write_result
 from ps2_executables import parse_elf, parse_romdir
 from ps2_vu import parse_overlays
 
 ROOT = Path(__file__).resolve().parent.parent
 IOP_RECEIPT = ROOT / ('notes/evidence/fr2-static-recovery/iop/results/'
                       '20261004T094558Z-d5361c498cad468ba50e450e88c7b88b/result.json')
+EE_CORPUS_SHA256 = '216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95'
+UNIT_START, UNIT_END = 0x001D1800, 0x001D183C
+UNIT_SHA256 = '1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e'
+UNIT_SOURCE_SHA256 = '44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc'
+UNIT_SOURCE = ROOT / 'reconstruction/ee/app3d/misc3d_db_id.c'
+ADR0005 = ROOT / 'docs/adr/0005-game-owned-sdk-boundary.md'
+SOURCE_MAP = ROOT / 'notes/evidence/fr2-source-map/source-map-result.json'
+SPEC_CONTEXT = Path.home() / 'Documents/github/hermes/spec-5-context/continuation-20261008'
+BOUNDARY_METADATA = SPEC_CONTEXT / 'first-unit/adr0005-misc3d-boundary.json'
+SAVED_FUNCTION_INVENTORY = ROOT / '.scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json'
+
+
+def boundary_provenance() -> dict | None:
+    """Verify the local metadata's source-map and saved-function evidence hashes."""
+    evidence_paths = (BOUNDARY_METADATA, SOURCE_MAP, SAVED_FUNCTION_INVENTORY)
+    if not all(path.is_file() for path in evidence_paths):
+        return None
+    metadata = json.loads(BOUNDARY_METADATA.read_text())
+    source_map_id, inventory_id = identity(SOURCE_MAP), identity(SAVED_FUNCTION_INVENTORY)
+    evidence = metadata.get('evidence_inputs', {})
+    if (metadata.get('corpus', {}).get('sha256') != EE_CORPUS_SHA256
+            or evidence.get('source_map', {}).get('sha256') != source_map_id['sha256']
+            or evidence.get('saved_function_inventory', {}).get('sha256') != inventory_id['sha256']
+            or metadata.get('range', {}).get('sha256') != UNIT_SHA256
+            or metadata.get('range', {}).get('start') != f'{UNIT_START:08x}'
+            or metadata.get('range', {}).get('end_exclusive') != f'{UNIT_END:08x}'):
+        raise Invalid('first-unit ownership metadata does not match its source-map, inventory, or range')
+    return {'metadata': identity(BOUNDARY_METADATA), 'source_map': source_map_id,
+            'saved_function_inventory': inventory_id}
+
+
+def attribute_first_source_unit(artifact: dict, executable: bytes) -> None:
+    """Split one identity-pinned EE range; structural inventory still earns no match."""
+    if sha256(executable) != EE_CORPUS_SHA256:
+        return
+    elf = parse_elf(executable)
+    text_sections = [s for s in elf['sections'] if s.get('name') == '.text'
+                     and s['address'] <= UNIT_START and s['address'] + s['size'] >= UNIT_END]
+    if len(text_sections) != 1:
+        raise Invalid('recorded first-unit span is not uniquely contained by EE .text')
+    section = text_sections[0]
+    offset = section['offset'] + UNIT_START - section['address']
+    unit_bytes = executable[offset:offset + UNIT_END - UNIT_START]
+    if len(unit_bytes) != UNIT_END - UNIT_START or sha256(unit_bytes) != UNIT_SHA256:
+        raise Invalid('recorded first-unit bytes differ from ADR-0005 evidence')
+    source_identity = sha256(UNIT_SOURCE.read_bytes())
+    evidence_inputs = boundary_provenance()
+    if source_identity != UNIT_SOURCE_SHA256 or evidence_inputs is None:
+        return
+    decision_identity = sha256(ADR0005.read_bytes())
+    output = []
+    for row in artifact['ranges']:
+        start, end = row['address'], row['address'] + row['length']
+        if row['section'] != '.text' or end <= UNIT_START or start >= UNIT_END:
+            output.append(row)
+            continue
+        for lower, upper in ((start, min(end, UNIT_START)),
+                             (max(start, UNIT_START), min(end, UNIT_END)),
+                             (max(start, UNIT_END), end)):
+            if lower >= upper:
+                continue
+            child = dict(row, address=lower, length=upper - lower)
+            if row['storage'] == 'initialized':
+                child['file_offset'] = row['file_offset'] + lower - start
+                child['sha256'] = sha256(executable[child['file_offset']:
+                                                    child['file_offset'] + upper - lower])
+            if lower == UNIT_START and upper == UNIT_END:
+                child.update(classification='game_owned', decision='ADR-0005',
+                             unit='misc3d_db_id', source_sha256=source_identity,
+                             build_unit='reconstruction/ee/app3d/misc3d_db_id.c',
+                             decision_sha256=decision_identity,
+                             evidence_inputs=evidence_inputs,
+                             evidence='identity-pinned source-built unit range')
+            output.append(child)
+    artifact['ranges'] = output
+    artifact['game_owned_bytes'] = sum(r['length'] for r in output
+                                       if r['classification'] == 'game_owned')
+    artifact['unresolved_bytes'] = sum(r['length'] for r in output
+                                       if r['classification'] != 'game_owned')
+    # Structural inventory records ownership only; byte-match credit belongs to
+    # completion.py after it verifies a fresh source-build receipt.
+    artifact['matched_bytes'] = 0
 
 
 def load_image_partition(data: bytes) -> dict:
@@ -130,7 +213,9 @@ def corpus_load_images(game: Path) -> dict:
     if missing:
         raise Incomplete(f'missing IOP modules: {sorted(missing)}')
     executable = (extracted / 'SLES_517.05').read_bytes()
-    artifacts = [{'artifact': 'EE', **load_image_partition(executable)}]
+    ee_artifact = {'artifact': 'EE', **load_image_partition(executable)}
+    attribute_first_source_unit(ee_artifact, executable)
+    artifacts = [ee_artifact]
     for name, payload in payloads:
         artifacts.append({'artifact': 'IOP:' + name, **load_image_partition(payload)})
     return {
@@ -140,12 +225,14 @@ def corpus_load_images(game: Path) -> dict:
         'file_backed_bytes': sum(a['file_backed_bytes'] for a in artifacts),
         'zero_fill_bytes': sum(a['zero_fill_bytes'] for a in artifacts),
         'unresolved_bytes': sum(a['unresolved_bytes'] for a in artifacts),
-        'game_owned_bytes': 0, 'matched_bytes': 0, 'substitute_bytes': 0,
+        'game_owned_bytes': sum(a.get('game_owned_bytes', 0) for a in artifacts),
+        'matched_bytes': 0, 'substitute_bytes': 0,
         'substitute_disposition': 'no ranges attributed as substitute',
         'evidence_authority': 'pinned_corpus_structural_inventory',
-        'attribution_status': 'incomplete',
-        'claim_limits': ['All initialized load bytes and zero-fill layout remain mixed/unresolved.',
-                         'This is not source reconstruction, ownership attribution or byte matching.',
+        'attribution_status': 'partial' if ee_artifact['game_owned_bytes'] else 'incomplete',
+        'claim_limits': ['Only the exact identity-pinned EE source unit recorded in ADR-0005 is split.',
+                         'Structural inventory records zero matched bytes; source-build evidence is separate.',
+                         'All other initialized load bytes and zero-fill layout remain mixed/unresolved.',
                          'IOP addresses are link-relative; runtime load bases remain unobserved.'],
     }
 
@@ -158,7 +245,10 @@ def main() -> int:
     args = parser.parse_args()
     if args.mode == 'corpus':
         return write_result(args.output, 'matching-range-inventory:corpus',
-                            lambda: corpus_load_images(args.input), [IOP_RECEIPT])
+                            lambda: corpus_load_images(args.input),
+                            [IOP_RECEIPT, ADR0005, SOURCE_MAP, UNIT_SOURCE,
+                             *(p for p in (BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY)
+                               if p.is_file())])
     return write_result(args.output, 'matching-range-inventory:file',
                         lambda: load_image_partition(args.input.read_bytes()), [args.input])
 
