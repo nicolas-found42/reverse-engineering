@@ -12,11 +12,41 @@ from unittest.mock import patch
 
 from headless_oracle import (build_settings, make_sandbox_profile,
                              validate_observation, validate_probe_files,
-                             verify_qt_inputs, validate_timeout, _kill_group)
-from evidence_common import Invalid, identity
+                             verify_qt_inputs, validate_timeout, _kill_group,
+                             read_probe_output, wait_for_probe_output,
+                             cleanup_failure)
+from evidence_common import Incomplete, Invalid, identity
 
 
 class HeadlessOracleProfile(unittest.TestCase):
+    def test_pine_reads_are_bounded_by_remaining_deadline(self):
+        class FakeSocket:
+            def __init__(self):
+                self.timeouts = []
+
+            def settimeout(self, timeout):
+                self.timeouts.append(timeout)
+
+        class FakePine:
+            def __init__(self):
+                self.socket = FakeSocket()
+                self.reads = []
+
+            def status(self):
+                return 1
+
+            def read(self, address, length):
+                self.reads.append((address, length))
+                return (0x46523250 if len(self.reads) == 1 else 21 if len(self.reads) == 2
+                        else 0x10DF30BF if len(self.reads) == 3 else 1).to_bytes(4, "little")
+
+        pine = FakePine()
+        result = read_probe_output(pine, time.monotonic() + 2)
+        self.assertEqual(result["words"], [0x46523250, 21, 0x10DF30BF, 1])
+        self.assertEqual(len(pine.socket.timeouts), 5)
+        with self.assertRaisesRegex(TimeoutError, "deadline expired"):
+            read_probe_output(pine, time.monotonic() - 1)
+
     def test_timeout_is_bounded(self):
         validate_timeout(1)
         validate_timeout(60)
@@ -31,6 +61,90 @@ class HeadlessOracleProfile(unittest.TestCase):
         self.assertEqual(result["returncode"], -15)
         self.assertFalse(result["forced_kill"])
         self.assertFalse(result["process_group_remaining"])
+
+    def test_cleanup_signals_descendants_after_the_group_leader_exits(self):
+        child_code = (
+            "import signal,time; signal.signal(signal.SIGTERM,signal.SIG_IGN); "
+            "print('ready',flush=True); time.sleep(30)"
+        )
+        parent_code = (
+            "import subprocess,sys,time; "
+            f"p=subprocess.Popen([sys.executable,'-c',{child_code!r}],stdout=subprocess.PIPE,text=True); "
+            "p.stdout.readline(); print(p.pid,flush=True); time.sleep(30)"
+        )
+        process = subprocess.Popen([sys.executable, "-c", parent_code],
+                                   stdout=subprocess.PIPE, text=True,
+                                   start_new_session=True)
+        child_pid = int(process.stdout.readline())
+        result = _kill_group(process, grace=0.2)
+        process.stdout.close()
+        self.assertEqual(result["returncode"], -15)
+        self.assertTrue(result["forced_kill"])
+        self.assertFalse(result["process_group_remaining"])
+        absent = False
+        for _ in range(20):
+            try:
+                os.kill(child_pid, 0)
+            except ProcessLookupError:
+                absent = True
+                break
+            time.sleep(0.05)
+        self.assertTrue(absent, "SIGKILLed descendant should be reaped")
+
+    def test_surviving_group_is_a_failure_even_without_probe_output(self):
+        self.assertEqual(cleanup_failure({"process_group_remaining": True}),
+                         "owned process group survived cleanup")
+        self.assertIsNone(cleanup_failure({"process_group_remaining": False}))
+        process = subprocess.Popen([sys.executable, "-c", "import time; time.sleep(30)"],
+                                   start_new_session=True)
+        with patch("headless_oracle._group_exists", return_value=True):
+            lifecycle = _kill_group(process, grace=0.01)
+        self.assertTrue(lifecycle["process_group_remaining"])
+        self.assertEqual(cleanup_failure(lifecycle), "owned process group survived cleanup")
+
+    def test_pine_output_waits_for_completion_sentinel(self):
+        class FakeSocket:
+            def settimeout(self, timeout):
+                self.timeout = timeout
+
+        class FakePine:
+            def __init__(self):
+                self.socket = FakeSocket()
+                self.reads = 0
+
+            def read(self, address, length):
+                self.reads += 1
+                if address == 0x00180000 + 12:
+                    return (0 if self.reads == 1 else 1).to_bytes(4, "little")
+                return {0x00180000: 0x46523250, 0x00180004: 21,
+                        0x00180008: 0x10DF30BF, 0x0018000C: 1}[address].to_bytes(4, "little")
+
+            def status(self):
+                return 1
+
+        class LiveProcess:
+            def poll(self):
+                return None
+
+        pine = FakePine()
+        result = wait_for_probe_output(pine, LiveProcess(), time.monotonic() + 1)
+        self.assertEqual(result["words"], [0x46523250, 21, 0x10DF30BF, 1])
+        self.assertGreaterEqual(pine.reads, 6)
+
+    def test_dead_process_before_sentinel_retains_incomplete_observation(self):
+        class FakePine:
+            pass
+
+        class DeadProcess:
+            def poll(self):
+                return -11
+
+            @property
+            def returncode(self):
+                return -11
+
+        with self.assertRaisesRegex(Incomplete, "completion sentinel"):
+            wait_for_probe_output(FakePine(), DeadProcess(), time.monotonic() + 1)
 
     def test_cli_requires_independent_sources_and_environment_build_evidence(self):
         result = subprocess.run([sys.executable, str(Path(__file__).with_name("headless_oracle.py")),

@@ -203,32 +203,91 @@ def verify_inputs(emulator: Path, plugin: Path, elf: Path, source: Path,
 
 
 def _kill_group(process: subprocess.Popen, grace: float = 2.0) -> dict:
-    if process.poll() is None:
-        try:
-            os.killpg(process.pid, signal.SIGTERM)
-        except ProcessLookupError:
-            pass
+    # The leader may have exited while a child remains in the owned session.
+    # Signal and verify the process group regardless of the leader's state.
+    try:
+        os.killpg(process.pid, signal.SIGTERM)
+    except ProcessLookupError:
+        pass
     try:
         code = process.wait(timeout=grace)
-        killed = False
     except subprocess.TimeoutExpired:
+        code = None
+    group_deadline = time.monotonic() + grace
+    while _group_exists(process.pid) and time.monotonic() < group_deadline:
+        time.sleep(0.05)
+    forced_kill = _group_exists(process.pid)
+    if forced_kill:
         try:
             os.killpg(process.pid, signal.SIGKILL)
         except ProcessLookupError:
             pass
-        code = process.wait(timeout=grace)
-        killed = True
+        kill_deadline = time.monotonic() + grace
+        while _group_exists(process.pid) and time.monotonic() < kill_deadline:
+            time.sleep(0.05)
+    if process.poll() is None:
+        try:
+            code = process.wait(timeout=grace)
+        except subprocess.TimeoutExpired:
+            code = process.poll()
+    remaining = _group_exists(process.pid)
+    return {"returncode": process.returncode if process.returncode is not None else code,
+            "forced_kill": forced_kill, "process_group_remaining": remaining}
+
+
+def _group_exists(group_id: int) -> bool:
     try:
-        os.killpg(process.pid, 0)
-        remaining = True
+        os.killpg(group_id, 0)
+        return True
     except ProcessLookupError:
-        remaining = False
-    return {"returncode": code, "forced_kill": killed, "process_group_remaining": remaining}
+        return False
+
+
+def cleanup_failure(lifecycle: dict) -> str | None:
+    return "owned process group survived cleanup" if lifecycle.get("process_group_remaining") else None
 
 
 def validate_timeout(timeout: int) -> None:
     if timeout <= 0 or timeout > MAX_TIMEOUT_SECONDS:
         raise Invalid(f"timeout must be within 1..{MAX_TIMEOUT_SECONDS} seconds")
+
+
+def read_probe_output(pine: Pine, deadline: float) -> dict:
+    """Read status and known words without allowing a stalled PINE reply to hang."""
+    def bounded(call):
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise TimeoutError("strict oracle observation deadline expired")
+        pine.socket.settimeout(remaining)
+        return call()
+
+    status = bounded(pine.status)
+    words = [int.from_bytes(bounded(
+        lambda index=index: pine.read(0x00180000 + index * 4, 4)), "little")
+        for index in range(4)]
+    return {"pine_status": status, "output_address": "0x00180000", "words": words}
+
+
+def wait_for_probe_output(pine: Pine, process: subprocess.Popen,
+                          deadline: float) -> dict:
+    """Wait for the source-pinned final word before reading the complete output."""
+    sentinel_address = 0x00180000 + 3 * 4
+    while True:
+        if process.poll() is not None:
+            raise Incomplete(f"PCSX2 exited before the probe completion sentinel (exit {process.returncode})")
+        remaining = deadline - time.monotonic()
+        if remaining <= 0:
+            raise Incomplete("probe completion sentinel was not observed before the deadline")
+        pine.socket.settimeout(remaining)
+        sentinel = int.from_bytes(pine.read(sentinel_address, 4), "little")
+        if sentinel == 1:
+            observed = read_probe_output(pine, deadline)
+            if process.poll() is not None:
+                raise Incomplete(
+                    f"PCSX2 exited during the probe observation (exit {process.returncode})"
+                )
+            return observed
+        time.sleep(min(0.1, max(0, deadline - time.monotonic())))
 
 
 def execute(args, output: Path) -> dict:
@@ -301,10 +360,10 @@ def execute(args, output: Path) -> dict:
             if pine is None and failure_reason is None:
                 failure_reason = "PCSX2 did not expose the expected bounded PINE Unix socket"
             if pine is not None:
-                status = pine.status()
-                words = [int.from_bytes(pine.read(0x00180000 + index * 4, 4), "little")
-                         for index in range(4)]
-                observed = {"pine_status": status, "output_address": "0x00180000", "words": words}
+                try:
+                    observed = wait_for_probe_output(pine, process, deadline)
+                except (Incomplete, OSError, Invalid) as error:
+                    failure_reason = f"PINE observation failed before the deadline: {error}"
     finally:
         if pine is not None:
             pine.close()
@@ -347,6 +406,10 @@ def execute(args, output: Path) -> dict:
                   "profile_limits": ["No mach-lookup or IP networking was permitted.",
                                      "Only the exact local PINE AF_UNIX socket was allowed."],
                   "reason": failure_reason or "strict oracle did not capture controlled probe output"}
+        cleanup_error = cleanup_failure(lifecycle)
+        if cleanup_error:
+            detail["failures"] = [cleanup_error, detail["reason"]]
+            return detail
         raise Incomplete(detail["reason"], detail)
     desktop_result = validate_observation(observed["words"], desktop)
     details = {
@@ -363,9 +426,10 @@ def execute(args, output: Path) -> dict:
         "limitations": ["The probe is hand-written and synthetic; it is not reconstructed game code.",
                         "This does not establish original/rebuilt game equivalence or whole-game behavior.",
                         "Frontmost changes during the observation make the result incomplete."]}
-    if lifecycle.get("process_group_remaining"):
+    cleanup_error = cleanup_failure(lifecycle)
+    if cleanup_error:
         details["status"] = "fail"
-        details["observation"]["reason"] = "owned process group survived cleanup"
+        details["observation"]["reason"] = cleanup_error
     if details["status"] == "fail":
         details["failures"] = [details["observation"]["reason"]]
     if details["status"] == "incomplete":
