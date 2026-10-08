@@ -1,8 +1,11 @@
 import json
+import hashlib
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
+import compiler_probe
 from compiler_probe import run_probe
 
 
@@ -21,9 +24,12 @@ class CompilerProbeTest(unittest.TestCase):
         self.objcopy.write_text("""#!/usr/bin/env python3
 import os, pathlib, sys
 target = sys.argv[sys.argv.index('--dump-section') + 1].split('=', 1)[1]
-pathlib.Path(target).write_bytes(pathlib.Path(os.environ['FAKE_OBJECT']).read_bytes())
+pathlib.Path(target).write_bytes(pathlib.Path(sys.argv[-1]).read_bytes())
 """)
         self.objcopy.chmod(0o755)
+        self.linker = self.root / "fake-ld"
+        self.linker.write_text("#!/bin/bash\ncp \"$1\" \"$2\"\n")
+        self.linker.chmod(0o755)
         self.object = self.root / "object.bin"
         self.object.write_bytes(bytes.fromhex("01020304"))
         import os
@@ -51,6 +57,7 @@ pathlib.Path(target).write_bytes(pathlib.Path(os.environ['FAKE_OBJECT']).read_by
         result = run_probe(self.manifest(), self.root / "out")
         self.assertEqual((result["status"], result["selected_id"]), ("pass", "gcc-test"))
         self.assertEqual(result["candidates"][0]["actual_sha256"], result["reference"]["sha256"])
+        self.assertEqual(Path(result["manifest"]["path"]), self.manifest().resolve())
 
     def test_a_nonmatching_candidate_is_a_failure_not_silently_skipped(self):
         self.object.write_bytes(bytes.fromhex("01020305"))
@@ -77,6 +84,116 @@ pathlib.Path(target).write_bytes(pathlib.Path(os.environ['FAKE_OBJECT']).read_by
         result = run_probe(manifest, self.root / "out")
         self.assertEqual((result["status"], result["selected_id"]), ("incomplete", None))
         self.assertEqual(result["matches"], ["gcc-test", "other-gcc"])
+
+    def test_a_byte_match_plus_a_compile_error_cannot_select_a_candidate(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body["candidates"].append({"id": "broken-gcc", "compile": ["/usr/bin/false"],
+                                    "objcopy": [str(self.objcopy)]})
+        manifest.write_text(json.dumps(body))
+        result = run_probe(manifest, self.root / "out")
+        self.assertEqual((result["status"], result["selected_id"]), ("incomplete", None))
+        self.assertEqual(result["errors"], ["broken-gcc"])
+
+    def test_multiple_matches_plus_a_nonmatching_candidate_stays_ambiguous(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body["candidates"].extend([
+            {"id": "other-gcc", "compile": [str(self.compiler)], "objcopy": [str(self.objcopy)]},
+            {"id": "nonmatching-gcc", "compile": [str(self.root / "mismatch-cc")],
+             "objcopy": [str(self.objcopy)]},
+        ])
+        mismatch_compiler = self.root / "mismatch-cc"
+        mismatch_compiler.write_text("#!/bin/bash\ncp \"$MISMATCH_OBJECT\" \"${@: -1}\"\n")
+        mismatch_compiler.chmod(0o755)
+        import os
+        old = os.environ.get("MISMATCH_OBJECT")
+        os.environ["MISMATCH_OBJECT"] = str(self.root / "mismatch.bin")
+        (self.root / "mismatch.bin").write_bytes(bytes.fromhex("05060708"))
+        try:
+            manifest.write_text(json.dumps(body))
+            result = run_probe(manifest, self.root / "out")
+        finally:
+            if old is None:
+                os.environ.pop("MISMATCH_OBJECT", None)
+            else:
+                os.environ["MISMATCH_OBJECT"] = old
+        self.assertEqual((result["status"], result["selected_id"]), ("incomplete", None))
+        self.assertEqual(result["matches"], ["gcc-test", "other-gcc"])
+        self.assertEqual(result["failures"], ["nonmatching-gcc"])
+
+    def test_compiler_timeout_is_an_operational_error_and_blocks_selection(self):
+        manifest = self.manifest()
+        with patch("compiler_probe.subprocess.run", side_effect=__import__("subprocess").TimeoutExpired("fake", 120)):
+            result = run_probe(manifest, self.root / "out")
+        self.assertEqual((result["status"], result["selected_id"]), ("incomplete", None))
+        self.assertEqual(result["errors"], ["gcc-test"])
+
+    def test_compiler_oserror_is_an_operational_error_and_blocks_selection(self):
+        manifest = self.manifest()
+        with patch("compiler_probe.subprocess.run", side_effect=OSError("launcher unavailable")):
+            result = run_probe(manifest, self.root / "out")
+        self.assertEqual((result["status"], result["selected_id"]), ("incomplete", None))
+        self.assertEqual(result["errors"], ["gcc-test"])
+        self.assertIn("launcher unavailable", result["candidates"][0]["reason"])
+
+    def test_launcher_can_be_pinned_separately_from_container_compiler_binary(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body["candidates"][0]["compiler_executable"] = str(self.compiler)
+        body["candidates"][0]["objcopy_executable"] = str(self.objcopy)
+        body["candidates"][0]["runtime"] = {"image": "test-image@sha256:abc"}
+        manifest.write_text(json.dumps(body))
+        result = run_probe(manifest, self.root / "out")
+        candidate = result["candidates"][0]
+        self.assertEqual(result["status"], "pass")
+        expected_hash = hashlib.sha256(self.compiler.read_bytes()).hexdigest()
+        self.assertEqual(candidate["compiler_sha256"], expected_hash)
+        self.assertEqual(candidate["runtime"], {"image": "test-image@sha256:abc"})
+
+    def test_candidate_supporting_tools_are_hash_pinned(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body["candidates"][0]["tool_files"] = {"cc1": str(self.compiler)}
+        manifest.write_text(json.dumps(body))
+        result = run_probe(manifest, self.root / "out")
+        self.assertEqual(result["status"], "pass")
+        self.assertEqual(result["candidates"][0]["tool_files"]["cc1"]["sha256"],
+                         hashlib.sha256(self.compiler.read_bytes()).hexdigest())
+
+    def test_candidate_can_link_before_the_byte_gate(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body["candidates"][0]["link"] = [str(self.linker), "{object}", "{linked_object}"]
+        manifest.write_text(json.dumps(body))
+        result = run_probe(manifest, self.root / "out")
+        candidate = result["candidates"][0]
+        self.assertEqual(result["status"], "pass")
+        self.assertEqual(candidate["link_returncode"], 0)
+
+    def test_link_error_blocks_selection_and_is_not_a_byte_mismatch(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body["candidates"][0]["link"] = ["/usr/bin/false", "{object}", "{linked_object}"]
+        manifest.write_text(json.dumps(body))
+        result = run_probe(manifest, self.root / "out")
+        self.assertEqual((result["status"], result["selected_id"]), ("incomplete", None))
+        self.assertEqual(result["errors"], ["gcc-test"])
+
+    def test_missing_manifest_has_an_incomplete_receipt_not_a_traceback(self):
+        import contextlib
+        import io
+        import sys
+        output = io.StringIO()
+        with patch.object(sys, "argv", ["compiler_probe.py", str(self.root / "missing.json"),
+                                         "--output", str(self.root / "evidence")]):
+            with contextlib.redirect_stdout(output):
+                code = compiler_probe.main()
+        self.assertEqual(code, 2)
+        receipt = next((self.root / "evidence").glob("*/result.json"))
+        saved = json.loads(receipt.read_text())
+        self.assertEqual(saved["status"], "incomplete")
+        self.assertTrue(next(receipt.parent.glob("report.md")).is_file())
 
 
 if __name__ == "__main__":
