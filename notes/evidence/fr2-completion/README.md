@@ -49,3 +49,19 @@ Every run retains its own result and Markdown report. Previous successful or
 incomplete attempts are never overwritten. Child executable/manifest identities,
 current source revision, and tool-script hashes are retained; the source dirty
 flag distinguishes an uncommitted experiment from a clean checkout receipt.
+
+The [2026-10-08 progress summary](20261008-progress-summary.json) retains the
+observed aggregate and child receipt hashes for source revision `d572366`.
+The command above returned 2: AC01, AC16 and AC18 passed; every other criterion
+remained incomplete. The exploratory compiler child executed its fixed seven
+candidates without operational errors and selected `ee-gcc2.96`, while AC05
+remained incomplete. The inventory recorded 3,507,048 unresolved load-image
+bytes and zero attributed game-owned, substitute or matched bytes. This is a
+summary of that attempt, not an input that can confer acceptance on another run.
+
+`tools/check.sh` at that revision passed 585 tests with one unittest skip; the
+optional `test_research_jev_battery` module was excluded for missing
+`typesafe_sdk`. The [whole-suite log](20261008-whole-suite.log) includes expected
+pass/fail/incomplete fixture receipts. `python3 tools/ip_rails.py --tree`
+returned 0. These checks validate the partial tooling; source builds and the
+remaining whole-corpus acceptance work are still incomplete.

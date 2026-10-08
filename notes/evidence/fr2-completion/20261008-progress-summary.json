@@ -1,0 +1,190 @@
+{
+  "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/20261008T061807Z-02408ecc338f46c488752dfb96e5b7d4/result.json",
+  "receipt_sha256": "91944797b79601060c4790bfcac5a51fc63285f3a4664498278a9fc620bafcff",
+  "exit_code": 2,
+  "status": "incomplete",
+  "criteria": {
+    "AC01": "pass",
+    "AC02": "incomplete",
+    "AC03": "incomplete",
+    "AC04": "incomplete",
+    "AC05": "incomplete",
+    "AC06": "incomplete",
+    "AC07": "incomplete",
+    "AC08": "incomplete",
+    "AC09": "incomplete",
+    "AC10": "incomplete",
+    "AC11": "incomplete",
+    "AC12": "incomplete",
+    "AC13": "incomplete",
+    "AC14": "incomplete",
+    "AC15": "incomplete",
+    "AC16": "pass",
+    "AC17": "incomplete",
+    "AC18": "pass",
+    "AC19": "incomplete",
+    "AC20": "incomplete",
+    "AC21": "incomplete",
+    "AC22": "incomplete",
+    "AC23": "incomplete",
+    "AC24": "incomplete",
+    "AC25": "incomplete",
+    "AC26": "incomplete",
+    "AC27": "incomplete",
+    "AC28": "incomplete",
+    "AC29": "incomplete",
+    "AC30": "incomplete",
+    "AC31": "incomplete",
+    "AC32": "incomplete"
+  },
+  "ledger": {
+    "file_backed_bytes": 2171407,
+    "zero_fill_bytes": 1335641,
+    "unresolved_bytes": 3507048,
+    "game_owned_bytes": 0,
+    "matched_bytes": 0,
+    "substitute_bytes": 0,
+    "substitute_disposition": "no ranges attributed as substitute",
+    "matched_fraction": 0.0,
+    "function_owned_bytes": null,
+    "function_owned_disposition": "Discovery accounting is not matching credit."
+  },
+  "behavioral": {
+    "status": "incomplete",
+    "readiness": "incomplete",
+    "observations": [],
+    "reason": "No verified headless original/rebuilt runner or observations."
+  },
+  "source_revision": "d5723669e7e1a48854a23518221ff3c59a35cf00",
+  "dirty": false,
+  "vu_exact_overlays": 8,
+  "children": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-integration/reverse-engineering/tools/matching_ranges.py",
+        "corpus",
+        "games/ford-racing-2",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/ranges"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/ranges/20261008T061807Z-2010867ebcc04ffdaf66a41f596de3bd/result.json",
+      "bytes": 91918,
+      "sha256": "5eebd37cb9c259d32eba59cc0994878e06ea23c55e6da99a2d154fd7db92e81f",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-integration/reverse-engineering/tools/verify_formats.py",
+        "corpus",
+        "games/ford-racing-2",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/archive"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/archive/20261008T061807Z-807e214d316343319ff070b7633562ee/result.json",
+      "bytes": 4079039,
+      "sha256": "28c9c19a9bd288b90a3a579ab998af7b3c98ccf9a3eed2b6910ee28911f57bb5",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-integration/reverse-engineering/tools/verify_vu.py",
+        "games/ford-racing-2/extracted/SLES_517.05",
+        "--assembler",
+        ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+        "--objdump",
+        ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/vu"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/vu/20261008T061809Z-c54088644af64c9c99783a223e1c83a3/result.json",
+      "bytes": 57424,
+      "sha256": "15024060250556c7872935f5b30f28e94cd71c18c880939d1800c21258b4ae62",
+      "status": "incomplete",
+      "diagnostics": [
+        "VU byte reassembly passed; required entry or interface maps remain incomplete"
+      ]
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-integration/reverse-engineering/tools/verify_asset_contracts.py",
+        "archive",
+        "games/ford-racing-2/extracted/FILES.HDR",
+        "games/ford-racing-2/extracted/FILES.DAT",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/assets"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/assets/20261008T061809Z-a1137fbe669b4a60a070f4a90728fffe/result.json",
+      "bytes": 39088,
+      "sha256": "36d92809fb59125e03159eb3281de4d0128044b4455e9cd12e84658e2a6be645",
+      "status": "incomplete",
+      "diagnostics": [
+        "fixed registry contains candidate or unresolved consumer profiles"
+      ]
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-integration/reverse-engineering/tools/compiler_probe_recipe/run.py",
+        "games/ford-racing-2",
+        "/Users/Nicolas/.codex/worktrees/issue-5-integration/reverse-engineering/.scratch/compiler-probe-tools",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/compiler"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/aggregate-final-04/children-2ab0b95b154c4590bcff4fb1f7e9f01d/compiler/20261008T061810Z-784051721e1f4ed0aa03bf6d13b4b690/result.json",
+      "bytes": 52499,
+      "sha256": "4566d9b7820d83d303877a4acaf8c0929dff85b7621f1954e8fc39b642d6d0ed",
+      "status": "pass",
+      "diagnostics": []
+    }
+  ],
+  "compiler": {
+    "matches": [
+      "ee-gcc2.96"
+    ],
+    "selected_id": "ee-gcc2.96",
+    "errors": [],
+    "incomplete": [],
+    "probe_status": "pass",
+    "ac05_status": "incomplete",
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    }
+  },
+  "authority": "progress_summary_only",
+  "validation": {
+    "source_revision": "d5723669e7e1a48854a23518221ff3c59a35cf00",
+    "whole_suite": {
+      "command": "tools/check.sh",
+      "exit_code": 0,
+      "tests": 585,
+      "unittest_skipped": 1,
+      "excluded_modules": [
+        "test_research_jev_battery (needs typesafe_sdk)"
+      ],
+      "log_sha256": "5516b209ca6b623ae2781159f455b91c3cf156e2f3b68f608f0115a1a318afd8"
+    },
+    "ip_rails": {
+      "command": "python3 tools/ip_rails.py --tree",
+      "exit_code": 0
+    }
+  },
+  "claim_limits": [
+    "Entire specification #5 is incomplete.",
+    "No game-owned or substitute ranges have been attributed.",
+    "Exploratory compiler selection is not an original-compiler pin.",
+    "No headless runner or runtime observations are established."
+  ]
+}
