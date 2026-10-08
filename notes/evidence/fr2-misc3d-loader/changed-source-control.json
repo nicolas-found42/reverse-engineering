@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T213101Z-d90afe112a5d4b91b861b22a0dc60c6e",
+  "check": "misc3d-loader-control-changed_terminal_source",
+  "command": [
+    "tools/misc3d_loader_recipe/controls.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json",
+    ".scratch/issue-37/isolated.json",
+    "--output",
+    ".scratch/issue-37/controls-stable"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "fail",
+  "diagnostics": [
+    "Invalid: terminal candidate address/size/bytes differ"
+  ],
+  "details": {
+    "commands": [
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls",
+        "-c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.c",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/prepared.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.ld",
+        "--defsym=misc3d_optional_object=0x0028f23c",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.elf",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/prepared.o"
+      ]
+    ],
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    },
+    "artifacts": {
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.c",
+        "bytes": 495,
+        "sha256": "40cbbe28715054c7a6751a3d33ef0ecfe5ead6e7063d5b0e4b5c9993e10c5494"
+      },
+      "object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.o",
+        "bytes": 1648,
+        "sha256": "99f7140c815534e9696bc006037e4b1b7475cb89ad35bc789010b7b814f773f0"
+      },
+      "prepared": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/prepared.o",
+        "bytes": 1476,
+        "sha256": "59aeced69820de76a7a5a5294e1794299a126c166495d5ad06a35b7c5e2b4f6b"
+      },
+      "linked": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.elf",
+        "bytes": 50956,
+        "sha256": "568af37f9155b4a39dc35c47b9b669772713a228ae95e56704d2b61f0c0c4364"
+      },
+      "comparison": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.comparison.bin",
+        "bytes": 8,
+        "sha256": "de09024db7c1c2455545b184c546759b25d0d4810ff62dc6d243de48d370ea20"
+      },
+      "link_script": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/terminal.ld",
+        "bytes": 118,
+        "sha256": "6f5f19d0095ea4a5766ff681f58519d908287b41386c217b46147c60e93ecc0e"
+      },
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-rj41rkaa/manifest.json",
+        "bytes": 27040,
+        "sha256": "0b7db4a52ecdfcbc2ece1d840087e5005253bf898e5a326930b9c54ca6aa9281"
+      }
+    },
+    "compiler": {
+      "id": "ee-gcc2.96",
+      "flags": [
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls"
+      ],
+      "executable": {
+        "bytes": 333402,
+        "sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b"
+      },
+      "tool_files": {
+        "cc1": {
+          "bytes": 5526661,
+          "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+        },
+        "cpp": {
+          "bytes": 421478,
+          "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+        },
+        "gnu_assembler": {
+          "bytes": 2169068,
+          "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+        },
+        "mips_linker": {
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      }
+    },
+    "scope": "Eight-byte remote terminal candidate; no new ownership or complete loader byte match.",
+    "issue37_status": "incomplete",
+    "historical_compiler_status": "incomplete"
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 5249,
+      "sha256": "86380bf4ac62c179a36cf10a9f65a63d90163f37c18350f507b2009ea3a08a87"
+    }
+  }
+}

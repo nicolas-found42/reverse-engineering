@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "raw_receipt": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/evidence/linker-layout-controls-native-final/summary/20261008T213243Z-ee679f8c863c4b32baebf7265ff29bd2/result.json",
+    "bytes": 8115,
+    "sha256": "37d0b93b1b081e36f3c2b819b3d1e044d85eda2bfd2378bab05d96de27cafcdf"
+  },
+  "command": [
+    "tools/linker_layout_recipe/controls.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "--output",
+    ".scratch/evidence/linker-layout-controls-native-final"
+  ],
+  "details": {
+    "controls": [
+      {
+        "control": "positive",
+        "exit": 0,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/positive/20261008T213249Z-f153987dc9354487acee8b30408f3a52/result.json",
+        "receipt_identity": {
+          "bytes": 39224,
+          "sha256": "c4236adc7dc52dba44974447cd0e4a677f59ca46fcc756bd9bb4c46a8cf08c5c"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/linker-entry.elf",
+          "bytes": 14940,
+          "sha256": "fc2bca023637c64a48494fa1aff5816a446b5449d9e126e03d6bab875e2eefeb"
+        }
+      },
+      {
+        "control": "displaced_text",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/displaced_text/20261008T213249Z-23d2bfd49c2e4ccb95d10dd6d8955102/result.json",
+        "receipt_identity": {
+          "bytes": 1890,
+          "sha256": "e55060afc4600e8142862e7d091c5d86172354e4473040dead62309c16aee6e8"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/displaced_text.elf",
+          "bytes": 14940,
+          "sha256": "ded08087d237b132403cd56a61abf05c95829d56df53c8177db4d64d1d4873b3"
+        }
+      },
+      {
+        "control": "incorrect_alignment",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/incorrect_alignment/20261008T213249Z-aac14a2ab51d4389b743d54b9b3a9d8b/result.json",
+        "receipt_identity": {
+          "bytes": 1879,
+          "sha256": "60f975077ae913381f88b27af173e7b8622acb722a87823a43d414a57034e12a"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/incorrect_alignment.elf",
+          "bytes": 14940,
+          "sha256": "fafe7d12cea28dd8daf3d6bff810de03005bb21492b3fa396152cb15b07349e6"
+        }
+      },
+      {
+        "control": "incorrect_nobits_size",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/incorrect_nobits_size/20261008T213249Z-fe5e656914394cbaa9f6a05ffed11d0b/result.json",
+        "receipt_identity": {
+          "bytes": 1887,
+          "sha256": "5f0846d35d3352c5cb17b100dd9d450a1f9c170da61bd43dda0833b8924ac098"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/incorrect_nobits_size.elf",
+          "bytes": 14940,
+          "sha256": "f2a9faece20da01b43036aa18b11493423a7e8c01b133297af3d6798d98fc02f"
+        }
+      },
+      {
+        "control": "incorrect_entry",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/incorrect_entry/20261008T213249Z-586f7e2cfdcf426d9ea7fa745eb6ac89/result.json",
+        "receipt_identity": {
+          "bytes": 1869,
+          "sha256": "f19de80d21ae682cb530071ff70ae05405102348d6d3365b1628729c6a671168"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/incorrect_entry.elf",
+          "bytes": 14940,
+          "sha256": "88680cccefe575484fc5eb26c9912b309e2b18a73faad64b5e0ae547af3c2d4f"
+        }
+      },
+      {
+        "control": "incorrect_flags",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/incorrect_flags/20261008T213249Z-6776fa3495ef4e89b73968dda8143197/result.json",
+        "receipt_identity": {
+          "bytes": 1873,
+          "sha256": "bda7444177e9b8aeb3fb9bbafed7bb8c733216cea709b45af301109b4c4b7fa9"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/incorrect_flags.elf",
+          "bytes": 14940,
+          "sha256": "217db1a0319f777b133f88485445b86778eec9852ad7be02d8018207d596ca07"
+        }
+      },
+      {
+        "control": "wrong_relocation",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/wrong_relocation/20261008T213249Z-84f20e4b183c4915bab9827dbe5343a6/result.json",
+        "receipt_identity": {
+          "bytes": 2020,
+          "sha256": "f6ca6453d3c5ce6e7dc70bd84ce8c9e9a03dd3f1f9acfb646a447f5fc5bc3081"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/wrong_relocation.elf",
+          "bytes": 14940,
+          "sha256": "6099f3206d20365c052b4570ba652f75187ed8d19f38e6eb30ebaf5cb7017c38"
+        }
+      },
+      {
+        "control": "wrong_gnu_object_tag",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/wrong_gnu_object_tag/20261008T213249Z-0b6ce16b2c674a47a032e9319d1d9bc9/result.json",
+        "receipt_identity": {
+          "bytes": 1871,
+          "sha256": "cb0643efbfdac4394f1303e5c677c25a021ebd2f6fb9087849c7bc8f24731c9d"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/wrong_gnu_object_tag.o",
+          "bytes": 1152,
+          "sha256": "d66d38fd59dc240aef638bc8c96add68e6423fff028866c6c2e0f729395f47ad"
+        }
+      },
+      {
+        "control": "wrong_gnu_carry",
+        "exit": 1,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/wrong_gnu_carry/20261008T213249Z-28c05894fef443ebbff003cb1a0a29bc/result.json",
+        "receipt_identity": {
+          "bytes": 1860,
+          "sha256": "0ce0eb308f220ad2477c8139e1c8a3934f27a4c73fae7db4bf082426f7d06d23"
+        },
+        "artifact": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/wrong_gnu_relocation.elf",
+          "bytes": 99048,
+          "sha256": "df284c88085c27073a6fa971a08ea9f710b0c497b4b65f1e5f87d4ed931f5b21"
+        }
+      },
+      {
+        "control": "missing_provenance",
+        "exit": 2,
+        "receipt": ".scratch/evidence/linker-layout-controls-native-final/missing_provenance/20261008T213249Z-a916d02ff5b447f1ad173385d09ceedc/result.json",
+        "receipt_identity": {
+          "bytes": 1853,
+          "sha256": "60dc530b719d7392d1c3b3c47fb440103a724da7556b67dc92858af5d6480884"
+        },
+        "artifact": null
+      }
+    ],
+    "matched_bytes": 0,
+    "ac06_status": "incomplete",
+    "claim_limits": [
+      "Artifact mutations are checker controls, not compiler-generated outputs.",
+      "Fresh positive executes the actual compiler and GNU linker.",
+      "The fixed accessor scope does not prove full-image layout."
+    ]
+  }
+}

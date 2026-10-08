@@ -94,17 +94,36 @@ def run_child(name: str, arguments: list[str], output: Path) -> tuple[dict, dict
         (output / 'stdout.txt').write_text(process.stdout)
         (output / 'stderr.txt').write_text(process.stderr)
     paths = list(output.glob('*/result.json'))
-    if len(paths) != 1:
-        raise Invalid(f'{name} did not produce exactly one immutable receipt')
-    receipt = paths[0]
-    result = json.loads(receipt.read_text())
-    status = result.get('status')
-    if status not in ('pass', 'fail', 'incomplete') or (process is not None
-            and process.returncode != {'pass': 0, 'fail': 1, 'incomplete': 2}[status]):
-        raise Invalid(f'{name} exit status contradicts its receipt')
-    report = receipt.with_name('report.md')
-    if identity(report) != result.get('artifacts', {}).get('report.md'):
-        raise Invalid(f'{name} report hash does not match its receipt')
+    try:
+        if len(paths) != 1:
+            raise Invalid(f'{name} did not produce exactly one immutable receipt')
+        receipt = paths[0]
+        result = json.loads(receipt.read_text())
+        if not isinstance(result, dict) or not isinstance(result.get('details'), dict):
+            raise Invalid(f'{name} receipt is not a result with details')
+        status = result.get('status')
+        if status not in ('pass', 'fail', 'incomplete') or (process is not None
+                and process.returncode != {'pass': 0, 'fail': 1, 'incomplete': 2}[status]):
+            raise Invalid(f'{name} exit status contradicts its receipt')
+        report = receipt.with_name('report.md')
+        if identity(report) != result.get('artifacts', {}).get('report.md'):
+            raise Invalid(f'{name} report hash does not match its receipt')
+    except (Invalid, ValueError, OSError, AttributeError) as exc:
+        # Preserve the rejected output and give the aggregate its own failure
+        # receipt. A malformed child must not erase the AC01–AC32 ledger.
+        reason = str(exc)
+        rejected = [{'path': str(path), **identity(path)} for path in paths]
+        def invalid_receipt():
+            raise Invalid(reason, {'child_command': command,
+                                  'process_exit_code': process.returncode if process else None,
+                                  'rejected_receipts': rejected})
+        validation = output / 'validation'
+        write_result(validation, name + ':receipt-validation', invalid_receipt, paths)
+        receipt, = validation.glob('*/result.json')
+        result = json.loads(receipt.read_text())
+        return {'command': command, 'receipt': str(receipt), **identity(receipt),
+                'status': 'fail', 'validation_failure': True,
+                'diagnostics': result['diagnostics']}, result
     return {'command': command, 'receipt': str(receipt), **identity(receipt),
             'status': status, 'diagnostics': result.get('diagnostics', [])}, result
 
@@ -231,6 +250,16 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     jobs.append(('assets', 'verify_asset_contracts.py',
                  ['archive', str(game / 'extracted/FILES.HDR'), str(game / 'extracted/FILES.DAT')]))
     jobs.append(('compiler', 'compiler_probe_recipe/run.py', [str(game), str(compiler_tools)]))
+    jobs.extend([
+        ('misc3d_cell', 'misc3d_contract.py', [str(game), str(compiler_tools)]),
+        ('misc3d_lifecycle', 'misc3d_lifecycle.py', [str(game), str(compiler_tools)]),
+        ('rpc', 'check_rpc_contracts.py', ['--ee', str(game / 'extracted/SLES_517.05'),
+                                        '--stream', str(game / 'extracted/IRX/STREAM.IRX')]),
+        ('layout', 'linker_layout.py', [str(game), str(compiler_tools)]),
+        ('rpc_inventory', 'inventory_rpc_handoffs.py', [str(game / 'extracted')]),
+        ('misc3d_terminal', 'misc3d_loader_recipe/source_build.py',
+         [str(game), str(compiler_tools)]),
+    ])
     children, results = [], {}
     for key, tool, arguments in jobs:
         child, result = run_child(tool, arguments, children_root / key)
@@ -243,6 +272,11 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     def record(index: int, status: str, reason: str, keys: list[int]):
         criteria[index - 1].update(status=status, reason=reason,
                                   evidence=[children[k] for k in keys])
+    invalid_children = [index for index, child in enumerate(children)
+                        if child.get('validation_failure')]
+    if invalid_children:
+        record(2, 'fail', 'A fresh child receipt violates its result/report contract.',
+               invalid_children)
     ranges, archive, vu = (results[key] for key in ('ranges', 'archive', 'vu'))
     identities = [ranges['status'], archive['status']]
     record(1, 'fail' if 'fail' in identities else 'pass' if identities == ['pass', 'pass']
@@ -253,12 +287,30 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     record(5, 'fail' if compiler['status'] == 'fail' else 'incomplete',
            'Exploratory candidate comparison retained; independent ownership and additional '
            'EE/IOP distinguishing probes are still required.', [4])
+    record(6, 'fail' if results['layout']['status'] == 'fail' else 'incomplete',
+           'Fresh GNU accessor/cell placement, relocation and load-layout checks retained; '
+           'full EE/IOP layout remains incomplete.', [8])
     credited = source_unit_credit(game, children[0], ranges, children[4], compiler)
     source_identity_valid = sha256(UNIT_SOURCE.read_bytes()) == UNIT_SOURCE_SHA256
     record(7, 'pass' if credited == 60 else 'fail'
            if compiler['status'] == 'fail' or not source_identity_valid else 'incomplete',
            'One hand-written EE source unit has a fresh, source/decision-bound exact byte build.',
            [0, 4])
+    # These are bounded prerequisite checks. Their passes cannot complete the
+    # parent, but their contradictions must not disappear behind missing work.
+    ee_children = [results[key] for key in ('misc3d_cell', 'misc3d_lifecycle', 'misc3d_terminal')]
+    for index in (8, 9):
+        record(index, 'fail' if any(child['status'] == 'fail' for child in ee_children)
+               else 'incomplete',
+               'Fresh misc3d code/cell checks retained; full EE ownership, source and '
+               'ABI/consumer coverage remain incomplete.', [5, 6, 10])
+    record(14, 'fail' if results['rpc_inventory']['status'] == 'fail' else 'incomplete',
+           'Fresh all-module SIF table/candidate inventory retained; full module '
+           'linking and provider contracts remain incomplete.', [9])
+    record(15, 'fail' if any(results[key]['status'] == 'fail'
+                           for key in ('rpc', 'rpc_inventory')) else 'incomplete',
+           'Fresh STREAM static binding retained; complete handoff ownership, '
+           'synchronization, replies and other services remain incomplete.', [7, 9])
     record(18, archive['status'], 'Independent archive/extracted comparison; format support is separate.', [1])
     vu_details = vu['details']
     encoding = vu_details.get('exact_roundtrip_overlays') == 8 and all(
@@ -285,13 +337,13 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
            'range is attributed and matched.', [0, 4])
     record(30, 'incomplete',
            'These current child receipts support the bounded results above; required evidence '
-           'and falsifiers for the remaining criteria are still incomplete.', [0, 1, 2, 3, 4])
+           'and falsifiers for the remaining criteria are still incomplete.', list(range(len(children))))
     record(31, 'incomplete',
            'The exploratory compiler receipt records package provenance; redistribution terms '
            'remain unresolved and no compiler binaries are redistributed.', [4])
     record(32, 'incomplete',
            'Current child receipts and the aggregate are retained, but required final acceptance '
-           'and handoff evidence remains incomplete.', [0, 1, 2, 3, 4])
+           'and handoff evidence remains incomplete.', list(range(len(children))))
     status = reconstruction_status(criteria, ledger, authority='real_corpus')
     details = {
         'spec': 'https://github.com/nicolas-found42/reverse-engineering/issues/5',
@@ -302,6 +354,14 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
                         'entry_map': vu_details.get('entry_map', {}),
                         'interfaces': vu_details.get('interface_status', 'incomplete')},
         'compiler_coverage': compiler['details'],
+        'ee_coverage': {'cell': results['misc3d_cell']['details'],
+                        'lifecycle': results['misc3d_lifecycle']['details'],
+                        'loader_terminal': results['misc3d_terminal']['details'],
+                        'status': 'fail' if any(child['status'] == 'fail' for child in ee_children)
+                                  else 'incomplete'},
+        'layout_coverage': results['layout']['details'],
+        'rpc_coverage': results['rpc']['details'],
+        'rpc_frontier': results['rpc_inventory']['details'],
         'behavioral': {'status': 'incomplete', 'readiness': 'incomplete', 'observations': [],
                        'reason': 'No verified headless original/rebuilt runner or observations.'},
         'real_corpus_completion': status == 'pass',
@@ -342,6 +402,11 @@ def main() -> int:
                            'verify_asset_contracts.py', 'corpus_contract.py',
                            'compiler_probe.py', 'matching_diff.py', 'matching_sections.py',
                            'ps2_executables.py', 'evidence_common.py')),
+                         *(TOOLS / name for name in
+                           ('misc3d_contract.py', 'misc3d_lifecycle.py',
+                            'check_rpc_contracts.py', 'rpc_contracts.py', 'rpc_profile.json',
+                            'linker_layout.py', 'inventory_rpc_handoffs.py',
+                            'misc3d_loader_recipe/source_build.py')),
                          TOOLS.parent / 'reconstruction/ee/app3d/misc3d_db_id.c',
                          TOOLS.parent / 'docs/adr/0005-game-owned-sdk-boundary.md',
                          SOURCE_MAP,

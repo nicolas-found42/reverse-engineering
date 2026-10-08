@@ -1,0 +1,1474 @@
+{
+  "objective_status": "incomplete",
+  "baseline": "98dc02b",
+  "branch": "codex/feature/issue-5-integration",
+  "aggregate": {
+    "path": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/20261008T214344Z-379022bb11ea4555ab8eb09b97884f78/result.json",
+    "sha256": "1ef3d1d76ba8eaa4b0d35979d463d9dfc77c793a12299f417d7049d8c8dceea2",
+    "exit": 2,
+    "status": "incomplete",
+    "source_state": "Uncommitted reviewed experiment; includes preexisting unrelated WIP. Not clean-build acceptance."
+  },
+  "ledger": {
+    "file_backed_bytes": 2171407,
+    "zero_fill_bytes": 1335641,
+    "unresolved_bytes": 3506988,
+    "game_owned_bytes": 60,
+    "substitute_bytes": 0,
+    "matched_bytes": 60,
+    "substitute_disposition": "no ranges attributed as substitute",
+    "matched_fraction": 1.0,
+    "matched_fraction_scope": "attributed_game_owned_bytes",
+    "function_owned_bytes": null,
+    "function_owned_disposition": "Discovery accounting is not matching credit."
+  },
+  "criteria": [
+    {
+      "id": "AC01",
+      "name": "Identity and inventory",
+      "status": "pass",
+      "scope": "reconstruction",
+      "reason": "Pinned load images, all VU identities, and archive/extracted inventory.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Pin every EE/IOP/VU/archive input to this corpus."
+    },
+    {
+      "id": "AC02",
+      "name": "Aggregate result contract",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Full passing reconstruction and handoff remain unimplemented.",
+      "evidence": [],
+      "falsifier": "Full passing reconstruction and handoff remain unimplemented."
+    },
+    {
+      "id": "AC03",
+      "name": "Non-steerable scope",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Full build/receipt negative controls remain unimplemented.",
+      "evidence": [],
+      "falsifier": "Full build/receipt negative controls remain unimplemented."
+    },
+    {
+      "id": "AC04",
+      "name": "Complete attribution",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Load-image inventory retained; all but the locally measured range remain unresolved.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Measure and record game/SDK/excluded ranges under ADR-0005."
+    },
+    {
+      "id": "AC05",
+      "name": "Compiler probe",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Exploratory candidate comparison retained; independent ownership and additional EE/IOP distinguishing probes are still required.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+          "bytes": 75534,
+          "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Run distinguishing EE/IOP compile-and-diff probes with permitted pinned tools."
+    },
+    {
+      "id": "AC06",
+      "name": "Linker and layout",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Fresh GNU accessor/cell placement, relocation and load-layout checks retained; full EE/IOP layout remains incomplete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout/20261008T214540Z-21671c5ef78d4b05857acdb66969f948/result.json",
+          "bytes": 39959,
+          "sha256": "8458cffe17a46a7c779f0461684c05c4efb2fa97da5feed2caedd580170672f2",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Pin GNU linker and prove placement/relocation/zero-fill layout."
+    },
+    {
+      "id": "AC07",
+      "name": "First matching reconstruction",
+      "status": "pass",
+      "scope": "reconstruction",
+      "reason": "One hand-written EE source unit has a fresh, source/decision-bound exact byte build.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+          "bytes": 75534,
+          "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Build and byte-match a nonempty evidenced game-owned unit."
+    },
+    {
+      "id": "AC08",
+      "name": "Full EE matching",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Fresh misc3d code/cell checks retained; full EE ownership, source and ABI/consumer coverage remain incomplete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_contract.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell/20261008T214517Z-5a741dc8f02345a480185af80d4e7c4f/result.json",
+          "bytes": 23479,
+          "sha256": "cbea3de4595b2320d56a09d0ad42c7183c501199b1034785863e4da0c840a52d",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_lifecycle.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle/20261008T214522Z-0a8dbc531c6b4df895fd4f06a0b39d9a/result.json",
+          "bytes": 48626,
+          "sha256": "b791826b3e548b9c6216a823ca734a9a935827541528ef8c11b4b81dfe3322cb",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/source_build.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal/20261008T214548Z-bafacd372a2a402e9b922c2a1c94f903/result.json",
+          "bytes": 13794,
+          "sha256": "b1732b039f6d0ca5d9e5229df47ec29d720b2a5b4f0da847ef50bf734e8ff6d0",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Rebuild every attributed game-owned EE range from source."
+    },
+    {
+      "id": "AC09",
+      "name": "Source integrity and interfaces",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Fresh misc3d code/cell checks retained; full EE ownership, source and ABI/consumer coverage remain incomplete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_contract.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell/20261008T214517Z-5a741dc8f02345a480185af80d4e7c4f/result.json",
+          "bytes": 23479,
+          "sha256": "cbea3de4595b2320d56a09d0ad42c7183c501199b1034785863e4da0c840a52d",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_lifecycle.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle/20261008T214522Z-0a8dbc531c6b4df895fd4f06a0b39d9a/result.json",
+          "bytes": 48626,
+          "sha256": "b791826b3e548b9c6216a823ca734a9a935827541528ef8c11b4b81dfe3322cb",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/source_build.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal/20261008T214548Z-bafacd372a2a402e9b922c2a1c94f903/result.json",
+          "bytes": 13794,
+          "sha256": "b1732b039f6d0ca5d9e5229df47ec29d720b2a5b4f0da847ef50bf734e8ff6d0",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Resolve required source, ABI, types and reference contracts."
+    },
+    {
+      "id": "AC10",
+      "name": "Discovery reconciliation",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Reconcile every required unlisted span and computed dispatch.",
+      "evidence": [],
+      "falsifier": "Reconcile every required unlisted span and computed dispatch."
+    },
+    {
+      "id": "AC11",
+      "name": "Substitute outputs",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Build pinned permitted substitutes with documented interfaces.",
+      "evidence": [],
+      "falsifier": "Build pinned permitted substitutes with documented interfaces."
+    },
+    {
+      "id": "AC12",
+      "name": "Complete build",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Clean source builds must produce EE and all 24 module outputs.",
+      "evidence": [],
+      "falsifier": "Clean source builds must produce EE and all 24 module outputs."
+    },
+    {
+      "id": "AC13",
+      "name": "IOP matching",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Attribute and rebuild all game-owned IOP ranges.",
+      "evidence": [],
+      "falsifier": "Attribute and rebuild all game-owned IOP ranges."
+    },
+    {
+      "id": "AC14",
+      "name": "IOP linking contracts",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Fresh all-module SIF table/candidate inventory retained; full module linking and provider contracts remain incomplete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/inventory_rpc_handoffs.py",
+            "games/ford-racing-2/extracted",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory/20261008T214548Z-43d6d493ca484913b9a6917c14f302a2/result.json",
+          "bytes": 107064,
+          "sha256": "dc3e4bae91fa6613f292fb5179c80186792821de18063ee553703ff9d9964011",
+          "status": "incomplete",
+          "diagnostics": [
+            "required parent handoff inventory is not yet reconciled"
+          ]
+        }
+      ],
+      "falsifier": "Check complete import/export/relocation and provider contracts."
+    },
+    {
+      "id": "AC15",
+      "name": "EE/IOP handoffs",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Fresh STREAM static binding retained; complete handoff ownership, synchronization, replies and other services remain incomplete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/check_rpc_contracts.py",
+            "--ee",
+            "games/ford-racing-2/extracted/SLES_517.05",
+            "--stream",
+            "games/ford-racing-2/extracted/IRX/STREAM.IRX",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc/20261008T214540Z-f4776068024c4078bf9ff760b0cbf548/result.json",
+          "bytes": 66998,
+          "sha256": "d60e0c20765107b9e3f0d6f8e55d62b44be518764d759e5eacd4d8bea4396ebd",
+          "status": "incomplete",
+          "diagnostics": [
+            "required channel-volume packet observation/control is absent"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/inventory_rpc_handoffs.py",
+            "games/ford-racing-2/extracted",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory/20261008T214548Z-43d6d493ca484913b9a6917c14f302a2/result.json",
+          "bytes": 107064,
+          "sha256": "dc3e4bae91fa6613f292fb5179c80186792821de18063ee553703ff9d9964011",
+          "status": "incomplete",
+          "diagnostics": [
+            "required parent handoff inventory is not yet reconciled"
+          ]
+        }
+      ],
+      "falsifier": "Bind required RPC/shared-buffer callers and handlers with ownership/state."
+    },
+    {
+      "id": "AC16",
+      "name": "VU encoding",
+      "status": "pass",
+      "scope": "reconstruction",
+      "reason": "Eight exact mnemonic comparisons required; entry/state contracts are separate.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_vu.py",
+            "games/ford-racing-2/extracted/SLES_517.05",
+            "--assembler",
+            ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "--objdump",
+            ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu/20261008T214349Z-6020e48178df4f7bba55a8c2966ab81f/result.json",
+          "bytes": 58575,
+          "sha256": "dc16462d5a62d1c5b1ac8733c4c3387a1680fada50dfa85b0fe62a92d7ffbb28",
+          "status": "incomplete",
+          "diagnostics": [
+            "VU byte reassembly passed; required entry or interface maps remain incomplete"
+          ]
+        }
+      ],
+      "falsifier": "Reassemble and byte-compare all eight mnemonic programs."
+    },
+    {
+      "id": "AC17",
+      "name": "VU entry and state maps",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Required entry/state interfaces remain unresolved.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_vu.py",
+            "games/ford-racing-2/extracted/SLES_517.05",
+            "--assembler",
+            ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "--objdump",
+            ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu/20261008T214349Z-6020e48178df4f7bba55a8c2966ab81f/result.json",
+          "bytes": 58575,
+          "sha256": "dc16462d5a62d1c5b1ac8733c4c3387a1680fada50dfa85b0fe62a92d7ffbb28",
+          "status": "incomplete",
+          "diagnostics": [
+            "VU byte reassembly passed; required entry or interface maps remain incomplete"
+          ]
+        }
+      ],
+      "falsifier": "Map every required caller, entry, overlay and VIF/VU state contract."
+    },
+    {
+      "id": "AC18",
+      "name": "Archive completeness",
+      "status": "pass",
+      "scope": "reconstruction",
+      "reason": "Independent archive/extracted comparison; format support is separate.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Independently traverse and compare every record/payload/gap."
+    },
+    {
+      "id": "AC19",
+      "name": "Audio contracts",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        }
+      ],
+      "falsifier": "Complete loading/upload/playback/looping contracts for all variants."
+    },
+    {
+      "id": "AC20",
+      "name": "PTG contracts",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        }
+      ],
+      "falsifier": "Complete every body/tile/palette/descriptor consumer contract."
+    },
+    {
+      "id": "AC21",
+      "name": "Models and geometry",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        }
+      ],
+      "falsifier": "Complete name-tree/texture/geometry/payload/VU handoffs."
+    },
+    {
+      "id": "AC22",
+      "name": "Texture coverage",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        }
+      ],
+      "falsifier": "Complete all formats, small images, palettes and mip contracts."
+    },
+    {
+      "id": "AC23",
+      "name": "Remaining asset grammars",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        }
+      ],
+      "falsifier": "Complete UI/text/config and remaining archive-derived profiles."
+    },
+    {
+      "id": "AC24",
+      "name": "Contract evidence",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        }
+      ],
+      "falsifier": "Bind every required interface claim to current consumer/profile evidence."
+    },
+    {
+      "id": "AC25",
+      "name": "Headless oracle interface",
+      "status": "incomplete",
+      "scope": "behavioral",
+      "reason": "Prove a bounded windowless/audio-free/focus-free lifecycle.",
+      "evidence": [],
+      "falsifier": "Prove a bounded windowless/audio-free/focus-free lifecycle."
+    },
+    {
+      "id": "AC26",
+      "name": "Behavioral observations",
+      "status": "incomplete",
+      "scope": "behavioral",
+      "reason": "Compare original and rebuilt observations with identical inputs.",
+      "evidence": [],
+      "falsifier": "Compare original and rebuilt observations with identical inputs."
+    },
+    {
+      "id": "AC27",
+      "name": "Falsifiable gates",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "The current positive, mutation and placement controls cover one source unit only; controls for remaining acceptance gates are not complete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+          "bytes": 75534,
+          "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Run positive/negative/incomplete controls for every extended gate."
+    },
+    {
+      "id": "AC28",
+      "name": "Reproducibility",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Compare two clean source builds in separate fresh work directories.",
+      "evidence": [],
+      "falsifier": "Compare two clean source builds in separate fresh work directories."
+    },
+    {
+      "id": "AC29",
+      "name": "Honest progress ledger",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "The current partition conserves all load-image bytes, but only one 60-byte owned range is attributed and matched.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+          "bytes": 75534,
+          "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Establish a nonempty owned denominator and complete rebuild ledger."
+    },
+    {
+      "id": "AC30",
+      "name": "Evidence and unresolved list",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "These current child receipts support the bounded results above; required evidence and falsifiers for the remaining criteria are still incomplete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_vu.py",
+            "games/ford-racing-2/extracted/SLES_517.05",
+            "--assembler",
+            ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "--objdump",
+            ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu/20261008T214349Z-6020e48178df4f7bba55a8c2966ab81f/result.json",
+          "bytes": 58575,
+          "sha256": "dc16462d5a62d1c5b1ac8733c4c3387a1680fada50dfa85b0fe62a92d7ffbb28",
+          "status": "incomplete",
+          "diagnostics": [
+            "VU byte reassembly passed; required entry or interface maps remain incomplete"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+          "bytes": 75534,
+          "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_contract.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell/20261008T214517Z-5a741dc8f02345a480185af80d4e7c4f/result.json",
+          "bytes": 23479,
+          "sha256": "cbea3de4595b2320d56a09d0ad42c7183c501199b1034785863e4da0c840a52d",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_lifecycle.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle/20261008T214522Z-0a8dbc531c6b4df895fd4f06a0b39d9a/result.json",
+          "bytes": 48626,
+          "sha256": "b791826b3e548b9c6216a823ca734a9a935827541528ef8c11b4b81dfe3322cb",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/check_rpc_contracts.py",
+            "--ee",
+            "games/ford-racing-2/extracted/SLES_517.05",
+            "--stream",
+            "games/ford-racing-2/extracted/IRX/STREAM.IRX",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc/20261008T214540Z-f4776068024c4078bf9ff760b0cbf548/result.json",
+          "bytes": 66998,
+          "sha256": "d60e0c20765107b9e3f0d6f8e55d62b44be518764d759e5eacd4d8bea4396ebd",
+          "status": "incomplete",
+          "diagnostics": [
+            "required channel-volume packet observation/control is absent"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout/20261008T214540Z-21671c5ef78d4b05857acdb66969f948/result.json",
+          "bytes": 39959,
+          "sha256": "8458cffe17a46a7c779f0461684c05c4efb2fa97da5feed2caedd580170672f2",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/inventory_rpc_handoffs.py",
+            "games/ford-racing-2/extracted",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory/20261008T214548Z-43d6d493ca484913b9a6917c14f302a2/result.json",
+          "bytes": 107064,
+          "sha256": "dc3e4bae91fa6613f292fb5179c80186792821de18063ee553703ff9d9964011",
+          "status": "incomplete",
+          "diagnostics": [
+            "required parent handoff inventory is not yet reconciled"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/source_build.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal/20261008T214548Z-bafacd372a2a402e9b922c2a1c94f903/result.json",
+          "bytes": 13794,
+          "sha256": "b1732b039f6d0ca5d9e5229df47ec29d720b2a5b4f0da847ef50bf734e8ff6d0",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Retain current reproducible evidence and falsifiers for every criterion."
+    },
+    {
+      "id": "AC31",
+      "name": "Public artifacts and licensing",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "The exploratory compiler receipt records package provenance; redistribution terms remain unresolved and no compiler binaries are redistributed.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+          "bytes": 75534,
+          "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Retain current whole-suite/IP/dependency licence acceptance."
+    },
+    {
+      "id": "AC32",
+      "name": "Final handoff",
+      "status": "incomplete",
+      "scope": "reconstruction",
+      "reason": "Current child receipts and the aggregate are retained, but required final acceptance and handoff evidence remains incomplete.",
+      "evidence": [
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+          "bytes": 95059,
+          "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+            "corpus",
+            "games/ford-racing-2",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+          "bytes": 4079844,
+          "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_vu.py",
+            "games/ford-racing-2/extracted/SLES_517.05",
+            "--assembler",
+            ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+            "--objdump",
+            ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu/20261008T214349Z-6020e48178df4f7bba55a8c2966ab81f/result.json",
+          "bytes": 58575,
+          "sha256": "dc16462d5a62d1c5b1ac8733c4c3387a1680fada50dfa85b0fe62a92d7ffbb28",
+          "status": "incomplete",
+          "diagnostics": [
+            "VU byte reassembly passed; required entry or interface maps remain incomplete"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+            "archive",
+            "games/ford-racing-2/extracted/FILES.HDR",
+            "games/ford-racing-2/extracted/FILES.DAT",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+          "bytes": 56609,
+          "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+          "status": "incomplete",
+          "diagnostics": [
+            "fixed registry contains candidate or unresolved consumer profiles"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+          "bytes": 75534,
+          "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_contract.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell/20261008T214517Z-5a741dc8f02345a480185af80d4e7c4f/result.json",
+          "bytes": 23479,
+          "sha256": "cbea3de4595b2320d56a09d0ad42c7183c501199b1034785863e4da0c840a52d",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_lifecycle.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle/20261008T214522Z-0a8dbc531c6b4df895fd4f06a0b39d9a/result.json",
+          "bytes": 48626,
+          "sha256": "b791826b3e548b9c6216a823ca734a9a935827541528ef8c11b4b81dfe3322cb",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/check_rpc_contracts.py",
+            "--ee",
+            "games/ford-racing-2/extracted/SLES_517.05",
+            "--stream",
+            "games/ford-racing-2/extracted/IRX/STREAM.IRX",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc/20261008T214540Z-f4776068024c4078bf9ff760b0cbf548/result.json",
+          "bytes": 66998,
+          "sha256": "d60e0c20765107b9e3f0d6f8e55d62b44be518764d759e5eacd4d8bea4396ebd",
+          "status": "incomplete",
+          "diagnostics": [
+            "required channel-volume packet observation/control is absent"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout/20261008T214540Z-21671c5ef78d4b05857acdb66969f948/result.json",
+          "bytes": 39959,
+          "sha256": "8458cffe17a46a7c779f0461684c05c4efb2fa97da5feed2caedd580170672f2",
+          "status": "pass",
+          "diagnostics": []
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/inventory_rpc_handoffs.py",
+            "games/ford-racing-2/extracted",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory/20261008T214548Z-43d6d493ca484913b9a6917c14f302a2/result.json",
+          "bytes": 107064,
+          "sha256": "dc3e4bae91fa6613f292fb5179c80186792821de18063ee553703ff9d9964011",
+          "status": "incomplete",
+          "diagnostics": [
+            "required parent handoff inventory is not yet reconciled"
+          ]
+        },
+        {
+          "command": [
+            "/opt/homebrew/opt/python@3.14/bin/python3.14",
+            "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/source_build.py",
+            "games/ford-racing-2",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "--output",
+            "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal"
+          ],
+          "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal/20261008T214548Z-bafacd372a2a402e9b922c2a1c94f903/result.json",
+          "bytes": 13794,
+          "sha256": "b1732b039f6d0ca5d9e5229df47ec29d720b2a5b4f0da847ef50bf734e8ff6d0",
+          "status": "pass",
+          "diagnostics": []
+        }
+      ],
+      "falsifier": "Pass a real aggregate reconstruction run and link final ticket/map receipts."
+    }
+  ],
+  "children": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py",
+        "corpus",
+        "games/ford-racing-2",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/ranges/20261008T214344Z-d272fadfde324e9a85e280dae03f242b/result.json",
+      "bytes": 95059,
+      "sha256": "38a42aedabb5d23bdd461ab459adc70d1d02573edd35952b8bd41f061ceca192",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_formats.py",
+        "corpus",
+        "games/ford-racing-2",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/archive/20261008T214346Z-66f82d114f07429f8b2367244bf6814d/result.json",
+      "bytes": 4079844,
+      "sha256": "3bedfef09128d7b6e854e2a8836d503d252908946d9ad7057773d8d33c7967ab",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_vu.py",
+        "games/ford-racing-2/extracted/SLES_517.05",
+        "--assembler",
+        ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+        "--objdump",
+        ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/vu/20261008T214349Z-6020e48178df4f7bba55a8c2966ab81f/result.json",
+      "bytes": 58575,
+      "sha256": "dc16462d5a62d1c5b1ac8733c4c3387a1680fada50dfa85b0fe62a92d7ffbb28",
+      "status": "incomplete",
+      "diagnostics": [
+        "VU byte reassembly passed; required entry or interface maps remain incomplete"
+      ]
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/verify_asset_contracts.py",
+        "archive",
+        "games/ford-racing-2/extracted/FILES.HDR",
+        "games/ford-racing-2/extracted/FILES.DAT",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/assets/20261008T214349Z-b74d82d823da49b8a8341bd7e7451a0d/result.json",
+      "bytes": 56609,
+      "sha256": "3e6bddd943e688311bd97e2d4f198b74f84620ef10985a35d663d559ff4483eb",
+      "status": "incomplete",
+      "diagnostics": [
+        "fixed registry contains candidate or unresolved consumer profiles"
+      ]
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py",
+        "games/ford-racing-2",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/compiler/20261008T214354Z-300657b2a5ef40059d1f43991e4ce57d/result.json",
+      "bytes": 75534,
+      "sha256": "f46ab75af3e06f8cc6b6d75d2e8851957bd2bc69794aeff205983dafcebeb342",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_contract.py",
+        "games/ford-racing-2",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_cell/20261008T214517Z-5a741dc8f02345a480185af80d4e7c4f/result.json",
+      "bytes": 23479,
+      "sha256": "cbea3de4595b2320d56a09d0ad42c7183c501199b1034785863e4da0c840a52d",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_lifecycle.py",
+        "games/ford-racing-2",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_lifecycle/20261008T214522Z-0a8dbc531c6b4df895fd4f06a0b39d9a/result.json",
+      "bytes": 48626,
+      "sha256": "b791826b3e548b9c6216a823ca734a9a935827541528ef8c11b4b81dfe3322cb",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/check_rpc_contracts.py",
+        "--ee",
+        "games/ford-racing-2/extracted/SLES_517.05",
+        "--stream",
+        "games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc/20261008T214540Z-f4776068024c4078bf9ff760b0cbf548/result.json",
+      "bytes": 66998,
+      "sha256": "d60e0c20765107b9e3f0d6f8e55d62b44be518764d759e5eacd4d8bea4396ebd",
+      "status": "incomplete",
+      "diagnostics": [
+        "required channel-volume packet observation/control is absent"
+      ]
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout.py",
+        "games/ford-racing-2",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/layout/20261008T214540Z-21671c5ef78d4b05857acdb66969f948/result.json",
+      "bytes": 39959,
+      "sha256": "8458cffe17a46a7c779f0461684c05c4efb2fa97da5feed2caedd580170672f2",
+      "status": "pass",
+      "diagnostics": []
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/inventory_rpc_handoffs.py",
+        "games/ford-racing-2/extracted",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/rpc_inventory/20261008T214548Z-43d6d493ca484913b9a6917c14f302a2/result.json",
+      "bytes": 107064,
+      "sha256": "dc3e4bae91fa6613f292fb5179c80186792821de18063ee553703ff9d9964011",
+      "status": "incomplete",
+      "diagnostics": [
+        "required parent handoff inventory is not yet reconciled"
+      ]
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/source_build.py",
+        "games/ford-racing-2",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/continuation-final/children-eb3993ed36aa45039cdea121b90b228d/misc3d_terminal/20261008T214548Z-bafacd372a2a402e9b922c2a1c94f903/result.json",
+      "bytes": 13794,
+      "sha256": "b1732b039f6d0ca5d9e5229df47ec29d720b2a5b4f0da847ef50bf734e8ff6d0",
+      "status": "pass",
+      "diagnostics": []
+    }
+  ],
+  "behavioral": {
+    "status": "incomplete",
+    "readiness": "incomplete",
+    "observations": [],
+    "reason": "No verified headless original/rebuilt runner or observations."
+  },
+  "diagnosis": {
+    "missing_implementation": "Full ownership, source reconstruction, toolchain binding, module/VU/asset/ABI contracts and complete builds absent.",
+    "checker_defects": "Fresh layout/misc3d/RPC children were ignored; malformed child receipts erased ledger; prerequisite short circuits hid available contradictions. Repaired with controls.",
+    "stale_evidence": "Prior merged PR and historical receipts were not current acceptance. Fresh aggregate reproduces incompleteness."
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T213147Z-0032a4bbad2046a290b74447b2237ec6",
+  "check": "compiler-iop-source-reconciliation",
+  "command": [
+    "tools/compiler_provenance_iop.py",
+    ".scratch/compiler-provenance-continuation/ssx-source.zip",
+    ".scratch/compiler-provenance-continuation/iop-wrong-download",
+    "--output",
+    ".scratch/compiler-provenance-continuation/iop-receipts"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-compiler-provenance-continuation/source-candidate.json": {
+      "bytes": 2225,
+      "sha256": "4c1383021bfb247f808de83b39ff2bad14d97b34284c7905e9c76703aa60ee0c"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_provenance_iop.py": {
+      "bytes": 7134,
+      "sha256": "d828e239aea1929f1f884852a3a357b107e1001335b67a7ae4ebe54b55ad014f"
+    }
+  },
+  "status": "incomplete",
+  "diagnostics": [
+    "GNU download or candidate original archive differs"
+  ],
+  "details": {
+    "source_archive": {
+      "bytes": 77925391,
+      "sha256": "b33ac7197cc8d4d28eb42275a05d800c126ff32ac3915624470ee55cdb5ee6ad"
+    },
+    "gnu_archives": {
+      "gcc-2.8.1": {
+        "url": "https://ftp.gnu.org/gnu/gcc/gcc-2.8.1.tar.gz",
+        "bytes": 8447495,
+        "sha256": "3b30fbfdf93e628373d90d174243f3267b0eec9ebe792bb64fd15b8828c2ea4c",
+        "downloaded": null,
+        "candidate_member_equal": false
+      },
+      "binutils-2.9.1": {
+        "url": "https://ftp.gnu.org/gnu/binutils/binutils-2.9.1.tar.gz",
+        "bytes": 5694541,
+        "sha256": "58d01daa576d8779e064922171276795f00ff1388b1b0f87aa1a00eb0da6c6bb",
+        "downloaded": {
+          "bytes": 42,
+          "sha256": "8a6254cae5c0ff3a1ad24cf9e17f9e95a3ad3918ceb10e41661ab32dda289a2a"
+        },
+        "candidate_member_equal": false
+      }
+    },
+    "comparison": {},
+    "missing": [
+      "gcc-2.8.1"
+    ],
+    "changed": [
+      "binutils-2.9.1"
+    ],
+    "historical_binding_status": "incomplete",
+    "matched_bytes": 0,
+    "limitations": [
+      "Source derivation only; no compiler was built and no game code was executed.",
+      "GCC 2.8.1 and its IOP retargeting patch do not bind the selected EE 2.96 package.",
+      "Changed modern source files are retained as differences, not assumed behavior-preserving."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 1373,
+      "sha256": "d10aeec614b017fa90e34571c256cc457d26f9f42b37c25bcf7eb4649f9a5760"
+    }
+  }
+}

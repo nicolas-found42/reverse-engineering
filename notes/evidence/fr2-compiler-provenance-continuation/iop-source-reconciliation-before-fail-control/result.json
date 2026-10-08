@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T213145Z-9572d83dec1244079c72b064dfb7d688",
+  "check": "compiler-iop-source-reconciliation",
+  "command": [
+    "tools/compiler_provenance_iop.py",
+    ".scratch/compiler-provenance-continuation/ssx-source.zip",
+    ".scratch/compiler-provenance-continuation",
+    "--output",
+    ".scratch/compiler-provenance-continuation/iop-receipts"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-compiler-provenance-continuation/source-candidate.json": {
+      "bytes": 2225,
+      "sha256": "4c1383021bfb247f808de83b39ff2bad14d97b34284c7905e9c76703aa60ee0c"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_provenance_iop.py": {
+      "bytes": 7134,
+      "sha256": "d828e239aea1929f1f884852a3a357b107e1001335b67a7ae4ebe54b55ad014f"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "source_archive": {
+      "bytes": 77925391,
+      "sha256": "b33ac7197cc8d4d28eb42275a05d800c126ff32ac3915624470ee55cdb5ee6ad"
+    },
+    "gnu_archives": {
+      "gcc-2.8.1": {
+        "url": "https://ftp.gnu.org/gnu/gcc/gcc-2.8.1.tar.gz",
+        "bytes": 8447495,
+        "sha256": "3b30fbfdf93e628373d90d174243f3267b0eec9ebe792bb64fd15b8828c2ea4c",
+        "downloaded": {
+          "bytes": 8447495,
+          "sha256": "3b30fbfdf93e628373d90d174243f3267b0eec9ebe792bb64fd15b8828c2ea4c"
+        },
+        "candidate_member_equal": true
+      },
+      "binutils-2.9.1": {
+        "url": "https://ftp.gnu.org/gnu/binutils/binutils-2.9.1.tar.gz",
+        "bytes": 5694541,
+        "sha256": "58d01daa576d8779e064922171276795f00ff1388b1b0f87aa1a00eb0da6c6bb",
+        "downloaded": {
+          "bytes": 5694541,
+          "sha256": "58d01daa576d8779e064922171276795f00ff1388b1b0f87aa1a00eb0da6c6bb"
+        },
+        "candidate_member_equal": true
+      }
+    },
+    "comparison": {
+      "gcc-2.8.1": {
+        "same_files": 1219,
+        "changed": [
+          {
+            "path": "c-gperf.h",
+            "derived": {
+              "bytes": 5812,
+              "sha256": "afc73adacd45c654b817f3ce53525343f20d439eb0da211a6374ba618c87f1c2"
+            },
+            "candidate": {
+              "bytes": 5798,
+              "sha256": "3f016f6ced9d18cd597ca8b25c02ddef44264b9b6b3471cbf3276f21eef8a4e8"
+            }
+          },
+          {
+            "path": "config.in",
+            "derived": {
+              "bytes": 3126,
+              "sha256": "7b69962feec02ec0e9b53346b78e82f0b839cbcb7f0fb8ba57bc60521a8b1c39"
+            },
+            "candidate": {
+              "bytes": 4457,
+              "sha256": "a0785f296ca255c691140c460c293f89654a6a499b84b21f82438d3661d15741"
+            }
+          },
+          {
+            "path": "obstack.h",
+            "derived": {
+              "bytes": 22695,
+              "sha256": "f0b34967e4c5b37213938239b18effeab42a92b6ef84d88eb04f19d78eab844e"
+            },
+            "candidate": {
+              "bytes": 22876,
+              "sha256": "a34185cda14e3c9316b4dedce27a568ef1c3bda139a62bccc87d111236741611"
+            }
+          }
+        ],
+        "missing": [],
+        "additional": [
+          "config.in~"
+        ]
+      },
+      "binutils-2.9.1": {
+        "same_files": 2083,
+        "changed": [
+          {
+            "path": "include/obstack.h",
+            "derived": {
+              "bytes": 21788,
+              "sha256": "913bc5613202e81e8857d8281e770e2686b8435c775fe0d5dd5f80c0ce5055a2"
+            },
+            "candidate": {
+              "bytes": 21923,
+              "sha256": "9b5459a87213d8cacac9e8ca5d4c4564eb9789a23df2441206d375bdea69053b"
+            }
+          }
+        ],
+        "missing": [],
+        "additional": []
+      }
+    },
+    "missing": [],
+    "changed": [],
+    "historical_binding_status": "incomplete",
+    "matched_bytes": 0,
+    "limitations": [
+      "Source derivation only; no compiler was built and no game code was executed.",
+      "GCC 2.8.1 and its IOP retargeting patch do not bind the selected EE 2.96 package.",
+      "Changed modern source files are retained as differences, not assumed behavior-preserving."
+    ],
+    "patch": {
+      "argv_template": [
+        "patch",
+        "--batch",
+        "-p0",
+        "-i",
+        "<temporary>/iop-gcc.patch"
+      ],
+      "returncode": 0,
+      "stdout_sha256": "e8644041c11720632153eace664f58087564be44ca7f810bf15260d50ac5c547",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "patch_identity": {
+        "bytes": 10716,
+        "sha256": "1a9545b2e9eac2ec3efbb5c536c1559b0b135c3211f6b3a5fb767616ba359355"
+      }
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 3587,
+      "sha256": "2f3bd445c8f19ac6e18c9ad4d49a0265b0fca642437f64b3c19aff023422dad9"
+    }
+  }
+}

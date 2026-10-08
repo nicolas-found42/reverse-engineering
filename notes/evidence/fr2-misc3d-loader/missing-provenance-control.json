@@ -1,0 +1,575 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T213105Z-e6454b1307d948f5908c6b3c6d3a4de4",
+  "check": "misc3d-loader-control-missing_provenance",
+  "command": [
+    "tools/misc3d_loader_recipe/controls.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json",
+    ".scratch/issue-37/isolated.json",
+    "--output",
+    ".scratch/issue-37/controls-stable"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "incomplete",
+  "diagnostics": [
+    "loader recorded decision is absent; required loader/alias frontier remains unresolved"
+  ],
+  "details": {
+    "observation": {
+      "bounded_static_status": "pass",
+      "body_ranges": {
+        "001d1408": [
+          {
+            "start": "0012c218",
+            "end_exclusive": "0012c220",
+            "bytes": 8,
+            "sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8"
+          },
+          {
+            "start": "001d1408",
+            "end_exclusive": "001d143c",
+            "bytes": 52,
+            "sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961"
+          },
+          {
+            "start": "001d1440",
+            "end_exclusive": "001d157c",
+            "bytes": 316,
+            "sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312"
+          },
+          {
+            "start": "001d1580",
+            "end_exclusive": "001d15b4",
+            "bytes": 52,
+            "sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9"
+          },
+          {
+            "start": "001d15b8",
+            "end_exclusive": "001d15cc",
+            "bytes": 20,
+            "sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80"
+          },
+          {
+            "start": "001d15d0",
+            "end_exclusive": "001d1628",
+            "bytes": 88,
+            "sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f"
+          }
+        ],
+        "0011ed90": [
+          {
+            "start": "0011ed90",
+            "end_exclusive": "0011f4dc",
+            "bytes": 1868,
+            "sha256": "048a7aef8395d704e72bd274871e6d9979dad1618a2a8d1fe959b5e2c5507fc6"
+          },
+          {
+            "start": "0011f4e0",
+            "end_exclusive": "0011f6f4",
+            "bytes": 532,
+            "sha256": "630dd421e1854d5779ade12be7384edd7ea51003f95430760f9db121e9889fdc"
+          },
+          {
+            "start": "0011f6f8",
+            "end_exclusive": "0011f87c",
+            "bytes": 388,
+            "sha256": "856be9c278453d72d1dedbd61d338d4dab70b855ef36f7f35b666275441c3a21"
+          },
+          {
+            "start": "0011f880",
+            "end_exclusive": "00120204",
+            "bytes": 2436,
+            "sha256": "933c674bb5b43a82ed77a0e029729a09eb7f5ecfe15a3d8857f74069876dc30a"
+          },
+          {
+            "start": "00120208",
+            "end_exclusive": "001204bc",
+            "bytes": 692,
+            "sha256": "de56b0e0bd0ef5e78b60e0434d99a7e172b7f4dd76e8cd3c77f07396dd8dc60e"
+          },
+          {
+            "start": "001204c0",
+            "end_exclusive": "0012051c",
+            "bytes": 92,
+            "sha256": "02140477591ac7660b86054c9f8970c174a2f5a114160209820d138bd7880e23"
+          },
+          {
+            "start": "00120520",
+            "end_exclusive": "001205dc",
+            "bytes": 188,
+            "sha256": "ad47020be39d38423c9f3daaae040344e614062aee4c1efcc56ad27d08d4b3fe"
+          }
+        ],
+        "00124f58": [
+          {
+            "start": "00124f58",
+            "end_exclusive": "00125034",
+            "bytes": 220,
+            "sha256": "f6b5ba4c948a32c2bd433fe6b9dc807665849e0ba2d41eab917e49f5de67d7c5"
+          },
+          {
+            "start": "00125038",
+            "end_exclusive": "00125068",
+            "bytes": 48,
+            "sha256": "d2b3e8ded0adaceec6143d3d8725461c98bd0553661e8a070caffdd5f163c55a"
+          }
+        ],
+        "00125068": [
+          {
+            "start": "00125068",
+            "end_exclusive": "001250b4",
+            "bytes": 76,
+            "sha256": "7d03fd4c2d9705427d04e24d141fdaeb364040e138db5aaaaaffec24b66caae4"
+          }
+        ]
+      },
+      "isolated_incoming": {
+        "001d1408": [
+          {
+            "from": "001ccc4c",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "0011ed90": [
+          {
+            "from": "001d1448",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "0012d568",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001dbed4",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001cf47c",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "00124f58": [
+          {
+            "from": "001d145c",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d148c",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d14a0",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d14b4",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d14c8",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d153c",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d1584",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d15e0",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "00131150",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001311d0",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "0012fabc",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "00132498",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ],
+        "00125068": [
+          {
+            "from": "001d1470",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d14f0",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d1550",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d159c",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d15f8",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001d1af8",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "00131168",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001311fc",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "0012fad4",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "0012fb54",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "0012fb78",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "001324ac",
+            "type": "UNCONDITIONAL_CALL"
+          },
+          {
+            "from": "00133538",
+            "type": "UNCONDITIONAL_CALL"
+          }
+        ]
+      },
+      "cell_accesses": [
+        {
+          "site": "001d1414",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 17,
+          "word_sha256": "294e790129d739b774842900842d49ad91398f225be7ff1893135f75ea29eea6",
+          "kind": "load"
+        },
+        {
+          "site": "001d1460",
+          "cell": "00290ac4",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67",
+          "kind": "store"
+        },
+        {
+          "site": "001d1488",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4",
+          "kind": "load"
+        },
+        {
+          "site": "001d1498",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4",
+          "kind": "load"
+        },
+        {
+          "site": "001d14a4",
+          "cell": "00290acc",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "06dd29a9cf38e782010923a7592529d0f219c816e38da0c528928e906e7935bd",
+          "kind": "store"
+        },
+        {
+          "site": "001d14ac",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4",
+          "kind": "load"
+        },
+        {
+          "site": "001d14b8",
+          "cell": "00290ac8",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "a53dcbb0ae41a9d576851b08e6bc6ef6a92869286266caeb450561500fd85ad9",
+          "kind": "store"
+        },
+        {
+          "site": "001d14c0",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4",
+          "kind": "load"
+        },
+        {
+          "site": "001d14cc",
+          "cell": "00290ad0",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "0d41db7c6ef24cb83b91d2347c76abe1ff58cba59967a225e101eaa8d0d8d233",
+          "kind": "store"
+        },
+        {
+          "site": "001d14d4",
+          "cell": "00290ad4",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "4c86d07929915d0ad80179d33b09d3f752f0b371cb0639580689f662e3d0d4a7",
+          "kind": "store"
+        },
+        {
+          "site": "001d1538",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4",
+          "kind": "load"
+        },
+        {
+          "site": "001d1564",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4",
+          "kind": "load"
+        },
+        {
+          "site": "001d15dc",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4",
+          "kind": "load"
+        },
+        {
+          "site": "001d1794",
+          "cell": "00290acc",
+          "opcode": 35,
+          "register": 4,
+          "word_sha256": "39ea04cbe2025773476d6d791dd45615092e6a3172f7abdb9944c67d121ab231",
+          "kind": "load"
+        },
+        {
+          "site": "001d1798",
+          "cell": "00290ad0",
+          "opcode": 35,
+          "register": 5,
+          "word_sha256": "026e5edb1a7cf237ca91e5981d76effe2618c19083ec1324153441d42d6a4b17",
+          "kind": "load"
+        },
+        {
+          "site": "001d17ac",
+          "cell": "00290ad4",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "4c86d07929915d0ad80179d33b09d3f752f0b371cb0639580689f662e3d0d4a7",
+          "kind": "store"
+        },
+        {
+          "site": "001d17b0",
+          "cell": "00290ac4",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67",
+          "kind": "store"
+        },
+        {
+          "site": "001d17b4",
+          "cell": "00290ac8",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "a53dcbb0ae41a9d576851b08e6bc6ef6a92869286266caeb450561500fd85ad9",
+          "kind": "store"
+        },
+        {
+          "site": "001d17b8",
+          "cell": "00290acc",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "06dd29a9cf38e782010923a7592529d0f219c816e38da0c528928e906e7935bd",
+          "kind": "store"
+        },
+        {
+          "site": "001d17c0",
+          "cell": "00290ad0",
+          "opcode": 43,
+          "register": 2,
+          "word_sha256": "0d41db7c6ef24cb83b91d2347c76abe1ff58cba59967a225e101eaa8d0d8d233",
+          "kind": "store"
+        },
+        {
+          "site": "001d17cc",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 2,
+          "word_sha256": "8afba40071db5e97bd4c43377d6169936649c8c09c1de9aee7f05469f6a90808",
+          "kind": "load"
+        },
+        {
+          "site": "001d17ec",
+          "cell": "00290ac4",
+          "opcode": 43,
+          "register": 16,
+          "word_sha256": "21505851a92422405b5b5685259c28a4b898f2c04b696342026eb4c67a5fe14e",
+          "kind": "store"
+        },
+        {
+          "site": "001d1800",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 3,
+          "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a",
+          "kind": "load"
+        },
+        {
+          "site": "001d1840",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 3,
+          "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a",
+          "kind": "load"
+        },
+        {
+          "site": "001d1870",
+          "cell": "00290acc",
+          "opcode": 35,
+          "register": 2,
+          "word_sha256": "55511642902ae0fd6cdbff136a830c23c2dcc461cfcfb4bd7ffba60c1d3d5624",
+          "kind": "load"
+        },
+        {
+          "site": "001d1880",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 3,
+          "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a",
+          "kind": "load"
+        },
+        {
+          "site": "001d18b0",
+          "cell": "00290ad4",
+          "opcode": 35,
+          "register": 2,
+          "word_sha256": "3679a87d6ca0ef9936f227e4ed3718546678d7e209dbbd09ee0ad7073400ad68",
+          "kind": "load"
+        },
+        {
+          "site": "001d18c0",
+          "cell": "00290ac4",
+          "opcode": 35,
+          "register": 3,
+          "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a",
+          "kind": "load"
+        },
+        {
+          "site": "001d18f0",
+          "cell": "00290ad0",
+          "opcode": 35,
+          "register": 2,
+          "word_sha256": "9066b5a230bbfa333969a641c55bb1a3e7d9f0b4eaa1275a191221d5248b1c4b",
+          "kind": "load"
+        }
+      ],
+      "gp_materializations": [],
+      "aligned_literals": [],
+      "dependency_abi": {
+        "entry": "0011ed90",
+        "input": "A0 name pointer preserved in S0 at 0011ed98.",
+        "return": "V0 low word is stored to GP id cell at 001205d0 and returned at 001205d4; loader consumes low word at 001d1460.",
+        "original_declaration": "unknown; decompiler void is not a return-value proof"
+      },
+      "remote_terminal": {
+        "start": "0012c218",
+        "bytes": 8,
+        "effect": "Return with A0 stored to GP-relative cell 0028f23c in delay slot.",
+        "ownership": "unresolved"
+      },
+      "new_attributed_match_bytes": 0,
+      "matched_nobits_file_bytes": 0,
+      "search_boundary": "All aligned SHF_ALLOC file words; direct JAL incoming domain; fixed-GP-offset LW/SW and other opcode candidates. No computed-alias closure or execution."
+    },
+    "source_contract": {
+      "scope": "Synthetic services executing hand-written source; no retail execution/byte equivalence.",
+      "argv": [
+        "/usr/bin/clang",
+        "-std=c99",
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+        "-I",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader.c",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader_terminal.c",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/host_contract.c",
+        "-o",
+        ".scratch/issue-37/controls-stable/missing-host/loader-host-contract"
+      ],
+      "compiler": {
+        "bytes": 118928,
+        "sha256": "12bed4523661307059b879b9b54e77a73176e9d27d27a0e40363271d8f0668ba"
+      },
+      "source": {
+        "bytes": 2068,
+        "sha256": "6940bc6932c07e2cc2b3ba89cbbf624598b8ff5821055655901ef4955bcbfeda"
+      },
+      "header": {
+        "bytes": 1255,
+        "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+      },
+      "terminal_source": {
+        "bytes": 500,
+        "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+      },
+      "harness": {
+        "bytes": 3583,
+        "sha256": "926f5b49d8ef6e5e79ff4487d8917d0da3b3d148950cc6e7f36765a52c0365fa"
+      },
+      "binary": {
+        "bytes": 52168,
+        "sha256": "ff9ef297ff127d4b51e010d49e18c9500f06897c1d108da5c2d50a05e42e023f"
+      },
+      "exit_code": 0,
+      "stdout": "PASS synthetic loader call/state/flag/error/optional contracts (6 scenarios)\n",
+      "stderr": ""
+    },
+    "issue37_status": "incomplete",
+    "issue35_status": "incomplete",
+    "issue24_status": "incomplete",
+    "required_unknown": [
+      "computed-alias-closure",
+      "sibling-consumer-use",
+      "new-range-ownership",
+      "retail-loader-source-output"
+    ],
+    "new_attributed_match_bytes": 0
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 16005,
+      "sha256": "de0c2e220ecb8154357c8dd2feff3a40bf20522537790c72c7696db30398cbfd"
+    }
+  }
+}

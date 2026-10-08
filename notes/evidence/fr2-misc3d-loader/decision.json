@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "corpus_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "inputs": {
+    "inventory": {
+      "bytes": 54861366,
+      "sha256": "839076de9050e28a213002686c7a07dc121a15535216e65dc85eeee7bcf355ed"
+    },
+    "isolated": {
+      "bytes": 4887,
+      "sha256": "0758d185833ee56a0f1d672a94305e68d2a6348d09bf3d06ea851ab43e00372e"
+    },
+    "source": {
+      "bytes": 2068,
+      "sha256": "6940bc6932c07e2cc2b3ba89cbbf624598b8ff5821055655901ef4955bcbfeda"
+    },
+    "header": {
+      "bytes": 1255,
+      "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+    },
+    "terminal_source": {
+      "bytes": 500,
+      "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+    },
+    "harness": {
+      "bytes": 3583,
+      "sha256": "926f5b49d8ef6e5e79ff4487d8917d0da3b3d148950cc6e7f36765a52c0365fa"
+    },
+    "script": {
+      "bytes": 2593,
+      "sha256": "762c051d862c05334cb2ec9cd85eb9ade1263c7aca7fd786b4bcf8d0887bfd6a"
+    },
+    "terminal_link": {
+      "bytes": 118,
+      "sha256": "6f5f19d0095ea4a5766ff681f58519d908287b41386c217b46147c60e93ecc0e"
+    },
+    "terminal_recipe": {
+      "bytes": 7424,
+      "sha256": "0f299a3459b227bd7d90fedd7a877822cb4ede3e9039c8472b2deb9e26434241"
+    }
+  },
+  "required_unknown": [
+    "computed-alias-closure",
+    "sibling-consumer-use",
+    "new-range-ownership",
+    "retail-loader-source-output"
+  ],
+  "new_attributed_match_bytes": 0,
+  "claim_limit": "Fixed bounded source/static frontier; never complete #37, #35, #24 or full-image acceptance."
+}
