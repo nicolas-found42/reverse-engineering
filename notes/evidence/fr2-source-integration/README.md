@@ -33,10 +33,10 @@ accounting twice. The clean receipt at
 corrected the total but is also superseded because ownership depended on the
 candidate source hash. The current implementation's fresh clean positive
 receipt is
-`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T081129Z-4b46301ba76d4fb0a02d63bea3aa3c53/result.json`.
+`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T081411Z-3ba61545b5a149e1b689964364468e11/result.json`.
 It records AC07 pass, AC05 incomplete, 60 owned and matched bytes, 3,506,988
 unresolved bytes, AC27/29/30/31/32 incomplete with current child-receipt
-references, and a clean working tree at source revision `734b7ae`.
+references, and a clean working tree at source revision `d03d5ad`.
 
 The source mutation control changes the sentinel branch and reruns the real
 aggregate. This earlier receipt is superseded because the range inventory had
@@ -54,6 +54,9 @@ Focused verification:
 ```sh
 tools/check.sh test_matching_ranges test_completion test_compiler_probe_recipe test_compiler_probe test_matching
 ```
+
+These focused modules pass 60 tests, including real-corpus aggregate and
+source-mutation range command controls.
 
 This local range decision and child build establish one matching unit only.
 `matched_fraction` is the fraction of the attributed game-owned scope only; it
