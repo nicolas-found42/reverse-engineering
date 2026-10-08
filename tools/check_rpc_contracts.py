@@ -87,27 +87,48 @@ def main() -> int:
     args = parser.parse_args()
 
     def action():
-        # Evaluate known identities before missing packet so contradictions win.
-        ee = args.ee.read_bytes()
-        if sha256(ee) != PROFILE['ee_sha256']:
-            raise Invalid('ee static profile identity mismatch')
-        static = check_static_binding(ee, args.stream.read_bytes())
+        images, missing = {}, []
+        for name, path in [('ee', args.ee), ('stream', args.stream)]:
+            if not path.is_file():
+                missing.append('required ' + name + ' image is absent: ' + str(path))
+                continue
+            images[name] = path.read_bytes()
+            if sha256(images[name]) != PROFILE[name + '_sha256']:
+                raise Invalid(name + ' static profile identity mismatch',
+                              {'raw_identities': {n: sha256(d) for n, d in images.items()}})
+        static = {'raw_identities': {n: sha256(d) for n, d in images.items()}}
+        if not missing:
+            try:
+                static = check_static_binding(images['ee'], images['stream'])
+            except Incomplete as exc:
+                missing.append(str(exc))
+                static.update(exc.details)
+        packet = {}
         if args.packet is None:
-            raise Incomplete('required channel-volume packet observation/control is absent', static)
-        try:
-            raw_packet = args.packet.read_bytes()
-            packet = decode_volume_batch(raw_packet)
-        except (Incomplete, Invalid) as exc:
-            raise type(exc)(str(exc), {'static': static, 'packet': exc.details}) from exc
+            missing.append('required channel-volume packet observation/control is absent')
+        elif not args.packet.is_file():
+            missing.append('required packet is absent: ' + str(args.packet))
+        else:
+            try:
+                packet = decode_volume_batch(args.packet.read_bytes())
+            except Invalid as exc:
+                raise Invalid(str(exc), {'static': static, 'packet': exc.details}) from exc
+            except Incomplete as exc:
+                missing.append(str(exc))
+                packet = exc.details
+        if missing:
+            raise Incomplete('; '.join(missing), {'static': static, 'packet': packet})
         return {'scope': 'fixed PAL STREAM channel-volume framing child only',
                 'static': static, 'packet': packet,
                 'claim_limits': 'Host framing validation, not IOP execution or full handoff acceptance.'}
 
     inputs = [PROFILE_PATH, *[Path(__file__).with_name(name) for name in
               ('check_rpc_contracts.py', 'rpc_contracts.py', 'iop_symbols.py',
-               'ps2_executables.py', 'evidence_common.py')]]
-    # Do not let absent optional input suppress a known static contradiction.
-    return write_result(args.output, 'STREAM channel-volume contract', action, inputs)
+               'ps2_executables.py', 'evidence_common.py')], args.ee, args.stream]
+    if args.packet is not None:
+        inputs.append(args.packet)
+    return write_result(args.output, 'STREAM channel-volume contract', action,
+                        [path for path in inputs if path.is_file()])
 
 
 if __name__ == '__main__':

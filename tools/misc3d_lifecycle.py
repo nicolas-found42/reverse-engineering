@@ -85,25 +85,37 @@ VALIDATION_INPUTS = [ROOT / 'tools' / relative for relative in (
 
 
 def provenance() -> dict:
-    previous = previous_provenance()
+    missing, previous = [], {}
+    try:
+        previous = previous_provenance()
+    except Incomplete as error:
+        missing.append(str(error))
+        previous = error.details
     paths = {'observation': OBSERVATION, 'link_script': LINK_SCRIPT, **SOURCES}
-    for path in (DECISION, *paths.values()):
-        if not path.is_file():
-            raise Incomplete(f'lifecycle provenance missing: {path}')
+    if not DECISION.is_file():
+        missing.append(f'lifecycle provenance missing: {DECISION}')
+        raise Incomplete('; '.join(missing), {'previous_accessor_cell': previous})
     decision = json.loads(DECISION.read_text())
     if decision.get('corpus_sha256') != EE_CORPUS_SHA256:
         raise Invalid('lifecycle decision corpus differs')
     for name, path in paths.items():
+        if not path.is_file():
+            missing.append(f'lifecycle provenance missing: {path}')
+            continue
         if identity(path) != decision['inputs'][name]:
             raise Invalid(f'lifecycle {name} identity differs from recorded decision')
-    observation = json.loads(OBSERVATION.read_text())
-    if observation.get('status') != 'pass':
-        raise Incomplete('lifecycle saved-project observation is incomplete')
-    for name, address, size in SPANS:
-        expected = {'address': f'{address:08x}', 'bytes': size,
-                    'sha256': observation['details']['spans'][name]['sha256']}
-        if decision['spans'][name] != expected:
-            raise Invalid('lifecycle decision scope differs from saved-project observation')
+    if OBSERVATION.is_file():
+        observation = json.loads(OBSERVATION.read_text())
+        if observation.get('status') != 'pass':
+            missing.append('lifecycle saved-project observation is incomplete')
+        else:
+            for name, address, size in SPANS:
+                expected = {'address': f'{address:08x}', 'bytes': size,
+                            'sha256': observation['details']['spans'][name]['sha256']}
+                if decision['spans'][name] != expected:
+                    raise Invalid('lifecycle decision scope differs from saved-project observation')
+    if missing:
+        raise Incomplete('; '.join(missing), {'previous_accessor_cell': previous})
     return {'previous_accessor_cell': previous, 'decision': identity(DECISION),
             'observation': identity(OBSERVATION)}
 
@@ -222,7 +234,8 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     return write_result(args.output, 'misc3d-lifecycle', lambda: check(args.game, args.tool_root),
-                        [Path(__file__), LINK_SCRIPT, *SOURCES.values(), *VALIDATION_INPUTS])
+                        [path for path in (Path(__file__), DECISION, OBSERVATION, LINK_SCRIPT,
+                                           *SOURCES.values(), *VALIDATION_INPUTS) if path.is_file()])
 
 
 if __name__ == '__main__':

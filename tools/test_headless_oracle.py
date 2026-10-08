@@ -111,6 +111,31 @@ class OracleDependencyPreflight(unittest.TestCase):
         self.assertEqual(receipt["status"], "fail")
         self.assertIn("libQt6Gui.6.dylib", " ".join(receipt["diagnostics"]))
 
+    def test_changed_runtime_library_outranks_an_earlier_missing_library(self):
+        def mutation(directory):
+            (directory / "libQt6Core.6.dylib").unlink()
+            (directory / "libQt6Gui.6.dylib").write_bytes(b"changed QtGui")
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp), mutation)
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt["status"], "fail")
+        self.assertIn("libQt6Gui.6.dylib", " ".join(receipt["diagnostics"]))
+        libraries = [value for path, value in receipt["inputs"].items()
+                     if path.endswith("libQt6Gui.6.dylib")]
+        self.assertEqual(libraries, [{"bytes": 13,
+            "sha256": "4b15c9f8064a156e520218aecb88a1e9e5ca626f3f86484fadd87279458ce3fe"}])
+
+
+    def test_changed_runtime_library_outranks_missing_legacy_input(self):
+        def mutation(directory):
+            (directory.parents[2] / "plugin").unlink()
+            (directory / "libQt6Gui.6.dylib").write_bytes(b"changed QtGui")
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp), mutation)
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt["status"], "fail")
+        self.assertIn("libQt6Gui.6.dylib", " ".join(receipt["diagnostics"]))
+
     def test_missing_runtime_library_is_incomplete_before_guest_launch(self):
         with tempfile.TemporaryDirectory() as temp:
             code, receipt = self.run_fixture(Path(temp), lambda directory:

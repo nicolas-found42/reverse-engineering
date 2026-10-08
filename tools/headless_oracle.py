@@ -212,6 +212,15 @@ def verify_inputs(emulator: Path, plugin: Path, elf: Path, source: Path,
                   observer: Path, observer_source: Path, qt_archive: Path,
                   qt_source_dir: Path, qt_build_command: Path,
                   qt_preparation: Path) -> dict:
+    libraries, missing_libraries = {}, []
+    for name, expected in QT_RUNTIME_LIBRARIES.items():
+        path = emulator.parent.parent / "Frameworks" / name
+        if not path.is_file():
+            missing_libraries.append(f"required Qt runtime dependency is missing: {name}")
+            continue
+        libraries[name] = identity(path)
+        if libraries[name]["sha256"] != expected:
+            raise Invalid(f"Qt runtime dependency differs from the pinned installed profile: {name}")
     recipe = json.loads(RECIPE.read_text())
     for path in (emulator, plugin, elf, source, linker_script, probe_build_log,
                  bios, observer, observer_source, qt_archive, qt_build_command,
@@ -236,14 +245,8 @@ def verify_inputs(emulator: Path, plugin: Path, elf: Path, source: Path,
         raise Invalid("desktop observer source differs from the qualified source")
     if actual["probe_build_log"]["sha256"] != recipe["builder"]["build_log_sha256"]:
         raise Invalid("probe builder log differs from the pinned build provenance")
-    libraries = {}
-    for name, expected in QT_RUNTIME_LIBRARIES.items():
-        path = emulator.parent.parent / "Frameworks" / name
-        if not path.is_file():
-            raise Incomplete(f"required Qt runtime dependency is missing: {name}")
-        libraries[name] = identity(path)
-        if libraries[name]["sha256"] != expected:
-            raise Invalid(f"Qt runtime dependency differs from the pinned installed profile: {name}")
+    if missing_libraries:
+        raise Incomplete("; ".join(missing_libraries))
     actual["qt_runtime_libraries"] = libraries
     # Byte identity is necessary but cannot supply the missing #22 disposition.
     # This is a recorded profile decision, never a caller-supplied unlock flag.
@@ -541,10 +544,15 @@ def main() -> int:
               Path(args.desktop_observer_source), Path(args.qt_sdk_archive),
               Path(args.qt_build_command), Path(args.qt_preparation_record),
               *(Path(args.qt_source_dir) / name for name in QT_SOURCE_HASHES),
+              *(Path(args.emulator).parent.parent / "Frameworks" / name
+                for name in QT_RUNTIME_LIBRARIES),
               TOOLS / "pcsx2_pine.py",
               TOOLS / "evidence_common.py"]
     return write_result(args.output, "fr2-headless-behavioral-oracle",
-                        lambda: execute(args, args.output), inputs)
+                        lambda: execute(args, args.output),
+                        # Record available hashes; fixed preflight diagnoses absence
+                        # after checking the available Qt libraries for contradictions.
+                        [path for path in inputs if path.is_file()])
 
 
 if __name__ == "__main__":
