@@ -50,7 +50,12 @@ class CompletionCli(unittest.TestCase):
                          TOOLS / 'matching_diff.py', TOOLS / 'matching_sections.py',
                          TOOLS / 'corpus_contract.py', TOOLS / 'ps2_executables.py',
                          TOOLS / 'evidence_common.py',
-                         recipe / 'candidate.c', recipe / 'candidate.ld',
+                         TOOLS.parent / 'reconstruction/ee/app3d/misc3d_db_id.c',
+                         TOOLS.parent / 'docs/adr/0005-game-owned-sdk-boundary.md',
+                         TOOLS.parent / 'notes/evidence/fr2-source-map/source-map-result.json',
+                         Path.home() / 'Documents/github/hermes/spec-5-context/continuation-20261008/first-unit/adr0005-misc3d-boundary.json',
+                         TOOLS.parent / '.scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json',
+                         recipe / 'candidate.ld',
                          recipe / 'manifest.template.json', recipe / 'docker-linux-exec.sh',
                          recipe / 'docker-wine-exec.sh'} <= inputs)
 
@@ -73,7 +78,7 @@ class CompletionCli(unittest.TestCase):
         self.assertEqual(len(list((self.root / 'reports').glob('*/result.json'))), 2)
 
     def test_skip_and_scope_flags_cannot_turn_absence_into_success(self):
-        for flag in ('--skip', '--scope', '--denominator'):
+        for flag in ('--skip', '--scope', '--denominator', '--receipts'):
             run = subprocess.run([sys.executable, str(TOOLS / 'completion.py'),
                                   str(self.root / 'game'), '--output', str(self.root / 'reports'),
                                   flag, '0'], capture_output=True, text=True)

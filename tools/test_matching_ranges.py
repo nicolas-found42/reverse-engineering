@@ -59,6 +59,26 @@ class RangeCli(unittest.TestCase):
                           (0x100010, 16, '.bss')])
         self.assertEqual(d['evidence_authority'], 'structural_file_inventory')
 
+    def test_real_corpus_splits_only_the_identity_pinned_source_unit_and_keeps_match_zero(self):
+        game = TOOLS.parent / 'games/ford-racing-2'
+        if not (game / 'extracted/IRX/USBD.IRX').is_file():
+            self.skipTest('real corpus range split requires the local pinned corpus')
+        output = self.root / 'real-ranges'
+        run = subprocess.run([sys.executable, str(TOOLS / 'matching_ranges.py'),
+                              'corpus', str(game), '--output', str(output)],
+                             capture_output=True, text=True)
+        receipt = next(output.glob('*/result.json'))
+        result = json.loads(receipt.read_text())
+        self.assertEqual((run.returncode, result['status']), (0, 'pass'), result['diagnostics'])
+        details = result['details']
+        ee = next(item for item in details['artifacts'] if item['artifact'] == 'EE')
+        owned = [row for row in ee['ranges'] if row['classification'] == 'game_owned']
+        self.assertEqual([(row['address'], row['length'], row['section'], row['unit'])
+                          for row in owned], [(0x1D1800, 60, '.text', 'misc3d_db_id')])
+        self.assertEqual((ee['matched_bytes'], details['matched_bytes']), (0, 0))
+        self.assertEqual((details['game_owned_bytes'], details['unresolved_bytes']),
+                         (60, details['file_backed_bytes'] + details['zero_fill_bytes'] - 60))
+
     def test_overlapping_load_images_fail_instead_of_double_counting(self):
         data = bytearray(image())
         data.extend(data[-32:])
