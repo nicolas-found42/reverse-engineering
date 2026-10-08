@@ -7,7 +7,6 @@ for the first ~30 file records and show what's at each boundary.
 """
 import mmap
 import struct
-import sys
 import zlib
 from pathlib import Path
 

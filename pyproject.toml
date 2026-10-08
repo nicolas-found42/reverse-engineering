@@ -1,0 +1,29 @@
+[project]
+name = "fr2-reverse-engineering-tools"
+version = "0.1.0"
+description = "Tooling for the Ford Racing 2 (PAL PS2) reverse-engineering reconstruction."
+requires-python = ">=3.10"
+dependencies = []
+# Tooling is stdlib-only by design (docs/adr/0003-open-source-only.md).
+# The optional typesafe-sdk import in tools/research_jev_battery.py is skipped
+# when absent (see tools/run_tests.py); install it separately if needed:
+#   uv pip install "typesafe-sdk==0.7.2"
+
+[tool.pytest.ini_options]
+testpaths = ["tools"]
+python_files = ["test_*.py"]
+python_classes = ["*Tests", "Test*"]
+python_functions = ["test_*"]
+pythonpath = ["tools", "."]
+addopts = "--import-mode=importlib"
+
+[tool.ruff]
+target-version = "py310"
+[tool.ruff.lint]
+# Baseline: errors only (pyflakes + syntax). The codebase predates ruff and
+# uses compact one-liner style throughout; style rules (E501, E7xx, I001, ...)
+# stay off until deliberately adopted per category, fixed as enabled.
+select = ["F", "E9"]
+
+[tool.ty.environment]
+python-version = "3.10"

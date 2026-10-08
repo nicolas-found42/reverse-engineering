@@ -11,7 +11,6 @@ Format (validated against measured data):
 """
 import hashlib
 import struct
-import sys
 import zlib
 from pathlib import Path
 

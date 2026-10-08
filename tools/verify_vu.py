@@ -88,8 +88,8 @@ def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str
             raise Invalid('entry map overlay identity is absent from the executable')
         overlay = by_index[index]
         interface = row.get('interface')
-        if interface == 'unresolved':  # v1 compatibility for older map fixtures
-            interface_status = 'unresolved'
+        if interface == 'unresolved':  # v1 compatibility for older map fixtures: no evidence to check
+            pass
         elif isinstance(interface, dict):
             required_fields = ('status', 'inputs', 'outputs', 'state', 'evidence', 'unknowns')
             if any(field not in interface for field in required_fields):
@@ -145,7 +145,6 @@ def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str
                 if not interface['evidence'] or not interface['unknowns']:
                     raise Invalid('partial interface requires evidence and explicit unknowns')
                 partial_interfaces.append(index)
-            interface_status = interface['status']
         else:
             raise Invalid('interface contract must be unresolved or an evidenced mapping')
         status, entries = row.get('status'), row.get('entries')

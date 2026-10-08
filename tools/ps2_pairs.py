@@ -10,7 +10,6 @@ Reports: parsed pairs, zero/nonzero counts, terminator check, and whether
 names_end equals the max string end in the pool.
 """
 import struct
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent

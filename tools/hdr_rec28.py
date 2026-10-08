@@ -5,7 +5,6 @@ Validates: slot starts with printable name+NUL for all records; u32 patterns.
 Outputs notes/hdr-records.tsv.
 """
 import struct
-import sys
 from collections import Counter
 from pathlib import Path
 

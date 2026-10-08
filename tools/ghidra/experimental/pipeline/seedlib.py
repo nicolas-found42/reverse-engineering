@@ -1,4 +1,4 @@
-import json,struct,hashlib,sys
+import json,struct,hashlib
 from pathlib import Path
 from jump_table import recognize, read_table
 def load(export):
@@ -10,7 +10,6 @@ def load(export):
     unowned=set()
     for r in text['unowned_instruction_ranges']:unowned.update(range(int(r['start'],16),int(r['end'],16)+1))
     owned={int(i['address'],16):f['entry'] for f in inv['functions'] for i in f['instructions']};entries={f['entry'] for f in inv['functions']}
-    LIMITv=0x2000
 
 get=lambda pc:struct.unpack_from('<I',elf,0x1000+pc-0x100000)[0]
 def st(w):return w-0x10000 if w&0x8000 else w

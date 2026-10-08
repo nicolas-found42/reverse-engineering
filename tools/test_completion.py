@@ -6,7 +6,6 @@ import tempfile
 import unittest
 from unittest.mock import patch
 import completion
-from evidence_common import Incomplete
 
 from completion import aggregate_ledger, reconstruction_status
 from evidence_common import Invalid

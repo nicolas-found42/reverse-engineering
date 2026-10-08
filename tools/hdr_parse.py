@@ -6,7 +6,6 @@ relative to name start][16-byte payload: 4 x u32].
 Test H by parsing from the first name and reporting where it breaks.
 """
 import struct
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -30,7 +29,6 @@ def main() -> None:
     pairs = []
     off = 4
     cum = 0
-    ok_until = None
     while off + 8 <= 0x188:
         size, offv = struct.unpack_from("<II", data, off)
         pairs.append((off, size, offv))
@@ -49,11 +47,9 @@ def main() -> None:
     # first ASCII name is "3DDATA" — find it
     i = data.find(b"3DDATA")
     print(f"\nfirst name '3DDATA' at 0x{i:x}")
-
     # --- hypothesis: records = name + pad-to-4 + 16 bytes
     pos = i
     count = 0
-    good = 0
     records = []
     while pos < len(data):
         # name = printable run until NUL

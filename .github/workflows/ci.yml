@@ -10,8 +10,8 @@ jobs:
     name: ip-rails (no corpus or Sony artifact is tracked)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: python tools/ip_rails.py --tree
@@ -20,8 +20,8 @@ jobs:
     name: tests (tools/check.sh)
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - run: tools/check.sh

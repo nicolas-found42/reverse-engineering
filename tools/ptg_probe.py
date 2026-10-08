@@ -5,7 +5,6 @@ Hypothesis: header [u32 a][u32 b][u32 c][u32 0x20][u32 0x20][u32 d][u32 e][u32 1
 where d,e may be pixel dims. Then sub-blocks with 1.0 floats and pointers.
 """
 import struct
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent

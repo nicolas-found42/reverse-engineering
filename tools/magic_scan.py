@@ -1,18 +1,14 @@
 #!/usr/bin/env python3
 """Scan FILES.DAT (and others) for known PS2/asset magics; sample histogram of leading u32s."""
 import mmap
-import struct
 from pathlib import Path
-from collections import Counter
 
 ROOT = Path(__file__).resolve().parent.parent
 EX = ROOT / "games/ford-racing-2/extracted"
 
 MAGICS = {
     b"\x7fELF": "ELF",
-    b"\x00\x00\x01\xbA": "PS2 icon.sys?",  # placeholder
     b"\x89PNG": "PNG",
-    b"TIM2": "TIM2 texture",
     b"CLUT": "PS2 CLUT?",
     b"VAGp": "VAG audio",
     b"SSbd": "PS2 SSbd (sound bank)",

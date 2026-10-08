@@ -3,7 +3,7 @@ import unittest
 
 from elf_fixture import Spec, build_elf
 from matching_diff import Scope, compare, ledger, scope_of
-from matching_sections import Section, pinned_executable, sections
+from matching_sections import pinned_executable, sections
 
 BASE = 0x100000
 TEXT = bytes.fromhex("27bdffe8afbe0004") + bytes(8)

@@ -13,7 +13,7 @@ import json
 import re
 from pathlib import Path
 
-from evidence_common import Incomplete, sha256, write_result
+from evidence_common import Incomplete, sha256
 
 ADDRESS = re.compile(r'[0-9a-f]{8}')
 MEMORY_OP = re.compile(r'^(\w+)\s+\w+,(-?0x[0-9a-f]+|-?\d+)\((\w+)\)$')
