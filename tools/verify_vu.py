@@ -15,6 +15,73 @@ import uuid
 from evidence_common import Incomplete, Invalid, identity, sha256, write_result
 from ps2_executables import parse_elf
 from ps2_vu import parse_overlays, canonical_source
+from matching_diff import compare_unit
+
+ENTRY_MAP = Path(__file__).resolve().parents[1] / 'notes/evidence/fr2-geometry-vu-entry-map.json'
+
+
+def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str, dict]) -> dict:
+    """Validate documented MSCAL entries against overlay extents and evidence refs."""
+    rows = entry_map.get('overlays')
+    if not isinstance(rows, list) or len(rows) != 8 or [row.get('index') for row in rows] != list(range(8)):
+        raise Invalid('entry map must describe all eight overlays in index order')
+    by_index = {row['index']: row for row in overlays}
+    incomplete = []
+    documented = 0
+    for row in rows:
+        index = row['index']
+        if row.get('interface') != 'unresolved':
+            raise Invalid('interface claims require a separately evidence-backed contract')
+        if index not in by_index:
+            raise Invalid('entry map overlay identity is absent from the executable')
+        overlay = by_index[index]
+        status, entries = row.get('status'), row.get('entries')
+        if status == 'incomplete':
+            if entries or row.get('interface') != 'unresolved':
+                raise Invalid('incomplete overlay must retain empty entries and unresolved interface')
+            incomplete.append(index)
+            continue
+        if status != 'documented' or not isinstance(entries, list) or not entries:
+            raise Invalid('overlay entry disposition is invalid')
+        for entry in entries:
+            required = ('msc_address', 'vu_byte_address', 'caller', 'evidence')
+            if any(key not in entry for key in required):
+                raise Invalid('documented entry lacks caller or MSCAL evidence fields')
+            source = evidence.get(entry['evidence'])
+            if source is None:
+                raise Incomplete('documented VU entry references unavailable evidence')
+            recorded = source.get('entry_mapping', {})
+            if (recorded.get('overlay_index') != index or
+                    recorded.get('vu_byte_address') != hex(entry['vu_byte_address']) or
+                    recorded.get('global_value') != hex(entry['msc_address']) or
+                    recorded.get('ee_builder') != entry['caller']):
+                raise Invalid('documented VU entry contradicts its pinned EE caller evidence')
+            byte_address = entry['vu_byte_address']
+            if (byte_address != entry['msc_address'] * 8 or
+                    not overlay['vu_byte_address'] <= byte_address < overlay['vu_byte_address'] + overlay['bytes']):
+                raise Invalid('MSCAL entry does not resolve within its named overlay')
+            if not isinstance(entry['caller'], str) or not entry['caller'].startswith('FUN_'):
+                raise Invalid('MSCAL entry has no EE caller reference')
+        documented += 1
+    return {'documented_entry_count': documented, 'incomplete_overlay_indices': incomplete,
+            'interfaces': [{'overlay_index': row['index'], 'status': row['interface']}
+                           for row in rows]}
+
+
+def load_entry_map(path: Path = ENTRY_MAP) -> tuple[dict, dict[str, dict]]:
+    if not path.is_file():
+        raise Incomplete(f'required VU entry map is missing: {path}')
+    value = json.loads(path.read_text())
+    evidence = {}
+    root = Path(__file__).resolve().parents[1]
+    for name, pin in value.get('evidence', {}).items():
+        referenced = root / pin['path']
+        if not referenced.is_file():
+            raise Incomplete(f'entry map evidence is unavailable: {pin["path"]}')
+        if identity(referenced)['sha256'] != pin.get('sha256'):
+            raise Invalid(f'entry map evidence identity changed: {pin["path"]}')
+        evidence[name] = json.loads(referenced.read_text())
+    return value, evidence
 
 
 def _tool(explicit: Path | None, default: str) -> Path:
@@ -36,10 +103,13 @@ def _run(command: list[str], stem: Path) -> dict:
             'stderr': {'path': str(stderr), **identity(stderr)}}
 
 
-def verify(executable: Path, objdump: Path | None, assembler: Path | None, work: Path) -> dict:
+def verify(executable: Path, objdump: Path | None, assembler: Path | None, work: Path,
+           entry_map_path: Path = ENTRY_MAP) -> dict:
     dump, assemble = _tool(objdump, 'dvp-objdump'), _tool(assembler, 'dvp-as')
     data = executable.read_bytes()
     inventory = parse_overlays(data)
+    entry_map, evidence = load_entry_map(entry_map_path)
+    entry_map_result = validate_entry_map(entry_map, inventory['overlays'], evidence)
     work.mkdir(parents=True, exist_ok=False)
     tools = {'objdump': {'path': str(dump), **identity(dump)},
              'assembler': {'path': str(assemble), **identity(assemble)}}
@@ -76,14 +146,23 @@ def verify(executable: Path, objdump: Path | None, assembler: Path | None, work:
                'assembled_bytes': len(recovered), 'assembled_sha256': sha256(recovered),
                'transformations': transforms, 'disassembly': disassembly, 'assembly': assembly,
                'artifacts': {str(path): identity(path) for path in (raw, source, obj)}}
+        row['byte_gate'] = compare_unit(overlay['name'], overlay['vu_byte_address'],
+                                        overlay['source_offset'], code, recovered).as_dict()
         rows.append(row)
         if recovered != code:
             raise Invalid('VU mnemonic round trip differs from executable code bytes', {'tools': tools, 'overlays': rows})
-    return {**inventory, 'tools': tools, 'overlays': rows, 'exact_roundtrip_overlays': len(rows),
+    details = {**inventory, 'tools': tools, 'overlays': rows, 'exact_roundtrip_overlays': len(rows),
+            'entry_map': entry_map_result,
+            'interface_status': 'incomplete' if any(item['interface'] != 'documented'
+                                                      for item in entry_map['overlays']) else 'documented',
+            'entry_map_disposition': 'incomplete' if entry_map_result['incomplete_overlay_indices'] else 'documented',
             'work_directory': str(work), 'whole_game_decompiled': False,
             'claim_limits': inventory['claim_limits'] + [
                 'Mnemonic source, signed branch displacement conversion, and nine-digit binary32 literals reproduce these chunks byte for byte.',
                 'No raw-opcode fallback is used. This is reconstruction/encoding validation, not a behavioral or scheduling oracle.']}
+    if entry_map_result['incomplete_overlay_indices'] or details['interface_status'] == 'incomplete':
+        raise Incomplete('VU byte reassembly passed; required entry or interface maps remain incomplete', details)
+    return details
 
 
 def main() -> int:
