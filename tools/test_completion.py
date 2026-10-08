@@ -5,7 +5,7 @@ import sys
 import tempfile
 import unittest
 
-from completion import reconstruction_status
+from completion import aggregate_ledger, reconstruction_status
 from evidence_common import Invalid
 
 TOOLS = Path(__file__).resolve().parent
@@ -50,7 +50,12 @@ class CompletionCli(unittest.TestCase):
                          TOOLS / 'matching_diff.py', TOOLS / 'matching_sections.py',
                          TOOLS / 'corpus_contract.py', TOOLS / 'ps2_executables.py',
                          TOOLS / 'evidence_common.py',
-                         recipe / 'candidate.c', recipe / 'candidate.ld',
+                         TOOLS.parent / 'reconstruction/ee/app3d/misc3d_db_id.c',
+                         TOOLS.parent / 'docs/adr/0005-game-owned-sdk-boundary.md',
+                         TOOLS.parent / 'notes/evidence/fr2-source-map/source-map-result.json',
+                         Path.home() / 'Documents/github/hermes/spec-5-context/continuation-20261008/first-unit/adr0005-misc3d-boundary.json',
+                         TOOLS.parent / '.scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json',
+                         recipe / 'candidate.ld',
                          recipe / 'manifest.template.json', recipe / 'docker-linux-exec.sh',
                          recipe / 'docker-wine-exec.sh'} <= inputs)
 
@@ -73,7 +78,7 @@ class CompletionCli(unittest.TestCase):
         self.assertEqual(len(list((self.root / 'reports').glob('*/result.json'))), 2)
 
     def test_skip_and_scope_flags_cannot_turn_absence_into_success(self):
-        for flag in ('--skip', '--scope', '--denominator'):
+        for flag in ('--skip', '--scope', '--denominator', '--receipts'):
             run = subprocess.run([sys.executable, str(TOOLS / 'completion.py'),
                                   str(self.root / 'game'), '--output', str(self.root / 'reports'),
                                   flag, '0'], capture_output=True, text=True)
@@ -116,6 +121,27 @@ class ReconstructionReport(unittest.TestCase):
             else:
                 criteria[0]['evidence'] = []
             self.assertEqual(reconstruction_status(criteria, ledger, authority='real_corpus'), 'incomplete')
+
+    def test_source_unit_credit_conserves_partition_and_fraction_is_owned_scope_only(self):
+        details = {'file_backed_bytes': 2171407, 'zero_fill_bytes': 1335641,
+                   'game_owned_bytes': 60, 'substitute_bytes': 0,
+                   'unresolved_bytes': 3506988}
+        ledger = aggregate_ledger(details, 60)
+        self.assertEqual(ledger['file_backed_bytes'] + ledger['zero_fill_bytes'],
+                         ledger['unresolved_bytes'] + ledger['game_owned_bytes']
+                         + ledger['substitute_bytes'])
+        self.assertEqual((ledger['matched_bytes'], ledger['matched_fraction'],
+                          ledger['matched_fraction_scope']),
+                         (60, 1.0, 'attributed_game_owned_bytes'))
+
+    def test_double_subtraction_and_ownership_overcredit_fail_conservation(self):
+        details = {'file_backed_bytes': 2171407, 'zero_fill_bytes': 1335641,
+                   'game_owned_bytes': 60, 'substitute_bytes': 0,
+                   'unresolved_bytes': 3506928}
+        with self.assertRaises(Invalid):
+            aggregate_ledger({**details, 'unresolved_bytes': 3506928 - 60}, 60)
+        with self.assertRaises(Invalid):
+            aggregate_ledger(details, 61)
 
 
 if __name__ == '__main__':

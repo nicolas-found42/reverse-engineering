@@ -15,7 +15,9 @@ import subprocess
 import sys
 import uuid
 
-from evidence_common import Incomplete, Invalid, identity, write_result
+from evidence_common import Incomplete, Invalid, identity, sha256, write_result
+from matching_ranges import (ADR0005, BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY,
+                             SOURCE_MAP, UNIT_SOURCE, boundary_provenance)
 
 TOOLS = Path(__file__).resolve().parent
 CRITERIA = (
@@ -106,6 +108,112 @@ def run_child(name: str, arguments: list[str], output: Path) -> tuple[dict, dict
             'status': status, 'diagnostics': result.get('diagnostics', [])}, result
 
 
+def source_unit_credit(game: Path, range_child: dict, range_result: dict,
+                       compiler_child: dict, compiler_result: dict) -> int:
+    """Validate fresh child/source/ADR bindings before aggregate match credit."""
+    source, adr = UNIT_SOURCE, ADR0005
+    expected = {'section': '.text', 'vaddr': '001d1800', 'file_offset': '000d2800',
+                'bytes': 60, 'sha256': '1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e',
+                'scope': 'game_owned'}
+    if range_child.get('status') != 'pass' or range_result.get('status') != 'pass':
+        return 0
+    try:
+        def fresh_bound_child(child: dict, value: dict, script: Path) -> bool:
+            receipt = Path(child['receipt']).resolve(strict=True)
+            if identity(receipt) != {k: child[k] for k in ('bytes', 'sha256')}:
+                return False
+            if json.loads(receipt.read_text()) != value:
+                return False
+            command = value.get('command', [])
+            if len(command) < 4 or Path(command[0]).resolve() != script.resolve():
+                return False
+            output_at = command.index('--output') + 1
+            return receipt.parent.parent.resolve() == Path(command[output_at]).resolve()
+
+        if not fresh_bound_child(range_child, range_result, TOOLS / 'matching_ranges.py'):
+            return 0
+        if not fresh_bound_child(compiler_child, compiler_result,
+                                 TOOLS / 'compiler_probe_recipe/run.py'):
+            return 0
+        if range_result['details']['provenance'].get('sources', {}).get(
+                'extracted/SLES_517.05') != identity(game / 'extracted/SLES_517.05'):
+            return 0
+        ee = next(row for row in range_result['details']['artifacts'] if row['artifact'] == 'EE')
+        row, = [r for r in ee['ranges'] if r.get('unit') == 'misc3d_db_id']
+        source_hash, adr_hash = sha256(source.read_bytes()), sha256(adr.read_bytes())
+        evidence = boundary_provenance()
+        if evidence is None:
+            return 0
+        row_identity = (row.get('section'), f"{row['address']:08x}", row['file_offset'],
+                        row['length'], row.get('sha256'), row.get('classification'),
+                        row.get('source_sha256'), row.get('decision_sha256'),
+                        row.get('evidence_inputs'))
+        expected_identity = (expected['section'], expected['vaddr'], int(expected['file_offset'], 16),
+                             expected['bytes'], expected['sha256'], 'game_owned', source_hash,
+                             adr_hash, evidence)
+        if row_identity != expected_identity:
+            return 0
+        if (compiler_child.get('status') != 'pass' or compiler_result.get('status') != 'pass'
+                or compiler_result.get('details', {}).get('ac07_status') != 'pass'
+                or compiler_result.get('details', {}).get('ac05_status') != 'incomplete'):
+            return 0
+        ac07 = compiler_result['details'].get('ac07_evidence', {})
+        if (ac07.get('range') != expected or ac07.get('source_sha256') != source_hash
+                or ac07.get('decision_sha256') != adr_hash
+                or ac07.get('evidence_inputs') != evidence):
+            return 0
+        inputs = compiler_result.get('inputs', {})
+        if inputs.get(str(source.resolve())) != identity(source) \
+                or inputs.get(str(adr.resolve())) != identity(adr) \
+                or inputs.get(str(SOURCE_MAP.resolve())) != evidence['source_map'] \
+                or inputs.get(str(BOUNDARY_METADATA.resolve())) != evidence['metadata'] \
+                or inputs.get(str(SAVED_FUNCTION_INVENTORY)) != evidence['saved_function_inventory']:
+            return 0
+        matches = [c for c in compiler_result['details'].get('candidates', [])
+                   if c.get('status') == 'pass' and c.get('gate', {}).get('status') == 'pass']
+        if len(matches) != 1:
+            return 0
+        candidate = matches[0]
+        gate = candidate.get('gate', {})
+        if (gate.get('matched_bytes') != 60 or gate.get('scope') != 'game_owned'
+                or candidate.get('actual_bytes') != 60
+                or candidate.get('actual_sha256') != expected['sha256']
+                or candidate.get('reference_sha256') != expected['sha256']
+                or any(candidate.get(key) != 0 for key in
+                       ('compile_returncode', 'link_returncode', 'objcopy_returncode'))):
+            return 0
+        return 60
+    except (KeyError, OSError, TypeError, ValueError, StopIteration):
+        return 0
+
+
+def aggregate_ledger(range_details: dict, credited: int) -> dict:
+    """Conserve every initialized/zero-fill byte; matches are owned-byte subsets."""
+    keys = ('file_backed_bytes', 'zero_fill_bytes', 'unresolved_bytes',
+            'game_owned_bytes', 'substitute_bytes')
+    ledger = {key: range_details.get(key, 0) for key in keys}
+    total = ledger['file_backed_bytes'] + ledger['zero_fill_bytes']
+    expected_unresolved = total - ledger['game_owned_bytes'] - ledger['substitute_bytes']
+    if expected_unresolved < 0 or ledger['unresolved_bytes'] != expected_unresolved:
+        raise Invalid('range ledger does not conserve initialized and zero-fill bytes', {
+            'total_bytes': total, 'game_owned_bytes': ledger['game_owned_bytes'],
+            'substitute_bytes': ledger['substitute_bytes'],
+            'reported_unresolved_bytes': ledger['unresolved_bytes'],
+            'expected_unresolved_bytes': expected_unresolved})
+    if credited < 0 or credited > ledger['game_owned_bytes']:
+        raise Invalid('matched-byte credit exceeds the attributed game-owned scope', {
+            'credited_bytes': credited, 'game_owned_bytes': ledger['game_owned_bytes']})
+    ledger['matched_bytes'] = credited
+    ledger['substitute_disposition'] = range_details.get(
+        'substitute_disposition', 'no ranges attributed as substitute')
+    ledger.update(matched_fraction=(credited / ledger['game_owned_bytes']
+                                    if ledger['game_owned_bytes'] else 0.0),
+                  matched_fraction_scope='attributed_game_owned_bytes',
+                  function_owned_bytes=None,
+                  function_owned_disposition='Discovery accounting is not matching credit.')
+    return ledger
+
+
 def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None,
           compiler_tools: Path) -> dict:
     children_root = output / ('children-' + uuid.uuid4().hex)
@@ -137,11 +245,15 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     record(1, 'fail' if 'fail' in identities else 'pass' if identities == ['pass', 'pass']
            else 'incomplete', 'Pinned load images, all VU identities, and archive/extracted inventory.', [0, 1])
     record(4, 'fail' if ranges['status'] == 'fail' else 'incomplete',
-           'Load-image inventory retained; ownership remains mixed/unresolved under ADR-0005.', [0])
+           'Load-image inventory retained; all but the locally measured range remain unresolved.', [0])
     compiler = results['compiler']
     record(5, 'fail' if compiler['status'] == 'fail' else 'incomplete',
            'Exploratory candidate comparison retained; independent ownership and additional '
            'EE/IOP distinguishing probes are still required.', [4])
+    credited = source_unit_credit(game, children[0], ranges, children[4], compiler)
+    record(7, 'pass' if credited == 60 else 'fail' if compiler['status'] == 'fail' else 'incomplete',
+           'One hand-written EE source unit has a fresh, source/decision-bound exact byte build.',
+           [0, 4])
     record(18, archive['status'], 'Independent archive/extracted comparison; format support is separate.', [1])
     vu_details = vu['details']
     encoding = vu_details.get('exact_roundtrip_overlays') == 8 and all(
@@ -157,13 +269,7 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
                'Archive-derived contract catalog retained; required body/consumer/state semantics '
                'have not been proven by documentation coverage.', [1, 3])
     range_details = ranges['details']
-    ledger = {key: range_details.get(key, 0) for key in
-              ('file_backed_bytes', 'zero_fill_bytes', 'unresolved_bytes',
-               'game_owned_bytes', 'matched_bytes', 'substitute_bytes')}
-    ledger['substitute_disposition'] = range_details.get(
-        'substitute_disposition', 'no ranges attributed as substitute')
-    ledger.update(matched_fraction=0.0, function_owned_bytes=None,
-                  function_owned_disposition='Discovery accounting is not matching credit.')
+    ledger = aggregate_ledger(range_details, credited)
     status = reconstruction_status(criteria, ledger, authority='real_corpus')
     details = {
         'spec': 'https://github.com/nicolas-found42/reverse-engineering/issues/5',
@@ -179,7 +285,7 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
         'real_corpus_completion': status == 'pass',
         'headline': 'Reconstruction ' + status + '; behavior remains unverified.',
         'unresolved': [row for row in criteria if row['status'] == 'incomplete'],
-        'claim_limits': ['No source-built EE/IOP ranges have been credited.',
+        'claim_limits': ['Only a fresh source/ADR-bound 60-byte EE source unit is credited.',
                          'A structural or encoding child pass is not whole-game completion.',
                          'AC25/AC26 are reported separately as behavioral criteria.'],
     }
@@ -214,8 +320,12 @@ def main() -> int:
                            'verify_asset_contracts.py', 'corpus_contract.py',
                            'compiler_probe.py', 'matching_diff.py', 'matching_sections.py',
                            'ps2_executables.py', 'evidence_common.py')),
+                         TOOLS.parent / 'reconstruction/ee/app3d/misc3d_db_id.c',
+                         TOOLS.parent / 'docs/adr/0005-game-owned-sdk-boundary.md',
+                         SOURCE_MAP,
+                         *(p for p in (BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY) if p.is_file()),
                          *(compiler_recipe / name for name in
-                           ('run.py', 'build.py', 'candidate.c', 'candidate.ld',
+                          ('run.py', 'build.py', 'candidate.ld',
                             'manifest.template.json', 'docker-linux-exec.sh',
                             'docker-wine-exec.sh'))])
 

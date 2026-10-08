@@ -17,12 +17,17 @@ images are retained separately rather than silently omitted. The eight VU
 program identities are also retained; their encoding and interfaces have their
 own verifier.
 
-This is a structural inventory. Every range remains mixed/unresolved under
-ADR-0005 and earns zero matching credit. No measured ownership decision,
-source reconstruction, compile/link provenance, or game behavior follows from
-the inventory passing. IOP addresses remain relative to the link image.
+The corpus inventory applies exactly one measured ADR-0005 range split:
+`.text[0x001d1800, 0x001d183c)` is recorded as game-owned only when the retail
+EE executable and hand-written reconstruction source match their pinned
+identities. Every other initialized and zero-fill range remains unresolved.
+The structural child keeps `matched_bytes` at zero; only the aggregate can
+credit the 60-byte span after checking its fresh compiler child receipt against
+the source, output bytes, and ADR decision identity. No other game behavior is
+implied. IOP addresses remain relative to the link image.
 
 `file` accepts synthetic fixtures at the same inventory boundary, marks their
-authority as `structural_file_inventory`, and cannot confer corpus completion.
+authority as `structural_file_inventory`, and cannot confer corpus ownership
+or completion.
 The fixture controls exercise initialized bytes, zero-fill, unnamed gaps,
 missing prerequisites, image/section overlap, and section/file mapping drift.

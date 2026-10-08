@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -10,10 +11,13 @@ import subprocess
 import tempfile
 
 TOOLS = Path(__file__).resolve().parents[1]
+ADR0005 = TOOLS.parent / "docs/adr/0005-game-owned-sdk-boundary.md"
 sys.path.insert(0, str(TOOLS))
 from compiler_probe import run_probe  # noqa: E402
 from evidence_common import Incomplete, Invalid, write_result  # noqa: E402
 from matching_diff import scope_of_range  # noqa: E402
+from matching_ranges import (BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY, SOURCE_MAP,
+                             boundary_provenance)  # noqa: E402
 from compiler_probe_recipe import build  # noqa: E402
 from compiler_probe_recipe.build import prepare  # noqa: E402
 
@@ -28,6 +32,7 @@ def apply_recorded_range(result: dict, reference_range: dict) -> None:
     file_offset = int(reference_range["file_offset"], 16)
     size = int(reference_range["bytes"])
     scope = scope_of_range(section, address, size)
+    provenance = boundary_provenance()
     if reference_range.get("scope") != scope.value:
         raise Incomplete("compiler recipe scope differs from the recorded range map", {
             "declared_scope": reference_range.get("scope"), "recorded_scope": scope.value})
@@ -41,6 +46,7 @@ def apply_recorded_range(result: dict, reference_range: dict) -> None:
             difference["address"] = f"{address + difference['offset']:08x}"
             difference["file_offset"] = f"{file_offset + difference['offset']:08x}"
     passed = (result.get("status") == "pass" and scope.value == "game_owned"
+              and provenance is not None
               and len(result.get("matches", [])) == 1
               and any(candidate.get("status") == "pass"
                       and candidate.get("gate", {}).get("scope") == "game_owned"
@@ -53,6 +59,9 @@ def apply_recorded_range(result: dict, reference_range: dict) -> None:
                   "sha256": reference_range["sha256"], "scope": scope.value},
         "byte_match": "pass" if passed else result.get("status", "incomplete"),
         "source_built": True,
+        "source_sha256": hashlib.sha256(build.RECONSTRUCTION_SOURCE.read_bytes()).hexdigest(),
+        "decision_sha256": hashlib.sha256(ADR0005.read_bytes()).hexdigest(),
+        "evidence_inputs": provenance,
         "compiler_identification": "separate; see ac05_status",
     }
 
@@ -155,7 +164,9 @@ def main(argv: list[str] | None = None) -> int:
                         [executable, Path(__file__), recipe / "build.py",
                          TOOLS / "compiler_probe.py", TOOLS / "matching_diff.py",
                          TOOLS / "matching_sections.py", TOOLS / "corpus_contract.py",
-                         TOOLS / "ps2_executables.py", TOOLS / "evidence_common.py",
+                         TOOLS / "ps2_executables.py", TOOLS / "evidence_common.py", ADR0005,
+                         SOURCE_MAP, *(p for p in (BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY)
+                                       if p.is_file()),
                          build.RECONSTRUCTION_SOURCE,
                          recipe / "candidate.ld", recipe / "manifest.template.json",
                          recipe / "docker-linux-exec.sh", recipe / "docker-wine-exec.sh"])
