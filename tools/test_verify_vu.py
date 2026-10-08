@@ -46,6 +46,87 @@ class EntryMapValidationTest(unittest.TestCase):
         with self.assertRaisesRegex(Invalid, 'must state why'):
             subject.validate_entry_map({'overlays': rows}, overlays, evidence={})
 
+    def test_partial_interface_contract_requires_evidence_and_preserves_unknowns(self):
+        overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800,
+                     'source_offset': i * 0x800} for i in range(8)]
+        raw_anchors = {'0x2eb8': 'bc060180ff020000', '0x2ee8': '03084308ff020000'}
+        executable = bytearray(8 * 0x800)
+        for address, raw in raw_anchors.items():
+            start = overlays[5]['source_offset'] + int(address, 16) - overlays[5]['vu_byte_address']
+            executable[start:start + 8] = bytes.fromhex(raw)
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': {
+            'status': 'unresolved', 'inputs': [], 'outputs': [], 'state': [],
+            'evidence': [], 'unknowns': ['no complete contract']},
+            'incomplete_reasons': ['entry coverage incomplete']} for i in range(8)]
+        rows[5]['interface'] = {
+            'status': 'partial', 'inputs': ['TOP+3.z in VU data memory'],
+            'outputs': ['vi03 is used as a later VU data-memory base'],
+            'state': ['XTOP vi01; ILW Z at offset 3'],
+            'evidence': [{'source': 'consumer', 'anchor_addresses': ['0x2eb8', '0x2ee8']}],
+            'unknowns': ['runtime TOPS and VIF mode/cycle state'],
+        }
+        evidence = {'consumer': {'overlay_index': 5, 'overlay_mapping': {'anchors': [
+            {'address': address, 'raw_bytes': raw} for address, raw in raw_anchors.items()],
+            'section_base': '0x2800'}}}
+        result = subject.validate_entry_map({'overlays': rows}, overlays, evidence=evidence,
+                                            executable=bytes(executable))
+        self.assertEqual(result['partial_interface_overlay_indices'], [5])
+        self.assertEqual(result['interface_status'], 'incomplete')
+        rows[5]['interface']['evidence'] = [{'source': 'missing', 'anchor_addresses': ['0x2eb8']}]
+        with self.assertRaisesRegex(Incomplete, 'interface evidence'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence=evidence)
+        rows[5]['interface']['evidence'] = [{'source': 'consumer', 'anchor_addresses': ['0x2eb8', '0xdead']}]
+        with self.assertRaisesRegex(Invalid, 'absent instruction anchor'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence=evidence,
+                                        executable=bytes(executable))
+        rows[5]['interface']['evidence'] = [{'source': 'consumer', 'anchor_addresses': ['0x2eb8']}]
+        corrupted = bytearray(executable)
+        corrupted[overlays[5]['source_offset'] + 0x6b8] ^= 1
+        with self.assertRaisesRegex(Invalid, 'instruction anchor bytes differ'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence=evidence,
+                                        executable=bytes(corrupted))
+
+    def test_interface_contract_cannot_be_declared_complete_with_unknowns(self):
+        overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800,
+                     'source_offset': i * 0x800} for i in range(8)]
+        executable = bytearray(8 * 0x800)
+        executable[5 * 0x800 + 0x6b8:5 * 0x800 + 0x6c0] = bytes.fromhex('bc060180ff020000')
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': {
+            'status': 'unresolved', 'inputs': [], 'outputs': [], 'state': [],
+            'evidence': [], 'unknowns': ['unmapped']},
+            'incomplete_reasons': ['entry coverage incomplete']} for i in range(8)]
+        rows[5]['interface'] = {'status': 'complete', 'inputs': ['input'], 'outputs': ['output'],
+                                'state': ['state'], 'evidence': [{'source': 'consumer', 'anchor_addresses': ['0x2eb8']}], 'unknowns': ['TOPS unknown']}
+        evidence = {'consumer': {'overlay_index': 5, 'overlay_mapping': {'section_base':'0x2800', 'anchors': [{'address': '0x2eb8', 'raw_bytes':'bc060180ff020000'}]}}}
+        with self.assertRaisesRegex(Invalid, 'complete interface'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence=evidence,
+                                        executable=bytes(executable))
+
+    def test_instruction_anchor_must_match_the_executable_bytes(self):
+        source = {'executable': {'sha256': 'abc'}, 'instruction_anchors': [
+            {'address': '001124c0', 'bytes': '25186a00'}]}
+        with self.assertRaisesRegex(Invalid, 'instruction anchor bytes'):
+            subject.verify_instruction_anchors(source, executable_sha256='abc',
+                                               read_address=lambda _address, _size: b'\0' * 4)
+        with self.assertRaisesRegex(Invalid, 'executable SHA-256'):
+            subject.verify_instruction_anchors(source, executable_sha256='def',
+                                               read_address=lambda _address, _size: bytes.fromhex('25186a00'))
+
+    def test_entry_evidence_instruction_anchors_are_checked_against_the_executable(self):
+        overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800,
+                     'source_offset': i * 0x800} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved',
+                 'incomplete_reasons': ['entry coverage incomplete']} for i in range(8)]
+        rows[0]['entries'] = [{'msc_address': 0, 'vu_byte_address': 0,
+                               'caller': 'FUN_001124c0', 'evidence': 'initialization', 'channel': 'VIF1'}]
+        source = {'executable': {'sha256': 'wrong'},
+                  'entry_mapping': {'overlay_index': 0, 'vu_byte_address': '0x0',
+                                    'global_value': '0x0', 'ee_builder': 'FUN_001124c0', 'channel': 'VIF1'},
+                  'instruction_anchors': [{'address': '001124c0', 'bytes': '25186a00'}]}
+        with self.assertRaisesRegex(Invalid, 'executable SHA-256'):
+            subject.validate_entry_map({'overlays': rows}, overlays,
+                                       evidence={'initialization': source}, executable=b'fixture')
+
     def test_additional_static_callers_map_only_to_their_pinned_overlay_and_keep_scope_incomplete(self):
         overlays = [{'index': i, 'vu_byte_address': 0 if i == 7 else i * 0x800, 'bytes': 0x460 if i == 7 else 0x800} for i in range(8)]
         rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved', 'incomplete_reasons': ['runtime and exhaustive dispatch are unresolved']} for i in range(8)]
@@ -95,7 +176,9 @@ class NativeVuValidationTest(unittest.TestCase):
                         'stdout': {'path': str(stdout)}}
 
             with patch.object(subject, 'validate_entry_map', return_value={
-                    'documented_entry_count': 0, 'incomplete_overlay_indices': [0]}), \
+                    'documented_entry_count': 0, 'incomplete_overlay_indices': [0],
+                    'partial_interface_overlay_indices': [], 'complete_interface_overlay_indices': [],
+                    'interface_status': 'incomplete', 'interfaces': []}), \
                  patch.object(subject, '_run', side_effect=native):
                 return subject.verify(executable, tool, tool, root / 'work', entry_map)
 

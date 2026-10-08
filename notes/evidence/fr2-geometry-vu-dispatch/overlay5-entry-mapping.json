@@ -1,0 +1,78 @@
+{
+  "schema": "fr2-vu-overlay-entry-evidence/v1",
+  "scope": "Static EE packet construction and initialized VU entry address. Does not establish branch reachability, packet submission, or VU execution.",
+  "executable": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "saved_static_export": {
+    "path": ".scratch/evidence/static-export.json",
+    "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+  },
+  "entry_mapping": {
+    "overlay_index": 5,
+    "vu_byte_address": "0x2e60",
+    "global_value": "0x5cc",
+    "ee_builder": "FUN_00128ca0",
+    "channel": "VIF1"
+  },
+  "instruction_anchors": [
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdc4",
+      "text": "addiu v1,v1,0x2e60",
+      "bytes": "602e6324"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdd8",
+      "text": "srl v0,v0,0x3",
+      "bytes": "c2100200"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fde8",
+      "text": "sw v1,-0x6dec(gp)",
+      "bytes": "149283af"
+    },
+    {
+      "function": "FUN_00128ca0",
+      "entry": "00128ca0",
+      "address": "00128d0c",
+      "text": "lui t3,0x1400",
+      "bytes": "00140b3c"
+    },
+    {
+      "function": "FUN_00128ca0",
+      "entry": "00128ca0",
+      "address": "00128e08",
+      "text": "lw v0,-0x6dec(gp)",
+      "bytes": "1492828f"
+    },
+    {
+      "function": "FUN_00128ca0",
+      "entry": "00128ca0",
+      "address": "00128e10",
+      "text": "or v0,v0,t3",
+      "bytes": "25104b00"
+    },
+    {
+      "function": "FUN_00128ca0",
+      "entry": "00128ca0",
+      "address": "00128e14",
+      "text": "sw v0,0x0(v1)",
+      "bytes": "000062ac"
+    }
+  ],
+  "derivation": {
+    "init_function": "FUN_0022fda8 stores (0x2e60 >> 3) to gp-0x6dec. FUN_00128ca0 loads that value, ORs in 0x14000000, and writes the resulting MSCAL word to the current packet buffer.",
+    "channel_basis": "FUN_00128ca0 reads and advances gp-0x6de0, the VIF1 queue cursor described in additional-entry-mappings.json.",
+    "limits": [
+      "The address is a static MSCAL packet candidate for overlay 5; execution and exhaustive entry selection are unobserved.",
+      "No REF payload or semantic input/output contract follows from these instruction anchors alone."
+    ]
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "schema": "fr2-vu-initialization-entry-evidence/v1",
+  "scope": "Static initialization packet path only. No branch execution, DMA completion, VU execution, or exhaustive dispatch claim.",
+  "executable": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "saved_static_export": {
+    "path": ".scratch/evidence/static-export.json",
+    "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383"
+  },
+  "entry_mapping": {
+    "overlay_index": 0,
+    "vu_byte_address": "0x0",
+    "global_value": "0x0",
+    "ee_builder": "FUN_001124c0",
+    "channel": "VIF1"
+  },
+  "derivation": {
+    "path": [
+      "FUN_0022fc90",
+      "FUN_0022fda8",
+      "FUN_001124c0"
+    ],
+    "evidence": "FUN_0022fc90 calls FUN_0022fda8, then tail-jumps to FUN_001124c0. FUN_0022fda8 constructs zero in a0 and stores the shifted value to gp-0x6df4. FUN_001124c0 loads gp-0x6df4, ORs it with 0x14000000, and writes that command word into the VIF1 queue packet.",
+    "command_address_rule": "MSCAL immediate is measured in 8-byte VU instruction-pair units; immediate 0 maps to VU byte address 0x0.",
+    "queue_basis": "The initialization submission uses gp-0x6de0 queue state. Existing anchored evidence ties that cursor to the VIF1 QWC/TADR/CHCR submit path.",
+    "limits": [
+      "The path proves static packet construction and the address conversion, not that the packet is submitted at runtime.",
+      "This is an observed initialization entry candidate; it does not establish a complete entry census for overlay 0 or the other overlays."
+    ]
+  },
+  "instruction_anchors": [
+    {
+      "function": "FUN_0022fc90",
+      "entry": "0022fc90",
+      "address": "0022fd28",
+      "text": "jal 0x0022fda8",
+      "bytes": "6abf080c"
+    },
+    {
+      "function": "FUN_0022fc90",
+      "entry": "0022fc90",
+      "address": "0022fd40",
+      "text": "j 0x001124c0",
+      "bytes": "30490408"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdb8",
+      "text": "addiu a1,a1,0x0",
+      "bytes": "0000a524"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdbc",
+      "text": "addiu a0,a0,0x0",
+      "bytes": "00008424"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdd0",
+      "text": "subu v0,v0,a1",
+      "bytes": "23104500"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdd4",
+      "text": "srl a0,a0,0x3",
+      "bytes": "c2200400"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fde0",
+      "text": "sw a0,-0x6df4(gp)",
+      "bytes": "0c9284af"
+    },
+    {
+      "function": "FUN_001124c0",
+      "entry": "001124c0",
+      "address": "00112514",
+      "text": "lui t2,0x1400",
+      "bytes": "00140a3c"
+    },
+    {
+      "function": "FUN_001124c0",
+      "entry": "001124c0",
+      "address": "00112530",
+      "text": "lw v1,-0x6df4(gp)",
+      "bytes": "0c92838f"
+    },
+    {
+      "function": "FUN_001124c0",
+      "entry": "001124c0",
+      "address": "00112538",
+      "text": "or v1,v1,t2",
+      "bytes": "25186a00"
+    },
+    {
+      "function": "FUN_001124c0",
+      "entry": "001124c0",
+      "address": "00112540",
+      "text": "sw v1,0x0(t1)",
+      "bytes": "000023ad"
+    },
+    {
+      "function": "FUN_001124c0",
+      "entry": "001124c0",
+      "address": "00112550",
+      "text": "jal 0x0021b5b0",
+      "bytes": "6c6d080c"
+    },
+    {
+      "function": "FUN_001124c0",
+      "entry": "001124c0",
+      "address": "00112558",
+      "text": "jal 0x0021b680",
+      "bytes": "a06d080c"
+    }
+  ]
+}

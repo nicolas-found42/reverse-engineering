@@ -115,6 +115,11 @@ def crosswalk(inputs: Iterable[tuple[str, bytes]], *, synthetic_load_base: int |
         "schema_version": 1, "module_count": len(modules), "import_stubs": len(edges),
         "export_tables": export_tables, "export_entries": export_entries,
         "counts": counts, "edges": edges,
+        "runtime_state": {
+            "status": "unobserved", "actual_load_bases": None,
+            "registration_order": None,
+            "reason": "Static module files do not establish loader allocation or registration order.",
+        },
         "policy": "exact observed library/full-version/positional-ordinal tuple only",
         "claim_limits": [
             "Candidate matches do not prove library registration, load order, or runtime binding.",

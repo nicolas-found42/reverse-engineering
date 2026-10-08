@@ -45,6 +45,10 @@ class CrosswalkTests(unittest.TestCase):
         self.assertEqual(edge["candidates"][0]["module_key"], "provider")
         self.assertEqual(len(edge["importer_sha256"]), 64)
         self.assertFalse(edge["runtime_binding_verified"])
+        self.assertEqual(result["runtime_state"], {
+            "status": "unobserved", "actual_load_bases": None,
+            "registration_order": None,
+            "reason": "Static module files do not establish loader allocation or registration order."})
 
     def test_library_version_and_ordinal_mutations_do_not_guess(self):
         for payload in (module(importing=True, library=b"other"),
