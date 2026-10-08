@@ -46,18 +46,24 @@ class CompletionCli(unittest.TestCase):
             self.assertEqual(len(child['sha256']), 64)
         inputs = {Path(path) for path in result['inputs']}
         recipe = TOOLS / 'compiler_probe_recipe'
-        self.assertTrue({TOOLS / 'compiler_probe.py', recipe / 'run.py', recipe / 'build.py',
-                         TOOLS / 'matching_diff.py', TOOLS / 'matching_sections.py',
-                         TOOLS / 'corpus_contract.py', TOOLS / 'ps2_executables.py',
-                         TOOLS / 'evidence_common.py',
-                         TOOLS.parent / 'reconstruction/ee/app3d/misc3d_db_id.c',
-                         TOOLS.parent / 'docs/adr/0005-game-owned-sdk-boundary.md',
-                         TOOLS.parent / 'notes/evidence/fr2-source-map/source-map-result.json',
-                         Path.home() / 'Documents/github/hermes/spec-5-context/continuation-20261008/first-unit/adr0005-misc3d-boundary.json',
-                         TOOLS.parent / '.scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json',
-                         recipe / 'candidate.ld',
-                         recipe / 'manifest.template.json', recipe / 'docker-linux-exec.sh',
-                         recipe / 'docker-wine-exec.sh'} <= inputs)
+        required_public_inputs = {
+            TOOLS / 'compiler_probe.py', recipe / 'run.py', recipe / 'build.py',
+            TOOLS / 'matching_diff.py', TOOLS / 'matching_sections.py',
+            TOOLS / 'corpus_contract.py', TOOLS / 'ps2_executables.py',
+            TOOLS / 'evidence_common.py',
+            TOOLS.parent / 'reconstruction/ee/app3d/misc3d_db_id.c',
+            TOOLS.parent / 'docs/adr/0005-game-owned-sdk-boundary.md',
+            TOOLS.parent / 'notes/evidence/fr2-source-map/source-map-result.json',
+            recipe / 'candidate.ld', recipe / 'manifest.template.json',
+            recipe / 'docker-linux-exec.sh', recipe / 'docker-wine-exec.sh',
+        }
+        optional_private_inputs = {
+            Path.home() / 'Documents/github/hermes/spec-5-context/continuation-20261008/first-unit/adr0005-misc3d-boundary.json',
+            TOOLS.parent / '.scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json',
+        }
+        self.assertTrue(required_public_inputs <= inputs)
+        for path in optional_private_inputs:
+            self.assertEqual(path in inputs, path.is_file(), str(path))
 
     def test_changed_present_input_fails_even_when_other_required_inputs_are_missing(self):
         game = self.root / 'game'
