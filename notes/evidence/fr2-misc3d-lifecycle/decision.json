@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "corpus_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "spans": {
+    "reset": {
+      "address": "001d17a8",
+      "bytes": 28,
+      "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce"
+    },
+    "release": {
+      "address": "001d17c8",
+      "bytes": 56,
+      "sha256": "d3a62c0821de04915f4227abba06fedc487b341c9bb6a450c5b97f7f806ea1c5"
+    },
+    "get_database_id": {
+      "address": "001d1800",
+      "bytes": 60,
+      "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+    },
+    "get_state_cc": {
+      "address": "001d1840",
+      "bytes": 64,
+      "sha256": "46fcb75bad128dd0f7cbe683632af25f25a87f0f023dd1011b0ee501f8a2ed7e"
+    },
+    "get_state_d4": {
+      "address": "001d1880",
+      "bytes": 64,
+      "sha256": "d2022406a43a625853bbdd23deeabada52d06cb4bd5a67392eb2b84b06fdc257"
+    },
+    "get_state_d0": {
+      "address": "001d18c0",
+      "bytes": 64,
+      "sha256": "b0891c1d56cdb428aa6f4122c22c882f43c5a907f23a31e41ee93931a2eb088a"
+    }
+  },
+  "inputs": {
+    "observation": {
+      "bytes": 21021,
+      "sha256": "fd00f13473196331b61c68fe4b159ea0ba96fc04c195bf88f32687df7d8a186d"
+    },
+    "link_script": {
+      "bytes": 1639,
+      "sha256": "2d7be509621330c538012d246966f8206ccb25f2bea3f8fea6063f3b93f753db"
+    },
+    "lifecycle": {
+      "bytes": 785,
+      "sha256": "c8fb1453ee12aef95cc82982eb621e7dc80f7bb8b78c344f1da85c9e59293220"
+    },
+    "siblings": {
+      "bytes": 1303,
+      "sha256": "d72b17c5336c5c0a070336e27cbe7187127caea7ad83ad07ad6d424e1e92b6bf"
+    },
+    "db_id": {
+      "bytes": 198,
+      "sha256": "5d023900745dcc4352cfbabc680545faea2dfd5a3d723f74942621d6842c708a"
+    },
+    "state_c8": {
+      "bytes": 128,
+      "sha256": "94a85b41d66e74ab44752013bbe0d1f3b61f47f345135ae431cd809619ca87f4"
+    },
+    "state_cc": {
+      "bytes": 128,
+      "sha256": "fe49643b9e53a3bc8ccfae5bb3cd7dc028a5ba963683a019576ba00ff7f2cb5d"
+    },
+    "state_d0": {
+      "bytes": 128,
+      "sha256": "4639f88f98b10e0402f42cfc73025e957158edeb9b98a4b5c28bfa713c8d2808"
+    },
+    "state_d4": {
+      "bytes": 128,
+      "sha256": "600c2c0c28c790b94441e970361d65021c089387182f14a28d1dc3116d21a40b"
+    }
+  },
+  "scope": "Source-output comparison candidates; no new ownership attribution",
+  "status": "incomplete",
+  "previous_attributed_code_bytes": 60,
+  "new_byte_identical_candidate_bytes": 276,
+  "new_attributed_code_bytes": 0,
+  "data_layout_bytes": 20,
+  "matched_data_file_bytes": 0,
+  "unresolved": [
+    {
+      "id": "new-ownership",
+      "affected_scope": "reset/release/sibling spans outside ADR-0005",
+      "blocks_completion": true,
+      "reason": "Source/flow evidence is bounded; independent caller/source identity for release and siblings is absent. No global ownership credit assigned.",
+      "next_observation": "Resolve measured incoming computed references or independently pin original unit/source attribution; reject contradictory SDK attribution."
+    },
+    {
+      "id": "computed-aliases",
+      "affected_scope": "five misc3d cells",
+      "blocks_completion": true,
+      "reason": "Aligned direct accesses/pointers do not exhaust computed or unaligned aliases.",
+      "next_observation": "Trace loader cell writers and computed addressing with exact saved instruction ownership."
+    },
+    {
+      "id": "loader-contract",
+      "affected_scope": "001d1408 saved loader body",
+      "blocks_completion": true,
+      "reason": "Saved body is noncontiguous; neither its envelope nor dependencies are assigned to this group.",
+      "next_observation": "Reconcile exact loader body ranges and dependencies in isolated project copy."
+    },
+    {
+      "id": "sibling-caller-use",
+      "affected_scope": "001d1840/001d1880/001d18c0",
+      "blocks_completion": true,
+      "reason": "No measured direct/literal incoming caller exists, so caller return use remains unknown.",
+      "next_observation": "Resolve a concrete incoming computed reference and consumer V0 use."
+    }
+  ],
+  "contracts": {
+    "names": "All C symbols and field names inferred",
+    "cells": {
+      "00290ac4": "signed database-id word; -1 reset/released sentinel",
+      "00290ac8": "related signed word; reset -1; meaning unresolved",
+      "00290acc": "related signed word; sibling return V0; meaning unresolved",
+      "00290ad0": "related signed word; sibling return V0; meaning unresolved",
+      "00290ad4": "related signed word; sibling return V0; meaning unresolved"
+    },
+    "reset": "No consumed input register. Writes five -1 words; static caller 001ccbd8 calls reset at001ccc3c before loader at001ccc4c. Return value not established.",
+    "release": "No consumed incoming argument. Non--1 cell is moved into A0 for external00120aa8, then sentinel -1 stored. External return is ignored; original declaration/ownership unknown. No direct/literal caller observed.",
+    "siblings": "No consumed incoming arguments. Check database-id cell; loaded path returns corresponding related word in V0. Sentinel path reports file/line/message to external00105888; helper body has no observed normal return. No incoming caller return use established.",
+    "helper": "00105888 remains separately mapped modules4/system/ps2/asyncf.c. Compilation declaration is a surrogate and establishes no error-return value.",
+    "source_strings": "Siblings diagnostic points at misc3d.c lines201/215/229. New string compiled and byte-compared; original source identity/ownership remains inferred."
+  },
+  "compiler_profile": {
+    "candidate": "ee-gcc2.96",
+    "common_flags": [
+      "-G8",
+      "-O2",
+      "-fno-optimize-sibling-calls"
+    ],
+    "siblings_extra_flags": [
+      "-falign-labels=16"
+    ],
+    "linker": "GNU binutils2.40 substitution",
+    "identification_status": "incomplete"
+  },
+  "dependency_reconciliation": {
+    "issue24_reset_release_source_outputs": "pass when fresh lifecycle child passes",
+    "issue24_complete_dependency_status": "incomplete",
+    "issue24_remaining": [
+      "loader-contract",
+      "computed-aliases",
+      "new-ownership",
+      "sibling-caller-use"
+    ]
+  },
+  "next_group": {
+    "issue": 37,
+    "url": "https://github.com/nicolas-found42/reverse-engineering/issues/37",
+    "scope": "misc3d loader exact noncontiguous body,0011ed90 dependency and five-cell computed alias/caller use",
+    "relationship": "Native blocking prerequisite of35; child of23"
+  },
+  "falsifier": "Any differing byte/layout/source identity, overlapping boundary, incoming entry at1844 or contradictory dependency/ownership revokes affected result."
+}

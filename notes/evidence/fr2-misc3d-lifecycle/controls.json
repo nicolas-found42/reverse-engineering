@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "controls": [
+    {
+      "control": "real_source_build",
+      "expected_exit": 0,
+      "exit": 0,
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/.scratch/issue-35/controls-canonical/real_source_build/20261008T193847Z-61795c9d8df6494e918289d4924d35e9/result.json",
+      "bytes": 43369,
+      "sha256": "c3a72e578cbf175929816e3c1ebc9df4ff0f03906a3bd981d333abbaf335f3e9"
+    },
+    {
+      "control": "changed_source_build",
+      "expected_exit": 1,
+      "exit": 1,
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/.scratch/issue-35/controls-canonical/changed_source_build/20261008T193853Z-0a5b2b51819a48dd8d89bc9d3be6bbbe/result.json",
+      "bytes": 36078,
+      "sha256": "8c0ddd2d5a52eb78ee5e40a6b1ad3ca8abb104582a2e53804625de385c035b6f"
+    },
+    {
+      "control": "changed_layout",
+      "expected_exit": 1,
+      "exit": 1,
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/.scratch/issue-35/controls-canonical/changed_layout/20261008T193858Z-cc362e3429e9401fa9db1edada14d810/result.json",
+      "bytes": 1438,
+      "sha256": "7dbf8bd59f03b9b883513205237970dec5af6b5ab10c29138d0b66612fc21c80"
+    },
+    {
+      "control": "missing_provenance",
+      "expected_exit": 2,
+      "exit": 2,
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/.scratch/issue-35/controls-canonical/missing_provenance/20261008T193858Z-b5a2bba93e144266b4c8b6c10472f2db/result.json",
+      "bytes": 1107,
+      "sha256": "bcb863b5dde48593ee7fdc2a7f4480b18d38d1494c9e7644de92ce4eb1996279"
+    }
+  ],
+  "status": "pass",
+  "claim_limit": "Real child controls only. Positive does not complete ownership, aliases, loader or whole corpus. Layout negative mutates ELF metadata; source negative recompiles changed C."
+}

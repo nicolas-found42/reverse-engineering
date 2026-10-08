@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T193858Z-cc362e3429e9401fa9db1edada14d810",
+  "check": "misc3d-lifecycle-control",
+  "command": [
+    "tools/misc3d_lifecycle_recipe/controls.py",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "--output",
+    ".scratch/issue-35/controls-canonical"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/misc3d_lifecycle_recipe/controls.py": {
+      "bytes": 3702,
+      "sha256": "789fdb9d69fcd97deeb1400ea79322ce83c7de2e96ea66d88e8cd4f5079e461c"
+    }
+  },
+  "status": "fail",
+  "diagnostics": [
+    "Invalid: state_cc layout differs from the recorded four-byte NOBITS cell"
+  ],
+  "details": {
+    "mutated_output": {
+      "path": "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/.scratch/issue-35/controls-canonical/changed-layout.elf",
+      "bytes": 18228,
+      "sha256": "2e36b4c3ed2be0dcf916defb2ee6033ff57b9f7ed2d5195c093772a549cf091e"
+    },
+    "positive_linked_output": {
+      "bytes": 18228,
+      "sha256": "37cd659cb4b57ed57df58409d2c0e410785a3bdfd13b6fc80a21c625c1705294"
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 510,
+      "sha256": "a1280203228b04e0034affea8b0a2e0ac11807efc66253655361e885c762cff8"
+    }
+  }
+}
