@@ -4,43 +4,85 @@
     "dispatch": {
       "path": "notes/evidence/fr2-geometry-vu-dispatch/source-provenance.json",
       "sha256": "9423b08e0103e146a48503e45b08c8445bb3cffcce039208af4f47f8f152c289"
+    },
+    "additional": {
+      "path": "notes/evidence/fr2-geometry-vu-dispatch/additional-entry-mappings.json",
+      "sha256": "264ed4dc462b85da3937fba2800223984039b5372ec19509401d9aa5fa8660e9"
     }
   },
   "overlays": [
     {
       "index": 0,
       "status": "incomplete",
-      "entries": [],
-      "interface": "unresolved"
+      "entries": [
+        {
+          "msc_address": 26,
+          "vu_byte_address": 208,
+          "caller": "FUN_0021c3e0",
+          "evidence": "additional",
+          "channel": "VIF1"
+        }
+      ],
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "The initialization MSCAL 0 immediate remains unresolved in the existing VIF audit; no exhaustive runtime dispatch map is claimed."
+      ]
     },
     {
       "index": 1,
       "status": "incomplete",
       "entries": [],
-      "interface": "unresolved"
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+      ]
     },
     {
       "index": 2,
       "status": "incomplete",
       "entries": [],
-      "interface": "unresolved"
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+      ]
     },
     {
       "index": 3,
       "status": "incomplete",
       "entries": [],
-      "interface": "unresolved"
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+      ]
     },
     {
       "index": 4,
       "status": "incomplete",
-      "entries": [],
-      "interface": "unresolved"
+      "entries": [
+        {
+          "msc_address": 1233,
+          "vu_byte_address": 9864,
+          "caller": "FUN_00228b38",
+          "evidence": "additional",
+          "channel": "VIF1"
+        }
+      ],
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "Static caller mapping is evidenced, but runtime branch selection and an exhaustive entry census are unresolved."
+      ]
     },
     {
       "index": 5,
-      "status": "documented",
+      "status": "incomplete",
       "entries": [
+        {
+          "msc_address": 1364,
+          "vu_byte_address": 10912,
+          "caller": "FUN_0012a230",
+          "evidence": "additional",
+          "channel": "VIF1"
+        },
         {
           "msc_address": 1484,
           "vu_byte_address": 11872,
@@ -48,23 +90,33 @@
           "evidence": "dispatch"
         }
       ],
-      "interface": "unresolved"
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "Two static caller mappings are evidenced, but runtime branch selection and an exhaustive entry census are unresolved."
+      ]
     },
     {
       "index": 6,
       "status": "incomplete",
       "entries": [],
-      "interface": "unresolved"
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "The overlay begins at the next byte after overlay 5, whose final instruction pair has no E bit; overlay 6 starts with the continuation instruction, and no independent MSCAL caller was identified."
+      ]
     },
     {
       "index": 7,
       "status": "incomplete",
       "entries": [],
-      "interface": "unresolved"
+      "interface": "unresolved",
+      "incomplete_reasons": [
+        "The range is in the VIF0 address domain; no direct MSCAL caller was mapped in the saved static export."
+      ]
     }
   ],
   "limits": [
-    "Only overlay 5 has a recorded static MSCAL caller mapping.",
-    "All interface contracts and the other seven entry maps remain incomplete; no VU ownership, runtime execution, scheduling or geometry semantics are claimed."
+    "Static MSCAL construction evidence documents caller candidates for overlays 0, 4 and 5 only.",
+    "Overlay 0 also has an unresolved initialization MSCAL immediate; overlays 1, 2, 3, 6 and 7 have no independently mapped entry.",
+    "All interface contracts remain unresolved; no VU ownership, runtime execution, scheduling or geometry semantics are claimed."
   ]
 }
