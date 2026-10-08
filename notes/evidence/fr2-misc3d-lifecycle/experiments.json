@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "command": [
+    "tools/misc3d_lifecycle_recipe/experiments.py",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-explore-odnlmb3l",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-explore-93xs40j3",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-explore-whcxzv_a",
+    "--output",
+    "notes/evidence/fr2-misc3d-lifecycle/experiments.json"
+  ],
+  "experiments": [
+    {
+      "stage": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-explore-odnlmb3l",
+      "source": {
+        "bytes": 1765,
+        "sha256": "9de542980887cbf691ee2352be51ee72cff102395511e904f28063a5aad1a87d"
+      },
+      "object": {
+        "bytes": 4404,
+        "sha256": "dca3f5af08f0fa3d613acecb99d0f8c2d75650a2ca29163db28bbd84928219a3"
+      },
+      "code_section_sizes": {
+        ".text.fr2_misc3d_reset": 28,
+        ".text.fr2_misc3d_release": 56,
+        ".text.fr2_misc3d_get_state_cc": 60,
+        ".text.fr2_misc3d_get_state_d4": 60,
+        ".text.fr2_misc3d_get_state_d0": 60
+      },
+      "link_script": {
+        "bytes": 655,
+        "sha256": "3452d33f604ac3af01577e02ff82f367c107c12349d67bec8c1f41b1bb6e3b44"
+      }
+    },
+    {
+      "stage": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-explore-93xs40j3",
+      "source": {
+        "bytes": 1765,
+        "sha256": "7359ba649708044c02257145a1e3053b87984d21d0701cdb43df1ba83c8f275b"
+      },
+      "object": {
+        "bytes": 4404,
+        "sha256": "19cee725f0d22a5f831e0583e47fd2c3d2ec04e157f4bf95a5aa8c95b0754dd7"
+      },
+      "code_section_sizes": {
+        ".text.fr2_misc3d_reset": 28,
+        ".text.fr2_misc3d_release": 56,
+        ".text.fr2_misc3d_get_state_cc": 60,
+        ".text.fr2_misc3d_get_state_d4": 60,
+        ".text.fr2_misc3d_get_state_d0": 60
+      },
+      "link_script": {
+        "bytes": 655,
+        "sha256": "3452d33f604ac3af01577e02ff82f367c107c12349d67bec8c1f41b1bb6e3b44"
+      }
+    },
+    {
+      "stage": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-explore-whcxzv_a",
+      "source": {
+        "bytes": 1765,
+        "sha256": "7359ba649708044c02257145a1e3053b87984d21d0701cdb43df1ba83c8f275b"
+      },
+      "object": {
+        "bytes": 4416,
+        "sha256": "b2bdd508e05e0bbc2b27a3b3027dc67f6d6255b0a3e52b992e72230d9b6d8954"
+      },
+      "code_section_sizes": {
+        ".text.fr2_misc3d_reset": 28,
+        ".text.fr2_misc3d_release": 64,
+        ".text.fr2_misc3d_get_state_cc": 64,
+        ".text.fr2_misc3d_get_state_d4": 64,
+        ".text.fr2_misc3d_get_state_d0": 64
+      },
+      "link_script": {
+        "bytes": 655,
+        "sha256": "3452d33f604ac3af01577e02ff82f367c107c12349d67bec8c1f41b1bb6e3b44"
+      }
+    }
+  ],
+  "claim_limit": "Post-hoc identity/size measurements only. Compiler flags were exploratory; no source-output acceptance or ownership credit follows. Full private sources and objects remain local."
+}

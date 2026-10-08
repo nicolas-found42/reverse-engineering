@@ -36,6 +36,18 @@ QT_SOURCE_HASHES = {
     "qoffscreenintegration.cpp": "d0f5189839790e6c3535836765d831b7193a14d5e5f75f82187b3cb4986a7506",
     "qoffscreenwindow.cpp": "70cc98cee42d9a7779542e1e2a66e01d78214aa588ce984993186a6e62544558",
 }
+# Static LC_LOAD_DYLIB dependencies of the pinned PCSX2 executable and plugin.
+# These pins bind installed bytes, not licenses or the effective runtime route.
+QT_RUNTIME_LIBRARIES = {
+    "libQt6Core.6.dylib": "5147afdc2cf2bd0189e3907ea49076b2ef5cad1eee355b19d7cccf8a53bf5afe",
+    "libQt6Gui.6.dylib": "5e05e76aacb6dbc64330b44ceefcaa5c55c72de43293415d85e988ab19aa9f04",
+    "libQt6Widgets.6.dylib": "1c393b9eaf659247739c862338e1a68f31dcbbedce975c444220876c8331681d",
+    "libkddockwidgets-qt6.3.dylib": "60f5e6882d2a8207c8b4604a2c8324dad84c7d48584633f92daf396d8132fe06",
+}
+QT_DEPENDENCY_BLOCKERS = (
+    "The prebuilt Qt SDK's full corresponding source or applicable source offer is not bound to the pinned package.",
+    "The installed Qt libraries and docking library lack exact package/source/build and complete notice bindings.",
+)
 EXPECTED_WORDS = [0x46523250, 21, 0x10DF30BF, 1]
 MAX_TIMEOUT_SECONDS = 60
 DESKTOP_SAMPLE_INTERVAL_MS = 50
@@ -200,6 +212,15 @@ def verify_inputs(emulator: Path, plugin: Path, elf: Path, source: Path,
                   observer: Path, observer_source: Path, qt_archive: Path,
                   qt_source_dir: Path, qt_build_command: Path,
                   qt_preparation: Path) -> dict:
+    libraries, missing_libraries = {}, []
+    for name, expected in QT_RUNTIME_LIBRARIES.items():
+        path = emulator.parent.parent / "Frameworks" / name
+        if not path.is_file():
+            missing_libraries.append(f"required Qt runtime dependency is missing: {name}")
+            continue
+        libraries[name] = identity(path)
+        if libraries[name]["sha256"] != expected:
+            raise Invalid(f"Qt runtime dependency differs from the pinned installed profile: {name}")
     recipe = json.loads(RECIPE.read_text())
     for path in (emulator, plugin, elf, source, linker_script, probe_build_log,
                  bios, observer, observer_source, qt_archive, qt_build_command,
@@ -224,7 +245,20 @@ def verify_inputs(emulator: Path, plugin: Path, elf: Path, source: Path,
         raise Invalid("desktop observer source differs from the qualified source")
     if actual["probe_build_log"]["sha256"] != recipe["builder"]["build_log_sha256"]:
         raise Invalid("probe builder log differs from the pinned build provenance")
-    return {"identities": actual, "recipe": recipe}
+    if missing_libraries:
+        raise Incomplete("; ".join(missing_libraries))
+    actual["qt_runtime_libraries"] = libraries
+    # Byte identity is necessary but cannot supply the missing #22 disposition.
+    # This is a recorded profile decision, never a caller-supplied unlock flag.
+    raise Incomplete("Qt dependency qualification lacks corresponding source and package notice bindings (#22).", {
+        "authority": "static_dependency_preflight", "criterion": "AC25",
+        "inputs": {"identities": actual, "recipe": recipe},
+        "dependency_qualification": {"status": "incomplete", "issue": 22,
+                                     "blockers": list(QT_DEPENDENCY_BLOCKERS)},
+        "lifecycle": {"launched": False},
+        "separation": {"evidence_kind": "dependency_provenance", "static_byte_credit": 0,
+                       "accepted_as_reconstruction_or_matching_evidence": False},
+    })
 
 
 def _kill_group(process: subprocess.Popen, grace: float = 2.0) -> dict:
@@ -510,10 +544,15 @@ def main() -> int:
               Path(args.desktop_observer_source), Path(args.qt_sdk_archive),
               Path(args.qt_build_command), Path(args.qt_preparation_record),
               *(Path(args.qt_source_dir) / name for name in QT_SOURCE_HASHES),
+              *(Path(args.emulator).parent.parent / "Frameworks" / name
+                for name in QT_RUNTIME_LIBRARIES),
               TOOLS / "pcsx2_pine.py",
               TOOLS / "evidence_common.py"]
     return write_result(args.output, "fr2-headless-behavioral-oracle",
-                        lambda: execute(args, args.output), inputs)
+                        lambda: execute(args, args.output),
+                        # Record available hashes; fixed preflight diagnoses absence
+                        # after checking the available Qt libraries for contradictions.
+                        [path for path in inputs if path.is_file()])
 
 
 if __name__ == "__main__":

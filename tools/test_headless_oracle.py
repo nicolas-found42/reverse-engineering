@@ -1,6 +1,8 @@
 """Public contract checks for the strict behavioral oracle runner."""
 import configparser
+import json
 import os
+import platform
 from pathlib import Path
 import socket
 import subprocess
@@ -12,6 +14,7 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 import headless_oracle as oracle
 from unittest.mock import patch
+from contextlib import ExitStack
 
 from headless_oracle import (build_settings, make_sandbox_profile,
                              validate_observation, validate_probe_files,
@@ -19,6 +22,127 @@ from headless_oracle import (build_settings, make_sandbox_profile,
                              read_probe_output, wait_for_probe_output,
                              cleanup_failure, ac25_acceptance)
 from evidence_common import Incomplete, Invalid, identity
+
+
+class OracleDependencyPreflight(unittest.TestCase):
+    def run_fixture(self, root, mutation=None):
+        """Exercise the CLI with a synthetic pinned installation, never a guest."""
+        executable = root / "app" / "Contents" / "MacOS" / "PCSX2"
+        executable.parent.mkdir(parents=True)
+        paths = {flag: root / name for flag, name in (
+            ("--platform-plugin", "plugin"), ("--elf", "probe.elf"),
+            ("--probe-source", "probe.c"), ("--linker-script", "probe.ld"),
+            ("--probe-build-log", "build.log"), ("--bios", "bios"),
+            ("--desktop-observer", "observer"), ("--desktop-observer-source", "observer.c"),
+            ("--qt-sdk-archive", "sdk"), ("--qt-build-command", "qt-build"),
+            ("--qt-preparation-record", "preparation"))}
+        paths["--emulator"] = executable
+        for path in paths.values():
+            path.write_bytes(path.name.encode())
+        source_dir = root / "sources"
+        source_dir.mkdir()
+        for name in oracle.QT_SOURCE_HASHES:
+            (source_dir / name).write_bytes(name.encode())
+        frameworks = executable.parent.parent / "Frameworks"
+        frameworks.mkdir()
+        library_names = ("libQt6Core.6.dylib", "libQt6Gui.6.dylib",
+                         "libQt6Widgets.6.dylib", "libkddockwidgets-qt6.3.dylib")
+        for name in library_names:
+            (frameworks / name).write_bytes(name.encode())
+        recipe = {key: identity(paths[flag]) for key, flag in (
+            ("probe_elf", "--elf"), ("probe_source", "--probe-source"),
+            ("linker_script", "--linker-script"))}
+        recipe["builder"] = {"build_log_sha256": identity(paths["--probe-build-log"])["sha256"]}
+        recipe_path = root / "recipe.json"
+        recipe_path.write_text(json.dumps(recipe))
+        argv = ["headless_oracle.py", "--qt-source-dir", str(source_dir),
+                "--output", str(root / "evidence")]
+        for flag, path in paths.items():
+            argv.extend((flag, str(path)))
+        pins = {name: identity(paths[flag])["sha256"] for name, flag in (
+            ("PCSX2_SHA256", "--emulator"), ("OFFSCREEN_SHA256", "--platform-plugin"),
+            ("DESKTOP_OBSERVER_SHA256", "--desktop-observer"),
+            ("DESKTOP_OBSERVER_SOURCE_SHA256", "--desktop-observer-source"),
+            ("QT_SDK_ARCHIVE_SHA256", "--qt-sdk-archive"),
+            ("QT_BUILD_COMMAND_SHA256", "--qt-build-command"),
+            ("QT_PREPARATION_SHA256", "--qt-preparation-record"))}
+        pins.update(RECIPE=recipe_path,
+                    QT_SOURCE_HASHES={name: identity(source_dir / name)["sha256"]
+                                      for name in oracle.QT_SOURCE_HASHES})
+        if hasattr(oracle, "QT_RUNTIME_LIBRARIES"):
+            pins["QT_RUNTIME_LIBRARIES"] = {name: identity(frameworks / name)["sha256"]
+                                            for name in library_names}
+        if mutation:
+            mutation(frameworks)
+        platform.platform()  # Cache host metadata before guarding guest process creation.
+        popen = subprocess.Popen
+        def refuse_guest(command, *args, **kwargs):
+            if command[0] == "uname":
+                return popen(command, *args, **kwargs)
+            raise AssertionError("guest launch attempted")
+        with ExitStack() as stack:
+            stack.enter_context(patch.object(oracle.sys, "platform", "darwin"))
+            stack.enter_context(patch.object(oracle.sys, "argv", argv))
+            for name, value in pins.items():
+                stack.enter_context(patch.object(oracle, name, value))
+            # Process creation is a system boundary. A red test cannot launch a guest.
+            stack.enter_context(patch.object(oracle.subprocess, "Popen",
+                                            side_effect=refuse_guest))
+            code = oracle.main()
+        receipts = list((root / "evidence").glob("*/result.json"))
+        self.assertEqual(len(receipts), 1)
+        self.assertFalse(list((root / "evidence").glob("strict-runtime-*")))
+        return code, json.loads(receipts[0].read_text())
+
+    def test_matching_input_hashes_do_not_qualify_missing_dependency_provenance(self):
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp))
+        self.assertEqual(code, 2)
+        self.assertEqual(receipt["status"], "incomplete")
+        self.assertIn("corresponding source", " ".join(receipt["diagnostics"]))
+        self.assertEqual(receipt["details"]["lifecycle"]["launched"], False)
+        self.assertEqual(receipt["details"]["separation"]["static_byte_credit"], 0)
+
+    def test_changed_runtime_library_fails_before_guest_launch(self):
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp), lambda directory:
+                (directory / "libQt6Gui.6.dylib").write_bytes(b"changed QtGui"))
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt["status"], "fail")
+        self.assertIn("libQt6Gui.6.dylib", " ".join(receipt["diagnostics"]))
+
+    def test_changed_runtime_library_outranks_an_earlier_missing_library(self):
+        def mutation(directory):
+            (directory / "libQt6Core.6.dylib").unlink()
+            (directory / "libQt6Gui.6.dylib").write_bytes(b"changed QtGui")
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp), mutation)
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt["status"], "fail")
+        self.assertIn("libQt6Gui.6.dylib", " ".join(receipt["diagnostics"]))
+        libraries = [value for path, value in receipt["inputs"].items()
+                     if path.endswith("libQt6Gui.6.dylib")]
+        self.assertEqual(libraries, [{"bytes": 13,
+            "sha256": "4b15c9f8064a156e520218aecb88a1e9e5ca626f3f86484fadd87279458ce3fe"}])
+
+
+    def test_changed_runtime_library_outranks_missing_legacy_input(self):
+        def mutation(directory):
+            (directory.parents[2] / "plugin").unlink()
+            (directory / "libQt6Gui.6.dylib").write_bytes(b"changed QtGui")
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp), mutation)
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt["status"], "fail")
+        self.assertIn("libQt6Gui.6.dylib", " ".join(receipt["diagnostics"]))
+
+    def test_missing_runtime_library_is_incomplete_before_guest_launch(self):
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp), lambda directory:
+                (directory / "libQt6Core.6.dylib").unlink())
+        self.assertEqual(code, 2)
+        self.assertEqual(receipt["status"], "incomplete")
+        self.assertIn("libQt6Core.6.dylib", " ".join(receipt["diagnostics"]))
 
 
 class HeadlessOracleProfile(unittest.TestCase):

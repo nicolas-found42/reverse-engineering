@@ -1,0 +1,123 @@
+[
+  {
+    "name": "positive",
+    "command": [
+      "python3",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--packet",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/positive.bin",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/positive"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"status\": \"pass\", \"result\": \"/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/positive/20261008T200948Z-3a86a346ff0a4c59899146e0cf818359/result.json\", \"diagnostics\": []}\n",
+    "stderr": ""
+  },
+  {
+    "name": "negative",
+    "command": [
+      "python3",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--packet",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/negative.bin",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/negative"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"fail\", \"result\": \"/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/negative/20261008T200948Z-93df41482d114d2e9208f9d2b2180099/result.json\", \"diagnostics\": [\"Invalid: channel-volume layout requires three halfwords\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "incomplete",
+    "command": [
+      "python3",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--packet",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/incomplete.bin",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/incomplete"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"status\": \"incomplete\", \"result\": \"/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/incomplete/20261008T200948Z-d9c0fb927a804686a20e41b5eceb28f1/result.json\", \"diagnostics\": [\"required STREAM subcommand contract is unresolved\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "missingEE-negative",
+    "command": [
+      "python3",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--packet",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/negative.bin",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missingEE-negative"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"fail\", \"result\": \"/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missingEE-negative/20261008T200948Z-9e8c298ff20f48be9795bfeea4cda61c/result.json\", \"diagnostics\": [\"Invalid: channel-volume layout requires three halfwords\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "missingEE-positive",
+    "command": [
+      "python3",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--packet",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/positive.bin",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missingEE-positive"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"status\": \"incomplete\", \"result\": \"/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missingEE-positive/20261008T200948Z-c6eae6bd7c6e4e30909c160c5934761d/result.json\", \"diagnostics\": [\"required ee image is absent: /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "missingEE-incomplete",
+    "command": [
+      "python3",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--packet",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/incomplete.bin",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missingEE-incomplete"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"status\": \"incomplete\", \"result\": \"/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missingEE-incomplete/20261008T200949Z-aad15fd1aa514b8f8e8664ff1286db3e/result.json\", \"diagnostics\": [\"required ee image is absent: /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee; required STREAM subcommand contract is unresolved\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "inventory",
+    "command": [
+      "python3",
+      "tools/inventory_rpc_handoffs.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/inventory"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"status\": \"incomplete\", \"result\": \"/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/inventory/20261008T200949Z-b0ba9c1261f746d1bdafe7af940a760c/result.json\", \"diagnostics\": [\"required parent handoff inventory is not yet reconciled\"]}\n",
+    "stderr": ""
+  }
+]

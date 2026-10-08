@@ -1,0 +1,663 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T194835Z-20ab630da2a2439f9827e116c7699a09",
+  "check": "misc3d-lifecycle-observation",
+  "command": [
+    "tools/misc3d_lifecycle_observation.py",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue-24/inventory.json",
+    ".scratch/issue-35/reconciled-inventory.json",
+    ".scratch/issue-35/boundary.json",
+    "--output",
+    ".scratch/issue-35/observation-traced"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/misc3d_lifecycle_observation.py": {
+      "bytes": 8659,
+      "sha256": "80ab96844b479ed357fd37ea92f6ba3377c4b26eea4bec7a471c130a08e7bc8a"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue-24/inventory.json": {
+      "bytes": 54861128,
+      "sha256": "021c30af6a51cd239be7e01bd5e76c99c49b898f95770aad6154dd7061177edf"
+    },
+    ".scratch/issue-35/reconciled-inventory.json": {
+      "bytes": 54861366,
+      "sha256": "839076de9050e28a213002686c7a07dc121a15535216e65dc85eeee7bcf355ed"
+    },
+    ".scratch/issue-35/boundary.json": {
+      "bytes": 625,
+      "sha256": "23bc4c2e0e98c2a66f9c3589f0ed363079c6e148e9c549d3e539cdacc214e99b"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/corpus_contract.py": {
+      "bytes": 7501,
+      "sha256": "31307b7db16af11ecfd63183df2c0328d00c7345a3959223618146894fb7d87e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/evidence_common.py": {
+      "bytes": 2971,
+      "sha256": "52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/matching_ranges.py": {
+      "bytes": 15424,
+      "sha256": "f362c5693784103094ffaf083867f481969cc7cef4ebd4510afe82ce050a45be"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/misc3d_observation.py": {
+      "bytes": 5947,
+      "sha256": "e6335d1dfd6ddc63553b298d3a3e3cfe2d2c45b0ce739d37758a0f9811947705"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/misc3d_lifecycle.py": {
+      "bytes": 13064,
+      "sha256": "cf7099c73175224266d0083489e267c2d472c2884249970cf82215c557e47792"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-35/tools/ps2_executables.py": {
+      "bytes": 7248,
+      "sha256": "6872b9d9af5477fa81a87aab7c326b9f91a270412835145329e5aefccf44461d"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "boundary": {
+      "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+      "language": "r5900:LE:32:default",
+      "ghidra_version": "12.1.3",
+      "original_entry": "001d1844",
+      "original_bytes": 60,
+      "raw_load_previously_owned": false,
+      "incoming_saved_references": [],
+      "reconciled_entry": "001d1840",
+      "reconciled_end_exclusive": "001d1880",
+      "reconciled_bytes": 64,
+      "reconciled_instruction_count": 16,
+      "status": "pass",
+      "claim_limit": "Structural source-unit candidate; no original symbol or runtime reachability established. Read-only invocation discards this isolated copy's changes."
+    },
+    "spans": {
+      "reset": {
+        "address": "001d17a8",
+        "bytes": 28,
+        "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce"
+      },
+      "release": {
+        "address": "001d17c8",
+        "bytes": 56,
+        "sha256": "d3a62c0821de04915f4227abba06fedc487b341c9bb6a450c5b97f7f806ea1c5"
+      },
+      "get_database_id": {
+        "address": "001d1800",
+        "bytes": 60,
+        "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+      },
+      "get_state_cc": {
+        "address": "001d1840",
+        "bytes": 64,
+        "sha256": "46fcb75bad128dd0f7cbe683632af25f25a87f0f023dd1011b0ee501f8a2ed7e"
+      },
+      "get_state_d4": {
+        "address": "001d1880",
+        "bytes": 64,
+        "sha256": "d2022406a43a625853bbdd23deeabada52d06cb4bd5a67392eb2b84b06fdc257"
+      },
+      "get_state_d0": {
+        "address": "001d18c0",
+        "bytes": 64,
+        "sha256": "b0891c1d56cdb428aa6f4122c22c882f43c5a907f23a31e41ee93931a2eb088a"
+      }
+    },
+    "incoming_references": [
+      {
+        "site": "00191184",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "00191148",
+        "window_sha256": "659437b898dcef3454900927a9f33685d28f3e4a1990ee6343af7cda898c306e"
+      },
+      {
+        "site": "00194310",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001942e8",
+        "window_sha256": "4e28987dc22e74e61e579fc42b52c6263e76e55f89d1eece4c2445f3b5298325"
+      },
+      {
+        "site": "001a2fc0",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a2d48",
+        "window_sha256": "c672f89fd869e19663a92133c9fd5009b3959f9637fa1284fdd1248a8d4787ab"
+      },
+      {
+        "site": "001a2fd8",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a2d48",
+        "window_sha256": "945f6180d9441eb0a58547eb49ee808e3e773b9f504e377fbfa1193c1d6f96ed"
+      },
+      {
+        "site": "001a30f4",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a30a8",
+        "window_sha256": "c672f89fd869e19663a92133c9fd5009b3959f9637fa1284fdd1248a8d4787ab"
+      },
+      {
+        "site": "001a310c",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a30a8",
+        "window_sha256": "945f6180d9441eb0a58547eb49ee808e3e773b9f504e377fbfa1193c1d6f96ed"
+      },
+      {
+        "site": "001a8e3c",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a8e18",
+        "window_sha256": "d1fe1f5ddba7e4e3b6b96c7da9b7fa7447de47840b272881d3f72684b17d073d"
+      },
+      {
+        "site": "001a8e54",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a8e18",
+        "window_sha256": "3078d91147bf3b42c9b2b852305a8a58880063369cab582702346c4d2daf4ae4"
+      },
+      {
+        "site": "001a8ea0",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a8e18",
+        "window_sha256": "2326a2a3fcdac247da02d3681b7f93c0b4b7d3981b1e76f07b7aaca81b3ff5f5"
+      },
+      {
+        "site": "001a8eec",
+        "to": "001d1800",
+        "kind": "jal",
+        "saved_owner": "001a8e18",
+        "window_sha256": "0dac232d3e1eef8e8a9d2acc7572a78b6f6210c36784ddae21444b7a173fd183"
+      },
+      {
+        "site": "001ccc3c",
+        "to": "001d17a8",
+        "kind": "jal",
+        "saved_owner": "001ccbd8",
+        "window_sha256": "850a3f2573711e788566aca79ae4fb5c567a39d92a64211cbbee590990bb91f1"
+      }
+    ],
+    "cell_accesses": [
+      {
+        "site": "001d1414",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 17,
+        "saved_owner": "001d1408",
+        "word_sha256": "294e790129d739b774842900842d49ad91398f225be7ff1893135f75ea29eea6"
+      },
+      {
+        "site": "001d1460",
+        "cell": "00290ac4",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d1408",
+        "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67"
+      },
+      {
+        "site": "001d1488",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1408",
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1498",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1408",
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d14a4",
+        "cell": "00290acc",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d1408",
+        "word_sha256": "06dd29a9cf38e782010923a7592529d0f219c816e38da0c528928e906e7935bd"
+      },
+      {
+        "site": "001d14ac",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1408",
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d14b8",
+        "cell": "00290ac8",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d1408",
+        "word_sha256": "a53dcbb0ae41a9d576851b08e6bc6ef6a92869286266caeb450561500fd85ad9"
+      },
+      {
+        "site": "001d14c0",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1408",
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d14cc",
+        "cell": "00290ad0",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d1408",
+        "word_sha256": "0d41db7c6ef24cb83b91d2347c76abe1ff58cba59967a225e101eaa8d0d8d233"
+      },
+      {
+        "site": "001d14d4",
+        "cell": "00290ad4",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d1408",
+        "word_sha256": "4c86d07929915d0ad80179d33b09d3f752f0b371cb0639580689f662e3d0d4a7"
+      },
+      {
+        "site": "001d1538",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1408",
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1564",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1408",
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d15dc",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1408",
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1794",
+        "cell": "00290acc",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owner": "001d1628",
+        "word_sha256": "39ea04cbe2025773476d6d791dd45615092e6a3172f7abdb9944c67d121ab231"
+      },
+      {
+        "site": "001d1798",
+        "cell": "00290ad0",
+        "kind": "load",
+        "width": 4,
+        "register": 5,
+        "saved_owner": "001d1628",
+        "word_sha256": "026e5edb1a7cf237ca91e5981d76effe2618c19083ec1324153441d42d6a4b17"
+      },
+      {
+        "site": "001d17ac",
+        "cell": "00290ad4",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d17a8",
+        "word_sha256": "4c86d07929915d0ad80179d33b09d3f752f0b371cb0639580689f662e3d0d4a7"
+      },
+      {
+        "site": "001d17b0",
+        "cell": "00290ac4",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d17a8",
+        "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67"
+      },
+      {
+        "site": "001d17b4",
+        "cell": "00290ac8",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d17a8",
+        "word_sha256": "a53dcbb0ae41a9d576851b08e6bc6ef6a92869286266caeb450561500fd85ad9"
+      },
+      {
+        "site": "001d17b8",
+        "cell": "00290acc",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d17a8",
+        "word_sha256": "06dd29a9cf38e782010923a7592529d0f219c816e38da0c528928e906e7935bd"
+      },
+      {
+        "site": "001d17c0",
+        "cell": "00290ad0",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d17a8",
+        "word_sha256": "0d41db7c6ef24cb83b91d2347c76abe1ff58cba59967a225e101eaa8d0d8d233"
+      },
+      {
+        "site": "001d17cc",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d17c8",
+        "word_sha256": "8afba40071db5e97bd4c43377d6169936649c8c09c1de9aee7f05469f6a90808"
+      },
+      {
+        "site": "001d17ec",
+        "cell": "00290ac4",
+        "kind": "store",
+        "width": 4,
+        "register": 16,
+        "saved_owner": "001d17c8",
+        "word_sha256": "21505851a92422405b5b5685259c28a4b898f2c04b696342026eb4c67a5fe14e"
+      },
+      {
+        "site": "001d1800",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owner": "001d1800",
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d1840",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owner": "001d1840",
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d1870",
+        "cell": "00290acc",
+        "kind": "load",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d1840",
+        "word_sha256": "55511642902ae0fd6cdbff136a830c23c2dcc461cfcfb4bd7ffba60c1d3d5624"
+      },
+      {
+        "site": "001d1880",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owner": "001d1880",
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d18b0",
+        "cell": "00290ad4",
+        "kind": "load",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d1880",
+        "word_sha256": "3679a87d6ca0ef9936f227e4ed3718546678d7e209dbbd09ee0ad7073400ad68"
+      },
+      {
+        "site": "001d18c0",
+        "cell": "00290ac4",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owner": "001d18c0",
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d18f0",
+        "cell": "00290ad0",
+        "kind": "load",
+        "width": 4,
+        "register": 2,
+        "saved_owner": "001d18c0",
+        "word_sha256": "9066b5a230bbfa333969a641c55bb1a3e7d9f0b4eaa1275a191221d5248b1c4b"
+      }
+    ],
+    "previous_accessor_observation": {
+      "start": "001d1800",
+      "end_exclusive": "001d183c",
+      "bytes": 60,
+      "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+    },
+    "reconciled_db_id_loads": [
+      {
+        "site": "001d1414",
+        "kind": "load",
+        "width": 4,
+        "register": 17,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "294e790129d739b774842900842d49ad91398f225be7ff1893135f75ea29eea6"
+      },
+      {
+        "site": "001d1460",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67"
+      },
+      {
+        "site": "001d1488",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1498",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d14ac",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d14c0",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1538",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1564",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d15dc",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d17b0",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owners": [
+          "001d17a8"
+        ],
+        "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67"
+      },
+      {
+        "site": "001d17cc",
+        "kind": "load",
+        "width": 4,
+        "register": 2,
+        "saved_owners": [
+          "001d17c8"
+        ],
+        "word_sha256": "8afba40071db5e97bd4c43377d6169936649c8c09c1de9aee7f05469f6a90808"
+      },
+      {
+        "site": "001d17ec",
+        "kind": "store",
+        "width": 4,
+        "register": 16,
+        "saved_owners": [
+          "001d17c8"
+        ],
+        "word_sha256": "21505851a92422405b5b5685259c28a4b898f2c04b696342026eb4c67a5fe14e"
+      },
+      {
+        "site": "001d1800",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [
+          "001d1800"
+        ],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d1840",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [
+          "001d1840"
+        ],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d1880",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [
+          "001d1880"
+        ],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d18c0",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [
+          "001d18c0"
+        ],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      }
+    ],
+    "release_callee": "00120aa8",
+    "release_dependency": {
+      "entry": "00120aa8",
+      "saved_bytes": 904,
+      "entry_window_bytes": 64,
+      "entry_window_sha256": "e24304ffef110a69137b73f3409011528b93ddb14e23ca2fcffcf96f82cf76c6",
+      "ordered_instruction_word_sha256": "63127cf443c2f6a1da0c028be50a15c5e416170a0f3730e0fb8100642df6fafa",
+      "normal_return_sites": [
+        "00120e28"
+      ],
+      "input": "A0 is shifted right20 then masked15, forming an index with stride276 into base00233070. Pointer stored in a shared GP cell before cleanup calls.",
+      "return": "Normal return site exists; wrapper ignores its value. Original declaration unknown.",
+      "ownership": "External dependency only; no attribution or implementation credit."
+    },
+    "search_boundary": "All aligned file-backed allocated words, direct J/JAL and literal pointers; all saved instruction bytes compared to ELF. No computed alias or unaligned-pointer analysis.",
+    "limits": [
+      "No direct or literal incoming references to release or siblings observed.",
+      "No sibling caller argument/return use or runtime reachability established.",
+      "Loader saved body is noncontiguous; its envelope receives no attribution.",
+      "New spans remain ownership candidates; original accessor retains its prior decision."
+    ],
+    "private_inputs": {
+      "original_inventory": {
+        "bytes": 54861128,
+        "sha256": "021c30af6a51cd239be7e01bd5e76c99c49b898f95770aad6154dd7061177edf"
+      },
+      "reconciled_inventory": {
+        "bytes": 54861366,
+        "sha256": "839076de9050e28a213002686c7a07dc121a15535216e65dc85eeee7bcf355ed"
+      },
+      "boundary": {
+        "bytes": 625,
+        "sha256": "23bc4c2e0e98c2a66f9c3589f0ed363079c6e148e9c549d3e539cdacc214e99b"
+      }
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 17098,
+      "sha256": "b190d34dad6b7a3379f806d48198a9daa99fb5e8d88502ec4afa49df53570737"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "reviewer": "root orchestration agent, independent stronger reasoning review",
+  "scope": [
+    "tools/check_rpc_contracts.py",
+    "tools/inventory_rpc_handoffs.py",
+    "tools/rpc_contracts.py",
+    "tools/rpc_profile.json",
+    "tools/test_rpc_contracts.py",
+    "notes/evidence/fr2-rpc-contracts/README.md"
+  ],
+  "disposition": "bounded candidate/framing patch accepted after specific traceability repairs; parent #26 incomplete",
+  "findings": [
+    {
+      "finding": "failed/incomplete packet input identity missing",
+      "resolution": "public decoder retains input hash/length for all dispositions; regression test and real CLI controls pass"
+    },
+    {
+      "finding": "directly imported parser/verifier source hashes missing",
+      "resolution": "both CLI receipt source-input lists bind all directly imported local modules and fixed profile inputs; concrete control receipt assertions pass"
+    }
+  ],
+  "gate": "jev-gate.json, original escalation preserved without retry",
+  "validation": "focused-tests.log, controls.json, validation.json; no full handoff/runtime acceptance"
+}

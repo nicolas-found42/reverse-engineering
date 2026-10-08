@@ -1,0 +1,101 @@
+[
+  {
+    "name": "positive",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--output",
+      ".scratch/rpc-controls/positive",
+      "--packet",
+      ".scratch/rpc-controls/positive.bin"
+    ],
+    "exit_code": 0,
+    "stdout": "{\"status\": \"pass\", \"result\": \".scratch/rpc-controls/positive/20261008T193524Z-cfdb5a6e4d8d4ee4a51a595491e4a3ff/result.json\", \"diagnostics\": []}\n",
+    "stderr": ""
+  },
+  {
+    "name": "negative",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--output",
+      ".scratch/rpc-controls/negative",
+      "--packet",
+      ".scratch/rpc-controls/negative.bin"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"fail\", \"result\": \".scratch/rpc-controls/negative/20261008T193524Z-9574c20e86c942eba24c8fc90f64a400/result.json\", \"diagnostics\": [\"Invalid: channel-volume layout requires three halfwords\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "incomplete",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--output",
+      ".scratch/rpc-controls/incomplete",
+      "--packet",
+      ".scratch/rpc-controls/incomplete.bin"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"status\": \"incomplete\", \"result\": \".scratch/rpc-controls/incomplete/20261008T193524Z-888cbeeb73fb4335a5227a885224f954/result.json\", \"diagnostics\": [\"required STREAM subcommand contract is unresolved\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "absent",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--output",
+      ".scratch/rpc-controls/absent"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"status\": \"incomplete\", \"result\": \".scratch/rpc-controls/absent/20261008T193524Z-3f3468eddb924827ac4b5dcc08cc07b8/result.json\", \"diagnostics\": [\"required channel-volume packet observation/control is absent\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "stale",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "tools/check_rpc_contracts.py",
+      "--ee",
+      ".scratch/rpc-controls/positive.bin",
+      "--stream",
+      ".scratch/rpc-controls/nonexistent.IRX",
+      "--output",
+      ".scratch/rpc-controls/stale"
+    ],
+    "exit_code": 1,
+    "stdout": "{\"status\": \"fail\", \"result\": \".scratch/rpc-controls/stale/20261008T193524Z-b183e65b6b384f6f82889a4d610eada5/result.json\", \"diagnostics\": [\"Invalid: ee static profile identity mismatch\"]}\n",
+    "stderr": ""
+  },
+  {
+    "name": "inventory",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "tools/inventory_rpc_handoffs.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted",
+      "--output",
+      ".scratch/rpc-controls/inventory"
+    ],
+    "exit_code": 2,
+    "stdout": "{\"status\": \"incomplete\", \"result\": \".scratch/rpc-controls/inventory/20261008T193524Z-d4df9b69166c4503a7ffc76ec8372779/result.json\", \"diagnostics\": [\"required parent handoff inventory is not yet reconciled\"]}\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,830 @@
+{
+  "tool": "jev_gate",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "openrouter",
+  "truncated": false,
+  "action": "escalate",
+  "reason_codes": [
+    "confidence_below_review",
+    "safe_to_apply_below_review",
+    "review_escalated",
+    "claims_contradicted",
+    "claim_confidence_low",
+    "claim_confidence_below_auto_accept"
+  ],
+  "review": {
+    "mode": "per-file",
+    "action": "escalate",
+    "composite": 0.561625,
+    "safe_to_apply": 0.15,
+    "reason_codes": [
+      "confidence_below_review",
+      "safe_to_apply_below_review"
+    ],
+    "limiting": [
+      {
+        "file": "tools/check_rpc_contracts.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/headless_oracle.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/inventory_rpc_handoffs.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/misc3d_lifecycle.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/misc3d_lifecycle_observation.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/test_headless_oracle.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/test_misc3d_lifecycle.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/test_misc3d_lifecycle_observation.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/test_rpc_contracts.py",
+        "rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "file": "tools/test_rpc_handoff_inventory.py",
+        "rubrics": [
+          "correctness",
+          "test_gap"
+        ]
+      }
+    ],
+    "weights": {
+      "correctness": 0.4,
+      "spec_match": 0.3,
+      "test_gap": 0.15,
+      "blast_radius": 0.15
+    },
+    "thresholds": {
+      "auto_accept": 0.8,
+      "review_at": 0.5,
+      "composite_floor": 0.7
+    },
+    "files": [
+      {
+        "path": "tools/check_rpc_contracts.py",
+        "safe_to_apply": 0.17,
+        "scores": {
+          "correctness": {
+            "score": 0.65,
+            "confidence": 0.02,
+            "probabilities": {
+              "0": 0.54,
+              "1": 0.27,
+              "2": 0.19
+            }
+          },
+          "spec_match": {
+            "score": 1.6,
+            "confidence": 0.39,
+            "probabilities": {
+              "0": 0.03,
+              "1": 0.35,
+              "2": 0.62
+            }
+          },
+          "test_gap": {
+            "score": 1.21,
+            "confidence": 0.29,
+            "probabilities": {
+              "0": 0.13,
+              "1": 0.53,
+              "2": 0.34
+            }
+          },
+          "blast_radius": {
+            "score": 1,
+            "confidence": 0.04,
+            "probabilities": {
+              "0": 0.32,
+              "1": 0.36,
+              "2": 0.32
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.50425,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/headless_oracle.py",
+        "safe_to_apply": 0.24,
+        "scores": {
+          "correctness": {
+            "score": 1.08,
+            "confidence": 0,
+            "probabilities": {
+              "0": 0.29,
+              "1": 0.34,
+              "2": 0.37
+            }
+          },
+          "spec_match": {
+            "score": 1.73,
+            "confidence": 0.61,
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.22,
+              "2": 0.76
+            }
+          },
+          "test_gap": {
+            "score": 1.08,
+            "confidence": 0.31,
+            "probabilities": {
+              "0": 0.19,
+              "1": 0.54,
+              "2": 0.27
+            }
+          },
+          "blast_radius": {
+            "score": 1.09,
+            "confidence": 0.23,
+            "probabilities": {
+              "0": 0.21,
+              "1": 0.49,
+              "2": 0.3
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.61275,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/inventory_rpc_handoffs.py",
+        "safe_to_apply": 0.19,
+        "scores": {
+          "correctness": {
+            "score": 0.63,
+            "confidence": 0.05,
+            "probabilities": {
+              "0": 0.55,
+              "1": 0.27,
+              "2": 0.18
+            }
+          },
+          "spec_match": {
+            "score": 1.58,
+            "confidence": 0.37,
+            "probabilities": {
+              "0": 0.03,
+              "1": 0.36,
+              "2": 0.61
+            }
+          },
+          "test_gap": {
+            "score": 1.23,
+            "confidence": 0.2,
+            "probabilities": {
+              "0": 0.15,
+              "1": 0.47,
+              "2": 0.38
+            }
+          },
+          "blast_radius": {
+            "score": 1.34,
+            "confidence": 0.19,
+            "probabilities": {
+              "0": 0.1,
+              "1": 0.46,
+              "2": 0.44
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.47024999999999995,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/misc3d_lifecycle.py",
+        "safe_to_apply": 0.15,
+        "scores": {
+          "correctness": {
+            "score": 0.62,
+            "confidence": 0.07,
+            "probabilities": {
+              "0": 0.55,
+              "1": 0.28,
+              "2": 0.17
+            }
+          },
+          "spec_match": {
+            "score": 1.68,
+            "confidence": 0.53,
+            "probabilities": {
+              "0": 0.02,
+              "1": 0.27,
+              "2": 0.71
+            }
+          },
+          "test_gap": {
+            "score": 1.16,
+            "confidence": 0.28,
+            "probabilities": {
+              "0": 0.16,
+              "1": 0.52,
+              "2": 0.32
+            }
+          },
+          "blast_radius": {
+            "score": 0.99,
+            "confidence": 0.3,
+            "probabilities": {
+              "0": 0.24,
+              "1": 0.53,
+              "2": 0.23
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.51475,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/misc3d_lifecycle_observation.py",
+        "safe_to_apply": 0.17,
+        "scores": {
+          "correctness": {
+            "score": 0.62,
+            "confidence": 0.07,
+            "probabilities": {
+              "0": 0.51,
+              "1": 0.36,
+              "2": 0.13
+            }
+          },
+          "spec_match": {
+            "score": 1.64,
+            "confidence": 0.47,
+            "probabilities": {
+              "0": 0.03,
+              "1": 0.29,
+              "2": 0.68
+            }
+          },
+          "test_gap": {
+            "score": 1.08,
+            "confidence": 0.25,
+            "probabilities": {
+              "0": 0.21,
+              "1": 0.5,
+              "2": 0.29
+            }
+          },
+          "blast_radius": {
+            "score": 0.96,
+            "confidence": 0.31,
+            "probabilities": {
+              "0": 0.25,
+              "1": 0.54,
+              "2": 0.21
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.517,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/test_headless_oracle.py",
+        "safe_to_apply": 0.36,
+        "scores": {
+          "correctness": {
+            "score": 1,
+            "confidence": 0,
+            "probabilities": {
+              "0": 0.37,
+              "1": 0.26,
+              "2": 0.37
+            }
+          },
+          "spec_match": {
+            "score": 1.61,
+            "confidence": 0.43,
+            "probabilities": {
+              "0": 0.06,
+              "1": 0.26,
+              "2": 0.68
+            }
+          },
+          "test_gap": {
+            "score": 0.94,
+            "confidence": 0.05,
+            "probabilities": {
+              "0": 0.35,
+              "1": 0.37,
+              "2": 0.28
+            }
+          },
+          "blast_radius": {
+            "score": 0.44,
+            "confidence": 0.34,
+            "probabilities": {
+              "0": 0.64,
+              "1": 0.28,
+              "2": 0.08
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.638,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/test_misc3d_lifecycle.py",
+        "safe_to_apply": 0.29,
+        "scores": {
+          "correctness": {
+            "score": 1.03,
+            "confidence": 0,
+            "probabilities": {
+              "0": 0.36,
+              "1": 0.25,
+              "2": 0.39
+            }
+          },
+          "spec_match": {
+            "score": 1.62,
+            "confidence": 0.44,
+            "probabilities": {
+              "0": 0.04,
+              "1": 0.29,
+              "2": 0.67
+            }
+          },
+          "test_gap": {
+            "score": 0.99,
+            "confidence": 0.14,
+            "probabilities": {
+              "0": 0.29,
+              "1": 0.43,
+              "2": 0.28
+            }
+          },
+          "blast_radius": {
+            "score": 0.49,
+            "confidence": 0.27,
+            "probabilities": {
+              "0": 0.59,
+              "1": 0.33,
+              "2": 0.08
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.638,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/test_misc3d_lifecycle_observation.py",
+        "safe_to_apply": 0.23,
+        "scores": {
+          "correctness": {
+            "score": 0.88,
+            "confidence": 0,
+            "probabilities": {
+              "0": 0.4,
+              "1": 0.32,
+              "2": 0.28
+            }
+          },
+          "spec_match": {
+            "score": 1.53,
+            "confidence": 0.3,
+            "probabilities": {
+              "0": 0.08,
+              "1": 0.31,
+              "2": 0.61
+            }
+          },
+          "test_gap": {
+            "score": 1.04,
+            "confidence": 0.19,
+            "probabilities": {
+              "0": 0.25,
+              "1": 0.46,
+              "2": 0.29
+            }
+          },
+          "blast_radius": {
+            "score": 0.82,
+            "confidence": 0.2,
+            "probabilities": {
+              "0": 0.36,
+              "1": 0.47,
+              "2": 0.17
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.566,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/test_rpc_contracts.py",
+        "safe_to_apply": 0.27,
+        "scores": {
+          "correctness": {
+            "score": 0.94,
+            "confidence": 0,
+            "probabilities": {
+              "0": 0.39,
+              "1": 0.27,
+              "2": 0.34
+            }
+          },
+          "spec_match": {
+            "score": 1.53,
+            "confidence": 0.3,
+            "probabilities": {
+              "0": 0.09,
+              "1": 0.29,
+              "2": 0.62
+            }
+          },
+          "test_gap": {
+            "score": 1.06,
+            "confidence": 0.13,
+            "probabilities": {
+              "0": 0.26,
+              "1": 0.42,
+              "2": 0.32
+            }
+          },
+          "blast_radius": {
+            "score": 0.66,
+            "confidence": 0.03,
+            "probabilities": {
+              "0": 0.53,
+              "1": 0.29,
+              "2": 0.18
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.5885,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      },
+      {
+        "path": "tools/test_rpc_handoff_inventory.py",
+        "safe_to_apply": 0.23,
+        "scores": {
+          "correctness": {
+            "score": 0.94,
+            "confidence": 0,
+            "probabilities": {
+              "0": 0.4,
+              "1": 0.26,
+              "2": 0.34
+            }
+          },
+          "spec_match": {
+            "score": 1.47,
+            "confidence": 0.22,
+            "probabilities": {
+              "0": 0.1,
+              "1": 0.32,
+              "2": 0.58
+            }
+          },
+          "test_gap": {
+            "score": 1.24,
+            "confidence": 0,
+            "probabilities": {
+              "0": 0.22,
+              "1": 0.32,
+              "2": 0.46
+            }
+          },
+          "blast_radius": {
+            "score": 0.65,
+            "confidence": 0.04,
+            "probabilities": {
+              "0": 0.53,
+              "1": 0.3,
+              "2": 0.17
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "escalate",
+        "composite": 0.56675,
+        "reason_codes": [
+          "confidence_below_review",
+          "safe_to_apply_below_review"
+        ],
+        "limiting_rubrics": [
+          "correctness",
+          "test_gap"
+        ]
+      }
+    ]
+  },
+  "verification": {
+    "action": "escalate",
+    "summary": {
+      "verified": 4,
+      "contradicted": 4,
+      "unsupported": 0,
+      "needs_review": 7,
+      "invalid_response": 0
+    },
+    "thresholds": {
+      "auto_accept": 0.8,
+      "review_at": 0.5
+    },
+    "results": [
+      {
+        "claim": "The focused command ran 88 tests with OK and 3 skips.",
+        "verdict": "verified",
+        "confidence": 0.91,
+        "probabilities": {
+          "verified": 0.9400000000000001,
+          "unsupported": 0,
+          "contradicted": 0.06
+        },
+        "action": "auto"
+      },
+      {
+        "claim": "Combined missing Core plus changed Gui and missing legacy plugin plus changed Gui controls fail and the changed library identity is retained.",
+        "verdict": "verified",
+        "confidence": 0.25,
+        "probabilities": {
+          "verified": 0.5,
+          "unsupported": 0.05,
+          "contradicted": 0.45
+        },
+        "action": "escalate"
+      },
+      {
+        "claim": "Lifecycle missing observation or missing previous provenance does not hide a changed available source; public CLI missing source plus changed sibling fails and missing-only remains incomplete.",
+        "verdict": "contradicted",
+        "confidence": 0.51,
+        "probabilities": {
+          "verified": 0.3,
+          "unsupported": 0.03,
+          "contradicted": 0.67
+        },
+        "action": "review"
+      },
+      {
+        "claim": "Observation CLI available changed executable or wrong boundary or bad saved instruction fails despite absent metadata/counterpart; missing-only is incomplete.",
+        "verdict": "contradicted",
+        "confidence": 0.67,
+        "probabilities": {
+          "unsupported": 0.07,
+          "verified": 0.15,
+          "contradicted": 0.78
+        },
+        "action": "review"
+      },
+      {
+        "claim": "RPC missing EE plus changed STREAM fails. Available malformed packet with missing EE fails, while valid or unsupported packet plus missing EE is incomplete. Available raw input identities are recorded.",
+        "verdict": "contradicted",
+        "confidence": 0.49,
+        "probabilities": {
+          "verified": 0.24,
+          "unsupported": 0.1,
+          "contradicted": 0.66
+        },
+        "action": "escalate"
+      },
+      {
+        "claim": "Real fixed-profile RPC positive, malformed, unsupported controls exit0/1/2; combined missingEE with those controls exits2/1/2. Full fixed24 frontier inventory remains incomplete.",
+        "verdict": "verified",
+        "confidence": 0.4,
+        "probabilities": {
+          "verified": 0.6,
+          "unsupported": 0.04,
+          "contradicted": 0.36
+        },
+        "action": "escalate"
+      },
+      {
+        "claim": "Frontier available changed pinned STREAM or malformed ROM fails despite missing EE; missing-only remains incomplete.",
+        "verdict": "contradicted",
+        "confidence": 0.73,
+        "probabilities": {
+          "verified": 0.13,
+          "unsupported": 0.05,
+          "contradicted": 0.82
+        },
+        "action": "review"
+      },
+      {
+        "claim": "IP rails and diff checks pass. Lifecycle/RPC code and test type checks have0 errors. The headless14 diagnostics preexist unchanged at fe44c0c. No guest execution or new credit is introduced.",
+        "verdict": "verified",
+        "confidence": 0.53,
+        "probabilities": {
+          "unsupported": 0.1,
+          "verified": 0.69,
+          "contradicted": 0.21
+        },
+        "action": "review"
+      }
+    ]
+  },
+  "usage": {
+    "input_tokens": 25441,
+    "output_tokens": 1245
+  }
+}
