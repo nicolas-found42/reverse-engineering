@@ -1,0 +1,389 @@
+{
+  "schema_version": 1,
+  "check": "assets:consumer-contracts",
+  "run_id": "20261008T053232Z-092906dd3a6a458bb55548636d5f07cb",
+  "status": "incomplete",
+  "diagnostics": [
+    "required asset consumer contracts remain partial or unresolved"
+  ],
+  "inputs": {
+    "FILES.HDR": {
+      "bytes": 29428,
+      "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+    },
+    "FILES.DAT": {
+      "bytes": 334641152,
+      "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+    },
+    "asset-consumer-contracts.json": {
+      "bytes": 14109,
+      "sha256": "3cd13ac8b7d8bc9fcc1da696768d00d29bf7a97b2736527a113ce027b90a97f9"
+    }
+  },
+  "families": {
+    ".cfg": {
+      "file_count": 16,
+      "variants": {
+        "raw": 16
+      }
+    },
+    ".dat": {
+      "file_count": 216,
+      "variants": {
+        "raw": 216
+      }
+    },
+    ".db": {
+      "file_count": 2,
+      "variants": {
+        "raw": 2
+      }
+    },
+    ".ico": {
+      "file_count": 4,
+      "variants": {
+        "raw": 4
+      }
+    },
+    ".mbf": {
+      "file_count": 5,
+      "variants": {
+        "raw": 5
+      }
+    },
+    ".mib": {
+      "file_count": 20,
+      "variants": {
+        "raw": 20
+      }
+    },
+    ".mih": {
+      "file_count": 20,
+      "variants": {
+        "raw": 20
+      }
+    },
+    ".msb": {
+      "file_count": 27,
+      "variants": {
+        "raw": 27
+      }
+    },
+    ".msh": {
+      "file_count": 27,
+      "variants": {
+        "raw": 27
+      }
+    },
+    ".old": {
+      "file_count": 1,
+      "variants": {
+        "raw": 1
+      }
+    },
+    ".ps2": {
+      "file_count": 56,
+      "variants": {
+        "zlib": 56
+      }
+    },
+    ".pss": {
+      "file_count": 2,
+      "variants": {
+        "raw": 2
+      }
+    },
+    ".ptg": {
+      "file_count": 548,
+      "variants": {
+        "zlib": 548
+      }
+    },
+    ".sbf": {
+      "file_count": 1,
+      "variants": {
+        "raw": 1
+      }
+    },
+    ".ui": {
+      "file_count": 45,
+      "variants": {
+        "raw": 45
+      }
+    }
+  },
+  "contracts": [
+    {
+      "id": "configuration-cfg",
+      "asset_types": [
+        "configuration"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".cfg"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "database-db-unclassified",
+      "asset_types": [
+        "database (unclassified)"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".db"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "frontend-mbf",
+      "asset_types": [
+        "front-end data (unclassified)"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".mbf"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "icon-ico",
+      "asset_types": [
+        "icon image"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".ico"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "interface-ui",
+      "asset_types": [
+        "UI/interface data"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".ui"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "legacy-old",
+      "asset_types": [
+        "unclassified legacy-named data"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".old"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "model-ps2",
+      "asset_types": [
+        "model name tree",
+        "model geometry",
+        "texture library"
+      ],
+      "status": "partial",
+      "extensions": [
+        ".ps2"
+      ],
+      "loader_evidence": [
+        {
+          "function": "FUN_00123908",
+          "source": "notes/evidence/fr2-continuation/next-phase.md"
+        },
+        {
+          "function": "FUN_0011ed90",
+          "source": "notes/evidence/fr2-geometry-consumer-audit/README.md"
+        },
+        {
+          "function": "00222358",
+          "source": "notes/evidence/fr2-texture-upload-audit/README.md"
+        }
+      ],
+      "variant_dispositions": {
+        "zlib": "covered"
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md",
+        "notes/evidence/fr2-geometry-consumer-audit/README.md"
+      ]
+    },
+    {
+      "id": "music-mib",
+      "asset_types": [
+        "music stream payload"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".mib"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ]
+    },
+    {
+      "id": "music-mih",
+      "asset_types": [
+        "music stream header"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".mih"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ]
+    },
+    {
+      "id": "sound-bank-msb",
+      "asset_types": [
+        "sound bank sample payload"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".msb"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ]
+    },
+    {
+      "id": "sound-bank-msh",
+      "asset_types": [
+        "sound bank header"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".msh"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ]
+    },
+    {
+      "id": "sound-bank-sbf",
+      "asset_types": [
+        "sound bank (unclassified)"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".sbf"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "sprite-ptg",
+      "asset_types": [
+        "PTG sprite"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".ptg"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "zlib": "unresolved"
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ]
+    },
+    {
+      "id": "text-and-data-dat-unclassified",
+      "asset_types": [
+        "text/data (unclassified)"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".dat"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    },
+    {
+      "id": "video-pss",
+      "asset_types": [
+        "video/container"
+      ],
+      "status": "unresolved",
+      "extensions": [
+        ".pss"
+      ],
+      "loader_evidence": [],
+      "variant_dispositions": {
+        "raw": "unresolved"
+      },
+      "structure_evidence": []
+    }
+  ],
+  "unresolved_contracts": [
+    "configuration-cfg",
+    "database-db-unclassified",
+    "frontend-mbf",
+    "icon-ico",
+    "interface-ui",
+    "legacy-old",
+    "model-ps2",
+    "music-mib",
+    "music-mih",
+    "sound-bank-msb",
+    "sound-bank-msh",
+    "sound-bank-sbf",
+    "sprite-ptg",
+    "text-and-data-dat-unclassified",
+    "video-pss"
+  ],
+  "complete": false,
+  "claim_limits": "Archive-derived extension and raw/zlib inventory plus evidence-binding validation only. Complete status requires documented coverage of every observed storage variant. This checker does not validate asset semantics or prove loader behavior beyond its cited evidence."
+}
