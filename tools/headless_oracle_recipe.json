@@ -29,9 +29,24 @@
     "provider": "local installed PCSX2 app plus locally built Qt 6.10.1 offscreen platform plugin",
     "sandbox": "macOS sandbox-exec; deny all mach lookup and IP network, allow only fixed PINE AF_UNIX socket and isolated run-tree writes"
   },
+  "acceptance_qualification": {
+    "status": "incomplete_until_independently_qualified",
+    "effective_audio_route": "not observed; Null/mute configuration alone is insufficient",
+    "desktop_observation_interval_ms": 50,
+    "desktop_sample_count": 400,
+    "desktop_nominal_duration_ms": 20000,
+    "transient_window_or_focus_events": "not ruled out between samples or outside the observation interval",
+    "caller_claim_can_unlock_pass": false
+  },
   "offscreen_plugin_builder": {
     "qt_release": "6.10.1",
-    "official_source_archive_sha256": "e469b996bd4dd6409aeab1a2034eb73267d5c8de84aa6224bf7c9520cdcbd309",
+    "local_sdk_archive_sha256": "e469b996bd4dd6409aeab1a2034eb73267d5c8de84aa6224bf7c9520cdcbd309",
+    "sdk_spdx_source_revision": "90b845d15ffb97693dba527385db83510ebd121a",
+    "sdk_spdx_scope": "prebuilt Qt SDK; its qtbase package has PackageLicenseConcluded=NOASSERTION and PackageLicenseDeclared=NOASSERTION",
+    "upstream_offscreen_source": "https://github.com/qt/qtbase/tree/v6.10.1/src/plugins/platforms/offscreen",
+    "upstream_source_archive": "https://download.qt.io/official_releases/qt/6.10/6.10.1/submodules/qtbase-everywhere-src-6.10.1.zip",
+    "source_hashes_verified_against_official_tag": true,
+    "corresponding_source_disposition": "Four plugin implementation files match the official v6.10.1 tag; the full Qt framework source corresponding to the SDK build and any written source offer are not bound by this local evidence.",
     "build_command_sha256": "e5786e5d4738715fd64ac6f35325b82ab67ba3be8139233d72f29dedaffe6ab5",
     "preparation_record_sha256": "068164de1068b1ebbb566224cd5ccb2b0bcebab6764afadcc5e365acf267dca1",
     "source_files": {
