@@ -101,6 +101,35 @@ class RangeCli(unittest.TestCase):
         self.assertEqual([(s['section'], s['address'], s['length']) for s in outside],
                          [('.bss', 0x200000, 16)])
 
+    def test_changed_module_fails_even_with_a_different_module_missing(self):
+        game = TOOLS.parent / 'games/ford-racing-2'
+        if not (game / 'extracted/IRX/USBD.IRX').is_file():
+            self.skipTest('real pinned module mutation requires local corpus')
+        mirror = self.root / 'game'
+        mirror.mkdir()
+        for name in ('ford-racing-2.bin', 'ford-racing-2.cue'):
+            (mirror / name).symlink_to(game / name)
+        ex = mirror / 'extracted'
+        ex.mkdir()
+        for name in ('SLES_517.05', 'FILES.HDR', 'FILES.DAT'):
+            (ex / name).symlink_to(game / 'extracted' / name)
+        modules = ex / 'IRX'
+        modules.mkdir()
+        for source in (game / 'extracted/IRX').iterdir():
+            if source.name in ('PADMAN.IRX', '.DS_Store'):
+                continue
+            if source.name == 'USBD.IRX':
+                (modules / source.name).write_bytes(source.read_bytes() + b'changed')
+            else:
+                (modules / source.name).symlink_to(source)
+        output = self.root / 'results'
+        run = subprocess.run([sys.executable, str(TOOLS / 'matching_ranges.py'),
+                              'corpus', str(mirror), '--output', str(output)],
+                             capture_output=True, text=True)
+        result = json.loads(next(output.glob('*/result.json')).read_text())
+        self.assertEqual((run.returncode, result['status']), (1, 'fail'))
+        self.assertIn('USBD.IRX', ' '.join(result['diagnostics']))
+
 
 if __name__ == '__main__':
     unittest.main()

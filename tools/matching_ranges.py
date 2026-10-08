@@ -103,17 +103,22 @@ def corpus_load_images(game: Path) -> dict:
     standalone = {row['source']: row for row in expected if row['offset'] == 0}
     discovered = {p.relative_to(extracted).as_posix() for p in (extracted / 'IRX').iterdir()
                   if p.is_file() and p.suffix.upper() == '.IRX'}
-    if discovered != set(standalone):
-        missing, additional = set(standalone) - discovered, discovered - set(standalone)
-        if additional:
-            raise Invalid(f'additional IOP modules: {sorted(additional)}')
-        raise Incomplete(f'missing IOP modules: {sorted(missing)}')
+    missing, additional = set(standalone) - discovered, discovered - set(standalone)
+    if additional:
+        raise Invalid(f'additional IOP modules: {sorted(additional)}')
+    payloads = []
+    for source, row in sorted(standalone.items()):
+        if source in missing:
+            continue
+        payload = (extracted / source).read_bytes()
+        if (len(payload), sha256(payload)) != (row['bytes'], row['sha256']):
+            raise Invalid(f'changed IOP module: {source}')
+        payloads.append((row['name'], payload))
     container = (extracted / 'IRX/IOPRP255.IMG').read_bytes()
     embedded = parse_romdir(container)['modules']
     expected_embedded = {row['name']: row for row in expected if row['offset'] != 0}
     if {row['name'] for row in embedded} != set(expected_embedded):
         raise Invalid('embedded IOP module inventory differs from the recorded corpus')
-    payloads = []
     for row in embedded:
         pinned = expected_embedded[row['name']]
         payload = container[row['offset']:row['offset'] + row['bytes']]
@@ -121,11 +126,8 @@ def corpus_load_images(game: Path) -> dict:
                 pinned['offset'], pinned['bytes'], pinned['sha256']):
             raise Invalid(f"changed embedded IOP module: {row['name']}")
         payloads.append((row['name'], payload))
-    for source, row in sorted(standalone.items()):
-        payload = (extracted / source).read_bytes()
-        if (len(payload), sha256(payload)) != (row['bytes'], row['sha256']):
-            raise Invalid(f'changed IOP module: {source}')
-        payloads.append((row['name'], payload))
+    if missing:
+        raise Incomplete(f'missing IOP modules: {sorted(missing)}')
     executable = (extracted / 'SLES_517.05').read_bytes()
     artifacts = [{'artifact': 'EE', **load_image_partition(executable)}]
     for name, payload in payloads:
