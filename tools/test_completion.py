@@ -44,6 +44,15 @@ class CompletionCli(unittest.TestCase):
         for child in details['children']:
             self.assertTrue(Path(child['receipt']).is_file())
             self.assertEqual(len(child['sha256']), 64)
+        inputs = {Path(path) for path in result['inputs']}
+        recipe = TOOLS / 'compiler_probe_recipe'
+        self.assertTrue({TOOLS / 'compiler_probe.py', recipe / 'run.py', recipe / 'build.py',
+                         TOOLS / 'matching_diff.py', TOOLS / 'matching_sections.py',
+                         TOOLS / 'corpus_contract.py', TOOLS / 'ps2_executables.py',
+                         TOOLS / 'evidence_common.py',
+                         recipe / 'candidate.c', recipe / 'candidate.ld',
+                         recipe / 'manifest.template.json', recipe / 'docker-linux-exec.sh',
+                         recipe / 'docker-wine-exec.sh'} <= inputs)
 
     def test_changed_present_input_fails_even_when_other_required_inputs_are_missing(self):
         game = self.root / 'game'

@@ -5,7 +5,8 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from compiler_probe_recipe import build
+from compiler_probe_recipe import build, run
+from evidence_common import Incomplete
 
 
 class BuildRecipeTests(unittest.TestCase):
@@ -34,8 +35,15 @@ class BuildRecipeTests(unittest.TestCase):
             self.assertEqual(manifest["reference"], str(reference_path.resolve()))
             self.assertEqual(manifest["source"], str((output / "candidate.c").resolve()))
             self.assertIn(str((output / "candidate.ld").resolve()), manifest["candidates"][0]["link"])
-            self.assertTrue(manifest["candidates"][0]["compile"][0].startswith(str(tool_root.resolve())))
+            self.assertEqual(manifest["candidates"][0]["compile"][0], "/bin/bash")
+            self.assertIn("docker-linux-exec.sh", manifest["candidates"][0]["compile"][1])
+            self.assertEqual(manifest["candidates"][0]["compile"][2], str(tool_root.resolve()))
             self.assertEqual(manifest["evidence"]["corpus"]["corpus_id"], "fixture")
+            run.validate_manifest_runtimes(manifest_path, tool_root)
+            manifest["candidates"][0]["runtime"]["image_id"] = "sha256:replacement"
+            manifest_path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(Incomplete, "declares a different runtime image"):
+                run.validate_manifest_runtimes(manifest_path, tool_root)
 
     def test_rejects_changed_reference_range(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -48,6 +56,84 @@ class BuildRecipeTests(unittest.TestCase):
                  patch.object(build, "sections", return_value={".text": type("Text", (), {"address": 0x100000, "data": b"x" * 0xE0000})()}):
                 with self.assertRaisesRegex(ValueError, "pinned range identity"):
                     build.prepare(game, root / "tools", root / "out")
+
+
+class RunnerCliTests(unittest.TestCase):
+    def run_fake_probe(self, tmp: Path, probe_result: dict) -> tuple[int, dict]:
+        game = tmp / "game"
+        executable = game / "extracted/SLES_517.05"
+        executable.parent.mkdir(parents=True)
+        executable.write_bytes(b"fixture corpus executable")
+        tool_root = tmp / "tool-root"
+        tool_root.mkdir()
+        manifest = tool_root / "manifest.json"
+        manifest.write_text("{}\n")
+        output = tmp / "receipts"
+
+        def prepare_fake(_game: Path, _tool_root: Path, _staging: Path) -> tuple[Path, None]:
+            return manifest, None
+
+        with patch.object(run, "prepare", side_effect=prepare_fake), \
+             patch.object(run, "validate_manifest_runtimes"), \
+             patch.object(run, "validate_runtime_images", return_value={"linux-tools": {}, "wine-compiler": {}}), \
+             patch.object(run, "run_probe", return_value=probe_result):
+            code = run.main([str(game), str(tool_root), "--output", str(output)])
+        receipt_paths = list(output.glob("*/result.json"))
+        self.assertEqual(len(receipt_paths), 1)
+        return code, json.loads(receipt_paths[0].read_text())
+
+    def test_unique_match_is_successful_probe_but_ac05_stays_incomplete(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = {"status": "pass", "selected_id": "candidate-a", "matches": ["candidate-a"],
+                      "failures": ["candidate-b"], "errors": [], "incomplete": [],
+                      "claim_limits": []}
+            code, receipt = self.run_fake_probe(Path(tmp), result)
+        self.assertEqual(code, 0)
+        self.assertEqual(receipt["status"], "pass")
+        self.assertEqual(receipt["details"]["probe_status"], "pass")
+        self.assertEqual(receipt["details"]["ac05_status"], "incomplete")
+        self.assertEqual(set(receipt["details"]["runtime_identity"]), {"linux-tools", "wine-compiler"})
+        self.assertTrue({Path(run.__file__).resolve(), Path(build.__file__).resolve(),
+                         Path(run.TOOLS / "compiler_probe.py").resolve(),
+                         Path(run.TOOLS / "matching_diff.py").resolve(),
+                         Path(run.TOOLS / "matching_sections.py").resolve(),
+                         Path(run.TOOLS / "corpus_contract.py").resolve(),
+                         Path(run.TOOLS / "ps2_executables.py").resolve(),
+                         Path(run.TOOLS / "evidence_common.py").resolve(),
+                         Path(run.__file__).with_name("candidate.c").resolve(),
+                         Path(run.__file__).with_name("candidate.ld").resolve(),
+                         Path(run.__file__).with_name("manifest.template.json").resolve(),
+                         Path(run.__file__).with_name("docker-linux-exec.sh").resolve(),
+                         Path(run.__file__).with_name("docker-wine-exec.sh").resolve()}
+                        <= {Path(path) for path in receipt["inputs"]})
+
+    def test_zero_matches_produces_failed_receipt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = {"status": "fail", "selected_id": None, "matches": [],
+                      "failures": ["candidate-a", "candidate-b"], "errors": [],
+                      "incomplete": [], "claim_limits": []}
+            code, receipt = self.run_fake_probe(Path(tmp), result)
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt["status"], "fail")
+        self.assertEqual(receipt["details"]["probe_status"], "fail")
+        self.assertEqual(receipt["details"]["nonmatching_candidates"], ["candidate-a", "candidate-b"])
+
+    def test_unavailable_candidate_produces_incomplete_receipt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = {"status": "incomplete", "selected_id": None, "matches": [],
+                      "failures": [], "errors": [], "incomplete": ["candidate-a"],
+                      "claim_limits": []}
+            code, receipt = self.run_fake_probe(Path(tmp), result)
+        self.assertEqual(code, 2)
+        self.assertEqual(receipt["status"], "incomplete")
+        self.assertEqual(receipt["details"]["probe_status"], "incomplete")
+
+    def test_replaced_runtime_image_id_is_rejected(self):
+        fake = type("Result", (), {"returncode": 0, "stdout": "sha256:replacement|linux/amd64\n",
+                                   "stderr": ""})()
+        with patch.object(run.subprocess, "run", return_value=fake):
+            with self.assertRaisesRegex(Incomplete, "identity or platform differs"):
+                run.validate_runtime_images()
 
 
 if __name__ == "__main__":

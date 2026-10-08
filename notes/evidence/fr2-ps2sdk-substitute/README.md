@@ -69,6 +69,7 @@ make -j1
 test "$(git -C common/external_deps/lwip rev-parse HEAD)" = 77dcd25a72509eb83f72b033d219b1d40cd8eb95
 test "$(git -C common/external_deps/fatfs rev-parse HEAD)" = 18cc3d9e07473a6aa3d783a66224b243a7b4974c
 make install
+python3 -c "from pathlib import Path; import sys; print('installed file count:', sum(path.is_file() for path in Path(sys.argv[1]).rglob('*')))" "$PS2SDK"
 cd "$PS2SDK/samples/debug/helloworld"
 make -B
 '

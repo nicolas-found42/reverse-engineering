@@ -1,0 +1,953 @@
+# compiler-probe-exploratory: pass
+
+
+
+```json
+{
+  "selected_id": "ee-gcc2.96",
+  "matches": [
+    "ee-gcc2.96"
+  ],
+  "errors": [],
+  "incomplete": [],
+  "manifest": {
+    "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/manifest.json",
+    "bytes": 26905,
+    "sha256": "abbd192cb3a48ceb9c911491737e270c4f8c617116c607eff36dc7aef3ae36e9"
+  },
+  "evidence": {
+    "corpus": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "reference_range": {
+      "section": ".text",
+      "vaddr": "001d1800",
+      "bytes": 60,
+      "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "interpretation": "source-map attribution only; not proof of authorship or ownership"
+    },
+    "candidate_source": "Hand-written exploratory reconstruction; inferred names, ABI and ownership; not original source.",
+    "tool_source": "decompme/compilers release tag compilers; per-candidate archive URLs and SHA-256 values follow.",
+    "tool_distributions": [
+      {
+        "candidate": "ee-gcc2.9-991111-01",
+        "archive": "ee-gcc2.9-991111-01.tar.xz",
+        "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.9-991111-01.tar.xz",
+        "expected_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8",
+        "available_locally": true,
+        "observed_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8"
+      },
+      {
+        "candidate": "ee-gcc2.95.2-273a",
+        "archive": "ee-gcc2.95.2-273a.tar.gz",
+        "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.2-273a.tar.gz",
+        "expected_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e",
+        "available_locally": true,
+        "observed_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e"
+      },
+      {
+        "candidate": "ee-gcc2.95.3-114",
+        "archive": "ee-gcc2.95.3-114.tar.gz",
+        "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-114.tar.gz",
+        "expected_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb",
+        "available_locally": true,
+        "observed_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb"
+      },
+      {
+        "candidate": "ee-gcc2.95.3-136",
+        "archive": "ee-gcc2.95.3-136.tar.gz",
+        "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-136.tar.gz",
+        "expected_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f",
+        "available_locally": true,
+        "observed_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f"
+      },
+      {
+        "candidate": "ee-gcc2.96",
+        "archive": "ee-gcc2.96.tar.xz",
+        "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.96.tar.xz",
+        "expected_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+        "available_locally": true,
+        "observed_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a"
+      },
+      {
+        "candidate": "ee-gcc3.2-030926",
+        "archive": "ee-gcc3.2-030926.tar.gz",
+        "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-030926.tar.gz",
+        "expected_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9",
+        "available_locally": true,
+        "observed_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9"
+      },
+      {
+        "candidate": "ee-gcc3.2-040921",
+        "archive": "ee-gcc3.2-040921.tar.xz",
+        "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-040921.tar.xz",
+        "expected_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f",
+        "available_locally": true,
+        "observed_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f"
+      }
+    ],
+    "license_status": "The release archives inspected do not include COPYING or LICENSE entries. Per-package redistribution terms are unresolved; no compiler binaries are redistributed here.",
+    "runtime_profile": "Immutable image IDs are verified before invocation: Debian Bookworm linux/amd64 with Wine 8 for Windows compiler drivers, and GNU binutils 2.40 in the Debian image for object preparation, linking, and objcopy.",
+    "linker_profile": "GNU binutils 2.40 substitution; not the original proprietary linker."
+  },
+  "source": {
+    "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.c",
+    "bytes": 453,
+    "sha256": "7a3b6e417dd3cb71cee3d5ffd36399cbd85eaa4aed49a273507d2938b02f2446"
+  },
+  "reference": {
+    "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/reference.bin",
+    "bytes": 60,
+    "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+  },
+  "symbol": "probe",
+  "candidates": [
+    {
+      "id": "ee-gcc2.9-991111-01",
+      "status": "fail",
+      "compiler_launcher": "/bin/bash",
+      "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.9-991111-01/bin/ee-gcc",
+      "objcopy_launcher": "/bin/bash",
+      "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "runtime": {
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64",
+        "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+        "packages": {
+          "libc6:i386": "2.36-9+deb12u14",
+          "libgcc-s1:i386": "12.2.0-14+deb12u1",
+          "binutils-mips-linux-gnu": "2.40-2cross2"
+        }
+      },
+      "compile_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.9-991111-01/bin/ee-gcc"
+      ],
+      "objcopy_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy"
+      ],
+      "flags": [
+        "-G8",
+        "-O2"
+      ],
+      "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "tool_files": {
+        "cc1": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.9-991111-01/lib/gcc-lib/ee/2.9-ee-991111-01/cc1",
+          "bytes": 4794381,
+          "sha256": "b9aef69f93efb949f15ea58189e8eef4a002b9fe4de5d3fcf89c34e1244ec026"
+        },
+        "cpp": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.9-991111-01/lib/gcc-lib/ee/2.9-ee-991111-01/cpp",
+          "bytes": 241396,
+          "sha256": "f85a54d241e019993fa7a06285d3677856b3b431e10318a587ab029373c603d7"
+        },
+        "gnu_assembler": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.9-991111-01/ee/bin/as",
+          "bytes": 2210289,
+          "sha256": "296af123052ee39d175e5b3254102aafca105d4f6e975b351a13867f59b04019"
+        },
+        "mips_linker": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      },
+      "compiler_sha256": "64d0a50fef499da0b98177eb5e79e41dfb066ad44246b137c78a266ef97ee265",
+      "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+      "compile_returncode": 0,
+      "compile_stderr": "",
+      "prepare_object_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-k_cbp9mj/candidate.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-k_cbp9mj/prepared.o"
+      ],
+      "prepare_object_returncode": 0,
+      "prepare_object_stderr": "",
+      "link_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.ld",
+        "--defsym=misc3d_db_id=0x00290ac4",
+        "--defsym=report_error=0x00105888",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-k_cbp9mj/linked.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-k_cbp9mj/prepared.o"
+      ],
+      "link_returncode": 0,
+      "link_stderr": "",
+      "objcopy_returncode": 0,
+      "objcopy_stderr": "",
+      "actual_sha256": "e54a7daa25ca8db663b12aa3bf17327ea0fe6b4b23838e71b867cb54383dfa60",
+      "actual_bytes": 64,
+      "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "reference_bytes": 60,
+      "gate": {
+        "section": ".probe.probe",
+        "scope": "mixed",
+        "status": "fail",
+        "reason": "bytes",
+        "matched_bytes": 0,
+        "section_bytes": 60,
+        "first_difference": {
+          "offset": 0,
+          "address": "00000000",
+          "file_offset": "00000000",
+          "word": 0,
+          "expected": "54ad838f",
+          "actual": "f0ffbd27"
+        }
+      },
+      "reason": "function bytes differ"
+    },
+    {
+      "id": "ee-gcc2.96",
+      "status": "pass",
+      "compiler_launcher": "/bin/bash",
+      "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+      "objcopy_launcher": "/bin/bash",
+      "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "runtime": {
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64",
+        "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+        "packages": {
+          "libc6:i386": "2.36-9+deb12u14",
+          "libgcc-s1:i386": "12.2.0-14+deb12u1",
+          "binutils-mips-linux-gnu": "2.40-2cross2"
+        }
+      },
+      "compile_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc"
+      ],
+      "objcopy_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy"
+      ],
+      "flags": [
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls"
+      ],
+      "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "tool_files": {
+        "cc1": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cc1",
+          "bytes": 5526661,
+          "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+        },
+        "cpp": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cpp0",
+          "bytes": 421478,
+          "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+        },
+        "gnu_assembler": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/ee/bin/as",
+          "bytes": 2169068,
+          "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+        },
+        "mips_linker": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      },
+      "compiler_sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b",
+      "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+      "compile_returncode": 0,
+      "compile_stderr": "",
+      "prepare_object_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-qf0l5z1s/candidate.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-qf0l5z1s/prepared.o"
+      ],
+      "prepare_object_returncode": 0,
+      "prepare_object_stderr": "",
+      "link_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.ld",
+        "--defsym=misc3d_db_id=0x00290ac4",
+        "--defsym=report_error=0x00105888",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-qf0l5z1s/linked.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-qf0l5z1s/prepared.o"
+      ],
+      "link_returncode": 0,
+      "link_stderr": "",
+      "objcopy_returncode": 0,
+      "objcopy_stderr": "",
+      "actual_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "actual_bytes": 60,
+      "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "reference_bytes": 60,
+      "gate": {
+        "section": ".probe.probe",
+        "scope": "mixed",
+        "status": "pass",
+        "reason": null,
+        "matched_bytes": 60,
+        "section_bytes": 60
+      }
+    },
+    {
+      "id": "ee-gcc3.2-030926",
+      "status": "fail",
+      "compiler_launcher": "/bin/bash",
+      "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-030926/bin/ee-gcc",
+      "objcopy_launcher": "/bin/bash",
+      "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "runtime": {
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64",
+        "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+        "packages": {
+          "libc6:i386": "2.36-9+deb12u14",
+          "libgcc-s1:i386": "12.2.0-14+deb12u1",
+          "binutils-mips-linux-gnu": "2.40-2cross2"
+        }
+      },
+      "compile_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-030926/bin/ee-gcc"
+      ],
+      "objcopy_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy"
+      ],
+      "flags": [
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls"
+      ],
+      "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "tool_files": {
+        "cc1": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-030926/lib/gcc-lib/ee/3.2-ee-030926/cc1",
+          "bytes": 9764536,
+          "sha256": "da4fec4d48d91e62fd968f76acb16981dd8131d02f27c1b7559f0e903b590eb6"
+        },
+        "cpp": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-030926/lib/gcc-lib/ee/3.2-ee-030926/cpp0",
+          "bytes": 703785,
+          "sha256": "2d1a4b260e143a8b467bb7609cb3fd60ae541174ffff78d922feb2d7fbb0e218"
+        },
+        "gnu_assembler": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-030926/ee/bin/as",
+          "bytes": 5887159,
+          "sha256": "d04424acb1359b31b3ad138f8d17876623ffe9182497ff4516055b71f22bf2fa"
+        },
+        "mips_linker": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      },
+      "compiler_sha256": "8ba17b0f2cbcc87b31bb164766bc3e7e340f714adfb518bc4634a6f1ffda8951",
+      "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+      "compile_returncode": 0,
+      "compile_stderr": "",
+      "prepare_object_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-n3ibindg/candidate.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-n3ibindg/prepared.o"
+      ],
+      "prepare_object_returncode": 0,
+      "prepare_object_stderr": "",
+      "link_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.ld",
+        "--defsym=misc3d_db_id=0x00290ac4",
+        "--defsym=report_error=0x00105888",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-n3ibindg/linked.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-n3ibindg/prepared.o"
+      ],
+      "link_returncode": 0,
+      "link_stderr": "",
+      "objcopy_returncode": 0,
+      "objcopy_stderr": "",
+      "actual_sha256": "2902d95cb4904c7bdb0884208592c92b09c842f250bb925d8f81fc0391499229",
+      "actual_bytes": 64,
+      "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "reference_bytes": 60,
+      "gate": {
+        "section": ".probe.probe",
+        "scope": "mixed",
+        "status": "fail",
+        "reason": "bytes",
+        "matched_bytes": 0,
+        "section_bytes": 60,
+        "first_difference": {
+          "offset": 0,
+          "address": "00000000",
+          "file_offset": "00000000",
+          "word": 0,
+          "expected": "54ad838f",
+          "actual": "f0ffbd27"
+        }
+      },
+      "reason": "function bytes differ"
+    },
+    {
+      "id": "ee-gcc3.2-040921",
+      "status": "fail",
+      "compiler_launcher": "/bin/bash",
+      "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-040921/bin/ee-gcc",
+      "objcopy_launcher": "/bin/bash",
+      "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "runtime": {
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64",
+        "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+        "packages": {
+          "libc6:i386": "2.36-9+deb12u14",
+          "libgcc-s1:i386": "12.2.0-14+deb12u1",
+          "binutils-mips-linux-gnu": "2.40-2cross2"
+        }
+      },
+      "compile_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-040921/bin/ee-gcc"
+      ],
+      "objcopy_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy"
+      ],
+      "flags": [
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls"
+      ],
+      "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "tool_files": {
+        "cc1": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-040921/lib/gcc-lib/ee/3.2-ee-040921/cc1",
+          "bytes": 7201720,
+          "sha256": "0bcc90bd23e10698e75047db9a84ea47e753791115fdd23d6f637a544f6d257d"
+        },
+        "cpp": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-040921/bin/ee-cpp",
+          "bytes": 266763,
+          "sha256": "ed76fe8e08c13c749d59a458d21c912567b10e5e01bff028a4147debd56d15e6"
+        },
+        "gnu_assembler": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc3.2-040921/ee/bin/as",
+          "bytes": 3706255,
+          "sha256": "cf85edec3ea30b0918e8a78ac49affca111a45e5b0ca9a776b6ded5c0118379b"
+        },
+        "mips_linker": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      },
+      "compiler_sha256": "a5095b5d7b55f91535b12e48e9d808170fa9fb8c0620c43c2fb61379b1a3663a",
+      "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+      "compile_returncode": 0,
+      "compile_stderr": "",
+      "prepare_object_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0kt99d5u/candidate.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0kt99d5u/prepared.o"
+      ],
+      "prepare_object_returncode": 0,
+      "prepare_object_stderr": "",
+      "link_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.ld",
+        "--defsym=misc3d_db_id=0x00290ac4",
+        "--defsym=report_error=0x00105888",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0kt99d5u/linked.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0kt99d5u/prepared.o"
+      ],
+      "link_returncode": 0,
+      "link_stderr": "",
+      "objcopy_returncode": 0,
+      "objcopy_stderr": "",
+      "actual_sha256": "2902d95cb4904c7bdb0884208592c92b09c842f250bb925d8f81fc0391499229",
+      "actual_bytes": 64,
+      "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "reference_bytes": 60,
+      "gate": {
+        "section": ".probe.probe",
+        "scope": "mixed",
+        "status": "fail",
+        "reason": "bytes",
+        "matched_bytes": 0,
+        "section_bytes": 60,
+        "first_difference": {
+          "offset": 0,
+          "address": "00000000",
+          "file_offset": "00000000",
+          "word": 0,
+          "expected": "54ad838f",
+          "actual": "f0ffbd27"
+        }
+      },
+      "reason": "function bytes differ"
+    },
+    {
+      "id": "ee-gcc2.95.2-273a",
+      "status": "fail",
+      "compiler_launcher": "/bin/bash",
+      "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.2-273a/bin/ee-gcc.exe",
+      "objcopy_launcher": "/bin/bash",
+      "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "runtime": {
+        "image": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64",
+        "runner": "Wine 8 Debian Bookworm on Linux amd64 via Docker Desktop"
+      },
+      "compile_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-wine-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.2-273a/bin/ee-gcc.exe"
+      ],
+      "objcopy_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy"
+      ],
+      "flags": [
+        "-G8",
+        "-O2"
+      ],
+      "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "tool_files": {
+        "cc1": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.2-273a/lib/gcc-lib/ee/2.95.2/cc1.exe",
+          "bytes": 1773568,
+          "sha256": "2aaf3d22ce5c3508ecba15f16b06737713263e6aee289ca1e43d3ff9c17d964f"
+        },
+        "cpp": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.2-273a/lib/gcc-lib/ee/2.95.2/cpp.exe",
+          "bytes": 110592,
+          "sha256": "f7db993de8745339ec71cf10d5fe9e7772d75e79a037e97809ed5e34ea3150c3"
+        },
+        "gnu_assembler": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.2-273a/lib/gcc-lib/ee/2.95.2/as.exe",
+          "bytes": 622592,
+          "sha256": "7f504e571215fead2a15a14520bd22dc13507a1f13b479ca8c06a165f4a886a4"
+        },
+        "specs": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.2-273a/lib/gcc-lib/ee/2.95.2/specs",
+          "bytes": 4260,
+          "sha256": "372d6255779b9214f7f980a8289461209c9be4cb12a91c6b4e01e14c0f91070c"
+        }
+      },
+      "compiler_sha256": "ab787f9bda2531e116f420eec639e7d34bcc92caf4eb8d3dc71fefddffd3fcfc",
+      "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+      "compile_returncode": 0,
+      "compile_stderr": "wine: created the configuration directory '/root/.wine'\nwine: configuration in L\"/root/.wine\" has been updated.\n",
+      "prepare_object_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0f8ucc_w/candidate.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0f8ucc_w/prepared.o"
+      ],
+      "prepare_object_returncode": 0,
+      "prepare_object_stderr": "",
+      "link_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.ld",
+        "--defsym=misc3d_db_id=0x00290ac4",
+        "--defsym=report_error=0x00105888",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0f8ucc_w/linked.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-0f8ucc_w/prepared.o"
+      ],
+      "link_returncode": 0,
+      "link_stderr": "",
+      "objcopy_returncode": 0,
+      "objcopy_stderr": "",
+      "actual_sha256": "31f5767905e165342ac41afabee74e3e2bcf55cdaad6c74aca29af11a20addd8",
+      "actual_bytes": 68,
+      "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "reference_bytes": 60,
+      "gate": {
+        "section": ".probe.probe",
+        "scope": "mixed",
+        "status": "fail",
+        "reason": "bytes",
+        "matched_bytes": 0,
+        "section_bytes": 60,
+        "first_difference": {
+          "offset": 0,
+          "address": "00000000",
+          "file_offset": "00000000",
+          "word": 0,
+          "expected": "54ad838f",
+          "actual": "f0ffbd27"
+        }
+      },
+      "reason": "function bytes differ"
+    },
+    {
+      "id": "ee-gcc2.95.3-114",
+      "status": "fail",
+      "compiler_launcher": "/bin/bash",
+      "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-114/bin/ee-gcc.exe",
+      "objcopy_launcher": "/bin/bash",
+      "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "runtime": {
+        "image": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64",
+        "runner": "Wine 8 Debian Bookworm on Linux amd64 via Docker Desktop"
+      },
+      "compile_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-wine-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-114/bin/ee-gcc.exe"
+      ],
+      "objcopy_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy"
+      ],
+      "flags": [
+        "-G8",
+        "-O2"
+      ],
+      "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "tool_files": {
+        "cc1": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-114/lib/gcc-lib/ee/2.95.3/cc1.exe",
+          "bytes": 1654784,
+          "sha256": "7bccdee8d6cc6bc56a84824cadb9c5ce546a1aa7f9b836447d2482408c5c5832"
+        },
+        "cpp": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-114/lib/gcc-lib/ee/2.95.3/cpp.exe",
+          "bytes": 159744,
+          "sha256": "271e9a55b782153acf303566c93c18ea30253e9c14d4df4daa55c521ead92eef"
+        },
+        "gnu_assembler": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-114/lib/gcc-lib/ee/2.95.3/as.exe",
+          "bytes": 622592,
+          "sha256": "7f504e571215fead2a15a14520bd22dc13507a1f13b479ca8c06a165f4a886a4"
+        },
+        "specs": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-114/lib/gcc-lib/ee/2.95.3/specs",
+          "bytes": 4260,
+          "sha256": "7b5520c0d9d04623b899ba80dbd713635a0aa17f0e58f7ba58b30c443cd48d76"
+        }
+      },
+      "compiler_sha256": "522d28f9d74ddfce89568437156c8ee323c806de525d99907f698050dee8d81e",
+      "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+      "compile_returncode": 0,
+      "compile_stderr": "wine: created the configuration directory '/root/.wine'\nwine: configuration in L\"/root/.wine\" has been updated.\n",
+      "prepare_object_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-krlnsgwr/candidate.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-krlnsgwr/prepared.o"
+      ],
+      "prepare_object_returncode": 0,
+      "prepare_object_stderr": "",
+      "link_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.ld",
+        "--defsym=misc3d_db_id=0x00290ac4",
+        "--defsym=report_error=0x00105888",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-krlnsgwr/linked.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-krlnsgwr/prepared.o"
+      ],
+      "link_returncode": 0,
+      "link_stderr": "",
+      "objcopy_returncode": 0,
+      "objcopy_stderr": "",
+      "actual_sha256": "31f5767905e165342ac41afabee74e3e2bcf55cdaad6c74aca29af11a20addd8",
+      "actual_bytes": 68,
+      "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "reference_bytes": 60,
+      "gate": {
+        "section": ".probe.probe",
+        "scope": "mixed",
+        "status": "fail",
+        "reason": "bytes",
+        "matched_bytes": 0,
+        "section_bytes": 60,
+        "first_difference": {
+          "offset": 0,
+          "address": "00000000",
+          "file_offset": "00000000",
+          "word": 0,
+          "expected": "54ad838f",
+          "actual": "f0ffbd27"
+        }
+      },
+      "reason": "function bytes differ"
+    },
+    {
+      "id": "ee-gcc2.95.3-136",
+      "status": "fail",
+      "compiler_launcher": "/bin/bash",
+      "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-136/bin/ee-gcc.exe",
+      "objcopy_launcher": "/bin/bash",
+      "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "runtime": {
+        "image": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64",
+        "runner": "Wine 8 Debian Bookworm on Linux amd64 via Docker Desktop"
+      },
+      "compile_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-wine-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-136/bin/ee-gcc.exe"
+      ],
+      "objcopy_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy"
+      ],
+      "flags": [
+        "-G8",
+        "-O2"
+      ],
+      "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+      "tool_files": {
+        "cc1": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-136/lib/gcc-lib/ee/2.95.3/cc1.exe",
+          "bytes": 1708032,
+          "sha256": "0393bcd31f91a6b9f0255db97f1cc99eba78ee8fc003e9a04dfabed1ae1d522e"
+        },
+        "cpp": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-136/lib/gcc-lib/ee/2.95.3/cpp.exe",
+          "bytes": 159744,
+          "sha256": "b9c50aa66f9cf5dbd80b2affe9874ec7674b7328965c629476f6ad7c77943154"
+        },
+        "gnu_assembler": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-136/lib/gcc-lib/ee/2.95.3/as.exe",
+          "bytes": 622592,
+          "sha256": "7f504e571215fead2a15a14520bd22dc13507a1f13b479ca8c06a165f4a886a4"
+        },
+        "specs": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.95.3-136/lib/gcc-lib/ee/2.95.3/specs",
+          "bytes": 4260,
+          "sha256": "7b5520c0d9d04623b899ba80dbd713635a0aa17f0e58f7ba58b30c443cd48d76"
+        }
+      },
+      "compiler_sha256": "522d28f9d74ddfce89568437156c8ee323c806de525d99907f698050dee8d81e",
+      "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+      "compile_returncode": 0,
+      "compile_stderr": "wine: created the configuration directory '/root/.wine'\nwine: configuration in L\"/root/.wine\" has been updated.\n",
+      "prepare_object_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-_7qsyb4e/candidate.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-_7qsyb4e/prepared.o"
+      ],
+      "prepare_object_returncode": 0,
+      "prepare_object_stderr": "",
+      "link_argv": [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate.ld",
+        "--defsym=misc3d_db_id=0x00290ac4",
+        "--defsym=report_error=0x00105888",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-_7qsyb4e/linked.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/compiler-probe-recipe-a9c6ajik/candidate-work/fr2-compiler-probe-_7qsyb4e/prepared.o"
+      ],
+      "link_returncode": 0,
+      "link_stderr": "",
+      "objcopy_returncode": 0,
+      "objcopy_stderr": "",
+      "actual_sha256": "6611e74411e449673728a17e0a54312d978727f1196df62c093458e91253c618",
+      "actual_bytes": 68,
+      "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+      "reference_bytes": 60,
+      "gate": {
+        "section": ".probe.probe",
+        "scope": "mixed",
+        "status": "fail",
+        "reason": "bytes",
+        "matched_bytes": 0,
+        "section_bytes": 60,
+        "first_difference": {
+          "offset": 0,
+          "address": "00000000",
+          "file_offset": "00000000",
+          "word": 0,
+          "expected": "54ad838f",
+          "actual": "f0ffbd27"
+        }
+      },
+      "reason": "function bytes differ"
+    }
+  ],
+  "claim_limits": [
+    "A unique match identifies this source/compiler/flags/reference probe only.",
+    "It does not establish the original compiler ID without an independently evidenced retail function/reference pair.",
+    "This runner executes compiler and objcopy argv from the local manifest.",
+    "This child check is diagnostic evidence only and cannot complete AC05."
+  ],
+  "runtime_identity": {
+    "linux-tools": {
+      "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+      "platform": "linux/amd64"
+    },
+    "wine-compiler": {
+      "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+      "platform": "linux/amd64"
+    }
+  },
+  "runtime_phases": {
+    "native_compiler_candidates": "linux-tools",
+    "windows_compiler_candidates": "wine-compiler",
+    "prepare_object_link_objcopy": "linux-tools"
+  },
+  "ac05_status": "incomplete",
+  "ac05_reason": "The source, ABI, range ownership, linker substitutions, and profile are exploratory; a unique byte match does not identify the original compiler.",
+  "probe_status": "pass",
+  "nonmatching_candidates": [
+    "ee-gcc2.9-991111-01",
+    "ee-gcc3.2-030926",
+    "ee-gcc3.2-040921",
+    "ee-gcc2.95.2-273a",
+    "ee-gcc2.95.3-114",
+    "ee-gcc2.95.3-136"
+  ]
+}
+```

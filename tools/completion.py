@@ -205,12 +205,19 @@ def main() -> int:
     parser.add_argument('--compiler-tools', type=Path,
                         default=TOOLS.parent / '.scratch/compiler-probe-tools')
     args = parser.parse_args()
+    compiler_recipe = TOOLS / 'compiler_probe_recipe'
     return write_result(args.output, 'fr2-completion',
                         lambda: check(args.game, args.output, args.assembler, args.objdump,
                                       args.compiler_tools),
                         [Path(__file__), *(TOOLS / name for name in
                           ('matching_ranges.py', 'verify_formats.py', 'verify_vu.py',
-                           'verify_asset_contracts.py', 'corpus_contract.py'))])
+                           'verify_asset_contracts.py', 'corpus_contract.py',
+                           'compiler_probe.py', 'matching_diff.py', 'matching_sections.py',
+                           'ps2_executables.py', 'evidence_common.py')),
+                         *(compiler_recipe / name for name in
+                           ('run.py', 'build.py', 'candidate.c', 'candidate.ld',
+                            'manifest.template.json', 'docker-linux-exec.sh',
+                            'docker-wine-exec.sh'))])
 
 
 if __name__ == '__main__':
