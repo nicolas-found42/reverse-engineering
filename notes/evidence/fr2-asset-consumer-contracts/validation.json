@@ -1,13 +1,16 @@
 {
-  "focused_command": "tools/check.sh test_asset_contracts",
-  "focused_tests": 6,
+  "focused_command": "tools/check.sh test_asset_contracts test_config_contracts",
+  "focused_tests": 13,
   "focused_status": "passed",
   "full_command": "tools/check.sh",
-  "full_tests": 567,
+  "full_tests": 592,
   "full_status": "passed",
-  "skipped": 25,
-  "skip_note": "25 skipped, including the research Jev battery because typesafe_sdk is unavailable.",
-  "local_prerequisites": "The isolated worktree needed ignored .scratch inputs copied from the primary checkout: the FPU audit inventory.json and PS2Recomp checkout. These were not staged.",
+  "skipped": 1,
+  "skip_note": "test_research_jev_battery skipped because typesafe_sdk is unavailable in this default environment; root baseline ran the full suite with its configured typesafe environment.",
+  "corpus_command": "python3 tools/verify_asset_contracts.py archive games/ford-racing-2/extracted/FILES.HDR games/ford-racing-2/extracted/FILES.DAT --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/assets/fr2-asset-contracts/final-recheck",
+  "corpus_receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/assets/fr2-asset-contracts/final-recheck/20261008T073904Z-30b44734929f4e4180c6e9afda3071a9/result.json",
+  "corpus_status": "incomplete",
+  "corpus_evidence": "All 16 archive-pinned PAL .cfg files decoded under fr2-pal-track-config-v1. Each of the five keys occurs exactly once in every file. Global consumer result remains incomplete with 14 unresolved contracts, 23 candidate or unresolved logical profiles, and zero candidate loader bindings.",
   "ip_rails": "python3 tools/ip_rails.py --tree passed",
   "diff_check": "git diff --check passed"
 }

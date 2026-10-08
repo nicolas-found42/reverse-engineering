@@ -61,8 +61,10 @@ class AssetContractCli(unittest.TestCase):
         details = result["details"]
         self.assertEqual(details["catalog"][".ptg"]["storage_encodings"], {"raw": 1})
         self.assertEqual(details["catalog"][".ps2"]["storage_encodings"], {"zlib": 1})
-        binding = next(item for item in details["candidate_loader_bindings"] if item["id"] == "model-name-tree-relocation")
-        self.assertEqual(binding["evidence_disposition"], "candidate_documentation")
+        model = next(item for item in details["contracts"] if item["id"] == "model-ps2")
+        binding = next(item for item in model["loader_bindings"] if item["id"] == "model-name-tree-relocation")
+        self.assertEqual(binding["evidence_disposition"], "accepted_static_contract")
+        self.assertNotIn("model-name-tree-relocation", [item["id"] for item in details["candidate_loader_bindings"]])
         self.assertFalse(details["complete"])
         self.assertTrue(details["unresolved_logical_profiles"])
 
@@ -93,7 +95,8 @@ class AssetContractCli(unittest.TestCase):
         registry = json.loads((REPO / "notes/asset-loader-registry.json").read_text())
         relative_paths = {
             "tools/verify_asset_contracts.py", "tools/evidence_common.py", "tools/format_contracts.py",
-            "tools/corpus_contract.py", "notes/asset-loader-registry.json",
+            "tools/corpus_contract.py", "tools/corpus_binding.py", "tools/config_contracts.py",
+            "notes/asset-loader-registry.json",
         }
         relative_paths.update(item["path"] for item in registry["corpus_profile"]["evidence_sources"])
         relative_paths.update(item["source"] for item in registry["loader_bindings"])
@@ -112,6 +115,36 @@ class AssetContractCli(unittest.TestCase):
         code, result = self.run_cli(manifest)
         self.assertEqual((code, result["status"]), (1, "fail"))
         self.assertTrue(any("every registry contract" in item for item in result["diagnostics"]))
+
+    def test_registry_contracts_are_split_by_asset_type(self):
+        code, result = self.run_cli()
+        self.assertEqual((code, result["status"]), (2, "incomplete"), result["diagnostics"])
+        model = next(row for row in result["details"]["contracts"] if row["id"] == "model-ps2")
+        types = [item["asset_type"] for item in model["consumer_contracts"]]
+        self.assertEqual(set(types), {"model name tree", "model geometry", "texture library"})
+        self.assertEqual(len(types), len(set(types)))
+        geometry = next(item for item in model["consumer_contracts"] if item["asset_type"] == "model geometry")
+        self.assertIn("FUN_0011ed90", geometry["consumer"])
+        self.assertTrue(geometry["unknowns"])
+        self.assertIn("Variable plane semantics", geometry["unknowns"])
+
+    def test_unbound_asset_type_cannot_be_hidden_in_an_aggregate_contract(self):
+        code, result = self.run_cli()
+        self.assertEqual((code, result["status"]), (2, "incomplete"), result["diagnostics"])
+        registry = result["details"]
+        types = [item["asset_type"] for contract in registry["contracts"] for item in contract["consumer_contracts"]]
+        self.assertIn("UI/interface data", types)
+        self.assertTrue(any(item["asset_type"] == "UI/interface data" and item["consumer"] == "unresolved"
+                            for contract in registry["contracts"] for item in contract["consumer_contracts"]))
+
+    def test_caller_cannot_promote_unbound_type_to_a_consumer(self):
+        manifest = json.loads(MANIFEST.read_text())
+        ui = next(row for row in manifest["contracts"] if row["id"] == "interface-ui")
+        ui["consumer_contract_ids"] = ["guessed-from-ui-extension"]
+        code, result = self.run_cli(manifest)
+        self.assertEqual((code, result["status"]), (1, "fail"))
+        self.assertTrue(any("consumer_contract_ids differ from the fixed registry" in item
+                            for item in result["diagnostics"]))
 
 
 if __name__ == "__main__":
