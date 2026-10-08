@@ -12,10 +12,13 @@ hashes, argv, return codes, function hashes, and per-candidate gate verdicts.
 This probe compiles the hand-written reconstruction unit
 [`reconstruction/ee/app3d/misc3d_db_id.c`](../../../reconstruction/ee/app3d/misc3d_db_id.c)
 and uses the linker script in [`tools/compiler_probe_recipe/`](../../../tools/compiler_probe_recipe/).
-The unit uses inferred names, ABI, and ownership, guided by saved instruction
-and string evidence. It is not original source. The source-map line alone does
-not prove that the range is game-owned; the probe remains exploratory until an
-independent ADR-0005 ownership decision is recorded. No generated decompiler C,
+The unit uses inferred names and ABI, guided by saved instruction and string
+evidence. It is not original source. Its local ownership decision now has
+independent source-map, caller, and helper evidence recorded in ADR-0005 and
+the [first-unit evidence](../fr2-first-unit/README.md). The fixed child recipe
+can credit that source-built range under AC07; generic caller-supplied probe
+manifests cannot assign ownership. The historical receipt below predates this
+decision and remains an exploratory compiler result. No generated decompiler C,
 pseudocode, assembly, payload, compiler archive, executable, or retail bytes are
 committed.
 
@@ -34,8 +37,10 @@ linking, and extraction use the Debian image. The images install
 object preparation, linking, and extraction as an explicit open-tool
 substitution; it is not the original proprietary linker. The recipe records
 each release archive URL and SHA-256. The seven local release archives were
-hash-checked; inspection found no `COPYING` or `LICENSE` entries in them, so
-per-package redistribution terms remain unresolved. No compiler binaries are
+hash-checked. Package-specific source and redistribution terms remain unresolved;
+the [package provenance disposition](package-provenance.md) separates the
+compiler's evidenced GNU identity from the missing exact-package binding.
+Absence of license files does not establish proprietary status. No compiler binaries are
 included here.
 
 From the repository root, run the immutable child verifier:
