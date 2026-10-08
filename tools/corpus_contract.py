@@ -35,10 +35,22 @@ OS_METADATA_NAME = ".DS_Store"
 
 
 def corpus_identity(game: Path) -> dict:
-    identities = {name: identity(game / name) for name in BASELINE}
+    identities, missing, changed = {}, [], []
     for name, (size, digest) in BASELINE.items():
+        path = game / name
+        if not path.is_file():
+            missing.append(name)
+            continue
+        identities[name] = identity(path)
         if identities[name] != {"bytes": size, "sha256": digest}:
-            raise Invalid(f"changed corpus input: {name}")
+            changed.append(name)
+    # A known mismatch takes precedence over absent inputs. Do not let an
+    # earlier missing file hide a later changed executable/archive/disc.
+    details = {"sources": identities, "missing": missing, "changed": changed}
+    if changed:
+        raise Invalid(f"changed corpus input: {', '.join(changed)}", details)
+    if missing:
+        raise Incomplete(f"missing corpus input: {', '.join(missing)}", details)
     return {
         "profile": "fr2-pal-sles-517.05",
         "sources": identities,
