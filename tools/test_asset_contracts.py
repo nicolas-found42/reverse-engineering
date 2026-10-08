@@ -1,7 +1,8 @@
-"""Public CLI tests for archive-derived asset consumer contract coverage."""
+"""Public CLI tests for fixed, corpus-pinned asset consumer evidence."""
 
 import json
 from pathlib import Path
+import shutil
 import struct
 import subprocess
 import sys
@@ -10,29 +11,23 @@ import unittest
 import zlib
 
 TOOLS = Path(__file__).resolve().parent
+REPO = TOOLS.parent
 CLI = TOOLS / "verify_asset_contracts.py"
-TERMS = {"consumer": "unresolved", "bounds": "unresolved", "field_effects": "unresolved",
-         "transformations": "unresolved", "allocation_lifetime": "unresolved",
-         "handoffs": "unresolved", "unknowns": ["consumer evidence not found"]}
-COMPLETE_TERMS = {"consumer": "FUN_00123908 model loader", "bounds": "bounded fixture bytes",
-                  "field_effects": "all fixture fields covered", "transformations": "none",
-                  "allocation_lifetime": "bounded fixture lifetime", "handoffs": "none", "unknowns": []}
+MANIFEST = REPO / "notes/asset-consumer-contracts.json"
 
 
 def archive(files):
     """Build a one-directory archive with chunk-aligned file records."""
     header = bytearray(struct.pack("<I", 1) + struct.pack("<II", len(files), 0) + struct.pack("<I", len(files)))
-    records = bytearray()
-    dat = bytearray()
+    records, data = bytearray(), bytearray()
     for name, payload, compressed in files:
-        while len(dat) % 2048:
-            dat.append(0)
+        while len(data) % 2048:
+            data.append(0)
         stored = struct.pack("<I", len(payload)) + zlib.compress(payload) if compressed else payload
-        offset = len(dat)
-        dat += stored
-        typ = 0xFFFFFFFF
-        records += name.encode().ljust(16, b"\0") + struct.pack("<III", typ, offset // 2048, len(stored))
-    return bytes(header + records), bytes(dat)
+        offset = len(data)
+        data += stored
+        records += name.encode().ljust(16, b"\0") + struct.pack("<III", 0xFFFFFFFF, offset // 2048, len(stored))
+    return bytes(header + records), bytes(data)
 
 
 class AssetContractCli(unittest.TestCase):
@@ -41,85 +36,82 @@ class AssetContractCli(unittest.TestCase):
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name)
 
-    def run_cli(self, contracts, files=None):
+    def run_cli(self, manifest=None, files=None, cli=CLI, output=None):
         hdr, dat = archive(files or [("UI.PTG;1", b"tile", False), ("MODEL.PS2;1", b"model", True)])
         hp, dp = self.root / "FILES.HDR", self.root / "FILES.DAT"
-        cp, out = self.root / "contracts.json", self.root / "out"
         hp.write_bytes(hdr)
         dp.write_bytes(dat)
-        cp.write_text(json.dumps(contracts))
-        proc = subprocess.run([sys.executable, str(CLI), "archive", str(hp), str(dp), "--contracts", str(cp), "--output", str(out)], capture_output=True, text=True)
+        cp = self.root / "contracts.json"
+        cp.write_text(json.dumps(manifest or json.loads(MANIFEST.read_text())))
+        out = output or self.root / "out"
+        proc = subprocess.run([sys.executable, str(cli), "archive", str(hp), str(dp), "--contracts", str(cp), "--output", str(out)], capture_output=True, text=True)
         reports = list(out.glob("*/result.json"))
         self.assertTrue(reports, proc.stderr)
-        return proc.returncode, json.loads(reports[0].read_text())
+        return proc.returncode, json.loads(reports[-1].read_text())
 
-    def test_archive_variants_are_derived_and_unresolved_contracts_stay_incomplete(self):
-        code, result = self.run_cli({
-            "schema_version": 1,
-            "contracts": [
-                {"id": "ptg", "asset_types": ["PTG sprite"], "extensions": [".ptg"], "status": "unresolved", "variant_dispositions": {"raw": "unresolved"}, "loader_evidence": [], "consumer_contract": TERMS, "limits": ["consumer not identified"]},
-                {"id": "model", "asset_types": ["model"], "extensions": [".ps2"], "status": "partial", "variant_dispositions": {"zlib": "covered"}, "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}], "consumer_contract": {**TERMS, "consumer": "FUN_00123908 model loader"}, "limits": ["geometry and texture levels unresolved"]},
-            ],
-        })
+    @staticmethod
+    def update_contract(manifest, contract_id, **changes):
+        contract = next(row for row in manifest["contracts"] if row["id"] == contract_id)
+        contract.update(changes)
+        return manifest
+
+    def test_valid_catalog_reports_fixed_candidates_and_remains_incomplete(self):
+        code, result = self.run_cli()
         self.assertEqual((code, result["status"]), (2, "incomplete"), result["diagnostics"])
-        catalog = result["details"]["catalog"]
-        self.assertEqual(catalog[".ptg"]["variants"], {"raw": 1})
-        self.assertEqual(catalog[".ps2"]["variants"], {"zlib": 1})
-        self.assertEqual(result["details"]["unresolved_contracts"], ["ptg", "model"])
+        details = result["details"]
+        self.assertEqual(details["catalog"][".ptg"]["storage_encodings"], {"raw": 1})
+        self.assertEqual(details["catalog"][".ps2"]["storage_encodings"], {"zlib": 1})
+        binding = next(item for item in details["candidate_loader_bindings"] if item["id"] == "model-name-tree-relocation")
+        self.assertEqual(binding["evidence_disposition"], "candidate_documentation")
+        self.assertFalse(details["complete"])
+        self.assertTrue(details["unresolved_logical_profiles"])
 
-    def test_supported_claim_without_a_real_loader_reference_fails(self):
-        code, result = self.run_cli({
-            "schema_version": 1,
-            "contracts": [{"id": "ptg", "asset_types": ["PTG sprite"], "extensions": [".ptg"], "status": "complete", "variant_dispositions": {"raw": "covered"}, "loader_evidence": [], "consumer_contract": TERMS, "limits": []}],
-        })
+    def test_caller_cannot_promote_candidate_contract_to_complete(self):
+        manifest = json.loads(MANIFEST.read_text())
+        self.update_contract(manifest, "model-ps2", status="complete")
+        code, result = self.run_cli(manifest)
         self.assertEqual((code, result["status"]), (1, "fail"))
-        self.assertTrue(any("loader evidence" in item.lower() for item in result["diagnostics"]))
+        self.assertTrue(any("status differs from the fixed registry" in item for item in result["diagnostics"]))
 
-    def test_complete_model_contract_with_bound_loader_and_exact_variant_passes(self):
-        code, result = self.run_cli({
-            "schema_version": 1,
-            "contracts": [{
-                "id": "model", "asset_types": ["model"], "extensions": [".ps2"], "status": "complete",
-                "variant_dispositions": {"zlib": "covered"},
-                "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}],
-                "consumer_contract": COMPLETE_TERMS,
-                "limits": ["Fixture only"],
-            }],
-        }, [("MODEL.PS2;1", b"model", True)])
-        self.assertEqual((code, result["status"]), (0, "pass"), result["diagnostics"])
-
-    def test_complete_contract_cannot_invent_an_archive_variant(self):
-        code, result = self.run_cli({
-            "schema_version": 1,
-            "contracts": [{
-                "id": "ptg", "asset_types": ["PTG sprite"], "extensions": [".ptg"], "status": "complete",
-                "variant_dispositions": {"raw": "covered", "made_up": "covered"},
-                "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}],
-                "consumer_contract": {**TERMS, "consumer": "FUN_00123908 synthetic contract fixture"},
-                "limits": ["Fixture only"],
-            }],
-        })
+    def test_unrelated_loader_note_cannot_be_supplied_as_authority(self):
+        manifest = json.loads(MANIFEST.read_text())
+        self.update_contract(manifest, "sprite-ptg", binding_ids=["model-name-tree-relocation"],
+                             loader_evidence=[{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json"}])
+        code, result = self.run_cli(manifest)
         self.assertEqual((code, result["status"]), (1, "fail"))
-        self.assertTrue(any("absent from the archive" in item for item in result["diagnostics"]))
+        self.assertTrue(any("non-authoritative fields" in item for item in result["diagnostics"]))
 
-    def test_known_loader_and_covered_header_do_not_hide_consumer_unknowns(self):
-        code, result = self.run_cli({
-            "schema_version": 1,
-            "contracts": [{
-                "id": "model", "asset_types": ["model"], "extensions": [".ps2"], "status": "complete",
-                "variant_dispositions": {"zlib": "covered"},
-                "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}],
-                "consumer_contract": {**COMPLETE_TERMS, "unknowns": ["geometry body meaning remains unresolved"]},
-                "limits": ["Fixture only"],
-            }],
-        }, [("MODEL.PS2;1", b"model", True)])
+    def test_caller_cannot_forge_a_binding_id(self):
+        manifest = json.loads(MANIFEST.read_text())
+        self.update_contract(manifest, "sprite-ptg", binding_ids=["FUN_00123908"])
+        code, result = self.run_cli(manifest)
         self.assertEqual((code, result["status"]), (1, "fail"))
-        self.assertTrue(any("retains unknowns" in item for item in result["diagnostics"]))
+        self.assertTrue(any("binding_ids differ from the fixed registry" in item for item in result["diagnostics"]))
 
-    def test_missing_extension_contract_fails_instead_of_disappearing(self):
-        code, result = self.run_cli({"schema_version": 1, "contracts": []})
+    def test_pinned_source_hash_change_fails_even_when_function_token_remains(self):
+        repo = self.root / "repo"
+        registry = json.loads((REPO / "notes/asset-loader-registry.json").read_text())
+        relative_paths = {
+            "tools/verify_asset_contracts.py", "tools/evidence_common.py", "tools/format_contracts.py",
+            "tools/corpus_contract.py", "notes/asset-loader-registry.json",
+        }
+        relative_paths.update(item["path"] for item in registry["corpus_profile"]["evidence_sources"])
+        relative_paths.update(item["source"] for item in registry["loader_bindings"])
+        for relative in relative_paths:
+            source, destination = REPO / relative, repo / relative
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
+        target = repo / "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json"
+        target.write_text(target.read_text() + "\nUnrelated sentence still mentions FUN_00123908.\n")
+        code, result = self.run_cli(cli=repo / "tools/verify_asset_contracts.py", output=self.root / "copied-run")
+        self.assertEqual((code, result["status"]), (1, "fail"), result["diagnostics"])
+        self.assertTrue(any("SHA-256 mismatch" in item for item in result["diagnostics"]))
+
+    def test_manifest_cannot_drop_registry_contracts(self):
+        manifest = {"schema_version": 1, "registry": "notes/asset-loader-registry.json", "contracts": []}
+        code, result = self.run_cli(manifest)
         self.assertEqual((code, result["status"]), (1, "fail"))
-        self.assertTrue(any(".ptg" in item and ".ps2" in item for item in result["diagnostics"]))
+        self.assertTrue(any("every registry contract" in item for item in result["diagnostics"]))
 
 
 if __name__ == "__main__":

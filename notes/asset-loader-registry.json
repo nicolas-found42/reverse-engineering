@@ -1,0 +1,775 @@
+{
+  "schema_version": 1,
+  "authority": "fixed repository registry; caller manifests may reference ids but cannot add or redefine profile, claim, source, or disposition",
+  "corpus_profile": {
+    "id": "fr2-pal-sles-517.05",
+    "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+    "inputs": {
+      "ford-racing-2.bin": {
+        "bytes": 678667248,
+        "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+      },
+      "ford-racing-2.cue": {
+        "bytes": 79,
+        "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+      },
+      "extracted/SLES_517.05": {
+        "bytes": 1662804,
+        "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+      },
+      "extracted/FILES.HDR": {
+        "bytes": 29428,
+        "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+      },
+      "extracted/FILES.DAT": {
+        "bytes": 334641152,
+        "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+      }
+    },
+    "evidence_sources": [
+      {
+        "path": "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
+        "sha256": "35d945e80465a1c99e8dda1c0dc87b91251060f53c19302f11598b164ad4fa8b"
+      },
+      {
+        "path": "notes/evidence/fr2-geometry-consumer-audit/README.md",
+        "sha256": "e0bd908e1c414732cd5bb53006da7fe0ab04ed7ba7e4a75b414af42d1600d77b"
+      },
+      {
+        "path": "notes/evidence/fr2-texture-upload-audit/README.md",
+        "sha256": "4bc0a226d9ebf0352a672aa197b386b0861433ef536c1c210d905acf1ab0fe80"
+      },
+      {
+        "path": "notes/evidence/fr2-continuation/README.md",
+        "sha256": "d6ba1b51d1ec1d4ce8a2af4562c89a7557e23a155ddf00e060f39bdab7defd14"
+      },
+      {
+        "path": "tools/verify_model.py",
+        "sha256": "9987444450bd89478a6ec1ff802d81506a71b7b7b0ad604e5dc220aefaef0937"
+      },
+      {
+        "path": "tools/verify_textures.py",
+        "sha256": "e3c22e2801bbe04c7d492e81cebe6c4720f5c63ddf1d09dafccf3e33dc4e0661"
+      },
+      {
+        "path": "tools/verify_ptg.py",
+        "sha256": "ccf74aa855cf8acb8ba8b5694becffa1dba2c46169c84671e8b8264e24b01c1d"
+      },
+      {
+        "path": "tools/verify_audio.py",
+        "sha256": "d8e6772a72944825298d833a8f22cf63487400b53b7021255401115b773cb33a"
+      }
+    ]
+  },
+  "contracts": [
+    {
+      "id": "configuration-cfg",
+      "asset_types": [
+        "configuration"
+      ],
+      "extensions": [
+        ".cfg"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "No loader function is bound."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "Do not infer configuration semantics from the extension or file names."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "configuration-grammar",
+          "asset_type": "configuration",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "text-and-data-dat-unclassified",
+      "asset_types": [
+        "text/data (unclassified)"
+      ],
+      "extensions": [
+        ".dat"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "The extension groups distinct unknown data; types and consumers have not been partitioned."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "No format or semantic claim is made for the .dat family."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "text/data-(unclassified)-grammar",
+          "asset_type": "text/data (unclassified)",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "database-db-unclassified",
+      "asset_types": [
+        "database (unclassified)"
+      ],
+      "extensions": [
+        ".db"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Consumer and meaning unresolved."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "No database interpretation is asserted."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "database-(unclassified)-grammar",
+          "asset_type": "database (unclassified)",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "icon-ico",
+      "asset_types": [
+        "icon image"
+      ],
+      "extensions": [
+        ".ico"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Consumer and in-game use unresolved."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "Extension does not establish in-game use."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "icon-image-grammar",
+          "asset_type": "icon image",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "frontend-mbf",
+      "asset_types": [
+        "front-end data (unclassified)"
+      ],
+      "extensions": [
+        ".mbf"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Consumer and representation unresolved."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "The name frontend.mbf is an archive example, not semantic evidence."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "front-end-data-(unclassified)-grammar",
+          "asset_type": "front-end data (unclassified)",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "music-mib",
+      "asset_types": [
+        "music stream payload"
+      ],
+      "extensions": [
+        ".mib"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Playback, looping, upload, and consumer evidence not established."
+        ]
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Structural ADPCM and interleave observations do not establish an executable consumer contract."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "music-interleave-payload",
+          "asset_type": "music stream payload",
+          "disposition": "candidate_structure",
+          "basis": "interleave structure is measured but playback and loop behavior are unverified",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        },
+        {
+          "id": "music-playback-upload",
+          "asset_type": "music stream payload",
+          "disposition": "unresolved",
+          "basis": "loader, upload and playback handoffs are unknown",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "music-mih",
+      "asset_types": [
+        "music stream header"
+      ],
+      "extensions": [
+        ".mih"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Header field effects and executable consumer evidence unresolved."
+        ]
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Decoder agreement and paired-file structure do not establish the loader or runtime behavior."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "music-header-fields",
+          "asset_type": "music stream header",
+          "disposition": "candidate_structure",
+          "basis": "paired-stream structure is measured but header field effects are unresolved",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        },
+        {
+          "id": "music-header-consumer",
+          "asset_type": "music stream header",
+          "disposition": "unresolved",
+          "basis": "consumer and runtime field use are unknown",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sound-bank-msh",
+      "asset_types": [
+        "sound bank header"
+      ],
+      "extensions": [
+        ".msh"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Executable bank loader and upload/playback handoffs unresolved."
+        ]
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Descriptor and ADPCM checks remain structural only."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "bank-descriptors",
+          "asset_type": "sound bank header",
+          "disposition": "candidate_structure",
+          "basis": "descriptor spans are measured but loader and runtime effects are unknown",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        },
+        {
+          "id": "bank-loader-playback",
+          "asset_type": "sound bank header",
+          "disposition": "unresolved",
+          "basis": "loader, upload and playback handoffs are unknown",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sound-bank-msb",
+      "asset_types": [
+        "sound bank sample payload"
+      ],
+      "extensions": [
+        ".msb"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Executable bank payload consumer and lifetime unresolved."
+        ]
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Sample span structure is not a playback or hardware contract."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "bank-adpcm-spans",
+          "asset_type": "sound bank sample payload",
+          "disposition": "candidate_structure",
+          "basis": "ADPCM spans are measured but SPU2 upload and playback are unverified",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        },
+        {
+          "id": "bank-playback-lifetime",
+          "asset_type": "sound bank sample payload",
+          "disposition": "unresolved",
+          "basis": "consumer, lifetime and playback behavior are unknown",
+          "evidence_sources": [
+            "tools/verify_audio.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "legacy-old",
+      "asset_types": [
+        "unclassified legacy-named data"
+      ],
+      "extensions": [
+        ".old"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Format and runtime use unresolved."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "Do not infer that CARDATA.OLD is unused or obsolete from its name."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "unclassified-legacy-named-data-grammar",
+          "asset_type": "unclassified legacy-named data",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "model-ps2",
+      "asset_types": [
+        "model name tree",
+        "model geometry",
+        "texture library"
+      ],
+      "extensions": [
+        ".ps2"
+      ],
+      "status": "candidate",
+      "consumer_contract": {
+        "consumer": "FUN_00123908 reads the model name tree and section chain; FUN_0011ed90 parses serialized geometry records; 00222358 consumes texture descriptors and constructs model-path uploads.",
+        "bounds": "The measured model header/name tree is bounded by the first name-pool byte offset; the geometry loader bounds 0x34-byte records and aligned variable planes.",
+        "field_effects": "Root and group name offsets index the NUL-terminated name pool. Geometry counts and flags determine serialized plane lengths; plane meanings remain unresolved.",
+        "transformations": "Archive payload decompression precedes the model parser. Model texture structure is loader-derived; format/palette/mip behavior remains partly unresolved.",
+        "allocation_lifetime": "Runtime allocations and lifetime are not established by the cited static contracts.",
+        "handoffs": "A parsed object path reaches a VU0 transform helper; geometry-to-VIF/VU1 draw submission remains unproved.",
+        "unknowns": [
+          "Geometry plane semantics",
+          "texture mip and palette state",
+          "render submission",
+          "allocation lifetime",
+          "two legacy 60-byte profiles"
+        ]
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md",
+        "notes/evidence/fr2-geometry-consumer-audit/README.md"
+      ],
+      "limits": [
+        "Partial static contract only; no complete geometry, texture, renderer, lifetime, or behavioral claim."
+      ],
+      "binding_ids": [
+        "model-name-tree-relocation",
+        "model-geometry-record-walk",
+        "model-texture-upload-consumer"
+      ],
+      "profiles": [
+        {
+          "id": "name-tree-section",
+          "asset_type": "model name tree",
+          "disposition": "candidate_documentation",
+          "basis": "name-tree relocation bytes are described; semantic reviewer acceptance is still open",
+          "evidence_sources": [
+            "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
+            "tools/verify_model.py",
+            "notes/evidence/fr2-geometry-consumer-audit/README.md",
+            "notes/evidence/fr2-texture-upload-audit/README.md",
+            "tools/verify_textures.py"
+          ]
+        },
+        {
+          "id": "geometry-body",
+          "asset_type": "model geometry",
+          "disposition": "unresolved",
+          "basis": "geometry body plane meanings and complete semantic profile are unknown",
+          "evidence_sources": [
+            "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
+            "tools/verify_model.py",
+            "notes/evidence/fr2-geometry-consumer-audit/README.md",
+            "notes/evidence/fr2-texture-upload-audit/README.md",
+            "tools/verify_textures.py"
+          ]
+        },
+        {
+          "id": "texture-level0-formats-1-3-4",
+          "asset_type": "texture library",
+          "disposition": "candidate_structure",
+          "basis": "bounded level-zero format observations do not establish complete upload behavior",
+          "evidence_sources": [
+            "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
+            "tools/verify_model.py",
+            "notes/evidence/fr2-geometry-consumer-audit/README.md",
+            "notes/evidence/fr2-texture-upload-audit/README.md",
+            "tools/verify_textures.py"
+          ]
+        },
+        {
+          "id": "texture-mips-palettes",
+          "asset_type": "texture library",
+          "disposition": "unresolved",
+          "basis": "mip pixels, palette state and complete body coverage are unresolved",
+          "evidence_sources": [
+            "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
+            "tools/verify_model.py",
+            "notes/evidence/fr2-geometry-consumer-audit/README.md",
+            "notes/evidence/fr2-texture-upload-audit/README.md",
+            "tools/verify_textures.py"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "video-pss",
+      "asset_types": [
+        "video/container"
+      ],
+      "extensions": [
+        ".pss"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Video/container consumer and playback contract unresolved."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "No playback, decode, timing, or presentation claim."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "video/container-grammar",
+          "asset_type": "video/container",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "sprite-ptg",
+      "asset_types": [
+        "PTG sprite"
+      ],
+      "extensions": [
+        ".ptg"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "Header structure is measured for all files; only the 17 tiled bodies have bounded descriptor and pixel layout evidence.",
+        "field_effects": "Tiled pointer-record floats measure row-major tile coverage; pointer and descriptor meanings remain unresolved.",
+        "transformations": "The archive wrapper is decompressed before format checks; palette and image interpretation are incomplete.",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "No executable consumer is bound",
+          "491 non-tiled bodies lack supported body profiles",
+          "palette and tile pointer meanings"
+        ]
+      },
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Structural PTG evidence is not a consumer contract; 491 bodies remain unsupported."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "ptg-header",
+          "asset_type": "PTG sprite",
+          "disposition": "candidate_structure",
+          "basis": "header relations are measured but no consumer is bound",
+          "evidence_sources": [
+            "tools/verify_ptg.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        },
+        {
+          "id": "ptg-tiled-dddddddd",
+          "asset_type": "PTG sprite",
+          "disposition": "candidate_structure",
+          "basis": "17 tiled bodies have bounded structure observations but no consumer is bound",
+          "evidence_sources": [
+            "tools/verify_ptg.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        },
+        {
+          "id": "ptg-other-bodies",
+          "asset_type": "PTG sprite",
+          "disposition": "unresolved",
+          "basis": "491 other PTG bodies lack supported body profiles",
+          "evidence_sources": [
+            "tools/verify_ptg.py",
+            "notes/evidence/fr2-continuation/README.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sound-bank-sbf",
+      "asset_types": [
+        "sound bank (unclassified)"
+      ],
+      "extensions": [
+        ".sbf"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "Format and consumer unresolved."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "Do not infer a relationship to other sound assets from the extension."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "sound-bank-(unclassified)-grammar",
+          "asset_type": "sound bank (unclassified)",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    },
+    {
+      "id": "interface-ui",
+      "asset_types": [
+        "UI/interface data"
+      ],
+      "extensions": [
+        ".ui"
+      ],
+      "status": "unresolved",
+      "consumer_contract": {
+        "consumer": "unresolved",
+        "bounds": "unresolved",
+        "field_effects": "unresolved",
+        "transformations": "unresolved",
+        "allocation_lifetime": "unresolved",
+        "handoffs": "unresolved",
+        "unknowns": [
+          "UI loader, text references, layout, and field effects unresolved."
+        ]
+      },
+      "structure_evidence": [],
+      "limits": [
+        "The extension and file names do not establish a user-interface format."
+      ],
+      "binding_ids": [],
+      "profiles": [
+        {
+          "id": "ui/interface-data-grammar",
+          "asset_type": "UI/interface data",
+          "disposition": "unresolved",
+          "basis": "consumer grammar is not established from a verified loader",
+          "evidence_sources": []
+        }
+      ]
+    }
+  ],
+  "loader_bindings": [
+    {
+      "id": "model-name-tree-relocation",
+      "profile_id": "fr2-pal-sles-517.05",
+      "contract_id": "model-ps2",
+      "asset_type": "model name tree",
+      "function": "FUN_00123908",
+      "claim_id": "model.name-tree.relocation-and-section-boundary",
+      "source": "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
+      "source_sha256": "35d945e80465a1c99e8dda1c0dc87b91251060f53c19302f11598b164ad4fa8b",
+      "anchor": "FUN_00123908 relocates the name tree: word0 is the byte offset of the next section, rounded up to 16 ((base+word0+15)&~15) on return; it walks 10 count-prefixed arrays adding the base to each entry.",
+      "disposition": "candidate_documentation"
+    },
+    {
+      "id": "model-geometry-record-walk",
+      "profile_id": "fr2-pal-sles-517.05",
+      "contract_id": "model-ps2",
+      "asset_type": "model geometry",
+      "function": "FUN_0011ed90",
+      "claim_id": "model.geometry.serialized-record-cursor",
+      "source": "notes/evidence/fr2-geometry-consumer-audit/README.md",
+      "source_sha256": "e0bd908e1c414732cd5bb53006da7fe0ab04ed7ba7e4a75b414af42d1600d77b",
+      "anchor": "The loader at `FUN_0011ed90` advances 0x34-byte records and reads two unsigned halfword counts at record offsets `+0x1c` and `+0x28`.",
+      "disposition": "candidate_documentation"
+    },
+    {
+      "id": "model-texture-upload-consumer",
+      "profile_id": "fr2-pal-sles-517.05",
+      "contract_id": "model-ps2",
+      "asset_type": "texture library",
+      "function": "00222358",
+      "claim_id": "texture.descriptor-to-upload-fields",
+      "source": "notes/evidence/fr2-texture-upload-audit/README.md",
+      "source_sha256": "4bc0a226d9ebf0352a672aa197b386b0861433ef536c1c210d905acf1ab0fe80",
+      "anchor": "`00222358` selects primary row fields +9/+2 for direct upload",
+      "disposition": "candidate_documentation"
+    }
+  ],
+  "claim_limits": "The loader bindings are candidate documentation associations, not independently accepted semantic evidence. All current logical profiles are candidate or unresolved. Raw/zlib counts are storage encodings only. No asset contract can pass until reviewed registry evidence and all body/profile requirements are accepted."
+}
