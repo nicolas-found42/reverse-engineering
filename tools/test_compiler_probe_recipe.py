@@ -236,6 +236,18 @@ class RunnerCliTests(unittest.TestCase):
             self.assertTrue(str(observed["work"]).startswith(str(canonical_root) + "/"))
             self.assertTrue(observed["staging"].is_dir())
 
+class CandidateIdentityTests(unittest.TestCase):
+    def test_replaced_or_duplicate_candidate_id_is_incomplete(self):
+        template = Path(build.__file__).with_name('manifest.template.json')
+        manifest = json.loads(template.read_text())
+        for changed in ('replacement', manifest['candidates'][1]['id']):
+            manifest['candidates'][0]['id'] = changed
+            with tempfile.TemporaryDirectory() as tmp:
+                path = Path(tmp) / 'manifest.json'
+                path.write_text(json.dumps(manifest))
+                with self.assertRaisesRegex(Incomplete, 'candidate identities'):
+                    run.validate_manifest_runtimes(path, Path(tmp))
+
 
 if __name__ == "__main__":
     unittest.main()

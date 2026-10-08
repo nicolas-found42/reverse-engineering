@@ -110,3 +110,105 @@ Synthetic controls run with:
 ```sh
 tools/check.sh test_compiler_probe test_compiler_probe_recipe
 ```
+
+## Fixed independent EE panel (#8)
+
+Run the four-unit panel through the existing recipe CLI:
+
+```sh
+python3 tools/compiler_probe_recipe/run.py \
+  games/ford-racing-2 \
+  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \
+  --profile --output .scratch/evidence/compiler-profile
+```
+
+The panel adds the hand-written reset, entity-list setter, and parser lookup in
+[`profile-units.json`](profile-units.json) to the existing accessor. The recorded
+source-map and static-reference evidence predates the compiler trials. These
+are independent retail units, with inferred source forms and names; they are
+not independent original-source recoveries. The decision records source and
+range hashes, addresses, contiguous extents, caller/boundary metadata, ABI/data
+inferences, and what each unit can distinguish. Source forms were explored
+against the references; that limits any historical-identity inference.
+
+Every unit runs all seven candidates using the recorded per-candidate flags.
+The additional `-v` flag retains the compiler driver's cc1/assembler commands.
+Installed drivers, compiler passes, assemblers and specs must match members of
+the SHA-256-pinned release archives. Runtime images are inspected by immutable
+ID and platform. Receipts bind the effective compile, preparation, link and
+extraction argv, source/reference identities, compiler object, prepared object,
+linked object and extracted-function hashes, phase tools, and located failures.
+Missing components or archive/source/runtime provenance produce incomplete.
+
+The pre-link diagnostic reads ELF32/MIPS REL and RELA entries. It compares
+instruction bits outside `R_MIPS_26`, `HI16`, `LO16` and `GPREL16` fields; the
+[GNU MIPS relocation definitions](https://raw.githubusercontent.com/ps2dev/binutils-gdb/master/include/elf/mips.h)
+identify those types. Explicit addends and symbol indexes remain in the receipt.
+Unknown relocations remain incomplete. This diagnostic ignores relocated
+fields and cannot prove symbol binding, addends or placement. It grants zero
+matched-byte credit. The separate linked gate compares every byte, including
+those fields, at the recorded addresses with the GNU ld 2.40 substitution.
+The linker script uses [GNU ld input-section selection](https://sourceware.org/binutils/docs/ld/Input-Section-Basics.html)
+to keep each emitted function section at its declared address.
+
+Selection requires one candidate to pass both comparisons for **every** fixed
+unit, with all candidates completing. Multiple surviving candidates or any
+operational gap are incomplete; no common candidate is a failed panel
+hypothesis. A candidate passing a subset is retained but never selected.
+`ac05_status` remains incomplete: this panel is EE-only, source forms remain
+inferred, and exact historical package/source identity is unresolved under #21.
+It changes no ownership decisions or AC07 credit, and does not establish
+package permission. The original accessor-only CLI remains available for AC07.
+
+Synthetic positive, negative, contradictory, ambiguous, changed-identity and
+missing-evidence controls run with:
+
+```sh
+tools/check.sh test_compiler_probe test_compiler_probe_recipe \
+  test_compiler_output test_compiler_profile test_compiler_packages
+```
+
+`independent-panel/` retains safe trial metadata. Generated assembly, objects,
+reference bytes and compiler/runtime payloads stay local under the tool root.
+
+The final fixed-recipe run is retained in
+[`independent-panel/20261008T152841Z-c4176aa1d76246979d6dcd4dba068fff/result.json`](independent-panel/20261008T152841Z-c4176aa1d76246979d6dcd4dba068fff/result.json).
+Its SHA-256 is `296389363958c9b08af1584371e234694684ecbd3cfcc3a7b22c39164a0bc931`.
+The command above reproduces this bounded observation (receipt paths/timestamps
+and object debug-path hashes can differ across fresh runs): all 28 combinations
+completed with no operational gaps, but no candidate passed the whole panel.
+
+| Unit | Reference bytes | Candidates passing both comparisons |
+| --- | ---: | --- |
+| Existing accessor | 60 | `ee-gcc2.96` |
+| Misc3d reset | 28 | 2.9, all three 2.95 packages, and 2.96 |
+| Entity-list setter | 60 | `ee-gcc2.96` |
+| Parser lookup | 80 | none |
+
+The setter provides distinguishing evidence beyond the accessor. The reset
+supports the small-data/store profile but does not distinguish the older
+candidates. The parser contradicts a claim that this source/flag profile matches
+all declared units: 2.96 emits 100 bytes, and the linked gate locates a difference
+at `0x0018b84c` (function offset 12); the compiler diagnostic also records the
+80-versus-100-byte extent mismatch. This is a source/profile hypothesis failure,
+not evidence that a particular historical compiler is excluded for every
+possible original source form or flag set. The panel exits 1, selects no
+candidate, and leaves AC05 incomplete. Resolving the parser's source/loop and
+flag alternatives is remaining #8 investigation; it must not be dropped to
+manufacture a profile pin. Historical package/source binding remains #21.
+
+The saved setter inventory reports a body sum of 56 bytes, while its blocks
+span `0x0018bba8..0x0018bbe3`, including a four-byte alignment hole and the return
+delay slot. The fixed contiguous comparison extent is consequently 60 bytes.
+The earlier 56-byte trial is retained as a failed experiment; its apparent
+four-byte output excess was a reference-boundary error. No owned-byte ledger
+is expanded by correcting this diagnostic extent.
+
+Validation for this implementation is retained in
+[`independent-panel/focused-tests.log`](independent-panel/focused-tests.log) and
+[`independent-panel/whole-suite.log`](independent-panel/whole-suite.log).
+The focused command above passed 42 tests. `tools/check.sh` passed 662 tests,
+with one unittest skip and the separate exclusion of `test_research_jev_battery`
+because `typesafe_sdk` was unavailable. Python compilation checks and staged/
+tracked-tree `tools/ip_rails.py` checks passed. These checks validate tooling;
+they do not turn the failed real panel into a historical compiler pin.

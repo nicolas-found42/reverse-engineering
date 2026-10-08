@@ -88,6 +88,9 @@ def validate_manifest_runtimes(manifest_path: Path, tool_root: Path) -> None:
     candidates = manifest.get("candidates")
     if not isinstance(candidates, list) or len(candidates) != 7:
         raise Incomplete("compiler recipe candidate set differs from the pinned seven-candidate profile")
+    recorded_ids = [c['id'] for c in json.loads(Path(__file__).with_name('manifest.template.json').read_text())['candidates']]
+    if sorted(c.get('id', '') for c in candidates) != sorted(recorded_ids):
+        raise Incomplete("compiler recipe candidate identities differ from the pinned seven-candidate profile")
     for candidate in candidates:
         candidate_id = candidate.get("id", "")
         is_wine = candidate_id.startswith("ee-gcc2.95")
@@ -118,7 +121,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("game", type=Path, help="corpus game directory")
     parser.add_argument("tool_root", type=Path, help="installed candidate tools and Docker wrappers")
     parser.add_argument("--output", type=Path, default=Path(".scratch/evidence/compiler-probe"))
+    parser.add_argument("--profile", action="store_true", help="run the fixed independent compiler panel")
     args = parser.parse_args(argv)
+    if args.profile:
+        from compiler_probe_recipe.profile import main as profile_main
+        return profile_main([str(args.game), str(args.tool_root), '--output', str(args.output)])
     executable = args.game / "extracted/SLES_517.05"
     recipe = Path(__file__).parent
 
@@ -162,7 +169,7 @@ def main(argv: list[str] | None = None) -> int:
 
     return write_result(args.output, "compiler-probe-exploratory", action,
                         [executable, Path(__file__), recipe / "build.py",
-                         TOOLS / "compiler_probe.py", TOOLS / "matching_diff.py",
+                         TOOLS / "compiler_probe.py", TOOLS / "compiler_output.py", TOOLS / "matching_diff.py",
                          TOOLS / "matching_sections.py", TOOLS / "corpus_contract.py",
                          TOOLS / "ps2_executables.py", TOOLS / "evidence_common.py", ADR0005,
                          SOURCE_MAP, *(p for p in (BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY)

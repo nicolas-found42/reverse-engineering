@@ -1,0 +1,1033 @@
+{
+  "label": "native-source-forms",
+  "probes": [
+    {
+      "status": "pass",
+      "selected_id": "ee-gcc2.96",
+      "matches": [
+        "ee-gcc2.96"
+      ],
+      "failures": [],
+      "errors": [],
+      "incomplete": [],
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/manifest.json",
+        "bytes": 8705,
+        "sha256": "3d6fbd9e3b88ca7625834a823a73b8babebccadb53e602b4a4797df795166a5a"
+      },
+      "evidence": {
+        "corpus": {
+          "profile": "fr2-pal-sles-517.05",
+          "sources": {
+            "ford-racing-2.bin": {
+              "bytes": 678667248,
+              "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+            },
+            "ford-racing-2.cue": {
+              "bytes": 79,
+              "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+            },
+            "extracted/SLES_517.05": {
+              "bytes": 1662804,
+              "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+            },
+            "extracted/FILES.HDR": {
+              "bytes": 29428,
+              "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+            },
+            "extracted/FILES.DAT": {
+              "bytes": 334641152,
+              "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+            }
+          },
+          "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+        },
+        "reference_range": {
+          "section": ".text",
+          "vaddr": "0018bba8",
+          "file_offset": "0008cba8",
+          "bytes": 60,
+          "sha256": "dde62359047f7cee35cce6202e4b709aacb19c26f86a3797e451b398fe18579d",
+          "scope": "mixed",
+          "decision": "ADR-0005 local split, cross-checked against source map, callers, and helper provenance"
+        },
+        "candidate_source": "Hand-written exploratory reconstruction; inferred names, ABI and ownership; not original source.",
+        "tool_source": "decompme/compilers release tag compilers; per-candidate archive URLs and SHA-256 values follow.",
+        "tool_distributions": [
+          {
+            "candidate": "ee-gcc2.9-991111-01",
+            "archive": "ee-gcc2.9-991111-01.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.9-991111-01.tar.xz",
+            "expected_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8",
+            "available_locally": true,
+            "observed_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8"
+          },
+          {
+            "candidate": "ee-gcc2.95.2-273a",
+            "archive": "ee-gcc2.95.2-273a.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.2-273a.tar.gz",
+            "expected_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e",
+            "available_locally": true,
+            "observed_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-114",
+            "archive": "ee-gcc2.95.3-114.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-114.tar.gz",
+            "expected_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb",
+            "available_locally": true,
+            "observed_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-136",
+            "archive": "ee-gcc2.95.3-136.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-136.tar.gz",
+            "expected_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f",
+            "available_locally": true,
+            "observed_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f"
+          },
+          {
+            "candidate": "ee-gcc2.96",
+            "archive": "ee-gcc2.96.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.96.tar.xz",
+            "expected_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+            "available_locally": true,
+            "observed_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a"
+          },
+          {
+            "candidate": "ee-gcc3.2-030926",
+            "archive": "ee-gcc3.2-030926.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-030926.tar.gz",
+            "expected_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9",
+            "available_locally": true,
+            "observed_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9"
+          },
+          {
+            "candidate": "ee-gcc3.2-040921",
+            "archive": "ee-gcc3.2-040921.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-040921.tar.xz",
+            "expected_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f",
+            "available_locally": true,
+            "observed_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f"
+          }
+        ],
+        "license_status": "The release archives inspected do not include COPYING or LICENSE entries. Per-package redistribution terms are unresolved; no compiler binaries are redistributed here.",
+        "runtime_profile": "Immutable image IDs are verified before invocation: Debian Bookworm linux/amd64 with Wine 8 for Windows compiler drivers, and GNU binutils 2.40 in the Debian image for object preparation, linking, and objcopy.",
+        "linker_profile": "GNU binutils 2.40 substitution; not the original proprietary linker."
+      },
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/candidate.c",
+        "bytes": 551,
+        "sha256": "92f4fe16d604fce7638e7a056d0db1bd60ff8f0cceb034f8fbfaec68f6cdf99e"
+      },
+      "reference": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/reference.bin",
+        "bytes": 60,
+        "sha256": "dde62359047f7cee35cce6202e4b709aacb19c26f86a3797e451b398fe18579d"
+      },
+      "symbol": "fr2_entity_set_first",
+      "candidates": [
+        {
+          "id": "ee-gcc2.96",
+          "status": "pass",
+          "compiler_launcher": "/bin/bash",
+          "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+          "objcopy_launcher": "/bin/bash",
+          "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+          "runtime": {
+            "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "platform": "linux/amd64",
+            "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+            "packages": {
+              "libc6:i386": "2.36-9+deb12u14",
+              "libgcc-s1:i386": "12.2.0-14+deb12u1",
+              "binutils-mips-linux-gnu": "2.40-2cross2"
+            }
+          },
+          "compile_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+            "-G8",
+            "-O2",
+            "-fno-optimize-sibling-calls",
+            "-v",
+            "-ffunction-sections",
+            "-c",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/candidate.c",
+            "-o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/candidate.o"
+          ],
+          "objcopy_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy"
+          ],
+          "flags": [
+            "-G8",
+            "-O2",
+            "-fno-optimize-sibling-calls",
+            "-v"
+          ],
+          "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "tool_files": {
+            "cc1": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cc1",
+              "bytes": 5526661,
+              "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+            },
+            "cpp": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cpp0",
+              "bytes": 421478,
+              "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+            },
+            "gnu_assembler": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/ee/bin/as",
+              "bytes": 2169068,
+              "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+            },
+            "mips_linker": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+              "bytes": 1817176,
+              "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+            }
+          },
+          "compiler_sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b",
+          "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+          "artifacts": {
+            "object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/candidate.o",
+              "bytes": 1736,
+              "sha256": "b8d5034b0cd209d7a4e15d2abd5b7faa3e139c440a5bc6a616318396e59f8d21"
+            },
+            "prepared_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/prepared.o",
+              "bytes": 1572,
+              "sha256": "570198ad99fee34adfd21db0b53dca0b160c19221292cbb667669dc4c01db94a"
+            },
+            "linked_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/linked.o",
+              "bytes": 49388,
+              "sha256": "a150fcee8f94157e5ec07b90cc51fb20a265bad660099d24a8d5ba1396e525b7"
+            },
+            "extracted_function": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/function.bin",
+              "bytes": 60,
+              "sha256": "dde62359047f7cee35cce6202e4b709aacb19c26f86a3797e451b398fe18579d"
+            }
+          },
+          "phase_tools": {
+            "prepare_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+              "bytes": 192168,
+              "sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed"
+            },
+            "link": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+              "bytes": 1817176,
+              "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+            }
+          },
+          "compile_returncode": 0,
+          "compile_stderr": "Using builtin specs.\ngcc version 2.96-ee-001003-1\n /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/cc1 -lang-c -v -iprefix /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/ -D__GNUC__=2 -D__GNUC_MINOR__=96 -D__GNUC_PATCHLEVEL__=0 -Dmips -DMIPSEL -DR5900 -D_mips -D_MIPSEL -D_R5900 -D__ee__ -D__mips__ -D__MIPSEL__ -D__R5900__ -D__mips__ -D_MIPSEL -D_R5900 -D__ee__ -D__mips -D__MIPSEL -D__R5900 -D__mips -D__OPTIMIZE__ -D__LANGUAGE_C -D_LANGUAGE_C -DLANGUAGE_C -D__SIZE_TYPE__= unsigned int -D__PTRDIFF_TYPE__= int -D__LONG_MAX__=9223372036854775807L -U__mips -D__mips=3 -D__mips64 -D__mips_eabi -D__mips_single_float /tools/issue-8-native/entity_set_first/candidate.c -G8 -quiet -dumpbase candidate.c -O2 -version -fno-optimize-sibling-calls -ffunction-sections -o /tmp/ccrLJNnj.s\nGNU CPP version 2.96-ee-001003-1 (cpplib)\n [AL 1.1, MM 40] BSD Mips\nGNU C version 2.96-ee-001003-1 (ee) compiled by GNU C version 2.9-gnupro-99r1.\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/include\"\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/ee/sys-include\"\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/ee/include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/lib/gcc-lib/ee/2.96-ee-001003-1/include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/ee/sys-include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/ee/include\"\n#include \"...\" search starts here:\nEnd of search list.\n /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/../../../../ee/bin/as -G8 -EL -O2 -v -mabi=eabi -o /tools/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/candidate.o /tmp/ccrLJNnj.s\nGNU assembler version 2.10-ee-001003-1 (ee) using BFD version 2.10-ee-001003\n",
+          "compiler_output": {
+            "status": "pass",
+            "matched_bytes": 0,
+            "object_sha256": "b8d5034b0cd209d7a4e15d2abd5b7faa3e139c440a5bc6a616318396e59f8d21",
+            "text_sha256": "d9aa828c8869512910d84a697abc0d5879202da0c46e3e40b53f1e15f1b3376a",
+            "text_bytes": 60,
+            "relocations": [
+              {
+                "offset": 40,
+                "type": 4,
+                "symbol_index": 12,
+                "mask": "03ffffff"
+              },
+              {
+                "offset": 32,
+                "type": 5,
+                "symbol_index": 11,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 44,
+                "type": 6,
+                "symbol_index": 11,
+                "mask": "0000ffff"
+              }
+            ],
+            "claim_limit": "Non-relocated instruction bits only; no relocation, placement or byte-match proof."
+          },
+          "prepare_object_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy",
+            "--strip-symbol=gcc2_compiled.",
+            "--strip-symbol=__gnu_compiled_c",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/candidate.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/prepared.o"
+          ],
+          "prepare_object_returncode": 0,
+          "prepare_object_stderr": "",
+          "link_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-ld",
+            "-m",
+            "elf32ltsmip",
+            "-T",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/candidate.ld",
+            "-o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/linked.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/prepared.o",
+            "--defsym=fr2_entity_error=0x001b0770",
+            "--defsym=fr2_set_first_file=0x0025eba8",
+            "--defsym=_gp=0x00295d70"
+          ],
+          "link_returncode": 0,
+          "link_stderr": "",
+          "effective_objcopy_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy",
+            "--dump-section",
+            ".text.fr2_entity_set_first=/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/function.bin",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/entity_set_first/objects/fr2-compiler-probe-0byh3las/linked.o"
+          ],
+          "objcopy_returncode": 0,
+          "objcopy_stderr": "",
+          "actual_sha256": "dde62359047f7cee35cce6202e4b709aacb19c26f86a3797e451b398fe18579d",
+          "actual_bytes": 60,
+          "reference_sha256": "dde62359047f7cee35cce6202e4b709aacb19c26f86a3797e451b398fe18579d",
+          "reference_bytes": 60,
+          "gate": {
+            "section": ".text",
+            "scope": "mixed",
+            "status": "pass",
+            "reason": null,
+            "matched_bytes": 60,
+            "section_bytes": 60
+          }
+        }
+      ],
+      "claim_limits": [
+        "A unique match identifies this source/compiler/flags/reference probe only.",
+        "It does not establish the original compiler ID without an independently evidenced retail function/reference pair.",
+        "This runner executes compiler and objcopy argv from the local manifest."
+      ],
+      "unit": "entity_set_first",
+      "retained_handwritten_source": "notes/evidence/fr2-compiler-probe/independent-panel/entity_set_first-native-source-form.c"
+    },
+    {
+      "status": "pass",
+      "selected_id": "ee-gcc2.96",
+      "matches": [
+        "ee-gcc2.96"
+      ],
+      "failures": [],
+      "errors": [],
+      "incomplete": [],
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/manifest.json",
+        "bytes": 8800,
+        "sha256": "4c5d42d9952c29307d16efc5bafe704ea755f9110aafa64888f801180d25e8b3"
+      },
+      "evidence": {
+        "corpus": {
+          "profile": "fr2-pal-sles-517.05",
+          "sources": {
+            "ford-racing-2.bin": {
+              "bytes": 678667248,
+              "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+            },
+            "ford-racing-2.cue": {
+              "bytes": 79,
+              "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+            },
+            "extracted/SLES_517.05": {
+              "bytes": 1662804,
+              "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+            },
+            "extracted/FILES.HDR": {
+              "bytes": 29428,
+              "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+            },
+            "extracted/FILES.DAT": {
+              "bytes": 334641152,
+              "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+            }
+          },
+          "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+        },
+        "reference_range": {
+          "section": ".text",
+          "vaddr": "001d17a8",
+          "file_offset": "000d27a8",
+          "bytes": 28,
+          "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce",
+          "scope": "mixed",
+          "decision": "ADR-0005 local split, cross-checked against source map, callers, and helper provenance"
+        },
+        "candidate_source": "Hand-written exploratory reconstruction; inferred names, ABI and ownership; not original source.",
+        "tool_source": "decompme/compilers release tag compilers; per-candidate archive URLs and SHA-256 values follow.",
+        "tool_distributions": [
+          {
+            "candidate": "ee-gcc2.9-991111-01",
+            "archive": "ee-gcc2.9-991111-01.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.9-991111-01.tar.xz",
+            "expected_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8",
+            "available_locally": true,
+            "observed_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8"
+          },
+          {
+            "candidate": "ee-gcc2.95.2-273a",
+            "archive": "ee-gcc2.95.2-273a.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.2-273a.tar.gz",
+            "expected_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e",
+            "available_locally": true,
+            "observed_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-114",
+            "archive": "ee-gcc2.95.3-114.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-114.tar.gz",
+            "expected_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb",
+            "available_locally": true,
+            "observed_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-136",
+            "archive": "ee-gcc2.95.3-136.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-136.tar.gz",
+            "expected_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f",
+            "available_locally": true,
+            "observed_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f"
+          },
+          {
+            "candidate": "ee-gcc2.96",
+            "archive": "ee-gcc2.96.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.96.tar.xz",
+            "expected_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+            "available_locally": true,
+            "observed_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a"
+          },
+          {
+            "candidate": "ee-gcc3.2-030926",
+            "archive": "ee-gcc3.2-030926.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-030926.tar.gz",
+            "expected_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9",
+            "available_locally": true,
+            "observed_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9"
+          },
+          {
+            "candidate": "ee-gcc3.2-040921",
+            "archive": "ee-gcc3.2-040921.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-040921.tar.xz",
+            "expected_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f",
+            "available_locally": true,
+            "observed_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f"
+          }
+        ],
+        "license_status": "The release archives inspected do not include COPYING or LICENSE entries. Per-package redistribution terms are unresolved; no compiler binaries are redistributed here.",
+        "runtime_profile": "Immutable image IDs are verified before invocation: Debian Bookworm linux/amd64 with Wine 8 for Windows compiler drivers, and GNU binutils 2.40 in the Debian image for object preparation, linking, and objcopy.",
+        "linker_profile": "GNU binutils 2.40 substitution; not the original proprietary linker."
+      },
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/candidate.c",
+        "bytes": 384,
+        "sha256": "a447ce7bffe4ab51cf7151f0d504d1e7a83e5cd6e715cb981a582c89f101e19f"
+      },
+      "reference": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/reference.bin",
+        "bytes": 28,
+        "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce"
+      },
+      "symbol": "fr2_misc3d_reset",
+      "candidates": [
+        {
+          "id": "ee-gcc2.96",
+          "status": "pass",
+          "compiler_launcher": "/bin/bash",
+          "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+          "objcopy_launcher": "/bin/bash",
+          "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+          "runtime": {
+            "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "platform": "linux/amd64",
+            "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+            "packages": {
+              "libc6:i386": "2.36-9+deb12u14",
+              "libgcc-s1:i386": "12.2.0-14+deb12u1",
+              "binutils-mips-linux-gnu": "2.40-2cross2"
+            }
+          },
+          "compile_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+            "-G8",
+            "-O2",
+            "-fno-optimize-sibling-calls",
+            "-v",
+            "-ffunction-sections",
+            "-c",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/candidate.c",
+            "-o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/candidate.o"
+          ],
+          "objcopy_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy"
+          ],
+          "flags": [
+            "-G8",
+            "-O2",
+            "-fno-optimize-sibling-calls",
+            "-v"
+          ],
+          "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "tool_files": {
+            "cc1": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cc1",
+              "bytes": 5526661,
+              "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+            },
+            "cpp": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cpp0",
+              "bytes": 421478,
+              "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+            },
+            "gnu_assembler": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/ee/bin/as",
+              "bytes": 2169068,
+              "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+            },
+            "mips_linker": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+              "bytes": 1817176,
+              "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+            }
+          },
+          "compiler_sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b",
+          "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+          "artifacts": {
+            "object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/candidate.o",
+              "bytes": 1848,
+              "sha256": "fbd7dad01feba619346f57f4629a1f6109812a67ffa191dbcb12e2b162428376"
+            },
+            "prepared_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/prepared.o",
+              "bytes": 1692,
+              "sha256": "2c108e10095307a0023b2e8ad162e5d89284afb15a4540672f573ed73e3dfc30"
+            },
+            "linked_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/linked.o",
+              "bytes": 7516,
+              "sha256": "a8ab21e64864120151cf8e4359fa18abf6d35f2ef44822f3f934ea8c83ea8bbd"
+            },
+            "extracted_function": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/function.bin",
+              "bytes": 28,
+              "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce"
+            }
+          },
+          "phase_tools": {
+            "prepare_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+              "bytes": 192168,
+              "sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed"
+            },
+            "link": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+              "bytes": 1817176,
+              "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+            }
+          },
+          "compile_returncode": 0,
+          "compile_stderr": "Using builtin specs.\ngcc version 2.96-ee-001003-1\n /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/cc1 -lang-c -v -iprefix /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/ -D__GNUC__=2 -D__GNUC_MINOR__=96 -D__GNUC_PATCHLEVEL__=0 -Dmips -DMIPSEL -DR5900 -D_mips -D_MIPSEL -D_R5900 -D__ee__ -D__mips__ -D__MIPSEL__ -D__R5900__ -D__mips__ -D_MIPSEL -D_R5900 -D__ee__ -D__mips -D__MIPSEL -D__R5900 -D__mips -D__OPTIMIZE__ -D__LANGUAGE_C -D_LANGUAGE_C -DLANGUAGE_C -D__SIZE_TYPE__= unsigned int -D__PTRDIFF_TYPE__= int -D__LONG_MAX__=9223372036854775807L -U__mips -D__mips=3 -D__mips64 -D__mips_eabi -D__mips_single_float /tools/issue-8-native/misc3d_reset/candidate.c -G8 -quiet -dumpbase candidate.c -O2 -version -fno-optimize-sibling-calls -ffunction-sections -o /tmp/ccjaLknb.s\nGNU CPP version 2.96-ee-001003-1 (cpplib)\n [AL 1.1, MM 40] BSD Mips\nGNU C version 2.96-ee-001003-1 (ee) compiled by GNU C version 2.9-gnupro-99r1.\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/include\"\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/ee/sys-include\"\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/ee/include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/lib/gcc-lib/ee/2.96-ee-001003-1/include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/ee/sys-include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/ee/include\"\n#include \"...\" search starts here:\nEnd of search list.\n /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/../../../../ee/bin/as -G8 -EL -O2 -v -mabi=eabi -o /tools/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/candidate.o /tmp/ccjaLknb.s\nGNU assembler version 2.10-ee-001003-1 (ee) using BFD version 2.10-ee-001003\n",
+          "compiler_output": {
+            "status": "pass",
+            "matched_bytes": 0,
+            "object_sha256": "fbd7dad01feba619346f57f4629a1f6109812a67ffa191dbcb12e2b162428376",
+            "text_sha256": "43e2be8a034f051b91fbede07cb6ff7b033815afa76effaa8c521e4e82135fae",
+            "text_bytes": 28,
+            "relocations": [
+              {
+                "offset": 4,
+                "type": 7,
+                "symbol_index": 11,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 8,
+                "type": 7,
+                "symbol_index": 12,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 12,
+                "type": 7,
+                "symbol_index": 13,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 16,
+                "type": 7,
+                "symbol_index": 14,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 24,
+                "type": 7,
+                "symbol_index": 15,
+                "mask": "0000ffff"
+              }
+            ],
+            "claim_limit": "Non-relocated instruction bits only; no relocation, placement or byte-match proof."
+          },
+          "prepare_object_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy",
+            "--strip-symbol=gcc2_compiled.",
+            "--strip-symbol=__gnu_compiled_c",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/candidate.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/prepared.o"
+          ],
+          "prepare_object_returncode": 0,
+          "prepare_object_stderr": "",
+          "link_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-ld",
+            "-m",
+            "elf32ltsmip",
+            "-T",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/candidate.ld",
+            "-o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/linked.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/prepared.o",
+            "--defsym=fr2_db_id=0x00290ac4",
+            "--defsym=fr2_material_a=0x00290ac8",
+            "--defsym=fr2_material_b=0x00290acc",
+            "--defsym=fr2_material_c=0x00290ad0",
+            "--defsym=fr2_material_d=0x00290ad4",
+            "--defsym=_gp=0x00295d70"
+          ],
+          "link_returncode": 0,
+          "link_stderr": "",
+          "effective_objcopy_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy",
+            "--dump-section",
+            ".text.fr2_misc3d_reset=/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/function.bin",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/misc3d_reset/objects/fr2-compiler-probe-w_n_f5l4/linked.o"
+          ],
+          "objcopy_returncode": 0,
+          "objcopy_stderr": "",
+          "actual_sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce",
+          "actual_bytes": 28,
+          "reference_sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce",
+          "reference_bytes": 28,
+          "gate": {
+            "section": ".text",
+            "scope": "mixed",
+            "status": "pass",
+            "reason": null,
+            "matched_bytes": 28,
+            "section_bytes": 28
+          }
+        }
+      ],
+      "claim_limits": [
+        "A unique match identifies this source/compiler/flags/reference probe only.",
+        "It does not establish the original compiler ID without an independently evidenced retail function/reference pair.",
+        "This runner executes compiler and objcopy argv from the local manifest."
+      ],
+      "unit": "misc3d_reset",
+      "retained_handwritten_source": "notes/evidence/fr2-compiler-probe/independent-panel/misc3d_reset-native-source-form.c"
+    },
+    {
+      "status": "fail",
+      "selected_id": null,
+      "matches": [],
+      "failures": [
+        "ee-gcc2.96"
+      ],
+      "errors": [],
+      "incomplete": [],
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/manifest.json",
+        "bytes": 8772,
+        "sha256": "87f8d7cc4c472a32ac99264eab0eefbdc14e0ead48fc3ca45b246e72fd20986e"
+      },
+      "evidence": {
+        "corpus": {
+          "profile": "fr2-pal-sles-517.05",
+          "sources": {
+            "ford-racing-2.bin": {
+              "bytes": 678667248,
+              "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+            },
+            "ford-racing-2.cue": {
+              "bytes": 79,
+              "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+            },
+            "extracted/SLES_517.05": {
+              "bytes": 1662804,
+              "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+            },
+            "extracted/FILES.HDR": {
+              "bytes": 29428,
+              "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+            },
+            "extracted/FILES.DAT": {
+              "bytes": 334641152,
+              "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+            }
+          },
+          "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+        },
+        "reference_range": {
+          "section": ".text",
+          "vaddr": "0018b840",
+          "file_offset": "0008c840",
+          "bytes": 80,
+          "sha256": "5db6c503d534639373829ff7848a39c6ba4481e727b9596a4bfe54f776bbfe5d",
+          "scope": "mixed",
+          "decision": "ADR-0005 local split, cross-checked against source map, callers, and helper provenance"
+        },
+        "candidate_source": "Hand-written exploratory reconstruction; inferred names, ABI and ownership; not original source.",
+        "tool_source": "decompme/compilers release tag compilers; per-candidate archive URLs and SHA-256 values follow.",
+        "tool_distributions": [
+          {
+            "candidate": "ee-gcc2.9-991111-01",
+            "archive": "ee-gcc2.9-991111-01.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.9-991111-01.tar.xz",
+            "expected_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8",
+            "available_locally": true,
+            "observed_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8"
+          },
+          {
+            "candidate": "ee-gcc2.95.2-273a",
+            "archive": "ee-gcc2.95.2-273a.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.2-273a.tar.gz",
+            "expected_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e",
+            "available_locally": true,
+            "observed_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-114",
+            "archive": "ee-gcc2.95.3-114.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-114.tar.gz",
+            "expected_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb",
+            "available_locally": true,
+            "observed_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-136",
+            "archive": "ee-gcc2.95.3-136.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-136.tar.gz",
+            "expected_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f",
+            "available_locally": true,
+            "observed_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f"
+          },
+          {
+            "candidate": "ee-gcc2.96",
+            "archive": "ee-gcc2.96.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.96.tar.xz",
+            "expected_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+            "available_locally": true,
+            "observed_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a"
+          },
+          {
+            "candidate": "ee-gcc3.2-030926",
+            "archive": "ee-gcc3.2-030926.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-030926.tar.gz",
+            "expected_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9",
+            "available_locally": true,
+            "observed_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9"
+          },
+          {
+            "candidate": "ee-gcc3.2-040921",
+            "archive": "ee-gcc3.2-040921.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-040921.tar.xz",
+            "expected_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f",
+            "available_locally": true,
+            "observed_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f"
+          }
+        ],
+        "license_status": "The release archives inspected do not include COPYING or LICENSE entries. Per-package redistribution terms are unresolved; no compiler binaries are redistributed here.",
+        "runtime_profile": "Immutable image IDs are verified before invocation: Debian Bookworm linux/amd64 with Wine 8 for Windows compiler drivers, and GNU binutils 2.40 in the Debian image for object preparation, linking, and objcopy.",
+        "linker_profile": "GNU binutils 2.40 substitution; not the original proprietary linker."
+      },
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/candidate.c",
+        "bytes": 695,
+        "sha256": "157b15eb1eaa125d31cab2b75cfa8813d13754a7749d57a4f0ab2fb2246c8127"
+      },
+      "reference": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/reference.bin",
+        "bytes": 80,
+        "sha256": "5db6c503d534639373829ff7848a39c6ba4481e727b9596a4bfe54f776bbfe5d"
+      },
+      "symbol": "fr2_parser_lookup",
+      "candidates": [
+        {
+          "id": "ee-gcc2.96",
+          "status": "fail",
+          "compiler_launcher": "/bin/bash",
+          "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+          "objcopy_launcher": "/bin/bash",
+          "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+          "runtime": {
+            "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "platform": "linux/amd64",
+            "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+            "packages": {
+              "libc6:i386": "2.36-9+deb12u14",
+              "libgcc-s1:i386": "12.2.0-14+deb12u1",
+              "binutils-mips-linux-gnu": "2.40-2cross2"
+            }
+          },
+          "compile_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+            "-G8",
+            "-O2",
+            "-fno-optimize-sibling-calls",
+            "-v",
+            "-ffunction-sections",
+            "-c",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/candidate.c",
+            "-o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/candidate.o"
+          ],
+          "objcopy_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy"
+          ],
+          "flags": [
+            "-G8",
+            "-O2",
+            "-fno-optimize-sibling-calls",
+            "-v"
+          ],
+          "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "tool_files": {
+            "cc1": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cc1",
+              "bytes": 5526661,
+              "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+            },
+            "cpp": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cpp0",
+              "bytes": 421478,
+              "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+            },
+            "gnu_assembler": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/ee/bin/as",
+              "bytes": 2169068,
+              "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+            },
+            "mips_linker": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+              "bytes": 1817176,
+              "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+            }
+          },
+          "compiler_sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b",
+          "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+          "artifacts": {
+            "object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/candidate.o",
+              "bytes": 1904,
+              "sha256": "c21b8548182d037bc5c9012061870674d8d4677ac3e74336721d73130896f350"
+            },
+            "prepared_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/prepared.o",
+              "bytes": 1744,
+              "sha256": "f23895dda3ebc93d7be636b19c3c505525d003379196591abaeef06fb13c7231"
+            },
+            "linked_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/linked.o",
+              "bytes": 48660,
+              "sha256": "b1ea309aaa529ff391b50be7cdd52eaed33abc1d1d3efa3c230d526958e18d1f"
+            },
+            "extracted_function": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/function.bin",
+              "bytes": 100,
+              "sha256": "24d971205f1a5e744d8abb15562b1d0b8eaeb4799d4b4f8df5df93f945e9f478"
+            }
+          },
+          "phase_tools": {
+            "prepare_object": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+              "bytes": 192168,
+              "sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed"
+            },
+            "link": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+              "bytes": 1817176,
+              "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+            }
+          },
+          "compile_returncode": 0,
+          "compile_stderr": "Using builtin specs.\ngcc version 2.96-ee-001003-1\n /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/cc1 -lang-c -v -iprefix /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/ -D__GNUC__=2 -D__GNUC_MINOR__=96 -D__GNUC_PATCHLEVEL__=0 -Dmips -DMIPSEL -DR5900 -D_mips -D_MIPSEL -D_R5900 -D__ee__ -D__mips__ -D__MIPSEL__ -D__R5900__ -D__mips__ -D_MIPSEL -D_R5900 -D__ee__ -D__mips -D__MIPSEL -D__R5900 -D__mips -D__OPTIMIZE__ -D__LANGUAGE_C -D_LANGUAGE_C -DLANGUAGE_C -D__SIZE_TYPE__= unsigned int -D__PTRDIFF_TYPE__= int -D__LONG_MAX__=9223372036854775807L -U__mips -D__mips=3 -D__mips64 -D__mips_eabi -D__mips_single_float /tools/issue-8-native/parser_lookup/candidate.c -G8 -quiet -dumpbase candidate.c -O2 -version -fno-optimize-sibling-calls -ffunction-sections -o /tmp/ccBDAEI1.s\nGNU CPP version 2.96-ee-001003-1 (cpplib)\n [AL 1.1, MM 40] BSD Mips\nGNU C version 2.96-ee-001003-1 (ee) compiled by GNU C version 2.9-gnupro-99r1.\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/include\"\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/ee/sys-include\"\nignoring nonexistent directory \"/tools/candidates/ee-gcc2.96/ee/include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/lib/gcc-lib/ee/2.96-ee-001003-1/include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/ee/sys-include\"\nignoring nonexistent directory \"/usr/local/sce/ee/gcc/ee/include\"\n#include \"...\" search starts here:\nEnd of search list.\n /tools/candidates/ee-gcc2.96/bin/../lib/gcc-lib/ee/2.96-ee-001003-1/../../../../ee/bin/as -G8 -EL -O2 -v -mabi=eabi -o /tools/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/candidate.o /tmp/ccBDAEI1.s\nGNU assembler version 2.10-ee-001003-1 (ee) using BFD version 2.10-ee-001003\n",
+          "compiler_output": {
+            "status": "fail",
+            "matched_bytes": 0,
+            "object_sha256": "c21b8548182d037bc5c9012061870674d8d4677ac3e74336721d73130896f350",
+            "text_sha256": "b1b2fc72a667944d1afb06545b8e9f3a3b6bf82dc7f02826b77db740e8b512d7",
+            "text_bytes": 100,
+            "relocations": [
+              {
+                "offset": 4,
+                "type": 5,
+                "symbol_index": 11,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 12,
+                "type": 6,
+                "symbol_index": 11,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 60,
+                "type": 5,
+                "symbol_index": 12,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 68,
+                "type": 6,
+                "symbol_index": 12,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 64,
+                "type": 5,
+                "symbol_index": 13,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 72,
+                "type": 6,
+                "symbol_index": 13,
+                "mask": "0000ffff"
+              },
+              {
+                "offset": 76,
+                "type": 4,
+                "symbol_index": 14,
+                "mask": "03ffffff"
+              }
+            ],
+            "claim_limit": "Non-relocated instruction bits only; no relocation, placement or byte-match proof.",
+            "first_difference": {
+              "offset": 80,
+              "reason": "function length differs",
+              "expected_bytes": 80,
+              "actual_bytes": 100
+            }
+          },
+          "prepare_object_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy",
+            "--strip-symbol=gcc2_compiled.",
+            "--strip-symbol=__gnu_compiled_c",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/candidate.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/prepared.o"
+          ],
+          "prepare_object_returncode": 0,
+          "prepare_object_stderr": "",
+          "link_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-ld",
+            "-m",
+            "elf32ltsmip",
+            "-T",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/candidate.ld",
+            "-o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/linked.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/prepared.o",
+            "--defsym=fr2_parser_table=0x0023b600",
+            "--defsym=fr2_parser_file=0x0025eae8",
+            "--defsym=fr2_parser_message=0x0025eb78",
+            "--defsym=report_error=0x00105888",
+            "--defsym=_gp=0x00295d70"
+          ],
+          "link_returncode": 0,
+          "link_stderr": "",
+          "effective_objcopy_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy",
+            "--dump-section",
+            ".text.fr2_parser_lookup=/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/function.bin",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/issue-8-native/parser_lookup/objects/fr2-compiler-probe-u4ny8uoo/linked.o"
+          ],
+          "objcopy_returncode": 0,
+          "objcopy_stderr": "",
+          "actual_sha256": "24d971205f1a5e744d8abb15562b1d0b8eaeb4799d4b4f8df5df93f945e9f478",
+          "actual_bytes": 100,
+          "reference_sha256": "5db6c503d534639373829ff7848a39c6ba4481e727b9596a4bfe54f776bbfe5d",
+          "reference_bytes": 80,
+          "gate": {
+            "section": ".text",
+            "scope": "mixed",
+            "status": "fail",
+            "reason": "bytes",
+            "matched_bytes": 12,
+            "section_bytes": 80,
+            "first_difference": {
+              "offset": 12,
+              "address": "0018b84c",
+              "file_offset": "0008c84c",
+              "word": 3,
+              "expected": "2d388000",
+              "actual": "00b64224"
+            }
+          },
+          "reason": "function bytes differ"
+        }
+      ],
+      "claim_limits": [
+        "A unique match identifies this source/compiler/flags/reference probe only.",
+        "It does not establish the original compiler ID without an independently evidenced retail function/reference pair.",
+        "This runner executes compiler and objcopy argv from the local manifest."
+      ],
+      "unit": "parser_lookup",
+      "retained_handwritten_source": "notes/evidence/fr2-compiler-probe/independent-panel/parser_lookup-native-source-form.c"
+    }
+  ]
+}

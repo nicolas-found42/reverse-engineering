@@ -18,6 +18,7 @@ import uuid
 from evidence_common import Incomplete, Invalid, identity
 from matching_diff import compare, compare_unit
 from matching_sections import Section
+from compiler_output import compare_object
 
 COMMAND_TIMEOUT_SECONDS = 120
 
@@ -119,6 +120,9 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
         extracted = Path(temp) / "function.bin"
         compile_argv = [str(compiler), *item["compile"][1:], *item.get("flags", []),
                         "-ffunction-sections", "-c", str(source), "-o", str(obj)]
+        row['compile_argv'] = compile_argv
+        row['artifacts'] = {}
+        row['phase_tools'] = {}
         try:
             compiled = subprocess.run(compile_argv, capture_output=True, text=True,
                                      timeout=COMMAND_TIMEOUT_SECONDS)
@@ -132,6 +136,16 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
             row.update(status="error", reason="candidate compilation failed")
             results.append(row)
             continue
+        if not obj.is_file():
+            row.update(status="error", reason="compiler produced no object")
+            results.append(row)
+            continue
+        row['artifacts']['object'] = {"path": str(obj), **identity(obj)}
+        if manifest.get('compiler_diagnostic'):
+            try:
+                row['compiler_output'] = compare_object(obj.read_bytes(), symbol, expected)
+            except (Incomplete, Invalid) as exc:
+                row['compiler_output'] = {'status': 'incomplete', 'reason': str(exc), 'matched_bytes': 0}
         paths = {"object": obj, "prepared_object": Path(temp) / "prepared.o",
                  "linked_object": Path(temp) / "linked.o"}
         object_to_extract = obj
@@ -140,6 +154,12 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
                 continue
             phase_argv = expand_command(item[phase], paths)
             row[f"{phase}_argv"] = phase_argv
+            tool = command_executable(phase_argv)
+            if tool is None or not tool.is_file():
+                row.update(status="incomplete", reason=f"{phase} executable identity is unavailable")
+                results.append(row)
+                break
+            row['phase_tools'][phase] = {"path": str(tool), **identity(tool)}
             try:
                 phase_result = run_command(phase_argv)
             except (OSError, subprocess.TimeoutExpired) as exc:
@@ -153,6 +173,12 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
                 results.append(row)
                 break
             object_to_extract = paths["prepared_object"] if phase == "prepare_object" else paths["linked_object"]
+            if not object_to_extract.is_file():
+                row.update(status="error", reason=f"{phase} produced no output")
+                results.append(row)
+                break
+            row['artifacts']['prepared_object' if phase == 'prepare_object' else 'linked_object'] = {
+                "path": str(object_to_extract), **identity(object_to_extract)}
         else:
             objcopy_argv = [str(objcopy), *item["objcopy"][1:], "--dump-section",
                             f".text.{symbol}={extracted}", str(object_to_extract)]
@@ -162,12 +188,14 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
                 row.update(status="error", reason=f"function extraction could not complete: {exc}")
                 results.append(row)
                 continue
+            row["effective_objcopy_argv"] = objcopy_argv
             row["objcopy_returncode"] = copied.returncode
             row["objcopy_stderr"] = copied.stderr[-4000:]
             if copied.returncode or not extracted.is_file():
                 row.update(status="error", reason="function section could not be extracted")
                 results.append(row)
                 continue
+            row['artifacts']['extracted_function'] = {"path": str(extracted), **identity(extracted)}
             actual = extracted.read_bytes()
             row["actual_sha256"] = hashlib.sha256(actual).hexdigest()
             row["actual_bytes"] = len(actual)

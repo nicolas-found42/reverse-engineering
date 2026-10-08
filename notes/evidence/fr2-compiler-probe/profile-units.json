@@ -1,0 +1,128 @@
+{
+  "schema": "fr2-compiler-profile-units/v1",
+  "candidate_set": "Fixed seven candidates and per-candidate flags from tools/compiler_probe_recipe/manifest.template.json. No proprietary candidates.",
+  "units": [
+    {
+      "id": "misc3d_reset",
+      "symbol": "fr2_misc3d_reset",
+      "source": "tools/compiler_probe_recipe/misc3d_reset.c",
+      "source_sha256": "a447ce7bffe4ab51cf7151f0d504d1e7a83e5cd6e715cb981a582c89f101e19f",
+      "vaddr": "001d17a8",
+      "bytes": 28,
+      "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce",
+      "definitions": {
+        "fr2_db_id": "00290ac4",
+        "fr2_material_a": "00290ac8",
+        "fr2_material_b": "00290acc",
+        "fr2_material_c": "00290ad0",
+        "fr2_material_d": "00290ad4"
+      },
+      "source_path": "../fr2/source/app3d/misc3d.c",
+      "independent_basis": "Source-map enclosure between direct anchors 001d1408 and 001d1800; direct static caller 001ccbd8. Five gp stores of the sentinel end in a return delay-slot store.",
+      "distinguishes": "Small-data relocation choice, store scheduling and delay-slot scheduling; no call or frame.",
+      "static_callers": [
+        "001ccbd8"
+      ],
+      "body_ranges": [
+        {
+          "start": "001d17a8",
+          "end": "001d17c3"
+        }
+      ],
+      "claim_limit": "Hand-written inference from independent static evidence; names/types are provisional; no original-source, execution or owned-byte credit. Store source order was explored; this unit cannot by itself identify an original compiler."
+    },
+    {
+      "id": "entity_set_first",
+      "symbol": "fr2_entity_set_first",
+      "source": "tools/compiler_probe_recipe/entity_set_first.c",
+      "source_sha256": "92f4fe16d604fce7638e7a056d0db1bd60ff8f0cceb034f8fbfaec68f6cdf99e",
+      "vaddr": "0018bba8",
+      "bytes": 60,
+      "sha256": "dde62359047f7cee35cce6202e4b709aacb19c26f86a3797e451b398fe18579d",
+      "definitions": {
+        "fr2_entity_error": "001b0770",
+        "fr2_set_first_file": "0025eba8"
+      },
+      "source_path": "../fr2/source/entity/system/en_funcs/en_list/set_frst.h",
+      "independent_basis": "Direct source-path reference at 0018bbd4 and line 290. Kind 22 selects a payload pointer at +4 and a store at +0; other kinds call a separately located diagnostic. No saved direct caller in the retained inventory. The contiguous probe includes the return delay slot through 0018bbe3. The inventory sum (56) excludes a four-byte alignment hole and is not a contiguous extent.",
+      "distinguishes": "Argument ABI, conditional store, error-call scheduling and stack/return convention.",
+      "static_callers": [],
+      "body_ranges": [
+        {
+          "start": "0018bba8",
+          "end": "0018bbbb"
+        },
+        {
+          "start": "0018bbbc",
+          "end": "0018bbc3"
+        },
+        {
+          "start": "0018bbc8",
+          "end": "0018bbd7"
+        },
+        {
+          "start": "0018bbd8",
+          "end": "0018bbe3"
+        }
+      ],
+      "claim_limit": "Hand-written inference from independent static evidence; names/types are provisional; no original-source, execution or owned-byte credit."
+    },
+    {
+      "id": "parser_lookup",
+      "symbol": "fr2_parser_lookup",
+      "source": "tools/compiler_probe_recipe/parser_lookup.c",
+      "source_sha256": "0291458181f0285f69011bd6e926bd98966ac74bdd713e66915a0c7bef098a8d",
+      "vaddr": "0018b840",
+      "bytes": 80,
+      "sha256": "5db6c503d534639373829ff7848a39c6ba4481e727b9596a4bfe54f776bbfe5d",
+      "definitions": {
+        "fr2_parser_table": "0023b600",
+        "fr2_parser_file": "0025eae8",
+        "fr2_parser_message": "0025eb78",
+        "report_error": "00105888"
+      },
+      "source_path": "../fr2/source/parser/parser.c",
+      "independent_basis": "Direct source-path reference at 0018b880 and line 736, game parser diagnostic, and caller 0018ac40. Eight-byte table entries terminate on key 5 after the requested-key test.",
+      "distinguishes": "Loop and branch-likely scheduling, table addressing, saved argument and diagnostic-call ABI.",
+      "static_callers": [
+        "0018ac40"
+      ],
+      "body_ranges": [
+        {
+          "start": "0018b840",
+          "end": "0018b85f"
+        },
+        {
+          "start": "0018b860",
+          "end": "0018b86b"
+        },
+        {
+          "start": "0018b86c",
+          "end": "0018b877"
+        },
+        {
+          "start": "0018b878",
+          "end": "0018b87f"
+        },
+        {
+          "start": "0018b880",
+          "end": "0018b88f"
+        }
+      ],
+      "claim_limit": "Hand-written inference from independent static evidence; names/types are provisional; no original-source, execution or owned-byte credit."
+    }
+  ],
+  "evidence_inputs": {
+    "source_map": {
+      "path": "notes/evidence/fr2-source-map/source-map-result.json",
+      "sha256": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a"
+    },
+    "static_inventory": {
+      "path": ".scratch/mesh/codex-helpers/data-table-static-inventory-01.json",
+      "sha256": "ca1a05874479b59f842f825436b22895d4e4043ba379f149e125c5a5e60f8ac8",
+      "retention": "Local instructions stay private; safe boundary/caller metadata is copied above."
+    }
+  },
+  "historical_identity_status": "incomplete: exact corresponding compiler source/package binding remains #21; a unique panel profile is bounded to these source/flag/runtime/link inputs.",
+  "source_variant_limit": "Independent means static reference/source-map evidence predates compiler trials, not independent original source. All C units are inferred; source forms were explored against retail. Retained failures prevent a historical-identity inference from a selected panel."
+}

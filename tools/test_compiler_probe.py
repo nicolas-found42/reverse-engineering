@@ -92,6 +92,18 @@ pathlib.Path(target).write_bytes(pathlib.Path(sys.argv[-1]).read_bytes())
         self.assertEqual(result["candidates"][0]["actual_sha256"], result["reference"]["sha256"])
         self.assertEqual(Path(result["manifest"]["path"]), self.manifest().resolve())
 
+    def test_receipt_binds_effective_commands_and_object_identities(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body['candidates'][0]['link'] = [str(self.linker), '{object}', '{linked_object}']
+        manifest.write_text(json.dumps(body))
+        result = run_probe(manifest, self.root / 'out')
+        row = result['candidates'][0]
+        self.assertIn('-c', row['compile_argv'])
+        self.assertIn(str(self.source.resolve()), row['compile_argv'])
+        self.assertEqual(row['artifacts']['object']['sha256'], row['artifacts']['linked_object']['sha256'])
+        self.assertEqual(row['phase_tools']['link']['sha256'], hashlib.sha256(self.linker.read_bytes()).hexdigest())
+
     def test_a_caller_manifest_cannot_assign_game_owned_credit(self):
         manifest = self.manifest()
         body = json.loads(manifest.read_text())
