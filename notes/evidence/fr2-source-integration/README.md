@@ -3,9 +3,10 @@
 The matching-range inventory now splits one range for the identity-pinned PAL
 EE executable: `.text[0x001d1800, 0x001d183c)`, 60 bytes, SHA-256
 `1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e`. The
-split carries the pinned handwritten source identity and current ADR-0005
-identity. Synthetic ELF and modified reconstruction source retain no owned
-range. Structural inventory still reports `matched_bytes: 0`.
+split is based on corpus bytes plus ADR-0005, source-map, and saved-function
+evidence identities. Synthetic ELF never inherits ownership. Changing the
+candidate source leaves the retail range game-owned and changes its candidate
+source binding; structural inventory still reports `matched_bytes: 0`.
 
 `tools/completion.py` runs the range and compiler children itself in fresh,
 unique output directories. It binds each immutable child receipt to the
@@ -15,24 +16,33 @@ fresh source-built exact comparison passes. The compiler child keeps AC05
 `incomplete`; the aggregate reports AC07 pass while the full reconstruction
 remains incomplete. There is no CLI path for importing a caller receipt.
 
+Reproduce the real aggregate from a clean checkout with the pinned local corpus
+and compiler installations:
+
+```sh
+python3 tools/completion.py games/ford-racing-2 \
+  --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \
+  --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration
+```
+
 The aggregate receipt at
 `/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T075849Z-31227a6d24864e1f8575e59cb5321e6e/result.json`
-is superseded: the inventory had already removed the owned 60 bytes from
-unresolved accounting, and that aggregate removed them a second time. The
-superseding clean aggregate is retained at
-`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T080215Z-c5c6714b15e74f18a7f184123a94debe/result.json`.
-It reports AC07 pass, AC05 incomplete, `game_owned_bytes: 60`,
-`matched_bytes: 60`, and `unresolved_bytes: 3506988`. Its ledger conserves all
-bytes: `file_backed_bytes + zero_fill_bytes = unresolved_bytes +
-game_owned_bytes + substitute_bytes = 3507048`. The clean receipt records
-source revision `e14ff6a` and a clean working tree.
+is superseded because it subtracted the owned 60 bytes from unresolved
+accounting twice. The clean receipt at
+`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T080215Z-c5c6714b15e74f18a7f184123a94debe/result.json`
+corrected the total but is also superseded because ownership depended on the
+candidate source hash. The current implementation retains fixed ownership and
+gates match credit separately on the current source identity; a fresh receipt
+for this implementation is recorded after the fix.
 
 The source mutation control changes the sentinel branch and reruns the real
-aggregate. Its latest receipt is
+aggregate. This earlier receipt is superseded because the range inventory had
+coupled ownership to the candidate source hash:
 `/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration-mutation/20261008T075955Z-e0eaa11bc4ea4f3e956785151a72b5aa/result.json`.
-The altered source loses its fixed source identity; the compiler probe also
-finds no matching candidate. AC05 and AC07 fail, while both owned and matched
-bytes stay zero. A separate changed diagnostic-string control retained zero
+The altered source fails its fixed source binding; the compiler probe also
+finds no matching candidate. AC05 and AC07 fail; the owned range remains 60,
+matched bytes remain zero, and unresolved bytes remain 3,506,988. The listed
+mutation receipt predates this corrected ownership split. A separate changed diagnostic-string control retained zero
 ownership and zero matching credit at
 `/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration-negative/20261008T074913Z-816a67bdd4394f28be0f0aa34f7ee230/result.json`.
 
