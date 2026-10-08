@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
   "check": "assets:consumer-contracts",
-  "run_id": "20261008T053232Z-092906dd3a6a458bb55548636d5f07cb",
+  "run_id": "20261008T054033Z-381b54243b2e4fc1a92555fac37a317e",
   "status": "incomplete",
   "diagnostics": [
-    "required asset consumer contracts remain partial or unresolved"
+    "fixed registry contains candidate or unresolved consumer profiles"
   ],
   "inputs": {
     "FILES.HDR": {
@@ -16,374 +16,429 @@
       "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
     },
     "asset-consumer-contracts.json": {
-      "bytes": 14109,
-      "sha256": "3cd13ac8b7d8bc9fcc1da696768d00d29bf7a97b2736527a113ce027b90a97f9"
+      "bytes": 12500,
+      "sha256": "7a151c591b327906ac0d204f0cac6deada936335125dbcc3cddee61b5868a047"
+    },
+    "asset-loader-registry.json": {
+      "bytes": 26300,
+      "sha256": "c6cdf32442ce95c83aca74910edf952219c42a16367e94a8e455610c8fc5bcad"
     }
   },
+  "registry_sha256": "c6cdf32442ce95c83aca74910edf952219c42a16367e94a8e455610c8fc5bcad",
+  "corpus_profile": "fr2-pal-sles-517.05",
+  "corpus_profile_matches_registry": true,
   "families": {
     ".cfg": {
       "file_count": 16,
-      "variants": {
+      "storage_encodings": {
         "raw": 16
       }
     },
     ".dat": {
       "file_count": 216,
-      "variants": {
+      "storage_encodings": {
         "raw": 216
       }
     },
     ".db": {
       "file_count": 2,
-      "variants": {
+      "storage_encodings": {
         "raw": 2
       }
     },
     ".ico": {
       "file_count": 4,
-      "variants": {
+      "storage_encodings": {
         "raw": 4
       }
     },
     ".mbf": {
       "file_count": 5,
-      "variants": {
+      "storage_encodings": {
         "raw": 5
       }
     },
     ".mib": {
       "file_count": 20,
-      "variants": {
+      "storage_encodings": {
         "raw": 20
       }
     },
     ".mih": {
       "file_count": 20,
-      "variants": {
+      "storage_encodings": {
         "raw": 20
       }
     },
     ".msb": {
       "file_count": 27,
-      "variants": {
+      "storage_encodings": {
         "raw": 27
       }
     },
     ".msh": {
       "file_count": 27,
-      "variants": {
+      "storage_encodings": {
         "raw": 27
       }
     },
     ".old": {
       "file_count": 1,
-      "variants": {
+      "storage_encodings": {
         "raw": 1
       }
     },
     ".ps2": {
       "file_count": 56,
-      "variants": {
+      "storage_encodings": {
         "zlib": 56
       }
     },
     ".pss": {
       "file_count": 2,
-      "variants": {
+      "storage_encodings": {
         "raw": 2
       }
     },
     ".ptg": {
       "file_count": 548,
-      "variants": {
+      "storage_encodings": {
         "zlib": 548
       }
     },
     ".sbf": {
       "file_count": 1,
-      "variants": {
+      "storage_encodings": {
         "raw": 1
       }
     },
     ".ui": {
       "file_count": 45,
-      "variants": {
+      "storage_encodings": {
         "raw": 45
       }
     }
   },
-  "contracts": [
+  "contract_statuses": [
     {
       "id": "configuration-cfg",
+      "status": "unresolved",
       "asset_types": [
         "configuration"
       ],
+      "binding_ids": []
+    },
+    {
+      "id": "text-and-data-dat-unclassified",
       "status": "unresolved",
-      "extensions": [
-        ".cfg"
+      "asset_types": [
+        "text/data (unclassified)"
       ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
+      "binding_ids": []
     },
     {
       "id": "database-db-unclassified",
+      "status": "unresolved",
       "asset_types": [
         "database (unclassified)"
       ],
-      "status": "unresolved",
-      "extensions": [
-        ".db"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
-    },
-    {
-      "id": "frontend-mbf",
-      "asset_types": [
-        "front-end data (unclassified)"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".mbf"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
+      "binding_ids": []
     },
     {
       "id": "icon-ico",
+      "status": "unresolved",
       "asset_types": [
         "icon image"
       ],
-      "status": "unresolved",
-      "extensions": [
-        ".ico"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
+      "binding_ids": []
     },
     {
-      "id": "interface-ui",
-      "asset_types": [
-        "UI/interface data"
-      ],
+      "id": "frontend-mbf",
       "status": "unresolved",
-      "extensions": [
-        ".ui"
+      "asset_types": [
+        "front-end data (unclassified)"
       ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
+      "binding_ids": []
+    },
+    {
+      "id": "music-mib",
+      "status": "unresolved",
+      "asset_types": [
+        "music stream payload"
+      ],
+      "binding_ids": []
+    },
+    {
+      "id": "music-mih",
+      "status": "unresolved",
+      "asset_types": [
+        "music stream header"
+      ],
+      "binding_ids": []
+    },
+    {
+      "id": "sound-bank-msh",
+      "status": "unresolved",
+      "asset_types": [
+        "sound bank header"
+      ],
+      "binding_ids": []
+    },
+    {
+      "id": "sound-bank-msb",
+      "status": "unresolved",
+      "asset_types": [
+        "sound bank sample payload"
+      ],
+      "binding_ids": []
     },
     {
       "id": "legacy-old",
+      "status": "unresolved",
       "asset_types": [
         "unclassified legacy-named data"
       ],
-      "status": "unresolved",
-      "extensions": [
-        ".old"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
+      "binding_ids": []
     },
     {
       "id": "model-ps2",
+      "status": "candidate",
       "asset_types": [
         "model name tree",
         "model geometry",
         "texture library"
       ],
-      "status": "partial",
-      "extensions": [
-        ".ps2"
-      ],
-      "loader_evidence": [
-        {
-          "function": "FUN_00123908",
-          "source": "notes/evidence/fr2-continuation/next-phase.md"
-        },
-        {
-          "function": "FUN_0011ed90",
-          "source": "notes/evidence/fr2-geometry-consumer-audit/README.md"
-        },
-        {
-          "function": "00222358",
-          "source": "notes/evidence/fr2-texture-upload-audit/README.md"
-        }
-      ],
-      "variant_dispositions": {
-        "zlib": "covered"
-      },
-      "structure_evidence": [
-        "notes/evidence/fr2-continuation/README.md",
-        "notes/evidence/fr2-geometry-consumer-audit/README.md"
+      "binding_ids": [
+        "model-name-tree-relocation",
+        "model-geometry-record-walk",
+        "model-texture-upload-consumer"
       ]
-    },
-    {
-      "id": "music-mib",
-      "asset_types": [
-        "music stream payload"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".mib"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": [
-        "notes/evidence/fr2-continuation/README.md"
-      ]
-    },
-    {
-      "id": "music-mih",
-      "asset_types": [
-        "music stream header"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".mih"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": [
-        "notes/evidence/fr2-continuation/README.md"
-      ]
-    },
-    {
-      "id": "sound-bank-msb",
-      "asset_types": [
-        "sound bank sample payload"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".msb"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": [
-        "notes/evidence/fr2-continuation/README.md"
-      ]
-    },
-    {
-      "id": "sound-bank-msh",
-      "asset_types": [
-        "sound bank header"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".msh"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": [
-        "notes/evidence/fr2-continuation/README.md"
-      ]
-    },
-    {
-      "id": "sound-bank-sbf",
-      "asset_types": [
-        "sound bank (unclassified)"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".sbf"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
-    },
-    {
-      "id": "sprite-ptg",
-      "asset_types": [
-        "PTG sprite"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".ptg"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "zlib": "unresolved"
-      },
-      "structure_evidence": [
-        "notes/evidence/fr2-continuation/README.md"
-      ]
-    },
-    {
-      "id": "text-and-data-dat-unclassified",
-      "asset_types": [
-        "text/data (unclassified)"
-      ],
-      "status": "unresolved",
-      "extensions": [
-        ".dat"
-      ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
     },
     {
       "id": "video-pss",
+      "status": "unresolved",
       "asset_types": [
         "video/container"
       ],
+      "binding_ids": []
+    },
+    {
+      "id": "sprite-ptg",
       "status": "unresolved",
-      "extensions": [
-        ".pss"
+      "asset_types": [
+        "PTG sprite"
       ],
-      "loader_evidence": [],
-      "variant_dispositions": {
-        "raw": "unresolved"
-      },
-      "structure_evidence": []
+      "binding_ids": []
+    },
+    {
+      "id": "sound-bank-sbf",
+      "status": "unresolved",
+      "asset_types": [
+        "sound bank (unclassified)"
+      ],
+      "binding_ids": []
+    },
+    {
+      "id": "interface-ui",
+      "status": "unresolved",
+      "asset_types": [
+        "UI/interface data"
+      ],
+      "binding_ids": []
+    }
+  ],
+  "candidate_loader_bindings": [
+    {
+      "id": "model-name-tree-relocation",
+      "contract_id": "model-ps2",
+      "asset_type": "model name tree",
+      "function": "FUN_00123908",
+      "claim_id": "model.name-tree.relocation-and-section-boundary",
+      "source_sha256": "35d945e80465a1c99e8dda1c0dc87b91251060f53c19302f11598b164ad4fa8b",
+      "disposition": "candidate_documentation"
+    },
+    {
+      "id": "model-geometry-record-walk",
+      "contract_id": "model-ps2",
+      "asset_type": "model geometry",
+      "function": "FUN_0011ed90",
+      "claim_id": "model.geometry.serialized-record-cursor",
+      "source_sha256": "e0bd908e1c414732cd5bb53006da7fe0ab04ed7ba7e4a75b414af42d1600d77b",
+      "disposition": "candidate_documentation"
+    },
+    {
+      "id": "model-texture-upload-consumer",
+      "contract_id": "model-ps2",
+      "asset_type": "texture library",
+      "function": "00222358",
+      "claim_id": "texture.descriptor-to-upload-fields",
+      "source_sha256": "4bc0a226d9ebf0352a672aa197b386b0861433ef536c1c210d905acf1ab0fe80",
+      "disposition": "candidate_documentation"
     }
   ],
   "unresolved_contracts": [
     "configuration-cfg",
+    "text-and-data-dat-unclassified",
     "database-db-unclassified",
-    "frontend-mbf",
     "icon-ico",
-    "interface-ui",
-    "legacy-old",
-    "model-ps2",
+    "frontend-mbf",
     "music-mib",
     "music-mih",
-    "sound-bank-msb",
     "sound-bank-msh",
-    "sound-bank-sbf",
+    "sound-bank-msb",
+    "legacy-old",
+    "model-ps2",
+    "video-pss",
     "sprite-ptg",
-    "text-and-data-dat-unclassified",
-    "video-pss"
+    "sound-bank-sbf",
+    "interface-ui"
+  ],
+  "unresolved_logical_profiles": [
+    {
+      "contract_id": "configuration-cfg",
+      "asset_type": "configuration",
+      "profile_id": "configuration-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "text-and-data-dat-unclassified",
+      "asset_type": "text/data (unclassified)",
+      "profile_id": "text/data-(unclassified)-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "database-db-unclassified",
+      "asset_type": "database (unclassified)",
+      "profile_id": "database-(unclassified)-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "icon-ico",
+      "asset_type": "icon image",
+      "profile_id": "icon-image-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "frontend-mbf",
+      "asset_type": "front-end data (unclassified)",
+      "profile_id": "front-end-data-(unclassified)-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "music-mib",
+      "asset_type": "music stream payload",
+      "profile_id": "music-interleave-payload",
+      "disposition": "candidate_structure"
+    },
+    {
+      "contract_id": "music-mib",
+      "asset_type": "music stream payload",
+      "profile_id": "music-playback-upload",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "music-mih",
+      "asset_type": "music stream header",
+      "profile_id": "music-header-fields",
+      "disposition": "candidate_structure"
+    },
+    {
+      "contract_id": "music-mih",
+      "asset_type": "music stream header",
+      "profile_id": "music-header-consumer",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "sound-bank-msh",
+      "asset_type": "sound bank header",
+      "profile_id": "bank-descriptors",
+      "disposition": "candidate_structure"
+    },
+    {
+      "contract_id": "sound-bank-msh",
+      "asset_type": "sound bank header",
+      "profile_id": "bank-loader-playback",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "sound-bank-msb",
+      "asset_type": "sound bank sample payload",
+      "profile_id": "bank-adpcm-spans",
+      "disposition": "candidate_structure"
+    },
+    {
+      "contract_id": "sound-bank-msb",
+      "asset_type": "sound bank sample payload",
+      "profile_id": "bank-playback-lifetime",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "legacy-old",
+      "asset_type": "unclassified legacy-named data",
+      "profile_id": "unclassified-legacy-named-data-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "model-ps2",
+      "asset_type": "model name tree",
+      "profile_id": "name-tree-section",
+      "disposition": "candidate_documentation"
+    },
+    {
+      "contract_id": "model-ps2",
+      "asset_type": "model geometry",
+      "profile_id": "geometry-body",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "model-ps2",
+      "asset_type": "texture library",
+      "profile_id": "texture-level0-formats-1-3-4",
+      "disposition": "candidate_structure"
+    },
+    {
+      "contract_id": "model-ps2",
+      "asset_type": "texture library",
+      "profile_id": "texture-mips-palettes",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "video-pss",
+      "asset_type": "video/container",
+      "profile_id": "video/container-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "sprite-ptg",
+      "asset_type": "PTG sprite",
+      "profile_id": "ptg-header",
+      "disposition": "candidate_structure"
+    },
+    {
+      "contract_id": "sprite-ptg",
+      "asset_type": "PTG sprite",
+      "profile_id": "ptg-tiled-dddddddd",
+      "disposition": "candidate_structure"
+    },
+    {
+      "contract_id": "sprite-ptg",
+      "asset_type": "PTG sprite",
+      "profile_id": "ptg-other-bodies",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "sound-bank-sbf",
+      "asset_type": "sound bank (unclassified)",
+      "profile_id": "sound-bank-(unclassified)-grammar",
+      "disposition": "unresolved"
+    },
+    {
+      "contract_id": "interface-ui",
+      "asset_type": "UI/interface data",
+      "profile_id": "ui/interface-data-grammar",
+      "disposition": "unresolved"
+    }
   ],
   "complete": false,
-  "claim_limits": "Archive-derived extension and raw/zlib inventory plus evidence-binding validation only. Complete status requires documented coverage of every observed storage variant. This checker does not validate asset semantics or prove loader behavior beyond its cited evidence."
+  "claim_limits": "The loader bindings are candidate documentation associations, not independently accepted semantic evidence. All current logical profiles are candidate or unresolved. Raw/zlib counts are storage encodings only. No asset contract can pass until reviewed registry evidence and all body/profile requirements are accepted."
 }
