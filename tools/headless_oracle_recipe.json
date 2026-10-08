@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "probe_elf": {
+    "sha256": "998bf45e35ef075ad35501803a7404bb2d01827e4f940bea49e347f865ca9654",
+    "known_output_words": [1179791952, 21, 283062463, 1],
+    "output_address": "0x00180000"
+  },
+  "probe_source": {
+    "sha256": "ea05855f8fb3f0dbf8286f0e1a47ce8fa50b6716221b98c3b434b3d93c0154f4"
+  },
+  "linker_script": {
+    "sha256": "fac9400a6bb752b75d51e7657f35aafb559080186798a1a3880890ebdcbd25da"
+  },
+  "builder": {
+    "authority": "local controlled-probe-build-02.log",
+    "build_log_sha256": "002842d730515bb5d897c2b45f218b52d507c7e421b035e2fb677abb85d69f18",
+    "toolchain": "pinned modern GNU MIPS toolchain in Docker Ubuntu 24.04 arm64",
+    "limits": "The fixture proves the strict runtime plumbing only; it is not original or reconstructed game code."
+  },
+  "desktop_observer": {
+    "source_sha256": "2e43e567a5058a5881e0b54173a7ca9e4064961fcb6618d5cc0c815c9920b879",
+    "binary_sha256": "9219fa464495861ddf78d333526ee82e99e11576c8b3ff2439c12e800976d55d",
+    "builder": "clang -fobjc-arc observe-desktop.m -framework AppKit -framework CoreGraphics"
+  },
+  "runtime": {
+    "emulator": "PCSX2 v2.6.3",
+    "executable_sha256": "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d",
+    "platform_plugin_sha256": "ac97d9562bc77cce9a627e1ac474bd2d16c68af2f674fe65e3bece1cd0210679",
+    "provider": "local installed PCSX2 app plus locally built Qt 6.10.1 offscreen platform plugin",
+    "sandbox": "macOS sandbox-exec; deny all mach lookup and IP network, allow only fixed PINE AF_UNIX socket and isolated run-tree writes"
+  },
+  "offscreen_plugin_builder": {
+    "qt_release": "6.10.1",
+    "official_source_archive_sha256": "e469b996bd4dd6409aeab1a2034eb73267d5c8de84aa6224bf7c9520cdcbd309",
+    "build_command_sha256": "e5786e5d4738715fd64ac6f35325b82ab67ba3be8139233d72f29dedaffe6ab5",
+    "preparation_record_sha256": "068164de1068b1ebbb566224cd5ccb2b0bcebab6764afadcc5e365acf267dca1",
+    "source_files": {
+      "main.cpp": "94a0d2e4e5b2f74fe9508fba3e090d7735a7af955470a43d589a634fc981d03e",
+      "qoffscreencommon.cpp": "81c8f3fad4e5db98d36fd463833f8b2350f651db546d7f513d970b03f50ab3ea",
+      "qoffscreenintegration.cpp": "d0f5189839790e6c3535836765d831b7193a14d5e5f75f82187b3cb4986a7506",
+      "qoffscreenwindow.cpp": "70cc98cee42d9a7779542e1e2a66e01d78214aa588ce984993186a6e62544558"
+    }
+  }
+}
