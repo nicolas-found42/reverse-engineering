@@ -31,9 +31,12 @@ is superseded because it subtracted the owned 60 bytes from unresolved
 accounting twice. The clean receipt at
 `/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T080215Z-c5c6714b15e74f18a7f184123a94debe/result.json`
 corrected the total but is also superseded because ownership depended on the
-candidate source hash. The current implementation retains fixed ownership and
-gates match credit separately on the current source identity; a fresh receipt
-for this implementation is recorded after the fix.
+candidate source hash. The current implementation's fresh clean positive
+receipt is
+`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T081129Z-4b46301ba76d4fb0a02d63bea3aa3c53/result.json`.
+It records AC07 pass, AC05 incomplete, 60 owned and matched bytes, 3,506,988
+unresolved bytes, AC27/29/30/31/32 incomplete with current child-receipt
+references, and a clean working tree at source revision `734b7ae`.
 
 The source mutation control changes the sentinel branch and reruns the real
 aggregate. This earlier receipt is superseded because the range inventory had
