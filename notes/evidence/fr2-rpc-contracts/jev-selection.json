@@ -1,0 +1,29 @@
+{
+  "input": {
+    "query": "Which bounded STREAM subcommand is ready for a public executable framing check with independently linked EE builder and IOP consuming branch?",
+    "candidates": [
+      {
+        "id": "volume-2",
+        "text": "EE 0x13c0c8 checks channel <48, chooses subcommand2, appends channel and two halfwords, increases argument count by3, finalizes at 0x138330. IOP AdpcmSetParam 0x11d44 branch2 passes three halfwords to SOUND_SetChannelVolume; actual buffer ownership and effects remain unresolved."
+      },
+      {
+        "id": "shared-stream",
+        "text": "STREAM poll uses records with stride0x224. EE caller and complete record layout have not been bound; ownership and synchronization remain unresolved."
+      },
+      {
+        "id": "all-audio",
+        "text": "AdpcmSetParam has many subcommands including playback, uploads, buffers and DMA. Their EE builders and argument lengths have not been individually reconciled."
+      }
+    ],
+    "top_k": 3
+  },
+  "result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_find\",\n  \"model\": \"typesafe/jev-1.13-20260917\",\n  \"provider\": \"openrouter\",\n  \"query\": \"Which bounded STREAM subcommand is ready for a public executable framing check with independently linked EE builder and IOP consuming branch?\",\n  \"exists\": 0.62,\n  \"exists_verdict\": \"partial\",\n  \"top\": [\n    {\n      \"id\": \"volume-2\",\n      \"probability\": 1,\n      \"text\": \"EE 0x13c0c8 checks channel <48, chooses subcommand2, appends channel and two halfwords, increases argument count by3, finalizes at 0x138330. IOP AdpcmSetParam 0x11d44 branch2 passes three halfwords to SOUND_SetChannelVolume; actual buffer ownership and effects remain unresolved.\"\n    },\n    {\n      \"id\": \"shared-stream\",\n      \"probability\": 0,\n      \"text\": \"STREAM poll uses records with stride0x224. EE caller and complete record layout have not been bound; ownership and synchronization remain unresolved.\"\n    },\n    {\n      \"id\": \"all-audio\",\n      \"probability\": 0,\n      \"text\": \"AdpcmSetParam has many subcommands including playback, uploads, buffers and DMA. Their EE builders and argument lengths have not been individually reconciled.\"\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 642,\n    \"output_tokens\": 62\n  }\n}"
+      }
+    ]
+  },
+  "disposition": "partial existence verdict; volume framing is selected as bounded hypothesis only. No full ownership/output contract accepted."
+}
