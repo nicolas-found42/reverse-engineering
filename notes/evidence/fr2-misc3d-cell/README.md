@@ -112,3 +112,10 @@ translator source:
 PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python \
 PS2RECOMP_SOURCE_ROOT="$PWD/.scratch/mesh/codex-root/PS2Recomp" tools/check.sh
 ```
+
+The continuation under #35 now supplies
+[bounded source-built reset/release/sibling outputs](../fr2-misc3d-lifecycle/README.md)
+and five common/NOBITS layout checks. Its real child and source/layout/missing
+controls pass their scoped expectations. Loader, computed aliases, sibling
+caller use and additional ownership attribution remain incomplete; the #24
+child's original scope and task-level incomplete status remain accurate.

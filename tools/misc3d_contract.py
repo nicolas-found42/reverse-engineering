@@ -24,7 +24,7 @@ DECISION = ROOT / 'notes/evidence/fr2-misc3d-cell/decision.json'
 OBSERVATION = ROOT / 'notes/evidence/fr2-misc3d-cell/observation.json'
 
 
-def verify_cell_object(data: bytes) -> dict:
+def verify_cell_object(data: bytes, symbol: str = 'misc3d_db_id') -> dict:
     """ee-gcc emits this tentative definition as SHN_MIPS_SCOMMON, with no payload."""
     elf = parse_elf(data)
     rows = elf['sections']
@@ -43,14 +43,14 @@ def verify_cell_object(data: bytes) -> dict:
             end = names.find(b'\0', name)
             if name >= len(names) or end < 0:
                 raise Invalid('cell object symbol name is malformed')
-            if names[name:end] == b'misc3d_db_id':
+            if names[name:end] == symbol.encode():
                 found.append((value, size, info, section))
     if len(found) != 1 or found[0] not in ((4, 4, 17, 0xff03), (4, 4, 17, 0xfff2)):
         raise Invalid('cell object must define one uninitialized four-byte common object, aligned four')
     if any(s['flags'] & 2 and s['type'] != 8 and s['size']
            and s['name'] not in ('.reginfo',) for s in rows):
         raise Invalid('cell object has unexpected allocated file bytes')
-    return {'symbol': 'misc3d_db_id', 'bytes': 4, 'alignment': 4,
+    return {'symbol': symbol, 'bytes': 4, 'alignment': 4,
             'storage': 'common', 'has_file_bytes': False}
 
 
