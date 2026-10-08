@@ -16,7 +16,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { parseArgs } from "node:util";
 
-const PACKAGE = `@jkudish/jev-mcp@${process.env.JEV_MCP_VERSION ?? "0.13.0"}`;
+const PACKAGE = `@jkudish/jev-mcp@${process.env.JEV_MCP_VERSION ?? "0.14.1"}`;
 
 function usage(message) {
   console.error(message);

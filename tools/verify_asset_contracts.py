@@ -17,7 +17,7 @@ from pathlib import Path
 from config_contracts import InvalidConfig, parse_track_config
 from corpus_binding import Baseline
 from corpus_contract import corpus_identity
-from evidence_common import Incomplete, Invalid, sha256, write_result
+from evidence_common import Incomplete, Invalid, write_result
 from format_contracts import archive
 
 ROOT = Path(__file__).resolve().parent.parent

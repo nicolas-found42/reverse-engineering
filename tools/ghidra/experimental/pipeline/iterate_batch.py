@@ -1,5 +1,5 @@
 """Run do_batch.sh repeatedly; when the guard rejects, drop the seed named by the failure (an 8-hex address inside a seed span) and retry. Each retry uses a fresh byte-identical project copy; failed attempts are archived. Static only."""
-import json,os,re,subprocess,sys,shutil,time
+import json,os,re,subprocess,sys,shutil
 from pathlib import Path
 name,seeds,prev,base=sys.argv[1:5];maxit=int(sys.argv[5]) if len(sys.argv)>5 else 40
 PIPE=Path(__file__).resolve().parent;D=Path(os.environ.get('FR2_WORK','.scratch/mesh/codex-audit/frontier-3845-01'));S=D/f'batch-{name}';proj=Path('ghidra-project')/f'codex-audit-ee-batch-{name}-proposal-01'

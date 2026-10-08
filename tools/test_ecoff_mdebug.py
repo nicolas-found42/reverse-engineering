@@ -20,7 +20,6 @@ def build(files, externals, ss_ext=b"\0"):
     """files: list of dict(name, adr, symbols=[(iss, value, st, sc, index)], procs=[(adr, isym, regmask, frame)], ss=bytes)"""
     ss = b""; sym = b""; pd = b""; fd = b""
     for f in files:
-        rss = len(ss) - 0
         issbase = len(ss)
         block = f["ss"]
         ss += block

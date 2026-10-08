@@ -12,7 +12,7 @@ import json
 import re
 from pathlib import Path
 
-from evidence_common import Incomplete, write_result
+from evidence_common import Incomplete
 
 NAME_TAGS = {
     'rpc_server': {'sceSifRegisterRpc', 'sceSifSetRpcQueue', 'sceSifRpcLoop'},

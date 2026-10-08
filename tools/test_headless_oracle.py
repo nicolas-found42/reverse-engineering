@@ -170,7 +170,7 @@ class HeadlessOracleProfile(unittest.TestCase):
                  patch.object(oracle, "verify_inputs", return_value={}), \
                  patch.object(oracle.subprocess, "Popen", return_value=process), \
                  patch.object(oracle, "_kill_group", return_value={"process_group_remaining": True}), \
-                 patch.object(oracle, "Pine") as pine, \
+                 patch.object(oracle, "Pine") as _pine, \
                  patch.object(oracle, "wait_for_probe_output", return_value=observed), \
                  patch.object(oracle.Path, "exists", return_value=True):
                 result = oracle.execute(args, root)
