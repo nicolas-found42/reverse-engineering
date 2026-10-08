@@ -13,7 +13,7 @@ import verify_vu as subject
 class EntryMapValidationTest(unittest.TestCase):
     def test_caller_reference_must_resolve_inside_the_named_overlay(self):
         overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
-        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved'} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved', 'incomplete_reasons': ['not fully mapped']} for i in range(8)]
         rows[5] = {'index': 5, 'status': 'documented', 'interface': 'unresolved', 'entries': [{'msc_address': 0x5cc, 'vu_byte_address': 0x2e60, 'caller': 'FUN_00128ca0', 'evidence': 'dispatch'}]}
         dispatch = {'entry_mapping': {'overlay_index': 5, 'vu_byte_address': '0x2e60',
                                       'global_value': '0x5cc', 'ee_builder': 'FUN_00128ca0'}}
@@ -25,7 +25,7 @@ class EntryMapValidationTest(unittest.TestCase):
 
     def test_caller_claim_cannot_exceed_the_pinned_evidence(self):
         overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
-        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved'} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved', 'incomplete_reasons': ['not fully mapped']} for i in range(8)]
         rows[5] = {'index': 5, 'status': 'documented', 'interface': 'unresolved', 'entries': [{'msc_address': 0x5cc, 'vu_byte_address': 0x2e60, 'caller': 'FUN_00128ca0', 'evidence': 'dispatch'}]}
         contradiction = {'entry_mapping': {'overlay_index': 5, 'vu_byte_address': '0x2e60',
                                            'global_value': '0x5cc', 'ee_builder': 'FUN_001124c0'}}
@@ -34,9 +34,35 @@ class EntryMapValidationTest(unittest.TestCase):
 
     def test_missing_entry_evidence_is_incomplete(self):
         overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
-        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved'} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved', 'incomplete_reasons': ['not fully mapped']} for i in range(8)]
         rows[5] = {'index': 5, 'status': 'documented', 'interface': 'unresolved', 'entries': [{'msc_address': 0x5cc, 'vu_byte_address': 0x2e60, 'caller': 'FUN_00128ca0', 'evidence': 'dispatch'}]}
         with self.assertRaises(Incomplete): subject.validate_entry_map({'overlays': rows}, overlays, evidence={})
+
+    def test_incomplete_entry_rows_require_a_falsifiable_reason(self):
+        overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved',
+                 'incomplete_reasons': ['not fully mapped']} for i in range(8)]
+        rows[3].pop('incomplete_reasons')
+        with self.assertRaisesRegex(Invalid, 'must state why'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence={})
+
+    def test_additional_static_callers_map_only_to_their_pinned_overlay_and_keep_scope_incomplete(self):
+        overlays = [{'index': i, 'vu_byte_address': 0 if i == 7 else i * 0x800, 'bytes': 0x460 if i == 7 else 0x800} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved', 'incomplete_reasons': ['runtime and exhaustive dispatch are unresolved']} for i in range(8)]
+        rows[0]['entries'] = [{'msc_address': 0x1a, 'vu_byte_address': 0xd0, 'caller': 'FUN_0021c3e0', 'evidence': 'additional', 'channel': 'VIF1'}]
+        rows[4]['entries'] = [{'msc_address': 0x4d1, 'vu_byte_address': 0x2688, 'caller': 'FUN_00228b38', 'evidence': 'additional', 'channel': 'VIF1'}]
+        rows[5]['entries'] = [{'msc_address': 0x554, 'vu_byte_address': 0x2aa0, 'caller': 'FUN_0012a230', 'evidence': 'additional', 'channel': 'VIF1'}, {'msc_address': 0x5cc, 'vu_byte_address': 0x2e60, 'caller': 'FUN_00128ca0', 'evidence': 'dispatch'}]
+        additional = {'derivations': [
+            {'overlay_index': 0, 'vu_byte_address': '0xd0', 'msc_immediate': '0x1a', 'caller': 'FUN_0021c3e0', 'channel': 'VIF1'},
+            {'overlay_index': 4, 'vu_byte_address': '0x2688', 'msc_immediate': '0x4d1', 'caller': 'FUN_00228b38', 'channel': 'VIF1'},
+            {'overlay_index': 5, 'vu_byte_address': '0x2aa0', 'msc_immediate': '0x554', 'caller': 'FUN_0012a230', 'channel': 'VIF1'}]}
+        dispatch = {'entry_mapping': {'overlay_index': 5, 'vu_byte_address': '0x2e60', 'global_value': '0x5cc', 'ee_builder': 'FUN_00128ca0'}}
+        result = subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': additional, 'dispatch': dispatch})
+        self.assertEqual(result['documented_entry_count'], 4)
+        self.assertEqual(result['incomplete_overlay_indices'], list(range(8)))
+        additional['derivations'][0]['msc_immediate'] = '0x1b'
+        with self.assertRaisesRegex(Invalid, 'contradicts its pinned'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': additional, 'dispatch': dispatch})
 
 
 class NativeVuValidationTest(unittest.TestCase):

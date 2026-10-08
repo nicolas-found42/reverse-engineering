@@ -1,0 +1,577 @@
+{
+  "schema": "fr2-vu-static-entry-evidence/v1",
+  "scope": "Selected EE instruction anchors for static MSCAL command construction and VIF1 queue cursor identification. No branch execution or VU runtime is claimed.",
+  "executable": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "saved_static_export": {
+    "path": ".scratch/evidence/static-export.json",
+    "sha256": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+    "function_count": 3446
+  },
+  "anchor_method": "Each recorded instruction text/byte pair was selected from the saved static export and the four instruction bytes were independently matched at its ELF PT_LOAD file offset.",
+  "instruction_anchors": [
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fda8",
+      "text": "lui a0,0x0",
+      "bytes": "0000043c",
+      "file_offset": "00130da8"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdac",
+      "text": "lui a1,0x0",
+      "bytes": "0000053c",
+      "file_offset": "00130dac"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdb0",
+      "text": "lui v0,0x0",
+      "bytes": "0000023c",
+      "file_offset": "00130db0"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdb4",
+      "text": "lui v1,0x0",
+      "bytes": "0000033c",
+      "file_offset": "00130db4"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdb8",
+      "text": "addiu a1,a1,0x0",
+      "bytes": "0000a524",
+      "file_offset": "00130db8"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdbc",
+      "text": "addiu a0,a0,0x0",
+      "bytes": "00008424",
+      "file_offset": "00130dbc"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdc0",
+      "text": "addiu v0,v0,0xd0",
+      "bytes": "d0004224",
+      "file_offset": "00130dc0"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdc4",
+      "text": "addiu v1,v1,0x2e60",
+      "bytes": "602e6324",
+      "file_offset": "00130dc4"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdc8",
+      "text": "subu v1,v1,a1",
+      "bytes": "23186500",
+      "file_offset": "00130dc8"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdcc",
+      "text": "subu a0,a0,a1",
+      "bytes": "23208500",
+      "file_offset": "00130dcc"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdd0",
+      "text": "subu v0,v0,a1",
+      "bytes": "23104500",
+      "file_offset": "00130dd0"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdd4",
+      "text": "srl a0,a0,0x3",
+      "bytes": "c2200400",
+      "file_offset": "00130dd4"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdd8",
+      "text": "srl v0,v0,0x3",
+      "bytes": "c2100200",
+      "file_offset": "00130dd8"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fddc",
+      "text": "srl v1,v1,0x3",
+      "bytes": "c2180300",
+      "file_offset": "00130ddc"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fde0",
+      "text": "sw a0,-0x6df4(gp)",
+      "bytes": "0c9284af",
+      "file_offset": "00130de0"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fde4",
+      "text": "sw v0,-0x6df0(gp)",
+      "bytes": "109282af",
+      "file_offset": "00130de4"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fde8",
+      "text": "sw v1,-0x6dec(gp)",
+      "bytes": "149283af",
+      "file_offset": "00130de8"
+    },
+    {
+      "function": "FUN_0022fda8",
+      "entry": "0022fda8",
+      "address": "0022fdec",
+      "text": "sw zero,-0x6de8(gp)",
+      "bytes": "189280af",
+      "file_offset": "00130dec"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "00230180",
+      "text": "lui v0,0x0",
+      "bytes": "0000023c",
+      "file_offset": "00131180"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "00230184",
+      "text": "lui a0,0x0",
+      "bytes": "0000043c",
+      "file_offset": "00131184"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "00230188",
+      "text": "lui v1,0x0",
+      "bytes": "0000033c",
+      "file_offset": "00131188"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "0023018c",
+      "text": "addiu a0,a0,0x0",
+      "bytes": "00008424",
+      "file_offset": "0013118c"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "00230190",
+      "text": "addiu v0,v0,0x2688",
+      "bytes": "88264224",
+      "file_offset": "00131190"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "00230194",
+      "text": "addiu v1,v1,0x2aa0",
+      "bytes": "a02a6324",
+      "file_offset": "00131194"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "00230198",
+      "text": "subu v1,v1,a0",
+      "bytes": "23186400",
+      "file_offset": "00131198"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "0023019c",
+      "text": "subu v0,v0,a0",
+      "bytes": "23104400",
+      "file_offset": "0013119c"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "002301a0",
+      "text": "srl v0,v0,0x3",
+      "bytes": "c2100200",
+      "file_offset": "001311a0"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "002301a4",
+      "text": "srl v1,v1,0x3",
+      "bytes": "c2180300",
+      "file_offset": "001311a4"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "002301a8",
+      "text": "sw v0,-0x6dd8(gp)",
+      "bytes": "289282af",
+      "file_offset": "001311a8"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "002301ac",
+      "text": "jr ra",
+      "bytes": "0800e003",
+      "file_offset": "001311ac"
+    },
+    {
+      "function": "FUN_00230180",
+      "entry": "00230180",
+      "address": "002301b0",
+      "text": "_sw v1,-0x6dd4(gp)",
+      "bytes": "2c9283af",
+      "file_offset": "001311b0"
+    },
+    {
+      "function": "FUN_001133a8",
+      "entry": "001133a8",
+      "address": "001133a8",
+      "text": "jr ra",
+      "bytes": "0800e003",
+      "file_offset": "000143a8"
+    },
+    {
+      "function": "FUN_001133a8",
+      "entry": "001133a8",
+      "address": "001133ac",
+      "text": "_lw v0,-0x6dd4(gp)",
+      "bytes": "2c92828f",
+      "file_offset": "000143ac"
+    },
+    {
+      "function": "FUN_001133a0",
+      "entry": "001133a0",
+      "address": "001133a0",
+      "text": "jr ra",
+      "bytes": "0800e003",
+      "file_offset": "000143a0"
+    },
+    {
+      "function": "FUN_001133a0",
+      "entry": "001133a0",
+      "address": "001133a4",
+      "text": "_lw v0,-0x6dd8(gp)",
+      "bytes": "2892828f",
+      "file_offset": "000143a4"
+    },
+    {
+      "function": "FUN_0021c3e0",
+      "entry": "0021c3e0",
+      "address": "0021c7f4",
+      "text": "lw v0,-0x6b64(gp)",
+      "bytes": "9c94828f",
+      "file_offset": "0011d7f4"
+    },
+    {
+      "function": "FUN_0021c3e0",
+      "entry": "0021c3e0",
+      "address": "0021c7fc",
+      "text": "_lw v0,-0x6df0(gp)",
+      "bytes": "1092828f",
+      "file_offset": "0011d7fc"
+    },
+    {
+      "function": "FUN_0021c3e0",
+      "entry": "0021c3e0",
+      "address": "0021c800",
+      "text": "lui v1,0x1400",
+      "bytes": "0014033c",
+      "file_offset": "0011d800"
+    },
+    {
+      "function": "FUN_0021c3e0",
+      "entry": "0021c3e0",
+      "address": "0021c80c",
+      "text": "or v0,v0,v1",
+      "bytes": "25104300",
+      "file_offset": "0011d80c"
+    },
+    {
+      "function": "FUN_0021c3e0",
+      "entry": "0021c3e0",
+      "address": "0021c818",
+      "text": "_sw v0,0x0(a1)",
+      "bytes": "0000a2ac",
+      "file_offset": "0011d818"
+    },
+    {
+      "function": "FUN_0012a230",
+      "entry": "0012a230",
+      "address": "0012a234",
+      "text": "lw a2,-0x6de0(gp)",
+      "bytes": "2092868f",
+      "file_offset": "0002b234"
+    },
+    {
+      "function": "FUN_0012a230",
+      "entry": "0012a230",
+      "address": "0012a294",
+      "text": "jal 0x001133a8",
+      "bytes": "ea4c040c",
+      "file_offset": "0002b294"
+    },
+    {
+      "function": "FUN_0012a230",
+      "entry": "0012a230",
+      "address": "0012a298",
+      "text": "_nop",
+      "bytes": "00000000",
+      "file_offset": "0002b298"
+    },
+    {
+      "function": "FUN_0012a230",
+      "entry": "0012a230",
+      "address": "0012a2a0",
+      "text": "lui v1,0x1400",
+      "bytes": "0014033c",
+      "file_offset": "0002b2a0"
+    },
+    {
+      "function": "FUN_0012a230",
+      "entry": "0012a230",
+      "address": "0012a2a4",
+      "text": "or v0,v0,v1",
+      "bytes": "25104300",
+      "file_offset": "0002b2a4"
+    },
+    {
+      "function": "FUN_0012a230",
+      "entry": "0012a230",
+      "address": "0012a2b8",
+      "text": "sw v0,0x0(v1)",
+      "bytes": "000062ac",
+      "file_offset": "0002b2b8"
+    },
+    {
+      "function": "FUN_00228b38",
+      "entry": "00228b38",
+      "address": "00228b3c",
+      "text": "lw a2,-0x6de0(gp)",
+      "bytes": "2092868f",
+      "file_offset": "00129b3c"
+    },
+    {
+      "function": "FUN_00228b38",
+      "entry": "00228b38",
+      "address": "00228bc4",
+      "text": "jal 0x001133a0",
+      "bytes": "e84c040c",
+      "file_offset": "00129bc4"
+    },
+    {
+      "function": "FUN_00228b38",
+      "entry": "00228b38",
+      "address": "00228bc8",
+      "text": "_nop",
+      "bytes": "00000000",
+      "file_offset": "00129bc8"
+    },
+    {
+      "function": "FUN_00228b38",
+      "entry": "00228b38",
+      "address": "00228bcc",
+      "text": "lw a1,-0x6de0(gp)",
+      "bytes": "2092858f",
+      "file_offset": "00129bcc"
+    },
+    {
+      "function": "FUN_00228b38",
+      "entry": "00228b38",
+      "address": "00228bd0",
+      "text": "lui v1,0x1400",
+      "bytes": "0014033c",
+      "file_offset": "00129bd0"
+    },
+    {
+      "function": "FUN_00228b38",
+      "entry": "00228b38",
+      "address": "00228bd4",
+      "text": "or v0,v0,v1",
+      "bytes": "25104300",
+      "file_offset": "00129bd4"
+    },
+    {
+      "function": "FUN_00228b38",
+      "entry": "00228b38",
+      "address": "00228be4",
+      "text": "sw v0,0x0(v1)",
+      "bytes": "000062ac",
+      "file_offset": "00129be4"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3c4",
+      "text": "lui v0,0x1000",
+      "bytes": "0010023c",
+      "file_offset": "0011c3c4"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3c8",
+      "text": "ori v0,v0,0x9020",
+      "bytes": "20904234",
+      "file_offset": "0011c3c8"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3cc",
+      "text": "sw zero,0x0(v0)",
+      "bytes": "000040ac",
+      "file_offset": "0011c3cc"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3d4",
+      "text": "lw a1,0x4(a0)",
+      "bytes": "0400858c",
+      "file_offset": "0011c3d4"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3d8",
+      "text": "lui v0,0x1000",
+      "bytes": "0010023c",
+      "file_offset": "0011c3d8"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3dc",
+      "text": "ori v0,v0,0x9030",
+      "bytes": "30904234",
+      "file_offset": "0011c3dc"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3e4",
+      "text": "sw v1,0x0(v0)",
+      "bytes": "000043ac",
+      "file_offset": "0011c3e4"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3ec",
+      "text": "lui v0,0x1000",
+      "bytes": "0010023c",
+      "file_offset": "0011c3ec"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3f0",
+      "text": "li v1,0x145",
+      "bytes": "45010324",
+      "file_offset": "0011c3f0"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3f4",
+      "text": "ori v0,v0,0x9000",
+      "bytes": "00904234",
+      "file_offset": "0011c3f4"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b3f8",
+      "text": "sw v1,0x0(v0)",
+      "bytes": "000043ac",
+      "file_offset": "0011c3f8"
+    },
+    {
+      "function": "FUN_0021b2a8",
+      "entry": "0021b2a8",
+      "address": "0021b4f0",
+      "text": "sw v0,-0x6de0(gp)",
+      "bytes": "209282af",
+      "file_offset": "0011c4f0"
+    }
+  ],
+  "derivations": [
+    {
+      "vu_byte_address": "0xd0",
+      "msc_immediate": "0x1a",
+      "caller": "FUN_0021c3e0",
+      "global": "gp-0x6df0",
+      "writer": "FUN_0022fda8",
+      "calculation": "0xd0 - 0, then logical shift right 3; command word is 0x14000000 OR global value",
+      "overlay_index": 0,
+      "channel": "VIF1",
+      "limits": "The pointer domain is supported by use of shared gp-0x6de0 cursor; command construction is conditional. This does not establish execution."
+    },
+    {
+      "vu_byte_address": "0x2688",
+      "msc_immediate": "0x4d1",
+      "caller": "FUN_00228b38",
+      "global": "gp-0x6dd8",
+      "writer": "FUN_00230180",
+      "calculation": "0x2688 - 0, then logical shift right 3; command word is 0x14000000 OR returned value",
+      "overlay_index": 4,
+      "channel": "VIF1",
+      "limits": "Static command construction only; caller branch execution and VU execution are unobserved."
+    },
+    {
+      "vu_byte_address": "0x2aa0",
+      "msc_immediate": "0x554",
+      "caller": "FUN_0012a230",
+      "global": "gp-0x6dd4",
+      "writer": "FUN_00230180",
+      "calculation": "0x2aa0 - 0, then logical shift right 3; command word is 0x14000000 OR returned value",
+      "overlay_index": 5,
+      "channel": "VIF1",
+      "limits": "Static command construction only; caller branch execution and VU execution are unobserved."
+    }
+  ],
+  "vif_channel_basis": "The command builders read and advance gp-0x6de0, the same cursor written by FUN_0021b2a8 after it programs VIF1 QWC/TADR/CHCR at 0x10009020/30/00. The initialization submission FUN_001124c0 also submits through VIF1. This identifies the static queue/cursor domain; it is not evidence that every built packet is launched.",
+  "known_unknowns": [
+    "Overlay 0 has a separate initialization MSCAL whose gp-0x6df4 immediate remains marked unresolved by fr2-geometry-vif-tag-audit; it is deliberately not assigned here.",
+    "Static export scan does not prove absence of other indirect or data-driven dispatches.",
+    "VIF state, call-time conditions, actual DMA completion, and runtime execution are not observed."
+  ]
+}
