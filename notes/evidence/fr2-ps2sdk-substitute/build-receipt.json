@@ -1,0 +1,72 @@
+{
+  "schema": "ps2sdk-substitute-build-receipt/v1",
+  "date": "2026-10-08",
+  "authority": "open_source_dependency_build_only",
+  "ps2sdk": {
+    "repository": "https://github.com/ps2dev/ps2sdk",
+    "commit": "2c670453980fcc3fe46ead6399b730b12c8556eb",
+    "license": "Academic Free License 2.0"
+  },
+  "toolchain": {
+    "repository": "https://github.com/ps2dev/ps2dev",
+    "release": "v2.0.0",
+    "asset": "ps2dev-ubuntu-24.04-arm.tar.gz",
+    "asset_sha256": "ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622",
+    "ee_compiler": "GCC 15.2.0",
+    "iop_compiler": "GCC 15.2.0",
+    "matching_compiler": false
+  },
+  "build_environment": {
+    "image": "ubuntu:24.04",
+    "image_id": "sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+    "platform": "linux/arm64",
+    "sdk_build": "make clean && make -j1 && make install",
+    "sdk_build_exit_code": 0
+  },
+  "source_dependencies": [
+    {
+      "name": "lwip",
+      "commit": "77dcd25a72509eb83f72b033d219b1d40cd8eb95",
+      "license_file": "COPYING"
+    },
+    {
+      "name": "FatFs",
+      "commit": "18cc3d9e07473a6aa3d783a66224b243a7b4974c",
+      "license_file": "LICENSE.txt"
+    }
+  ],
+  "locked_fetcher": "download_dependencies.pinned.sh",
+  "build_fetcher_sha256": "93c1158a0f4c5ac655debd5ffc0360b7128c4b286a50bd09e8ada2f5baaa7491",
+  "locked_fetcher_sha256": "f9174474773ec92cff4bec5f926f10613fbcd01b17413182520f34b7f8229b9f",
+  "fetcher_note": "The build's clean-checkout fetcher and the committed recipe have identical pinning behavior; the committed recipe additionally rejects tracked changes on existing checkouts.",
+  "installed_output": {
+    "file_count_before_smoke": 681,
+    "file_count_after_smoke": 718,
+    "static_archives": 55,
+    "sdk_irx_outputs": 211,
+    "headers": 273,
+    "tracked_binary_outputs": 0
+  },
+  "interface_smoke": {
+    "source": "ee/debug/samples/helloworld/helloworld.c",
+    "source_sha256": "5afd87d12574e64d7669266a9445f41371654d3d9305d657b0b616ba68d3440b",
+    "result": "compile_and_link_succeeded",
+    "interfaces": ["sceSifInitRpc", "init_scr", "scr_printf", "scr_clear"],
+    "libraries": ["libdebug.a", "libc.a"],
+    "command_flags": ["-G0", "-O2", "-Wall", "-gdwarf-2", "-gz", "-Wl,-zmax-page-size=128"],
+    "elf_class": "ELF32",
+    "elf_machine": "MIPS R3000",
+    "elf_flags": ["noreorder", "cpic", "abi2", "5900", "mips3"],
+    "output_sha256": "30590eb0a67a8ae5bcfb8bfaffd87738336b0a18cebbe9cef68e4192bd816386",
+    "output_tracked": false
+  },
+  "corpus_attribution": {
+    "status": "incomplete",
+    "reason": "local retail corpus payload is unavailable in this worktree",
+    "substitute_ranges": 0,
+    "matched_bytes": 0,
+    "matched_fraction": 0.0,
+    "source_built_game_ee_claim": false,
+    "game_iop_module_rebuild_claim": false
+  }
+}

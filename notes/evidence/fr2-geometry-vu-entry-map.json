@@ -1,0 +1,231 @@
+{
+  "schema": "fr2-vu-entry-map/v1",
+  "evidence": {
+    "additional": {
+      "path": "notes/evidence/fr2-geometry-vu-dispatch/additional-entry-mappings.json",
+      "sha256": "264ed4dc462b85da3937fba2800223984039b5372ec19509401d9aa5fa8660e9"
+    },
+    "consumer": {
+      "path": "notes/evidence/fr2-geometry-vu-consumer/anchors.json",
+      "sha256": "2f4188cfeda630681d4f78db73de93468e6c5f79ddc5af3044d494369565feca"
+    },
+    "initialization": {
+      "path": "notes/evidence/fr2-geometry-vu-dispatch/initialization-entry-mapping.json",
+      "sha256": "0659b11f292079486085ddf88b11054d21cf13e2948c29e9fc0d6d15fcd28c68"
+    },
+    "overlay5": {
+      "path": "notes/evidence/fr2-geometry-vu-dispatch/overlay5-entry-mapping.json",
+      "sha256": "c8c13c06a7ecf27dcef413e62af5bce80afe0524f5a046cdbb303b5287e5bc59"
+    }
+  },
+  "overlays": [
+    {
+      "index": 0,
+      "status": "incomplete",
+      "entries": [
+        {
+          "msc_address": 26,
+          "vu_byte_address": 208,
+          "caller": "FUN_0021c3e0",
+          "evidence": "additional",
+          "channel": "VIF1"
+        },
+        {
+          "msc_address": 0,
+          "vu_byte_address": 0,
+          "caller": "FUN_001124c0",
+          "evidence": "initialization",
+          "channel": "VIF1"
+        }
+      ],
+      "interface": {
+        "status": "unresolved",
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "evidence": [],
+        "unknowns": [
+          "The static initialization MSCAL immediate 0 is mapped. No exhaustive caller census or runtime dispatch observation exists; indirect and data-driven entries are not excluded."
+        ]
+      },
+      "incomplete_reasons": [
+        "The static initialization MSCAL immediate 0 is mapped. No exhaustive caller census or runtime dispatch observation exists; indirect and data-driven entries are not excluded."
+      ]
+    },
+    {
+      "index": 1,
+      "status": "incomplete",
+      "entries": [],
+      "interface": {
+        "status": "unresolved",
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "evidence": [],
+        "unknowns": [
+          "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+        ]
+      },
+      "incomplete_reasons": [
+        "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+      ]
+    },
+    {
+      "index": 2,
+      "status": "incomplete",
+      "entries": [],
+      "interface": {
+        "status": "unresolved",
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "evidence": [],
+        "unknowns": [
+          "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+        ]
+      },
+      "incomplete_reasons": [
+        "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+      ]
+    },
+    {
+      "index": 3,
+      "status": "incomplete",
+      "entries": [],
+      "interface": {
+        "status": "unresolved",
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "evidence": [],
+        "unknowns": [
+          "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+        ]
+      },
+      "incomplete_reasons": [
+        "No direct MSCAL caller was mapped in the saved static export; indirect or data-driven dispatch is not excluded."
+      ]
+    },
+    {
+      "index": 4,
+      "status": "incomplete",
+      "entries": [
+        {
+          "msc_address": 1233,
+          "vu_byte_address": 9864,
+          "caller": "FUN_00228b38",
+          "evidence": "additional",
+          "channel": "VIF1"
+        }
+      ],
+      "interface": {
+        "status": "unresolved",
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "evidence": [],
+        "unknowns": [
+          "Static caller mapping is evidenced, but runtime branch selection and an exhaustive entry census are unresolved."
+        ]
+      },
+      "incomplete_reasons": [
+        "Static caller mapping is evidenced, but runtime branch selection and an exhaustive entry census are unresolved."
+      ]
+    },
+    {
+      "index": 5,
+      "status": "incomplete",
+      "entries": [
+        {
+          "msc_address": 1364,
+          "vu_byte_address": 10912,
+          "caller": "FUN_0012a230",
+          "evidence": "additional",
+          "channel": "VIF1"
+        },
+        {
+          "msc_address": 1484,
+          "vu_byte_address": 11872,
+          "caller": "FUN_00128ca0",
+          "evidence": "overlay5"
+        }
+      ],
+      "interface": {
+        "status": "partial",
+        "inputs": [
+          "Conditional TOPS-relative VU data-memory value: TOP+3.z is read after XTOP captures TOP in vi01."
+        ],
+        "outputs": [
+          "vi03 is subsequently used as a VU data-memory base by LQ at offsets 0 and 2 and ILW.W at offset 1; no semantic output name is assigned."
+        ],
+        "state": [
+          "Static overlay instruction evidence: XTOP vi01 at pair 215, ILW.Z vi03,3(vi01) at pair 221, LQ VF15/VF12 based on vi03 at pairs 228/229, and ILW.W vi06,1(vi03) at pair 237.",
+          "The EE packet writer places a selected value in V4-32 payload qword 3 lane Z; linkage to TOP+3.z depends on the applicable VIF mode/cycle and TOPS state."
+        ],
+        "evidence": [
+          {
+            "source": "consumer",
+            "anchor_addresses": [
+              "0x2eb8",
+              "0x2ee8",
+              "0x2f20",
+              "0x2f28",
+              "0x2f68"
+            ]
+          }
+        ],
+        "unknowns": [
+          "Actual DMA/VIF execution and caller-specific MODE, cycle, and TOPS state are unobserved.",
+          "Entry 0x2e60 is a static MSCAL candidate; runtime branch selection and exhaustive dispatch are unresolved.",
+          "Inputs carried by REF payloads and the meaning of data-memory values 0x208 and 0x2c8 are unresolved."
+        ]
+      },
+      "incomplete_reasons": [
+        "Two static caller mappings are evidenced, but runtime branch selection and an exhaustive entry census are unresolved."
+      ]
+    },
+    {
+      "index": 6,
+      "status": "incomplete",
+      "entries": [],
+      "interface": {
+        "status": "unresolved",
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "evidence": [],
+        "unknowns": [
+          "The overlay begins at the next byte after overlay 5, whose final instruction pair has no E bit; overlay 6 starts with the continuation instruction, and no independent MSCAL caller was identified."
+        ]
+      },
+      "incomplete_reasons": [
+        "The overlay begins at the next byte after overlay 5, whose final instruction pair has no E bit; overlay 6 starts with the continuation instruction, and no independent MSCAL caller was identified."
+      ]
+    },
+    {
+      "index": 7,
+      "status": "incomplete",
+      "entries": [],
+      "interface": {
+        "status": "unresolved",
+        "inputs": [],
+        "outputs": [],
+        "state": [],
+        "evidence": [],
+        "unknowns": [
+          "The range is in the VIF0 address domain; no direct MSCAL caller was mapped in the saved static export."
+        ]
+      },
+      "incomplete_reasons": [
+        "The range is in the VIF0 address domain; no direct MSCAL caller was mapped in the saved static export."
+      ]
+    }
+  ],
+  "limits": [
+    "Static MSCAL construction evidence documents caller candidates for overlays 0, 4 and 5 only.",
+    "Overlay 0 and 4 interface contracts remain unresolved; overlay 5 has only a partial static input/state trace. No overlay has a complete interface contract.",
+    "Overlay 5 has one partial static input/state trace only; it is not a complete interface contract.",
+    "No overlay is marked complete: caller census, runtime-selected entry evidence, and required input/output/state contracts remain incomplete.",
+    "Overlay 0 initialization MSCAL immediate 0 is statically mapped through FUN_001124c0; exhaustive and runtime dispatch remain unresolved."
+  ]
+}

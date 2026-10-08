@@ -16,7 +16,7 @@ regions built from ps2sdk are `substitute region`s: reported, never counted.
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from enum import Enum
 from pathlib import Path
 
@@ -35,16 +35,28 @@ class Scope(str, Enum):
     EXCLUDED = "excluded"
 
 
-# ADR-0005: no measurement places a whole section on one side of the boundary, so every
-# loadable code/data section is mixed and the game-owned set is empty until a range-level
-# attribution exists. Scope is recorded here, never declared by the caller of the gate.
+# ADR-0005 records the measured local game-owned range below. All other loadable
+# code/data bytes remain mixed until a range-level attribution exists. Scope is
+# recorded here, never declared by the caller of the gate.
 METADATA = (".shstrtab", ".mdebug", ".reginfo", ".DVP.ovlytab", ".DVP.ovlystrtab")
+GAME_OWNED_RANGES = ((".text", 0x001D1800, 0x001D183C),)
 
 
 def scope_of(name: str) -> Scope:
     if name in METADATA or name.startswith(".mdebug"):
         return Scope.EXCLUDED
     return Scope.MIXED
+
+
+def scope_of_range(name: str, address: int, size: int) -> Scope:
+    """Return a recorded range scope only when the entire span fits that range."""
+    section_scope = scope_of(name)
+    if section_scope is Scope.EXCLUDED or size <= 0:
+        return section_scope
+    for section, first, end in GAME_OWNED_RANGES:
+        if section == name and first <= address and address + size <= end:
+            return Scope.GAME_OWNED
+    return section_scope
 
 
 @dataclass(frozen=True)
@@ -97,6 +109,20 @@ def compare(section: Section | None, unit: bytes | None) -> Verdict:
     raise AssertionError("unreachable: prefix differs, so a word differs")
 
 
+def compare_unit(name: str, address: int, file_offset: int, expected: bytes,
+                 unit: bytes | None) -> Verdict:
+    """Byte-diff one independently rebuilt unit against its pinned byte span.
+
+    Overlay code is stored in the executable's load section rather than in its
+    synthetic ELF overlay section, so callers provide the already validated
+    source span and its location. Scope comes from the fixed ADR-0005 range map.
+    """
+    section = Section(name, address, file_offset, len(expected), expected,
+                      sha256(expected))
+    return replace(compare(section, unit),
+                   scope=scope_of_range(name, address, len(expected)).value)
+
+
 def _fail(section: Section, unit: bytes, scope: str, offset: int, matched: int,
           reason: str) -> Verdict:
     difference = {
@@ -132,6 +158,8 @@ def ledger(results: dict[str, list[dict]]) -> dict:
                 matched += row["bytes"]
     return {"game_owned_bytes": owned, "matched_bytes": matched,
             "substitute_region_bytes": substitute,
+            "substitute_disposition": ("substitute, not matched" if substitute
+                                       else "no ranges attributed as substitute"),
             "mixed_bytes": mixed, "mixed_bytes_identical": mixed_passed,
             "matched_fraction": (matched / owned) if owned else 0.0}
 

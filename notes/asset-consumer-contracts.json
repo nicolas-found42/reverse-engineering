@@ -1,0 +1,302 @@
+{
+  "schema_version": 1,
+  "registry": "notes/asset-loader-registry.json",
+  "contracts": [
+    {
+      "id": "configuration-cfg",
+      "asset_types": [
+        "configuration"
+      ],
+      "extensions": [
+        ".cfg"
+      ],
+      "status": "complete",
+      "structure_evidence": [
+        "notes/evidence/fr2-asset-consumer-contracts/configuration-consumer.md",
+        "tools/config_contracts.py"
+      ],
+      "limits": [
+        "Only the five required keys and exact line grammar observed in all 16 unchanged PAL records are supported. No rendering or runtime-selection claim."
+      ],
+      "binding_ids": [
+        "configuration-track-loader"
+      ],
+      "consumer_contract_ids": [
+        "configuration"
+      ]
+    },
+    {
+      "id": "text-and-data-dat-unclassified",
+      "asset_types": [
+        "text/data (unclassified)"
+      ],
+      "extensions": [
+        ".dat"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "No format or semantic claim is made for the .dat family."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "text-data-unclassified"
+      ]
+    },
+    {
+      "id": "database-db-unclassified",
+      "asset_types": [
+        "database (unclassified)"
+      ],
+      "extensions": [
+        ".db"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "No database interpretation is asserted."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "database-unclassified"
+      ]
+    },
+    {
+      "id": "icon-ico",
+      "asset_types": [
+        "icon image"
+      ],
+      "extensions": [
+        ".ico"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "Extension does not establish in-game use."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "icon-image"
+      ]
+    },
+    {
+      "id": "frontend-mbf",
+      "asset_types": [
+        "front-end data (unclassified)"
+      ],
+      "extensions": [
+        ".mbf"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "The name frontend.mbf is an archive example, not semantic evidence."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "front-end-data-unclassified"
+      ]
+    },
+    {
+      "id": "music-mib",
+      "asset_types": [
+        "music stream payload"
+      ],
+      "extensions": [
+        ".mib"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Structural ADPCM and interleave observations do not establish an executable consumer contract."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "music-stream-payload"
+      ]
+    },
+    {
+      "id": "music-mih",
+      "asset_types": [
+        "music stream header"
+      ],
+      "extensions": [
+        ".mih"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Decoder agreement and paired-file structure do not establish the loader or runtime behavior."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "music-stream-header"
+      ]
+    },
+    {
+      "id": "sound-bank-msh",
+      "asset_types": [
+        "sound bank header"
+      ],
+      "extensions": [
+        ".msh"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Descriptor and ADPCM checks remain structural only."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "sound-bank-header"
+      ]
+    },
+    {
+      "id": "sound-bank-msb",
+      "asset_types": [
+        "sound bank sample payload"
+      ],
+      "extensions": [
+        ".msb"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Sample span structure is not a playback or hardware contract."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "sound-bank-sample-payload"
+      ]
+    },
+    {
+      "id": "legacy-old",
+      "asset_types": [
+        "unclassified legacy-named data"
+      ],
+      "extensions": [
+        ".old"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "Do not infer that CARDATA.OLD is unused or obsolete from its name."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "unclassified-legacy-named-data"
+      ]
+    },
+    {
+      "id": "model-ps2",
+      "asset_types": [
+        "model name tree",
+        "model geometry",
+        "texture library"
+      ],
+      "extensions": [
+        ".ps2"
+      ],
+      "status": "candidate",
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md",
+        "notes/evidence/fr2-geometry-consumer-audit/README.md"
+      ],
+      "limits": [
+        "Partial static contract only; no complete geometry, texture, renderer, lifetime, or behavioral claim."
+      ],
+      "binding_ids": [
+        "model-name-tree-relocation",
+        "model-geometry-record-walk",
+        "model-texture-upload-consumer"
+      ],
+      "consumer_contract_ids": [
+        "model-name-tree",
+        "model-geometry",
+        "texture-library"
+      ]
+    },
+    {
+      "id": "video-pss",
+      "asset_types": [
+        "video/container"
+      ],
+      "extensions": [
+        ".pss"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "No playback, decode, timing, or presentation claim."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "video-container"
+      ]
+    },
+    {
+      "id": "sprite-ptg",
+      "asset_types": [
+        "PTG sprite"
+      ],
+      "extensions": [
+        ".ptg"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [
+        "notes/evidence/fr2-continuation/README.md"
+      ],
+      "limits": [
+        "Structural PTG evidence is not a consumer contract; 491 bodies remain unsupported."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "ptg-sprite"
+      ]
+    },
+    {
+      "id": "sound-bank-sbf",
+      "asset_types": [
+        "sound bank (unclassified)"
+      ],
+      "extensions": [
+        ".sbf"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "Do not infer a relationship to other sound assets from the extension."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "sound-bank-unclassified"
+      ]
+    },
+    {
+      "id": "interface-ui",
+      "asset_types": [
+        "UI/interface data"
+      ],
+      "extensions": [
+        ".ui"
+      ],
+      "status": "unresolved",
+      "structure_evidence": [],
+      "limits": [
+        "The extension and file names do not establish a user-interface format."
+      ],
+      "binding_ids": [],
+      "consumer_contract_ids": [
+        "ui-interface-data"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# Archive-derived asset consumer contracts
+
+`tools/verify_asset_contracts.py` derives archive extensions and raw/zlib storage encodings from `FILES.HDR` and `FILES.DAT`. Those encodings are inventory facts; they do not count as logical body or format profiles.
+
+The tool reads a fixed repository registry, `notes/asset-loader-registry.json`. Its SHA-256 is pinned in the checker. The registry pins the PAL corpus identity, required logical profiles, and each loader/reference association by contract ID, asset type, function/address, claim ID, exact source-file SHA-256, and a concrete text anchor. The caller manifest may name only those fixed contracts and binding IDs. It cannot add a loader, change a binding, narrow the contract list, mark a candidate complete, or supply a replacement registry. A changed evidence file fails even when the old function token remains in the file.
+
+Four consumer links are now recorded as bounded static contracts: track configuration parsing, model name-tree relocation, geometry record parsing, and texture upload/mip submission. Each asset type has its own consumer, bounds, field effects, transformations, allocation/lifetime, handoff, evidence bindings, and unresolved questions. The configuration grammar is decoded across the complete 16-file PAL `.cfg` set. The contracts retain their static-only limits. Registry profiles separately retain unresolved geometry-body, PTG-body, texture palette/mip, audio playback, and other asset grammars. The completion gate remains incomplete while any required profile is candidate or unresolved. A covered header or a successful independent structure verifier cannot clear a body or consumer blocker.
+
+Run against the local PAL corpus:
+
+```sh
+python3 tools/verify_asset_contracts.py archive games/ford-racing-2/extracted/FILES.HDR games/ford-racing-2/extracted/FILES.DAT --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/assets/fr2-asset-contracts/final-recheck
+```
+
+The retained [local corpus result](local-corpus-result.json) is a historical **incomplete** receipt from before the separate contracts and configuration decoder were added. The current command checks the fixed PAL executable, disc, header, and data identities, then reads every expected `.cfg` file through the independent archive baseline. The current run receipt is retained outside the repository at `/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/assets/fr2-asset-contracts/final-recheck/20261008T073904Z-30b44734929f4e4180c6e9afda3071a9/result.json`. Configuration grammar is accepted for those 16 records; runtime track selection and downstream effects remain unresolved. UI (`.ui`), text/data (`.dat`), and other unclassified families remain unresolved. No meanings are assigned to unclassified `.db`, `.mbf`, `.old`, or `.sbf` families.
+
+The checker validates registry integrity, evidence-file identities, profile identity, one consumer-contract record per declared asset type, binding references, and manifest consistency. For the unchanged PAL profile it also decodes the entire `.cfg` set. Loader dispositions document static associations supported by pinned code audits; the checker does not execute loaders or establish runtime loading, track selection, or rendered/audio behavior. The [validation receipt](validation.json) records the prior focused and full-suite checks; the current focused check is `tools/check.sh test_asset_contracts test_config_contracts`.
