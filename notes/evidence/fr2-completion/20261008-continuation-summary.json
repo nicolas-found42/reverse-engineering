@@ -1,0 +1,383 @@
+{
+  "spec": "https://github.com/nicolas-found42/reverse-engineering/issues/5",
+  "pr": "https://github.com/nicolas-found42/reverse-engineering/pull/20",
+  "source_revision": "03874990beb7283bf4188327d669af32edbf1909",
+  "source_working_tree_dirty": false,
+  "aggregate_command": "python3 tools/completion.py games/ford-racing-2 --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate",
+  "aggregate_receipt": {
+    "path": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/20261008T082141Z-7ecac4fa3b9e4ea6bdbdec1334988922/result.json",
+    "bytes": 211158,
+    "sha256": "d082b2d370beb0ff064b5f0fd2df28aea3a24e2e0cd215c514398233d95480bd",
+    "exit_code": 2,
+    "status": "incomplete"
+  },
+  "reconstruction_status": "incomplete",
+  "real_corpus_completion": false,
+  "ledger": {
+    "file_backed_bytes": 2171407,
+    "zero_fill_bytes": 1335641,
+    "unresolved_bytes": 3506988,
+    "game_owned_bytes": 60,
+    "substitute_bytes": 0,
+    "matched_bytes": 60,
+    "substitute_disposition": "no ranges attributed as substitute",
+    "matched_fraction": 1.0,
+    "matched_fraction_scope": "attributed_game_owned_bytes",
+    "function_owned_bytes": null,
+    "function_owned_disposition": "Discovery accounting is not matching credit."
+  },
+  "criteria": [
+    {
+      "id": "AC01",
+      "status": "pass",
+      "reason": "Pinned load images, all VU identities, and archive/extracted inventory.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC02",
+      "status": "incomplete",
+      "reason": "Full passing reconstruction and handoff remain unimplemented.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC03",
+      "status": "incomplete",
+      "reason": "Full build/receipt negative controls remain unimplemented.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC04",
+      "status": "incomplete",
+      "reason": "Load-image inventory retained; all but the locally measured range remain unresolved.",
+      "evidence_references": 1
+    },
+    {
+      "id": "AC05",
+      "status": "incomplete",
+      "reason": "Exploratory candidate comparison retained; independent ownership and additional EE/IOP distinguishing probes are still required.",
+      "evidence_references": 1
+    },
+    {
+      "id": "AC06",
+      "status": "incomplete",
+      "reason": "Pin GNU linker and prove placement/relocation/zero-fill layout.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC07",
+      "status": "pass",
+      "reason": "One hand-written EE source unit has a fresh, source/decision-bound exact byte build.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC08",
+      "status": "incomplete",
+      "reason": "Rebuild every attributed game-owned EE range from source.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC09",
+      "status": "incomplete",
+      "reason": "Resolve required source, ABI, types and reference contracts.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC10",
+      "status": "incomplete",
+      "reason": "Reconcile every required unlisted span and computed dispatch.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC11",
+      "status": "incomplete",
+      "reason": "Build pinned permitted substitutes with documented interfaces.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC12",
+      "status": "incomplete",
+      "reason": "Clean source builds must produce EE and all 24 module outputs.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC13",
+      "status": "incomplete",
+      "reason": "Attribute and rebuild all game-owned IOP ranges.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC14",
+      "status": "incomplete",
+      "reason": "Check complete import/export/relocation and provider contracts.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC15",
+      "status": "incomplete",
+      "reason": "Bind required RPC/shared-buffer callers and handlers with ownership/state.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC16",
+      "status": "pass",
+      "reason": "Eight exact mnemonic comparisons required; entry/state contracts are separate.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC17",
+      "status": "incomplete",
+      "reason": "Required entry/state interfaces remain unresolved.",
+      "evidence_references": 1
+    },
+    {
+      "id": "AC18",
+      "status": "pass",
+      "reason": "Independent archive/extracted comparison; format support is separate.",
+      "evidence_references": 1
+    },
+    {
+      "id": "AC19",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC20",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC21",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC22",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC23",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC24",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC25",
+      "status": "incomplete",
+      "reason": "Prove a bounded windowless/audio-free/focus-free lifecycle.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC26",
+      "status": "incomplete",
+      "reason": "Compare original and rebuilt observations with identical inputs.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC27",
+      "status": "incomplete",
+      "reason": "The current positive, mutation and placement controls cover one source unit only; controls for remaining acceptance gates are not complete.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC28",
+      "status": "incomplete",
+      "reason": "Compare two clean source builds in separate fresh work directories.",
+      "evidence_references": 0
+    },
+    {
+      "id": "AC29",
+      "status": "incomplete",
+      "reason": "The current partition conserves all load-image bytes, but only one 60-byte owned range is attributed and matched.",
+      "evidence_references": 2
+    },
+    {
+      "id": "AC30",
+      "status": "incomplete",
+      "reason": "These current child receipts support the bounded results above; required evidence and falsifiers for the remaining criteria are still incomplete.",
+      "evidence_references": 5
+    },
+    {
+      "id": "AC31",
+      "status": "incomplete",
+      "reason": "The exploratory compiler receipt records package provenance; redistribution terms remain unresolved and no compiler binaries are redistributed.",
+      "evidence_references": 1
+    },
+    {
+      "id": "AC32",
+      "status": "incomplete",
+      "reason": "Current child receipts and the aggregate are retained, but required final acceptance and handoff evidence remains incomplete.",
+      "evidence_references": 5
+    }
+  ],
+  "children": [
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-continuation/reverse-engineering/tools/matching_ranges.py",
+        "corpus",
+        "games/ford-racing-2",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/ranges"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/ranges/20261008T082141Z-13c3ee0600464d74b92c87012af5aa4b/result.json",
+      "status": "pass",
+      "sha256": "28e6a8cefc0b407bf3c6cf937bea99301b6d97f483d784c61902842d139a82b7"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-continuation/reverse-engineering/tools/verify_formats.py",
+        "corpus",
+        "games/ford-racing-2",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/archive"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/archive/20261008T082142Z-38d209eb24c440cda994949933f3e11e/result.json",
+      "status": "pass",
+      "sha256": "69367f8582841a3ddae15cab65d095eec415545121ad4767036f9025fb15fd6a"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-continuation/reverse-engineering/tools/verify_vu.py",
+        "games/ford-racing-2/extracted/SLES_517.05",
+        "--assembler",
+        ".scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+        "--objdump",
+        ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/vu"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/vu/20261008T082145Z-542e03fd088c4eb981a501cf8ea61992/result.json",
+      "status": "incomplete",
+      "sha256": "f53c718a45830d2e99fd53cee70a5d2239f87b2c33dd511713d6e02e2df33b3e"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-continuation/reverse-engineering/tools/verify_asset_contracts.py",
+        "archive",
+        "games/ford-racing-2/extracted/FILES.HDR",
+        "games/ford-racing-2/extracted/FILES.DAT",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/assets"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/assets/20261008T082145Z-3f125697f8c24261ae5d1e256935d35d/result.json",
+      "status": "incomplete",
+      "sha256": "3df84073f00c3950cf763b1f50fd21fd53e8f936eee12990d6d6996bb6954108"
+    },
+    {
+      "command": [
+        "/opt/homebrew/opt/python@3.14/bin/python3.14",
+        "/Users/Nicolas/.codex/worktrees/issue-5-continuation/reverse-engineering/tools/compiler_probe_recipe/run.py",
+        "games/ford-racing-2",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/compiler"
+      ],
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/compiler/20261008T082148Z-1f34a9c48f9f4cab89bb228c1ec38621/result.json",
+      "status": "pass",
+      "sha256": "044d7c1bc649a17191e3b1aea59559ab270cb5d09c1c943f0997b6514ad458a9"
+    }
+  ],
+  "validation": {
+    "source_revision": "03874990beb7283bf4188327d669af32edbf1909",
+    "working_tree_dirty": false,
+    "checks": [
+      {
+        "command": "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python tools/check.sh",
+        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-whole-suite.log",
+        "exit_code": 0,
+        "summary": "625 tests; OK (skipped=1); source-dependent TranslatorSemanticsTests class initially skipped",
+        "identity": {
+          "bytes": 1614,
+          "sha256": "d800afce9ea5b78e261bed11ee172e80f18d69a594cf76b767bb8a5d7208a4e3"
+        }
+      },
+      {
+        "command": "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python PS2RECOMP_SOURCE_ROOT=/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp tools/check.sh test_translator_semantics",
+        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-translator-semantics.log",
+        "exit_code": 0,
+        "summary": "7 source-dependent tests; OK; pinned checkout c5a9d02573410a2085a4b4b831b0b68ba3515440",
+        "identity": {
+          "bytes": 105,
+          "sha256": "9c472f57e00c870d22483a65a11d5102785b901369e9b3780e1f06609f6c2ec1"
+        }
+      },
+      {
+        "command": "python3 tools/ip_rails.py --tree",
+        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-ip-rails.log",
+        "exit_code": 0,
+        "identity": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "acceptance_status": "incomplete; tooling checks do not establish full reconstruction"
+  },
+  "behavioral": {
+    "status": "incomplete",
+    "controlled_guest_output_observed": false,
+    "installed_profile": "PCSX2 v2.6.3 on macOS with strict sandbox and local offscreen plugin",
+    "executed_attempt": "Strict run crashed in GSDeviceMTL::Create before PINE observation; no positive AC25 or AC26 result.",
+    "qualification_limits": [
+      "Effective audio-output qualification missing.",
+      "50 ms desktop samples cannot exclude transient windows or focus changes.",
+      "The earlier unsandboxed help launch is excluded and supports no safety claim."
+    ]
+  },
+  "dependency_disposition": {
+    "ee_compiler": "Verified GNU EE GCC version and local archive hashes; exact package-specific notices/source/redistribution obligations remain unbound. AC31 incomplete.",
+    "qt_sdk": "Official source tag hashes for the offscreen source files verified; prebuilt SDK full source/offer and package disposition remain unbound; binaries stay local."
+  },
+  "review": {
+    "standards": "Confirmed reproduction-command finding fixed; cohesion note advisory.",
+    "spec": "Ownership/source coupling, double subtraction, stale current pointer and unsafe future oracle pass claims corrected; full required criteria still incomplete."
+  },
+  "claim_limits": [
+    "60 matched bytes are one local unit; no whole-corpus percentage is claimed.",
+    "No complete EE/24-IOP reconstruction build or two clean full builds exists.",
+    "VU entry/state maps and asset-family consumer contracts remain required work.",
+    "No acceptance criterion or ticket was weakened or closed.",
+    "Corpus payloads, compiler/emulator/firmware binaries, generated exports and memory captures remain local."
+  ],
+  "semantic_review": {
+    "provider": "openrouter",
+    "model": "typesafe/jev-1.13-20260917",
+    "input": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-gate-repaired-request.json",
+      "sha256": "47cdf5a81dbc6e472e3bbf47f7450f9e7216daac2d16639e26c99d1504f31ee6"
+    },
+    "output": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-gate-repaired-result.json",
+      "sha256": "2c5a9c4c46cbea508a2a1c5cc5f37034424f3920dbeeb77584e007fa4f1d5cee"
+    },
+    "action": "escalate",
+    "composite": 0.7750625000000001,
+    "safe_to_apply": 0.26,
+    "thresholds": {
+      "auto_accept": 0.8,
+      "review_at": 0.5,
+      "composite_floor": 0.7
+    },
+    "claim_summary": "5 verified, 0 contradicted, 0 unsupported; 2 claims retain review-level confidence.",
+    "reasoner_disposition": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/stronger-reasoner-gate-disposition.md",
+      "sha256": "e0084ccc3b1fb6aec66eea3e685d52d94539838aa54085159823732fcbeb8592"
+    },
+    "claim_limit": "Scores remain advisory and escalated; stronger review verifies specific facts and does not approve whole issue completion.",
+    "input_repair": "Original broader request received max_tokens_exceeded; repaired by narrowing raw file set, preserving hunks, claims, evidence identities and thresholds. No semantic escalation was rerun."
+  }
+}

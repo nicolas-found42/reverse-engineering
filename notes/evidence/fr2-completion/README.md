@@ -1,5 +1,17 @@
 # Reconstruction completion command
 
+The [continuation summary](20261008-continuation-summary.json) records a clean
+real-corpus run at reviewed source revision `0387499`. It exits 2, incomplete:
+AC01, AC07, AC16 and AC18 pass; all remaining criteria retain their required
+work. The ledger records 60 game-owned/matched bytes, 3,506,988 unresolved
+bytes and zero substitute bytes. This is one source-built unit, not whole-game
+acceptance. The exact aggregate and validation commands, external receipt and
+log identities, and claim limits are in the summary. Whole-suite validation
+ran 625 tests, OK with one source-dependent class initially skipped; the known
+pinned source checkout was then configured and its seven tests passed
+separately. No missing-dependency module was excluded in that local SDK-enabled
+run. CI remains a separate tooling check without these private inputs.
+
 Run from a clean checkout with the unchanged local PAL corpus:
 
 ```sh
