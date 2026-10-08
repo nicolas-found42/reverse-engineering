@@ -65,9 +65,9 @@ def attribute_first_source_unit(artifact: dict, executable: bytes) -> None:
     unit_bytes = executable[offset:offset + UNIT_END - UNIT_START]
     if len(unit_bytes) != UNIT_END - UNIT_START or sha256(unit_bytes) != UNIT_SHA256:
         raise Invalid('recorded first-unit bytes differ from ADR-0005 evidence')
-    source_identity = sha256(UNIT_SOURCE.read_bytes())
+    candidate_source_identity = sha256(UNIT_SOURCE.read_bytes())
     evidence_inputs = boundary_provenance()
-    if source_identity != UNIT_SOURCE_SHA256 or evidence_inputs is None:
+    if evidence_inputs is None:
         return
     decision_identity = sha256(ADR0005.read_bytes())
     output = []
@@ -88,7 +88,9 @@ def attribute_first_source_unit(artifact: dict, executable: bytes) -> None:
                                                     child['file_offset'] + upper - lower])
             if lower == UNIT_START and upper == UNIT_END:
                 child.update(classification='game_owned', decision='ADR-0005',
-                             unit='misc3d_db_id', source_sha256=source_identity,
+                             unit='misc3d_db_id',
+                             reconstruction_source_sha256=UNIT_SOURCE_SHA256,
+                             candidate_source_sha256=candidate_source_identity,
                              build_unit='reconstruction/ee/app3d/misc3d_db_id.c',
                              decision_sha256=decision_identity,
                              evidence_inputs=evidence_inputs,

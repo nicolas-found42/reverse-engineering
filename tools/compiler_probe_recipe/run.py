@@ -17,7 +17,7 @@ from compiler_probe import run_probe  # noqa: E402
 from evidence_common import Incomplete, Invalid, write_result  # noqa: E402
 from matching_diff import scope_of_range  # noqa: E402
 from matching_ranges import (BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY, SOURCE_MAP,
-                             boundary_provenance)  # noqa: E402
+                             UNIT_SOURCE_SHA256, boundary_provenance)  # noqa: E402
 from compiler_probe_recipe import build  # noqa: E402
 from compiler_probe_recipe.build import prepare  # noqa: E402
 
@@ -33,6 +33,7 @@ def apply_recorded_range(result: dict, reference_range: dict) -> None:
     size = int(reference_range["bytes"])
     scope = scope_of_range(section, address, size)
     provenance = boundary_provenance()
+    source_sha256 = hashlib.sha256(build.RECONSTRUCTION_SOURCE.read_bytes()).hexdigest()
     if reference_range.get("scope") != scope.value:
         raise Incomplete("compiler recipe scope differs from the recorded range map", {
             "declared_scope": reference_range.get("scope"), "recorded_scope": scope.value})
@@ -47,19 +48,21 @@ def apply_recorded_range(result: dict, reference_range: dict) -> None:
             difference["file_offset"] = f"{file_offset + difference['offset']:08x}"
     passed = (result.get("status") == "pass" and scope.value == "game_owned"
               and provenance is not None
+              and source_sha256 == UNIT_SOURCE_SHA256
               and len(result.get("matches", [])) == 1
               and any(candidate.get("status") == "pass"
                       and candidate.get("gate", {}).get("scope") == "game_owned"
                       for candidate in result.get("candidates", [])))
     result["ac07_status"] = "pass" if passed else (
-        "fail" if result.get("status") == "fail" and scope.value == "game_owned" else "incomplete")
+        "fail" if scope.value == "game_owned" and
+        (result.get("status") == "fail" or source_sha256 != UNIT_SOURCE_SHA256) else "incomplete")
     result["ac07_evidence"] = {
         "range": {"section": section, "vaddr": f"{address:08x}",
                   "file_offset": f"{file_offset:08x}", "bytes": size,
                   "sha256": reference_range["sha256"], "scope": scope.value},
         "byte_match": "pass" if passed else result.get("status", "incomplete"),
         "source_built": True,
-        "source_sha256": hashlib.sha256(build.RECONSTRUCTION_SOURCE.read_bytes()).hexdigest(),
+        "source_sha256": source_sha256,
         "decision_sha256": hashlib.sha256(ADR0005.read_bytes()).hexdigest(),
         "evidence_inputs": provenance,
         "compiler_identification": "separate; see ac05_status",

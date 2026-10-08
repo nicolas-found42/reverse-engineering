@@ -79,6 +79,34 @@ class RangeCli(unittest.TestCase):
         self.assertEqual((details['game_owned_bytes'], details['unresolved_bytes']),
                          (60, details['file_backed_bytes'] + details['zero_fill_bytes'] - 60))
 
+    def test_real_corpus_ownership_is_stable_when_candidate_source_changes(self):
+        game = TOOLS.parent / 'games/ford-racing-2'
+        if not (game / 'extracted/IRX/USBD.IRX').is_file():
+            self.skipTest('real corpus source mutation requires the local pinned corpus')
+        from matching_ranges import UNIT_SOURCE
+        original = UNIT_SOURCE.read_bytes()
+        mutation = original.replace(b'value != -1', b'value == -1')
+        self.assertNotEqual(original, mutation)
+        output = self.root / 'mutated-source-ranges'
+        UNIT_SOURCE.write_bytes(mutation)
+        try:
+            run = subprocess.run([sys.executable, str(TOOLS / 'matching_ranges.py'),
+                                  'corpus', str(game), '--output', str(output)],
+                                 capture_output=True, text=True)
+        finally:
+            UNIT_SOURCE.write_bytes(original)
+        result = json.loads(next(output.glob('*/result.json')).read_text())
+        self.assertEqual((run.returncode, result['status']), (0, 'pass'), result['diagnostics'])
+        details = result['details']
+        self.assertEqual((details['game_owned_bytes'], details['matched_bytes'],
+                          details['unresolved_bytes']), (60, 0, 3506988))
+        self.assertEqual(details['file_backed_bytes'] + details['zero_fill_bytes'],
+                         details['unresolved_bytes'] + details['game_owned_bytes']
+                         + details['substitute_bytes'])
+        ee = next(item for item in details['artifacts'] if item['artifact'] == 'EE')
+        row = next(row for row in ee['ranges'] if row.get('unit') == 'misc3d_db_id')
+        self.assertNotEqual(row['candidate_source_sha256'], row['reconstruction_source_sha256'])
+
     def test_overlapping_load_images_fail_instead_of_double_counting(self):
         data = bytearray(image())
         data.extend(data[-32:])

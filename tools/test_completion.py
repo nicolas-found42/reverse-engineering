@@ -85,6 +85,33 @@ class CompletionCli(unittest.TestCase):
             self.assertEqual(run.returncode, 2)
             self.assertIn('unrecognized arguments', run.stderr)
 
+    def test_real_corpus_cli_conserves_bytes_and_references_limited_ac30_evidence(self):
+        game = TOOLS.parent / 'games/ford-racing-2'
+        compiler_tools = Path.home() / 'Documents/github/hermes/spec-5-tools/compilers'
+        if not (game / 'extracted/IRX/USBD.IRX').is_file() or not compiler_tools.is_dir():
+            self.skipTest('real aggregate CLI control needs local corpus and compiler tools')
+        output = self.root / 'real-aggregate'
+        run = subprocess.run([sys.executable, str(TOOLS / 'completion.py'), str(game),
+                              '--compiler-tools', str(compiler_tools), '--output', str(output)],
+                             capture_output=True, text=True, timeout=300)
+        receipt = next(output.glob('*/result.json'))
+        result = json.loads(receipt.read_text())
+        self.assertEqual((run.returncode, result['status']), (2, 'incomplete'), result['diagnostics'])
+        details = result['details']
+        ledger = details['ledger']
+        total = ledger['file_backed_bytes'] + ledger['zero_fill_bytes']
+        self.assertEqual(total, ledger['unresolved_bytes'] + ledger['game_owned_bytes']
+                         + ledger['substitute_bytes'])
+        self.assertEqual((ledger['game_owned_bytes'], ledger['matched_bytes'],
+                          ledger['unresolved_bytes']), (60, 60, total - 60))
+        self.assertEqual(ledger['matched_fraction_scope'], 'attributed_game_owned_bytes')
+        self.assertEqual(details['criteria'][6]['status'], 'pass')
+        self.assertEqual(details['criteria'][4]['status'], 'incomplete')
+        for index in (26, 28, 29, 30, 31):
+            self.assertEqual(details['criteria'][index]['status'], 'incomplete')
+            self.assertTrue(details['criteria'][index]['evidence'])
+        self.assertFalse(details['real_corpus_completion'])
+
 
 class ReconstructionReport(unittest.TestCase):
     def complete(self):
