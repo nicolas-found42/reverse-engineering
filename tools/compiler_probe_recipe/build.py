@@ -8,6 +8,7 @@ source exported from a decompiler.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -21,6 +22,16 @@ from matching_sections import sections  # noqa: E402
 FUNCTION_VADDR = 0x001D1800
 FUNCTION_SIZE = 60
 FUNCTION_SHA256 = "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+RELEASE_URL = "https://github.com/decompme/compilers/releases/download/compilers/"
+DISTRIBUTIONS = {
+    "ee-gcc2.9-991111-01": ("ee-gcc2.9-991111-01.tar.xz", "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8"),
+    "ee-gcc2.95.2-273a": ("ee-gcc2.95.2-273a.tar.gz", "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e"),
+    "ee-gcc2.95.3-114": ("ee-gcc2.95.3-114.tar.gz", "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb"),
+    "ee-gcc2.95.3-136": ("ee-gcc2.95.3-136.tar.gz", "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f"),
+    "ee-gcc2.96": ("ee-gcc2.96.tar.xz", "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a"),
+    "ee-gcc3.2-030926": ("ee-gcc3.2-030926.tar.gz", "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9"),
+    "ee-gcc3.2-040921": ("ee-gcc3.2-040921.tar.xz", "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f"),
+}
 
 
 def prepare(game: Path, tool_root: Path, output: Path) -> tuple[Path, Path]:
@@ -31,7 +42,6 @@ def prepare(game: Path, tool_root: Path, output: Path) -> tuple[Path, Path]:
     if offset < 0 or offset + FUNCTION_SIZE > len(text.data):
         raise ValueError("probe function range is outside the pinned .text section")
     reference = text.data[offset:offset + FUNCTION_SIZE]
-    import hashlib
     if hashlib.sha256(reference).hexdigest() != FUNCTION_SHA256:
         raise ValueError("probe function bytes do not match the pinned range identity")
 
@@ -39,8 +49,8 @@ def prepare(game: Path, tool_root: Path, output: Path) -> tuple[Path, Path]:
     reference_path = output / "reference.bin"
     reference_path.write_bytes(reference)
     recipe_root = Path(__file__).parent.resolve()
-    shutil.copyfile(recipe_root / "candidate.c", output / "candidate.c")
-    shutil.copyfile(recipe_root / "candidate.ld", output / "candidate.ld")
+    for name in ("candidate.c", "candidate.ld", "docker-linux-exec.sh", "docker-wine-exec.sh"):
+        shutil.copyfile(recipe_root / name, output / name)
     template_path = Path(__file__).with_name("manifest.template.json")
     manifest = json.loads(template_path.read_text())
     values = {"{tool_root}": str(tool_root.resolve()),
@@ -60,14 +70,27 @@ def prepare(game: Path, tool_root: Path, output: Path) -> tuple[Path, Path]:
 
     manifest = replace(manifest)
     # The template's source path and linker script are kept in this repository.
+    distributions = []
+    for candidate_id, (archive_name, expected_sha256) in DISTRIBUTIONS.items():
+        archive_path = tool_root / archive_name
+        actual_sha256 = hashlib.sha256(archive_path.read_bytes()).hexdigest() if archive_path.is_file() else None
+        if actual_sha256 is not None and actual_sha256 != expected_sha256:
+            raise ValueError(f"candidate distribution archive hash differs: {archive_name}")
+        distributions.append({"candidate": candidate_id, "archive": archive_name,
+                              "source": RELEASE_URL + archive_name,
+                              "expected_sha256": expected_sha256,
+                              "available_locally": actual_sha256 is not None,
+                              "observed_sha256": actual_sha256})
     manifest["evidence"] = {
         "corpus": identity,
         "reference_range": {"section": ".text", "vaddr": f"{FUNCTION_VADDR:08x}",
                             "bytes": FUNCTION_SIZE, "sha256": FUNCTION_SHA256,
                             "interpretation": "source-map attribution only; not proof of authorship or ownership"},
         "candidate_source": "Hand-written exploratory reconstruction; inferred names, ABI and ownership; not original source.",
-        "tool_source": "decompme/compilers public GNU EE platform package and official release assets; see recipe README.",
-        "runtime_profile": "Debian Bookworm linux/amd64 with Wine 8 for Windows drivers and GNU binutils 2.40.",
+        "tool_source": "decompme/compilers release tag compilers; per-candidate archive URLs and SHA-256 values follow.",
+        "tool_distributions": distributions,
+        "license_status": "The release archives inspected do not include COPYING or LICENSE entries. Per-package redistribution terms are unresolved; no compiler binaries are redistributed here.",
+        "runtime_profile": "Immutable image IDs are verified before invocation: Debian Bookworm linux/amd64 with Wine 8 for Windows compiler drivers, and GNU binutils 2.40 in the Debian image for object preparation, linking, and objcopy.",
         "linker_profile": "GNU binutils 2.40 substitution; not the original proprietary linker.",
     }
     manifest_path = output / "manifest.json"

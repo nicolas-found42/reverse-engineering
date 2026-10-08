@@ -18,17 +18,23 @@ pseudocode, assembly, payload, compiler archive, executable, or retail bytes are
 committed.
 
 The candidates are from the public
-[`decompme/compilers` GNU EE package and release assets](https://github.com/decompme/compilers).
+[`decompme/compilers` GNU EE package and the `compilers` release](https://github.com/decompme/compilers/releases/tag/compilers).
 The checked-in manifest template pins the seven candidate IDs, tool paths,
 flags, and file fingerprints in the generated receipt. On this machine, the
-installed distributions are under `spec-5-tools/compilers/`. Their original
-GNU compiler and assembler files run in a Debian Bookworm `linux/amd64` Docker
-profile; the official Windows 2.95 drivers use Wine 8. The local runtime
-Dockerfiles pin Debian Bookworm's base image digest and install `libc6:i386`,
-`libgcc-s1:i386`, and GNU binutils. GNU binutils 2.40 performs object
-preparation, linking, and extraction as an explicit open-tool substitution;
-it is not the original proprietary linker. The GNU tool distributions carry
-their own license files; consult each distribution before redistribution.
+installed distributions are under `spec-5-tools/compilers/`. The committed
+Linux and Wine wrappers execute immutable Docker image IDs. Before any
+candidate runs, the verifier inspects each image by ID and requires the exact
+recorded ID and `linux/amd64` platform; the observed identities are retained in
+the result. Native compiler candidates use the Debian Bookworm image, the
+official Windows 2.95 drivers use the Wine 8 image, and object preparation,
+linking, and extraction use the Debian image. The images install
+`libc6:i386`, `libgcc-s1:i386`, and GNU binutils. GNU binutils 2.40 performs
+object preparation, linking, and extraction as an explicit open-tool
+substitution; it is not the original proprietary linker. The recipe records
+each release archive URL and SHA-256. The seven local release archives were
+hash-checked; inspection found no `COPYING` or `LICENSE` entries in them, so
+per-package redistribution terms remain unresolved. No compiler binaries are
+included here.
 
 From the repository root, run the immutable child verifier:
 
@@ -49,11 +55,21 @@ mount; they are removed when the run finishes. Neither reference bytes nor
 generated manifest are committed. The result uses `evidence_common.write_result`
 and records a report hash in a new immutable run directory. Set `--output` to
 choose a different receipt directory. A unique match remains marked
-`ac05_status: incomplete` because the probe is exploratory.
-The tool root must contain the installed candidates and the Docker wrappers
-named in the template; the wrappers used for the recorded local run bind-mount
-that root at `/tools` and use the `fr2-compiler-runtime` / `fr2-compiler-runtime-wine`
-images.
+`ac05_status: incomplete` because the probe is exploratory. The tool root must
+contain the installed candidates and binutils; temporary inputs and outputs
+are mounted at `/tools` by the committed wrappers.
+
+The recorded run is preserved in
+[`receipts/seven-candidate-run-20261008T061143Z/result.json`](receipts/seven-candidate-run-20261008T061143Z/result.json)
+with its report. The result JSON SHA-256 is
+`fa7ea650cef3912987dc216aeb499ecb4bdfa817f7b65101de88b221068d6703`; its
+`report.md` SHA-256 is
+`b88c4c77a351e79e77ff1019a73ca077b873ce7c7894858181df6b29969863cc`. It
+records the observed Linux image ID
+`sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca`
+and Wine image ID
+`sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba`,
+both verified as `linux/amd64` before invocation.
 
 The latest recorded local run produced these results with `-G8 -O2`, adding
 `-fno-optimize-sibling-calls` for 2.9, 2.96, and 3.2 candidates where supported.
@@ -80,7 +96,7 @@ linker. A second independently evidenced function and independent game-owned
 range attribution remain necessary before compiler identification. A run is
 `pass` only when exactly one candidate matches and every candidate executes
 without operational errors; zero matches is `fail`, while missing tools,
-multiple matches, or operational errors are `incomplete`.
+multiple matches, runtime ID changes, or operational errors are `incomplete`.
 
 Synthetic controls run with:
 

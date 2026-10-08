@@ -7,12 +7,16 @@
     {
       "id": "ee-gcc2.9-991111-01",
       "compile": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "{tool_root}/candidates/ee-gcc2.9-991111-01/bin/ee-gcc"
       ],
       "compiler_executable": "{tool_root}/candidates/ee-gcc2.9-991111-01/bin/ee-gcc",
       "objcopy": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy"
       ],
       "objcopy_executable": "{tool_root}/mips-linux-gnu-objcopy",
@@ -27,7 +31,9 @@
         "mips_linker": "{tool_root}/mips-linux-gnu-ld"
       },
       "prepare_object": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy",
         "--strip-symbol=gcc2_compiled.",
         "--strip-symbol=__gnu_compiled_c",
@@ -35,7 +41,9 @@
         "{prepared_object}"
       ],
       "link": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-ld",
         "-m",
         "elf32ltsmip",
@@ -49,7 +57,7 @@
         "{prepared_object}"
       ],
       "runtime": {
-        "image": "fr2-compiler-runtime:local",
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "platform": "linux/amd64",
         "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
@@ -63,12 +71,16 @@
     {
       "id": "ee-gcc2.96",
       "compile": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "{tool_root}/candidates/ee-gcc2.96/bin/ee-gcc"
       ],
       "compiler_executable": "{tool_root}/candidates/ee-gcc2.96/bin/ee-gcc",
       "objcopy": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy"
       ],
       "objcopy_executable": "{tool_root}/mips-linux-gnu-objcopy",
@@ -84,7 +96,9 @@
         "mips_linker": "{tool_root}/mips-linux-gnu-ld"
       },
       "prepare_object": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy",
         "--strip-symbol=gcc2_compiled.",
         "--strip-symbol=__gnu_compiled_c",
@@ -92,7 +106,9 @@
         "{prepared_object}"
       ],
       "link": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-ld",
         "-m",
         "elf32ltsmip",
@@ -106,7 +122,7 @@
         "{prepared_object}"
       ],
       "runtime": {
-        "image": "fr2-compiler-runtime:local",
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "platform": "linux/amd64",
         "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
@@ -120,12 +136,16 @@
     {
       "id": "ee-gcc3.2-030926",
       "compile": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "{tool_root}/candidates/ee-gcc3.2-030926/bin/ee-gcc"
       ],
       "compiler_executable": "{tool_root}/candidates/ee-gcc3.2-030926/bin/ee-gcc",
       "objcopy": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy"
       ],
       "objcopy_executable": "{tool_root}/mips-linux-gnu-objcopy",
@@ -141,7 +161,9 @@
         "mips_linker": "{tool_root}/mips-linux-gnu-ld"
       },
       "prepare_object": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy",
         "--strip-symbol=gcc2_compiled.",
         "--strip-symbol=__gnu_compiled_c",
@@ -149,7 +171,9 @@
         "{prepared_object}"
       ],
       "link": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-ld",
         "-m",
         "elf32ltsmip",
@@ -163,7 +187,7 @@
         "{prepared_object}"
       ],
       "runtime": {
-        "image": "fr2-compiler-runtime:local",
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "platform": "linux/amd64",
         "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
@@ -177,12 +201,16 @@
     {
       "id": "ee-gcc3.2-040921",
       "compile": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "{tool_root}/candidates/ee-gcc3.2-040921/bin/ee-gcc"
       ],
       "compiler_executable": "{tool_root}/candidates/ee-gcc3.2-040921/bin/ee-gcc",
       "objcopy": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy"
       ],
       "objcopy_executable": "{tool_root}/mips-linux-gnu-objcopy",
@@ -198,7 +226,9 @@
         "mips_linker": "{tool_root}/mips-linux-gnu-ld"
       },
       "prepare_object": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy",
         "--strip-symbol=gcc2_compiled.",
         "--strip-symbol=__gnu_compiled_c",
@@ -206,7 +236,9 @@
         "{prepared_object}"
       ],
       "link": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-ld",
         "-m",
         "elf32ltsmip",
@@ -220,7 +252,7 @@
         "{prepared_object}"
       ],
       "runtime": {
-        "image": "fr2-compiler-runtime:local",
+        "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
         "platform": "linux/amd64",
         "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
@@ -234,12 +266,16 @@
     {
       "id": "ee-gcc2.95.2-273a",
       "compile": [
-        "{tool_root}/container-wine-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-wine-exec.sh",
+        "{tool_root}",
         "{tool_root}/candidates/ee-gcc2.95.2-273a/bin/ee-gcc.exe"
       ],
       "compiler_executable": "{tool_root}/candidates/ee-gcc2.95.2-273a/bin/ee-gcc.exe",
       "objcopy": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy"
       ],
       "objcopy_executable": "{tool_root}/mips-linux-gnu-objcopy",
@@ -254,7 +290,9 @@
         "specs": "{tool_root}/candidates/ee-gcc2.95.2-273a/lib/gcc-lib/ee/2.95.2/specs"
       },
       "prepare_object": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy",
         "--strip-symbol=gcc2_compiled.",
         "--strip-symbol=__gnu_compiled_c",
@@ -262,7 +300,9 @@
         "{prepared_object}"
       ],
       "link": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-ld",
         "-m",
         "elf32ltsmip",
@@ -276,8 +316,8 @@
         "{prepared_object}"
       ],
       "runtime": {
-        "image": "fr2-compiler-runtime-wine:local",
-        "image_id": "sha256:ef74eccc9bb9",
+        "image": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
         "platform": "linux/amd64",
         "runner": "Wine 8 Debian Bookworm on Linux amd64 via Docker Desktop"
       }
@@ -285,12 +325,16 @@
     {
       "id": "ee-gcc2.95.3-114",
       "compile": [
-        "{tool_root}/container-wine-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-wine-exec.sh",
+        "{tool_root}",
         "{tool_root}/candidates/ee-gcc2.95.3-114/bin/ee-gcc.exe"
       ],
       "compiler_executable": "{tool_root}/candidates/ee-gcc2.95.3-114/bin/ee-gcc.exe",
       "objcopy": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy"
       ],
       "objcopy_executable": "{tool_root}/mips-linux-gnu-objcopy",
@@ -305,7 +349,9 @@
         "specs": "{tool_root}/candidates/ee-gcc2.95.3-114/lib/gcc-lib/ee/2.95.3/specs"
       },
       "prepare_object": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy",
         "--strip-symbol=gcc2_compiled.",
         "--strip-symbol=__gnu_compiled_c",
@@ -313,7 +359,9 @@
         "{prepared_object}"
       ],
       "link": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-ld",
         "-m",
         "elf32ltsmip",
@@ -327,8 +375,8 @@
         "{prepared_object}"
       ],
       "runtime": {
-        "image": "fr2-compiler-runtime-wine:local",
-        "image_id": "sha256:ef74eccc9bb9",
+        "image": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
         "platform": "linux/amd64",
         "runner": "Wine 8 Debian Bookworm on Linux amd64 via Docker Desktop"
       }
@@ -336,12 +384,16 @@
     {
       "id": "ee-gcc2.95.3-136",
       "compile": [
-        "{tool_root}/container-wine-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-wine-exec.sh",
+        "{tool_root}",
         "{tool_root}/candidates/ee-gcc2.95.3-136/bin/ee-gcc.exe"
       ],
       "compiler_executable": "{tool_root}/candidates/ee-gcc2.95.3-136/bin/ee-gcc.exe",
       "objcopy": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy"
       ],
       "objcopy_executable": "{tool_root}/mips-linux-gnu-objcopy",
@@ -356,7 +408,9 @@
         "specs": "{tool_root}/candidates/ee-gcc2.95.3-136/lib/gcc-lib/ee/2.95.3/specs"
       },
       "prepare_object": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-objcopy",
         "--strip-symbol=gcc2_compiled.",
         "--strip-symbol=__gnu_compiled_c",
@@ -364,7 +418,9 @@
         "{prepared_object}"
       ],
       "link": [
-        "{tool_root}/container-exec.sh",
+        "/bin/bash",
+        "{recipe_root}/docker-linux-exec.sh",
+        "{tool_root}",
         "mips-linux-gnu-ld",
         "-m",
         "elf32ltsmip",
@@ -378,8 +434,8 @@
         "{prepared_object}"
       ],
       "runtime": {
-        "image": "fr2-compiler-runtime-wine:local",
-        "image_id": "sha256:ef74eccc9bb9",
+        "image": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
         "platform": "linux/amd64",
         "runner": "Wine 8 Debian Bookworm on Linux amd64 via Docker Desktop"
       }
