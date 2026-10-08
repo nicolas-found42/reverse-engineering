@@ -1,0 +1,37 @@
+{
+  "status": "pass",
+  "command": [
+    "tools/misc3d_recipe/controls.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "--output",
+    ".scratch/issue-24/controls-linked"
+  ],
+  "controls": [
+    {
+      "control": "real_source_build",
+      "expected_exit": 0,
+      "exit": 0,
+      "receipt": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue-24/controls-linked/positive/20261008T150645Z-8429aa2d762d4d8283d422f0c2bfa956/result.json",
+      "bytes": 19899,
+      "sha256": "ee0ae2f53d91d7d699059c126f1c04165791a4296f2ed7b9a85e50b6ff4612a0"
+    },
+    {
+      "control": "cell_address_shifted_four_bytes",
+      "expected_exit": 1,
+      "exit": 1,
+      "receipt": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue-24/controls-linked/layout-negative/20261008T150647Z-2a787a647d244783a46e6110c0adc9a7/result.json",
+      "bytes": 1190,
+      "sha256": "e55db1cdf7b6a1ea72fa28795751a5acee0fa2a1d5686b7c88ddd99106eb535c"
+    },
+    {
+      "control": "missing_observation",
+      "expected_exit": 2,
+      "exit": 2,
+      "receipt": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue-24/controls-linked/missing-provenance/20261008T150647Z-210bbfe0adeb44c0ac0134b5d11aada0/result.json",
+      "bytes": 1034,
+      "sha256": "287cdd24ec2e849ef2b118b385ce17fc3d6a4b9a282b4bec97bf76d68e602fd9"
+    }
+  ],
+  "claim_limit": "Controls for this bounded child only; #24 remains incomplete."
+}

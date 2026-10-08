@@ -10,7 +10,7 @@ EE_FLAGS = 0x20924001
 class BuildElfTest(unittest.TestCase):
     def test_the_repo_parser_reads_back_every_section_name_type_address_and_bytes(self):
         data = build_elf([Spec(".text", b"\x01\x02\x03\x04", flags=6, address=0x100100),
-                          Spec(".sbss", b"", kind=8, flags=3, address=0x290000, size=0x20),
+                          Spec(".sbss", b"", kind=8, flags=3, address=0x290000, size=0x20, alignment=4),
                           Spec(".reginfo", b"\0" * 24, kind=0x70000006)])
         elf = parse_elf(data)
         self.assertEqual((elf["machine"], elf["flags"], elf["type"]), (8, EE_FLAGS, 2))
@@ -20,6 +20,7 @@ class BuildElfTest(unittest.TestCase):
         self.assertEqual((text["address"], text["size"], text["flags"]), (0x100100, 4, 6))
         self.assertEqual(data[text["offset"]:text["offset"] + 4], b"\x01\x02\x03\x04")
         self.assertEqual((rows[".sbss"]["type"], rows[".sbss"]["size"]), (8, 0x20))
+        self.assertEqual(rows[".sbss"]["alignment"], 4)
         self.assertEqual(rows[".reginfo"]["type"], 0x70000006)
 
     def test_payloads_are_sixteen_byte_aligned_and_do_not_overlap(self):

@@ -1,0 +1,413 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T150645Z-8429aa2d762d4d8283d422f0c2bfa956",
+  "check": "misc3d-contract",
+  "command": [
+    "tools/misc3d_recipe/controls.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "--output",
+    ".scratch/issue-24/controls-linked"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_recipe/controls.py": {
+      "bytes": 3255,
+      "sha256": "5e9e46da115b47e8333b6f60fcc2b9f62260ba67a46ec00fb7f91e89887b0a03"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "scope": "misc3d accessor and four-byte cell only",
+    "provenance": {
+      "first_unit": {
+        "metadata": {
+          "bytes": 3635,
+          "sha256": "5297888940ad2a67f26b8761eed70de40b18d4f46a6eca3ff2da4535e156987e"
+        },
+        "source_map": {
+          "bytes": 131306,
+          "sha256": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a"
+        },
+        "saved_function_inventory": {
+          "bytes": 696,
+          "sha256": "d0424aad2eeddc58ead3f164ec2f49195e1d102282647603dbc407fec55b374b"
+        }
+      },
+      "decision": {
+        "bytes": 4328,
+        "sha256": "a1b34af35e52c856ea1a003db9fd52909503d8036f80ea9512ea4623f806457c"
+      },
+      "observation": {
+        "bytes": 9349,
+        "sha256": "bea9b9db302ae13036f28f249b04d2dc135850a96d4d277c8ef75e719d08c62f"
+      }
+    },
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    },
+    "outputs": {
+      "accessor": {
+        "status": "pass",
+        "address": "001d1800",
+        "bytes": 60,
+        "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+        "comparison_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+      },
+      "cell": {
+        "section": ".sbss.fr2_misc3d_db_id",
+        "address": "00290ac4",
+        "bytes": 4,
+        "alignment": 4,
+        "type": "NOBITS",
+        "has_file_bytes": false,
+        "matched_file_bytes": 0
+      }
+    },
+    "build": {
+      "status": "pass",
+      "selected_id": "ee-gcc2.96",
+      "matches": [
+        "ee-gcc2.96"
+      ],
+      "failures": [],
+      "errors": [],
+      "incomplete": [],
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/manifest.json",
+        "bytes": 8682,
+        "sha256": "4cfbf63d409996a4a7eb0db7ee40dea021bcc182c36ce949a78d4b721b6cee29"
+      },
+      "evidence": {
+        "corpus": {
+          "profile": "fr2-pal-sles-517.05",
+          "sources": {
+            "ford-racing-2.bin": {
+              "bytes": 678667248,
+              "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+            },
+            "ford-racing-2.cue": {
+              "bytes": 79,
+              "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+            },
+            "extracted/SLES_517.05": {
+              "bytes": 1662804,
+              "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+            },
+            "extracted/FILES.HDR": {
+              "bytes": 29428,
+              "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+            },
+            "extracted/FILES.DAT": {
+              "bytes": 334641152,
+              "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+            }
+          },
+          "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+        },
+        "reference_range": {
+          "section": ".text",
+          "vaddr": "001d1800",
+          "file_offset": "000d2800",
+          "bytes": 60,
+          "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+          "scope": "game_owned",
+          "decision": "ADR-0005 local split, cross-checked against source map, callers, and helper provenance"
+        },
+        "candidate_source": "Hand-written exploratory reconstruction; inferred names, ABI and ownership; not original source.",
+        "tool_source": "decompme/compilers release tag compilers; per-candidate archive URLs and SHA-256 values follow.",
+        "tool_distributions": [
+          {
+            "candidate": "ee-gcc2.9-991111-01",
+            "archive": "ee-gcc2.9-991111-01.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.9-991111-01.tar.xz",
+            "expected_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8",
+            "available_locally": true,
+            "observed_sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8"
+          },
+          {
+            "candidate": "ee-gcc2.95.2-273a",
+            "archive": "ee-gcc2.95.2-273a.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.2-273a.tar.gz",
+            "expected_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e",
+            "available_locally": true,
+            "observed_sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-114",
+            "archive": "ee-gcc2.95.3-114.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-114.tar.gz",
+            "expected_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb",
+            "available_locally": true,
+            "observed_sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb"
+          },
+          {
+            "candidate": "ee-gcc2.95.3-136",
+            "archive": "ee-gcc2.95.3-136.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.95.3-136.tar.gz",
+            "expected_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f",
+            "available_locally": true,
+            "observed_sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f"
+          },
+          {
+            "candidate": "ee-gcc2.96",
+            "archive": "ee-gcc2.96.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc2.96.tar.xz",
+            "expected_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+            "available_locally": true,
+            "observed_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a"
+          },
+          {
+            "candidate": "ee-gcc3.2-030926",
+            "archive": "ee-gcc3.2-030926.tar.gz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-030926.tar.gz",
+            "expected_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9",
+            "available_locally": true,
+            "observed_sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9"
+          },
+          {
+            "candidate": "ee-gcc3.2-040921",
+            "archive": "ee-gcc3.2-040921.tar.xz",
+            "source": "https://github.com/decompme/compilers/releases/download/compilers/ee-gcc3.2-040921.tar.xz",
+            "expected_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f",
+            "available_locally": true,
+            "observed_sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f"
+          }
+        ],
+        "license_status": "The release archives inspected do not include COPYING or LICENSE entries. Per-package redistribution terms are unresolved; no compiler binaries are redistributed here.",
+        "runtime_profile": "Immutable image IDs are verified before invocation: Debian Bookworm linux/amd64 with Wine 8 for Windows compiler drivers, and GNU binutils 2.40 in the Debian image for object preparation, linking, and objcopy.",
+        "linker_profile": "GNU binutils 2.40 substitution; not the original proprietary linker."
+      },
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/candidate.c",
+        "bytes": 627,
+        "sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc"
+      },
+      "reference": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/reference.bin",
+        "bytes": 60,
+        "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+      },
+      "symbol": "fr2_misc3d_get_database_id",
+      "candidates": [
+        {
+          "id": "ee-gcc2.96",
+          "status": "pass",
+          "compiler_launcher": "/bin/bash",
+          "compiler": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+          "objcopy_launcher": "/bin/bash",
+          "objcopy": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+          "runtime": {
+            "image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+            "platform": "linux/amd64",
+            "base": "Debian bookworm-slim sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587",
+            "packages": {
+              "libc6:i386": "2.36-9+deb12u14",
+              "libgcc-s1:i386": "12.2.0-14+deb12u1",
+              "binutils-mips-linux-gnu": "2.40-2cross2"
+            }
+          },
+          "compile_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc"
+          ],
+          "objcopy_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy"
+          ],
+          "flags": [
+            "-G8",
+            "-O2",
+            "-fno-optimize-sibling-calls"
+          ],
+          "compiler_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "objcopy_launcher_sha256": "35536aea9733aa345b61134a98d00232380898e55b2ea2a07c497011f7dfc7a3",
+          "tool_files": {
+            "cc1": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cc1",
+              "bytes": 5526661,
+              "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+            },
+            "cpp": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/lib/gcc-lib/ee/2.96-ee-001003-1/cpp0",
+              "bytes": 421478,
+              "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+            },
+            "gnu_assembler": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/ee/bin/as",
+              "bytes": 2169068,
+              "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+            },
+            "mips_linker": {
+              "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+              "bytes": 1817176,
+              "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+            }
+          },
+          "compiler_sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b",
+          "objcopy_sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed",
+          "compile_returncode": 0,
+          "compile_stderr": "",
+          "prepare_object_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-objcopy",
+            "--strip-symbol=gcc2_compiled.",
+            "--strip-symbol=__gnu_compiled_c",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/candidate.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/prepared.o"
+          ],
+          "prepare_object_returncode": 0,
+          "prepare_object_stderr": "",
+          "link_argv": [
+            "/bin/bash",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/docker-linux-exec.sh",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+            "mips-linux-gnu-ld",
+            "-m",
+            "elf32ltsmip",
+            "-T",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/candidate.ld",
+            "--defsym=report_error=0x00105888",
+            "--defsym=_gp=0x00295d70",
+            "-o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/linked.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/prepared.o",
+            "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/cell-prepared.o"
+          ],
+          "link_returncode": 0,
+          "link_stderr": "",
+          "objcopy_returncode": 0,
+          "objcopy_stderr": "",
+          "actual_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+          "actual_bytes": 60,
+          "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+          "reference_bytes": 60,
+          "gate": {
+            "section": ".text",
+            "scope": "game_owned",
+            "status": "pass",
+            "reason": null,
+            "matched_bytes": 60,
+            "section_bytes": 60
+          }
+        }
+      ],
+      "claim_limits": [
+        "A unique match identifies this source/compiler/flags/reference probe only.",
+        "It does not establish the original compiler ID without an independently evidenced retail function/reference pair.",
+        "This runner executes compiler and objcopy argv from the local manifest."
+      ]
+    },
+    "artifacts": {
+      "cell_source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/misc3d_db_id_cell.c",
+        "bytes": 198,
+        "sha256": "5d023900745dcc4352cfbabc680545faea2dfd5a3d723f74942621d6842c708a"
+      },
+      "cell_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/cell.o",
+        "bytes": 1162,
+        "sha256": "588c25cfb61c58cc6f1153e4061e306d61ef2aaf5222f621a92ea4b9740e9bef"
+      },
+      "cell_prepared_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/cell-prepared.o",
+        "bytes": 1100,
+        "sha256": "1fa615accca35e682e8c093684164c295d9f4aebacd2ecd9c069d45ca7ceda9c"
+      },
+      "linked_output": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/linked.o",
+        "bytes": 14940,
+        "sha256": "73807e8aa33da74905f7c53b6b76b435017c90c146b1e8f24fbc6ee43783836a"
+      },
+      "accessor_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/candidate.o",
+        "bytes": 2136,
+        "sha256": "34bd82d43563f00bf296904689ddac52696a3e739fc75c4ab57ddeb730478ec0"
+      },
+      "accessor_prepared_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/prepared.o",
+        "bytes": 1960,
+        "sha256": "83fdc0d4b761b2db6c4f3db96890a5a8f181f85d8f92b5853b7d9099e13141b3"
+      },
+      "comparison": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/probe/fr2-compiler-probe-v090phoq/function.bin",
+        "bytes": 60,
+        "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+      },
+      "link_script": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/candidate.ld",
+        "bytes": 364,
+        "sha256": "6cb03859699bf46d49b8c519789a27a848017a59af9cde56275ff6077d8551bc"
+      }
+    },
+    "cell_build_commands": [
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls",
+        "-c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/misc3d_db_id_cell.c",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/cell.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/cell.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-_z6iy1br/cell-prepared.o"
+      ]
+    ],
+    "cell_definition": {
+      "symbol": "misc3d_db_id",
+      "bytes": 4,
+      "alignment": 4,
+      "storage": "common",
+      "has_file_bytes": false
+    },
+    "ac05_status": "incomplete",
+    "issue24_status": "incomplete",
+    "unresolved_dependencies": [
+      "Original symbol names, loader/release implementation contracts and computed aliases remain unproved.",
+      "No runtime initialization order, thread safety, or error-helper behavior beyond static control flow is claimed.",
+      "Parent AC08/AC09/AC27 remain incomplete; this decision does not complete the image."
+    ],
+    "claim_limits": [
+      "Exploratory ee-gcc2.96/GNU binutils 2.40 profile; not historical toolchain identification.",
+      "NOBITS layout is checked without comparing invented file bytes.",
+      "Loader, reset, release, sibling accessors and helper implementations are outside this source-built scope.",
+      "Whole-image AC08/AC09 and the parent remain incomplete."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 18310,
+      "sha256": "f7f8058d944433012c8ed3348fa5ab90a86ed2868e5319037c530189d0ac72e6"
+    }
+  }
+}

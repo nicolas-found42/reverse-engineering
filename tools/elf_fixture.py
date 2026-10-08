@@ -26,6 +26,7 @@ class Spec:
     flags: int = 2  # SHF_ALLOC
     address: int | None = None  # defaults to 0x100000 + 0x100 per section
     size: int | None = None  # NOBITS size; defaults to len(data)
+    alignment: int = 16  # section-header alignment; payload placement stays 16-byte aligned
 
 
 def _align(value: int, to: int = 16) -> int:
@@ -57,7 +58,7 @@ def build_elf(specs: list[Spec], *, machine: int = 8, flags: int = EE_FLAGS,
         size = (spec.size if spec.size is not None else len(spec.data))
         address = spec.address if spec.address is not None else 0x100000 + 0x100 * (index + 1)
         rows.append(struct.pack("<10I", name_at[spec.name], spec.kind, spec.flags, address,
-                                offset, size, 0, 0, 16, 0))
+                                offset, size, 0, 0, spec.alignment, 0))
     rows.append(struct.pack("<10I", name_at[".shstrtab"], STRTAB, 0, 0, names_at, len(names),
                             0, 0, 1, 0))
     body.extend(b"".join(rows))

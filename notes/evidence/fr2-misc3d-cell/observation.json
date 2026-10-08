@@ -1,0 +1,313 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T145757Z-6b0926f8fbe84360b8f2305f817eaa88",
+  "check": "misc3d-observation",
+  "command": [
+    "tools/misc3d_observation.py",
+    "games/ford-racing-2",
+    ".scratch/issue-24/inventory.json",
+    "--output",
+    ".scratch/issue-24/observations"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    ".scratch/issue-24/inventory.json": {
+      "bytes": 54861128,
+      "sha256": "021c30af6a51cd239be7e01bd5e76c99c49b898f95770aad6154dd7061177edf"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_observation.py": {
+      "bytes": 5947,
+      "sha256": "e6335d1dfd6ddc63553b298d3a3e3cfe2d2c45b0ce739d37758a0f9811947705"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "executable_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "language": "r5900:LE:32:default",
+    "ghidra_version": "12.1.3",
+    "gp": "00295d70",
+    "cell": "00290ac4",
+    "cell_accesses": [
+      {
+        "site": "001d1414",
+        "kind": "load",
+        "width": 4,
+        "register": 17,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "294e790129d739b774842900842d49ad91398f225be7ff1893135f75ea29eea6"
+      },
+      {
+        "site": "001d1460",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67"
+      },
+      {
+        "site": "001d1488",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1498",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d14ac",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d14c0",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1538",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d1564",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d15dc",
+        "kind": "load",
+        "width": 4,
+        "register": 4,
+        "saved_owners": [
+          "001d1408"
+        ],
+        "word_sha256": "5d5565e7f0c948b16ad055de4331a8494450a53c4ffb5e5dcd084870a9adf1a4"
+      },
+      {
+        "site": "001d17b0",
+        "kind": "store",
+        "width": 4,
+        "register": 2,
+        "saved_owners": [
+          "001d17a8"
+        ],
+        "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67"
+      },
+      {
+        "site": "001d17cc",
+        "kind": "load",
+        "width": 4,
+        "register": 2,
+        "saved_owners": [
+          "001d17c8"
+        ],
+        "word_sha256": "8afba40071db5e97bd4c43377d6169936649c8c09c1de9aee7f05469f6a90808"
+      },
+      {
+        "site": "001d17ec",
+        "kind": "store",
+        "width": 4,
+        "register": 16,
+        "saved_owners": [
+          "001d17c8"
+        ],
+        "word_sha256": "21505851a92422405b5b5685259c28a4b898f2c04b696342026eb4c67a5fe14e"
+      },
+      {
+        "site": "001d1800",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [
+          "001d1800"
+        ],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d1840",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d1880",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [
+          "001d1880"
+        ],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      },
+      {
+        "site": "001d18c0",
+        "kind": "load",
+        "width": 4,
+        "register": 3,
+        "saved_owners": [
+          "001d18c0"
+        ],
+        "word_sha256": "b8834718550e84c18118b6381c2054544541a1abb3fa4a163f3883a0b4b6af2a"
+      }
+    ],
+    "gp_address_materializations": [],
+    "aligned_literal_pointers": [],
+    "accessor_callers": [
+      {
+        "entry": "00191148",
+        "site": "00191184",
+        "window_sha256": "659437b898dcef3454900927a9f33685d28f3e4a1990ee6343af7cda898c306e"
+      },
+      {
+        "entry": "001942e8",
+        "site": "00194310",
+        "window_sha256": "4e28987dc22e74e61e579fc42b52c6263e76e55f89d1eece4c2445f3b5298325"
+      },
+      {
+        "entry": "001a2d48",
+        "site": "001a2fc0",
+        "window_sha256": "c672f89fd869e19663a92133c9fd5009b3959f9637fa1284fdd1248a8d4787ab"
+      },
+      {
+        "entry": "001a2d48",
+        "site": "001a2fd8",
+        "window_sha256": "945f6180d9441eb0a58547eb49ee808e3e773b9f504e377fbfa1193c1d6f96ed"
+      },
+      {
+        "entry": "001a30a8",
+        "site": "001a30f4",
+        "window_sha256": "c672f89fd869e19663a92133c9fd5009b3959f9637fa1284fdd1248a8d4787ab"
+      },
+      {
+        "entry": "001a30a8",
+        "site": "001a310c",
+        "window_sha256": "945f6180d9441eb0a58547eb49ee808e3e773b9f504e377fbfa1193c1d6f96ed"
+      },
+      {
+        "entry": "001a8e18",
+        "site": "001a8e3c",
+        "window_sha256": "d1fe1f5ddba7e4e3b6b96c7da9b7fa7447de47840b272881d3f72684b17d073d"
+      },
+      {
+        "entry": "001a8e18",
+        "site": "001a8e54",
+        "window_sha256": "3078d91147bf3b42c9b2b852305a8a58880063369cab582702346c4d2daf4ae4"
+      },
+      {
+        "entry": "001a8e18",
+        "site": "001a8ea0",
+        "window_sha256": "2326a2a3fcdac247da02d3681b7f93c0b4b7d3981b1e76f07b7aaca81b3ff5f5"
+      },
+      {
+        "entry": "001a8e18",
+        "site": "001a8eec",
+        "window_sha256": "0dac232d3e1eef8e8a9d2acc7572a78b6f6210c36784ddae21444b7a173fd183"
+      }
+    ],
+    "spans": {
+      "startup_zero_and_gp": {
+        "start": "0010011c",
+        "end_exclusive": "00100174",
+        "bytes": 88,
+        "sha256": "4ea7e050c5ee605ebf45db7876581c7f2363e204df0d1edcda7ff0cfa7013792"
+      },
+      "reset": {
+        "start": "001d17a8",
+        "end_exclusive": "001d17c4",
+        "bytes": 28,
+        "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce"
+      },
+      "release": {
+        "start": "001d17c8",
+        "end_exclusive": "001d1800",
+        "bytes": 56,
+        "sha256": "d3a62c0821de04915f4227abba06fedc487b341c9bb6a450c5b97f7f806ea1c5"
+      },
+      "accessor": {
+        "start": "001d1800",
+        "end_exclusive": "001d183c",
+        "bytes": 60,
+        "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+      },
+      "helper": {
+        "start": "00105888",
+        "end_exclusive": "00105ac4",
+        "bytes": 572,
+        "sha256": "92ea2ce0053c3ea01f0a64bb3e02385197b59b8b275b5230bc8345b851f9264d"
+      },
+      "reset_before_load": {
+        "start": "001ccc3c",
+        "end_exclusive": "001ccc54",
+        "bytes": 24,
+        "sha256": "850a3f2573711e788566aca79ae4fb5c567a39d92a64211cbbee590990bb91f1"
+      },
+      "load_store": {
+        "start": "001d1440",
+        "end_exclusive": "001d1464",
+        "bytes": 36,
+        "sha256": "ab6baede27ac88d3c6f989a469433b47878a704a6f8f678eb6ba12ab96dba0d8"
+      }
+    },
+    "search_boundary": "All aligned file-backed SHF_ALLOC words; GP displacement scan in SHF_EXECINSTR sections. Saved instruction bytes rechecked against ELF.",
+    "limitations": [
+      "Not an alias analysis; computed pointers and unaligned literals are not exhaustively resolved.",
+      "Saved boundaries remain provisional. The unowned load at 001d1840 is retained.",
+      "Static instructions establish paths, not runtime reachability or thread safety."
+    ],
+    "saved_inventory": {
+      "bytes": 54861128,
+      "sha256": "021c30af6a51cd239be7e01bd5e76c99c49b898f95770aad6154dd7061177edf"
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 7695,
+      "sha256": "9f6051698c445483743b4699958679703212c410af39c20dc0d10024c013a4f5"
+    }
+  }
+}

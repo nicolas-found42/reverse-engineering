@@ -1,0 +1,107 @@
+{
+  "schema": "fr2-misc3d-cell-decision/v1",
+  "issue": 24,
+  "corpus_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "decision": "ADR-0006",
+  "inputs": {
+    "observation": {
+      "path": "notes/evidence/fr2-misc3d-cell/observation.json",
+      "sha256": "bea9b9db302ae13036f28f249b04d2dc135850a96d4d277c8ef75e719d08c62f"
+    },
+    "cell_source": {
+      "path": "reconstruction/ee/app3d/misc3d_db_id_cell.c",
+      "sha256": "5d023900745dcc4352cfbabc680545faea2dfd5a3d723f74942621d6842c708a"
+    },
+    "link_script": {
+      "path": "tools/misc3d_recipe/candidate.ld",
+      "sha256": "6cb03859699bf46d49b8c519789a27a848017a59af9cde56275ff6077d8551bc"
+    },
+    "accessor_source": {
+      "path": "reconstruction/ee/app3d/misc3d_db_id.c",
+      "sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc"
+    }
+  },
+  "scope": {
+    "code": {
+      "section": ".text",
+      "start": "001d1800",
+      "end_exclusive": "001d183c",
+      "bytes": 60,
+      "ownership": "game_owned",
+      "decision": "ADR-0005"
+    },
+    "cell": {
+      "section": ".sbss",
+      "start": "00290ac4",
+      "end_exclusive": "00290ac8",
+      "bytes": 4,
+      "minimum_alignment": 4,
+      "storage": "NOBITS",
+      "ownership": "game_owned",
+      "matched_file_bytes": 0
+    }
+  },
+  "lifecycle": {
+    "startup": "zeroed with 16-byte stores across 00290600..00397548; not a static -1 initializer",
+    "reset": {
+      "entry": "001d17a8",
+      "store": "001d17b0",
+      "value": -1,
+      "caller": "001ccbd8",
+      "callsite": "001ccc3c"
+    },
+    "load": {
+      "entry": "001d1408",
+      "producer": "0011ed90",
+      "callsite": "001d1448",
+      "store": "001d1460",
+      "value": "producer v0, stored in delay slot of JAL 00124f58",
+      "reset_before_load_callsite": "001ccc4c"
+    },
+    "release": {
+      "entry": "001d17c8",
+      "callee": "00120aa8",
+      "callsite": "001d17e4",
+      "store": "001d17ec",
+      "value": -1,
+      "saved_callers": []
+    },
+    "ownership_basis": "All three direct GP stores are in the misc3d lifecycle cluster; the accessor and loader are directly mapped to ../fr2/source/app3d/misc3d.c. This is a local attribution, not original symbol recovery."
+  },
+  "abi": {
+    "accessor": {
+      "entry": "001d1800",
+      "arguments": "no input argument register is consumed before being overwritten",
+      "success": "signed 32-bit LW at 001d1800; V1 copied to V0 at 001d1814; JR RA at 001d1834",
+      "sentinel": -1,
+      "caller_sites": 11,
+      "caller_return_use": "All saved callsites feed V0 to A0 for database consumer calls; no caller error-value check is observed in those windows."
+    },
+    "helper": {
+      "entry": "00105888",
+      "source_map_unit": "../modules4/system/ps2/asyncf.c",
+      "arguments": {
+        "a0": "source path pointer 002831a8",
+        "a1": "line 188, set in JAL delay slot 001d182c",
+        "a2": "diagnostic/format pointer 00283320"
+      },
+      "variadic_evidence": "A3 and T0..T3 saved at 001058b4..001058c4; floating argument registers F12..F19 also saved; call at 00105904 consumes the argument-save area. Variadic interpretation is inferred from this convention.",
+      "normal_return": "none in the saved body; terminal backward branch at 00105abc to 00105aa8 after reporting/cleanup calls",
+      "error_value": "not established and never observed returning; the existing int report_error declaration is a code-generation surrogate, not an evidenced return contract",
+      "ownership": "excluded from the accessor/cell decision"
+    }
+  },
+  "next_group": {
+    "reset": "001d17a8..001d17c4",
+    "release": "001d17c8..001d1800",
+    "sibling_accessors": "001d1840..001d1900",
+    "boundary_gap": "001d1840 load is unowned; saved sibling starts at 001d1844",
+    "loader": "001d1408 saved body is noncontiguous; do not assign its full envelope",
+    "issue": "https://github.com/nicolas-found42/reverse-engineering/issues/35"
+  },
+  "unresolved": [
+    "Original symbol names, loader/release implementation contracts and computed aliases remain unproved.",
+    "No runtime initialization order, thread safety, or error-helper behavior beyond static control flow is claimed.",
+    "Parent AC08/AC09/AC27 remain incomplete; this decision does not complete the image."
+  ]
+}
