@@ -25,6 +25,24 @@ def image():
 
 
 class BoundaryEvidenceTest(unittest.TestCase):
+    def test_failed_source_map_with_a_matching_metadata_hash_cannot_earn_provenance(self):
+        from unittest.mock import patch
+        import matching_ranges
+        from evidence_common import Invalid, identity
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            metadata = json.loads(matching_ranges.BOUNDARY_METADATA.read_text())
+            source_map, boundary = root / 'source-map.json', root / 'boundary.json'
+            for status in ('fail', 'incomplete', None):
+                with self.subTest(status=status):
+                    source_map.write_text(json.dumps({'status': status}))
+                    metadata['evidence_inputs']['source_map']['sha256'] = identity(source_map)['sha256']
+                    boundary.write_text(json.dumps(metadata))
+                    with patch.object(matching_ranges, 'SOURCE_MAP', source_map), \
+                         patch.object(matching_ranges, 'BOUNDARY_METADATA', boundary):
+                        with self.assertRaisesRegex(Invalid, 'must report pass'):
+                            matching_ranges.boundary_provenance()
+
     def test_boundary_evidence_is_reproducible_from_repository_files(self):
         from matching_ranges import boundary_provenance, ROOT, BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY
         self.assertTrue(BOUNDARY_METADATA.is_relative_to(ROOT / 'notes'))

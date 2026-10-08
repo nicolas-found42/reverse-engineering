@@ -35,7 +35,7 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess:
                           timeout=COMMAND_TIMEOUT_SECONDS)
 
 
-def command_executable(command: list[str]) -> Path:
+def command_executable(command: list[str]) -> Path | None:
     """Resolve direct commands or the repository's byte-pinned Docker wrappers."""
     if not command:
         raise Incomplete("tool command is empty")
@@ -52,6 +52,8 @@ def command_executable(command: list[str]) -> Path:
                 return path.resolve()
             if executable.startswith("mips-linux-gnu-") and "/" not in executable:
                 return (root / executable).resolve()
+    if launcher.name in {"bash", "sh", "dash", "zsh", "env", "wine", "wine64"}:
+        return None
     return launcher
 
 

@@ -10,6 +10,20 @@ from compiler_probe import run_probe
 
 
 class CompilerProbeTest(unittest.TestCase):
+    def test_unresolved_launcher_cannot_be_hashed_as_the_compiler_or_objcopy(self):
+        for phase, command in (("compile", ["/bin/bash", str(self.compiler)]),
+                               ("compile", ["/usr/bin/env", str(self.compiler)]),
+                               ("objcopy", ["/bin/bash", str(self.objcopy)])):
+            with self.subTest(phase=phase, command=command):
+                manifest = self.manifest()
+                body = json.loads(manifest.read_text())
+                body["candidates"][0][phase] = command
+                manifest.write_text(json.dumps(body))
+                with patch("compiler_probe.subprocess.run") as launched:
+                    result = run_probe(manifest, self.root / "out")
+                self.assertEqual((result["status"], result["selected_id"]), ("incomplete", None))
+                launched.assert_not_called()
+
     def test_declared_compiler_and_objcopy_must_identify_the_invoked_tool(self):
         for field in ("compiler_executable", "objcopy_executable"):
             with self.subTest(field=field):

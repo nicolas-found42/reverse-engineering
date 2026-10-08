@@ -38,6 +38,10 @@ def boundary_provenance() -> dict:
         if not path.is_file():
             raise Incomplete(f'first-unit boundary evidence missing: {path}')
     metadata = json.loads(BOUNDARY_METADATA.read_text())
+    source_map = json.loads(SOURCE_MAP.read_text())
+    if (source_map.get('status') != 'pass'
+            or metadata.get('evidence_inputs', {}).get('source_map', {}).get('status') != 'pass'):
+        raise Invalid('first-unit source-map evidence must report pass consistently with boundary metadata')
     inventory = json.loads(SAVED_FUNCTION_INVENTORY.read_text())
     functions = inventory.get('functions', [])
     if (inventory.get('executable_sha256') != EE_CORPUS_SHA256
