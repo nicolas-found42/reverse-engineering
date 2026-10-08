@@ -1,13 +1,13 @@
 {
   "spec": "https://github.com/nicolas-found42/reverse-engineering/issues/5",
   "pr": "https://github.com/nicolas-found42/reverse-engineering/pull/20",
-  "source_revision": "03874990beb7283bf4188327d669af32edbf1909",
+  "source_revision": "181c705731b715725af48679e09728bd6e605898",
   "source_working_tree_dirty": false,
-  "aggregate_command": "python3 tools/completion.py games/ford-racing-2 --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate",
+  "aggregate_command": "python3 tools/completion.py games/ford-racing-2 --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate",
   "aggregate_receipt": {
-    "path": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/20261008T082141Z-7ecac4fa3b9e4ea6bdbdec1334988922/result.json",
-    "bytes": 211158,
-    "sha256": "d082b2d370beb0ff064b5f0fd2df28aea3a24e2e0cd215c514398233d95480bd",
+    "path": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/20261008T084909Z-1bd147b0a1644c43936c26e300481ebb/result.json",
+    "bytes": 212028,
+    "sha256": "1a0fbf0f471080f2cd0981896cb4f0d966c21f96a9f7d2a2212b029428e5a14d",
     "exit_code": 2,
     "status": "incomplete"
   },
@@ -228,11 +228,13 @@
         "corpus",
         "games/ford-racing-2",
         "--output",
-        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/ranges"
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/ranges"
       ],
-      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/ranges/20261008T082141Z-13c3ee0600464d74b92c87012af5aa4b/result.json",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/ranges/20261008T084909Z-cdaa71f66ec34c8ab1c2e6d3b9604351/result.json",
+      "bytes": 95176,
+      "sha256": "0472d774fbd49c80190b411af16971f453e50e712c360c767075700aa50681ab",
       "status": "pass",
-      "sha256": "28e6a8cefc0b407bf3c6cf937bea99301b6d97f483d784c61902842d139a82b7"
+      "diagnostics": []
     },
     {
       "command": [
@@ -241,11 +243,13 @@
         "corpus",
         "games/ford-racing-2",
         "--output",
-        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/archive"
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/archive"
       ],
-      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/archive/20261008T082142Z-38d209eb24c440cda994949933f3e11e/result.json",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/archive/20261008T084909Z-a7d60977b8394e55b1bdc4b36643d137/result.json",
+      "bytes": 4079885,
+      "sha256": "6224c3569c828ec7ddb64f38b2da0edd014d03731fa0fe6e75047c6dbc7a8fd3",
       "status": "pass",
-      "sha256": "69367f8582841a3ddae15cab65d095eec415545121ad4767036f9025fb15fd6a"
+      "diagnostics": []
     },
     {
       "command": [
@@ -257,11 +261,15 @@
         "--objdump",
         ".scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
         "--output",
-        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/vu"
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/vu"
       ],
-      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/vu/20261008T082145Z-542e03fd088c4eb981a501cf8ea61992/result.json",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/vu/20261008T084911Z-75d4c04b7a6e4862b7f367fde55c67f4/result.json",
+      "bytes": 59624,
+      "sha256": "87c09fa1883f8f72bae115e43984c53ec6910f08f63b317270e94fffc30e8353",
       "status": "incomplete",
-      "sha256": "f53c718a45830d2e99fd53cee70a5d2239f87b2c33dd511713d6e02e2df33b3e"
+      "diagnostics": [
+        "VU byte reassembly passed; required entry or interface maps remain incomplete"
+      ]
     },
     {
       "command": [
@@ -271,11 +279,15 @@
         "games/ford-racing-2/extracted/FILES.HDR",
         "games/ford-racing-2/extracted/FILES.DAT",
         "--output",
-        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/assets"
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/assets"
       ],
-      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/assets/20261008T082145Z-3f125697f8c24261ae5d1e256935d35d/result.json",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/assets/20261008T084911Z-7bac4730cdac48799bffee5ded7e39e1/result.json",
+      "bytes": 56664,
+      "sha256": "244043274f3507e86afe2564ad405304252ac2abf9ce1032ff0d994d15fbeae2",
       "status": "incomplete",
-      "sha256": "3df84073f00c3950cf763b1f50fd21fd53e8f936eee12990d6d6996bb6954108"
+      "diagnostics": [
+        "fixed registry contains candidate or unresolved consumer profiles"
+      ]
     },
     {
       "command": [
@@ -284,40 +296,32 @@
         "games/ford-racing-2",
         "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
         "--output",
-        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/compiler"
+        "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/compiler"
       ],
-      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/children-c1d7a95a50b949168e3ab869c527196e/compiler/20261008T082148Z-1f34a9c48f9f4cab89bb228c1ec38621/result.json",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/children-c843e77c82cd4806a963c40d2fecf0f0/compiler/20261008T084913Z-93783e0d0f984c408f194d1c793aabc7/result.json",
+      "bytes": 54688,
+      "sha256": "46fd4add702eea8791852603fe318dc2b3fbfb945ed0c457be8b90f86a7aab8d",
       "status": "pass",
-      "sha256": "044d7c1bc649a17191e3b1aea59559ab270cb5d09c1c943f0997b6514ad458a9"
+      "diagnostics": []
     }
   ],
   "validation": {
-    "source_revision": "03874990beb7283bf4188327d669af32edbf1909",
+    "source_revision": "181c705731b715725af48679e09728bd6e605898",
     "working_tree_dirty": false,
     "checks": [
       {
-        "command": "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python tools/check.sh",
-        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-whole-suite.log",
+        "command": "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python PS2RECOMP_SOURCE_ROOT=/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp tools/check.sh",
+        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-whole-suite.log",
         "exit_code": 0,
-        "summary": "625 tests; OK (skipped=1); source-dependent TranslatorSemanticsTests class initially skipped",
+        "summary": "633 tests; OK; no unittest skips or dependency exclusions; source checkout c5a9d02573410a2085a4b4b831b0b68ba3515440 configured",
         "identity": {
-          "bytes": 1614,
-          "sha256": "d800afce9ea5b78e261bed11ee172e80f18d69a594cf76b767bb8a5d7208a4e3"
-        }
-      },
-      {
-        "command": "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python PS2RECOMP_SOURCE_ROOT=/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp tools/check.sh test_translator_semantics",
-        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-translator-semantics.log",
-        "exit_code": 0,
-        "summary": "7 source-dependent tests; OK; pinned checkout c5a9d02573410a2085a4b4b831b0b68ba3515440",
-        "identity": {
-          "bytes": 105,
-          "sha256": "9c472f57e00c870d22483a65a11d5102785b901369e9b3780e1f06609f6c2ec1"
+          "bytes": 1791,
+          "sha256": "efae7be67ba3bcbdeeae02c6bb744a508304091feecc71470055356c3e394b16"
         }
       },
       {
         "command": "python3 tools/ip_rails.py --tree",
-        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-ip-rails.log",
+        "log": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-ip-rails.log",
         "exit_code": 0,
         "identity": {
           "bytes": 0,
@@ -344,7 +348,8 @@
   },
   "review": {
     "standards": "Confirmed reproduction-command finding fixed; cohesion note advisory.",
-    "spec": "Ownership/source coupling, double subtraction, stale current pointer and unsafe future oracle pass claims corrected; full required criteria still incomplete."
+    "spec": "Ownership/source coupling, double subtraction, stale current pointer and unsafe future oracle pass claims corrected; full required criteria still incomplete.",
+    "ci_fixtures": "Tests-only delta fa9c2ed..181c705 reviewed independently; missing private provenance remains AC07 incomplete. Actual Linux CI still required for the fully absent private-evidence profile."
   },
   "claim_limits": [
     "60 matched bytes are one local unit; no whole-corpus percentage is claimed.",
@@ -378,6 +383,8 @@
       "sha256": "e0084ccc3b1fb6aec66eea3e685d52d94539838aa54085159823732fcbeb8592"
     },
     "claim_limit": "Scores remain advisory and escalated; stronger review verifies specific facts and does not approve whole issue completion.",
-    "input_repair": "Original broader request received max_tokens_exceeded; repaired by narrowing raw file set, preserving hunks, claims, evidence identities and thresholds. No semantic escalation was rerun."
+    "input_repair": "Original broader request received max_tokens_exceeded; repaired by narrowing raw file set, preserving hunks, claims, evidence identities and thresholds. No semantic escalation was rerun.",
+    "reviewed_source_revision": "03874990beb7283bf4188327d669af32edbf1909",
+    "later_delta": "The only later code changes are self-contained test fixtures; production acceptance code is unchanged. Independent review is retained in spec-review-ci-fixtures.md."
   }
 }

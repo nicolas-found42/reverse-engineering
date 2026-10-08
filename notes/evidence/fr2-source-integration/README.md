@@ -39,8 +39,8 @@ unresolved bytes, AC27/29/30/31/32 incomplete with current child-receipt
 references, and a clean working tree at source revision `d03d5ad`.
 
 The final reviewed code has a fresh aggregate at source revision
-`03874990beb7283bf4188327d669af32edbf1909`, retained at
-`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/final-aggregate/20261008T082141Z-7ecac4fa3b9e4ea6bdbdec1334988922/result.json`.
+`181c705731b715725af48679e09728bd6e605898`, retained at
+`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/post-ci-fix-aggregate/20261008T084909Z-1bd147b0a1644c43936c26e300481ebb/result.json`.
 The [continuation summary](../fr2-completion/20261008-continuation-summary.json)
 pins this current receipt and child hashes, the exact command, the conserved
 ledger, and separate behavioral and dependency limits. It exits 2, incomplete.
