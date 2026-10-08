@@ -1,6 +1,16 @@
 # Reconstruction completion command
 
-The [continuation summary](20261008-continuation-summary.json) records a clean
+The [implementation summary](20261008-implementation-summary.json) is the current
+bounded progress record for draft PR #36. Its clean real-corpus aggregate at
+source revision `9c4f9fa` exits 2: AC01, AC07, AC16 and AC18 pass, with 60
+attributed/matched bytes, 3,506,988 unresolved bytes and zero substitutes.
+Its recorded whole-suite command ran 711 tests, OK, with no skips or dependency
+exclusions. Fresh misc3d source/observation receipts, the refused oracle
+preflight, exact reproduction commands and independent review dispositions
+are linked there. The additional misc3d source outputs are candidates with
+zero new ownership credit; full reconstruction and behavior remain incomplete.
+
+The historical [continuation summary](20261008-continuation-summary.json) records a clean
 real-corpus run at reviewed source revision `181c705`. It exits 2, incomplete:
 AC01, AC07, AC16 and AC18 pass; all remaining criteria retain their required
 work. The ledger records 60 game-owned/matched bytes, 3,506,988 unresolved

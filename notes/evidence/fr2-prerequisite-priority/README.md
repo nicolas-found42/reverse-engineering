@@ -20,6 +20,14 @@ No guest execution, source ownership, protocol expansion or matching credit is
 introduced. The Qt qualification, parent RPC handoff inventory and lifecycle
 loader/alias/caller prerequisites retain their incomplete dispositions.
 
+The final [Standards review](standards-review.md) and [Spec review](spec-review.md)
+independently inspect merged source revision `9c4f9fa` and execute the combined
+controls. Their recorded commands pass; the [independent real controls](independent-controls.json)
+bind fresh RPC/frontier receipt identities to that revision. Both reviewers
+explicitly disposition the four contradicted Jev claims for the tested cases.
+The original gate, thresholds and probability distributions remain unchanged
+and escalated; no automatic acceptance or full-parent completion is asserted.
+
 ## Reproduction
 
 From the repository root, the focused check below ran 88 tests with three skips:

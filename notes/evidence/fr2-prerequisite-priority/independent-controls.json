@@ -1,0 +1,150 @@
+{
+  "source_revision": "9c4f9fac9f7060959dfa73b8ea5a8e235943671a",
+  "controls": [
+    {
+      "control": "positive",
+      "command": [
+        "python3",
+        "tools/check_rpc_contracts.py",
+        "--ee",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+        "--stream",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "--packet",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/positive.bin",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/positive"
+      ],
+      "exit": 0,
+      "status": "pass",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/positive/20261008T201546Z-ba9a31908472442facef68b244cb47d2/result.json",
+      "sha256": "cac7440f81b0a028f2fd630b165fd84ae16b76b02aa22cf12a121c7a24ec04b4"
+    },
+    {
+      "control": "negative",
+      "command": [
+        "python3",
+        "tools/check_rpc_contracts.py",
+        "--ee",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+        "--stream",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "--packet",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/negative.bin",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/negative"
+      ],
+      "exit": 1,
+      "status": "fail",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/negative/20261008T201546Z-a8c30aaab4974ffc8de472e3a42cae6c/result.json",
+      "sha256": "7fc1217db105a5f8398be8066628993bcef92aa181f3335c21f7d47467a2e327"
+    },
+    {
+      "control": "incomplete",
+      "command": [
+        "python3",
+        "tools/check_rpc_contracts.py",
+        "--ee",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+        "--stream",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "--packet",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/incomplete.bin",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/incomplete"
+      ],
+      "exit": 2,
+      "status": "incomplete",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/incomplete/20261008T201547Z-57463b499d834579badf5bee69c3bb35/result.json",
+      "sha256": "6e138bd4bf3f838ef12278b0dade369d88f69206c2f64ed065c44f1c348e10e7"
+    },
+    {
+      "control": "missingEE-negative",
+      "command": [
+        "python3",
+        "tools/check_rpc_contracts.py",
+        "--ee",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee",
+        "--stream",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "--packet",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/negative.bin",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/missingEE-negative"
+      ],
+      "exit": 1,
+      "status": "fail",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/missingEE-negative/20261008T201547Z-05b9dc18e34a4d93b90935d04ab0f661/result.json",
+      "sha256": "b32f2404802a52bd2ab6979213a35e916d1e861b165f413b251c0eb328f3801f"
+    },
+    {
+      "control": "missingEE-positive",
+      "command": [
+        "python3",
+        "tools/check_rpc_contracts.py",
+        "--ee",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee",
+        "--stream",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "--packet",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/positive.bin",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/missingEE-positive"
+      ],
+      "exit": 2,
+      "status": "incomplete",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/missingEE-positive/20261008T201547Z-05446119f5704e318e111c41003fccd8/result.json",
+      "sha256": "612548dee887d62df3637703e6aad6acd5744605c9996287ab9f5220b100a3f7"
+    },
+    {
+      "control": "missingEE-incomplete",
+      "command": [
+        "python3",
+        "tools/check_rpc_contracts.py",
+        "--ee",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/precedence-controls/missing-ee",
+        "--stream",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+        "--packet",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/incomplete.bin",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/missingEE-incomplete"
+      ],
+      "exit": 2,
+      "status": "incomplete",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/missingEE-incomplete/20261008T201548Z-c0b540482da8455cac7ea46eba406421/result.json",
+      "sha256": "db94713e5fc546043d0372342e8085ab01da2ff759aab2fb67a52c60de347f69"
+    },
+    {
+      "control": "inventory",
+      "command": [
+        "python3",
+        "tools/inventory_rpc_handoffs.py",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/inventory"
+      ],
+      "exit": 2,
+      "status": "incomplete",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/inventory/20261008T201548Z-f22e01404d534db4b6eebf163a958c1d/result.json",
+      "sha256": "c296bd583925cd45472d5dde6c33e048ed6a398f7831c7ff3c00a113de072feb"
+    },
+    {
+      "control": "F3",
+      "command": [
+        "python3",
+        "tools/check_rpc_contracts.py",
+        "--ee",
+        "/missing/ee",
+        "--stream",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/rpc-controls/positive.bin",
+        "--output",
+        "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/F3"
+      ],
+      "exit": 1,
+      "status": "fail",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/spec-axis-final-evidence/F3/20261008T201549Z-1d35e510b19a49188cd8e83fdcdb55bf/result.json",
+      "sha256": "a41e2d7e718676eb621de49faf587adc2d70c98bd9d56695450f1afefec86dc0"
+    }
+  ]
+}

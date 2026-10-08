@@ -1,0 +1,304 @@
+{
+  "spec": "https://github.com/nicolas-found42/reverse-engineering/issues/5",
+  "pr": "https://github.com/nicolas-found42/reverse-engineering/pull/36",
+  "baseline_revision": "e8b65417bc5d80f4fb85c91dacefe761a6d9f236",
+  "source_revision": "9c4f9fac9f7060959dfa73b8ea5a8e235943671a",
+  "source_working_tree_dirty": false,
+  "scope": "Bounded implementation progress. Full specification and affected parent tickets remain incomplete.",
+  "validation": {
+    "command": "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python PS2RECOMP_SOURCE_ROOT=/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/PS2Recomp tools/check.sh",
+    "exit_code": 0,
+    "tests": 711,
+    "unittest_skips": 0,
+    "excluded_modules": [],
+    "log": "20261008-implementation-whole-suite.log",
+    "bytes": 3831,
+    "sha256": "534bb64c029509f93cfd08ef1dd40ec4d1249c48e0d970bc9553bab467fe46bd"
+  },
+  "aggregate": {
+    "command": "python3 tools/completion.py games/ford-racing-2 --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers --output /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/aggregate-final",
+    "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/aggregate-final/20261008T201437Z-bb7174b75b964a418fad3cc9d676ebe2/result.json",
+    "bytes": 230005,
+    "sha256": "fba20cf044d46c66e5e93662f6675d22d1b72d3026fd71ee3c94019ccdec35bb",
+    "exit_code": 2,
+    "status": "incomplete"
+  },
+  "reconstruction_status": "incomplete",
+  "real_corpus_completion": false,
+  "ledger": {
+    "file_backed_bytes": 2171407,
+    "zero_fill_bytes": 1335641,
+    "unresolved_bytes": 3506988,
+    "game_owned_bytes": 60,
+    "substitute_bytes": 0,
+    "matched_bytes": 60,
+    "substitute_disposition": "no ranges attributed as substitute",
+    "matched_fraction": 1.0,
+    "matched_fraction_scope": "attributed_game_owned_bytes",
+    "function_owned_bytes": null,
+    "function_owned_disposition": "Discovery accounting is not matching credit."
+  },
+  "criteria": [
+    {
+      "id": "AC01",
+      "status": "pass",
+      "reason": "Pinned load images, all VU identities, and archive/extracted inventory."
+    },
+    {
+      "id": "AC02",
+      "status": "incomplete",
+      "reason": "Full passing reconstruction and handoff remain unimplemented."
+    },
+    {
+      "id": "AC03",
+      "status": "incomplete",
+      "reason": "Full build/receipt negative controls remain unimplemented."
+    },
+    {
+      "id": "AC04",
+      "status": "incomplete",
+      "reason": "Load-image inventory retained; all but the locally measured range remain unresolved."
+    },
+    {
+      "id": "AC05",
+      "status": "incomplete",
+      "reason": "Exploratory candidate comparison retained; independent ownership and additional EE/IOP distinguishing probes are still required."
+    },
+    {
+      "id": "AC06",
+      "status": "incomplete",
+      "reason": "Pin GNU linker and prove placement/relocation/zero-fill layout."
+    },
+    {
+      "id": "AC07",
+      "status": "pass",
+      "reason": "One hand-written EE source unit has a fresh, source/decision-bound exact byte build."
+    },
+    {
+      "id": "AC08",
+      "status": "incomplete",
+      "reason": "Rebuild every attributed game-owned EE range from source."
+    },
+    {
+      "id": "AC09",
+      "status": "incomplete",
+      "reason": "Resolve required source, ABI, types and reference contracts."
+    },
+    {
+      "id": "AC10",
+      "status": "incomplete",
+      "reason": "Reconcile every required unlisted span and computed dispatch."
+    },
+    {
+      "id": "AC11",
+      "status": "incomplete",
+      "reason": "Build pinned permitted substitutes with documented interfaces."
+    },
+    {
+      "id": "AC12",
+      "status": "incomplete",
+      "reason": "Clean source builds must produce EE and all 24 module outputs."
+    },
+    {
+      "id": "AC13",
+      "status": "incomplete",
+      "reason": "Attribute and rebuild all game-owned IOP ranges."
+    },
+    {
+      "id": "AC14",
+      "status": "incomplete",
+      "reason": "Check complete import/export/relocation and provider contracts."
+    },
+    {
+      "id": "AC15",
+      "status": "incomplete",
+      "reason": "Bind required RPC/shared-buffer callers and handlers with ownership/state."
+    },
+    {
+      "id": "AC16",
+      "status": "pass",
+      "reason": "Eight exact mnemonic comparisons required; entry/state contracts are separate."
+    },
+    {
+      "id": "AC17",
+      "status": "incomplete",
+      "reason": "Required entry/state interfaces remain unresolved."
+    },
+    {
+      "id": "AC18",
+      "status": "pass",
+      "reason": "Independent archive/extracted comparison; format support is separate."
+    },
+    {
+      "id": "AC19",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage."
+    },
+    {
+      "id": "AC20",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage."
+    },
+    {
+      "id": "AC21",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage."
+    },
+    {
+      "id": "AC22",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage."
+    },
+    {
+      "id": "AC23",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage."
+    },
+    {
+      "id": "AC24",
+      "status": "incomplete",
+      "reason": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage."
+    },
+    {
+      "id": "AC25",
+      "status": "incomplete",
+      "reason": "Prove a bounded windowless/audio-free/focus-free lifecycle."
+    },
+    {
+      "id": "AC26",
+      "status": "incomplete",
+      "reason": "Compare original and rebuilt observations with identical inputs."
+    },
+    {
+      "id": "AC27",
+      "status": "incomplete",
+      "reason": "The current positive, mutation and placement controls cover one source unit only; controls for remaining acceptance gates are not complete."
+    },
+    {
+      "id": "AC28",
+      "status": "incomplete",
+      "reason": "Compare two clean source builds in separate fresh work directories."
+    },
+    {
+      "id": "AC29",
+      "status": "incomplete",
+      "reason": "The current partition conserves all load-image bytes, but only one 60-byte owned range is attributed and matched."
+    },
+    {
+      "id": "AC30",
+      "status": "incomplete",
+      "reason": "These current child receipts support the bounded results above; required evidence and falsifiers for the remaining criteria are still incomplete."
+    },
+    {
+      "id": "AC31",
+      "status": "incomplete",
+      "reason": "The exploratory compiler receipt records package provenance; redistribution terms remain unresolved and no compiler binaries are redistributed."
+    },
+    {
+      "id": "AC32",
+      "status": "incomplete",
+      "reason": "Current child receipts and the aggregate are retained, but required final acceptance and handoff evidence remains incomplete."
+    }
+  ],
+  "misc3d": {
+    "command": "python3 tools/misc3d_lifecycle.py games/ford-racing-2 /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers --output /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/final-real-misc3d",
+    "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/final-real-misc3d/20261008T201423Z-d400a9ae96764717b5a6a4299be9509e/result.json",
+    "bytes": 48508,
+    "sha256": "60f690fff317024e7ebe18c11fd3d83c97e84832dd2cab37818bba35984b1f25",
+    "exit_code": 0,
+    "status": "pass",
+    "existing_attributed_match_bytes": 60,
+    "new_byte_identical_candidate_bytes": 276,
+    "new_attributed_match_bytes": 0,
+    "compared_bytes": 336,
+    "issue35_status": "incomplete",
+    "nobits_layout_bytes": 20,
+    "nobits_matching_file_bytes": 0
+  },
+  "misc3d_observation": {
+    "command": "python3 tools/misc3d_lifecycle_observation.py games/ford-racing-2 .scratch/issue-24/inventory.json /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/boundary.json --output /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/final-observation",
+    "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/final-observation/20261008T201423Z-f406cd3e79ed4a198558c26a6a0c0a07/result.json",
+    "bytes": 21406,
+    "sha256": "9e7cdf50fa4eed1f8f9e38abe9043bf09c09e7d0593691bb193dbe73cff06538",
+    "exit_code": 0,
+    "status": "pass"
+  },
+  "oracle": {
+    "command": "Repeat notes/evidence/fr2-oracle-dependencies/README.md preflight with --output /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/final-oracle",
+    "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/final-oracle/20261008T202116Z-4ba7e18cc551416187ffc6cfb27c8f25/result.json",
+    "bytes": 15300,
+    "sha256": "8816e53d804e336868277bb4dbc44406bc97074ce2b7d5e33ae35bfc39f2b130",
+    "exit_code": 2,
+    "status": "incomplete",
+    "dependency_qualification": {
+      "status": "incomplete",
+      "issue": 22,
+      "blockers": [
+        "The prebuilt Qt SDK's full corresponding source or applicable source offer is not bound to the pinned package.",
+        "The installed Qt libraries and docking library lack exact package/source/build and complete notice bindings."
+      ]
+    },
+    "lifecycle": {
+      "launched": false
+    },
+    "static_byte_credit": 0
+  },
+  "compiler_panel": {
+    "evidence": "../fr2-compiler-probe/acceptance-20261008/README.md",
+    "candidate_combinations": 28,
+    "uniquely_satisfies_four_unit_panel": "ee-gcc2.96",
+    "located_nonmatches": 20,
+    "historical_source_package_binding": "incomplete (#21)",
+    "new_byte_credit": 0
+  },
+  "rpc": {
+    "scope": "STREAM command-0/channel-volume framing child only",
+    "evidence": "../fr2-rpc-contracts/README.md",
+    "current_independent_controls": "../fr2-prerequisite-priority/independent-controls.json",
+    "parent_status": "incomplete",
+    "static_byte_credit": 0
+  },
+  "reviews": {
+    "standards": "../fr2-prerequisite-priority/standards-review.md",
+    "spec": "../fr2-prerequisite-priority/spec-review.md",
+    "initial_findings": {
+      "standards": 1,
+      "spec": 3
+    },
+    "remaining_bounded_defects_found": 0,
+    "full_parent_acceptance": "incomplete"
+  },
+  "new_semantic_gate": {
+    "request": "../fr2-prerequisite-priority/gate-input.json",
+    "result": "../fr2-prerequisite-priority/gate-result.json",
+    "action": "escalate",
+    "safe_to_apply": 0.15,
+    "composite": 0.561625,
+    "contradicted_claims": 4,
+    "disposition": "Independent Standards/Spec code inspection and executed controls support the four bounded claims; original judgment and distributions remain unchanged. No retry or automatic acceptance."
+  },
+  "next_group": {
+    "issue": 37,
+    "url": "https://github.com/nicolas-found42/reverse-engineering/issues/37",
+    "blocks": 35,
+    "scope": "Noncontiguous misc3d loader, helper use and computed aliases; sibling caller-use and ownership gaps remain separate."
+  },
+  "claim_limits": [
+    "No full-game completion or behavioral equivalence.",
+    "Only the previously attributed 60-byte unit counts as matched; additional candidates receive zero new credit.",
+    "NOBITS contributes storage layout, never matching file bytes.",
+    "Full EE/all-24-IOP builds, VU state maps, asset consumers, dependency closure and two clean full builds remain required.",
+    "No affected parent ticket is closed by these partial receipts.",
+    "Private corpus, firmware, tool binaries, generated exports and build payloads remain local."
+  ],
+  "publication_fact_verification": {
+    "request": "20261008-implementation-verification-request.json",
+    "result": "20261008-implementation-verification-result.json",
+    "verified": 3,
+    "contradicted": 1,
+    "needs_review": 1,
+    "contradicted_scope": "Whole-suite count/skip claim, confidence 0.38",
+    "disposition": "20261008-implementation-verification-disposition.md",
+    "claim_limit": "Independent log equality, unittest summary and runner behavior support the suite claim; original contradiction unchanged, no retry."
+  }
+}
