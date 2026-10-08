@@ -10,10 +10,45 @@ import sys
 from unittest.mock import patch
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from evidence_common import identity, write_result
+from evidence_common import Incomplete, Invalid, identity, write_result
 import misc3d_loader as loader
 from misc3d_loader_recipe import source_build
 from ps2_executables import parse_elf
+
+BUILD_ARTIFACTS = ('object', 'prepared', 'linked', 'comparison')
+
+
+def compare_builds(first: dict, second: dict) -> dict:
+    """Two clean builds in separate fresh directories must agree byte for byte."""
+    report = {'artifacts': {}, 'identical': True}
+    for name in BUILD_ARTIFACTS:
+        try:
+            one, two = first['artifacts'][name], second['artifacts'][name]
+        except (KeyError, TypeError) as error:
+            raise Incomplete('reproducibility comparison requires artifact ' + name) from error
+        same = one['sha256'] == two['sha256'] and one['bytes'] == two['bytes']
+        report['artifacts'][name] = {'first_sha256': one['sha256'],
+                                     'second_sha256': two['sha256'], 'identical': same}
+        report['identical'] = report['identical'] and same
+    if first.get('compiler') != second.get('compiler'):
+        raise Invalid('clean rebuilds disagree on the recorded compiler identity')
+    report['build_directories_differ'] = (
+        first['artifacts']['linked']['path'] != second['artifacts']['linked']['path'])
+    if not report['identical']:
+        raise Invalid('clean rebuilds produced different credited bytes', report)
+    return report
+
+
+def detect_drift(first: dict, changed: dict) -> dict:
+    """A changed source build must differ, or the rebuild comparison is vacuous."""
+    try:
+        one, two = first['artifacts']['linked'], changed['artifacts']['linked']
+    except (KeyError, TypeError) as error:
+        raise Incomplete('drift detection requires the linked artifacts') from error
+    if one['sha256'] == two['sha256']:
+        raise Invalid('reproducibility comparison cannot detect a changed source build')
+    return {'first_linked_sha256': one['sha256'],
+            'changed_linked_sha256': two['sha256'], 'drift_detected': True}
 
 
 def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, output: Path) -> dict:
@@ -31,7 +66,7 @@ def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, outpu
     changed=output/'changed-terminal.c'
     changed.write_text(source_build.SOURCE.read_text().replace('misc3d_optional_object = object;','misc3d_optional_object = 0;'))
     record('changed_terminal_source',lambda:source_build.source_build(game,tool_root,changed))
-    host=record('host_source',lambda:loader.source_contract(output/'host-positive'))
+    record('host_source',lambda:loader.source_contract(output/'host-positive'))
     changed_loader=output/'changed-loader.c'
     changed_loader.write_text(loader.SOURCE.read_text().replace('*flags |= 32ULL;','*flags |= 16ULL;'))
     record('changed_host_source',lambda:loader.source_contract(output/'host-negative',changed_loader))
@@ -54,11 +89,29 @@ def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, outpu
     stale.write_text(json.dumps(value)+'\n')
     record('stale_provenance',lambda:loader.check(game,inventory,stale,output/'stale-host'))
     record('contradiction_over_missing',lambda:loader.check(game,output/'missing-inventory.json',stale,output/'contradiction-host'))
-    expected={'real_terminal_source':0,'changed_terminal_source':1,'host_source':0,'changed_host_source':1,
-              'changed_terminal_layout':1,'static_positive':0,'full_frontier':2,'missing_provenance':2,
-              'stale_provenance':1,'contradiction_over_missing':1}
+    record('reproducibility',lambda:compare_builds(
+        source_build.source_build(game,tool_root),
+        source_build.source_build(game,tool_root)))
+
+    def drift():
+        real=source_build.source_build(game,tool_root)
+        changed=output/'changed-terminal-drift.c'
+        changed.write_text(source_build.SOURCE.read_text().replace(
+            'misc3d_optional_object = object;','misc3d_optional_object = 0;'))
+        try:
+            source_build.source_build(game,tool_root,changed)
+        except Invalid as error:
+            return detect_drift(real,error.details)
+        raise Invalid('changed source build unexpectedly matched the retail terminal bytes')
+
+    record('reproducibility_drift_detected',drift)
+    expected={'real_terminal_source':0,'changed_terminal_source':1,'host_source':0,
+              'changed_host_source':1,'changed_terminal_layout':1,'static_positive':0,
+              'full_frontier':2,'missing_provenance':2,'stale_provenance':1,
+              'contradiction_over_missing':1,'reproducibility':0,
+              'reproducibility_drift_detected':0}
     failures=[name for name,code in expected.items() if results.get(name,{}).get('exit_code')!=code]
-    summary={'scope':'Executed real source and isolated static controls; full loader/alias acceptance remains incomplete.',
+    summary={'scope':'Executed real source, isolated static and two-clean-build reproducibility controls; full loader/alias acceptance remains incomplete.',
              'results':results,'expected_exit_codes':expected,'failures':failures,
              'public_inputs':{name:identity(path)for name,path in [('controls',Path(__file__)),('loader',Path(loader.__file__)),('source_recipe',Path(source_build.__file__)),('decision',loader.DECISION)]}}
     (output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')

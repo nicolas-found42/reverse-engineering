@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from linker_layout import CELL, DECISION, TEXT, check, verify_outputs, verify_relocations
+from linker_layout import CELL, TEXT, check, verify_outputs, verify_relocations
 from evidence_common import Incomplete, Invalid
 from elf_fixture import Spec, build_elf
 from ps2_executables import parse_elf

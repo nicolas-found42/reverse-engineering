@@ -297,14 +297,11 @@ public class CreateEeCandidateV5 extends GhidraScript {
                 use(s); Address start = at(START);
                 AddressSet expected = new AddressSet(); for (JsonElement a : s.cfg.getAsJsonArray("instruction_addresses")) { Address ia = at(Long.parseUnsignedLong(a.getAsString(), 16)); expected.addRange(ia, ia.add(3)); }
                 req(expected.getNumAddresses() == BYTES - 4L * PADDING.size(), "CFG body instruction ranges do not cover exactly the pinned body bytes for " + ENTRY);
-                // Noreturn-terminator bodies: when a call edge inside this span was modeled
-                // as CALL_TERMINATOR (its callee body has no RETURN flow, proven in the
-                // decoder check), Ghidra's flow-derived function body omits that call's delay
-                // slot. The created function still keeps the pinned full body; this
-                // pre-derivation comparison excludes exactly those delay words from the
-                // Ghidra-derived set, and the body difference is bounded to them.
+                // The measured terminal-call body difference omits a pinned NOP at
+                // site+8, after the architectural delay slot at site+4. Keep the
+                // full raw CFG body, but accept only that exact byte-set difference.
                 AddressSetView body = CreateFunctionCmd.getFunctionBody(currentProgram, start, monitor);
-                req(expected.equals(body) || bodyDeltaIsPinnedNoreturnDelays(expected, body, s), "Ghidra-computed body differs from raw CFG contiguous body for " + ENTRY + ": actual=" + rangeSummary(body) + " expected=" + rangeSummary(expected));
+                req(expected.equals(body) || bodyDeltaIsPinnedNoreturnNops(expected, body, s), "Ghidra-computed body differs from raw CFG contiguous body for " + ENTRY + ": actual=" + rangeSummary(body) + " expected=" + rangeSummary(expected));
                 CreateFunctionCmd create = new CreateFunctionCmd("candidate_ee_" + ENTRY, start, expected, SourceType.ANALYSIS);
                 req(create.applyTo(currentProgram, monitor), "CreateFunctionCmd failed for " + ENTRY + ": " + create.getStatusMsg());
                 Function made = fm.getFunctionAt(start);
@@ -481,21 +478,7 @@ public class CreateEeCandidateV5 extends GhidraScript {
         for(JsonElement e:edges){JsonObject edge=e.getAsJsonObject();String k=edge.get("kind").getAsString();if(k.equals("switch"))foundSwitches.add(edge.get("site").getAsString());if(k.equals("return")||edge.has("tail_jump"))terminal=true;}
         req(foundSwitches.equals(SWITCHES.keySet()),"computed jump sites differ from pinned switch profile");
         req(SWITCHES.isEmpty()||terminal,"switch CFG has no return or tail terminal");
-        // Terminal-exception scope: an in-span terminal jump exists only for a shared
-        // return. When the last reachable word is an in-span jump/unconditional_branch,
-        // its exact target must be an edge word whose kind is "return". A looping
-        // terminal transfer (the last case jumping to itself) fails this check.
-        if(!SWITCHES.isEmpty()) {
-            long lw=wordAt(raw,END-8);String lk=flowKind(lw);
-            if(!lk.equals("return")&&!TAIL_JUMPS.containsKey(hex(END-8))&&(lk.equals("jump")||lk.equals("unconditional_branch"))) {
-                long t=lk.equals("jump")?((END-4)&0xf0000000L)|((lw&0x03ffffffL)<<2):branchTarget(END-8,lw);
-                if(t>=START&&t<END) {
-                    boolean sharedReturn=false;
-                    for(JsonElement e:edges){JsonObject edge=e.getAsJsonObject();if(edge.get("kind").getAsString().equals("return")&&edge.get("site").getAsString().equals(hex(t)))sharedReturn=true;}
-                    req(sharedReturn,"shared-return terminal exception does not hold: the in-span terminal transfer at "+hex(END-8)+" does not target a JR RA word ("+hex(t)+")");
-                }
-            }
-        }
+        if(!SWITCHES.isEmpty()) checkSwitchTerminal(seen, edges);
         for(SwitchPin pin:SWITCHES.values()) {
             long guard=Long.parseUnsignedLong(pin.guard,16),site=Long.parseUnsignedLong(pin.site,16);
             req(Boolean.FALSE.equals(seen.get(guard)),"switch bound is not reached in ordinary context at "+pin.guard);
@@ -506,40 +489,66 @@ public class CreateEeCandidateV5 extends GhidraScript {
         JsonArray addresses=new JsonArray();for(long pc:seen.keySet())addresses.add(hex(pc));
         JsonObject out=new JsonObject();out.addProperty("instruction_count_including_delay_slots",seen.size());out.addProperty("body_end_inclusive",hex(seen.lastKey()));out.add("instruction_addresses",addresses);out.add("edges",edges);out.add("delay_breaks",breaks);out.addProperty("branch_likely_scope","For conditional-likely branches, the static union includes the delay instruction on the taken path and the pc+8 successor on the not-taken path; the not-taken path annuls the delay instruction. This is a structural reachability union, not path-by-path execution.");return out;
     }
-    /**
-     * Bounded body-difference predicate for noreturn-terminator call models: the only words
-     * Ghidra's flow-derived body may omit are the delay-slot words of pinned call sites in
-     * this span whose instruction is currently modeled as CALL_TERMINATOR, and each such
-     * callee's analyzed body must contain no RETURN flow (same bound as the decoder check).
-     * Any other difference between the derived body and the pinned body is rejected.
-     */
-    private boolean bodyDeltaIsPinnedNoreturnDelays(AddressSet expected, AddressSetView body, SeedCfg s) throws Exception {
-        // Compare flattened per-4-byte-word address sets: Ghidra coalesces ranges across
-        // omitted delay words, so range equality would fail even when only the allowed
-        // words are missing.
-        Set<Long> expectedWords = new TreeSet<>(); for (long pc = s.start; pc < s.end; pc += 4) if (expected.contains(at(pc))) expectedWords.add(pc);
-        Set<Long> bodyWords = new TreeSet<>(); AddressRangeIterator it0 = body.getAddressRanges(); while (it0.hasNext()) { AddressRange r = it0.next(); for (long pc = r.getMinAddress().getOffset(); pc <= r.getMaxAddress().getOffset(); pc += 4) bodyWords.add(pc); }
-        Set<Long> missing = new TreeSet<>(expectedWords); missing.removeAll(bodyWords);
-        Set<Long> extra = new TreeSet<>(bodyWords); extra.removeAll(expectedWords);
-        if (!extra.isEmpty() || missing.isEmpty()) return false;
-        for (long pc : missing) {
-            boolean bounded = false;
-            for (Map.Entry<String,String> call : s.calls.entrySet()) {
-                long site = Long.parseUnsignedLong(call.getKey(), 16);
-                // The flow-derived body omits exactly the pinned call edge's not-taken
-                // fallthrough word (site+8) when the call is modeled as CALL_TERMINATOR.
-                if (pc != site + 8) continue;
-                Instruction ins = currentProgram.getListing().getInstructionAt(at(site));
-                if (ins == null || !ins.getFlowType().isTerminal()) continue;
-                Function callee = currentProgram.getFunctionManager().getFunctionAt(at(Long.parseUnsignedLong(call.getValue(), 16)));
-                if (callee == null) continue;
-                int returns = 0; InstructionIterator ii = currentProgram.getListing().getInstructions(callee.getBody(), true);
-                while (ii.hasNext()) { if (ii.next().getFlowType().isTerminal()) returns++; }
-                if (returns == 0) { bounded = true; break; }
-            }
-            if (!bounded) return false;
+    private void checkSwitchTerminal(Map<Long,Boolean> seen, JsonArray edges) {
+        JsonObject last = null;
+        Set<String> returns = new TreeSet<>();
+        for (JsonElement e : edges) {
+            JsonObject edge = e.getAsJsonObject();
+            if (edge.get("kind").getAsString().equals("return")) returns.add(edge.get("site").getAsString());
+            if (edge.get("site").getAsString().equals(hex(END - 8))) last = edge;
         }
-        return true;
+        req(last != null && Boolean.FALSE.equals(seen.get(END - 8)) && Boolean.TRUE.equals(seen.get(END - 4)),
+            "switch terminal transfer/delay slot is not reached in its required context");
+        String kind = last.get("kind").getAsString();
+        boolean terminal = kind.equals("return") || last.has("tail_jump") ||
+            (kind.equals("switch") && SWITCHES.containsKey(hex(END - 8)));
+        boolean sharedReturn = (kind.equals("jump") || kind.equals("unconditional_branch")) &&
+            last.has("target") && returns.contains(last.get("target").getAsString());
+        req(terminal || sharedReturn, "shared-return terminal exception does not hold at " + hex(END - 8) +
+            ": terminal transfer must be a return, pinned tail/switch, or direct transfer to a reached JR RA word");
+    }
+
+    /**
+     * The saved 001820f0 CFG/body probe omits NOPs 001824d4 and 00182604,
+     * eight bytes after pinned CALL_TERMINATOR sites 001824cc and 001825fc.
+     * These are post-delay fallthrough words, not architectural delay slots.
+     * Allow only complete four-byte omissions of this pinned shape; never
+     * discard extra bytes, partial words, delay slots, or a following code block.
+     */
+    private boolean bodyDeltaIsPinnedNoreturnNops(AddressSet expected, AddressSetView body, SeedCfg s) {
+        if (!body.subtract(expected).isEmpty()) return false;
+        AddressSet missing = expected.subtract(body);
+        if (missing.isEmpty()) return false;
+        for (Map.Entry<String,String> call : s.calls.entrySet()) {
+            long site = Long.parseUnsignedLong(call.getKey(), 16), pc = site + 8;
+            if (site < s.start || pc + 4 > s.end || (site & 3) != 0 || !s.zeros.contains(pc)) continue;
+            Address a = at(pc);
+            if (!missing.contains(a, a.add(3)) || !body.contains(at(site), at(site + 7))) continue;
+            if (word(s.raw, Math.toIntExact(pc - s.start)) != 0 || !pinnedNoreturnCall(site, call.getValue())) continue;
+            missing.deleteRange(a, a.add(3));
+        }
+        return missing.isEmpty();
+    }
+
+    // Shared by decoder validation and the body exception so neither accepts a
+    // broader flow model. Absence of terminal flows is a conservative analyzed-
+    // body bound, not a proof of runtime nonreturning behavior.
+    private boolean pinnedNoreturnCall(long site, String target) {
+        Instruction ins = currentProgram.getListing().getInstructionAt(at(site));
+        if (ins == null || ins.getLength() != 4 || ins.getFlowType() != RefType.CALL_TERMINATOR ||
+            ins.getFallThrough() != null) return false;
+        Address targetAddress = at(Long.parseUnsignedLong(target, 16));
+        Address[] flows = ins.getFlows();
+        if (flows.length != 1 || !flows[0].equals(targetAddress)) return false;
+        Function callee = currentProgram.getFunctionManager().getFunctionAt(targetAddress);
+        if (callee == null || callee.getBody().isEmpty()) return false;
+        InstructionIterator instructions = currentProgram.getListing().getInstructions(callee.getBody(), true);
+        boolean decoded = false;
+        while (instructions.hasNext()) {
+            decoded = true;
+            if (instructions.next().getFlowType().isTerminal()) return false;
+        }
+        return decoded;
     }
 
     private void checkCandidateFlowProfile(JsonObject cfg, byte[] raw) {
@@ -606,22 +615,13 @@ public class CreateEeCandidateV5 extends GhidraScript {
                 req(actual.isJump()&&!actual.isConditional()&&!actual.isComputed()&&targets.length==1,"Ghidra does not classify raw direct jump consistently at "+hex(pc)+" flow="+actual+" targets="+Arrays.toString(targets)+" insn="+ins);
                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra direct-jump target differs from raw-word target at "+hex(pc));
             } else if(kind.equals("call")) {
-                req(actual.isCall()&&targets.length==1,"Ghidra does not classify raw direct call consistently at "+hex(pc));
+                req(actual.isCall()&&!actual.isComputed()&&!actual.isConditional()&&targets.length==1,"Ghidra does not classify raw direct call consistently at "+hex(pc));
                 req(targets[0].getOffset()==Long.parseUnsignedLong(edge.get("target").getAsString(),16),"Ghidra direct-call target differs from raw-word target at "+hex(pc));
                 if(!actual.isTerminal()) {
                     req(ins.getFallThrough()!=null&&ins.getFallThrough().getOffset()==Long.parseUnsignedLong(edge.get("fallthrough").getAsString(),16),"Ghidra direct-call fallthrough/delay-slot address differs at "+hex(pc)+" fall="+ins.getFallThrough()+" expected="+edge.get("fallthrough").getAsString()+" insn="+ins);
                 } else {
-                    // Noreturn relaxation: for a callee whose analyzed body contains no
-                    // terminal RETURN flow, Ghidra models the call as CALL_TERMINATOR with a
-                    // null fallthrough (measured on FUN_00105888, the variadic report call).
-                    // The raw CFG still pins the site, the target and the UNCONDITIONAL_CALL
-                    // reference; only the fallthrough expectation is evidence-bounded here.
-                    req(ins.getFallThrough()==null,"Ghidra terminal call unexpectedly retains a fallthrough at "+hex(pc));
-                    Function callee=currentProgram.getFunctionManager().getFunctionAt(at(Long.parseUnsignedLong(edge.get("target").getAsString(),16)));
-                    req(callee!=null,"terminal call target is not a saved function at "+hex(pc));
-                    int returns=0;InstructionIterator it=currentProgram.getListing().getInstructions(callee.getBody(),true);
-                    while(it.hasNext()){if(it.next().getFlowType().isTerminal())returns++;}
-                    req(returns==0,"terminal call relaxation requires a callee body without any RETURN flow: "+callee.getName()+" at "+hex(pc)+" has "+returns);
+                    req(pinnedNoreturnCall(pc, edge.get("target").getAsString()),
+                        "terminal call relaxation requires exact CALL_TERMINATOR, null fallthrough and a decoded callee body without terminal flows at " + hex(pc));
                 }
             } else if(kind.equals("computed_call")) {
                 req(actual.isCall()&&actual.isComputed()&&targets.length==0,"Ghidra does not classify raw computed call consistently at "+hex(pc));
