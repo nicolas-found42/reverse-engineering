@@ -145,6 +145,8 @@ def ledger(results: dict[str, list[dict]]) -> dict:
                 matched += row["bytes"]
     return {"game_owned_bytes": owned, "matched_bytes": matched,
             "substitute_region_bytes": substitute,
+            "substitute_disposition": ("substitute, not matched" if substitute
+                                       else "no ranges attributed as substitute"),
             "mixed_bytes": mixed, "mixed_bytes_identical": mixed_passed,
             "matched_fraction": (matched / owned) if owned else 0.0}
 

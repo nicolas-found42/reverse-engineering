@@ -103,6 +103,19 @@ class LedgerTest(unittest.TestCase):
                                    "bytes": len(RODATA)}], "failed": [], "incomplete": []})
         self.assertEqual(rows["matched_bytes"], 0)
         self.assertEqual(rows["substitute_region_bytes"], len(RODATA))
+        self.assertEqual(rows["matched_fraction"], 0.0)
+        self.assertEqual(rows["substitute_disposition"], "substitute, not matched")
+
+    def test_a_failed_substitute_stays_out_of_the_matched_denominator(self):
+        rows = ledger({"passed": [], "failed": [{"section": ".rodata",
+                                                  "scope": Scope.SUBSTITUTE_REGION,
+                                                  "bytes": len(RODATA)}],
+                       "incomplete": []})
+        self.assertEqual(rows["substitute_region_bytes"], len(RODATA))
+        self.assertEqual(rows["game_owned_bytes"], 0)
+        self.assertEqual(rows["matched_bytes"], 0)
+        self.assertEqual(rows["matched_fraction"], 0.0)
+        self.assertEqual(rows["substitute_disposition"], "substitute, not matched")
 
     def test_a_section_outside_the_scope_is_not_counted_at_all(self):
         rows = ledger({"passed": [{"section": ".shstrtab", "scope": Scope.EXCLUDED, "bytes": 8}],
