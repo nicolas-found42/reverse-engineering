@@ -8,7 +8,7 @@ from unittest.mock import patch
 import completion
 
 from completion import aggregate_ledger, reconstruction_status
-from evidence_common import Invalid
+from evidence_common import Incomplete, Invalid
 
 TOOLS = Path(__file__).resolve().parent
 
