@@ -15,10 +15,7 @@ from ps2_executables import parse_elf
 TARGETS = (0x1d17a8, 0x1d17c8, 0x1d1800, 0x1d1840, 0x1d1844, 0x1d1880, 0x1d18c0)
 
 
-def reconcile(data: bytes, before: dict, after: dict, boundary: dict) -> dict:
-    if sha256(data) != EE_CORPUS_SHA256:
-        raise Invalid('lifecycle observation requires the unchanged recorded executable')
-    old_observation, new_observation = observe(data, before), observe(data, after)
+def validate_boundary(boundary: dict) -> None:
     expected = {'status': 'pass', 'executable_sha256': EE_CORPUS_SHA256,
                 'original_entry': '001d1844', 'original_bytes': 60,
                 'raw_load_previously_owned': False, 'reconciled_entry': '001d1840',
@@ -26,6 +23,13 @@ def reconcile(data: bytes, before: dict, after: dict, boundary: dict) -> dict:
                 'reconciled_instruction_count': 16}
     if any(boundary.get(key) != value for key, value in expected.items()):
         raise Invalid('isolated boundary receipt contradicts the recorded reconciliation')
+
+
+def reconcile(data: bytes, before: dict, after: dict, boundary: dict) -> dict:
+    if sha256(data) != EE_CORPUS_SHA256:
+        raise Invalid('lifecycle observation requires the unchanged recorded executable')
+    validate_boundary(boundary)
+    old_observation, new_observation = observe(data, before), observe(data, after)
     originals = {f['entry']: f for f in before['functions']}
     corrected = {f['entry']: f for f in after['functions']}
     if '001d1844' not in originals or '001d1840' not in corrected:
@@ -116,21 +120,52 @@ def main():
     args = parser.parse_args()
 
     def action():
-        corpus_identity(args.game)
-        result = reconcile((args.game / 'extracted/SLES_517.05').read_bytes(),
-                           json.loads(args.original_inventory.read_text()),
-                           json.loads(args.reconciled_inventory.read_text()),
-                           json.loads(args.boundary.read_text()))
+        missing, observations, inventories = [], {}, {}
+        try:
+            corpus_identity(args.game)
+        except Incomplete as exc:
+            missing.append(str(exc))
+        ee_path = args.game / 'extracted/SLES_517.05'
+        data = None
+        if ee_path.is_file():
+            data = ee_path.read_bytes()
+            if sha256(data) != EE_CORPUS_SHA256:
+                raise Invalid('lifecycle observation requires the unchanged recorded executable')
+        else:
+            missing.append('required EE executable is absent: ' + str(ee_path))
+        boundary = {}
+        if args.boundary.is_file():
+            boundary = json.loads(args.boundary.read_text())
+            validate_boundary(boundary)
+        else:
+            missing.append('required isolated boundary receipt is absent: ' + str(args.boundary))
+        for name, path in [('original_inventory', args.original_inventory),
+                           ('reconciled_inventory', args.reconciled_inventory)]:
+            if not path.is_file():
+                missing.append('required ' + name + ' is absent: ' + str(path))
+                continue
+            inventories[name] = json.loads(path.read_text())
+            if data is not None:
+                try:
+                    observations[name] = observe(data, inventories[name])
+                except Incomplete as exc:
+                    missing.append(name + ': ' + str(exc))
+                    observations[name] = exc.details
+        if data is None or missing:
+            raise Incomplete('; '.join(missing), {'observations': observations, 'boundary': boundary})
+        result = reconcile(data, inventories['original_inventory'],
+                           inventories['reconciled_inventory'], boundary)
         result['private_inputs'] = {name: identity(path) for name, path in (
             ('original_inventory', args.original_inventory),
             ('reconciled_inventory', args.reconciled_inventory), ('boundary', args.boundary))}
         return result
 
-    return write_result(args.output, 'misc3d-lifecycle-observation', action,
-                        [Path(__file__), args.original_inventory, args.reconciled_inventory, args.boundary,
+    inputs = [Path(__file__), args.game / 'extracted/SLES_517.05', args.original_inventory, args.reconciled_inventory, args.boundary,
                          *(Path(__file__).resolve().parent / name for name in (
                              'corpus_contract.py', 'evidence_common.py', 'matching_ranges.py',
-                             'misc3d_observation.py', 'misc3d_lifecycle.py', 'ps2_executables.py'))])
+                             'misc3d_observation.py', 'misc3d_lifecycle.py', 'ps2_executables.py'))]
+    return write_result(args.output, 'misc3d-lifecycle-observation', action,
+                        [path for path in inputs if path.is_file()])
 
 
 if __name__ == '__main__':

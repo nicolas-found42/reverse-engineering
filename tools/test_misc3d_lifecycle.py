@@ -83,6 +83,81 @@ class LifecycleProvenanceTests(unittest.TestCase):
             with self.assertRaisesRegex(Incomplete, 'provenance missing'):
                 contract.check(Path('/missing/game'), Path('/missing/tool-root'))
 
+    def test_changed_source_outranks_missing_observation(self):
+        from pathlib import Path
+        import tempfile
+        from unittest.mock import patch
+        import misc3d_lifecycle as contract
+        with tempfile.TemporaryDirectory() as tmp:
+            changed = Path(tmp) / 'changed.c'
+            changed.write_text('void fr2_misc3d_reset(void) {}')
+            with patch.object(contract, 'OBSERVATION', Path(tmp) / 'missing.json'), \
+                 patch.dict(contract.SOURCES, {'lifecycle': changed}):
+                with self.assertRaisesRegex(Invalid, 'lifecycle identity differs'):
+                    contract.check(Path('/missing/game'), Path('/missing/tool-root'))
+
+    def test_changed_source_outranks_missing_previous_provenance(self):
+        from pathlib import Path
+        import tempfile
+        from unittest.mock import patch
+        import misc3d_contract as previous
+        import misc3d_lifecycle as contract
+        with tempfile.TemporaryDirectory() as tmp:
+            changed = Path(tmp) / 'changed.c'
+            changed.write_text('void fr2_misc3d_reset(void) {}')
+            with patch.object(previous, 'OBSERVATION', Path(tmp) / 'missing-previous.json'), \
+                 patch.dict(contract.SOURCES, {'lifecycle': changed}):
+                with self.assertRaisesRegex(Invalid, 'lifecycle identity differs'):
+                    contract.check(Path('/missing/game'), Path('/missing/tool-root'))
+
+    def test_cli_changed_source_outranks_missing_source_and_retains_identities(self):
+        from pathlib import Path
+        import json
+        import platform
+        import subprocess
+        import sys
+        import tempfile
+        from unittest.mock import patch
+        import misc3d_lifecycle as contract
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            changed = root / 'changed-sibling.c'
+            changed.write_text('int changed_sibling(void) { return 0; }\n')
+            platform.platform()
+            with patch.dict(contract.SOURCES, {'lifecycle': root / 'missing.c', 'siblings': changed}), \
+                 patch.object(sys, 'argv', ['misc3d_lifecycle.py', '/missing/game', '/missing/tools',
+                                          '--output', str(root / 'receipts')]), \
+                 patch.object(subprocess, 'Popen', side_effect=AssertionError('tool launch attempted')):
+                code = contract.main()
+            receipt = json.loads(next((root / 'receipts').glob('*/result.json')).read_text())
+            self.assertEqual(code, 1)
+            self.assertEqual(receipt['status'], 'fail')
+            self.assertIn('siblings identity differs', ' '.join(receipt['diagnostics']))
+            for path in (changed, contract.DECISION, contract.OBSERVATION):
+                self.assertIn(str(path), receipt['inputs'])
+
+    def test_cli_missing_source_without_contradiction_remains_incomplete(self):
+        from pathlib import Path
+        import json
+        import platform
+        import subprocess
+        import sys
+        import tempfile
+        from unittest.mock import patch
+        import misc3d_lifecycle as contract
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            platform.platform()
+            with patch.dict(contract.SOURCES, {'lifecycle': root / 'missing.c'}), \
+                 patch.object(sys, 'argv', ['misc3d_lifecycle.py', '/missing/game', '/missing/tools',
+                                          '--output', str(root / 'receipts')]), \
+                 patch.object(subprocess, 'Popen', side_effect=AssertionError('tool launch attempted')):
+                code = contract.main()
+            receipt = json.loads(next((root / 'receipts').glob('*/result.json')).read_text())
+            self.assertEqual(code, 2)
+            self.assertEqual(receipt['status'], 'incomplete')
+            self.assertIn('lifecycle provenance missing', ' '.join(receipt['diagnostics']))
+
     def test_changed_source_identity_fails_before_tool_execution(self):
         from pathlib import Path
         import tempfile
