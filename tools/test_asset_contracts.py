@@ -14,6 +14,9 @@ CLI = TOOLS / "verify_asset_contracts.py"
 TERMS = {"consumer": "unresolved", "bounds": "unresolved", "field_effects": "unresolved",
          "transformations": "unresolved", "allocation_lifetime": "unresolved",
          "handoffs": "unresolved", "unknowns": ["consumer evidence not found"]}
+COMPLETE_TERMS = {"consumer": "FUN_00123908 model loader", "bounds": "bounded fixture bytes",
+                  "field_effects": "all fixture fields covered", "transformations": "none",
+                  "allocation_lifetime": "bounded fixture lifetime", "handoffs": "none", "unknowns": []}
 
 
 def archive(files):
@@ -54,8 +57,8 @@ class AssetContractCli(unittest.TestCase):
         code, result = self.run_cli({
             "schema_version": 1,
             "contracts": [
-                {"id": "ptg", "extensions": [".ptg"], "status": "unresolved", "variant_dispositions": {"raw": "unresolved"}, "loader_evidence": [], "consumer_contract": TERMS, "limits": ["consumer not identified"]},
-                {"id": "model", "extensions": [".ps2"], "status": "partial", "variant_dispositions": {"zlib": "covered"}, "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}], "consumer_contract": {**TERMS, "consumer": "FUN_00123908 model loader"}, "limits": ["geometry and texture levels unresolved"]},
+                {"id": "ptg", "asset_types": ["PTG sprite"], "extensions": [".ptg"], "status": "unresolved", "variant_dispositions": {"raw": "unresolved"}, "loader_evidence": [], "consumer_contract": TERMS, "limits": ["consumer not identified"]},
+                {"id": "model", "asset_types": ["model"], "extensions": [".ps2"], "status": "partial", "variant_dispositions": {"zlib": "covered"}, "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}], "consumer_contract": {**TERMS, "consumer": "FUN_00123908 model loader"}, "limits": ["geometry and texture levels unresolved"]},
             ],
         })
         self.assertEqual((code, result["status"]), (2, "incomplete"), result["diagnostics"])
@@ -67,7 +70,7 @@ class AssetContractCli(unittest.TestCase):
     def test_supported_claim_without_a_real_loader_reference_fails(self):
         code, result = self.run_cli({
             "schema_version": 1,
-            "contracts": [{"id": "ptg", "extensions": [".ptg"], "status": "complete", "variant_dispositions": {"raw": "covered"}, "loader_evidence": [], "consumer_contract": TERMS, "limits": []}],
+            "contracts": [{"id": "ptg", "asset_types": ["PTG sprite"], "extensions": [".ptg"], "status": "complete", "variant_dispositions": {"raw": "covered"}, "loader_evidence": [], "consumer_contract": TERMS, "limits": []}],
         })
         self.assertEqual((code, result["status"]), (1, "fail"))
         self.assertTrue(any("loader evidence" in item.lower() for item in result["diagnostics"]))
@@ -76,10 +79,10 @@ class AssetContractCli(unittest.TestCase):
         code, result = self.run_cli({
             "schema_version": 1,
             "contracts": [{
-                "id": "model", "extensions": [".ps2"], "status": "complete",
+                "id": "model", "asset_types": ["model"], "extensions": [".ps2"], "status": "complete",
                 "variant_dispositions": {"zlib": "covered"},
                 "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}],
-                "consumer_contract": {**TERMS, "consumer": "FUN_00123908 model loader fixture"},
+                "consumer_contract": COMPLETE_TERMS,
                 "limits": ["Fixture only"],
             }],
         }, [("MODEL.PS2;1", b"model", True)])
@@ -89,7 +92,7 @@ class AssetContractCli(unittest.TestCase):
         code, result = self.run_cli({
             "schema_version": 1,
             "contracts": [{
-                "id": "ptg", "extensions": [".ptg"], "status": "complete",
+                "id": "ptg", "asset_types": ["PTG sprite"], "extensions": [".ptg"], "status": "complete",
                 "variant_dispositions": {"raw": "covered", "made_up": "covered"},
                 "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}],
                 "consumer_contract": {**TERMS, "consumer": "FUN_00123908 synthetic contract fixture"},
@@ -98,6 +101,20 @@ class AssetContractCli(unittest.TestCase):
         })
         self.assertEqual((code, result["status"]), (1, "fail"))
         self.assertTrue(any("absent from the archive" in item for item in result["diagnostics"]))
+
+    def test_known_loader_and_covered_header_do_not_hide_consumer_unknowns(self):
+        code, result = self.run_cli({
+            "schema_version": 1,
+            "contracts": [{
+                "id": "model", "asset_types": ["model"], "extensions": [".ps2"], "status": "complete",
+                "variant_dispositions": {"zlib": "covered"},
+                "loader_evidence": [{"function": "FUN_00123908", "source": "notes/evidence/fr2-continuation/next-phase.md"}],
+                "consumer_contract": {**COMPLETE_TERMS, "unknowns": ["geometry body meaning remains unresolved"]},
+                "limits": ["Fixture only"],
+            }],
+        }, [("MODEL.PS2;1", b"model", True)])
+        self.assertEqual((code, result["status"]), (1, "fail"))
+        self.assertTrue(any("retains unknowns" in item for item in result["diagnostics"]))
 
     def test_missing_extension_contract_fails_instead_of_disappearing(self):
         code, result = self.run_cli({"schema_version": 1, "contracts": []})

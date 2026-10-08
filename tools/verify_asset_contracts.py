@@ -54,13 +54,25 @@ def check_contracts(parsed: dict, declarations: dict) -> dict:
         if not isinstance(ident, str) or not ident:
             errors.append("contract is missing an id")
             continue
+        asset_types = contract.get("asset_types")
+        if not isinstance(asset_types, list) or not asset_types or any(not isinstance(value, str) or not value for value in asset_types):
+            errors.append(f"{ident}: asset_types must list the represented asset grammars")
         if status not in {"complete", "partial", "unresolved"}:
             errors.append(f"{ident}: status must be complete, partial, or unresolved")
         terms = contract.get("consumer_contract")
         required_terms = ("consumer", "bounds", "field_effects", "transformations",
                           "allocation_lifetime", "handoffs", "unknowns")
-        if not isinstance(terms, dict) or any(not terms.get(key) for key in required_terms):
+        if not isinstance(terms, dict) or any(key not in terms or (key != "unknowns" and not terms.get(key)) for key in required_terms):
             errors.append(f"{ident}: consumer_contract must document {', '.join(required_terms)}")
+        if isinstance(terms, dict):
+            unknowns = terms.get("unknowns")
+            if not isinstance(unknowns, list):
+                errors.append(f"{ident}: consumer_contract unknowns must be a list")
+            elif status == "complete":
+                unresolved_terms = [key for key in required_terms if key != "unknowns" and isinstance(terms.get(key), str)
+                                    and re.search(r"\bunresolved\b", terms[key], re.IGNORECASE)]
+                if unknowns or unresolved_terms:
+                    errors.append(f"{ident}: complete consumer contract retains unknowns or unresolved fields")
         if not isinstance(extensions, list) or not extensions:
             errors.append(f"{ident}: extensions must be a nonempty list")
             continue
@@ -117,7 +129,7 @@ def check_contracts(parsed: dict, declarations: dict) -> dict:
                 errors.append(f"extension {key} is assigned to more than one contract")
             else:
                 by_extension[key] = contract
-        checked.append({"id": ident, "status": status, "extensions": extensions,
+        checked.append({"id": ident, "asset_types": asset_types, "status": status, "extensions": extensions,
                         "loader_evidence": bound, "variant_dispositions": contract.get("variant_dispositions", {}),
                         "structure_evidence": structures})
         if status != "complete":

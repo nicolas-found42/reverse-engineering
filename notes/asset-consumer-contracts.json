@@ -4,6 +4,7 @@
   "contracts": [
     {
       "id": "configuration-cfg",
+      "asset_types": ["configuration"],
       "extensions": [".cfg"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -14,6 +15,7 @@
     },
     {
       "id": "text-and-data-dat-unclassified",
+      "asset_types": ["text/data (unclassified)"],
       "extensions": [".dat"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -24,6 +26,7 @@
     },
     {
       "id": "database-db-unclassified",
+      "asset_types": ["database (unclassified)"],
       "extensions": [".db"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -34,6 +37,7 @@
     },
     {
       "id": "icon-ico",
+      "asset_types": ["icon image"],
       "extensions": [".ico"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -44,6 +48,7 @@
     },
     {
       "id": "frontend-mbf",
+      "asset_types": ["front-end data (unclassified)"],
       "extensions": [".mbf"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -54,6 +59,7 @@
     },
     {
       "id": "music-mib",
+      "asset_types": ["music stream payload"],
       "extensions": [".mib"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -64,6 +70,7 @@
     },
     {
       "id": "music-mih",
+      "asset_types": ["music stream header"],
       "extensions": [".mih"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -74,6 +81,7 @@
     },
     {
       "id": "sound-bank-msh",
+      "asset_types": ["sound bank header"],
       "extensions": [".msh"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -84,6 +92,7 @@
     },
     {
       "id": "sound-bank-msb",
+      "asset_types": ["sound bank sample payload"],
       "extensions": [".msb"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -94,6 +103,7 @@
     },
     {
       "id": "legacy-old",
+      "asset_types": ["unclassified legacy-named data"],
       "extensions": [".old"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -104,6 +114,7 @@
     },
     {
       "id": "model-ps2",
+      "asset_types": ["model name tree", "model geometry", "texture library"],
       "extensions": [".ps2"],
       "status": "partial",
       "variant_dispositions": {"zlib": "covered"},
@@ -126,6 +137,7 @@
     },
     {
       "id": "video-pss",
+      "asset_types": ["video/container"],
       "extensions": [".pss"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -136,6 +148,7 @@
     },
     {
       "id": "sprite-ptg",
+      "asset_types": ["PTG sprite"],
       "extensions": [".ptg"],
       "status": "unresolved",
       "variant_dispositions": {"zlib": "unresolved"},
@@ -146,6 +159,7 @@
     },
     {
       "id": "sound-bank-sbf",
+      "asset_types": ["sound bank (unclassified)"],
       "extensions": [".sbf"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
@@ -156,6 +170,7 @@
     },
     {
       "id": "interface-ui",
+      "asset_types": ["UI/interface data"],
       "extensions": [".ui"],
       "status": "unresolved",
       "variant_dispositions": {"raw": "unresolved"},
