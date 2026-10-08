@@ -17,7 +17,8 @@ import uuid
 
 from evidence_common import Incomplete, Invalid, identity, sha256, write_result
 from matching_ranges import (ADR0005, BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY,
-                             SOURCE_MAP, UNIT_SOURCE, boundary_provenance)
+                             SOURCE_MAP, UNIT_SOURCE, UNIT_SOURCE_SHA256,
+                             boundary_provenance)
 
 TOOLS = Path(__file__).resolve().parent
 CRITERIA = (
@@ -146,10 +147,12 @@ def source_unit_credit(game: Path, range_child: dict, range_result: dict,
             return 0
         row_identity = (row.get('section'), f"{row['address']:08x}", row['file_offset'],
                         row['length'], row.get('sha256'), row.get('classification'),
-                        row.get('source_sha256'), row.get('decision_sha256'),
+                        row.get('reconstruction_source_sha256'),
+                        row.get('candidate_source_sha256'), row.get('decision_sha256'),
                         row.get('evidence_inputs'))
         expected_identity = (expected['section'], expected['vaddr'], int(expected['file_offset'], 16),
-                             expected['bytes'], expected['sha256'], 'game_owned', source_hash,
+                             expected['bytes'], expected['sha256'], 'game_owned', UNIT_SOURCE_SHA256,
+                             source_hash,
                              adr_hash, evidence)
         if row_identity != expected_identity:
             return 0
@@ -251,7 +254,9 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
            'Exploratory candidate comparison retained; independent ownership and additional '
            'EE/IOP distinguishing probes are still required.', [4])
     credited = source_unit_credit(game, children[0], ranges, children[4], compiler)
-    record(7, 'pass' if credited == 60 else 'fail' if compiler['status'] == 'fail' else 'incomplete',
+    source_identity_valid = sha256(UNIT_SOURCE.read_bytes()) == UNIT_SOURCE_SHA256
+    record(7, 'pass' if credited == 60 else 'fail'
+           if compiler['status'] == 'fail' or not source_identity_valid else 'incomplete',
            'One hand-written EE source unit has a fresh, source/decision-bound exact byte build.',
            [0, 4])
     record(18, archive['status'], 'Independent archive/extracted comparison; format support is separate.', [1])
@@ -268,8 +273,23 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
         record(index, 'fail' if assets['status'] == 'fail' else 'incomplete',
                'Archive-derived contract catalog retained; required body/consumer/state semantics '
                'have not been proven by documentation coverage.', [1, 3])
+    record(27, 'incomplete',
+           'The current positive, mutation and placement controls cover one source unit only; '
+           'controls for remaining acceptance gates are not complete.', [0, 4])
     range_details = ranges['details']
     ledger = aggregate_ledger(range_details, credited)
+    record(29, 'incomplete',
+           'The current partition conserves all load-image bytes, but only one 60-byte owned '
+           'range is attributed and matched.', [0, 4])
+    record(30, 'incomplete',
+           'These current child receipts support the bounded results above; required evidence '
+           'and falsifiers for the remaining criteria are still incomplete.', [0, 1, 2, 3, 4])
+    record(31, 'incomplete',
+           'The exploratory compiler receipt records package provenance; redistribution terms '
+           'remain unresolved and no compiler binaries are redistributed.', [4])
+    record(32, 'incomplete',
+           'Current child receipts and the aggregate are retained, but required final acceptance '
+           'and handoff evidence remains incomplete.', [0, 1, 2, 3, 4])
     status = reconstruction_status(criteria, ledger, authority='real_corpus')
     details = {
         'spec': 'https://github.com/nicolas-found42/reverse-engineering/issues/5',
