@@ -18,13 +18,15 @@ program identities are also retained; their encoding and interfaces have their
 own verifier.
 
 The corpus inventory applies exactly one measured ADR-0005 range split:
-`.text[0x001d1800, 0x001d183c)` is recorded as game-owned only when the retail
-EE executable and hand-written reconstruction source match their pinned
-identities. Every other initialized and zero-fill range remains unresolved.
-The structural child keeps `matched_bytes` at zero; only the aggregate can
-credit the 60-byte span after checking its fresh compiler child receipt against
-the source, output bytes, and ADR decision identity. No other game behavior is
-implied. IOP addresses remain relative to the link image.
+`.text[0x001d1800, 0x001d183c)` is recorded as game-owned when the retail EE
+bytes and the ADR-0005/source-map/saved-function evidence match their pinned
+identities. The current reconstruction source identity is recorded separately;
+changing candidate source does not erase corpus ownership. Every other
+initialized and zero-fill range remains unresolved. The structural child
+keeps `matched_bytes` at zero; only the aggregate can credit the 60-byte span
+after checking its fresh compiler child receipt against the expected source,
+output bytes, and ownership evidence. No other game behavior is implied. IOP
+addresses remain relative to the link image.
 
 `file` accepts synthetic fixtures at the same inventory boundary, marks their
 authority as `structural_file_inventory`, and cannot confer corpus ownership
