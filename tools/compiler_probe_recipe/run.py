@@ -13,10 +13,48 @@ TOOLS = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(TOOLS))
 from compiler_probe import run_probe  # noqa: E402
 from evidence_common import Incomplete, Invalid, write_result  # noqa: E402
+from matching_diff import scope_of_range  # noqa: E402
+from compiler_probe_recipe import build  # noqa: E402
 from compiler_probe_recipe.build import prepare  # noqa: E402
 
 LINUX_IMAGE_ID = "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca"
 WINE_IMAGE_ID = "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba"
+
+
+def apply_recorded_range(result: dict, reference_range: dict) -> None:
+    """Apply repository-owned attribution to the pinned recipe's byte verdicts."""
+    section = reference_range["section"]
+    address = int(reference_range["vaddr"], 16)
+    file_offset = int(reference_range["file_offset"], 16)
+    size = int(reference_range["bytes"])
+    scope = scope_of_range(section, address, size)
+    if reference_range.get("scope") != scope.value:
+        raise Incomplete("compiler recipe scope differs from the recorded range map", {
+            "declared_scope": reference_range.get("scope"), "recorded_scope": scope.value})
+    for candidate in result.get("candidates", []):
+        gate = candidate.get("gate")
+        if gate is None:
+            continue
+        gate.update(section=section, scope=scope.value, section_bytes=size)
+        difference = gate.get("first_difference")
+        if difference is not None:
+            difference["address"] = f"{address + difference['offset']:08x}"
+            difference["file_offset"] = f"{file_offset + difference['offset']:08x}"
+    passed = (result.get("status") == "pass" and scope.value == "game_owned"
+              and len(result.get("matches", [])) == 1
+              and any(candidate.get("status") == "pass"
+                      and candidate.get("gate", {}).get("scope") == "game_owned"
+                      for candidate in result.get("candidates", [])))
+    result["ac07_status"] = "pass" if passed else (
+        "fail" if result.get("status") == "fail" and scope.value == "game_owned" else "incomplete")
+    result["ac07_evidence"] = {
+        "range": {"section": section, "vaddr": f"{address:08x}",
+                  "file_offset": f"{file_offset:08x}", "bytes": size,
+                  "sha256": reference_range["sha256"], "scope": scope.value},
+        "byte_match": "pass" if passed else result.get("status", "incomplete"),
+        "source_built": True,
+        "compiler_identification": "separate; see ac05_status",
+    }
 
 
 def validate_runtime_images() -> dict[str, dict[str, str]]:
@@ -85,8 +123,10 @@ def main(argv: list[str] | None = None) -> int:
             staging = Path(temp).resolve()
             manifest, _ = prepare(args.game, tool_root, staging)
             validate_manifest_runtimes(manifest, tool_root)
+            reference_range = json.loads(manifest.read_text())["evidence"]["reference_range"]
             runtime_identity = validate_runtime_images()
             result = run_probe(manifest, (staging / "candidate-work").resolve())
+        apply_recorded_range(result, reference_range)
         result["runtime_identity"] = runtime_identity
         result["runtime_phases"] = {
             "native_compiler_candidates": "linux-tools",
@@ -116,7 +156,7 @@ def main(argv: list[str] | None = None) -> int:
                          TOOLS / "compiler_probe.py", TOOLS / "matching_diff.py",
                          TOOLS / "matching_sections.py", TOOLS / "corpus_contract.py",
                          TOOLS / "ps2_executables.py", TOOLS / "evidence_common.py",
-                         recipe / "candidate.c",
+                         build.RECONSTRUCTION_SOURCE,
                          recipe / "candidate.ld", recipe / "manifest.template.json",
                          recipe / "docker-linux-exec.sh", recipe / "docker-wine-exec.sh"])
 

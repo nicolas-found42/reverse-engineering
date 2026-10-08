@@ -15,6 +15,7 @@ import shutil
 import sys
 
 TOOLS = Path(__file__).resolve().parents[1]
+RECONSTRUCTION_SOURCE = TOOLS.parent / "reconstruction/ee/app3d/misc3d_db_id.c"
 sys.path.insert(0, str(TOOLS))
 from corpus_contract import corpus_identity  # noqa: E402
 from matching_sections import sections  # noqa: E402
@@ -49,7 +50,8 @@ def prepare(game: Path, tool_root: Path, output: Path) -> tuple[Path, Path]:
     reference_path = output / "reference.bin"
     reference_path.write_bytes(reference)
     recipe_root = Path(__file__).parent.resolve()
-    for name in ("candidate.c", "candidate.ld", "docker-linux-exec.sh", "docker-wine-exec.sh"):
+    shutil.copyfile(RECONSTRUCTION_SOURCE, output / "candidate.c")
+    for name in ("candidate.ld", "docker-linux-exec.sh", "docker-wine-exec.sh"):
         shutil.copyfile(recipe_root / name, output / name)
     template_path = Path(__file__).with_name("manifest.template.json")
     manifest = json.loads(template_path.read_text())
@@ -84,8 +86,10 @@ def prepare(game: Path, tool_root: Path, output: Path) -> tuple[Path, Path]:
     manifest["evidence"] = {
         "corpus": identity,
         "reference_range": {"section": ".text", "vaddr": f"{FUNCTION_VADDR:08x}",
+                            "file_offset": f"{text.offset + offset:08x}",
                             "bytes": FUNCTION_SIZE, "sha256": FUNCTION_SHA256,
-                            "interpretation": "source-map attribution only; not proof of authorship or ownership"},
+                            "scope": "game_owned",
+                            "decision": "ADR-0005 local split, cross-checked against source map, callers, and helper provenance"},
         "candidate_source": "Hand-written exploratory reconstruction; inferred names, ABI and ownership; not original source.",
         "tool_source": "decompme/compilers release tag compilers; per-candidate archive URLs and SHA-256 values follow.",
         "tool_distributions": distributions,
