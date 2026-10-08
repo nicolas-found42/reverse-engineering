@@ -1,0 +1,604 @@
+{
+  "schema_version": 1,
+  "scope": "Static dependency metadata of the pinned installed strict oracle, no target execution.",
+  "status": "incomplete",
+  "observations": [
+    {
+      "name": "PCSX2",
+      "evidence_id": "ev_7af24916f45f85a3befc9bc987d3b1b64c4ffa9a51847698ab6fd7646c9511a5",
+      "subject": {
+        "sha256": "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d",
+        "architecture": "x86_64",
+        "format": "mach-o"
+      },
+      "provider": {
+        "id": "native-macos",
+        "name": "macOS native inspection utilities",
+        "version": null
+      },
+      "dependencies": {
+        "items": [
+          {
+            "path": "/usr/lib/dyld",
+            "kind": "LC_LOAD_DYLINKER",
+            "current_version": null,
+            "compatibility_version": null
+          },
+          {
+            "path": "@executable_path/../Frameworks/libkddockwidgets-qt6.3.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "2.4.0",
+            "compatibility_version": "3.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libavformat.62.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "62.3.100",
+            "compatibility_version": "62.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libavcodec.62.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "62.11.100",
+            "compatibility_version": "62.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libswscale.9.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "9.1.100",
+            "compatibility_version": "9.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libswresample.6.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "6.1.100",
+            "compatibility_version": "6.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libavutil.60.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "60.8.100",
+            "compatibility_version": "60.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/Foundation.framework/Versions/C/Foundation",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "4201.0.0",
+            "compatibility_version": "300.0.0"
+          },
+          {
+            "path": "/usr/lib/libcurl.4.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "9.0.0",
+            "compatibility_version": "7.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libjpeg.62.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "62.4.0",
+            "compatibility_version": "62.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libwebp.7.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "10.0.0",
+            "compatibility_version": "10.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/CoreServices.framework/Versions/A/CoreServices",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1226.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libSDL3.0.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "201.26.0",
+            "compatibility_version": "201.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/liblz4.1.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1.10.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libpng16.16.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "16.53.0",
+            "compatibility_version": "16.0.0"
+          },
+          {
+            "path": "/usr/lib/libz.1.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1.2.12",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libzstd.1.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1.5.7",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libplutosvg.0.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "0.0.0",
+            "compatibility_version": "0.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libplutovg.1.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "0.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libfreetype.6.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "6.20.4",
+            "compatibility_version": "6.0.0"
+          },
+          {
+            "path": "/usr/lib/libpcap.A.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "2685.30.107",
+            "compatibility_version": "45.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/IOKit.framework/Versions/A/IOKit",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "275.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/Metal.framework/Versions/A/Metal",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "370.64.2",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1193.49.3",
+            "compatibility_version": "1.2.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libQt6Widgets.6.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "6.10.1",
+            "compatibility_version": "6.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libQt6Gui.6.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "6.10.1",
+            "compatibility_version": "6.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libQt6Core.6.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "6.10.1",
+            "compatibility_version": "6.0.0"
+          },
+          {
+            "path": "/usr/lib/libc++.1.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "2000.67.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/usr/lib/libSystem.B.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1356.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/ApplicationServices.framework/Versions/A/ApplicationServices",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "66.0.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "4201.0.0",
+            "compatibility_version": "150.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1965.2.3",
+            "compatibility_version": "64.0.0"
+          },
+          {
+            "path": "/usr/lib/libobjc.A.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "228.0.0",
+            "compatibility_version": "1.0.0"
+          }
+        ],
+        "total": 36,
+        "exhaustive": true,
+        "limitations": []
+      },
+      "provenance": [
+        {
+          "tool": "file",
+          "command": [
+            "/usr/bin/file",
+            "-b",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "d1fee5edf3c39243cca0c4a0afc94816c55feb032ad5eaeb6d8170d8c7aa64ce",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 32,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "lipo",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/lipo",
+            "-detailed_info",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "d303f84429d444f62c78da42c10b9fa66575800a62c4acf5e6f3b6888a1b9074",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 157,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "otool",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/llvm-otool",
+            "-h",
+            "-l",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "61ff2c63cf68eeeadf9c4700dadb8271740ff4960f98500f30db82b31521c0de",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 17682,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "nm",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/llvm-nm",
+            "-gjU",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "9097f9662024989b801a1448eea2a71a4e916537a595cbaf34d4d051480236f6",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 3762,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "dyld_info",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/dyld_info",
+            "-imports",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "6ac9d5743649b07233bdae5bc7044f07e2d4f8aadf1f00288bc8ff17348bf022",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 180324,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "dyld_info",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/dyld_info",
+            "-exports",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "6ac9d5743649b07233bdae5bc7044f07e2d4f8aadf1f00288bc8ff17348bf022",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 6098,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "dwarfdump",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/llvm-dwarfdump",
+            "--uuid",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "0375bb0b5888367548e4e87536aeed16cf646ba8d5bbab077b9f4c92995eef9d",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 97,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "vtool",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/vtool",
+            "-show-build",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "9daa400d78a1f1c2d58651a9e51eef35d33e3228e1a72b2372286a6e04ee92ac",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 190,
+          "stderr_bytes": 0
+        }
+      ],
+      "limitations": [
+        "Imports and exports combine dyld_info and nm; stripped or toolchain-hidden symbols may be absent.",
+        "vtool output is retained as provenance but only otool build metadata is normalized."
+      ]
+    },
+    {
+      "name": "offscreen-plugin",
+      "evidence_id": "ev_a9253cb54fd9c8921205d5f914309b0beeeca754411b8efb265135407129e466",
+      "subject": {
+        "sha256": "ac97d9562bc77cce9a627e1ac474bd2d16c68af2f674fe65e3bece1cd0210679",
+        "architecture": "x86_64",
+        "format": "mach-o"
+      },
+      "provider": {
+        "id": "native-macos",
+        "name": "macOS native inspection utilities",
+        "version": null
+      },
+      "dependencies": {
+        "items": [
+          {
+            "path": "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qt-platform/plugins/platforms/libqoffscreen.dylib",
+            "kind": "LC_ID_DYLIB",
+            "current_version": "0.0.0",
+            "compatibility_version": "0.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libQt6Gui.6.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "6.10.1",
+            "compatibility_version": "6.0.0"
+          },
+          {
+            "path": "@executable_path/../Frameworks/libQt6Core.6.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "6.10.1",
+            "compatibility_version": "6.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/CoreText.framework/Versions/A/CoreText",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "877.4.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "5026.5.4",
+            "compatibility_version": "150.0.0"
+          },
+          {
+            "path": "/System/Library/Frameworks/AppKit.framework/Versions/C/AppKit",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "2685.60.104",
+            "compatibility_version": "45.0.0"
+          },
+          {
+            "path": "/usr/lib/libc++.1.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "2100.43.0",
+            "compatibility_version": "1.0.0"
+          },
+          {
+            "path": "/usr/lib/libSystem.B.dylib",
+            "kind": "LC_LOAD_DYLIB",
+            "current_version": "1356.0.0",
+            "compatibility_version": "1.0.0"
+          }
+        ],
+        "total": 8,
+        "exhaustive": true,
+        "limitations": []
+      },
+      "provenance": [
+        {
+          "tool": "file",
+          "command": [
+            "/usr/bin/file",
+            "-b",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "d1fee5edf3c39243cca0c4a0afc94816c55feb032ad5eaeb6d8170d8c7aa64ce",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 55,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "lipo",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/lipo",
+            "-detailed_info",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "d303f84429d444f62c78da42c10b9fa66575800a62c4acf5e6f3b6888a1b9074",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 333,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "otool",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/llvm-otool",
+            "-h",
+            "-l",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "61ff2c63cf68eeeadf9c4700dadb8271740ff4960f98500f30db82b31521c0de",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 7826,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "nm",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/llvm-nm",
+            "-gjU",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "9097f9662024989b801a1448eea2a71a4e916537a595cbaf34d4d051480236f6",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 36805,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "dyld_info",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/dyld_info",
+            "-imports",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "6ac9d5743649b07233bdae5bc7044f07e2d4f8aadf1f00288bc8ff17348bf022",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 83921,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "dyld_info",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/dyld_info",
+            "-exports",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "6ac9d5743649b07233bdae5bc7044f07e2d4f8aadf1f00288bc8ff17348bf022",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 57347,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "dwarfdump",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/llvm-dwarfdump",
+            "--uuid",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "0375bb0b5888367548e4e87536aeed16cf646ba8d5bbab077b9f4c92995eef9d",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 185,
+          "stderr_bytes": 0
+        },
+        {
+          "tool": "vtool",
+          "command": [
+            "/Library/Developer/CommandLineTools/usr/bin/vtool",
+            "-show-build",
+            "$ARTIFACT"
+          ],
+          "tool_version": null,
+          "version_reason": "Tool exposes no uniform stable version flag; executable digest identifies it.",
+          "executable_sha256": "9daa400d78a1f1c2d58651a9e51eef35d33e3228e1a72b2372286a6e04ee92ac",
+          "exit": {
+            "code": 0,
+            "signal": null
+          },
+          "stdout_bytes": 278,
+          "stderr_bytes": 0
+        }
+      ],
+      "limitations": [
+        "Imports and exports combine dyld_info and nm; stripped or toolchain-hidden symbols may be absent.",
+        "vtool output is retained as provenance but only otool build metadata is normalized."
+      ]
+    }
+  ],
+  "limits": [
+    "Mach-O load commands identify static dependencies; actual loading, dynamic plugin selection and effective runtime/audio routes were not observed.",
+    "This bounded dependency inventory does not establish complete package source, notices or permission.",
+    "Other bundled/system dependencies and SDK build tools retain their separate provenance obligations."
+  ]
+}
