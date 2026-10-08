@@ -26,5 +26,16 @@
     "exit_code": 0
   },
   "claim_limits": "Tooling validation only; no runtime observations, complete parent inventory, matching bytes or full handoff acceptance.",
-  "repair_controls": "All six CLI controls and packet/source identity traceability assertions passed."
+  "repair_controls": "All six CLI controls and packet/source identity traceability assertions passed.",
+  "post_merge_whole_suite": {
+    "source_revision": "8cd491b64842e3bbd06c75fe0e9ea98ec700bb11",
+    "command": "tools/check.sh",
+    "exit_code": 0,
+    "tests": 675,
+    "unittest_skips": 23,
+    "missing_dependency_exclusions": [
+      "test_research_jev_battery: typesafe_sdk"
+    ],
+    "log": "post-merge-whole-suite.log"
+  }
 }
