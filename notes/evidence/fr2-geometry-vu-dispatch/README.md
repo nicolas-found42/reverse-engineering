@@ -55,6 +55,22 @@ instruction facts. They do not prove that either geometry UNPACK destination
 is the data consumed by these loads, nor what axes, units, or transforms the
 registers represent. No numeric output or hardware equivalence is claimed.
 
+The additional selected anchors in
+[`additional-entry-mappings.json`](additional-entry-mappings.json) pin three
+more conditional command-construction candidates from the same saved EE
+export: `0xd0` in overlay 0, `0x2688` in overlay 4, and `0x2aa0` in overlay 5.
+Each converts a VU byte address to an MSCAL pair address and places it in a
+VIF command word. The associated builders share the cursor that
+`FUN_0021b2a8` assigns while configuring VIF1 QWC/TADR/CHCR, supporting their
+static VIF1 queue identity. This does not establish that those packet branches
+execute or launch. Overlay 0 also has the separate unresolved initialization
+immediate above, so `0xd0` is a candidate rather than a complete overlay map.
+The static scan found no direct callers for overlays 1–3 or 7; overlay 6
+begins with a continuation instruction after overlay 5's non-terminating
+final pair. Indirect or data-driven dispatch is not excluded. All eight
+entry-map rows therefore remain incomplete, and all VU interface contracts
+remain unresolved.
+
 ## Rejected scale fit
 
 The root's exploratory max-absolute-bound divided by 16,384 hypothesis

@@ -37,12 +37,13 @@ def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str
         overlay = by_index[index]
         status, entries = row.get('status'), row.get('entries')
         if status == 'incomplete':
-            if entries or row.get('interface') != 'unresolved':
-                raise Invalid('incomplete overlay must retain empty entries and unresolved interface')
+            if not row.get('incomplete_reasons'):
+                raise Invalid('incomplete overlay must state why its map remains incomplete')
             incomplete.append(index)
-            continue
-        if status != 'documented' or not isinstance(entries, list) or not entries:
+        elif status != 'documented':
             raise Invalid('overlay entry disposition is invalid')
+        if not isinstance(entries, list):
+            raise Invalid('overlay entries must be a list, including when no caller is known')
         for entry in entries:
             required = ('msc_address', 'vu_byte_address', 'caller', 'evidence')
             if any(key not in entry for key in required):
@@ -51,10 +52,20 @@ def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str
             if source is None:
                 raise Incomplete('documented VU entry references unavailable evidence')
             recorded = source.get('entry_mapping', {})
+            if not recorded:
+                recorded = next((candidate for candidate in source.get('derivations', [])
+                                 if candidate.get('vu_byte_address') == hex(entry['vu_byte_address']) and
+                                 candidate.get('caller') == entry['caller']), {})
+                recorded = {**recorded, 'overlay_index': recorded.get('overlay_index'),
+                            'vu_byte_address': recorded.get('vu_byte_address'),
+                            'global_value': recorded.get('msc_immediate'),
+                            'ee_builder': recorded.get('caller'),
+                            'channel': recorded.get('channel')}
             if (recorded.get('overlay_index') != index or
                     recorded.get('vu_byte_address') != hex(entry['vu_byte_address']) or
                     recorded.get('global_value') != hex(entry['msc_address']) or
-                    recorded.get('ee_builder') != entry['caller']):
+                    recorded.get('ee_builder') != entry['caller'] or
+                    (entry.get('channel') and recorded.get('channel') != entry['channel'])):
                 raise Invalid('documented VU entry contradicts its pinned EE caller evidence')
             byte_address = entry['vu_byte_address']
             if (byte_address != entry['msc_address'] * 8 or
@@ -62,7 +73,7 @@ def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str
                 raise Invalid('MSCAL entry does not resolve within its named overlay')
             if not isinstance(entry['caller'], str) or not entry['caller'].startswith('FUN_'):
                 raise Invalid('MSCAL entry has no EE caller reference')
-        documented += 1
+        documented += len(entries)
     return {'documented_entry_count': documented, 'incomplete_overlay_indices': incomplete,
             'interfaces': [{'overlay_index': row['index'], 'status': row['interface']}
                            for row in rows]}
