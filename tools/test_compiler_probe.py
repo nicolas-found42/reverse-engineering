@@ -59,6 +59,18 @@ pathlib.Path(target).write_bytes(pathlib.Path(sys.argv[-1]).read_bytes())
         self.assertEqual(result["candidates"][0]["actual_sha256"], result["reference"]["sha256"])
         self.assertEqual(Path(result["manifest"]["path"]), self.manifest().resolve())
 
+    def test_a_caller_manifest_cannot_assign_game_owned_credit(self):
+        manifest = self.manifest()
+        body = json.loads(manifest.read_text())
+        body["evidence"] = {"reference_range": {"section": ".text",
+                                                "vaddr": "001d1800",
+                                                "file_offset": "00000000"}}
+        manifest.write_text(json.dumps(body))
+        result = run_probe(manifest, self.root / "out")
+        self.assertEqual(result["status"], "pass")
+        self.assertEqual(result["candidates"][0]["gate"]["scope"], "mixed")
+        self.assertEqual(result["candidates"][0]["gate"]["matched_bytes"], 4)
+
     def test_a_nonmatching_candidate_is_a_failure_not_silently_skipped(self):
         self.object.write_bytes(bytes.fromhex("01020305"))
         result = run_probe(self.manifest(), self.root / "out")

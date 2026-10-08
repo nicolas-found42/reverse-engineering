@@ -146,7 +146,11 @@ def run_probe(manifest_path: Path, output: Path) -> dict:
                 row["actual_bytes"] = len(actual)
                 row["reference_sha256"] = hashlib.sha256(expected).hexdigest()
                 row["reference_bytes"] = len(expected)
-                target = Section(f".probe.{symbol}", 0, 0, len(expected), expected,
+                reference_range = manifest.get("evidence", {}).get("reference_range", {})
+                section_name = reference_range.get("section", f".probe.{symbol}")
+                address = int(reference_range.get("vaddr", "0"), 16)
+                file_offset = int(reference_range.get("file_offset", "0"), 16)
+                target = Section(section_name, address, file_offset, len(expected), expected,
                                  hashlib.sha256(expected).hexdigest())
                 verdict = compare(target, actual)
                 row.update(status=verdict.status, gate=verdict.as_dict())

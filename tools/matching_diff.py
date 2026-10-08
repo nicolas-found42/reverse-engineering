@@ -35,16 +35,28 @@ class Scope(str, Enum):
     EXCLUDED = "excluded"
 
 
-# ADR-0005: no measurement places a whole section on one side of the boundary, so every
-# loadable code/data section is mixed and the game-owned set is empty until a range-level
-# attribution exists. Scope is recorded here, never declared by the caller of the gate.
+# ADR-0005 records the measured local game-owned range below. All other loadable
+# code/data bytes remain mixed until a range-level attribution exists. Scope is
+# recorded here, never declared by the caller of the gate.
 METADATA = (".shstrtab", ".mdebug", ".reginfo", ".DVP.ovlytab", ".DVP.ovlystrtab")
+GAME_OWNED_RANGES = ((".text", 0x001D1800, 0x001D183C),)
 
 
 def scope_of(name: str) -> Scope:
     if name in METADATA or name.startswith(".mdebug"):
         return Scope.EXCLUDED
     return Scope.MIXED
+
+
+def scope_of_range(name: str, address: int, size: int) -> Scope:
+    """Return a recorded range scope only when the entire span fits that range."""
+    section_scope = scope_of(name)
+    if section_scope is Scope.EXCLUDED or size <= 0:
+        return section_scope
+    for section, first, end in GAME_OWNED_RANGES:
+        if section == name and first <= address and address + size <= end:
+            return Scope.GAME_OWNED
+    return section_scope
 
 
 @dataclass(frozen=True)
@@ -103,7 +115,7 @@ def compare_unit(name: str, address: int, file_offset: int, expected: bytes,
 
     Overlay code is stored in the executable's load section rather than in its
     synthetic ELF overlay section, so callers provide the already validated
-    source span and its location. Scope remains mixed until range attribution.
+    source span and its location. Scope comes from the fixed ADR-0005 range map.
     """
     section = Section(name, address, file_offset, len(expected), expected,
                       sha256(expected))

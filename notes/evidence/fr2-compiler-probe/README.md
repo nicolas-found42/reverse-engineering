@@ -9,11 +9,13 @@ hashes, argv, return codes, function hashes, and per-candidate gate verdicts.
 
 ## Reproduce the exploratory seven-candidate run
 
-This probe uses a committed, hand-written C reconstruction and linker script in
-[`tools/compiler_probe_recipe/`](../../../tools/compiler_probe_recipe/). The C
-uses inferred names, ABI, and ownership, guided by saved instruction and string
-evidence. It is not original source, and the attributed source-map line does not
-prove authorship or that the range is game-owned. No generated decompiler C,
+This probe compiles the hand-written reconstruction unit
+[`reconstruction/ee/app3d/misc3d_db_id.c`](../../../reconstruction/ee/app3d/misc3d_db_id.c)
+and uses the linker script in [`tools/compiler_probe_recipe/`](../../../tools/compiler_probe_recipe/).
+The unit uses inferred names, ABI, and ownership, guided by saved instruction
+and string evidence. It is not original source. The source-map line alone does
+not prove that the range is game-owned; the probe remains exploratory until an
+independent ADR-0005 ownership decision is recorded. No generated decompiler C,
 pseudocode, assembly, payload, compiler archive, executable, or retail bytes are
 committed.
 

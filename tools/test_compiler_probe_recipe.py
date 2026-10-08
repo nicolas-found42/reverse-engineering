@@ -10,6 +10,30 @@ from evidence_common import Incomplete
 
 
 class BuildRecipeTests(unittest.TestCase):
+    def test_first_unit_is_staged_from_reconstruction_source_tree(self):
+        source = build.RECONSTRUCTION_SOURCE
+        self.assertTrue(source.is_file())
+        self.assertIn("misc3d_db_id", source.read_text())
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            game = root / "game"
+            executable = game / "extracted/SLES_517.05"
+            executable.parent.mkdir(parents=True)
+            executable.write_bytes(b"ELF placeholder")
+            payload = bytearray(0xE0000)
+            start = build.FUNCTION_VADDR - 0x100000
+            payload[start:start + build.FUNCTION_SIZE] = b"r" * build.FUNCTION_SIZE
+            section = type("Text", (), {"address": 0x100000, "offset": 0x400, "data": bytes(payload)})()
+            digest = hashlib.sha256(b"r" * build.FUNCTION_SIZE).hexdigest()
+            with patch.object(build, "FUNCTION_SHA256", digest), \
+                 patch.object(build, "corpus_identity", return_value={"corpus_id": "fixture"}), \
+                 patch.object(build, "sections", return_value={".text": section}):
+                manifest_path, _ = build.prepare(game, root / "tools", root / "out")
+
+            staged = manifest_path.parent / "candidate.c"
+            self.assertEqual(staged.read_bytes(), source.read_bytes())
+
     def test_prepares_corpus_range_and_relocates_tool_manifest(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -23,7 +47,8 @@ class BuildRecipeTests(unittest.TestCase):
             payload = bytearray(0xE0000)
             start = build.FUNCTION_VADDR - 0x100000
             payload[start:start + build.FUNCTION_SIZE] = b"r" * build.FUNCTION_SIZE
-            section = type("Text", (), {"address": 0x100000, "data": bytes(payload)})()
+            section = type("Text", (), {"address": 0x100000, "offset": 0x400,
+                                         "data": bytes(payload)})()
             digest = hashlib.sha256(b"r" * build.FUNCTION_SIZE).hexdigest()
             with patch.object(build, "FUNCTION_SHA256", digest), \
                  patch.object(build, "corpus_identity", return_value={"corpus_id": "fixture"}), \
@@ -53,7 +78,7 @@ class BuildRecipeTests(unittest.TestCase):
             executable.parent.mkdir(parents=True)
             executable.write_bytes(b"ELF placeholder")
             with patch.object(build, "corpus_identity", return_value={"corpus_id": "fixture"}), \
-                 patch.object(build, "sections", return_value={".text": type("Text", (), {"address": 0x100000, "data": b"x" * 0xE0000})()}):
+                 patch.object(build, "sections", return_value={".text": type("Text", (), {"address": 0x100000, "offset": 0x400, "data": b"x" * 0xE0000})()}):
                 with self.assertRaisesRegex(ValueError, "pinned range identity"):
                     build.prepare(game, root / "tools", root / "out")
 
@@ -67,7 +92,9 @@ class RunnerCliTests(unittest.TestCase):
         tool_root = tmp / "tool-root"
         tool_root.mkdir()
         manifest = tool_root / "manifest.json"
-        manifest.write_text("{}\n")
+        manifest.write_text(json.dumps({"evidence": {"reference_range": {
+            "section": ".text", "vaddr": "001d1800", "file_offset": "000d2800",
+            "bytes": 60, "sha256": build.FUNCTION_SHA256, "scope": "game_owned"}}}) + "\n")
         output = tmp / "receipts"
 
         def prepare_fake(_game: Path, _tool_root: Path, _staging: Path) -> tuple[Path, None]:
@@ -86,12 +113,16 @@ class RunnerCliTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             result = {"status": "pass", "selected_id": "candidate-a", "matches": ["candidate-a"],
                       "failures": ["candidate-b"], "errors": [], "incomplete": [],
-                      "claim_limits": []}
+                      "claim_limits": [], "candidates": [{"id": "candidate-a", "status": "pass",
+                          "gate": {"status": "pass", "matched_bytes": 60}}]}
             code, receipt = self.run_fake_probe(Path(tmp), result)
         self.assertEqual(code, 0)
         self.assertEqual(receipt["status"], "pass")
         self.assertEqual(receipt["details"]["probe_status"], "pass")
         self.assertEqual(receipt["details"]["ac05_status"], "incomplete")
+        self.assertEqual(receipt["details"]["ac07_status"], "pass")
+        self.assertEqual(receipt["details"]["ac07_evidence"]["range"]["scope"], "game_owned")
+        self.assertEqual(receipt["details"]["candidates"][0]["gate"]["matched_bytes"], 60)
         self.assertEqual(set(receipt["details"]["runtime_identity"]), {"linux-tools", "wine-compiler"})
         self.assertTrue({Path(run.__file__).resolve(), Path(build.__file__).resolve(),
                          Path(run.TOOLS / "compiler_probe.py").resolve(),
@@ -100,7 +131,7 @@ class RunnerCliTests(unittest.TestCase):
                          Path(run.TOOLS / "corpus_contract.py").resolve(),
                          Path(run.TOOLS / "ps2_executables.py").resolve(),
                          Path(run.TOOLS / "evidence_common.py").resolve(),
-                         Path(run.__file__).with_name("candidate.c").resolve(),
+                         build.RECONSTRUCTION_SOURCE.resolve(),
                          Path(run.__file__).with_name("candidate.ld").resolve(),
                          Path(run.__file__).with_name("manifest.template.json").resolve(),
                          Path(run.__file__).with_name("docker-linux-exec.sh").resolve(),
@@ -147,7 +178,9 @@ class RunnerCliTests(unittest.TestCase):
             linked_tool_root = root / "tools-link"
             linked_tool_root.symlink_to(actual_tool_root, target_is_directory=True)
             manifest = root / "manifest.json"
-            manifest.write_text("{}\n")
+            manifest.write_text(json.dumps({"evidence": {"reference_range": {
+                "section": ".text", "vaddr": "001d1800", "file_offset": "000d2800",
+                "bytes": 60, "sha256": build.FUNCTION_SHA256, "scope": "game_owned"}}}) + "\n")
             observed = {}
 
             def prepare_spy(_game: Path, tool_root: Path, staging: Path):

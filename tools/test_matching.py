@@ -151,6 +151,14 @@ class ScopeTest(unittest.TestCase):
         self.assertEqual((rows["matched_bytes"], rows["game_owned_bytes"]), (0, 0))
         self.assertEqual((rows["mixed_bytes"], rows["mixed_bytes_identical"]), (len(TEXT), len(TEXT)))
 
+    def test_only_the_recorded_misc3d_code_span_is_game_owned(self):
+        from matching_diff import scope_of_range
+
+        self.assertEqual(scope_of_range(".text", 0x001D1800, 60), Scope.GAME_OWNED)
+        self.assertEqual(scope_of_range(".text", 0x001D1800, 64), Scope.MIXED)
+        self.assertEqual(scope_of_range(".text", 0x001D17FC, 60), Scope.MIXED)
+        self.assertEqual(scope_of_range(".rodata", 0x001D1800, 60), Scope.MIXED)
+
 
 if __name__ == "__main__":
     unittest.main()
