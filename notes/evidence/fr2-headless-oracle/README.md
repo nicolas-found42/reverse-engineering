@@ -1,9 +1,20 @@
 # Strict headless behavioral oracle
 
-`tools/headless_oracle.py` is a separate behavioral check for AC25. It launches
-one hand-written controlled EE probe under the locally installed PCSX2 v2.6.3
-build. It does not consume the reconstructed-code ledger, matching receipts, or
-the corpus, and its result explicitly grants zero static byte credit.
+`tools/headless_oracle.py` is a separate behavioral check for AC25. Its current
+installed profile stops before launch with an incomplete dependency preflight
+under #22. Matching executable/plugin hashes cannot bind the missing complete
+Qt source/offer, package notices or build identity. The preflight also pins the
+installed Core, Gui, Widgets and docking-library bytes; a changed library fails
+and a missing library is incomplete. No caller flag can unlock this profile.
+The [dependency evidence](../fr2-oracle-dependencies/README.md) records the static
+inspection and the fresh refusal. The runner does not consume the reconstructed
+code ledger, matching receipts, or corpus, and grants zero static byte credit.
+
+The following lifecycle describes the retained implementation and historical
+attempts, not a qualified current execution path. Its controlled probe is
+hand-written and synthetic. #22 must receive a reviewed dependency disposition
+before execution can resume; #14's window/audio/focus qualification remains
+separate.
 
 The runner fixes `-nogui -nofullscreen -elf`, forces Qt's offscreen platform,
 disables foreground transformation, requests null GS and SPU2 output, and writes a
