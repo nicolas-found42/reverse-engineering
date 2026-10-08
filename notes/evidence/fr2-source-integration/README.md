@@ -19,9 +19,13 @@ The aggregate receipt at
 `/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T075849Z-31227a6d24864e1f8575e59cb5321e6e/result.json`
 is superseded: the inventory had already removed the owned 60 bytes from
 unresolved accounting, and that aggregate removed them a second time. The
-fixed ledger now asserts conservation directly; its next fresh positive receipt
-must show `file_backed_bytes + zero_fill_bytes = unresolved_bytes +
-game_owned_bytes + substitute_bytes`.
+superseding clean aggregate is retained at
+`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration/20261008T080215Z-c5c6714b15e74f18a7f184123a94debe/result.json`.
+It reports AC07 pass, AC05 incomplete, `game_owned_bytes: 60`,
+`matched_bytes: 60`, and `unresolved_bytes: 3506988`. Its ledger conserves all
+bytes: `file_backed_bytes + zero_fill_bytes = unresolved_bytes +
+game_owned_bytes + substitute_bytes = 3507048`. The clean receipt records
+source revision `e14ff6a` and a clean working tree.
 
 The source mutation control changes the sentinel branch and reruns the real
 aggregate. Its latest receipt is
