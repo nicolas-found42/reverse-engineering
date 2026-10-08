@@ -2,7 +2,12 @@
   "schema_version": 1,
   "probe_elf": {
     "sha256": "998bf45e35ef075ad35501803a7404bb2d01827e4f940bea49e347f865ca9654",
-    "known_output_words": [1179791952, 21, 283062463, 1],
+    "known_output_words": [
+      1179791952,
+      21,
+      283062463,
+      1
+    ],
     "output_address": "0x00180000"
   },
   "probe_source": {
@@ -18,9 +23,11 @@
     "limits": "The fixture proves the strict runtime plumbing only; it is not original or reconstructed game code."
   },
   "desktop_observer": {
-    "source_sha256": "2e43e567a5058a5881e0b54173a7ca9e4064961fcb6618d5cc0c815c9920b879",
-    "binary_sha256": "9219fa464495861ddf78d333526ee82e99e11576c8b3ff2439c12e800976d55d",
-    "builder": "clang -fobjc-arc observe-desktop.m -framework AppKit -framework CoreGraphics"
+    "source_sha256": "3f9f48ffa18d337db924e1b48c4b8980abedb5af8887d81d097e6ecee99d3926",
+    "binary_sha256": "a004275cc9da81e5492ed8eb90f63155177331991ec1bf816ebbf24c7479e16f",
+    "builder": "clang -fobjc-arc observe-desktop.m -framework AppKit -framework CoreGraphics",
+    "timestamp_clock": "mach_absolute_time nanoseconds, matching Python time.monotonic_ns",
+    "source_path": "tools/observe-desktop.m"
   },
   "runtime": {
     "emulator": "PCSX2 v2.6.3",

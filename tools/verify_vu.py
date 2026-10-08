@@ -58,8 +58,8 @@ def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str
 
     def verify_ee_evidence(source: dict) -> None:
         nonlocal elf
-        if source.get('instruction_anchors') is None:
-            return
+        if not source.get('instruction_anchors') or not isinstance(source.get('executable'), dict):
+            raise Invalid('documented EE caller evidence requires executable identity and instruction anchors')
         if executable is None:
             raise Incomplete('verified executable is required to check EE instruction anchors')
         identity = source.get('executable')
@@ -105,7 +105,8 @@ def validate_entry_map(entry_map: dict, overlays: list[dict], evidence: dict[str
                 if evidence_name not in evidence:
                     raise Incomplete(f'VU interface evidence is unavailable: {evidence_name}')
                 source = evidence[evidence_name]
-                verify_ee_evidence(source)
+                if 'instruction_anchors' in source:
+                    verify_ee_evidence(source)
                 if source.get('overlay_index') not in (None, index):
                     raise Invalid('VU interface evidence names a different overlay')
                 anchors = source.get('overlay_mapping', {}).get('anchors', [])
@@ -238,8 +239,6 @@ def verify(executable: Path, objdump: Path | None, assembler: Path | None, work:
     dump, assemble = _tool(objdump, 'dvp-objdump'), _tool(assembler, 'dvp-as')
     data = executable.read_bytes()
     inventory = parse_overlays(data)
-    entry_map, evidence = load_entry_map(entry_map_path)
-    entry_map_result = validate_entry_map(entry_map, inventory['overlays'], evidence, executable=data)
     work.mkdir(parents=True, exist_ok=False)
     tools = {'objdump': {'path': str(dump), **identity(dump)},
              'assembler': {'path': str(assemble), **identity(assemble)}}
@@ -282,13 +281,23 @@ def verify(executable: Path, objdump: Path | None, assembler: Path | None, work:
         if recovered != code:
             raise Invalid('VU mnemonic round trip differs from executable code bytes', {'tools': tools, 'overlays': rows})
     details = {**inventory, 'tools': tools, 'overlays': rows, 'exact_roundtrip_overlays': len(rows),
-            'entry_map': entry_map_result,
-            'interface_status': entry_map_result['interface_status'],
-            'entry_map_disposition': 'incomplete' if entry_map_result['incomplete_overlay_indices'] else 'documented',
+            'encoding_status': 'pass',
             'work_directory': str(work), 'whole_game_decompiled': False,
             'claim_limits': inventory['claim_limits'] + [
                 'Mnemonic source, signed branch displacement conversion, and nine-digit binary32 literals reproduce these chunks byte for byte.',
                 'No raw-opcode fallback is used. This is reconstruction/encoding validation, not a behavioral or scheduling oracle.']}
+    try:
+        entry_map, evidence = load_entry_map(entry_map_path)
+        entry_map_result = validate_entry_map(entry_map, inventory['overlays'], evidence, executable=data)
+    except (Incomplete, Invalid, ValueError, KeyError, TypeError, OSError) as exc:
+        status = 'incomplete' if isinstance(exc, (Incomplete, FileNotFoundError)) else 'fail'
+        details.update(entry_map={'status': status, 'diagnostic': str(exc)},
+                       entry_map_disposition=status, interface_status=status)
+        error = Incomplete if status == 'incomplete' else Invalid
+        raise error(f'VU byte reassembly passed; entry map {status}: {exc}', details) from exc
+    details.update(entry_map=entry_map_result,
+                   interface_status=entry_map_result['interface_status'],
+                   entry_map_disposition='incomplete' if entry_map_result['incomplete_overlay_indices'] else 'documented')
     if entry_map_result['incomplete_overlay_indices'] or details['interface_status'] == 'incomplete':
         raise Incomplete('VU byte reassembly passed; required entry or interface maps remain incomplete', details)
     return details

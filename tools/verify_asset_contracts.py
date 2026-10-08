@@ -148,7 +148,7 @@ def validate_declarations(actual: dict, declarations: dict, registry: dict, acti
         unexpected = set(supplied) - allowed
         if unexpected:
             errors.append(f"{ident}: caller manifest contains non-authoritative fields: {', '.join(sorted(unexpected))}")
-        for field in ("asset_types", "extensions"):
+        for field in ("asset_types", "extensions", "structure_evidence", "limits"):
             if supplied.get(field) != authority.get(field):
                 errors.append(f"{ident}: {field} differs from the fixed registry")
         expected_bindings = sorted(item["id"] for item in bindings_by_contract[ident])

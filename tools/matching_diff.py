@@ -16,7 +16,7 @@ regions built from ps2sdk are `substitute region`s: reported, never counted.
 from __future__ import annotations
 
 import argparse
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from enum import Enum
 from pathlib import Path
 
@@ -119,7 +119,8 @@ def compare_unit(name: str, address: int, file_offset: int, expected: bytes,
     """
     section = Section(name, address, file_offset, len(expected), expected,
                       sha256(expected))
-    return compare(section, unit)
+    return replace(compare(section, unit),
+                   scope=scope_of_range(name, address, len(expected)).value)
 
 
 def _fail(section: Section, unit: bytes, scope: str, offset: int, matched: int,

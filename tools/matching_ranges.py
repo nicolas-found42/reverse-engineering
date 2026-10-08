@@ -27,17 +27,23 @@ UNIT_SOURCE_SHA256 = '44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa
 UNIT_SOURCE = ROOT / 'reconstruction/ee/app3d/misc3d_db_id.c'
 ADR0005 = ROOT / 'docs/adr/0005-game-owned-sdk-boundary.md'
 SOURCE_MAP = ROOT / 'notes/evidence/fr2-source-map/source-map-result.json'
-SPEC_CONTEXT = Path.home() / 'Documents/github/hermes/spec-5-context/continuation-20261008'
-BOUNDARY_METADATA = SPEC_CONTEXT / 'first-unit/adr0005-misc3d-boundary.json'
-SAVED_FUNCTION_INVENTORY = ROOT / '.scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json'
+BOUNDARY_METADATA = ROOT / 'notes/evidence/fr2-first-unit/adr0005-misc3d-boundary.json'
+SAVED_FUNCTION_INVENTORY = ROOT / 'notes/evidence/fr2-first-unit/saved-function-inventory-digest.json'
 
 
-def boundary_provenance() -> dict | None:
+def boundary_provenance() -> dict:
     """Verify the local metadata's source-map and saved-function evidence hashes."""
     evidence_paths = (BOUNDARY_METADATA, SOURCE_MAP, SAVED_FUNCTION_INVENTORY)
-    if not all(path.is_file() for path in evidence_paths):
-        return None
+    for path in evidence_paths:
+        if not path.is_file():
+            raise Incomplete(f'first-unit boundary evidence missing: {path}')
     metadata = json.loads(BOUNDARY_METADATA.read_text())
+    inventory = json.loads(SAVED_FUNCTION_INVENTORY.read_text())
+    functions = inventory.get('functions', [])
+    if (inventory.get('executable_sha256') != EE_CORPUS_SHA256
+            or len(functions) != 1 or functions[0].get('entry') != f'{UNIT_START:08x}'
+            or functions[0].get('size') != UNIT_END - UNIT_START):
+        raise Invalid('first-unit structural inventory digest contradicts the recorded corpus or range')
     source_map_id, inventory_id = identity(SOURCE_MAP), identity(SAVED_FUNCTION_INVENTORY)
     evidence = metadata.get('evidence_inputs', {})
     if (metadata.get('corpus', {}).get('sha256') != EE_CORPUS_SHA256
@@ -67,8 +73,6 @@ def attribute_first_source_unit(artifact: dict, executable: bytes) -> None:
         raise Invalid('recorded first-unit bytes differ from ADR-0005 evidence')
     candidate_source_identity = sha256(UNIT_SOURCE.read_bytes())
     evidence_inputs = boundary_provenance()
-    if evidence_inputs is None:
-        return
     decision_identity = sha256(ADR0005.read_bytes())
     output = []
     for row in artifact['ranges']:

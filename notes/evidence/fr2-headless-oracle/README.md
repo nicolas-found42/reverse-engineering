@@ -118,3 +118,21 @@ incomplete. A public completion CLI test attempts `--behavioral-receipt` and
 verifies refusal before output creation. These tests do not emulate PCSX2 or
 count as AC25 runtime acceptance. The oracle remains separate from static
 completion; AC26's original-versus-rebuilt observations are still unimplemented.
+
+The current observer source is committed at `tools/observe-desktop.m`. It records
+`mach_absolute_time` timestamps converted to nanoseconds for comparison with
+Python's `time.monotonic_ns()` lifecycle bounds. All required samples must fall
+inside the conservative live interval (launch observed through cleanup requested)
+and have strictly increasing timestamps. Untimed samples or samples after
+shutdown leave the raw desktop observation incomplete. Cleanup failure is a failed
+receipt even when probe output was captured.
+
+The pinned local observer build is reproduced with:
+
+```sh
+clang -fobjc-arc tools/observe-desktop.m -framework AppKit -framework CoreGraphics -o /path/to/private/observe-desktop
+tools/check.sh test_headless_oracle
+```
+
+The binary hash describes the local macOS build; other builds remain unqualified
+until independently recorded. Earlier untimed receipts remain historical evidence.

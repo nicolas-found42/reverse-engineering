@@ -7,8 +7,20 @@ corpus executable is pinned at SHA-256
 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`.
 
 The measured ownership decision is recorded in [ADR-0005](../../../docs/adr/0005-game-owned-sdk-boundary.md).
-The retained local metadata record is
-`/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/first-unit/adr0005-misc3d-boundary.json`.
+The committed metadata record is
+[`adr0005-misc3d-boundary.json`](adr0005-misc3d-boundary.json).
+Its inventory pin refers to the committed
+[`saved-function-inventory-digest.json`](saved-function-inventory-digest.json),
+which retains only structural function identities, sizes, caller/callee addresses,
+and the original local inventory digest. No instruction bytes, disassembly, or
+retail strings are included. A clean checkout can validate these inputs; a missing
+prerequisite produces an incomplete receipt naming the path.
+
+Validate the retained metadata and range gate with:
+
+```sh
+tools/check.sh test_matching_ranges test_matching
+```
 It records the source-map and saved-function inventory identities, five static
 callers and their call sites, the `../fr2/source/app3d/misc3d.c:188` source
 reference, and the separately mapped `../modules4/system/ps2/asyncf.c` error
@@ -61,3 +73,8 @@ tools/check.sh test_compiler_probe_recipe test_compiler_probe test_matching
 A byte match is reported for this owned range only. This local result does not
 complete whole-image attribution, the full reconstruction, substitute linking,
 asset contracts, VU interfaces, or the remaining acceptance criteria.
+
+Compiler recipe staging and candidate work directories are retained below the
+local tool root. Receipt paths remain inspectable after the child returns. These
+private directories include extracted reference and candidate bytes and must stay
+outside version control. The receipt records their hashes and extraction range.

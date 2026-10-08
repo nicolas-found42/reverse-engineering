@@ -264,7 +264,9 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     encoding = vu_details.get('exact_roundtrip_overlays') == 8 and all(
         row.get('byte_gate', {}).get('status') == 'pass' for row in vu_details.get('overlays', []))
     record(16, 'pass' if encoding and ranges['status'] == 'pass' else
-           'fail' if vu['status'] == 'fail' else 'incomplete',
+           'fail' if any(row.get('byte_gate', {}).get('status') == 'fail'
+                         for row in vu_details.get('overlays', []))
+           or (vu['status'] == 'fail' and not encoding) else 'incomplete',
            'Eight exact mnemonic comparisons required; entry/state contracts are separate.', [0, 2])
     record(17, 'fail' if vu['status'] == 'fail' else 'incomplete',
            'Required entry/state interfaces remain unresolved.', [2])

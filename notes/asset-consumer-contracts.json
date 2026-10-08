@@ -11,9 +11,12 @@
         ".cfg"
       ],
       "status": "complete",
-      "structure_evidence": [],
+      "structure_evidence": [
+        "notes/evidence/fr2-asset-consumer-contracts/configuration-consumer.md",
+        "tools/config_contracts.py"
+      ],
       "limits": [
-        "Do not infer configuration semantics from the extension or file names."
+        "Only the five required keys and exact line grammar observed in all 16 unchanged PAL records are supported. No rendering or runtime-selection claim."
       ],
       "binding_ids": [
         "configuration-track-loader"

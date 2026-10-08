@@ -65,6 +65,12 @@ class BuildRecipeTests(unittest.TestCase):
             self.assertEqual(manifest["candidates"][0]["compile"][2], str(tool_root.resolve()))
             self.assertEqual(manifest["evidence"]["corpus"]["corpus_id"], "fixture")
             run.validate_manifest_runtimes(manifest_path, tool_root)
+            original_compiler = manifest["candidates"][0]["compiler_executable"]
+            manifest["candidates"][0]["compiler_executable"] = str(tool_root / "other-compiler")
+            manifest_path.write_text(json.dumps(manifest))
+            with self.assertRaisesRegex(Incomplete, "executable differs"):
+                run.validate_manifest_runtimes(manifest_path, tool_root)
+            manifest["candidates"][0]["compiler_executable"] = original_compiler
             manifest["candidates"][0]["runtime"]["image_id"] = "sha256:replacement"
             manifest_path.write_text(json.dumps(manifest))
             with self.assertRaisesRegex(Incomplete, "declares a different runtime image"):
@@ -110,7 +116,9 @@ class RunnerCliTests(unittest.TestCase):
         with patch.object(run, "prepare", side_effect=prepare_fake), \
              patch.object(run, "validate_manifest_runtimes"), \
              patch.object(run, "validate_runtime_images", return_value={"linux-tools": {}, "wine-compiler": {}}), \
-             patch.object(run, "boundary_provenance", return_value=provenance), \
+             patch.object(run, "boundary_provenance", return_value=provenance,
+                          side_effect=Incomplete("first-unit boundary evidence missing: fixture.json")
+                          if provenance is None else None), \
              patch.object(run, "run_probe", return_value=probe_result):
             code = run.main([str(game), str(tool_root), "--output", str(output)])
         receipt_paths = list(output.glob("*/result.json"))
@@ -122,7 +130,7 @@ class RunnerCliTests(unittest.TestCase):
             result = {"status": "pass", "selected_id": "candidate-a", "matches": ["candidate-a"],
                       "failures": ["candidate-b"], "errors": [], "incomplete": [],
                       "claim_limits": [], "candidates": [{"id": "candidate-a", "status": "pass",
-                          "gate": {"status": "pass", "matched_bytes": 60}}]}
+                          "gate": {"status": "pass", "matched_bytes": 60, "scope": "game_owned"}}]}
             code, receipt = self.run_fake_probe(Path(tmp), result)
         self.assertEqual(code, 0)
         self.assertEqual(receipt["status"], "pass")
@@ -152,14 +160,11 @@ class RunnerCliTests(unittest.TestCase):
             result = {"status": "pass", "selected_id": "candidate-a", "matches": ["candidate-a"],
                       "failures": [], "errors": [], "incomplete": [], "claim_limits": [],
                       "candidates": [{"id": "candidate-a", "status": "pass",
-                                      "gate": {"status": "pass", "matched_bytes": 60}}]}
+                                      "gate": {"status": "pass", "matched_bytes": 60, "scope": "game_owned"}}]}
             code, receipt = self.run_fake_probe(Path(tmp), result, provenance=None)
-        self.assertEqual(code, 0)
-        self.assertEqual(receipt["status"], "pass")
-        self.assertEqual(receipt["details"]["probe_status"], "pass")
-        self.assertEqual(receipt["details"]["ac05_status"], "incomplete")
-        self.assertEqual(receipt["details"]["ac07_status"], "incomplete")
-        self.assertIsNone(receipt["details"]["ac07_evidence"]["evidence_inputs"])
+        self.assertEqual(code, 2)
+        self.assertEqual(receipt["status"], "incomplete")
+        self.assertIn("first-unit boundary evidence missing", " ".join(receipt["diagnostics"]))
 
     def test_zero_matches_produces_failed_receipt(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -211,7 +216,8 @@ class RunnerCliTests(unittest.TestCase):
                 observed["staging"] = staging
                 return manifest, None
 
-            def probe_spy(_manifest: Path, work: Path):
+            def probe_spy(_manifest: Path, work: Path, *, range_scoped: bool):
+                self.assertTrue(range_scoped)
                 observed["work"] = work
                 return {"status": "pass", "matches": ["candidate-a"], "failures": [],
                         "errors": [], "incomplete": [], "claim_limits": []}
@@ -228,6 +234,7 @@ class RunnerCliTests(unittest.TestCase):
             self.assertEqual(observed["staging"].parent, canonical_root)
             self.assertEqual(observed["work"], observed["staging"] / "candidate-work")
             self.assertTrue(str(observed["work"]).startswith(str(canonical_root) + "/"))
+            self.assertTrue(observed["staging"].is_dir())
 
 
 if __name__ == "__main__":

@@ -25,8 +25,8 @@ TOOLS = Path(__file__).resolve().parent
 RECIPE = TOOLS / "headless_oracle_recipe.json"
 PCSX2_SHA256 = "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d"
 OFFSCREEN_SHA256 = "ac97d9562bc77cce9a627e1ac474bd2d16c68af2f674fe65e3bece1cd0210679"
-DESKTOP_OBSERVER_SHA256 = "9219fa464495861ddf78d333526ee82e99e11576c8b3ff2439c12e800976d55d"
-DESKTOP_OBSERVER_SOURCE_SHA256 = "2e43e567a5058a5881e0b54173a7ca9e4064961fcb6618d5cc0c815c9920b879"
+DESKTOP_OBSERVER_SHA256 = "a004275cc9da81e5492ed8eb90f63155177331991ec1bf816ebbf24c7479e16f"
+DESKTOP_OBSERVER_SOURCE_SHA256 = "3f9f48ffa18d337db924e1b48c4b8980abedb5af8887d81d097e6ecee99d3926"
 QT_SDK_ARCHIVE_SHA256 = "e469b996bd4dd6409aeab1a2034eb73267d5c8de84aa6224bf7c9520cdcbd309"
 QT_BUILD_COMMAND_SHA256 = "e5786e5d4738715fd64ac6f35325b82ab67ba3be8139233d72f29dedaffe6ab5"
 QT_PREPARATION_SHA256 = "068164de1068b1ebbb566224cd5ccb2b0bcebab6764afadcc5e365acf267dca1"
@@ -129,12 +129,19 @@ def validate_observation(words: list[int], desktop: dict) -> dict:
     if words != EXPECTED_WORDS:
         return {"status": "fail", "reason": "controlled probe memory differs from the known output",
                 "expected_words": EXPECTED_WORDS, "observed_words": words}
+    timestamps = desktop.get("timestamps_ns", [])
+    started, stopped = desktop.get("emulator_started_ns"), desktop.get("emulator_stopped_ns")
     frontmost = desktop.get("frontmost_pids", [])
     windows = desktop.get("owned_window_counts", [])
     if (not frontmost or len(frontmost) != len(windows)
             or len(frontmost) != desktop.get("sample_count")
             or len(frontmost) != DESKTOP_SAMPLE_COUNT):
         return {"status": "incomplete", "reason": "desktop observation was unavailable or malformed"}
+    if (len(timestamps) != len(frontmost) or not isinstance(started, int)
+            or not isinstance(stopped, int) or started >= stopped
+            or any(not isinstance(at, int) or not started <= at <= stopped for at in timestamps)
+            or any(right <= left for left, right in zip(timestamps, timestamps[1:]))):
+        return {"status": "incomplete", "reason": "desktop samples do not cover the live emulator interval"}
     if any(count != 0 for count in windows):
         return {"status": "fail", "reason": "PCSX2 owned a native window during the run",
                 "frontmost_pids": frontmost, "owned_window_counts": windows}
@@ -355,10 +362,12 @@ def execute(args, output: Path) -> dict:
     observed = None
     lifecycle = {}
     failure_reason = None
+    emulator_started_ns = emulator_stopped_ns = None
     try:
         with stdout_path.open("wb") as stdout, stderr_path.open("wb") as stderr:
             process = subprocess.Popen(command, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr,
                                        env=env, start_new_session=True, close_fds=True)
+            emulator_started_ns = time.monotonic_ns()
             with desktop_path.open("wb") as desktop_stream:
                 observer_process = subprocess.Popen([str(observer), str(process.pid)],
                                                     stdout=desktop_stream,
@@ -386,7 +395,9 @@ def execute(args, output: Path) -> dict:
         if pine is not None:
             pine.close()
         if process is not None:
+            emulator_stopped_ns = time.monotonic_ns()
             lifecycle = _kill_group(process)
+            lifecycle.update(started_ns=emulator_started_ns, stopped_ns=emulator_stopped_ns)
         if observer_process is not None:
             try:
                 observer_process.wait(timeout=25)
@@ -401,13 +412,15 @@ def execute(args, output: Path) -> dict:
             samples = []
             for line in desktop_path.read_text(errors="replace").splitlines():
                 fields = line.split()
-                if len(fields) == 3 and all(field.isdecimal() for field in fields):
-                    samples.append([int(fields[1]), int(fields[2])])
+                if len(fields) == 4 and all(field.isdecimal() for field in fields):
+                    samples.append([int(fields[0]), int(fields[2]), int(fields[3])])
             desktop = {"sample_count": len(samples),
-                       "frontmost_pids": [item[0] for item in samples],
-                       "owned_window_counts": [item[1] for item in samples]}
+                       "timestamps_ns": [item[0] for item in samples],
+                       "frontmost_pids": [item[1] for item in samples],
+                       "owned_window_counts": [item[2] for item in samples]}
         else:
             desktop = {"sample_count": 0, "frontmost_pids": [], "owned_window_counts": []}
+    desktop.update(emulator_started_ns=emulator_started_ns, emulator_stopped_ns=emulator_stopped_ns)
     runtime_artifacts = {}
     for name, path in (("sandbox_profile", profile_path), ("settings", config_path),
                        ("stdout", stdout_path), ("stderr", stderr_path),
@@ -454,13 +467,15 @@ def execute(args, output: Path) -> dict:
         "limitations": ["The probe is hand-written and synthetic; it is not reconstructed game code.",
                         "This does not establish original/rebuilt game equivalence or whole-game behavior.",
                         "Frontmost changes during the observation make the result incomplete."]}
+    failures = []
     cleanup_error = cleanup_failure(lifecycle)
     if cleanup_error:
-        details["status"] = "fail"
-        details["observation"]["reason"] = cleanup_error
+        failures.append(cleanup_error)
     if desktop_result["status"] == "fail":
+        failures.append(desktop_result["reason"])
+    if failures:
         details["status"] = "fail"
-        details["failures"] = [details["observation"]["reason"]]
+        details["failures"] = failures
         return details
     details["status"] = "incomplete"
     raise Incomplete(acceptance["reason"], details)

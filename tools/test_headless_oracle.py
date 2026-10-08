@@ -8,6 +8,9 @@ import sys
 import tempfile
 import time
 import unittest
+from types import SimpleNamespace
+from unittest.mock import MagicMock
+import headless_oracle as oracle
 from unittest.mock import patch
 
 from headless_oracle import (build_settings, make_sandbox_profile,
@@ -19,6 +22,38 @@ from evidence_common import Incomplete, Invalid, identity
 
 
 class HeadlessOracleProfile(unittest.TestCase):
+    def test_post_shutdown_or_untimed_desktop_samples_cannot_pass(self):
+        desktop = {"sample_count": 400, "frontmost_pids": [123] * 400,
+                   "owned_window_counts": [0] * 400,
+                   "timestamps_ns": [1_000_000_000 + i * 50_000_000 for i in range(400)],
+                   "emulator_started_ns": 1_000_000_000, "emulator_stopped_ns": 2_000_000_000}
+        self.assertEqual(validate_observation(oracle.EXPECTED_WORDS, desktop)["status"], "incomplete")
+        desktop.pop("timestamps_ns")
+        self.assertEqual(validate_observation(oracle.EXPECTED_WORDS, desktop)["status"], "incomplete")
+
+    def test_cleanup_failure_after_observation_produces_a_failed_receipt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            paths = {name: root / name for name in (
+                "emulator", "platform_plugin", "elf", "probe_source", "linker_script",
+                "probe_build_log", "bios", "desktop_observer", "desktop_observer_source",
+                "qt_sdk_archive", "qt_source_dir", "qt_build_command", "qt_preparation_record")}
+            args = SimpleNamespace(**paths, timeout=1, sandbox_exec=Path("/usr/bin/sandbox-exec"))
+            process = MagicMock(pid=123, returncode=None)
+            process.poll.return_value = None
+            observed = {"words": oracle.EXPECTED_WORDS}
+            with patch.object(oracle.sys, "platform", "darwin"), \
+                 patch.object(oracle, "verify_inputs", return_value={}), \
+                 patch.object(oracle.subprocess, "Popen", return_value=process), \
+                 patch.object(oracle, "_kill_group", return_value={"process_group_remaining": True}), \
+                 patch.object(oracle, "Pine") as pine, \
+                 patch.object(oracle, "wait_for_probe_output", return_value=observed), \
+                 patch.object(oracle.Path, "exists", return_value=True):
+                result = oracle.execute(args, root)
+            self.assertEqual(result["status"], "fail")
+            self.assertIn("owned process group survived cleanup", result["failures"])
+            self.assertEqual(result["pine"], observed)
+
     def test_pine_reads_are_bounded_by_remaining_deadline(self):
         class FakeSocket:
             def __init__(self):
@@ -259,7 +294,9 @@ class HeadlessOracleProfile(unittest.TestCase):
     def test_changed_output_is_a_behavioral_failure_and_focus_variation_is_incomplete(self):
         expected = [0x46523250, 21, 0x10DF30BF, 1]
         good_desktop = {"sample_count": 400, "frontmost_pids": [123] * 400,
-                        "owned_window_counts": [0] * 400}
+                        "owned_window_counts": [0] * 400,
+                        "timestamps_ns": [1_000_000_000 + i * 50_000_000 for i in range(400)],
+                        "emulator_started_ns": 1_000_000_000, "emulator_stopped_ns": 21_000_000_000}
         raw = validate_observation(expected, good_desktop)
         self.assertEqual(raw["status"], "pass")
         acceptance = ac25_acceptance(raw)
@@ -274,12 +311,16 @@ class HeadlessOracleProfile(unittest.TestCase):
         self.assertEqual(mismatch["status"], "fail")
         self.assertEqual(ac25_acceptance(mismatch)["status"], "fail")
         focus_changed = {"sample_count": 400, "frontmost_pids": [123, 456] + [456] * 398,
-                         "owned_window_counts": [0] * 400}
+                         "owned_window_counts": [0] * 400,
+                        "timestamps_ns": [1_000_000_000 + i * 50_000_000 for i in range(400)],
+                        "emulator_started_ns": 1_000_000_000, "emulator_stopped_ns": 21_000_000_000}
         raw_focus = validate_observation(expected, focus_changed)
         self.assertEqual(raw_focus["status"], "incomplete")
         self.assertEqual(ac25_acceptance(raw_focus)["status"], "incomplete")
         with_window = {"sample_count": 400, "frontmost_pids": [123] * 400,
-                       "owned_window_counts": [0] * 399 + [1]}
+                       "owned_window_counts": [0] * 399 + [1],
+                       "timestamps_ns": good_desktop["timestamps_ns"],
+                       "emulator_started_ns": 1_000_000_000, "emulator_stopped_ns": 21_000_000_000}
         self.assertEqual(validate_observation(expected, with_window)["status"], "fail")
 
     def test_short_desktop_sample_is_incomplete_not_a_positive_observation(self):

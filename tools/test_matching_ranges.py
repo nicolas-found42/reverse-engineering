@@ -24,6 +24,22 @@ def image():
     return bytes(data)
 
 
+class BoundaryEvidenceTest(unittest.TestCase):
+    def test_boundary_evidence_is_reproducible_from_repository_files(self):
+        from matching_ranges import boundary_provenance, ROOT, BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY
+        self.assertTrue(BOUNDARY_METADATA.is_relative_to(ROOT / 'notes'))
+        self.assertTrue(SAVED_FUNCTION_INVENTORY.is_relative_to(ROOT / 'notes'))
+        self.assertEqual(set(boundary_provenance()), {'metadata', 'source_map', 'saved_function_inventory'})
+
+    def test_missing_boundary_evidence_names_the_prerequisite(self):
+        from unittest.mock import patch
+        import matching_ranges
+        from evidence_common import Incomplete
+        with patch.object(matching_ranges, 'BOUNDARY_METADATA', Path('/missing/boundary.json')):
+            with self.assertRaisesRegex(Incomplete, '/missing/boundary.json'):
+                matching_ranges.boundary_provenance()
+
+
 class RangeCli(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()

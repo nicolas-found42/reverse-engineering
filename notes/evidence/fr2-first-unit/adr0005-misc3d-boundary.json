@@ -1,0 +1,110 @@
+{
+  "schema": "fr2-first-unit-boundary/v1",
+  "corpus": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "evidence_inputs": {
+    "source_map": {
+      "path": "notes/evidence/fr2-source-map/source-map-result.json",
+      "sha256": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a",
+      "status": "pass"
+    },
+    "saved_function_inventory": {
+      "path": "notes/evidence/fr2-first-unit/saved-function-inventory-digest.json",
+      "sha256": "d0424aad2eeddc58ead3f164ec2f49195e1d102282647603dbc407fec55b374b",
+      "authority": "local structural inventory; saved functions are provisional boundaries",
+      "original_inventory_sha256": "29f08df42d6d0a1599ebd3a5c289efc1365fc07b309392fc2113cbefa437c4d8"
+    }
+  },
+  "range": {
+    "section": ".text",
+    "start": "001d1800",
+    "end_exclusive": "001d183c",
+    "bytes": 60,
+    "saved_function_entry": "001d1800",
+    "saved_function_name": "FUN_001d1800",
+    "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+    "scope": "game_owned",
+    "basis": "bounded local decision under ADR-0005"
+  },
+  "direct_source_evidence": {
+    "path": "../fr2/source/app3d/misc3d.c",
+    "line": 188,
+    "observed_behavior": "checks a misc3d database-id sentinel, returns the value when loaded, and otherwise calls the shared error reporter with a source-location pair and a game-specific diagnostic",
+    "claim_limit": "source path and diagnostic corroborate the decision; not original source recovery"
+  },
+  "static_callers": {
+    "distinct_saved_callers": 5,
+    "rows": [
+      {
+        "entry": "00191148",
+        "size": 356,
+        "callsites": [
+          "00191184"
+        ],
+        "direct_source_paths": []
+      },
+      {
+        "entry": "001942e8",
+        "size": 484,
+        "callsites": [
+          "00194310"
+        ],
+        "direct_source_paths": [
+          "../fr2/source/entity/mobile/obstacle/obstacle.c"
+        ]
+      },
+      {
+        "entry": "001a2d48",
+        "size": 848,
+        "callsites": [
+          "001a2fc0",
+          "001a2fd8"
+        ],
+        "direct_source_paths": []
+      },
+      {
+        "entry": "001a30a8",
+        "size": 400,
+        "callsites": [
+          "001a30f4",
+          "001a310c"
+        ],
+        "direct_source_paths": []
+      },
+      {
+        "entry": "001a8e18",
+        "size": 316,
+        "callsites": [
+          "001a8e3c",
+          "001a8e54",
+          "001a8ea0",
+          "001a8eec"
+        ],
+        "direct_source_paths": []
+      }
+    ],
+    "claim_limit": "static direct-call references only; no dynamic reachability claim"
+  },
+  "separate_helper": {
+    "entry": "00105888",
+    "source_map_unit": [
+      {
+        "entry": "00105888",
+        "unit": "../modules4/system/ps2/asyncf.c",
+        "votes": 2
+      }
+    ],
+    "section": ".text",
+    "interpretation": "separately attributed modules4 engine error/report helper called by this range; its implementation is outside the owned 60-byte span"
+  },
+  "data_boundary": {
+    "address": "00290ac4",
+    "section": ".sbss",
+    "section_scope": "mixed",
+    "status": "unresolved; excluded from this local code attribution"
+  },
+  "other_source_range_status": "All unlisted bytes and all other section ranges retain their existing mixed/unresolved status.",
+  "falsifier": "A byte-identical independently rebuilt sibling or overlapping SDK/source-map assignment for 001d1800..001d183c, or disjoint CFG evidence placing these bytes in another unit, invalidates this local split."
+}

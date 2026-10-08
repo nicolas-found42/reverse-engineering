@@ -31,6 +31,15 @@ def archive(files):
 
 
 class AssetContractCli(unittest.TestCase):
+    def test_caller_cannot_change_structure_evidence_or_limits(self):
+        for field in ("structure_evidence", "limits"):
+            with self.subTest(field=field):
+                manifest = json.loads(MANIFEST.read_text())
+                self.update_contract(manifest, "configuration-cfg", **{field: ["invented claim"]})
+                code, result = self.run_cli(manifest, output=self.root / field)
+                self.assertEqual((code, result["status"]), (1, "fail"))
+                self.assertIn(field + " differs from the fixed registry", " ".join(result["diagnostics"]))
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)

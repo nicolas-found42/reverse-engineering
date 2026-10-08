@@ -43,6 +43,14 @@ class SectionExtractionTest(unittest.TestCase):
 
 
 class ByteDiffTest(unittest.TestCase):
+    def test_unit_scope_follows_recorded_range_for_pass_fail_and_missing_input(self):
+        from matching_diff import compare_unit
+        for unit, status in ((b"r" * 60, "pass"), (b"x" * 60, "fail"), (None, "incomplete")):
+            owned = compare_unit(".text", 0x1d1800, 0xd2800, b"r" * 60, unit)
+            adjacent = compare_unit(".text", 0x1d183c, 0xd283c, b"r" * 60, unit)
+            self.assertEqual((owned.status, owned.scope), (status, "game_owned"))
+            self.assertEqual((adjacent.status, adjacent.scope), (status, "mixed"))
+
     def setUp(self):
         self.text = sections(retail())[".text"]
 

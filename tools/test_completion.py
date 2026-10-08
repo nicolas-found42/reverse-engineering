@@ -4,6 +4,9 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
+import completion
+from evidence_common import Incomplete
 
 from completion import aggregate_ledger, reconstruction_status
 from evidence_common import Invalid
@@ -12,6 +15,26 @@ TOOLS = Path(__file__).resolve().parent
 
 
 class CompletionCli(unittest.TestCase):
+    def test_entry_evidence_failure_does_not_fail_exact_vu_encoding(self):
+        results = [
+            {'status': 'pass', 'details': {}},
+            {'status': 'pass', 'details': {}},
+            {'status': 'fail', 'details': {
+                'exact_roundtrip_overlays': 8,
+                'overlays': [{'index': i, 'byte_gate': {'status': 'pass'}} for i in range(8)],
+                'entry_map': {'status': 'fail', 'diagnostic': 'changed evidence'}}},
+            {'status': 'incomplete', 'details': {}},
+            {'status': 'incomplete', 'details': {}},
+        ]
+        children = [({'status': result['status']}, result) for result in results]
+        with patch.object(completion, 'run_child', side_effect=children), \
+             patch.object(completion, 'source_unit_credit', return_value=0):
+            with self.assertRaises(Invalid) as caught:
+                completion.check(Path('/fixture/game'), self.root, None, None, self.root)
+        criteria = caught.exception.details['criteria']
+        self.assertEqual(criteria[15]['status'], 'pass')
+        self.assertEqual(criteria[16]['status'], 'fail')
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -58,8 +81,8 @@ class CompletionCli(unittest.TestCase):
             recipe / 'docker-linux-exec.sh', recipe / 'docker-wine-exec.sh',
         }
         optional_private_inputs = {
-            Path.home() / 'Documents/github/hermes/spec-5-context/continuation-20261008/first-unit/adr0005-misc3d-boundary.json',
-            TOOLS.parent / '.scratch/mesh/codex-audit/frontier-3845-01/batch-g3/export-5454/inventory.json',
+            TOOLS.parent / 'notes/evidence/fr2-first-unit/adr0005-misc3d-boundary.json',
+            TOOLS.parent / 'notes/evidence/fr2-first-unit/saved-function-inventory-digest.json',
         }
         self.assertTrue(required_public_inputs <= inputs)
         for path in optional_private_inputs:

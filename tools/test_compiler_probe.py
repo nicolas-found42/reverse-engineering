@@ -10,6 +10,25 @@ from compiler_probe import run_probe
 
 
 class CompilerProbeTest(unittest.TestCase):
+    def test_declared_compiler_and_objcopy_must_identify_the_invoked_tool(self):
+        for field in ("compiler_executable", "objcopy_executable"):
+            with self.subTest(field=field):
+                manifest = self.manifest()
+                body = json.loads(manifest.read_text())
+                body["candidates"][0][field] = str(self.linker)
+                manifest.write_text(json.dumps(body))
+                with patch("compiler_probe.subprocess.run") as launched:
+                    result = run_probe(manifest, self.root / "out")
+                self.assertEqual(result["status"], "incomplete")
+                self.assertIn("differs from the invoked", result["candidates"][0]["reason"])
+                launched.assert_not_called()
+
+    def test_probe_receipt_paths_and_command_inputs_survive_the_run(self):
+        result = run_probe(self.manifest(), self.root / "out")
+        for key in ("manifest", "source", "reference"):
+            self.assertTrue(Path(result[key]["path"]).is_file())
+        self.assertTrue(list((self.root / "out").glob("fr2-compiler-probe-*/candidate.o")))
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)

@@ -1,6 +1,7 @@
 """Negative oracle checks for native-output validation, independent of GAS internals."""
 from pathlib import Path
 import struct
+import hashlib
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -11,17 +12,33 @@ import verify_vu as subject
 
 
 class EntryMapValidationTest(unittest.TestCase):
+    def anchor(self, source):
+        data, offsets, _ = fixture()
+        return {**source, 'executable': {'sha256': hashlib.sha256(data).hexdigest()},
+                'instruction_anchors': [{'address': '00001000', 'bytes': data[offsets[1]:offsets[1]+4].hex()}]}
+
+    def test_documented_caller_cannot_omit_instruction_anchors(self):
+        overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved',
+                 'incomplete_reasons': ['unmapped']} for i in range(8)]
+        rows[0]['entries'] = [{'msc_address': 0, 'vu_byte_address': 0,
+                               'caller': 'FUN_00001000', 'evidence': 'caller'}]
+        evidence = {'caller': {'entry_mapping': {'overlay_index': 0, 'vu_byte_address': '0x0',
+                                                'global_value': '0x0', 'ee_builder': 'FUN_00001000'}}}
+        with self.assertRaisesRegex(Invalid, 'requires executable identity and instruction anchors'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence=evidence, executable=fixture()[0])
+
     def test_caller_reference_must_resolve_inside_the_named_overlay(self):
         overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
         rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved', 'incomplete_reasons': ['not fully mapped']} for i in range(8)]
         rows[5] = {'index': 5, 'status': 'documented', 'interface': 'unresolved', 'entries': [{'msc_address': 0x5cc, 'vu_byte_address': 0x2e60, 'caller': 'FUN_00128ca0', 'evidence': 'dispatch'}]}
         dispatch = {'entry_mapping': {'overlay_index': 5, 'vu_byte_address': '0x2e60',
                                       'global_value': '0x5cc', 'ee_builder': 'FUN_00128ca0'}}
-        result = subject.validate_entry_map({'overlays': rows}, overlays, evidence={'dispatch': dispatch})
+        result = subject.validate_entry_map({'overlays': rows}, overlays, evidence={'dispatch': self.anchor(dispatch)}, executable=fixture()[0])
         self.assertEqual(result['documented_entry_count'], 1)
         self.assertEqual(result['incomplete_overlay_indices'], [0, 1, 2, 3, 4, 6, 7])
         rows[5]['entries'][0]['vu_byte_address'] = 0x3800
-        with self.assertRaises(Invalid): subject.validate_entry_map({'overlays': rows}, overlays, evidence={'dispatch': dispatch})
+        with self.assertRaises(Invalid): subject.validate_entry_map({'overlays': rows}, overlays, evidence={'dispatch': self.anchor(dispatch)}, executable=fixture()[0])
 
     def test_caller_claim_cannot_exceed_the_pinned_evidence(self):
         overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
@@ -30,7 +47,7 @@ class EntryMapValidationTest(unittest.TestCase):
         contradiction = {'entry_mapping': {'overlay_index': 5, 'vu_byte_address': '0x2e60',
                                            'global_value': '0x5cc', 'ee_builder': 'FUN_001124c0'}}
         with self.assertRaisesRegex(Invalid, 'contradicts its pinned'):
-            subject.validate_entry_map({'overlays': rows}, overlays, evidence={'dispatch': contradiction})
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence={'dispatch': self.anchor(contradiction)}, executable=fixture()[0])
 
     def test_missing_entry_evidence_is_incomplete(self):
         overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
@@ -138,16 +155,28 @@ class EntryMapValidationTest(unittest.TestCase):
             {'overlay_index': 4, 'vu_byte_address': '0x2688', 'msc_immediate': '0x4d1', 'caller': 'FUN_00228b38', 'channel': 'VIF1'},
             {'overlay_index': 5, 'vu_byte_address': '0x2aa0', 'msc_immediate': '0x554', 'caller': 'FUN_0012a230', 'channel': 'VIF1'}]}
         dispatch = {'entry_mapping': {'overlay_index': 5, 'vu_byte_address': '0x2e60', 'global_value': '0x5cc', 'ee_builder': 'FUN_00128ca0'}}
-        result = subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': additional, 'dispatch': dispatch})
+        result = subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': self.anchor(additional), 'dispatch': self.anchor(dispatch)}, executable=fixture()[0])
         self.assertEqual(result['documented_entry_count'], 4)
         self.assertEqual(result['incomplete_overlay_indices'], list(range(8)))
         additional['derivations'][0]['msc_immediate'] = '0x1b'
         with self.assertRaisesRegex(Invalid, 'contradicts its pinned'):
-            subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': additional, 'dispatch': dispatch})
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': self.anchor(additional), 'dispatch': self.anchor(dispatch)}, executable=fixture()[0])
 
 
 class NativeVuValidationTest(unittest.TestCase):
-    def _run_fixture(self, mode):
+    def test_missing_or_changed_entry_evidence_preserves_the_encoding_gate(self):
+        for error in (Incomplete('missing entry evidence'), Invalid('changed entry hash')):
+            with self.subTest(error=type(error).__name__):
+                with self.assertRaises(type(error)) as caught:
+                    self._run_fixture('exact', entry_error=error)
+                details = caught.exception.details
+                self.assertEqual(details['encoding_status'], 'pass')
+                self.assertEqual(details['exact_roundtrip_overlays'], 1)
+                self.assertEqual(details['overlays'][0]['byte_gate']['status'], 'pass')
+                self.assertEqual(details['entry_map']['status'],
+                                 'incomplete' if isinstance(error, Incomplete) else 'fail')
+
+    def _run_fixture(self, mode, entry_error=None):
         data, offsets, _ = fixture()
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -175,7 +204,7 @@ class NativeVuValidationTest(unittest.TestCase):
                 return {'command': command, 'exit_code': 0,
                         'stdout': {'path': str(stdout)}}
 
-            with patch.object(subject, 'validate_entry_map', return_value={
+            with patch.object(subject, 'validate_entry_map', side_effect=entry_error, return_value={
                     'documented_entry_count': 0, 'incomplete_overlay_indices': [0],
                     'partial_interface_overlay_indices': [], 'complete_interface_overlay_indices': [],
                     'interface_status': 'incomplete', 'interfaces': []}), \

@@ -13,7 +13,7 @@ import tempfile
 TOOLS = Path(__file__).resolve().parents[1]
 ADR0005 = TOOLS.parent / "docs/adr/0005-game-owned-sdk-boundary.md"
 sys.path.insert(0, str(TOOLS))
-from compiler_probe import run_probe  # noqa: E402
+from compiler_probe import command_executable, run_probe  # noqa: E402
 from evidence_common import Incomplete, Invalid, write_result  # noqa: E402
 from matching_diff import scope_of_range  # noqa: E402
 from matching_ranges import (BOUNDARY_METADATA, SAVED_FUNCTION_INVENTORY, SOURCE_MAP,
@@ -37,15 +37,6 @@ def apply_recorded_range(result: dict, reference_range: dict) -> None:
     if reference_range.get("scope") != scope.value:
         raise Incomplete("compiler recipe scope differs from the recorded range map", {
             "declared_scope": reference_range.get("scope"), "recorded_scope": scope.value})
-    for candidate in result.get("candidates", []):
-        gate = candidate.get("gate")
-        if gate is None:
-            continue
-        gate.update(section=section, scope=scope.value, section_bytes=size)
-        difference = gate.get("first_difference")
-        if difference is not None:
-            difference["address"] = f"{address + difference['offset']:08x}"
-            difference["file_offset"] = f"{file_offset + difference['offset']:08x}"
     passed = (result.get("status") == "pass" and scope.value == "game_owned"
               and provenance is not None
               and source_sha256 == UNIT_SOURCE_SHA256
@@ -105,6 +96,12 @@ def validate_manifest_runtimes(manifest_path: Path, tool_root: Path) -> None:
             raise Incomplete(f"candidate {candidate_id} declares a different runtime image", {
                 "expected_image_id": expected_image,
                 "declared_image_id": candidate.get("runtime", {}).get("image_id")})
+        for phase, field in (("compile", "compiler_executable"), ("objcopy", "objcopy_executable"),
+                             ("prepare_object", "objcopy_executable"), ("link", None)):
+            declared = (Path(candidate[field]).resolve() if field else
+                        (tool_root / "mips-linux-gnu-ld").resolve())
+            if command_executable(candidate.get(phase, [])) != declared:
+                raise Incomplete(f"candidate {candidate_id} {phase} executable differs from its declared tool")
         for phase in ("compile", "objcopy", "prepare_object", "link"):
             command = candidate.get(phase, [])
             wine_phase = is_wine and phase == "compile"
@@ -131,13 +128,13 @@ def main(argv: list[str] | None = None) -> int:
         # before creating any paths so Docker receives the host-visible mount
         # path rather than a lexical symlink path.
         tool_root = args.tool_root.resolve(strict=True)
-        with tempfile.TemporaryDirectory(prefix="compiler-probe-recipe-", dir=tool_root) as temp:
-            staging = Path(temp).resolve()
-            manifest, _ = prepare(args.game, tool_root, staging)
-            validate_manifest_runtimes(manifest, tool_root)
-            reference_range = json.loads(manifest.read_text())["evidence"]["reference_range"]
-            runtime_identity = validate_runtime_images()
-            result = run_probe(manifest, (staging / "candidate-work").resolve())
+        temp = tempfile.mkdtemp(prefix="compiler-probe-recipe-", dir=tool_root)
+        staging = Path(temp).resolve()
+        manifest, _ = prepare(args.game, tool_root, staging)
+        validate_manifest_runtimes(manifest, tool_root)
+        reference_range = json.loads(manifest.read_text())["evidence"]["reference_range"]
+        runtime_identity = validate_runtime_images()
+        result = run_probe(manifest, (staging / "candidate-work").resolve(), range_scoped=True)
         apply_recorded_range(result, reference_range)
         result["runtime_identity"] = runtime_identity
         result["runtime_phases"] = {

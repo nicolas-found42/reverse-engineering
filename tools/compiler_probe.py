@@ -16,7 +16,7 @@ import tempfile
 import uuid
 
 from evidence_common import Incomplete, Invalid, identity
-from matching_diff import compare
+from matching_diff import compare, compare_unit
 from matching_sections import Section
 
 COMMAND_TIMEOUT_SECONDS = 120
@@ -35,7 +35,27 @@ def run_command(command: list[str]) -> subprocess.CompletedProcess:
                           timeout=COMMAND_TIMEOUT_SECONDS)
 
 
-def run_probe(manifest_path: Path, output: Path) -> dict:
+def command_executable(command: list[str]) -> Path:
+    """Resolve direct commands or the repository's byte-pinned Docker wrappers."""
+    if not command:
+        raise Incomplete("tool command is empty")
+    launcher = Path(command[0]).resolve()
+    recipe = Path(__file__).resolve().parent / "compiler_probe_recipe"
+    if launcher == Path("/bin/bash").resolve() and len(command) >= 4:
+        wrapper = Path(command[1])
+        trusted = recipe / wrapper.name
+        if (wrapper.name in ("docker-linux-exec.sh", "docker-wine-exec.sh")
+                and wrapper.is_file() and wrapper.read_bytes() == trusted.read_bytes()):
+            root, executable = Path(command[2]).resolve(), command[3]
+            path = Path(executable)
+            if path.is_absolute() and path.is_relative_to(root):
+                return path.resolve()
+            if executable.startswith("mips-linux-gnu-") and "/" not in executable:
+                return (root / executable).resolve()
+    return launcher
+
+
+def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) -> dict:
     manifest = json.loads(manifest_path.read_text())
     required = {"source", "symbol", "reference", "candidates"}
     if not required <= manifest.keys() or not manifest["candidates"]:
@@ -83,80 +103,86 @@ def run_probe(manifest_path: Path, output: Path) -> dict:
             row["reason"] = "candidate compiler or objcopy is unavailable"
             results.append(row)
             continue
+        if (command_executable(item["compile"]) != compiler_binary
+                or command_executable(item["objcopy"]) != objcopy_binary):
+            row["reason"] = "declared tool executable differs from the invoked command"
+            results.append(row)
+            continue
         row["compiler_sha256"] = digest(compiler_binary)
         row["objcopy_sha256"] = digest(objcopy_binary)
         # Keep transient files under the mounted tool root: remote/container
         # candidate launchers cannot see a host-only /var/folders temp path.
-        with tempfile.TemporaryDirectory(prefix="fr2-compiler-probe-", dir=output) as temp:
-            obj = Path(temp) / "candidate.o"
-            extracted = Path(temp) / "function.bin"
-            compile_argv = [str(compiler), *item["compile"][1:], *item.get("flags", []),
-                            "-ffunction-sections", "-c", str(source), "-o", str(obj)]
+        temp = tempfile.mkdtemp(prefix="fr2-compiler-probe-", dir=output)
+        obj = Path(temp) / "candidate.o"
+        extracted = Path(temp) / "function.bin"
+        compile_argv = [str(compiler), *item["compile"][1:], *item.get("flags", []),
+                        "-ffunction-sections", "-c", str(source), "-o", str(obj)]
+        try:
+            compiled = subprocess.run(compile_argv, capture_output=True, text=True,
+                                     timeout=COMMAND_TIMEOUT_SECONDS)
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            row.update(status="error", reason=f"candidate compiler could not complete: {exc}")
+            results.append(row)
+            continue
+        row["compile_returncode"] = compiled.returncode
+        row["compile_stderr"] = compiled.stderr[-4000:]
+        if compiled.returncode:
+            row.update(status="error", reason="candidate compilation failed")
+            results.append(row)
+            continue
+        paths = {"object": obj, "prepared_object": Path(temp) / "prepared.o",
+                 "linked_object": Path(temp) / "linked.o"}
+        object_to_extract = obj
+        for phase in ("prepare_object", "link"):
+            if phase not in item:
+                continue
+            phase_argv = expand_command(item[phase], paths)
+            row[f"{phase}_argv"] = phase_argv
             try:
-                compiled = subprocess.run(compile_argv, capture_output=True, text=True,
-                                         timeout=COMMAND_TIMEOUT_SECONDS)
+                phase_result = run_command(phase_argv)
             except (OSError, subprocess.TimeoutExpired) as exc:
-                row.update(status="error", reason=f"candidate compiler could not complete: {exc}")
+                row.update(status="error", reason=f"{phase} could not complete: {exc}")
+                results.append(row)
+                break
+            row[f"{phase}_returncode"] = phase_result.returncode
+            row[f"{phase}_stderr"] = phase_result.stderr[-4000:]
+            if phase_result.returncode:
+                row.update(status="error", reason=f"{phase} failed")
+                results.append(row)
+                break
+            object_to_extract = paths["prepared_object"] if phase == "prepare_object" else paths["linked_object"]
+        else:
+            objcopy_argv = [str(objcopy), *item["objcopy"][1:], "--dump-section",
+                            f".text.{symbol}={extracted}", str(object_to_extract)]
+            try:
+                copied = run_command(objcopy_argv)
+            except (OSError, subprocess.TimeoutExpired) as exc:
+                row.update(status="error", reason=f"function extraction could not complete: {exc}")
                 results.append(row)
                 continue
-            row["compile_returncode"] = compiled.returncode
-            row["compile_stderr"] = compiled.stderr[-4000:]
-            if compiled.returncode:
-                row.update(status="error", reason="candidate compilation failed")
+            row["objcopy_returncode"] = copied.returncode
+            row["objcopy_stderr"] = copied.stderr[-4000:]
+            if copied.returncode or not extracted.is_file():
+                row.update(status="error", reason="function section could not be extracted")
                 results.append(row)
                 continue
-            paths = {"object": obj, "prepared_object": Path(temp) / "prepared.o",
-                     "linked_object": Path(temp) / "linked.o"}
-            object_to_extract = obj
-            for phase in ("prepare_object", "link"):
-                if phase not in item:
-                    continue
-                phase_argv = expand_command(item[phase], paths)
-                row[f"{phase}_argv"] = phase_argv
-                try:
-                    phase_result = run_command(phase_argv)
-                except (OSError, subprocess.TimeoutExpired) as exc:
-                    row.update(status="error", reason=f"{phase} could not complete: {exc}")
-                    results.append(row)
-                    break
-                row[f"{phase}_returncode"] = phase_result.returncode
-                row[f"{phase}_stderr"] = phase_result.stderr[-4000:]
-                if phase_result.returncode:
-                    row.update(status="error", reason=f"{phase} failed")
-                    results.append(row)
-                    break
-                object_to_extract = paths["prepared_object"] if phase == "prepare_object" else paths["linked_object"]
-            else:
-                objcopy_argv = [str(objcopy), *item["objcopy"][1:], "--dump-section",
-                                f".text.{symbol}={extracted}", str(object_to_extract)]
-                try:
-                    copied = run_command(objcopy_argv)
-                except (OSError, subprocess.TimeoutExpired) as exc:
-                    row.update(status="error", reason=f"function extraction could not complete: {exc}")
-                    results.append(row)
-                    continue
-                row["objcopy_returncode"] = copied.returncode
-                row["objcopy_stderr"] = copied.stderr[-4000:]
-                if copied.returncode or not extracted.is_file():
-                    row.update(status="error", reason="function section could not be extracted")
-                    results.append(row)
-                    continue
-                actual = extracted.read_bytes()
-                row["actual_sha256"] = hashlib.sha256(actual).hexdigest()
-                row["actual_bytes"] = len(actual)
-                row["reference_sha256"] = hashlib.sha256(expected).hexdigest()
-                row["reference_bytes"] = len(expected)
-                reference_range = manifest.get("evidence", {}).get("reference_range", {})
-                section_name = reference_range.get("section", f".probe.{symbol}")
-                address = int(reference_range.get("vaddr", "0"), 16)
-                file_offset = int(reference_range.get("file_offset", "0"), 16)
-                target = Section(section_name, address, file_offset, len(expected), expected,
-                                 hashlib.sha256(expected).hexdigest())
-                verdict = compare(target, actual)
-                row.update(status=verdict.status, gate=verdict.as_dict())
-                if verdict.status == "fail":
-                    row["reason"] = "function bytes differ"
-                results.append(row)
+            actual = extracted.read_bytes()
+            row["actual_sha256"] = hashlib.sha256(actual).hexdigest()
+            row["actual_bytes"] = len(actual)
+            row["reference_sha256"] = hashlib.sha256(expected).hexdigest()
+            row["reference_bytes"] = len(expected)
+            reference_range = manifest.get("evidence", {}).get("reference_range", {})
+            section_name = reference_range.get("section", f".probe.{symbol}")
+            address = int(reference_range.get("vaddr", "0"), 16)
+            file_offset = int(reference_range.get("file_offset", "0"), 16)
+            target = Section(section_name, address, file_offset, len(expected), expected,
+                             hashlib.sha256(expected).hexdigest())
+            verdict = (compare_unit(section_name, address, file_offset, expected, actual)
+                       if range_scoped else compare(target, actual))
+            row.update(status=verdict.status, gate=verdict.as_dict())
+            if verdict.status == "fail":
+                row["reason"] = "function bytes differ"
+            results.append(row)
     matches = [r["id"] for r in results if r["status"] == "pass"]
     failures = [r["id"] for r in results if r["status"] == "fail"]
     incomplete = [r["id"] for r in results if r["status"] == "incomplete"]
