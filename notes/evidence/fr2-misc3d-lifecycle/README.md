@@ -146,3 +146,55 @@ contradiction (confidence 0.22; contradicted 0.48 versus verified 0.46) and
 (`SHN_MIPS_SCOMMON`, size/alignment four) and linked ELF section headers
 (NOBITS, flags three, size/alignment four), resolving that bounded issue without
 rewriting the original escalation. Exact byte checks remain authoritative.
+
+The independent raw ELF crosscheck above can be reproduced directly, without
+calling the lifecycle checker or its parser. It verifies the exact reviewed
+object/link hashes before decoding ELF32 little-endian section and symbol
+tables. Private artifact paths come from the preserved reviewed receipt:
+
+```sh
+python3 - <<'PY'
+import hashlib, json, struct
+from pathlib import Path
+receipt = json.loads(Path('notes/evidence/fr2-misc3d-lifecycle/reviewed_source_build.json').read_text())
+
+def load(name):
+    record = receipt['details']['artifacts'][name]
+    data = Path(record['path']).read_bytes()
+    assert hashlib.sha256(data).hexdigest() == record['sha256']
+    assert data[:6] == b'\x7fELF\x01\x01'
+    offset = struct.unpack_from('<I', data, 32)[0]
+    stride, count, names = struct.unpack_from('<HHH', data, 46)
+    assert stride == 40
+    rows = [struct.unpack_from('<10I', data, offset + i * stride) for i in range(count)]
+    strings = rows[names]
+    section_names = data[strings[4]:strings[4] + strings[5]]
+    return data, rows, section_names
+
+for cell in ('db_id', 'state_c8', 'state_cc', 'state_d0', 'state_d4'):
+    data, rows, _ = load(cell + '_object')
+    found = []
+    for row in rows:
+        if row[1] != 2:
+            continue
+        assert row[9] == 16
+        strings = rows[row[6]]
+        names = data[strings[4]:strings[4] + strings[5]]
+        for offset in range(row[4], row[4] + row[5], 16):
+            name, value, size, info, other, index = struct.unpack_from('<IIIBBH', data, offset)
+            if names[name:].split(b'\0', 1)[0] == ('misc3d_' + cell).encode():
+                found.append((value, size, info, index))
+    assert found == [(4, 4, 17, 0xff03)], (cell, found)
+    print(cell, 'MIPS small-common', found)
+
+data, rows, names = load('linked_output')
+for cell, address in (('db_id', 0x290ac4), ('state_c8', 0x290ac8),
+                      ('state_cc', 0x290acc), ('state_d0', 0x290ad0), ('state_d4', 0x290ad4)):
+    selected = [row for row in rows if names[row[0]:].split(b'\0', 1)[0]
+                == ('.sbss.fr2_misc3d_' + cell).encode()]
+    assert len(selected) == 1
+    row = selected[0]
+    assert (row[1], row[2], row[3], row[5], row[8]) == (8, 3, address, 4, 4)
+    print(cell, 'NOBITS', hex(address), 'flags', row[2], 'size/alignment', row[5], row[8])
+PY
+```
