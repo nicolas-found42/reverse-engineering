@@ -38,6 +38,14 @@ class EntryMapValidationTest(unittest.TestCase):
         rows[5] = {'index': 5, 'status': 'documented', 'interface': 'unresolved', 'entries': [{'msc_address': 0x5cc, 'vu_byte_address': 0x2e60, 'caller': 'FUN_00128ca0', 'evidence': 'dispatch'}]}
         with self.assertRaises(Incomplete): subject.validate_entry_map({'overlays': rows}, overlays, evidence={})
 
+    def test_incomplete_entry_rows_require_a_falsifiable_reason(self):
+        overlays = [{'index': i, 'vu_byte_address': i * 0x800, 'bytes': 0x800} for i in range(8)]
+        rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved',
+                 'incomplete_reasons': ['not fully mapped']} for i in range(8)]
+        rows[3].pop('incomplete_reasons')
+        with self.assertRaisesRegex(Invalid, 'must state why'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence={})
+
     def test_additional_static_callers_map_only_to_their_pinned_overlay_and_keep_scope_incomplete(self):
         overlays = [{'index': i, 'vu_byte_address': 0 if i == 7 else i * 0x800, 'bytes': 0x460 if i == 7 else 0x800} for i in range(8)]
         rows = [{'index': i, 'status': 'incomplete', 'entries': [], 'interface': 'unresolved', 'incomplete_reasons': ['runtime and exhaustive dispatch are unresolved']} for i in range(8)]
@@ -52,6 +60,9 @@ class EntryMapValidationTest(unittest.TestCase):
         result = subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': additional, 'dispatch': dispatch})
         self.assertEqual(result['documented_entry_count'], 4)
         self.assertEqual(result['incomplete_overlay_indices'], list(range(8)))
+        additional['derivations'][0]['msc_immediate'] = '0x1b'
+        with self.assertRaisesRegex(Invalid, 'contradicts its pinned'):
+            subject.validate_entry_map({'overlays': rows}, overlays, evidence={'additional': additional, 'dispatch': dispatch})
 
 
 class NativeVuValidationTest(unittest.TestCase):
