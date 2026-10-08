@@ -1,0 +1,146 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T213957Z-ae6278e562bd4cf68c6564264ca4606a",
+  "check": "oracle-dependency-source-inventory",
+  "command": [
+    "tools/oracle_dependency_sources.py",
+    ".scratch/continuation-oracle-provenance",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qt-sdk",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qtbase.7z",
+    "--output",
+    ".scratch/continuation-oracle-provenance/source-audit-reviewed"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/oracle_dependency_sources.py": {
+      "bytes": 7779,
+      "sha256": "51fd7e815a0abf6ea2390af7d47a0b5510ae5f4d84e50716bebb504246bd4579"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/headless_oracle.py": {
+      "bytes": 30027,
+      "sha256": "fbcb623c670f97756e1b4378a055d9a5527911a7b805652bd3b1f6f78b225ec8"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/evidence_common.py": {
+      "bytes": 2971,
+      "sha256": "52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "identities": {
+      ".scratch/continuation-oracle-provenance/pcsx2-v2.6.3-macos-Qt.tar.xz": {
+        "bytes": 28960388,
+        "sha256": "cb7b9e6330f1abf0cf92c94065f7eb983d0fa8affcfe6b0ccb9c2a4ebf067f1a"
+      },
+      ".scratch/continuation-oracle-provenance/qtbase-everywhere-src-6.10.1.tar.xz": {
+        "bytes": 50234516,
+        "sha256": "5a6226f7e23db51fdc3223121eba53f3f5447cf0cc4d6cb82a3a2df7a65d265d"
+      },
+      ".scratch/continuation-oracle-provenance/KDDockWidgets-2.4.0.tar.gz": {
+        "bytes": 5668458,
+        "sha256": "51dbf24fe72e43dd7cb9a289d3cab47112010f1a2ed69b6fc8ac0dff31991ed2"
+      },
+      ".scratch/continuation-oracle-provenance/build-dependencies.sh": {
+        "bytes": 15231,
+        "sha256": "ebc925a91219548efc62c4592ae5fe99490627895bb8d66e1260c668d8d44add"
+      },
+      "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qt-sdk/sbom/qtbase-6.10.1.source.spdx": {
+        "bytes": 10376263,
+        "sha256": "752bd3cfb0be50592437aa5b7fcaac6287618033f210032048e17b9734a0e825"
+      },
+      "/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qtbase.7z": {
+        "bytes": 34780299,
+        "sha256": "e469b996bd4dd6409aeab1a2034eb73267d5c8de84aa6224bf7c9520cdcbd309"
+      },
+      "/Applications/PCSX2.app/Contents/MacOS/PCSX2": {
+        "bytes": 17250752,
+        "sha256": "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d"
+      },
+      "/Applications/PCSX2.app/Contents/Frameworks/libQt6Core.6.dylib": {
+        "bytes": 7120576,
+        "sha256": "5147afdc2cf2bd0189e3907ea49076b2ef5cad1eee355b19d7cccf8a53bf5afe"
+      },
+      "/Applications/PCSX2.app/Contents/Frameworks/libQt6Gui.6.dylib": {
+        "bytes": 7423744,
+        "sha256": "5e05e76aacb6dbc64330b44ceefcaa5c55c72de43293415d85e988ab19aa9f04"
+      },
+      "/Applications/PCSX2.app/Contents/Frameworks/libQt6Widgets.6.dylib": {
+        "bytes": 7543808,
+        "sha256": "1c393b9eaf659247739c862338e1a68f31dcbbedce975c444220876c8331681d"
+      },
+      "/Applications/PCSX2.app/Contents/Frameworks/libkddockwidgets-qt6.3.dylib": {
+        "bytes": 2341568,
+        "sha256": "60f5e6882d2a8207c8b4604a2c8324dad84c7d48584633f92daf396d8132fe06"
+      }
+    },
+    "missing": [],
+    "changed": [],
+    "release_binding": {
+      "members": {
+        "Contents/Frameworks/libQt6Core.6.dylib": {
+          "release_sha256": "5147afdc2cf2bd0189e3907ea49076b2ef5cad1eee355b19d7cccf8a53bf5afe",
+          "installed": {
+            "bytes": 7120576,
+            "sha256": "5147afdc2cf2bd0189e3907ea49076b2ef5cad1eee355b19d7cccf8a53bf5afe"
+          }
+        },
+        "Contents/Frameworks/libQt6Gui.6.dylib": {
+          "release_sha256": "5e05e76aacb6dbc64330b44ceefcaa5c55c72de43293415d85e988ab19aa9f04",
+          "installed": {
+            "bytes": 7423744,
+            "sha256": "5e05e76aacb6dbc64330b44ceefcaa5c55c72de43293415d85e988ab19aa9f04"
+          }
+        },
+        "Contents/Frameworks/libQt6Widgets.6.dylib": {
+          "release_sha256": "1c393b9eaf659247739c862338e1a68f31dcbbedce975c444220876c8331681d",
+          "installed": {
+            "bytes": 7543808,
+            "sha256": "1c393b9eaf659247739c862338e1a68f31dcbbedce975c444220876c8331681d"
+          }
+        },
+        "Contents/Frameworks/libkddockwidgets-qt6.3.dylib": {
+          "release_sha256": "60f5e6882d2a8207c8b4604a2c8324dad84c7d48584633f92daf396d8132fe06",
+          "installed": {
+            "bytes": 2341568,
+            "sha256": "60f5e6882d2a8207c8b4604a2c8324dad84c7d48584633f92daf396d8132fe06"
+          }
+        },
+        "Contents/MacOS/PCSX2": {
+          "release_sha256": "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d",
+          "installed": {
+            "bytes": 17250752,
+            "sha256": "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d"
+          }
+        }
+      },
+      "missing": [],
+      "changed": []
+    },
+    "sdk_source_inventory": {
+      "required_files": 22684,
+      "checked_files": 22684,
+      "changed": [],
+      "missing": [],
+      "matched_bytes": 0,
+      "claim_limit": "SPDX source-file inventory only; no dependency build or guest execution."
+    },
+    "issue22_status": "incomplete",
+    "matched_bytes": 0,
+    "scope": "Pinned source record and official release-member inventory only",
+    "remaining": [
+      "Complete installed dependency closure and component notices.",
+      "Bind exact dependency build provenance; no local dependency rebuild here.",
+      "Qualify strict window/display/audio/focus lifecycle separately."
+    ]
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 4479,
+      "sha256": "79259b84c7e768d4a5182bafd73fe74120b4a1c51777442eb3bc724fe4bc75bd"
+    }
+  }
+}

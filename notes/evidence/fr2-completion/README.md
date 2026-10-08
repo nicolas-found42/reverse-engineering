@@ -1,7 +1,12 @@
 # Reconstruction completion command
 
-The [implementation summary](20261008-implementation-summary.json) is the current
-bounded progress record for draft PR #36. Its clean real-corpus aggregate at
+The [current continuation](../fr2-issue-5-continuation/aggregate-summary.json) records
+the fresh eleven-child aggregate and all 32 criteria after PR #36 merged. The
+[criterion plan](../fr2-issue-5-continuation/criterion-plan.md) retains remaining
+work and ticket links. This reviewed working-tree run exits 2 with the same
+60-byte credit and 3,506,988 unresolved bytes; it is not clean-build acceptance.
+The [historical implementation summary](20261008-implementation-summary.json)
+records the earlier bounded progress delivered by PR #36. Its clean real-corpus aggregate at
 source revision `9c4f9fa` exits 2: AC01, AC07, AC16 and AC18 pass, with 60
 attributed/matched bytes, 3,506,988 unresolved bytes and zero substitutes.
 Its recorded whole-suite command ran 711 tests, OK, with no skips or dependency
@@ -40,8 +45,8 @@ recorded candidate set, source and reference range. The generic compiler probe
 cannot assign ownership. The fixed source-unit child applies the independently
 recorded ADR-0005 range decision and may supply local AC07 credit, while AC05
 historical compiler identification remains incomplete. The command runs
-independent load-image, archive, VU, asset-contract and exploratory compiler
-checks in fresh child directories and retains their
+independent load-image, archive, VU, asset-contract, exploratory compiler,
+misc3d cell/lifecycle/terminal, GNU layout and RPC checks in fresh child directories and retains their
 receipt/report identities. It reports all AC01–AC32 criteria from issue #5.
 Reconstruction and behavioral results have separate scopes. AC25/AC26 do not
 contribute static matching evidence. Missing source builds, attribution,

@@ -1,0 +1,390 @@
+{
+  "schema_version": 1,
+  "status": "pass",
+  "raw_receipt": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/evidence/linker-layout-controls-native-final/positive/20261008T213249Z-f153987dc9354487acee8b30408f3a52/result.json",
+    "bytes": 39224,
+    "sha256": "c4236adc7dc52dba44974447cd0e4a677f59ca46fcc756bd9bb4c46a8cf08c5c"
+  },
+  "input_identities": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout_recipe/controls.py": {
+      "bytes": 5214,
+      "sha256": "56f1ba8934da694a1e546909562c4c4ec27b47b2705d5933212b9bc098d8f7b0"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout.py": {
+      "bytes": 13931,
+      "sha256": "150c301f5e6d896ff5ad867562f013f37d35110db581dff26f0f400cf4f24d9e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-linker-layout-continuation/decision.json": {
+      "bytes": 4678,
+      "sha256": "bac05e2931af67a61e4bc3a5fe1482aa89243aa6d11a0858ff2cfe9abb88e86c"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout_recipe/packages.py": {
+      "bytes": 3208,
+      "sha256": "4178846f36ac56e20c5b1b7d3ada20373a10d7911ce76c649a5f2e816d9b1a05"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/linker_layout_recipe/fixture.py": {
+      "bytes": 4056,
+      "sha256": "3cca9b22468fc9fbb2e62f2fbe991f106d2e7e171658af4ad3d1fe7e5fec0b20"
+    }
+  },
+  "details": {
+    "scope": "recorded misc3d accessor, diagnostic constants and four-byte cell",
+    "decision": {
+      "bytes": 4678,
+      "sha256": "bac05e2931af67a61e4bc3a5fe1482aa89243aa6d11a0858ff2cfe9abb88e86c"
+    },
+    "gnu_packages": {
+      "archives": {
+        "binutils-mips-linux-gnu_2.40-2cross2_amd64.deb": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-linker-provenance/binutils-mips-linux-gnu_2.40-2cross2_amd64.deb",
+          "identity": {
+            "bytes": 2796440,
+            "sha256": "45c7a04a74873adb4fbcc747253049e94c59b797d5d97d52e687b671b39dbde2"
+          },
+          "url": "https://deb.debian.org/debian/pool/main/b/binutils-mipsen/binutils-mips-linux-gnu_2.40-2cross2_amd64.deb"
+        },
+        "binutils-mipsen_10+c2.dsc": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-linker-provenance/binutils-mipsen_10+c2.dsc",
+          "identity": {
+            "bytes": 5440,
+            "sha256": "a3849e5fa32ffcc074924cfe48e4aad91cf0fb639a270e6a29eef4fe31c4cd42"
+          },
+          "url": "https://deb.debian.org/debian/pool/main/b/binutils-mipsen/binutils-mipsen_10+c2.dsc"
+        },
+        "binutils-mipsen_10+c2.tar.xz": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-linker-provenance/binutils-mipsen_10+c2.tar.xz",
+          "identity": {
+            "bytes": 5356,
+            "sha256": "8fe8f6139574c8f0630850e864d0d038f3174c744fcd780ba5f705266d38177a"
+          },
+          "url": "https://deb.debian.org/debian/pool/main/b/binutils-mipsen/binutils-mipsen_10+c2.tar.xz"
+        },
+        "binutils_2.40-2.debian.tar.xz": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-linker-provenance/binutils_2.40-2.debian.tar.xz",
+          "identity": {
+            "bytes": 102476,
+            "sha256": "a71c03e51d7ac2be8d97daa29dc02e578978c8eeddfd51045502fd008cec8adc"
+          },
+          "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils_2.40-2.debian.tar.xz"
+        },
+        "binutils_2.40-2.dsc": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-linker-provenance/binutils_2.40-2.dsc",
+          "identity": {
+            "bytes": 11692,
+            "sha256": "cd75da7829d819189ba6154d408666373b307e222b393223804c4c4a7156f421"
+          },
+          "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils_2.40-2.dsc"
+        },
+        "binutils_2.40.orig.tar.xz": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-linker-provenance/binutils_2.40.orig.tar.xz",
+          "identity": {
+            "bytes": 25364048,
+            "sha256": "d78c2d2eb24a9be1e02f8854cb1bd435556d7f584fb6bfb6b07e6527d43fc41d"
+          },
+          "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils_2.40.orig.tar.xz"
+        }
+      },
+      "package_members": {
+        "mips-linux-gnu-ld": {
+          "member": "./usr/bin/mips-linux-gnu-ld.bfd",
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        },
+        "mips-linux-gnu-objcopy": {
+          "member": "./usr/bin/mips-linux-gnu-objcopy",
+          "bytes": 192168,
+          "sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed"
+        },
+        "copyright": {
+          "member": "./usr/share/doc/binutils-mips-linux-gnu/copyright",
+          "bytes": 1795,
+          "sha256": "a81bdd422c2c015deca84bf6ad249bf0d7d19885fc01d1894463291b0b7313e1"
+        },
+        "mips-linux-gnu-as": {
+          "member": "./usr/bin/mips-linux-gnu-as",
+          "bytes": 935232,
+          "sha256": "42a59e2079d2ba83eeea0143cec51cf9712073ab6aa92c2a9b0ae3e5755c9edb"
+        }
+      },
+      "source_lineage": {
+        "binary": "binutils-mips-linux-gnu 2.40-2cross2 amd64",
+        "Source": "binutils-mipsen (10+c2)",
+        "Built-Using": "binutils (= 2.40-2)",
+        "source_reference": "https://packages.debian.org/bookworm/binutils-source",
+        "local_build": "Not executed; package members bind installed binaries to the recorded Debian distribution."
+      },
+      "build_disposition": "Exact Debian binary/source binding; local rebuild of binutils was not executed."
+    },
+    "gnu_machine_fixture": {
+      "contract": {
+        "machine": 8,
+        "object_flags": "20924001",
+        "output_flags": "20924001",
+        "entry": "00100000",
+        "hi_lo_carry_target": "00108004",
+        "zero_fill_bytes": 4,
+        "matched_bytes": 0,
+        "claim_limit": "Authored public fixture assembled with native GNU r5900 support; not retail code"
+      },
+      "commands": [
+        [
+          "/bin/bash",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/docker-linux-exec.sh",
+          "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+          "mips-linux-gnu-as",
+          "-EL",
+          "-march=r5900",
+          "-mabi=eabi",
+          "-no-pad-sections",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.o",
+          "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.s"
+        ],
+        [
+          "/bin/bash",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/docker-linux-exec.sh",
+          "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+          "mips-linux-gnu-ld",
+          "-m",
+          "elf32ltsmip",
+          "-T",
+          "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.ld",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.elf",
+          "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.o"
+        ]
+      ],
+      "artifacts": {
+        "fixture.s": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.s",
+          "bytes": 407,
+          "sha256": "5cff6913290ab96ffc720e0bf4d53609f0d2179cb655b3a36f110b3e8de948b0"
+        },
+        "fixture.ld": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.ld",
+          "bytes": 474,
+          "sha256": "e396af5ace9b26df4777451caabfb7299df321759f029737f75a7789a0d3a5c3"
+        },
+        "fixture.o": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.o",
+          "bytes": 1152,
+          "sha256": "ccc24bc1c4d47166f1cd92022723ba2181e944104bd98f4d11ebecac087c89a1"
+        },
+        "fixture.elf": {
+          "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/gnu-machine-fixture-mrr3po50/fixture.elf",
+          "bytes": 99048,
+          "sha256": "abde69b131cab942570553413f85a4587a13a482088ef1fdb05de4c439249e89"
+        }
+      }
+    },
+    "output_contract": {
+      "machine": 8,
+      "flags": "20924001",
+      "entry": "001d1800",
+      "sections": [
+        {
+          "section": ".text.fr2_misc3d_get_database_id",
+          "address": "001d1800",
+          "bytes": 60,
+          "alignment": 8,
+          "storage": "PROGBITS",
+          "file_bytes": 60
+        },
+        {
+          "section": ".fr2_file",
+          "address": "002831a8",
+          "bytes": 29,
+          "alignment": 8,
+          "storage": "PROGBITS",
+          "file_bytes": 29
+        },
+        {
+          "section": ".fr2_message",
+          "address": "00283320",
+          "bytes": 55,
+          "alignment": 8,
+          "storage": "PROGBITS",
+          "file_bytes": 55
+        },
+        {
+          "section": ".sbss.fr2_misc3d_db_id",
+          "address": "00290ac4",
+          "bytes": 4,
+          "alignment": 4,
+          "storage": "NOBITS",
+          "file_bytes": 0
+        }
+      ],
+      "loads": [
+        {
+          "type": 1,
+          "offset": 0,
+          "virtual_address": 1900544,
+          "physical_address": 1900544,
+          "file_size": 6204,
+          "memory_size": 6204,
+          "flags": 5,
+          "alignment": 65536
+        },
+        {
+          "type": 1,
+          "offset": 12712,
+          "virtual_address": 2634152,
+          "physical_address": 2634152,
+          "file_size": 431,
+          "memory_size": 431,
+          "flags": 4,
+          "alignment": 65536
+        },
+        {
+          "type": 1,
+          "offset": 2756,
+          "virtual_address": 2689732,
+          "physical_address": 2689732,
+          "file_size": 0,
+          "memory_size": 4,
+          "flags": 6,
+          "alignment": 65536
+        }
+      ],
+      "matched_bytes": 0,
+      "zero_fill": "ELF PT_LOAD memory tail contract; execution was not observed"
+    },
+    "relocations": {
+      "records": [
+        {
+          "offset": 0,
+          "kind": 7,
+          "symbol": "misc3d_db_id",
+          "binding": "00290ac4"
+        },
+        {
+          "offset": 24,
+          "kind": 5,
+          "symbol": ".fr2_file",
+          "binding": "002831a8"
+        },
+        {
+          "offset": 32,
+          "kind": 6,
+          "symbol": ".fr2_file",
+          "binding": "002831a8"
+        },
+        {
+          "offset": 28,
+          "kind": 5,
+          "symbol": ".fr2_message",
+          "binding": "00283320"
+        },
+        {
+          "offset": 36,
+          "kind": 6,
+          "symbol": ".fr2_message",
+          "binding": "00283320"
+        },
+        {
+          "offset": 40,
+          "kind": 4,
+          "symbol": "report_error",
+          "binding": "00105888"
+        }
+      ],
+      "replayed_bytes": 60,
+      "matched_bytes": 0,
+      "claim_limit": "Fixed accessor REL bindings only; no full-image relocation coverage"
+    },
+    "cell_object_contract": {
+      "symbol": "misc3d_db_id",
+      "bytes": 4,
+      "alignment": 4,
+      "storage": "common",
+      "has_file_bytes": false
+    },
+    "original_entry": "001d183c",
+    "command": [
+      "/bin/bash",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/docker-linux-exec.sh",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "mips-linux-gnu-ld",
+      "-m",
+      "elf32ltsmip",
+      "-T",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/candidate.ld",
+      "--defsym=report_error=0x00105888",
+      "--defsym=_gp=0x00295d70",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/linker-entry.elf",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/prepared.o",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/cell-prepared.o",
+      "-e",
+      "fr2_misc3d_get_database_id"
+    ],
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    },
+    "artifacts": {
+      "cell_source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/misc3d_db_id_cell.c",
+        "bytes": 198,
+        "sha256": "5d023900745dcc4352cfbabc680545faea2dfd5a3d723f74942621d6842c708a"
+      },
+      "cell_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/cell.o",
+        "bytes": 1162,
+        "sha256": "584ce18ae389e709cd858295402d87ffae0a39c88430c61bc89f5c329d00f326"
+      },
+      "cell_prepared_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/cell-prepared.o",
+        "bytes": 1100,
+        "sha256": "93c26be3b16156d153ba73fb744e3125180fa48ff16b6d9ed991465e74ca91cc"
+      },
+      "linked_output": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/linked.o",
+        "bytes": 14940,
+        "sha256": "88680cccefe575484fc5eb26c9912b309e2b18a73faad64b5e0ae547af3c2d4f"
+      },
+      "accessor_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/candidate.o",
+        "bytes": 2136,
+        "sha256": "68d4a062ab1512f8efc9b8a45279e37df00911314ebd0ffdb56d41d36fd5ef54"
+      },
+      "accessor_prepared_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/prepared.o",
+        "bytes": 1960,
+        "sha256": "ceee72bdbd49234e06302f58c98c791958b2e6434a9f6b5bb02f0850203abc97"
+      },
+      "comparison": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/function.bin",
+        "bytes": 60,
+        "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+      },
+      "link_script": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/candidate.ld",
+        "bytes": 364,
+        "sha256": "6cb03859699bf46d49b8c519789a27a848017a59af9cde56275ff6077d8551bc"
+      },
+      "linked_with_entry": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-contract-wmdby6o8/probe/fr2-compiler-probe-0kjhlo7k/linker-entry.elf",
+        "bytes": 14940,
+        "sha256": "fc2bca023637c64a48494fa1aff5816a446b5449d9e126e03d6bab875e2eefeb"
+      }
+    },
+    "matched_bytes": 0,
+    "ac06_status": "incomplete",
+    "issue9_status": "incomplete",
+    "claim_limits": [
+      "GNU binutils 2.40 Debian substitution; no Sony linker recovery.",
+      "Exact EE assembler source/permission remains compiler dependency #8/#21.",
+      "Fixed range contract only; full EE/all IOP placement and relocations are not reconstructed.",
+      "Zero-fill is the ELF load contract, not observed guest initialization."
+    ]
+  }
+}

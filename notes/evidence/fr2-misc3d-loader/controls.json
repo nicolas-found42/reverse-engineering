@@ -1,0 +1,116 @@
+{
+  "scope": "Executed real source and isolated static controls; full loader/alias acceptance remains incomplete.",
+  "results": {
+    "real_terminal_source": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/real_terminal_source/20261008T213059Z-8f9d8fef3ebc4285816ad78e9a2bbc2c/result.json",
+        "bytes": 6562,
+        "sha256": "498016ee1dee86309cc593919a5fc4ebb2a2c0100be28bf7137041bfdee2cd4d"
+      }
+    },
+    "changed_terminal_source": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/changed_terminal_source/20261008T213101Z-d90afe112a5d4b91b861b22a0dc60c6e/result.json",
+        "bytes": 6284,
+        "sha256": "b36f4841bb220a39f79c608acbce894fd4651c1c0f2c404db9a2e80a61382881"
+      }
+    },
+    "host_source": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/host_source/20261008T213103Z-902b2a95930544878661085ef195de32/result.json",
+        "bytes": 2500,
+        "sha256": "0215d7900ad1ebbddc540109f903e6ac25e35f0e88d2f6ba023857448d68dced"
+      }
+    },
+    "changed_host_source": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/changed_host_source/20261008T213104Z-68a21610a2dd45739115aca9239ad0d5/result.json",
+        "bytes": 2578,
+        "sha256": "066d4df9fdbd4d366a179e7fada24dd6a2446d0ed71ac39c69708505bb27c309"
+      }
+    },
+    "changed_terminal_layout": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/changed_terminal_layout/20261008T213104Z-17b253a0afab40ff9109e4a965072bc0/result.json",
+        "bytes": 917,
+        "sha256": "f2cf758d4d457f6765b5d8f03aa479c3fe89b5e50882cd17d67dc47a722afbea"
+      }
+    },
+    "static_positive": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/static_positive/20261008T213104Z-476b975921d84e54b81b1bad3b4b6eac/result.json",
+        "bytes": 14708,
+        "sha256": "64b1190d2067f017a271de5dbc2b24bd30c3390be58eeb300dfb28f8ca8e9c6f"
+      }
+    },
+    "full_frontier": {
+      "exit_code": 2,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/full_frontier/20261008T213104Z-9a6e2b92d12b421f8509c124110ccd08/result.json",
+        "bytes": 17849,
+        "sha256": "7b850e2f05e4492de928b796f06e2f4cc77656643aa7632cbab8f7661bc4614f"
+      }
+    },
+    "missing_provenance": {
+      "exit_code": 2,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/missing_provenance/20261008T213105Z-e6454b1307d948f5908c6b3c6d3a4de4/result.json",
+        "bytes": 17889,
+        "sha256": "3bad7af464c55a581942bd0c7901a389d108e7dd63711ee1f894ebf6b91b6c88"
+      }
+    },
+    "stale_provenance": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/stale_provenance/20261008T213106Z-77a57324d5bb45478af85571f7baacdb/result.json",
+        "bytes": 928,
+        "sha256": "9e6cf56bd9c7721990c347eb4c289303ae141b4e02c9d7f70468bf2a8e35b97d"
+      }
+    },
+    "contradiction_over_missing": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue-37/controls-stable/contradiction_over_missing/20261008T213106Z-709ec64cc6a9473b97c17b8a7c6ef124/result.json",
+        "bytes": 938,
+        "sha256": "4ac54264af1a3a242228d260d5f5e351bd068caf7861173cfe15ab580bea77d3"
+      }
+    }
+  },
+  "expected_exit_codes": {
+    "real_terminal_source": 0,
+    "changed_terminal_source": 1,
+    "host_source": 0,
+    "changed_host_source": 1,
+    "changed_terminal_layout": 1,
+    "static_positive": 0,
+    "full_frontier": 2,
+    "missing_provenance": 2,
+    "stale_provenance": 1,
+    "contradiction_over_missing": 1
+  },
+  "failures": [],
+  "public_inputs": {
+    "controls": {
+      "bytes": 4665,
+      "sha256": "f9abd7eecedb5cf5d8df5dbaaf49a5bd107b623ead7d496695b75301d1a99467"
+    },
+    "loader": {
+      "bytes": 12868,
+      "sha256": "34a1bf87309e22d9172180719b0b44d3c06be9314007d0760fee791c69471ec5"
+    },
+    "source_recipe": {
+      "bytes": 7424,
+      "sha256": "0f299a3459b227bd7d90fedd7a877822cb4ede3e9039c8472b2deb9e26434241"
+    },
+    "decision": {
+      "bytes": 1603,
+      "sha256": "729faf475bcf99da0155cfa4df7d442637e182175db9c191f40be18ab94e10eb"
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "scope": "misc3d accessor/constants/cell only",
+  "decision": "Retain GNU binutils 2.40 substitution and require an explicit accessor entry with PT_LOAD-backed placement and six MIPS REL replays. Full image layout remains incomplete.",
+  "source_reference": "https://packages.debian.org/bookworm/binutils-mips-linux-gnu",
+  "source_package": "binutils-mipsen 10+c2, Built-Using binutils 2.40-2",
+  "source_disposition": "Exact source archives and Debian build rules retained; local source rebuild not yet executed.",
+  "license": "GNU GPL v3 or later, as reported by the pinned ld --version; binary distribution stays private.",
+  "tool_files": {
+    "mips-linux-gnu-ld": {
+      "bytes": 1817176,
+      "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+    },
+    "mips-linux-gnu-objcopy": {
+      "bytes": 192168,
+      "sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed"
+    },
+    "mips-linux-gnu-as": {
+      "bytes": 935232,
+      "sha256": "42a59e2079d2ba83eeea0143cec51cf9712073ab6aa92c2a9b0ae3e5755c9edb"
+    }
+  },
+  "runtime_image": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+  "machine": 8,
+  "flags": "20924001",
+  "entry": "001d1800",
+  "compiler_dependency": "#8/#21",
+  "matched_bytes": 0,
+  "source_lineage": {
+    "binary": "binutils-mips-linux-gnu 2.40-2cross2 amd64",
+    "Source": "binutils-mipsen (10+c2)",
+    "Built-Using": "binutils (= 2.40-2)",
+    "source_reference": "https://packages.debian.org/bookworm/binutils-source",
+    "local_build": "Not executed; package members bind installed binaries to the recorded Debian distribution."
+  },
+  "archives": {
+    "binutils-mips-linux-gnu_2.40-2cross2_amd64.deb": {
+      "identity": {
+        "bytes": 2796440,
+        "sha256": "45c7a04a74873adb4fbcc747253049e94c59b797d5d97d52e687b671b39dbde2"
+      },
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils-mipsen/binutils-mips-linux-gnu_2.40-2cross2_amd64.deb"
+    },
+    "binutils-mipsen_10+c2.dsc": {
+      "identity": {
+        "bytes": 5440,
+        "sha256": "a3849e5fa32ffcc074924cfe48e4aad91cf0fb639a270e6a29eef4fe31c4cd42"
+      },
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils-mipsen/binutils-mipsen_10+c2.dsc"
+    },
+    "binutils-mipsen_10+c2.tar.xz": {
+      "identity": {
+        "bytes": 5356,
+        "sha256": "8fe8f6139574c8f0630850e864d0d038f3174c744fcd780ba5f705266d38177a"
+      },
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils-mipsen/binutils-mipsen_10+c2.tar.xz"
+    },
+    "binutils_2.40-2.debian.tar.xz": {
+      "identity": {
+        "bytes": 102476,
+        "sha256": "a71c03e51d7ac2be8d97daa29dc02e578978c8eeddfd51045502fd008cec8adc"
+      },
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils_2.40-2.debian.tar.xz"
+    },
+    "binutils_2.40-2.dsc": {
+      "identity": {
+        "bytes": 11692,
+        "sha256": "cd75da7829d819189ba6154d408666373b307e222b393223804c4c4a7156f421"
+      },
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils_2.40-2.dsc"
+    },
+    "binutils_2.40.orig.tar.xz": {
+      "identity": {
+        "bytes": 25364048,
+        "sha256": "d78c2d2eb24a9be1e02f8854cb1bd435556d7f584fb6bfb6b07e6527d43fc41d"
+      },
+      "url": "https://deb.debian.org/debian/pool/main/b/binutils/binutils_2.40.orig.tar.xz"
+    }
+  },
+  "binary_package": "binutils-mips-linux-gnu_2.40-2cross2_amd64.deb",
+  "package_members": {
+    "mips-linux-gnu-ld": {
+      "path": "./usr/bin/mips-linux-gnu-ld.bfd",
+      "identity": {
+        "bytes": 1817176,
+        "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+      }
+    },
+    "mips-linux-gnu-objcopy": {
+      "path": "./usr/bin/mips-linux-gnu-objcopy",
+      "identity": {
+        "bytes": 192168,
+        "sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed"
+      }
+    },
+    "copyright": {
+      "path": "./usr/share/doc/binutils-mips-linux-gnu/copyright",
+      "identity": {
+        "bytes": 1795,
+        "sha256": "a81bdd422c2c015deca84bf6ad249bf0d7d19885fc01d1894463291b0b7313e1"
+      }
+    },
+    "mips-linux-gnu-as": {
+      "path": "./usr/bin/mips-linux-gnu-as",
+      "identity": {
+        "bytes": 935232,
+        "sha256": "42a59e2079d2ba83eeea0143cec51cf9712073ab6aa92c2a9b0ae3e5755c9edb"
+      }
+    }
+  },
+  "fixture_inputs": {
+    "fixture.s": {
+      "bytes": 407,
+      "sha256": "5cff6913290ab96ffc720e0bf4d53609f0d2179cb655b3a36f110b3e8de948b0"
+    },
+    "fixture.ld": {
+      "bytes": 474,
+      "sha256": "e396af5ace9b26df4777451caabfb7299df321759f029737f75a7789a0d3a5c3"
+    }
+  }
+}

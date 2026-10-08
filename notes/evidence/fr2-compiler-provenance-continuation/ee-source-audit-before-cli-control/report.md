@@ -1,0 +1,86 @@
+# compiler-provenance: incomplete
+
+historical compiler package/source binding remains unresolved
+
+```json
+{
+  "target_version": "2.96-ee-001003-1",
+  "source_archive": {
+    "bytes": 77925391,
+    "sha256": "b33ac7197cc8d4d28eb42275a05d800c126ff32ac3915624470ee55cdb5ee6ad"
+  },
+  "inventory_status": "pass",
+  "source_version": "2.9-ee-991111",
+  "version_relation": "mismatch",
+  "members": {
+    "ee/gcc/version.c": {
+      "bytes": 40,
+      "sha256": "671902cdf224724dc9c33b04ab10a4dcfcc0a4d1ce4423dc23e48f27aead5c5b"
+    },
+    "ee/gcc/COPYING": {
+      "bytes": 18007,
+      "sha256": "dcc100d4161cc0b7177545ab6e47216f84857cda3843847c792a25289852dcaa"
+    },
+    "ee/gcc/config/mips/elf64.h": {
+      "bytes": 9838,
+      "sha256": "b2bf602eedd8ebfe7ec7b3650e5f1cb1e7cd54a3685c9d8d149868cba45b5846"
+    },
+    "build.sh": {
+      "bytes": 1506,
+      "sha256": "40fe652c653c1f7c445095c6261a869dd57efa34c8d8451ea5edf980486c7eca"
+    },
+    "iop/gcc-2.8.1/version.c": {
+      "bytes": 32,
+      "sha256": "e38b6c252568cccb0f94ca2eec9589cf7b2f2248c4a1c479ea847562fe736654"
+    },
+    "iop/gcc-2.8.1/COPYING": {
+      "bytes": 18007,
+      "sha256": "dcc100d4161cc0b7177545ab6e47216f84857cda3843847c792a25289852dcaa"
+    },
+    "iop/original/gcc-2.8.1.tar.gz": {
+      "bytes": 8447495,
+      "sha256": "3b30fbfdf93e628373d90d174243f3267b0eec9ebe792bb64fd15b8828c2ea4c"
+    },
+    "iop/original/binutils-2.9.1.tar.gz": {
+      "bytes": 5694541,
+      "sha256": "58d01daa576d8779e064922171276795f00ff1388b1b0f87aa1a00eb0da6c6bb"
+    },
+    "iop/original/iop-gcc.patch": {
+      "bytes": 10716,
+      "sha256": "1a9545b2e9eac2ec3efbb5c536c1559b0b135c3211f6b3a5fb767616ba359355"
+    },
+    "iop/original/make-iop-gcc.sh": {
+      "bytes": 425,
+      "sha256": "f2970603fe4fe0dcde3095b587d469f3ffb6b8503fa53c35b9856bda5c8077bd"
+    }
+  },
+  "missing": [],
+  "changed": [],
+  "historical_binding_status": "incomplete",
+  "redistribution_disposition": "unresolved",
+  "matched_bytes": 0,
+  "binding_reasons": [
+    "No recorded distributor/source-build relation binds this source to the selected package.",
+    "Source version differs from the selected historical package."
+  ],
+  "limitations": [
+    "A version-compatible source and notice inventory do not bind a historical binary.",
+    "This audit grants no package permission or ownership/matching credit.",
+    "No source candidate was built and no game code was executed by this audit."
+  ],
+  "notice_inventory": {
+    "ee/gcc/COPYING": "present",
+    "iop/gcc-2.8.1/COPYING": "present"
+  },
+  "selected_package": {
+    "candidate": "ee-gcc2.96",
+    "archive": "ee-gcc2.96.tar.xz",
+    "expected_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+    "observed": {
+      "bytes": 2754768,
+      "sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a"
+    },
+    "identity_status": "pass"
+  }
+}
+```

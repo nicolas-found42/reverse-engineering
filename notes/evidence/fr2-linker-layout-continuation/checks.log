@@ -1,0 +1,12 @@
+$ tools/check.sh test_linker_layout
+.................
+----------------------------------------------------------------------
+Ran 17 tests in 0.013s
+
+OK
+
+exit=0
+$ pyright tools/linker_layout.py tools/linker_layout_recipe tools/test_linker_layout.py
+0 errors, 0 warnings, 0 informations
+
+exit=0

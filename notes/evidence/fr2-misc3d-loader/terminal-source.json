@@ -1,0 +1,296 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T213011Z-a30468b15e34400498dfd1d5b8ad1619",
+  "check": "misc3d-loader-terminal-source",
+  "command": [
+    "tools/misc3d_loader_recipe/source_build.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "--output",
+    ".scratch/issue-37/terminal-final"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/source_build.py": {
+      "bytes": 7424,
+      "sha256": "0f299a3459b227bd7d90fedd7a877822cb4ede3e9039c8472b2deb9e26434241"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader_terminal.c": {
+      "bytes": 500,
+      "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/terminal.ld": {
+      "bytes": 118,
+      "sha256": "6f5f19d0095ea4a5766ff681f58519d908287b41386c217b46147c60e93ecc0e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-misc3d-loader/decision.json": {
+      "bytes": 1603,
+      "sha256": "729faf475bcf99da0155cfa4df7d442637e182175db9c191f40be18ab94e10eb"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/build.py": {
+      "bytes": 6448,
+      "sha256": "00c56a48422f4d74661a3f4139ff69f5ce2e75c50000a867a68383c0309f06fc"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py": {
+      "bytes": 10714,
+      "sha256": "b02e3e62b8ca901a39c7d925c1c681db0717df22caa8db40dc04ea7a9fff03cf"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/manifest.template.json": {
+      "bytes": 15028,
+      "sha256": "6c0483d14c5d308fbd2b4a011abc2c4b346882eb38a6316a7b67a0e22cdb9117"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/docker-linux-exec.sh": {
+      "bytes": 619,
+      "sha256": "8cfd9b5bdff75635ff922f8bacbbfc48061cfc2f1ff65553ed578f0ebe94e576"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/docker-wine-exec.sh": {
+      "bytes": 646,
+      "sha256": "2f155169727580b4657ffa067ed1268a0127ae5116fdf77edafc7b892315298e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/evidence_common.py": {
+      "bytes": 2971,
+      "sha256": "52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py": {
+      "bytes": 15424,
+      "sha256": "f362c5693784103094ffaf083867f481969cc7cef4ebd4510afe82ce050a45be"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_sections.py": {
+      "bytes": 3987,
+      "sha256": "96f88ac55f5e84fe90a1de8bcd1e0fbcdbf58fab5b48b47628d8d1e0273bb8ef"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_diff.py": {
+      "bytes": 10479,
+      "sha256": "afdd9a570750357a4e6b4aad2d3c0cbc296b9f3cbf959378a2f3ff43ea919075"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_executables.py": {
+      "bytes": 7248,
+      "sha256": "6872b9d9af5477fa81a87aab7c326b9f91a270412835145329e5aefccf44461d"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/corpus_contract.py": {
+      "bytes": 7501,
+      "sha256": "31307b7db16af11ecfd63183df2c0328d00c7345a3959223618146894fb7d87e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe.py": {
+      "bytes": 13815,
+      "sha256": "bd83f036c3b720fa75a02e91967f52d12513c96913173501d100baa2aeba194b"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_output.py": {
+      "bytes": 3649,
+      "sha256": "e9d9f93c3f3e9f46ab384bbb3538a975200bb8367bdc0a0d0cf71a05c2ceb666"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "commands": [
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls",
+        "-c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.c",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/prepared.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.ld",
+        "--defsym=misc3d_optional_object=0x0028f23c",
+        "--defsym=_gp=0x00295d70",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.elf",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/prepared.o"
+      ]
+    ],
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    },
+    "artifacts": {
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.c",
+        "bytes": 500,
+        "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+      },
+      "object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.o",
+        "bytes": 1648,
+        "sha256": "f1bf5ca917f54a86a14650ffffa3fa9eeea5954c563fbbf10518a0715b5e2959"
+      },
+      "prepared": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/prepared.o",
+        "bytes": 1476,
+        "sha256": "5f72772e9fbfeac83c3b46d643e956a2b415298e5de3d612f8adf11251de942c"
+      },
+      "linked": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.elf",
+        "bytes": 50956,
+        "sha256": "932afba50d60cd958683bd5703e339b2d0ca0151e6395f6d49d5cdf74d4c5195"
+      },
+      "comparison": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.comparison.bin",
+        "bytes": 8,
+        "sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8"
+      },
+      "link_script": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/terminal.ld",
+        "bytes": 118,
+        "sha256": "6f5f19d0095ea4a5766ff681f58519d908287b41386c217b46147c60e93ecc0e"
+      },
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-terminal-1upca7i5/manifest.json",
+        "bytes": 27040,
+        "sha256": "142c544c9f86934feaac86ef01f0baa1a324dedcbd4594b15ccabfba3f717c07"
+      }
+    },
+    "compiler": {
+      "id": "ee-gcc2.96",
+      "flags": [
+        "-G8",
+        "-O2",
+        "-fno-optimize-sibling-calls"
+      ],
+      "executable": {
+        "bytes": 333402,
+        "sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b"
+      },
+      "tool_files": {
+        "cc1": {
+          "bytes": 5526661,
+          "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+        },
+        "cpp": {
+          "bytes": 421478,
+          "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+        },
+        "gnu_assembler": {
+          "bytes": 2169068,
+          "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+        },
+        "mips_linker": {
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      }
+    },
+    "scope": "Eight-byte remote terminal candidate; no new ownership or complete loader byte match.",
+    "issue37_status": "incomplete",
+    "historical_compiler_status": "incomplete",
+    "comparison": {
+      "address": "0012c218",
+      "bytes": 8,
+      "reference_sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8",
+      "comparison_sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8",
+      "candidate_byte_identical_bytes": 8,
+      "new_attributed_match_bytes": 0
+    },
+    "provenance": {
+      "decision": {
+        "bytes": 1603,
+        "sha256": "729faf475bcf99da0155cfa4df7d442637e182175db9c191f40be18ab94e10eb"
+      },
+      "source": {
+        "bytes": 500,
+        "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+      },
+      "link_script": {
+        "bytes": 118,
+        "sha256": "6f5f19d0095ea4a5766ff681f58519d908287b41386c217b46147c60e93ecc0e"
+      },
+      "validation_inputs": {
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/build.py": {
+          "bytes": 6448,
+          "sha256": "00c56a48422f4d74661a3f4139ff69f5ce2e75c50000a867a68383c0309f06fc"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/run.py": {
+          "bytes": 10714,
+          "sha256": "b02e3e62b8ca901a39c7d925c1c681db0717df22caa8db40dc04ea7a9fff03cf"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/manifest.template.json": {
+          "bytes": 15028,
+          "sha256": "6c0483d14c5d308fbd2b4a011abc2c4b346882eb38a6316a7b67a0e22cdb9117"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/docker-linux-exec.sh": {
+          "bytes": 619,
+          "sha256": "8cfd9b5bdff75635ff922f8bacbbfc48061cfc2f1ff65553ed578f0ebe94e576"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/docker-wine-exec.sh": {
+          "bytes": 646,
+          "sha256": "2f155169727580b4657ffa067ed1268a0127ae5116fdf77edafc7b892315298e"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/evidence_common.py": {
+          "bytes": 2971,
+          "sha256": "52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_ranges.py": {
+          "bytes": 15424,
+          "sha256": "f362c5693784103094ffaf083867f481969cc7cef4ebd4510afe82ce050a45be"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_sections.py": {
+          "bytes": 3987,
+          "sha256": "96f88ac55f5e84fe90a1de8bcd1e0fbcdbf58fab5b48b47628d8d1e0273bb8ef"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/matching_diff.py": {
+          "bytes": 10479,
+          "sha256": "afdd9a570750357a4e6b4aad2d3c0cbc296b9f3cbf959378a2f3ff43ea919075"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/ps2_executables.py": {
+          "bytes": 7248,
+          "sha256": "6872b9d9af5477fa81a87aab7c326b9f91a270412835145329e5aefccf44461d"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/corpus_contract.py": {
+          "bytes": 7501,
+          "sha256": "31307b7db16af11ecfd63183df2c0328d00c7345a3959223618146894fb7d87e"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe.py": {
+          "bytes": 13815,
+          "sha256": "bd83f036c3b720fa75a02e91967f52d12513c96913173501d100baa2aeba194b"
+        },
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_output.py": {
+          "bytes": 3649,
+          "sha256": "e9d9f93c3f3e9f46ab384bbb3538a975200bb8367bdc0a0d0cf71a05c2ceb666"
+        }
+      }
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 8802,
+      "sha256": "2f84ccf87bb1444200655a6123dddadb10a9b6d284a6f15cc96292391968cbbf"
+    }
+  }
+}

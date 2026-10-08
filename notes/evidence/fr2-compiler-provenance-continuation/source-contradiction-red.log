@@ -1,0 +1,15 @@
+F
+======================================================================
+FAIL: test_cli_changed_fixed_source_fails_despite_missing_selected_package (test_compiler_provenance.CompilerProvenanceTests.test_cli_changed_fixed_source_fails_despite_missing_selected_package)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/test_compiler_provenance.py", line 135, in test_cli_changed_fixed_source_fails_despite_missing_selected_package
+    self.assertEqual(process.returncode, 1, process.stderr + process.stdout)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 2 != 1 : {"status": "incomplete", "result": "/var/folders/vj/z460ltg56p122lsl4_s8pd140000gp/T/tmp_u509g49/receipts/20261008T214635Z-799d4d13af9a4f6ba50fda808475c6c9/result.json", "diagnostics": ["historical compiler package/source binding remains unresolved"]}
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.326s
+
+FAILED (failures=1)

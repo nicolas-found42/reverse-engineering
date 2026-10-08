@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "run_id": "20261008T214653Z-03375c44646d47cb9ca3d234c4c001d3",
+  "check": "compiler-provenance",
+  "command": [
+    "tools/compiler_provenance.py",
+    ".scratch/compiler-provenance-continuation/missing-package",
+    ".scratch/compiler-provenance-continuation/changed-source/changed-source.zip",
+    "--output",
+    ".scratch/compiler-provenance-continuation/receipts"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-compiler-provenance-continuation/source-candidate.json": {
+      "bytes": 2225,
+      "sha256": "4c1383021bfb247f808de83b39ff2bad14d97b34284c7905e9c76703aa60ee0c"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_provenance.py": {
+      "bytes": 6745,
+      "sha256": "cc1c3efbc4e3832b62520c20aa23a5b0627608c0a329fa1a579e6c16eaba02c4"
+    }
+  },
+  "status": "fail",
+  "diagnostics": [
+    "Invalid: fixed source candidate differs from its recorded pin"
+  ],
+  "details": {
+    "target_version": "2.96-ee-001003-1",
+    "source_archive": {
+      "bytes": 187,
+      "sha256": "e586659d8aee7715900cd5d0f5882975b07b87dc5ccc413cd2d4009e7cf8a445"
+    },
+    "inventory_status": "incomplete",
+    "source_version": null,
+    "version_relation": "unresolved",
+    "members": {},
+    "missing": [
+      "ee/gcc/version.c",
+      "ee/gcc/COPYING",
+      "ee/gcc/config/mips/elf64.h",
+      "build.sh",
+      "iop/gcc-2.8.1/version.c",
+      "iop/gcc-2.8.1/COPYING",
+      "iop/original/gcc-2.8.1.tar.gz",
+      "iop/original/binutils-2.9.1.tar.gz",
+      "iop/original/iop-gcc.patch",
+      "iop/original/make-iop-gcc.sh"
+    ],
+    "changed": [
+      "source archive"
+    ],
+    "historical_binding_status": "incomplete",
+    "redistribution_disposition": "unresolved",
+    "matched_bytes": 0,
+    "binding_reasons": [
+      "No recorded distributor/source-build relation binds this source to the selected package.",
+      "Source version declaration is missing or malformed.",
+      "Source candidate identity or required material is missing or changed.",
+      "Selected compiler archive is missing or differs from its recorded pin."
+    ],
+    "limitations": [
+      "A version-compatible source and notice inventory do not bind a historical binary.",
+      "This audit grants no package permission or ownership/matching credit.",
+      "No source candidate was built and no game code was executed by this audit."
+    ],
+    "notice_inventory": {
+      "ee/gcc/COPYING": "missing",
+      "iop/gcc-2.8.1/COPYING": "missing"
+    },
+    "selected_package": {
+      "candidate": "ee-gcc2.96",
+      "archive": "ee-gcc2.96.tar.xz",
+      "expected_sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+      "observed": null,
+      "identity_status": "incomplete"
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 1820,
+      "sha256": "c4b3ae9d9db632f2617389766ef27f52347e028e4b3e2e6dba24757b74406458"
+    }
+  }
+}

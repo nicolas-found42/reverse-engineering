@@ -1,0 +1,39 @@
+{
+  "package": {
+    "bytes": 2796440,
+    "sha256": "45c7a04a74873adb4fbcc747253049e94c59b797d5d97d52e687b671b39dbde2"
+  },
+  "control_fields": {
+    "Source": "binutils-mipsen (10+c2)",
+    "Version": "2.40-2cross2",
+    "Built-Using": "binutils (= 2.40-2)"
+  },
+  "linker_version": {
+    "command": [
+      "/bin/bash",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/compiler_probe_recipe/docker-linux-exec.sh",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "mips-linux-gnu-ld",
+      "--version"
+    ],
+    "exit": 0,
+    "stdout": "GNU ld (GNU Binutils for Debian) 2.40\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis program is free software; you may redistribute it under the terms of\nthe GNU General Public License version 3 or (at your option) a later version.\nThis program has absolutely no warranty.\n"
+  },
+  "source_members": {
+    "binutils-2.40/include/elf/mips.h": {
+      "bytes": 42947,
+      "sha256": "8fd56ce7bcf33e12301d7f68c482292df3f18dc2d0b067b04ba96e3469292f6a",
+      "r5900_mentioned": true
+    },
+    "binutils-2.40/bfd/elfxx-mips.c": {
+      "bytes": 516057,
+      "sha256": "5253d80fc1f776f76972c394a796dde42c96248924a2f1caa7425ed1317164df",
+      "r5900_mentioned": true
+    },
+    "binutils-2.40/gas/config/tc-mips.c": {
+      "bytes": 597987,
+      "sha256": "1e2b9512e62f1be09f0680ce02c546325ddec82b4ce351f3501c95c6fcc975aa",
+      "r5900_mentioned": true
+    }
+  }
+}

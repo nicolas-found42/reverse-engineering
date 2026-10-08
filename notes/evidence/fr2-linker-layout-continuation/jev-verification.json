@@ -1,0 +1,75 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+    "verified": 4,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 1
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "claim": "The scoped GNU child passes for accessor/constants/cell and records original_entry001d183c; explicit entry is001d1800. It adds zero matched-byte credit and keeps AC06/#9 incomplete.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.99,
+        "contradicts": 0.01,
+        "says_nothing": 0
+      },
+      "confidence": 0.98,
+      "action": "auto",
+      "supporting_evidence": null,
+      "same_subject": 0.95
+    },
+    {
+      "id": "claim1",
+      "claim": "The actual GNU2.40 assembler creates an R5900 ELF object with e_flags20924001 and linked fixture output20924001, with HI16/LO16 carry targeting00108004 and four-byte NOBITS zero-fill contract. This is static ELF evidence, not guest execution.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.89,
+        "contradicts": 0.1,
+        "says_nothing": 0.01
+      },
+      "confidence": 0.84,
+      "action": "auto",
+      "supporting_evidence": null,
+      "same_subject": 0.92
+    },
+    {
+      "id": "claim2",
+      "claim": "All retained controls match expected results: positive0; eight negative artifact controls1; missing provenance2. Focused suite passes17 tests and Pyright reports zero errors/warnings.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.74,
+        "contradicts": 0.25,
+        "says_nothing": 0.01
+      },
+      "confidence": 0.62,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.95
+    },
+    {
+      "id": "claim3",
+      "claim": "Installed GNU as/ld/objcopy are bound to exact Debian binary members and corresponding binutils-mipsen10+c2/Built-Using binutils2.40-2 source archives. A local binutils source rebuild was not executed.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "contradicts": 0,
+        "says_nothing": 0
+      },
+      "confidence": 1,
+      "action": "auto",
+      "supporting_evidence": null,
+      "same_subject": 0.9
+    }
+  ],
+  "usage": {
+    "input_tokens": 11067,
+    "output_tokens": 248
+  }
+}

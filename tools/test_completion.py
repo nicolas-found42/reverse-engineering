@@ -15,6 +15,75 @@ TOOLS = Path(__file__).resolve().parent
 
 
 class CompletionCli(unittest.TestCase):
+    def fixture_children(self, failures=()):
+        """Exercise the aggregate report seam with bounded child verdicts."""
+        def child(name, arguments, output):
+            status = 'fail' if name in failures else 'incomplete'
+            if name in ('misc3d_contract.py', 'misc3d_lifecycle.py') and name not in failures:
+                status = 'pass'
+            result = {'status': status, 'details': {},
+                      'diagnostics': ['located child mismatch'] if status == 'fail' else []}
+            return {'status': status, 'command': [name], 'diagnostics': result['diagnostics']}, result
+        return child
+
+    def test_bounded_child_pass_retains_evidence_without_completing_full_ee_or_rpc(self):
+        with patch.object(completion, 'run_child', side_effect=self.fixture_children()), \
+             patch.object(completion, 'source_unit_credit', return_value=0):
+            with self.assertRaises(Incomplete) as caught:
+                completion.check(Path('/fixture/game'), self.root, None, None, self.root)
+        details = caught.exception.details
+        self.assertEqual(details['reconstruction_status'], 'incomplete')
+        for criterion in (6, 8, 9, 14, 15):
+            row = details['criteria'][criterion - 1]
+            self.assertEqual(row['status'], 'incomplete')
+            self.assertTrue(row['evidence'], row['id'])
+        self.assertEqual(details['ledger']['matched_bytes'], 0)
+
+    def test_available_ee_and_rpc_child_mismatch_overrides_missing_full_build(self):
+        for name, criterion in (('linker_layout.py', 6), ('misc3d_contract.py', 9),
+                                ('misc3d_lifecycle.py', 8),
+                                ('misc3d_loader_recipe/source_build.py', 8),
+                                ('inventory_rpc_handoffs.py', 14),
+                                ('check_rpc_contracts.py', 15)):
+            with self.subTest(child=name):
+                with patch.object(completion, 'run_child', side_effect=self.fixture_children((name,))), \
+                     patch.object(completion, 'source_unit_credit', return_value=0):
+                    with self.assertRaises(Invalid) as caught:
+                        completion.check(Path('/fixture/game'), self.root, None, None, self.root)
+                details = caught.exception.details
+                self.assertEqual(details['reconstruction_status'], 'fail')
+                self.assertEqual(details['criteria'][criterion - 1]['status'], 'fail')
+                self.assertEqual(details['criteria'][11]['status'], 'incomplete')
+
+    def test_malformed_child_receipt_is_retained_as_failure_instead_of_losing_criteria(self):
+        script = self.root / 'bad_child.py'
+        script.write_text('''import json, pathlib, sys
+root = pathlib.Path(sys.argv[sys.argv.index('--output') + 1]) / 'original'
+root.mkdir(parents=True)
+(root / 'report.md').write_text('original child report')
+(root / 'result.json').write_text(json.dumps({
+    'status': 'pass', 'details': {}, 'artifacts': {'report.md': {'bytes': 0, 'sha256': '0' * 64}}
+}))
+''')
+        with patch.object(completion, 'TOOLS', self.root):
+            child, result = completion.run_child('bad_child.py', [], self.root / 'child')
+        self.assertEqual((child['status'], result['status']), ('fail', 'fail'))
+        self.assertTrue(child['validation_failure'])
+        original = self.root / 'child/original/result.json'
+        self.assertTrue(original.is_file())
+        self.assertEqual(result['details']['rejected_receipts'][0]['sha256'],
+                         completion.identity(original)['sha256'])
+        children = self.fixture_children()
+        def with_rejection(name, arguments, output):
+            return (child, result) if name == 'misc3d_contract.py' else children(name, arguments, output)
+        with patch.object(completion, 'run_child', side_effect=with_rejection), \
+             patch.object(completion, 'source_unit_credit', return_value=0):
+            with self.assertRaises(Invalid) as caught:
+                completion.check(Path('/fixture/game'), self.root, None, None, self.root)
+        criteria = caught.exception.details['criteria']
+        self.assertEqual(len(criteria), 32)
+        self.assertEqual(criteria[1]['status'], 'fail')
+
     def test_entry_evidence_failure_does_not_fail_exact_vu_encoding(self):
         results = [
             {'status': 'pass', 'details': {}},
@@ -25,6 +94,7 @@ class CompletionCli(unittest.TestCase):
                 'entry_map': {'status': 'fail', 'diagnostic': 'changed evidence'}}},
             {'status': 'incomplete', 'details': {}},
             {'status': 'incomplete', 'details': {}},
+            *[{'status': 'incomplete', 'details': {}} for _ in range(6)],
         ]
         children = [({'status': result['status']}, result) for result in results]
         with patch.object(completion, 'run_child', side_effect=children), \

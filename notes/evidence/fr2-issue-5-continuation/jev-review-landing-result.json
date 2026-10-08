@@ -1,0 +1,1493 @@
+{
+ "tool": "jev landing review",
+ "subject": "staged continuation diff on codex/feature/issue-5-integration at 98dc02b",
+ "groups": {
+  "A": {
+   "tool": "jev_review",
+   "group": "A-completion-compiler-oracle",
+   "result": {
+    "tool": "jev_review",
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "truncated": false,
+    "mode": "per-file",
+    "action": "escalate",
+    "composite": 0.7949999999999999,
+    "safe_to_apply": 0.49,
+    "reason_codes": [
+     "confidence_below_review",
+     "safe_to_apply_below_review"
+    ],
+    "limiting": [
+     {
+      "file": "tools/completion.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/test_completion.py",
+      "rubrics": [
+       "blast_radius"
+      ]
+     },
+     {
+      "file": "tools/compiler_provenance.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/compiler_provenance_iop.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/test_compiler_provenance.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/oracle_dependency_sources.py",
+      "rubrics": [
+       "blast_radius"
+      ]
+     },
+     {
+      "file": "tools/test_oracle_dependency_sources.py",
+      "rubrics": [
+       "blast_radius"
+      ]
+     }
+    ],
+    "weights": {
+     "correctness": 0.4,
+     "spec_match": 0.3,
+     "test_gap": 0.15,
+     "blast_radius": 0.15
+    },
+    "thresholds": {
+     "auto_accept": 0.8,
+     "review_at": 0.5,
+     "composite_floor": 0.7
+    },
+    "files": [
+     {
+      "path": "tools/completion.py",
+      "safe_to_apply": 0.49,
+      "scores": {
+       "correctness": {
+        "score": 1.67,
+        "confidence": 0.51,
+        "probabilities": {
+         "0": 0.06,
+         "1": 0.21,
+         "2": 0.73
+        }
+       },
+       "spec_match": {
+        "score": 1.79,
+        "confidence": 0.69,
+        "probabilities": {
+         "0": 0.01,
+         "1": 0.2,
+         "2": 0.79
+        }
+       },
+       "test_gap": {
+        "score": 0.51,
+        "confidence": 0.24,
+        "probabilities": {
+         "0": 0.58,
+         "1": 0.34,
+         "2": 0.08
+        }
+       },
+       "blast_radius": {
+        "score": 1.89,
+        "confidence": 0.84,
+        "probabilities": {
+         "0": 0.01,
+         "1": 0.09,
+         "2": 0.9
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7225,
+      "reason_codes": [
+       "confidence_below_review",
+       "safe_to_apply_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/test_completion.py",
+      "safe_to_apply": 0.78,
+      "scores": {
+       "correctness": {
+        "score": 1.76,
+        "confidence": 0.64,
+        "probabilities": {
+         "0": 0.03,
+         "1": 0.17,
+         "2": 0.8
+        }
+       },
+       "spec_match": {
+        "score": 1.71,
+        "confidence": 0.57,
+        "probabilities": {
+         "0": 0.02,
+         "1": 0.24,
+         "2": 0.74
+        }
+       },
+       "test_gap": {
+        "score": 0.5,
+        "confidence": 0.25,
+        "probabilities": {
+         "0": 0.56,
+         "1": 0.38,
+         "2": 0.06
+        }
+       },
+       "blast_radius": {
+        "score": 0.54,
+        "confidence": 0.19,
+        "probabilities": {
+         "0": 0.55,
+         "1": 0.35,
+         "2": 0.1
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.8305000000000001,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "blast_radius"
+      ]
+     },
+     {
+      "path": "tools/compiler_provenance.py",
+      "safe_to_apply": 0.59,
+      "scores": {
+       "correctness": {
+        "score": 1.84,
+        "confidence": 0.76,
+        "probabilities": {
+         "0": 0.01,
+         "1": 0.13,
+         "2": 0.86
+        }
+       },
+       "spec_match": {
+        "score": 1.83,
+        "confidence": 0.75,
+        "probabilities": {
+         "0": 0.01,
+         "1": 0.15,
+         "2": 0.84
+        }
+       },
+       "test_gap": {
+        "score": 0.5,
+        "confidence": 0.25,
+        "probabilities": {
+         "0": 0.56,
+         "1": 0.39,
+         "2": 0.05
+        }
+       },
+       "blast_radius": {
+        "score": 0.93,
+        "confidence": 0.4,
+        "probabilities": {
+         "0": 0.23,
+         "1": 0.6,
+         "2": 0.17
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.83525,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/compiler_provenance_iop.py",
+      "safe_to_apply": 0.52,
+      "scores": {
+       "correctness": {
+        "score": 1.71,
+        "confidence": 0.56,
+        "probabilities": {
+         "0": 0.03,
+         "1": 0.24,
+         "2": 0.73
+        }
+       },
+       "spec_match": {
+        "score": 1.72,
+        "confidence": 0.57,
+        "probabilities": {
+         "0": 0.03,
+         "1": 0.22,
+         "2": 0.75
+        }
+       },
+       "test_gap": {
+        "score": 0.89,
+        "confidence": 0.32,
+        "probabilities": {
+         "0": 0.28,
+         "1": 0.55,
+         "2": 0.17
+        }
+       },
+       "blast_radius": {
+        "score": 0.95,
+        "confidence": 0.37,
+        "probabilities": {
+         "0": 0.24,
+         "1": 0.57,
+         "2": 0.19
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7620000000000001,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/test_compiler_provenance.py",
+      "safe_to_apply": 0.65,
+      "scores": {
+       "correctness": {
+        "score": 1.82,
+        "confidence": 0.74,
+        "probabilities": {
+         "0": 0.02,
+         "1": 0.13,
+         "2": 0.85
+        }
+       },
+       "spec_match": {
+        "score": 1.72,
+        "confidence": 0.58,
+        "probabilities": {
+         "0": 0.05,
+         "1": 0.18,
+         "2": 0.77
+        }
+       },
+       "test_gap": {
+        "score": 0.53,
+        "confidence": 0.2,
+        "probabilities": {
+         "0": 0.54,
+         "1": 0.4,
+         "2": 0.06
+        }
+       },
+       "blast_radius": {
+        "score": 1.11,
+        "confidence": 0.28,
+        "probabilities": {
+         "0": 0.18,
+         "1": 0.52,
+         "2": 0.3
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.799,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/oracle_dependency_sources.py",
+      "safe_to_apply": 0.68,
+      "scores": {
+       "correctness": {
+        "score": 1.82,
+        "confidence": 0.73,
+        "probabilities": {
+         "0": 0.02,
+         "1": 0.13,
+         "2": 0.85
+        }
+       },
+       "spec_match": {
+        "score": 1.69,
+        "confidence": 0.53,
+        "probabilities": {
+         "0": 0.06,
+         "1": 0.2,
+         "2": 0.74
+        }
+       },
+       "test_gap": {
+        "score": 0.45,
+        "confidence": 0.32,
+        "probabilities": {
+         "0": 0.63,
+         "1": 0.3,
+         "2": 0.07
+        }
+       },
+       "blast_radius": {
+        "score": 0.8,
+        "confidence": 0,
+        "probabilities": {
+         "0": 0.39999999999999997,
+         "1": 0.39,
+         "2": 0.21
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.82375,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "blast_radius"
+      ]
+     },
+     {
+      "path": "tools/test_oracle_dependency_sources.py",
+      "safe_to_apply": 0.65,
+      "scores": {
+       "correctness": {
+        "score": 1.77,
+        "confidence": 0.65,
+        "probabilities": {
+         "0": 0.04,
+         "1": 0.15,
+         "2": 0.81
+        }
+       },
+       "spec_match": {
+        "score": 1.59,
+        "confidence": 0.38,
+        "probabilities": {
+         "0": 0.09,
+         "1": 0.24,
+         "2": 0.67
+        }
+       },
+       "test_gap": {
+        "score": 0.36,
+        "confidence": 0.46,
+        "probabilities": {
+         "0": 0.71,
+         "1": 0.22,
+         "2": 0.07
+        }
+       },
+       "blast_radius": {
+        "score": 0.98,
+        "confidence": 0.19,
+        "probabilities": {
+         "0": 0.28,
+         "1": 0.46,
+         "2": 0.26
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.792,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "blast_radius"
+      ]
+     }
+    ],
+    "usage": {
+     "input_tokens": 18544,
+     "output_tokens": 641
+    }
+   }
+  },
+  "B": {
+   "tool": "jev_review",
+   "group": "B-layout-loader-reconstruction",
+   "result": {
+    "tool": "jev_review",
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "truncated": false,
+    "mode": "per-file",
+    "action": "escalate",
+    "composite": 0.7478750000000001,
+    "safe_to_apply": 0.46,
+    "reason_codes": [
+     "confidence_below_review",
+     "safe_to_apply_below_review"
+    ],
+    "limiting": [
+     {
+      "file": "tools/linker_layout.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/linker_layout_recipe/controls.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/linker_layout_recipe/fixture.py",
+      "rubrics": [
+       "spec_match",
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/linker_layout_recipe/packages.py",
+      "rubrics": [
+       "spec_match"
+      ]
+     },
+     {
+      "file": "tools/test_linker_layout.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/misc3d_loader.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/misc3d_loader_recipe/controls.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/misc3d_loader_recipe/source_build.py",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "tools/test_misc3d_loader.py",
+      "rubrics": [
+       "spec_match"
+      ]
+     },
+     {
+      "file": "reconstruction/ee/app3d/misc3d_loader.c",
+      "rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "file": "reconstruction/ee/app3d/misc3d_loader.h",
+      "rubrics": [
+       "spec_match"
+      ]
+     },
+     {
+      "file": "reconstruction/ee/app3d/misc3d_loader_terminal.c",
+      "rubrics": [
+       "spec_match"
+      ]
+     }
+    ],
+    "weights": {
+     "correctness": 0.4,
+     "spec_match": 0.3,
+     "test_gap": 0.15,
+     "blast_radius": 0.15
+    },
+    "thresholds": {
+     "auto_accept": 0.8,
+     "review_at": 0.5,
+     "composite_floor": 0.7
+    },
+    "files": [
+     {
+      "path": "tools/linker_layout.py",
+      "safe_to_apply": 0.46,
+      "scores": {
+       "correctness": {
+        "score": 1.77,
+        "confidence": 0.64,
+        "probabilities": {
+         "0": 0.02,
+         "1": 0.2,
+         "2": 0.78
+        }
+       },
+       "spec_match": {
+        "score": 1.64,
+        "confidence": 0.46,
+        "probabilities": {
+         "0": 0.02,
+         "1": 0.32,
+         "2": 0.66
+        }
+       },
+       "test_gap": {
+        "score": 0.46,
+        "confidence": 0.32,
+        "probabilities": {
+         "0": 0.66,
+         "1": 0.23,
+         "2": 0.11
+        }
+       },
+       "blast_radius": {
+        "score": 1.16,
+        "confidence": 0.4,
+        "probabilities": {
+         "0": 0.12,
+         "1": 0.6,
+         "2": 0.28
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7785,
+      "reason_codes": [
+       "confidence_below_review",
+       "safe_to_apply_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/linker_layout_recipe/controls.py",
+      "safe_to_apply": 0.52,
+      "scores": {
+       "correctness": {
+        "score": 1.64,
+        "confidence": 0.47,
+        "probabilities": {
+         "0": 0.04,
+         "1": 0.27,
+         "2": 0.68
+        }
+       },
+       "spec_match": {
+        "score": 1.64,
+        "confidence": 0.47,
+        "probabilities": {
+         "0": 0.05,
+         "1": 0.25,
+         "2": 0.7
+        }
+       },
+       "test_gap": {
+        "score": 0.65,
+        "confidence": 0.02,
+        "probabilities": {
+         "0": 0.52,
+         "1": 0.31,
+         "2": 0.17
+        }
+       },
+       "blast_radius": {
+        "score": 0.72,
+        "confidence": 0.31,
+        "probabilities": {
+         "0": 0.37,
+         "1": 0.54,
+         "2": 0.09
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7712499999999999,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/linker_layout_recipe/fixture.py",
+      "safe_to_apply": 0.59,
+      "scores": {
+       "correctness": {
+        "score": 1.75,
+        "confidence": 0.64,
+        "probabilities": {
+         "0": 0.02,
+         "1": 0.2,
+         "2": 0.78
+        }
+       },
+       "spec_match": {
+        "score": 1.53,
+        "confidence": 0.29,
+        "probabilities": {
+         "0": 0.07,
+         "1": 0.33,
+         "2": 0.6
+        }
+       },
+       "test_gap": {
+        "score": 0.46,
+        "confidence": 0.29,
+        "probabilities": {
+         "0": 0.63,
+         "1": 0.27,
+         "2": 0.1
+        }
+       },
+       "blast_radius": {
+        "score": 0.72,
+        "confidence": 0.33,
+        "probabilities": {
+         "0": 0.36,
+         "1": 0.55,
+         "2": 0.09
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.791,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "spec_match",
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/linker_layout_recipe/packages.py",
+      "safe_to_apply": 0.6,
+      "scores": {
+       "correctness": {
+        "score": 1.78,
+        "confidence": 0.68,
+        "probabilities": {
+         "0": 0.02,
+         "1": 0.17,
+         "2": 0.81
+        }
+       },
+       "spec_match": {
+        "score": 1.54,
+        "confidence": 0.31,
+        "probabilities": {
+         "0": 0.07,
+         "1": 0.32,
+         "2": 0.61
+        }
+       },
+       "test_gap": {
+        "score": 0.42,
+        "confidence": 0.35,
+        "probabilities": {
+         "0": 0.65,
+         "1": 0.27,
+         "2": 0.08
+        }
+       },
+       "blast_radius": {
+        "score": 0.83,
+        "confidence": 0.32,
+        "probabilities": {
+         "0": 0.31,
+         "1": 0.55,
+         "2": 0.14
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.79325,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "spec_match"
+      ]
+     },
+     {
+      "path": "tools/test_linker_layout.py",
+      "safe_to_apply": 0.46,
+      "scores": {
+       "correctness": {
+        "score": 1.65,
+        "confidence": 0.46,
+        "probabilities": {
+         "0": 0.04,
+         "1": 0.28,
+         "2": 0.68
+        }
+       },
+       "spec_match": {
+        "score": 1.49,
+        "confidence": 0.23,
+        "probabilities": {
+         "0": 0.07,
+         "1": 0.37,
+         "2": 0.56
+        }
+       },
+       "test_gap": {
+        "score": 0.58,
+        "confidence": 0.13,
+        "probabilities": {
+         "0": 0.55,
+         "1": 0.32,
+         "2": 0.13
+        }
+       },
+       "blast_radius": {
+        "score": 1.1,
+        "confidence": 0.46,
+        "probabilities": {
+         "0": 0.13,
+         "1": 0.64,
+         "2": 0.23
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7275,
+      "reason_codes": [
+       "confidence_below_review",
+       "safe_to_apply_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/misc3d_loader.py",
+      "safe_to_apply": 0.5,
+      "scores": {
+       "correctness": {
+        "score": 1.52,
+        "confidence": 0.28,
+        "probabilities": {
+         "0": 0.05,
+         "1": 0.38,
+         "2": 0.57
+        }
+       },
+       "spec_match": {
+        "score": 1.47,
+        "confidence": 0.2,
+        "probabilities": {
+         "0": 0.08,
+         "1": 0.37,
+         "2": 0.55
+        }
+       },
+       "test_gap": {
+        "score": 0.6,
+        "confidence": 0.1,
+        "probabilities": {
+         "0": 0.55,
+         "1": 0.3,
+         "2": 0.15
+        }
+       },
+       "blast_radius": {
+        "score": 0.88,
+        "confidence": 0.4,
+        "probabilities": {
+         "0": 0.26,
+         "1": 0.6,
+         "2": 0.14
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7135,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/misc3d_loader_recipe/controls.py",
+      "safe_to_apply": 0.47,
+      "scores": {
+       "correctness": {
+        "score": 1.45,
+        "confidence": 0.17,
+        "probabilities": {
+         "0": 0.07,
+         "1": 0.41,
+         "2": 0.52
+        }
+       },
+       "spec_match": {
+        "score": 1.54,
+        "confidence": 0.31,
+        "probabilities": {
+         "0": 0.06,
+         "1": 0.34,
+         "2": 0.6
+        }
+       },
+       "test_gap": {
+        "score": 0.69,
+        "confidence": 0,
+        "probabilities": {
+         "0": 0.47,
+         "1": 0.36,
+         "2": 0.17
+        }
+       },
+       "blast_radius": {
+        "score": 0.78,
+        "confidence": 0.34,
+        "probabilities": {
+         "0": 0.33,
+         "1": 0.56,
+         "2": 0.11
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7107499999999999,
+      "reason_codes": [
+       "confidence_below_review",
+       "safe_to_apply_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/misc3d_loader_recipe/source_build.py",
+      "safe_to_apply": 0.55,
+      "scores": {
+       "correctness": {
+        "score": 1.58,
+        "confidence": 0.37,
+        "probabilities": {
+         "0": 0.07,
+         "1": 0.28,
+         "2": 0.65
+        }
+       },
+       "spec_match": {
+        "score": 1.47,
+        "confidence": 0.19,
+        "probabilities": {
+         "0": 0.1,
+         "1": 0.34,
+         "2": 0.56
+        }
+       },
+       "test_gap": {
+        "score": 0.61,
+        "confidence": 0.08,
+        "probabilities": {
+         "0": 0.54,
+         "1": 0.31,
+         "2": 0.15
+        }
+       },
+       "blast_radius": {
+        "score": 0.79,
+        "confidence": 0.32,
+        "probabilities": {
+         "0": 0.33,
+         "1": 0.55,
+         "2": 0.12
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7315000000000002,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "tools/test_misc3d_loader.py",
+      "safe_to_apply": 0.53,
+      "scores": {
+       "correctness": {
+        "score": 1.58,
+        "confidence": 0.37,
+        "probabilities": {
+         "0": 0.09,
+         "1": 0.24,
+         "2": 0.67
+        }
+       },
+       "spec_match": {
+        "score": 1.4,
+        "confidence": 0.1,
+        "probabilities": {
+         "0": 0.15,
+         "1": 0.3,
+         "2": 0.55
+        }
+       },
+       "test_gap": {
+        "score": 0.5,
+        "confidence": 0.25,
+        "probabilities": {
+         "0": 0.63,
+         "1": 0.24,
+         "2": 0.13
+        }
+       },
+       "blast_radius": {
+        "score": 0.76,
+        "confidence": 0.13,
+        "probabilities": {
+         "0": 0.41,
+         "1": 0.42,
+         "2": 0.17
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7315,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "spec_match"
+      ]
+     },
+     {
+      "path": "reconstruction/ee/app3d/misc3d_loader.c",
+      "safe_to_apply": 0.57,
+      "scores": {
+       "correctness": {
+        "score": 1.59,
+        "confidence": 0.4,
+        "probabilities": {
+         "0": 0.06,
+         "1": 0.28,
+         "2": 0.66
+        }
+       },
+       "spec_match": {
+        "score": 1.4,
+        "confidence": 0.1,
+        "probabilities": {
+         "0": 0.13,
+         "1": 0.34,
+         "2": 0.53
+        }
+       },
+       "test_gap": {
+        "score": 0.64,
+        "confidence": 0.04,
+        "probabilities": {
+         "0": 0.53,
+         "1": 0.3,
+         "2": 0.17
+        }
+       },
+       "blast_radius": {
+        "score": 0.58,
+        "confidence": 0.13,
+        "probabilities": {
+         "0": 0.55,
+         "1": 0.32,
+         "2": 0.13
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7365,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "test_gap"
+      ]
+     },
+     {
+      "path": "reconstruction/ee/app3d/misc3d_loader.h",
+      "safe_to_apply": 0.57,
+      "scores": {
+       "correctness": {
+        "score": 1.57,
+        "confidence": 0.35,
+        "probabilities": {
+         "0": 0.07,
+         "1": 0.29,
+         "2": 0.64
+        }
+       },
+       "spec_match": {
+        "score": 1.41,
+        "confidence": 0.11,
+        "probabilities": {
+         "0": 0.13,
+         "1": 0.33,
+         "2": 0.54
+        }
+       },
+       "test_gap": {
+        "score": 0.53,
+        "confidence": 0.2,
+        "probabilities": {
+         "0": 0.63,
+         "1": 0.21,
+         "2": 0.16
+        }
+       },
+       "blast_radius": {
+        "score": 0.58,
+        "confidence": 0.15,
+        "probabilities": {
+         "0": 0.54,
+         "1": 0.35,
+         "2": 0.11
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7422500000000001,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "spec_match"
+      ]
+     },
+     {
+      "path": "reconstruction/ee/app3d/misc3d_loader_terminal.c",
+      "safe_to_apply": 0.56,
+      "scores": {
+       "correctness": {
+        "score": 1.59,
+        "confidence": 0.4,
+        "probabilities": {
+         "0": 0.06,
+         "1": 0.28,
+         "2": 0.66
+        }
+       },
+       "spec_match": {
+        "score": 1.41,
+        "confidence": 0.11,
+        "probabilities": {
+         "0": 0.14,
+         "1": 0.31,
+         "2": 0.55
+        }
+       },
+       "test_gap": {
+        "score": 0.54,
+        "confidence": 0.19,
+        "probabilities": {
+         "0": 0.62,
+         "1": 0.22,
+         "2": 0.16
+        }
+       },
+       "blast_radius": {
+        "score": 0.56,
+        "confidence": 0.14,
+        "probabilities": {
+         "0": 0.56,
+         "1": 0.31,
+         "2": 0.13
+        }
+       }
+      },
+      "weights": {
+       "correctness": 0.4,
+       "spec_match": 0.3,
+       "test_gap": 0.15,
+       "blast_radius": 0.15
+      },
+      "thresholds": {
+       "auto_accept": 0.8,
+       "review_at": 0.5,
+       "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.7470000000000001,
+      "reason_codes": [
+       "confidence_below_review"
+      ],
+      "limiting_rubrics": [
+       "spec_match"
+      ]
+     }
+    ],
+    "usage": {
+     "input_tokens": 29721,
+     "output_tokens": 1106
+    }
+   }
+  }
+ },
+ "verify_test_coverage": {
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+   "verified": 2,
+   "contradicted": 0,
+   "unsupported": 1,
+   "needs_review": 1
+  },
+  "results": [
+   {
+    "id": "claim0",
+    "claim": "{\"id\":\"completion-tests-cover-new-wiring\",\"claim\":\"tools/test_completion.py exercises the new aggregate child wiring: bounded child passes keep AC06/AC08/AC09/AC14/AC15 incomplete with evidence, each new child's failure (linker_layout.py, misc3d_contract.py, misc3d_lifecycle.py, misc3d_loader_recipe/source_build.py, inventory_rpc_handoffs.py, check_rpc_contracts.py) fails its criterion with precedence over missing work, a malformed child receipt is retained as an AC02 failure with the rejected receipt hash preserved instead of erasing the 32-criterion ledger, and a VU entry-map failure does not fail exact VU encoding (AC16).\"}",
+    "verdict": "verified",
+    "probabilities": {
+     "contradicts": 0.02,
+     "supports": 0.98,
+     "says_nothing": 0
+    },
+    "confidence": 0.97,
+    "action": "auto",
+    "supporting_evidence": "test-completion-source",
+    "same_subject": 0.88
+   },
+   {
+    "id": "claim1",
+    "claim": "{\"id\":\"new-tools-ship-tri-state-tests\",\"claim\":\"Each new tool module ships unit tests covering positive, negative (fail) and incomplete cases: test_compiler_provenance.py, test_linker_layout.py, test_misc3d_loader.py and test_oracle_dependency_sources.py together define dozens of test methods including CLI-level controls (changed package/source fails despite missing counterparts, missing inputs are incomplete), and the staged evidence retains executed positive/negative/incomplete control receipts for the misc3d loader and linker layout CLIs.\"}",
+    "verdict": "verified",
+    "probabilities": {
+     "contradicts": 0.01,
+     "supports": 0.98,
+     "says_nothing": 0.01
+    },
+    "confidence": 0.97,
+    "action": "auto",
+    "supporting_evidence": "new-test-methods",
+    "same_subject": 0.72
+   },
+   {
+    "id": "claim2",
+    "claim": "{\"id\":\"staged-tree-checks-green\",\"claim\":\"The staged tree passes its checks: the full suite ran 749 tests OK (exit 0) and pyright reported 0 errors on the 16 staged/changed Python files; the fresh real-corpus aggregate exits 2 (incomplete) with AC01/AC07/AC16/AC18 passing and no child failure, matching the expected unfinished state.\"}",
+    "verdict": "unsupported",
+    "relation_verdict": "contradicted",
+    "probabilities": {
+     "contradicts": 0.44,
+     "supports": 0.41,
+     "says_nothing": 0.15
+    },
+    "confidence": 0.16,
+    "action": "review",
+    "supporting_evidence": "suite-log-tail",
+    "same_subject": 0.47
+   }
+  ],
+  "usage": {
+   "input_tokens": 10282,
+   "output_tokens": 418
+  }
+ },
+ "verify_checks_green": {
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+   "verified": 1,
+   "contradicted": 0,
+   "unsupported": 0,
+   "needs_review": 1
+  },
+  "results": [
+   {
+    "id": "claim0",
+    "claim": "{\"id\":\"staged-tree-checks-green\",\"claim\":\"The staged tree passes its checks: the full suite ran 749 tests OK with shell exit 0; pyright reported 0 errors, 0 warnings, 0 informations on the 16 staged/changed Python files; tools/ip_rails.py --tree exited 0; and the fresh real-corpus aggregate run exited with process exit code 2 and receipt status 'incomplete', with exactly AC01, AC07, AC16 and AC18 passing, 28 criteria incomplete, no child failure, and the ledger showing 60 attributed/matched game-owned bytes, 3,506,988 unresolved bytes and 0 substitutes.\"}",
+    "verdict": "verified",
+    "probabilities": {
+     "supports": 0.78,
+     "contradicts": 0.21,
+     "says_nothing": 0.01
+    },
+    "confidence": 0.67,
+    "action": "review",
+    "supporting_evidence": null,
+    "same_subject": 0.93
+   }
+  ],
+  "usage": {
+   "input_tokens": 3241,
+   "output_tokens": 141
+  }
+ },
+ "screening": {
+  "issue_5_body": {
+   "action": "pass",
+   "probabilities": {
+    "injection": 0.17,
+    "substance": 0.99,
+    "relevance": 0.98
+   }
+  },
+  "handoff_md": {
+   "action": "review",
+   "probabilities": {
+    "injection": 0.68,
+    "substance": 0.99,
+    "relevance": 0.98
+   },
+   "disposition": "agent-side inspection found no credential requests, tool redirection, or operating-rule overrides; retained as task data"
+  }
+ },
+ "fresh_aggregate": {
+  "receipt": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/aggregate-fresh-20261008/20261008T221416Z-96198163dd4a400fad0a6fd6a400e64d/result.json",
+  "exit": 2,
+  "status": "incomplete",
+  "passing": [
+   "AC01",
+   "AC07",
+   "AC16",
+   "AC18"
+  ],
+  "incomplete_count": 28,
+  "ledger": {
+   "file_backed_bytes": 2171407,
+   "zero_fill_bytes": 1335641,
+   "unresolved_bytes": 3506988,
+   "game_owned_bytes": 60,
+   "substitute_bytes": 0,
+   "matched_bytes": 60
+  }
+ }
+}
