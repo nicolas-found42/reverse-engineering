@@ -70,7 +70,7 @@ test "$(git -C common/external_deps/lwip rev-parse HEAD)" = 77dcd25a72509eb83f72
 test "$(git -C common/external_deps/fatfs rev-parse HEAD)" = 18cc3d9e07473a6aa3d783a66224b243a7b4974c
 make install
 cd "$PS2SDK/samples/debug/helloworld"
-make
+make -B
 '
 ```
 
@@ -81,7 +81,8 @@ checkout differs or has tracked modifications. Do not treat these dependencies
 as game-specific SDK attribution. The interface smoke source is the upstream
 `ee/debug/samples/helloworld/helloworld.c`.
 
-That sample calls `sceSifInitRpc`, `init_scr`, `scr_printf`, and related
+`make -B` forces the compile and link even when the output already exists. That
+sample calls `sceSifInitRpc`, `init_scr`, `scr_printf`, and related
 declared interfaces and links the SDK's debug and C runtime libraries. Retain
 the resulting ELF and logs only in the external evidence directory; do not
 track generated libraries, object files, or ELFs.
