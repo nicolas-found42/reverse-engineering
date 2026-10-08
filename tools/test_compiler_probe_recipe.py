@@ -84,7 +84,14 @@ class BuildRecipeTests(unittest.TestCase):
 
 
 class RunnerCliTests(unittest.TestCase):
-    def run_fake_probe(self, tmp: Path, probe_result: dict) -> tuple[int, dict]:
+    BOUNDARY_PROVENANCE = {
+        "metadata": {"bytes": 5, "sha256": "a" * 64},
+        "source_map": {"bytes": 7, "sha256": "b" * 64},
+        "saved_function_inventory": {"bytes": 11, "sha256": "c" * 64},
+    }
+
+    def run_fake_probe(self, tmp: Path, probe_result: dict,
+                       provenance: dict | None = BOUNDARY_PROVENANCE) -> tuple[int, dict]:
         game = tmp / "game"
         executable = game / "extracted/SLES_517.05"
         executable.parent.mkdir(parents=True)
@@ -103,6 +110,7 @@ class RunnerCliTests(unittest.TestCase):
         with patch.object(run, "prepare", side_effect=prepare_fake), \
              patch.object(run, "validate_manifest_runtimes"), \
              patch.object(run, "validate_runtime_images", return_value={"linux-tools": {}, "wine-compiler": {}}), \
+             patch.object(run, "boundary_provenance", return_value=provenance), \
              patch.object(run, "run_probe", return_value=probe_result):
             code = run.main([str(game), str(tool_root), "--output", str(output)])
         receipt_paths = list(output.glob("*/result.json"))
@@ -131,12 +139,27 @@ class RunnerCliTests(unittest.TestCase):
                          Path(run.TOOLS / "corpus_contract.py").resolve(),
                          Path(run.TOOLS / "ps2_executables.py").resolve(),
                          Path(run.TOOLS / "evidence_common.py").resolve(),
+                         Path(run.SOURCE_MAP).resolve(),
                          build.RECONSTRUCTION_SOURCE.resolve(),
                          Path(run.__file__).with_name("candidate.ld").resolve(),
                          Path(run.__file__).with_name("manifest.template.json").resolve(),
                          Path(run.__file__).with_name("docker-linux-exec.sh").resolve(),
                          Path(run.__file__).with_name("docker-wine-exec.sh").resolve()}
                         <= {Path(path) for path in receipt["inputs"]})
+
+    def test_missing_boundary_provenance_keeps_ac07_incomplete(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            result = {"status": "pass", "selected_id": "candidate-a", "matches": ["candidate-a"],
+                      "failures": [], "errors": [], "incomplete": [], "claim_limits": [],
+                      "candidates": [{"id": "candidate-a", "status": "pass",
+                                      "gate": {"status": "pass", "matched_bytes": 60}}]}
+            code, receipt = self.run_fake_probe(Path(tmp), result, provenance=None)
+        self.assertEqual(code, 0)
+        self.assertEqual(receipt["status"], "pass")
+        self.assertEqual(receipt["details"]["probe_status"], "pass")
+        self.assertEqual(receipt["details"]["ac05_status"], "incomplete")
+        self.assertEqual(receipt["details"]["ac07_status"], "incomplete")
+        self.assertIsNone(receipt["details"]["ac07_evidence"]["evidence_inputs"])
 
     def test_zero_matches_produces_failed_receipt(self):
         with tempfile.TemporaryDirectory() as tmp:
