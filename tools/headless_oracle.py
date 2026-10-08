@@ -27,7 +27,7 @@ PCSX2_SHA256 = "1972341a1bf079e3b5180eeba9c2c233574a9fe38cadd4e5e85ea179e334f13d
 OFFSCREEN_SHA256 = "ac97d9562bc77cce9a627e1ac474bd2d16c68af2f674fe65e3bece1cd0210679"
 DESKTOP_OBSERVER_SHA256 = "9219fa464495861ddf78d333526ee82e99e11576c8b3ff2439c12e800976d55d"
 DESKTOP_OBSERVER_SOURCE_SHA256 = "2e43e567a5058a5881e0b54173a7ca9e4064961fcb6618d5cc0c815c9920b879"
-QT_ARCHIVE_SHA256 = "e469b996bd4dd6409aeab1a2034eb73267d5c8de84aa6224bf7c9520cdcbd309"
+QT_SDK_ARCHIVE_SHA256 = "e469b996bd4dd6409aeab1a2034eb73267d5c8de84aa6224bf7c9520cdcbd309"
 QT_BUILD_COMMAND_SHA256 = "e5786e5d4738715fd64ac6f35325b82ab67ba3be8139233d72f29dedaffe6ab5"
 QT_PREPARATION_SHA256 = "068164de1068b1ebbb566224cd5ccb2b0bcebab6764afadcc5e365acf267dca1"
 QT_SOURCE_HASHES = {
@@ -38,6 +38,12 @@ QT_SOURCE_HASHES = {
 }
 EXPECTED_WORDS = [0x46523250, 21, 0x10DF30BF, 1]
 MAX_TIMEOUT_SECONDS = 60
+DESKTOP_SAMPLE_INTERVAL_MS = 50
+DESKTOP_SAMPLE_COUNT = 400
+AC25_QUALIFICATION_BLOCKERS = (
+    "Effective audio output has not been independently qualified; Null/mute settings are configuration requests only.",
+    "Window and focus monitoring samples every 50 ms for 20 seconds and cannot rule out transient events between samples or outside that interval.",
+)
 
 
 def _sbpl(path: Path) -> str:
@@ -125,7 +131,9 @@ def validate_observation(words: list[int], desktop: dict) -> dict:
                 "expected_words": EXPECTED_WORDS, "observed_words": words}
     frontmost = desktop.get("frontmost_pids", [])
     windows = desktop.get("owned_window_counts", [])
-    if not frontmost or len(frontmost) != len(windows):
+    if (not frontmost or len(frontmost) != len(windows)
+            or len(frontmost) != desktop.get("sample_count")
+            or len(frontmost) != DESKTOP_SAMPLE_COUNT):
         return {"status": "incomplete", "reason": "desktop observation was unavailable or malformed"}
     if any(count != 0 for count in windows):
         return {"status": "fail", "reason": "PCSX2 owned a native window during the run",
@@ -138,6 +146,16 @@ def validate_observation(words: list[int], desktop: dict) -> dict:
             "expected_words": EXPECTED_WORDS, "observed_words": words}
 
 
+def ac25_acceptance(observation: dict) -> dict:
+    """Fail closed: sampled observations cannot qualify this runtime profile."""
+    if observation.get("status") == "fail":
+        return {"status": "fail", "reason": observation.get("reason", "behavioral observation failed"),
+                "blockers": list(AC25_QUALIFICATION_BLOCKERS)}
+    return {"status": "incomplete",
+            "reason": "Raw observations do not qualify AC25 for this installed runtime profile.",
+            "blockers": list(AC25_QUALIFICATION_BLOCKERS)}
+
+
 def validate_probe_files(elf: Path, source: Path, linker_script: Path, recipe: dict) -> dict:
     actual = {"probe_elf": identity(elf), "probe_source": identity(source),
               "linker_script": identity(linker_script)}
@@ -147,23 +165,23 @@ def validate_probe_files(elf: Path, source: Path, linker_script: Path, recipe: d
     return actual
 
 
-def verify_qt_inputs(archive: Path, source_dir: Path, build_command: Path,
+def verify_qt_inputs(sdk_archive: Path, source_dir: Path, build_command: Path,
                      preparation: Path) -> dict:
     actual = {
-        "qt_source_archive": identity(archive),
+        "qt_sdk_archive": identity(sdk_archive),
         "qt_build_command": identity(build_command),
         "qt_preparation_record": identity(preparation),
         "qt_offscreen_sources": {name: identity(source_dir / name)
                                   for name in QT_SOURCE_HASHES},
     }
     expected_artifacts = {
-        "qt_source_archive": QT_ARCHIVE_SHA256,
+        "qt_sdk_archive": QT_SDK_ARCHIVE_SHA256,
         "qt_build_command": QT_BUILD_COMMAND_SHA256,
         "qt_preparation_record": QT_PREPARATION_SHA256,
     }
     for name, expected in expected_artifacts.items():
         if actual[name]["sha256"] != expected:
-            raise Invalid(f"{name} differs from the pinned Qt 6.10.1 build evidence")
+            raise Invalid(f"{name} differs from the pinned Qt 6.10.1 SDK/build evidence")
     for name, expected in QT_SOURCE_HASHES.items():
         if actual["qt_offscreen_sources"][name]["sha256"] != expected:
             raise Invalid(f"Qt offscreen source differs from the pinned source: {name}")
@@ -300,7 +318,7 @@ def execute(args, output: Path) -> dict:
          args.emulator, args.platform_plugin, args.elf, args.probe_source,
          args.linker_script, args.probe_build_log, args.bios,
          args.desktop_observer, args.desktop_observer_source,
-         args.qt_source_archive, args.qt_source_dir, args.qt_build_command,
+         args.qt_sdk_archive, args.qt_source_dir, args.qt_build_command,
          args.qt_preparation_record))
     input_record = verify_inputs(emulator, plugin, elf, source, linker, build_log,
                                  bios, observer, observer_source, qt_archive,
@@ -399,6 +417,11 @@ def execute(args, output: Path) -> dict:
             runtime_artifacts[name] = {"path": str(path), **identity(path)}
     if observed is None:
         detail = {"authority": "incomplete_executed_runtime_attempt", "criterion": "AC25",
+                  "acceptance": {"status": "incomplete",
+                                 "blockers": list(AC25_QUALIFICATION_BLOCKERS)},
+                  "observation_sampling": {"interval_ms": DESKTOP_SAMPLE_INTERVAL_MS,
+                                           "sample_count_target": DESKTOP_SAMPLE_COUNT,
+                                           "duration_ms": DESKTOP_SAMPLE_INTERVAL_MS * DESKTOP_SAMPLE_COUNT},
                   "inputs": input_record, "command": command, "environment": env,
                   "lifecycle": lifecycle, "desktop": desktop, "runtime_artifacts": runtime_artifacts,
                   "separation": {"evidence_kind": "behavioral", "static_byte_credit": 0,
@@ -412,13 +435,18 @@ def execute(args, output: Path) -> dict:
             return detail
         raise Incomplete(detail["reason"], detail)
     desktop_result = validate_observation(observed["words"], desktop)
+    acceptance = ac25_acceptance(desktop_result)
     details = {
-        "status": desktop_result["status"], "authority": "executed_behavioral_observation",
+        "status": acceptance["status"], "authority": "executed_behavioral_observation",
+        "acceptance": acceptance,
         "criterion": "AC25", "scope": "one hand-written controlled EE probe under PCSX2 v2.6.3",
         "inputs": input_record, "command": command, "environment": env,
         "settings_path": str(config_path), "settings_sha256": identity(config_path)["sha256"],
         "sandbox_profile": str(profile_path), "sandbox_profile_sha256": identity(profile_path)["sha256"],
         "pine": observed, "desktop": desktop, "observation": desktop_result,
+        "observation_sampling": {"interval_ms": DESKTOP_SAMPLE_INTERVAL_MS,
+                                 "sample_count_target": DESKTOP_SAMPLE_COUNT,
+                                 "duration_ms": DESKTOP_SAMPLE_INTERVAL_MS * DESKTOP_SAMPLE_COUNT},
         "runtime_artifacts": runtime_artifacts,
         "lifecycle": lifecycle,
         "separation": {"evidence_kind": "behavioral", "static_byte_credit": 0,
@@ -430,11 +458,12 @@ def execute(args, output: Path) -> dict:
     if cleanup_error:
         details["status"] = "fail"
         details["observation"]["reason"] = cleanup_error
-    if details["status"] == "fail":
+    if desktop_result["status"] == "fail":
+        details["status"] = "fail"
         details["failures"] = [details["observation"]["reason"]]
-    if details["status"] == "incomplete":
-        raise Incomplete(details["observation"]["reason"], details)
-    return details
+        return details
+    details["status"] = "incomplete"
+    raise Incomplete(acceptance["reason"], details)
 
 
 def main() -> int:
@@ -448,7 +477,7 @@ def main() -> int:
     parser.add_argument("--bios", type=Path, required=True)
     parser.add_argument("--desktop-observer", type=Path, required=True)
     parser.add_argument("--desktop-observer-source", type=Path, required=True)
-    parser.add_argument("--qt-source-archive", type=Path, required=True)
+    parser.add_argument("--qt-sdk-archive", type=Path, required=True)
     parser.add_argument("--qt-source-dir", type=Path, required=True)
     parser.add_argument("--qt-build-command", type=Path, required=True)
     parser.add_argument("--qt-preparation-record", type=Path, required=True)
@@ -463,7 +492,7 @@ def main() -> int:
     inputs = [Path(__file__), RECIPE, Path(args.emulator), Path(args.platform_plugin),
               Path(args.elf), Path(args.probe_source), Path(args.linker_script),
               Path(args.probe_build_log), Path(args.bios), Path(args.desktop_observer),
-              Path(args.desktop_observer_source), Path(args.qt_source_archive),
+              Path(args.desktop_observer_source), Path(args.qt_sdk_archive),
               Path(args.qt_build_command), Path(args.qt_preparation_record),
               *(Path(args.qt_source_dir) / name for name in QT_SOURCE_HASHES),
               TOOLS / "pcsx2_pine.py",

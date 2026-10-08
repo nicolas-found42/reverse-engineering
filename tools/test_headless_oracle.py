@@ -14,7 +14,7 @@ from headless_oracle import (build_settings, make_sandbox_profile,
                              validate_observation, validate_probe_files,
                              verify_qt_inputs, validate_timeout, _kill_group,
                              read_probe_output, wait_for_probe_output,
-                             cleanup_failure)
+                             cleanup_failure, ac25_acceptance)
 from evidence_common import Incomplete, Invalid, identity
 
 
@@ -150,7 +150,7 @@ class HeadlessOracleProfile(unittest.TestCase):
         result = subprocess.run([sys.executable, str(Path(__file__).with_name("headless_oracle.py")),
                                  "--help"], capture_output=True, text=True, check=True)
         for flag in ("--probe-source", "--linker-script", "--probe-build-log",
-                     "--desktop-observer-source", "--qt-source-archive",
+                     "--desktop-observer-source", "--qt-sdk-archive",
                      "--qt-source-dir", "--qt-build-command", "--qt-preparation-record",
                      "--timeout", "--output"):
             self.assertIn(flag, result.stdout)
@@ -166,7 +166,7 @@ class HeadlessOracleProfile(unittest.TestCase):
             for name in ("main.cpp", "qoffscreencommon.cpp",
                          "qoffscreenintegration.cpp", "qoffscreenwindow.cpp"):
                 (source_dir / name).write_bytes(name.encode())
-            with patch("headless_oracle.QT_ARCHIVE_SHA256", identity(files[0])["sha256"]), \
+            with patch("headless_oracle.QT_SDK_ARCHIVE_SHA256", identity(files[0])["sha256"]), \
                  patch("headless_oracle.QT_BUILD_COMMAND_SHA256", identity(files[1])["sha256"]), \
                  patch("headless_oracle.QT_PREPARATION_SHA256", identity(files[2])["sha256"]), \
                  patch("headless_oracle.QT_SOURCE_HASHES", {
@@ -258,15 +258,50 @@ class HeadlessOracleProfile(unittest.TestCase):
 
     def test_changed_output_is_a_behavioral_failure_and_focus_variation_is_incomplete(self):
         expected = [0x46523250, 21, 0x10DF30BF, 1]
-        good_desktop = {"frontmost_pids": [123, 123], "owned_window_counts": [0, 0]}
-        self.assertEqual(validate_observation(expected, good_desktop)["status"], "pass")
+        good_desktop = {"sample_count": 400, "frontmost_pids": [123] * 400,
+                        "owned_window_counts": [0] * 400}
+        raw = validate_observation(expected, good_desktop)
+        self.assertEqual(raw["status"], "pass")
+        acceptance = ac25_acceptance(raw)
+        self.assertEqual(acceptance["status"], "incomplete")
+        self.assertIn("Effective audio output", acceptance["blockers"][0])
+        self.assertIn("50 ms", acceptance["blockers"][1])
+        with self.assertRaises(TypeError):
+            ac25_acceptance(raw, True)
         changed = [*expected]
         changed[2] ^= 1
-        self.assertEqual(validate_observation(changed, good_desktop)["status"], "fail")
-        focus_changed = {"frontmost_pids": [123, 456], "owned_window_counts": [0, 0]}
-        self.assertEqual(validate_observation(expected, focus_changed)["status"], "incomplete")
-        with_window = {"frontmost_pids": [123, 123], "owned_window_counts": [0, 1]}
+        mismatch = validate_observation(changed, good_desktop)
+        self.assertEqual(mismatch["status"], "fail")
+        self.assertEqual(ac25_acceptance(mismatch)["status"], "fail")
+        focus_changed = {"sample_count": 400, "frontmost_pids": [123, 456] + [456] * 398,
+                         "owned_window_counts": [0] * 400}
+        raw_focus = validate_observation(expected, focus_changed)
+        self.assertEqual(raw_focus["status"], "incomplete")
+        self.assertEqual(ac25_acceptance(raw_focus)["status"], "incomplete")
+        with_window = {"sample_count": 400, "frontmost_pids": [123] * 400,
+                       "owned_window_counts": [0] * 399 + [1]}
         self.assertEqual(validate_observation(expected, with_window)["status"], "fail")
+
+    def test_short_desktop_sample_is_incomplete_not_a_positive_observation(self):
+        raw = validate_observation([0x46523250, 21, 0x10DF30BF, 1], {
+            "sample_count": 20, "frontmost_pids": [123] * 20,
+            "owned_window_counts": [0] * 20})
+        self.assertEqual(raw["status"], "incomplete")
+        self.assertEqual(ac25_acceptance(raw)["status"], "incomplete")
+
+    def test_static_completion_rejects_behavior_receipt_import_before_running(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            receipt = root / "behavior.json"
+            receipt.write_text('{"status":"pass","authority":"executed_behavioral_observation"}')
+            output = root / "out"
+            process = subprocess.run([
+                sys.executable, str(Path(__file__).with_name("completion.py")),
+                "not-a-real-corpus", "--output", str(output),
+                "--behavioral-receipt", str(receipt)], capture_output=True, text=True)
+            self.assertEqual(process.returncode, 2)
+            self.assertIn("unrecognized arguments: --behavioral-receipt", process.stderr)
+            self.assertFalse(output.exists())
 
     def test_probe_source_or_elf_mutation_is_rejected_before_launch(self):
         with tempfile.TemporaryDirectory() as temp:
