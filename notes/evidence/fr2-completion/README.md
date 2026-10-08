@@ -6,6 +6,7 @@ Run from a clean checkout with the unchanged local PAL corpus:
 python3 tools/completion.py games/ford-racing-2 \
   --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new \
   --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump \
+  --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \
   --output .scratch/evidence/completion
 ```
 
@@ -14,8 +15,10 @@ executables, never scope or acceptance thresholds. They require independent
 permitted-source provenance. Compiler tools default to the declared local
 `.scratch/compiler-probe-tools` directory; `--compiler-tools` may name a different
 installed tool directory. The fixed exploratory recipe still chooses its
-recorded candidate set, source and reference range. No compiler probe supplies
-ownership attribution or an exact original-compiler pin. The command runs
+recorded candidate set, source and reference range. The generic compiler probe
+cannot assign ownership. The fixed source-unit child applies the independently
+recorded ADR-0005 range decision and may supply local AC07 credit, while AC05
+historical compiler identification remains incomplete. The command runs
 independent load-image, archive, VU, asset-contract and exploratory compiler
 checks in fresh child directories and retains their
 receipt/report identities. It reports all AC01–AC32 criteria from issue #5.
@@ -23,15 +26,22 @@ Reconstruction and behavioral results have separate scopes. AC25/AC26 do not
 contribute static matching evidence. Missing source builds, attribution,
 toolchain pins, contracts, or acceptance receipts remain incomplete.
 
-This implementation is a progress verifier. It does not yet build EE/IOP
-reconstruction source, launch an oracle, implement all subsystem contracts, or
-prove the full specification. Unimplemented criteria cannot be satisfied by
+This implementation builds and compares the first hand-written EE source unit;
+it does not build the complete EE/IOP reconstruction, orchestrate a qualified
+oracle, implement all subsystem contracts, or prove the full specification.
+The [source integration evidence](../fr2-source-integration/README.md) records
+the bounded source-to-byte result, negative control, and conserved ledger.
+The [strict oracle attempt](../fr2-headless-oracle/README.md) has separate
+behavioral scope and remains incomplete. Unimplemented criteria cannot be satisfied by
 importing hand-written receipts, shrinking a denominator or declaring a skip.
 The child commands retain their independent claims: archive structural success
 does not complete asset consumers, and VU encoding success does not complete
 entry/state interfaces. Asset raw/zlib accounting is not a catalog of decoded
-body variants. All source-built matched credit remains zero until evidenced
-range attribution and builds exist.
+body variants. Structural inventory alone always records zero matched bytes;
+aggregate credit requires fresh independent source, decision, build, and byte
+bindings. Its matched fraction is explicitly a fraction of the attributed
+game-owned scope. The unresolved load-image bytes remain visible and prevent
+whole-corpus completion.
 
 Exit codes are 0 for a complete reconstruction, 1 for a known required mismatch,
 and 2 for missing required work without a known mismatch. A known changed corpus
