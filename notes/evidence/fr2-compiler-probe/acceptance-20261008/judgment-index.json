@@ -1,0 +1,28 @@
+{
+  "schema": "fr2-semantic-judgment-index/v1",
+  "policy": {
+    "auto_accept": 0.8,
+    "review_at": 0.5,
+    "composite_floor": 0.7
+  },
+  "files": {
+    "jev-gate-request.json": {
+      "sha256": "d9237fd70de3200b4cb659ad71225757263b6c25057b9ba026b97d096f8ade0f",
+      "bytes": 65405
+    },
+    "jev-verification.json": {
+      "sha256": "390dfd5d746af0493923842b569dfd916ec7d6bed95913af3448d510120749ba",
+      "bytes": 2383
+    },
+    "jev-gate.json": {
+      "sha256": "f42fd3cee4b6dfa488ee08b614229cf83a9ecfa2af17fe7bcb25219b0297ad30",
+      "bytes": 10564
+    },
+    "jev-verification-request.json": {
+      "sha256": "ae98f6e0de03da4638b9d2ffe9c17a86c3168d65083e9d3a74989018eb025ba7",
+      "bytes": 30322
+    }
+  },
+  "verification_disposition": "All four claims verified with auto actions. This does not grant compiler-source permission or historical identity.",
+  "gate_disposition": "Escalated: safe_to_apply 0.42, composite 0.8490625; low review/claim confidence. No contradicted or unsupported claims. Independent parent review with stronger GPT-6 reasoning verified raw/projection correspondence, bounded documentation, exact ticket text and focused tests; no concrete defect; safe to commit docs/evidence. Original escalation remains escalation. See review-disposition.md."
+}
