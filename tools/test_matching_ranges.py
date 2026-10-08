@@ -51,6 +51,8 @@ class RangeCli(unittest.TestCase):
         self.assertEqual(d['file_backed_bytes'], 8)
         self.assertEqual(d['zero_fill_bytes'], 24)
         self.assertEqual(d['matched_bytes'], 0)
+        self.assertEqual(d['substitute_bytes'], 0)
+        self.assertEqual(d['substitute_disposition'], 'no ranges attributed as substitute')
         self.assertEqual(d['unresolved_bytes'], 32)
         self.assertEqual([(r['address'], r['length'], r['section']) for r in d['ranges']],
                          [(0x100000, 8, '.text'), (0x100008, 8, None),

@@ -160,6 +160,8 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     ledger = {key: range_details.get(key, 0) for key in
               ('file_backed_bytes', 'zero_fill_bytes', 'unresolved_bytes',
                'game_owned_bytes', 'matched_bytes', 'substitute_bytes')}
+    ledger['substitute_disposition'] = range_details.get(
+        'substitute_disposition', 'no ranges attributed as substitute')
     ledger.update(matched_fraction=0.0, function_owned_bytes=None,
                   function_owned_disposition='Discovery accounting is not matching credit.')
     status = reconstruction_status(criteria, ledger, authority='real_corpus')
