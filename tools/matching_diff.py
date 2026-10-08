@@ -97,6 +97,19 @@ def compare(section: Section | None, unit: bytes | None) -> Verdict:
     raise AssertionError("unreachable: prefix differs, so a word differs")
 
 
+def compare_unit(name: str, address: int, file_offset: int, expected: bytes,
+                 unit: bytes | None) -> Verdict:
+    """Byte-diff one independently rebuilt unit against its pinned byte span.
+
+    Overlay code is stored in the executable's load section rather than in its
+    synthetic ELF overlay section, so callers provide the already validated
+    source span and its location. Scope remains mixed until range attribution.
+    """
+    section = Section(name, address, file_offset, len(expected), expected,
+                      sha256(expected))
+    return compare(section, unit)
+
+
 def _fail(section: Section, unit: bytes, scope: str, offset: int, matched: int,
           reason: str) -> Verdict:
     difference = {
