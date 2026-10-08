@@ -1,0 +1,527 @@
+{
+  "schema": "fr2-compiler-profile-acceptance/v1",
+  "source_revision": "e8b65417bc5d80f4fb85c91dacefe761a6d9f236",
+  "command": [
+    "tools/compiler_probe_recipe/run.py",
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "--profile",
+    "--output",
+    ".scratch/evidence/compiler-profile-acceptance"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "run_id": "20261008T192059Z-af9561af33a24beca05ad4368ca9ad42",
+  "raw_local_receipt": {
+    "path": "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/compiler-acceptance-20261008/20261008T192059Z-af9561af33a24beca05ad4368ca9ad42/result.json",
+    "sha256": "87b0d1c7d0c6162b135b2ab8dd0cb7b4dbb4e3c5e40d694d8f7408f033330546",
+    "report_sha256": "05b6cfee1061bc3e02b43df87f82ce89bf1b438a8c3d1008215680153214150e",
+    "original_path": "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/.scratch/evidence/compiler-profile-acceptance/20261008T192059Z-af9561af33a24beca05ad4368ca9ad42/result.json"
+  },
+  "projection_limit": "Safe metadata projection of fresh local receipt; instruction-byte/word values and binary payloads omitted. Exact command argv, artifact hashes, failure locations and driver command trace retained in per-unit files. Raw local receipt remains available at recorded path.",
+  "status": "pass",
+  "profile_status": "pass",
+  "selected_id": "ee-gcc2.96",
+  "surviving_candidates": [
+    "ee-gcc2.96"
+  ],
+  "ac05_status": "incomplete",
+  "ac05_reason": "The EE panel bounds a matching profile only. Source forms are inferred/explored, exact historical source/package binding remains #21, and relevant game-owned IOP probes are outside this panel.",
+  "historical_identity_status": "incomplete: exact corresponding compiler source/package binding remains #21; a unique panel profile is bounded to these source/flag/runtime/link inputs.",
+  "matched_bytes": 0,
+  "unit_outcomes": [
+    {
+      "unit": "accessor",
+      "matches": [
+        "ee-gcc2.96"
+      ]
+    },
+    {
+      "unit": "misc3d_reset",
+      "matches": [
+        "ee-gcc2.9-991111-01",
+        "ee-gcc2.96",
+        "ee-gcc2.95.2-273a",
+        "ee-gcc2.95.3-114",
+        "ee-gcc2.95.3-136"
+      ]
+    },
+    {
+      "unit": "entity_set_first",
+      "matches": [
+        "ee-gcc2.96"
+      ]
+    },
+    {
+      "unit": "parser_lookup",
+      "matches": [
+        "ee-gcc2.96"
+      ]
+    }
+  ],
+  "operational_gaps": [],
+  "runtime_identity": {
+    "linux-tools": {
+      "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+      "platform": "linux/amd64"
+    },
+    "wine-compiler": {
+      "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+      "platform": "linux/amd64"
+    }
+  },
+  "claim_limits": [
+    "No original-source identity or full-image compiler claim.",
+    "Pre-link diagnostics exclude relocation fields; exact linked comparisons retain them.",
+    "GNU ld 2.40 placement is a substitution, whose full contract remains #9.",
+    "No ownership change or additional matched-byte credit.",
+    "A byte match establishes no package permission."
+  ],
+  "decision": {
+    "bytes": 5756,
+    "sha256": "e69f06929fded9db6fb085cfa29bcae7cd89088652d27431fd7718e9e29e6078"
+  },
+  "package_members": [
+    {
+      "candidate": "ee-gcc2.9-991111-01",
+      "archive": "ee-gcc2.9-991111-01.tar.xz",
+      "sha256": "ed684fd98f89d36b0121caab311052089103e3b36241fcef4338cc9ea41c75b8",
+      "members": {
+        "driver": {
+          "member": "bin/ee-gcc",
+          "bytes": 154155,
+          "sha256": "64d0a50fef499da0b98177eb5e79e41dfb066ad44246b137c78a266ef97ee265"
+        },
+        "cc1": {
+          "member": "lib/gcc-lib/ee/2.9-ee-991111-01/cc1",
+          "bytes": 4794381,
+          "sha256": "b9aef69f93efb949f15ea58189e8eef4a002b9fe4de5d3fcf89c34e1244ec026"
+        },
+        "cpp": {
+          "member": "lib/gcc-lib/ee/2.9-ee-991111-01/cpp",
+          "bytes": 241396,
+          "sha256": "f85a54d241e019993fa7a06285d3677856b3b431e10318a587ab029373c603d7"
+        },
+        "gnu_assembler": {
+          "member": "ee/bin/as",
+          "bytes": 2210289,
+          "sha256": "296af123052ee39d175e5b3254102aafca105d4f6e975b351a13867f59b04019"
+        }
+      },
+      "source_disposition": "Exact corresponding source/notices remain unresolved under #21."
+    },
+    {
+      "candidate": "ee-gcc2.96",
+      "archive": "ee-gcc2.96.tar.xz",
+      "sha256": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+      "members": {
+        "driver": {
+          "member": "bin/ee-gcc",
+          "bytes": 333402,
+          "sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b"
+        },
+        "cc1": {
+          "member": "lib/gcc-lib/ee/2.96-ee-001003-1/cc1",
+          "bytes": 5526661,
+          "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+        },
+        "cpp": {
+          "member": "lib/gcc-lib/ee/2.96-ee-001003-1/cpp0",
+          "bytes": 421478,
+          "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+        },
+        "gnu_assembler": {
+          "member": "ee/bin/as",
+          "bytes": 2169068,
+          "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+        }
+      },
+      "source_disposition": "Exact corresponding source/notices remain unresolved under #21."
+    },
+    {
+      "candidate": "ee-gcc3.2-030926",
+      "archive": "ee-gcc3.2-030926.tar.gz",
+      "sha256": "6b92b61e40f80835b165d14fadd57d4046dbee82195599f791626180fe79b8e9",
+      "members": {
+        "driver": {
+          "member": "bin/ee-gcc",
+          "bytes": 335156,
+          "sha256": "8ba17b0f2cbcc87b31bb164766bc3e7e340f714adfb518bc4634a6f1ffda8951"
+        },
+        "cc1": {
+          "member": "lib/gcc-lib/ee/3.2-ee-030926/cc1",
+          "bytes": 9764536,
+          "sha256": "da4fec4d48d91e62fd968f76acb16981dd8131d02f27c1b7559f0e903b590eb6"
+        },
+        "cpp": {
+          "member": "lib/gcc-lib/ee/3.2-ee-030926/cpp0",
+          "bytes": 703785,
+          "sha256": "2d1a4b260e143a8b467bb7609cb3fd60ae541174ffff78d922feb2d7fbb0e218"
+        },
+        "gnu_assembler": {
+          "member": "ee/bin/as",
+          "bytes": 5887159,
+          "sha256": "d04424acb1359b31b3ad138f8d17876623ffe9182497ff4516055b71f22bf2fa"
+        }
+      },
+      "source_disposition": "Exact corresponding source/notices remain unresolved under #21."
+    },
+    {
+      "candidate": "ee-gcc3.2-040921",
+      "archive": "ee-gcc3.2-040921.tar.xz",
+      "sha256": "8c60ca7482523190e999524a7e4de2379dcf7ffee543c1b5663bfdf6a80ebf0f",
+      "members": {
+        "driver": {
+          "member": "bin/ee-gcc",
+          "bytes": 265116,
+          "sha256": "a5095b5d7b55f91535b12e48e9d808170fa9fb8c0620c43c2fb61379b1a3663a"
+        },
+        "cc1": {
+          "member": "lib/gcc-lib/ee/3.2-ee-040921/cc1",
+          "bytes": 7201720,
+          "sha256": "0bcc90bd23e10698e75047db9a84ea47e753791115fdd23d6f637a544f6d257d"
+        },
+        "cpp": {
+          "member": "bin/ee-cpp",
+          "bytes": 266763,
+          "sha256": "ed76fe8e08c13c749d59a458d21c912567b10e5e01bff028a4147debd56d15e6"
+        },
+        "gnu_assembler": {
+          "member": "ee/bin/as",
+          "bytes": 3706255,
+          "sha256": "cf85edec3ea30b0918e8a78ac49affca111a45e5b0ca9a776b6ded5c0118379b"
+        }
+      },
+      "source_disposition": "Exact corresponding source/notices remain unresolved under #21."
+    },
+    {
+      "candidate": "ee-gcc2.95.2-273a",
+      "archive": "ee-gcc2.95.2-273a.tar.gz",
+      "sha256": "ee9d9a7fccb59aebfa78a5587f6f8059660b91f705acddbc292ad2243c8e562e",
+      "members": {
+        "driver": {
+          "member": "bin/ee-gcc.exe",
+          "bytes": 122880,
+          "sha256": "ab787f9bda2531e116f420eec639e7d34bcc92caf4eb8d3dc71fefddffd3fcfc"
+        },
+        "cc1": {
+          "member": "lib/gcc-lib/ee/2.95.2/cc1.exe",
+          "bytes": 1773568,
+          "sha256": "2aaf3d22ce5c3508ecba15f16b06737713263e6aee289ca1e43d3ff9c17d964f"
+        },
+        "cpp": {
+          "member": "lib/gcc-lib/ee/2.95.2/cpp.exe",
+          "bytes": 110592,
+          "sha256": "f7db993de8745339ec71cf10d5fe9e7772d75e79a037e97809ed5e34ea3150c3"
+        },
+        "gnu_assembler": {
+          "member": "lib/gcc-lib/ee/2.95.2/as.exe",
+          "bytes": 622592,
+          "sha256": "7f504e571215fead2a15a14520bd22dc13507a1f13b479ca8c06a165f4a886a4"
+        },
+        "specs": {
+          "member": "lib/gcc-lib/ee/2.95.2/specs",
+          "bytes": 4260,
+          "sha256": "372d6255779b9214f7f980a8289461209c9be4cb12a91c6b4e01e14c0f91070c"
+        }
+      },
+      "source_disposition": "Exact corresponding source/notices remain unresolved under #21."
+    },
+    {
+      "candidate": "ee-gcc2.95.3-114",
+      "archive": "ee-gcc2.95.3-114.tar.gz",
+      "sha256": "dbc2c8c764631788d4cbb4c848c3cb0002fded0f4a95bae39e6d8b794391a6cb",
+      "members": {
+        "driver": {
+          "member": "bin/ee-gcc.exe",
+          "bytes": 122880,
+          "sha256": "522d28f9d74ddfce89568437156c8ee323c806de525d99907f698050dee8d81e"
+        },
+        "cc1": {
+          "member": "lib/gcc-lib/ee/2.95.3/cc1.exe",
+          "bytes": 1654784,
+          "sha256": "7bccdee8d6cc6bc56a84824cadb9c5ce546a1aa7f9b836447d2482408c5c5832"
+        },
+        "cpp": {
+          "member": "lib/gcc-lib/ee/2.95.3/cpp.exe",
+          "bytes": 159744,
+          "sha256": "271e9a55b782153acf303566c93c18ea30253e9c14d4df4daa55c521ead92eef"
+        },
+        "gnu_assembler": {
+          "member": "lib/gcc-lib/ee/2.95.3/as.exe",
+          "bytes": 622592,
+          "sha256": "7f504e571215fead2a15a14520bd22dc13507a1f13b479ca8c06a165f4a886a4"
+        },
+        "specs": {
+          "member": "lib/gcc-lib/ee/2.95.3/specs",
+          "bytes": 4260,
+          "sha256": "7b5520c0d9d04623b899ba80dbd713635a0aa17f0e58f7ba58b30c443cd48d76"
+        }
+      },
+      "source_disposition": "Exact corresponding source/notices remain unresolved under #21."
+    },
+    {
+      "candidate": "ee-gcc2.95.3-136",
+      "archive": "ee-gcc2.95.3-136.tar.gz",
+      "sha256": "3b6ae6897229ad005aaf1b0afaa1f3cb46e74b4c21a42e01130c07c0c598067f",
+      "members": {
+        "driver": {
+          "member": "bin/ee-gcc.exe",
+          "bytes": 122880,
+          "sha256": "522d28f9d74ddfce89568437156c8ee323c806de525d99907f698050dee8d81e"
+        },
+        "cc1": {
+          "member": "lib/gcc-lib/ee/2.95.3/cc1.exe",
+          "bytes": 1708032,
+          "sha256": "0393bcd31f91a6b9f0255db97f1cc99eba78ee8fc003e9a04dfabed1ae1d522e"
+        },
+        "cpp": {
+          "member": "lib/gcc-lib/ee/2.95.3/cpp.exe",
+          "bytes": 159744,
+          "sha256": "b9c50aa66f9cf5dbd80b2affe9874ec7674b7328965c629476f6ad7c77943154"
+        },
+        "gnu_assembler": {
+          "member": "lib/gcc-lib/ee/2.95.3/as.exe",
+          "bytes": 622592,
+          "sha256": "7f504e571215fead2a15a14520bd22dc13507a1f13b479ca8c06a165f4a886a4"
+        },
+        "specs": {
+          "member": "lib/gcc-lib/ee/2.95.3/specs",
+          "bytes": 4260,
+          "sha256": "7b5520c0d9d04623b899ba80dbd713635a0aa17f0e58f7ba58b30c443cd48d76"
+        }
+      },
+      "source_disposition": "Exact corresponding source/notices remain unresolved under #21."
+    }
+  ],
+  "phase_tools": {
+    "prepare_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-objcopy",
+      "bytes": 192168,
+      "sha256": "29e2ef3c83acffe8287b3666934e8a76624a53e539089bd4715e98ace874a2ed"
+    },
+    "link": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/mips-linux-gnu-ld",
+      "bytes": 1817176,
+      "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+    }
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/profile.py": {
+      "bytes": 9004,
+      "sha256": "dc81e5ae19be04ddd12c96caaa29da0890365d726e5eacf6586c7383f6217536"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/notes/evidence/fr2-compiler-probe/profile-units.json": {
+      "bytes": 5756,
+      "sha256": "e69f06929fded9db6fb085cfa29bcae7cd89088652d27431fd7718e9e29e6078"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/manifest.template.json": {
+      "bytes": 15028,
+      "sha256": "6c0483d14c5d308fbd2b4a011abc2c4b346882eb38a6316a7b67a0e22cdb9117"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/build.py": {
+      "bytes": 6448,
+      "sha256": "00c56a48422f4d74661a3f4139ff69f5ce2e75c50000a867a68383c0309f06fc"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/run.py": {
+      "bytes": 10714,
+      "sha256": "b02e3e62b8ca901a39c7d925c1c681db0717df22caa8db40dc04ea7a9fff03cf"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/packages.py": {
+      "bytes": 2253,
+      "sha256": "b1e6b4930f4090644b8961a181d3fb9c53e418dd833d6ba90c11024361c0a7db"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe.py": {
+      "bytes": 13815,
+      "sha256": "bd83f036c3b720fa75a02e91967f52d12513c96913173501d100baa2aeba194b"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_output.py": {
+      "bytes": 3649,
+      "sha256": "e9d9f93c3f3e9f46ab384bbb3538a975200bb8367bdc0a0d0cf71a05c2ceb666"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/ps2_executables.py": {
+      "bytes": 7248,
+      "sha256": "6872b9d9af5477fa81a87aab7c326b9f91a270412835145329e5aefccf44461d"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/matching_sections.py": {
+      "bytes": 3987,
+      "sha256": "96f88ac55f5e84fe90a1de8bcd1e0fbcdbf58fab5b48b47628d8d1e0273bb8ef"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/matching_diff.py": {
+      "bytes": 10479,
+      "sha256": "afdd9a570750357a4e6b4aad2d3c0cbc296b9f3cbf959378a2f3ff43ea919075"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/corpus_contract.py": {
+      "bytes": 7501,
+      "sha256": "31307b7db16af11ecfd63183df2c0328d00c7345a3959223618146894fb7d87e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/evidence_common.py": {
+      "bytes": 2971,
+      "sha256": "52ecb505aacbd81c6c54847e19952fc605d548a61835c72542ebce9b4745be20"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/reconstruction/ee/app3d/misc3d_db_id.c": {
+      "bytes": 627,
+      "sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/notes/evidence/fr2-source-map/source-map-result.json": {
+      "bytes": 131306,
+      "sha256": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/candidate.ld": {
+      "bytes": 209,
+      "sha256": "d04155c3f9a349b42cdbd8ba16e4d4cd2188eba16bbe9d29cc3196c08fe039f4"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/docker-linux-exec.sh": {
+      "bytes": 619,
+      "sha256": "8cfd9b5bdff75635ff922f8bacbbfc48061cfc2f1ff65553ed578f0ebe94e576"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/docker-wine-exec.sh": {
+      "bytes": 646,
+      "sha256": "2f155169727580b4657ffa067ed1268a0127ae5116fdf77edafc7b892315298e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/misc3d_reset.c": {
+      "bytes": 384,
+      "sha256": "a447ce7bffe4ab51cf7151f0d504d1e7a83e5cd6e715cb981a582c89f101e19f"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/entity_set_first.c": {
+      "bytes": 551,
+      "sha256": "92f4fe16d604fce7638e7a056d0db1bd60ff8f0cceb034f8fbfaec68f6cdf99e"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-issue-8/tools/compiler_probe_recipe/parser_lookup.c": {
+      "bytes": 689,
+      "sha256": "23059c7e7fc5c1b475d81bded4331b2a7a38ec1b3a9c1b32baccb1dafc2a93dd"
+    }
+  },
+  "probes": [
+    {
+      "unit": "accessor",
+      "path": "accessor.json",
+      "sha256": "bf6a451923bdcf499b96805d39a6407d796e28109af0b9110f78304b603182e6",
+      "bytes": 43427,
+      "candidates_executed": 7,
+      "nonmatches_located": 6,
+      "package_identity_status": "pass"
+    },
+    {
+      "unit": "misc3d_reset",
+      "path": "misc3d_reset.json",
+      "sha256": "1adfebc1bed1962a8ad9b0e140566f6546dd69d9761319b5671511eddda4cf74",
+      "bytes": 43605,
+      "candidates_executed": 7,
+      "nonmatches_located": 2,
+      "package_identity_status": "pass"
+    },
+    {
+      "unit": "entity_set_first",
+      "path": "entity_set_first.json",
+      "sha256": "bced6ec2f31c4e976bd3bc4059edc96f89250a1935d4c64d1cac6c0e240f0dbb",
+      "bytes": 42884,
+      "candidates_executed": 7,
+      "nonmatches_located": 6,
+      "package_identity_status": "pass"
+    },
+    {
+      "unit": "parser_lookup",
+      "path": "parser_lookup.json",
+      "sha256": "3dc9c5e33fe91b923b3893c3bdcd553d12bd49833e399584edd242e14d7a300e",
+      "bytes": 44603,
+      "candidates_executed": 7,
+      "nonmatches_located": 6,
+      "package_identity_status": "pass"
+    }
+  ],
+  "static_inventory_audit": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-helpers/data-table-static-inventory-01.json",
+    "sha256": "ca1a05874479b59f842f825436b22895d4e4043ba379f149e125c5a5e60f8ac8",
+    "expected_sha256": "ca1a05874479b59f842f825436b22895d4e4043ba379f149e125c5a5e60f8ac8",
+    "units": [
+      {
+        "unit": "misc3d_reset",
+        "entry": "001d17a8",
+        "inventory_body_bytes": 28,
+        "probe_extent_bytes": 28,
+        "static_callers": [
+          "001ccbd8"
+        ],
+        "callees": [],
+        "body_ranges": [
+          {
+            "start": "001d17a8",
+            "end": "001d17c3"
+          }
+        ],
+        "metadata_matches_decision": true
+      },
+      {
+        "unit": "entity_set_first",
+        "entry": "0018bba8",
+        "inventory_body_bytes": 56,
+        "probe_extent_bytes": 60,
+        "static_callers": [],
+        "callees": [
+          "001b0770"
+        ],
+        "body_ranges": [
+          {
+            "start": "0018bba8",
+            "end": "0018bbbb"
+          },
+          {
+            "start": "0018bbbc",
+            "end": "0018bbc3"
+          },
+          {
+            "start": "0018bbc8",
+            "end": "0018bbd7"
+          },
+          {
+            "start": "0018bbd8",
+            "end": "0018bbe3"
+          }
+        ],
+        "metadata_matches_decision": true
+      },
+      {
+        "unit": "parser_lookup",
+        "entry": "0018b840",
+        "inventory_body_bytes": 80,
+        "probe_extent_bytes": 80,
+        "static_callers": [
+          "0018ac40"
+        ],
+        "callees": [
+          "00105888"
+        ],
+        "body_ranges": [
+          {
+            "start": "0018b840",
+            "end": "0018b85f"
+          },
+          {
+            "start": "0018b860",
+            "end": "0018b86b"
+          },
+          {
+            "start": "0018b86c",
+            "end": "0018b877"
+          },
+          {
+            "start": "0018b878",
+            "end": "0018b87f"
+          },
+          {
+            "start": "0018b880",
+            "end": "0018b88f"
+          }
+        ],
+        "metadata_matches_decision": true
+      }
+    ]
+  }
+}

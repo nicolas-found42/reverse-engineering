@@ -1,0 +1,75 @@
+{
+  "tool": "jev_verify",
+  "model": "typesafe/jev-1.13-20260917",
+  "provider": "openrouter",
+  "auto_accept": 0.8,
+  "subject_at": 0.5,
+  "summary": {
+    "verified": 4,
+    "contradicted": 0,
+    "unsupported": 0,
+    "needs_review": 0
+  },
+  "results": [
+    {
+      "id": "claim0",
+      "claim": "The fresh real four-unit seven-candidate EE panel has 28 completed combinations, zero operational gaps and uniquely selects ee-gcc2.96 across both comparisons for all four units; its AC05 status remains incomplete and it grants zero additional matched-byte credit.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.94,
+        "says_nothing": 0,
+        "contradicts": 0.06
+      },
+      "confidence": 0.91,
+      "action": "auto",
+      "supporting_evidence": "fresh-safe-raw-result-fields",
+      "same_subject": 0.93
+    },
+    {
+      "id": "claim1",
+      "claim": "The focused public fixture command passed 42 tests; this audit does not claim a fresh whole-suite run.",
+      "verdict": "verified",
+      "probabilities": {
+        "contradicts": 0.03,
+        "says_nothing": 0.01,
+        "supports": 0.96
+      },
+      "confidence": 0.94,
+      "action": "auto",
+      "supporting_evidence": "focused-log",
+      "same_subject": 0.94
+    },
+    {
+      "id": "claim2",
+      "claim": "The safe public metadata projection agrees with the bound raw local receipt, and all 20 linked nonmatches retain located failures.",
+      "verdict": "verified",
+      "probabilities": {
+        "contradicts": 0,
+        "says_nothing": 0,
+        "supports": 1
+      },
+      "confidence": 1,
+      "action": "auto",
+      "supporting_evidence": "projection-integrity-check",
+      "same_subject": 0.96
+    },
+    {
+      "id": "claim3",
+      "claim": "A release archive/member hash and byte match do not resolve the exact compiler-source/package provenance in #21. The bounded EE selection does not justify closing #8 under its full unchanged source-identity acceptance criteria and open #21 prerequisite.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "says_nothing": 0,
+        "contradicts": 0
+      },
+      "confidence": 1,
+      "action": "auto",
+      "supporting_evidence": "package-provenance",
+      "same_subject": 0.91
+    }
+  ],
+  "usage": {
+    "input_tokens": 10662,
+    "output_tokens": 624
+  }
+}
