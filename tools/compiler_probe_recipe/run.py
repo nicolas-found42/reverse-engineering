@@ -77,13 +77,16 @@ def main(argv: list[str] | None = None) -> int:
 
     def action() -> dict:
         # The Docker and Wine wrappers mount only TOOL_ROOT. Keep source,
-        # reference, object, and linked files below that mount.
-        with tempfile.TemporaryDirectory(prefix="compiler-probe-recipe-", dir=args.tool_root) as temp:
-            staging = Path(temp)
-            manifest, _ = prepare(args.game, args.tool_root, staging)
-            validate_manifest_runtimes(manifest, args.tool_root)
+        # reference, object, and linked files below that mount. Resolve aliases
+        # before creating any paths so Docker receives the host-visible mount
+        # path rather than a lexical symlink path.
+        tool_root = args.tool_root.resolve(strict=True)
+        with tempfile.TemporaryDirectory(prefix="compiler-probe-recipe-", dir=tool_root) as temp:
+            staging = Path(temp).resolve()
+            manifest, _ = prepare(args.game, tool_root, staging)
+            validate_manifest_runtimes(manifest, tool_root)
             runtime_identity = validate_runtime_images()
-            result = run_probe(manifest, staging / "candidate-work")
+            result = run_probe(manifest, (staging / "candidate-work").resolve())
         result["runtime_identity"] = runtime_identity
         result["runtime_phases"] = {
             "native_compiler_candidates": "linux-tools",

@@ -135,6 +135,44 @@ class RunnerCliTests(unittest.TestCase):
             with self.assertRaisesRegex(Incomplete, "identity or platform differs"):
                 run.validate_runtime_images()
 
+    def test_symlinked_tool_root_uses_canonical_paths_for_mounted_work(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            game = root / "game"
+            executable = game / "extracted/SLES_517.05"
+            executable.parent.mkdir(parents=True)
+            executable.write_bytes(b"fixture corpus executable")
+            actual_tool_root = root / "real-tools"
+            actual_tool_root.mkdir()
+            linked_tool_root = root / "tools-link"
+            linked_tool_root.symlink_to(actual_tool_root, target_is_directory=True)
+            manifest = root / "manifest.json"
+            manifest.write_text("{}\n")
+            observed = {}
+
+            def prepare_spy(_game: Path, tool_root: Path, staging: Path):
+                observed["prepare_tool_root"] = tool_root
+                observed["staging"] = staging
+                return manifest, None
+
+            def probe_spy(_manifest: Path, work: Path):
+                observed["work"] = work
+                return {"status": "pass", "matches": ["candidate-a"], "failures": [],
+                        "errors": [], "incomplete": [], "claim_limits": []}
+
+            with patch.object(run, "prepare", side_effect=prepare_spy), \
+                 patch.object(run, "validate_manifest_runtimes"), \
+                 patch.object(run, "validate_runtime_images", return_value={"linux-tools": {}, "wine-compiler": {}}), \
+                 patch.object(run, "run_probe", side_effect=probe_spy):
+                code = run.main([str(game), str(linked_tool_root), "--output", str(root / "out")])
+
+            self.assertEqual(code, 0)
+            canonical_root = actual_tool_root.resolve()
+            self.assertEqual(observed["prepare_tool_root"], canonical_root)
+            self.assertEqual(observed["staging"].parent, canonical_root)
+            self.assertEqual(observed["work"], observed["staging"] / "candidate-work")
+            self.assertTrue(str(observed["work"]).startswith(str(canonical_root) + "/"))
+
 
 if __name__ == "__main__":
     unittest.main()
