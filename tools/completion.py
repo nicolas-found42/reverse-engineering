@@ -187,6 +187,33 @@ def source_unit_credit(game: Path, range_child: dict, range_result: dict,
         return 0
 
 
+def aggregate_ledger(range_details: dict, credited: int) -> dict:
+    """Conserve every initialized/zero-fill byte; matches are owned-byte subsets."""
+    keys = ('file_backed_bytes', 'zero_fill_bytes', 'unresolved_bytes',
+            'game_owned_bytes', 'substitute_bytes')
+    ledger = {key: range_details.get(key, 0) for key in keys}
+    total = ledger['file_backed_bytes'] + ledger['zero_fill_bytes']
+    expected_unresolved = total - ledger['game_owned_bytes'] - ledger['substitute_bytes']
+    if expected_unresolved < 0 or ledger['unresolved_bytes'] != expected_unresolved:
+        raise Invalid('range ledger does not conserve initialized and zero-fill bytes', {
+            'total_bytes': total, 'game_owned_bytes': ledger['game_owned_bytes'],
+            'substitute_bytes': ledger['substitute_bytes'],
+            'reported_unresolved_bytes': ledger['unresolved_bytes'],
+            'expected_unresolved_bytes': expected_unresolved})
+    if credited < 0 or credited > ledger['game_owned_bytes']:
+        raise Invalid('matched-byte credit exceeds the attributed game-owned scope', {
+            'credited_bytes': credited, 'game_owned_bytes': ledger['game_owned_bytes']})
+    ledger['matched_bytes'] = credited
+    ledger['substitute_disposition'] = range_details.get(
+        'substitute_disposition', 'no ranges attributed as substitute')
+    ledger.update(matched_fraction=(credited / ledger['game_owned_bytes']
+                                    if ledger['game_owned_bytes'] else 0.0),
+                  matched_fraction_scope='attributed_game_owned_bytes',
+                  function_owned_bytes=None,
+                  function_owned_disposition='Discovery accounting is not matching credit.')
+    return ledger
+
+
 def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None,
           compiler_tools: Path) -> dict:
     children_root = output / ('children-' + uuid.uuid4().hex)
@@ -242,17 +269,7 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
                'Archive-derived contract catalog retained; required body/consumer/state semantics '
                'have not been proven by documentation coverage.', [1, 3])
     range_details = ranges['details']
-    ledger = {key: range_details.get(key, 0) for key in
-              ('file_backed_bytes', 'zero_fill_bytes', 'unresolved_bytes',
-               'game_owned_bytes', 'matched_bytes', 'substitute_bytes')}
-    ledger['substitute_disposition'] = range_details.get(
-        'substitute_disposition', 'no ranges attributed as substitute')
-    ledger['matched_bytes'] = credited
-    ledger['unresolved_bytes'] = max(0, ledger['unresolved_bytes'] - credited)
-    ledger.update(matched_fraction=(credited / ledger['game_owned_bytes']
-                                    if ledger['game_owned_bytes'] else 0.0),
-                  function_owned_bytes=None,
-                  function_owned_disposition='Discovery accounting is not matching credit.')
+    ledger = aggregate_ledger(range_details, credited)
     status = reconstruction_status(criteria, ledger, authority='real_corpus')
     details = {
         'spec': 'https://github.com/nicolas-found42/reverse-engineering/issues/5',

@@ -5,7 +5,7 @@ import sys
 import tempfile
 import unittest
 
-from completion import reconstruction_status
+from completion import aggregate_ledger, reconstruction_status
 from evidence_common import Invalid
 
 TOOLS = Path(__file__).resolve().parent
@@ -121,6 +121,27 @@ class ReconstructionReport(unittest.TestCase):
             else:
                 criteria[0]['evidence'] = []
             self.assertEqual(reconstruction_status(criteria, ledger, authority='real_corpus'), 'incomplete')
+
+    def test_source_unit_credit_conserves_partition_and_fraction_is_owned_scope_only(self):
+        details = {'file_backed_bytes': 2171407, 'zero_fill_bytes': 1335641,
+                   'game_owned_bytes': 60, 'substitute_bytes': 0,
+                   'unresolved_bytes': 3506988}
+        ledger = aggregate_ledger(details, 60)
+        self.assertEqual(ledger['file_backed_bytes'] + ledger['zero_fill_bytes'],
+                         ledger['unresolved_bytes'] + ledger['game_owned_bytes']
+                         + ledger['substitute_bytes'])
+        self.assertEqual((ledger['matched_bytes'], ledger['matched_fraction'],
+                          ledger['matched_fraction_scope']),
+                         (60, 1.0, 'attributed_game_owned_bytes'))
+
+    def test_double_subtraction_and_ownership_overcredit_fail_conservation(self):
+        details = {'file_backed_bytes': 2171407, 'zero_fill_bytes': 1335641,
+                   'game_owned_bytes': 60, 'substitute_bytes': 0,
+                   'unresolved_bytes': 3506928}
+        with self.assertRaises(Invalid):
+            aggregate_ledger({**details, 'unresolved_bytes': 3506928 - 60}, 60)
+        with self.assertRaises(Invalid):
+            aggregate_ledger(details, 61)
 
 
 if __name__ == '__main__':
