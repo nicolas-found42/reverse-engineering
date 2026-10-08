@@ -27,6 +27,11 @@ def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def file_receipt(path: Path) -> dict:
+    """Record a file's path and fingerprint in the probe receipt."""
+    return {"path": str(path), **identity(path)}
+
+
 def expand_command(command: list[str], paths: dict[str, Path]) -> list[str]:
     return [arg.format(**{key: str(value) for key, value in paths.items()}) for arg in command]
 
@@ -96,7 +101,7 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
             if not path.is_file():
                 missing_tools.append(tool_name)
             else:
-                row["tool_files"][tool_name] = {"path": str(path), **identity(path)}
+                row["tool_files"][tool_name] = file_receipt(path)
         if (missing_tools or not compiler.is_file() or not compiler_binary.is_file()
                 or not objcopy.is_file() or not objcopy_binary.is_file()):
             if missing_tools:
@@ -140,7 +145,7 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
             row.update(status="error", reason="compiler produced no object")
             results.append(row)
             continue
-        row['artifacts']['object'] = {"path": str(obj), **identity(obj)}
+        row['artifacts']['object'] = file_receipt(obj)
         if manifest.get('compiler_diagnostic'):
             try:
                 row['compiler_output'] = compare_object(obj.read_bytes(), symbol, expected)
@@ -159,7 +164,7 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
                 row.update(status="incomplete", reason=f"{phase} executable identity is unavailable")
                 results.append(row)
                 break
-            row['phase_tools'][phase] = {"path": str(tool), **identity(tool)}
+            row['phase_tools'][phase] = file_receipt(tool)
             try:
                 phase_result = run_command(phase_argv)
             except (OSError, subprocess.TimeoutExpired) as exc:
@@ -177,8 +182,8 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
                 row.update(status="error", reason=f"{phase} produced no output")
                 results.append(row)
                 break
-            row['artifacts']['prepared_object' if phase == 'prepare_object' else 'linked_object'] = {
-                "path": str(object_to_extract), **identity(object_to_extract)}
+            row['artifacts']['prepared_object' if phase == 'prepare_object' else 'linked_object'] = (
+                file_receipt(object_to_extract))
         else:
             objcopy_argv = [str(objcopy), *item["objcopy"][1:], "--dump-section",
                             f".text.{symbol}={extracted}", str(object_to_extract)]
@@ -195,7 +200,7 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
                 row.update(status="error", reason="function section could not be extracted")
                 results.append(row)
                 continue
-            row['artifacts']['extracted_function'] = {"path": str(extracted), **identity(extracted)}
+            row['artifacts']['extracted_function'] = file_receipt(extracted)
             actual = extracted.read_bytes()
             row["actual_sha256"] = hashlib.sha256(actual).hexdigest()
             row["actual_bytes"] = len(actual)
@@ -228,10 +233,10 @@ def run_probe(manifest_path: Path, output: Path, *, range_scoped: bool = False) 
     return {"status": status, "selected_id": matches[0] if status == "pass" else None,
             "matches": matches, "failures": failures, "errors": errors,
             "incomplete": incomplete,
-            "manifest": {"path": str(manifest_path.resolve()), **identity(manifest_path)},
+            "manifest": file_receipt(manifest_path.resolve()),
             "evidence": manifest.get("evidence", {}),
-            "source": {"path": str(source), **identity(source)},
-            "reference": {"path": str(reference), **identity(reference)},
+            "source": file_receipt(source),
+            "reference": file_receipt(reference),
             "symbol": symbol, "candidates": results,
             "claim_limits": ["A unique match identifies this source/compiler/flags/reference probe only.",
                              "It does not establish the original compiler ID without an independently evidenced retail function/reference pair.",
