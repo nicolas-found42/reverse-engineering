@@ -1,0 +1,16 @@
+[
+  {
+    "command": "jgrep --diff --staged --json 'turns missing required evidence into a passing whole-protocol result'",
+    "exit_code": 1,
+    "result": [],
+    "stderr": "0 hits / 6 chunks (0 cached) \u00b7 8148 tokens \u00b7 $0.0003 \u00b7 0.5s\n",
+    "disposition": "No semantic matches; not proof of correctness."
+  },
+  {
+    "command": "jgrep --diff --staged --json 'accepts malformed message lengths or trusts unvalidated raw binary profiles'",
+    "exit_code": 1,
+    "result": [],
+    "stderr": "0 hits / 6 chunks (0 cached) \u00b7 8154 tokens \u00b7 $0.0003 \u00b7 0.5s\n",
+    "disposition": "No semantic matches; not proof of correctness."
+  }
+]
