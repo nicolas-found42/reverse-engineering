@@ -14,7 +14,6 @@ Validation:
   - root names + child names: all nodes covered exactly once (each node appears as root or child)
 """
 import struct
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent

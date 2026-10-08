@@ -6,8 +6,6 @@ spans, splits each span into [name+NUL pad4][payload], then reports payload
 length + content statistics per record class.
 """
 import re
-import struct
-import sys
 from collections import Counter
 from pathlib import Path
 

@@ -12,7 +12,7 @@ import json
 from pathlib import Path
 import re
 
-from evidence_common import Incomplete, Invalid, identity, write_result
+from evidence_common import Incomplete, Invalid, write_result
 from ps2_executables import parse_elf
 from verify_code_inventory import inspect as inspect_static
 from verify_decompilation import _c_comments

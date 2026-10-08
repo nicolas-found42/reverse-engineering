@@ -6,7 +6,6 @@
 Checks every pair: does start[0]+? ... final start+size == .msb size?
 """
 import struct
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent

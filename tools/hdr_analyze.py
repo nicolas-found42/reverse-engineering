@@ -39,7 +39,6 @@ def main() -> None:
 
     print(f"runs of >=3 chaining pairs: {len(runs)}")
     for rs, re_, p0, p1 in runs[:40]:
-        size_sum = sum(p[0] for p in pairs[rs:re_])
         span = p1[1] + p1[0] - p0[1]
         print(f"  run[{rs:5d}:{re_:5d}] len={re_-rs:5d} start=({p0[0]},{p0[1]}) end=({p1[0]},{p1[1]}) span={span}")
 

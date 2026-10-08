@@ -1,4 +1,3 @@
-import struct
 import unittest
 
 from evidence_common import Invalid

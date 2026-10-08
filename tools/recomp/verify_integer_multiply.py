@@ -152,8 +152,6 @@ def extracted_header(sources: dict[str, str]) -> tuple[str, dict[str, str], dict
     helper = (extract32 + hilo_helpers + "using R5900Context = Context;\n" + set_low)
     macros = [_single_line_macro(header, name) for name in MACROS[:3]] + [_macro(header, "SET_GPR_S32")]
     wrappers: dict[str, str] = {}
-    banks = {"MULT_RD": "lo", "MULT_R0": "lo", "MULTU_RD": "lo", "MULTU_R0": "lo",
-             "MULT1_RD": "lo1", "MULT1_R0": "lo1", "MADD_RD": "lo", "MADD_R0": "lo"}
     for name in OPERATION_NAMES:
         wrappers[name] = f"void generated_{name}(Context* ctx,int rd,int rs,int rt){{(void)rd;{templates[name]}}}"
     output = ("// Extracted production multiply emitters and register helpers from the pinned revision.\n"

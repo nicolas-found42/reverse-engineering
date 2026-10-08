@@ -9,7 +9,6 @@ from offset 8. Validate across all .ps2: parse (name, count, offsets) triples; m
 Also verify offsets stay in-bounds and monotonically increasing within a group.
 """
 import struct
-import sys
 from collections import Counter
 from pathlib import Path
 

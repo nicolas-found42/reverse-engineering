@@ -7,7 +7,6 @@ first). Stop at first run of invalid. Report table sizes and the u32s before/aft
 Also: count total NUL-terminated printable strings in the file.
 """
 import struct
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
