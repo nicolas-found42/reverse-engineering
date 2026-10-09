@@ -2,15 +2,15 @@
   "schema": "fr2-progress-provenance/v1",
   "authority": "structural inventory; zero matching credit",
   "ledger_path": "notes/evidence/fr2-progress/structural-ledger.json",
-  "ledger_sha256": "23ab40493de5fd5c8582700635e8bd8e1e617ea6001d5a92d030bd4c34f73ba7",
+  "ledger_sha256": "7de5d5f22987e82afbecfc7e2d6287d565727b727b4a62137b65f56314762ba1",
   "source_pins": {
-    "docs/adr/0005-game-owned-sdk-boundary.md": "b3bddcf38d783a1066e17f8d5100887c694c80847af9a8e682456511d67895ae",
+    "docs/adr/0005-game-owned-sdk-boundary.md": "bd70322c2375c7557a9c173bc0ec4bf14baccec72cc2e1820a3e07ddbebd7aee",
     "notes/evidence/fr2-first-unit/adr0005-misc3d-boundary.json": "5297888940ad2a67f26b8761eed70de40b18d4f46a6eca3ff2da4535e156987e",
     "notes/evidence/fr2-first-unit/saved-function-inventory-digest.json": "d0424aad2eeddc58ead3f164ec2f49195e1d102282647603dbc407fec55b374b",
     "notes/evidence/fr2-source-map/source-map-result.json": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a",
     "reconstruction/ee/app3d/misc3d_db_id.c": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc",
     "tools/matching_ranges.py": "f362c5693784103094ffaf083867f481969cc7cef4ebd4510afe82ce050a45be",
-    "tools/recorded_decisions.py": "47c0f535c5c9d2000d98397dbea562c02a80743643fe39c91dcfb3f8ba860652"
+    "tools/recorded_decisions.py": "771f4d6a4a37b89ca8b943c7afae32a3452dfaaa84abd5f3097bd93b82cfe494"
   },
   "reproduce": "python3 tools/matching_ranges.py corpus games/ford-racing-2 --output <local-dir>",
   "report_match_credit": 0,

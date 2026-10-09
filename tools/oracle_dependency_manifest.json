@@ -1,0 +1,407 @@
+{
+  "components": {
+    "ffmpeg": {
+      "archive": "ffmpeg-8.0.tar.xz",
+      "licenses": [
+        {
+          "bytes": 4346,
+          "path": "LICENSE.md",
+          "sha256": "2e1d16c72fd74e12063776371da757322f8b77589386532f4fd8634bde7de1af"
+        },
+        {
+          "bytes": 26517,
+          "path": "COPYING.LGPLv2.1",
+          "sha256": "246041b6ecf9bc32d718a62c57877c78b5eb397b6467e74ed7ae2626ab189c30"
+        }
+      ],
+      "provides": [
+        "libavformat.62.dylib",
+        "libavcodec.62.dylib",
+        "libswscale.9.dylib",
+        "libswresample.6.dylib",
+        "libavutil.60.dylib"
+      ],
+      "spdx_module_licenses": "LGPL-2.1-or-later (default configure: no --enable-gpl/--enable-version3/--enable-nonfree)",
+      "version": "8.0"
+    },
+    "freetype": {
+      "archive": "freetype-2.14.1.tar.xz",
+      "licenses": [
+        {
+          "bytes": 2149,
+          "path": "LICENSE.TXT",
+          "sha256": "bd36c8b474855fa294c2ec5c184544478ef3720aad37d65a6296a4f264fd2d3b"
+        }
+      ],
+      "provides": [
+        "libfreetype.6.dylib"
+      ],
+      "spdx_module_licenses": "FTL OR GPL-2.0-only",
+      "version": "2.14.1"
+    },
+    "harfbuzz": {
+      "archive": "harfbuzz-12.2.0.tar.gz",
+      "licenses": [
+        {
+          "bytes": 1971,
+          "path": "COPYING",
+          "sha256": "ba8f810f2455c2f08e2d56bb49b72f37fcf68f1f4fade38977cfd7372050ad64"
+        }
+      ],
+      "provides": [
+        "libharfbuzz.dylib"
+      ],
+      "spdx_module_licenses": "Old-MIT",
+      "version": "12.2.0"
+    },
+    "kddockwidgets": {
+      "archive": "KDDockWidgets-2.4.0.tar.gz",
+      "licenses": [
+        {
+          "bytes": 402,
+          "path": "LICENSE.txt",
+          "sha256": "dae642f8054f6e1501c584406097ea1ecc4c7d6843852ab8c6e605906f6d6c73"
+        },
+        {
+          "bytes": 17622,
+          "path": "LICENSES/GPL-2.0-only.txt",
+          "sha256": "b3c87315aae4c9f276c37168f2655dd8bd990544d7a0bbfb929664155c7ab257"
+        },
+        {
+          "bytes": 34470,
+          "path": "LICENSES/GPL-3.0-only.txt",
+          "sha256": "2ca9503d76d1ffab14f599b4741382eec11face60ad1f0d7a41897809003a286"
+        }
+      ],
+      "provides": [
+        "libkddockwidgets-qt6.3.dylib"
+      ],
+      "spdx_module_licenses": "GPL-2.0-only OR GPL-3.0-only",
+      "version": "2.4.0"
+    },
+    "libjpeg-turbo": {
+      "archive": "libjpeg-turbo-3.1.2.tar.gz",
+      "licenses": [
+        {
+          "bytes": 5620,
+          "path": "LICENSE.md",
+          "sha256": "2189dc45a8fe96204069f8124caa53a148dfdc193f50f584c6ca7849a6072872"
+        }
+      ],
+      "provides": [
+        "libjpeg.62.dylib"
+      ],
+      "spdx_module_licenses": "IJG AND BSD-3-Clause",
+      "version": "3.1.2"
+    },
+    "libpng": {
+      "archive": "libpng-1.6.53.tar.xz",
+      "licenses": [
+        {
+          "bytes": 5345,
+          "path": "LICENSE",
+          "sha256": "16d9daaafbf63a31a5bdc91d4600972548fef5aaa1244202393288dbd079c49a"
+        }
+      ],
+      "patch": "libpng-1.6.53-apng.patch.gz",
+      "provides": [
+        "libpng16.16.dylib"
+      ],
+      "spdx_module_licenses": "Libpng",
+      "version": "1.6.53"
+    },
+    "libwebp": {
+      "archive": "libwebp-1.6.0.tar.gz",
+      "licenses": [
+        {
+          "bytes": 1496,
+          "path": "COPYING",
+          "sha256": "5aec868f669e384a22372a4e8a1a6cd7d44c64cd451f960ca69cc170d1e13acf"
+        },
+        {
+          "bytes": 1436,
+          "path": "PATENTS",
+          "sha256": "cc3273e0694ea5896145e0677699b53471b03ea43021ddc50e7923fbb9f5023c"
+        }
+      ],
+      "provides": [
+        "libwebp.7.dylib",
+        "libsharpyuv.0.dylib"
+      ],
+      "spdx_module_licenses": "BSD-3-Clause",
+      "version": "1.6.0"
+    },
+    "lz4": {
+      "archive": "lz4-1.10.0.tar.gz",
+      "licenses": [
+        {
+          "bytes": 646,
+          "path": "LICENSE",
+          "sha256": "4bc9c403f6b679cc076dee210e0e21c27b4e8f6d3fb43d85364c76657bfaaac5"
+        }
+      ],
+      "provides": [
+        "liblz4.1.dylib"
+      ],
+      "spdx_module_licenses": "BSD-2-Clause",
+      "version": "1.10.0"
+    },
+    "plutosvg": {
+      "archive": "plutosvg-0.0.7.tar.gz",
+      "licenses": [
+        {
+          "bytes": 1104,
+          "path": "LICENSE",
+          "sha256": "e008ab9f8b36ec517cc47be20e776e68d69f5ba75f8f774d506ae4696d0e50c4"
+        }
+      ],
+      "provides": [
+        "libplutosvg.0.dylib"
+      ],
+      "spdx_module_licenses": "MIT",
+      "version": "0.0.7"
+    },
+    "plutovg": {
+      "archive": "plutovg-1.3.2.tar.gz",
+      "licenses": [
+        {
+          "bytes": 1104,
+          "path": "LICENSE",
+          "sha256": "e008ab9f8b36ec517cc47be20e776e68d69f5ba75f8f774d506ae4696d0e50c4"
+        }
+      ],
+      "provides": [
+        "libplutovg.1.dylib"
+      ],
+      "spdx_module_licenses": "MIT",
+      "version": "1.3.2"
+    },
+    "qtbase": {
+      "archive": "qtbase-everywhere-src-6.10.1.tar.xz",
+      "licenses": [
+        {
+          "bytes": 7651,
+          "path": "LICENSES/LGPL-3.0-only.txt",
+          "sha256": "da7eabb7bafdf7d3ae5e9f223aa5bdc1eece45ac569dc21b3b037520b4464768"
+        },
+        {
+          "bytes": 18092,
+          "path": "LICENSES/GPL-2.0-only.txt",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "bytes": 35147,
+          "path": "LICENSES/GPL-3.0-only.txt",
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+        }
+      ],
+      "provides": [
+        "libQt6Core.6.dylib",
+        "libQt6Gui.6.dylib",
+        "libQt6Widgets.6.dylib",
+        "libqoffscreen.dylib"
+      ],
+      "source_ref": "git://code.qt.io/qt/qtbase.git@90b845d15ffb97693dba527385db83510ebd121a (tag v6.10.1)",
+      "spdx_module_licenses": "LicenseRef-Qt-Commercial OR LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only",
+      "version": "6.10.1"
+    },
+    "sdl": {
+      "archive": "SDL3-3.2.26.tar.gz",
+      "licenses": [
+        {
+          "bytes": 884,
+          "path": "LICENSE.txt",
+          "sha256": "97f35b302b361680ec1e891e95d2d52097bb95abff361434916d99dc1305f127"
+        }
+      ],
+      "provides": [
+        "libSDL3.0.dylib"
+      ],
+      "spdx_module_licenses": "Zlib",
+      "version": "3.2.26"
+    },
+    "zstd": {
+      "archive": "zstd-1.5.7.tar.gz",
+      "licenses": [
+        {
+          "bytes": 1549,
+          "path": "LICENSE",
+          "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8"
+        },
+        {
+          "bytes": 18091,
+          "path": "COPYING",
+          "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505"
+        }
+      ],
+      "provides": [
+        "libzstd.1.dylib"
+      ],
+      "spdx_module_licenses": "BSD-3-Clause OR GPL-2.0-only",
+      "version": "1.5.7"
+    }
+  },
+  "installed": {
+    "libQt6Core.6.dylib": {
+      "bytes": 7120576,
+      "component": "qtbase",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "5147afdc2cf2bd0189e3907ea49076b2ef5cad1eee355b19d7cccf8a53bf5afe"
+    },
+    "libQt6Gui.6.dylib": {
+      "bytes": 7423744,
+      "component": "qtbase",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "5e05e76aacb6dbc64330b44ceefcaa5c55c72de43293415d85e988ab19aa9f04"
+    },
+    "libQt6Widgets.6.dylib": {
+      "bytes": 7543808,
+      "component": "qtbase",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "1c393b9eaf659247739c862338e1a68f31dcbbedce975c444220876c8331681d"
+    },
+    "libSDL3.0.dylib": {
+      "bytes": 2711072,
+      "component": "sdl",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "c97d766b3bc471578fa8e4cfb60c3c5d2fcbe47f739b8ad5f81fc631b4ddd72b"
+    },
+    "libavcodec.62.dylib": {
+      "bytes": 503280,
+      "component": "ffmpeg",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "818948dd4660dcbf15243f72e68dff1aa7c9653102a8a91eff552622627e3303"
+    },
+    "libavformat.62.dylib": {
+      "bytes": 509424,
+      "component": "ffmpeg",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "c5bdc4c522e0e6b022d0f1e89958dd6a8d6cd748bbd53815f01ad4b8d97f0ba6"
+    },
+    "libavutil.60.dylib": {
+      "bytes": 888528,
+      "component": "ffmpeg",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "5d7ba7b2dd9da2bd880a1d321f5d5cda51c21753a66460e71f3c78eadf9b8656"
+    },
+    "libfreetype.6.dylib": {
+      "bytes": 822592,
+      "component": "freetype",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "23269d38e6068bc38197eb8bc66f9f3933d8903c5c1a84e5be7bedb4f04cb685"
+    },
+    "libharfbuzz.dylib": {
+      "bytes": 1367760,
+      "component": "harfbuzz",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "5d4b04834e11a2cb6a481b2164605ad762b325374b16075fa7008b9d7eab669e"
+    },
+    "libjpeg.62.dylib": {
+      "bytes": 907504,
+      "component": "libjpeg-turbo",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "5cc31355ecb6bfabb63497b80b0e2a18a7e2a071843da8cebdec7c37dc8b18d8"
+    },
+    "libkddockwidgets-qt6.3.dylib": {
+      "bytes": 2341568,
+      "component": "kddockwidgets",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "60f5e6882d2a8207c8b4604a2c8324dad84c7d48584633f92daf396d8132fe06"
+    },
+    "liblz4.1.dylib": {
+      "bytes": 199968,
+      "component": "lz4",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "9d39b36f6d764aa2da4f1e247a22840581053061a7ffc3fa286873a89b9c4414"
+    },
+    "libplutosvg.0.dylib": {
+      "bytes": 97472,
+      "component": "plutosvg",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "e346793311e8decfc36104166f4c7c9b5ad21b79bad94771e01c4aa909927aab"
+    },
+    "libplutovg.1.dylib": {
+      "bytes": 305696,
+      "component": "plutovg",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "083b0d983dc9e893ff80d8988d57e7ebf953a2c01a6d316788ab105b003c62ab"
+    },
+    "libpng16.16.dylib": {
+      "bytes": 265376,
+      "component": "libpng",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "edddbb96fec329b89d3f67b8d14e83fe6be3098cff6b70a8111428ba316420e3"
+    },
+    "libqoffscreen.dylib": {
+      "bytes": 392096,
+      "component": "qtbase",
+      "kind": "locally-built plugin (pinned OFFSCREEN_SHA256)",
+      "sha256": "ac97d9562bc77cce9a627e1ac474bd2d16c68af2f674fe65e3bece1cd0210679"
+    },
+    "libsharpyuv.0.dylib": {
+      "bytes": 55376,
+      "component": "libwebp",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "60942d18144a13c32f507df3aa87be125f769c7469d6e451dbfcad0cf05c0612"
+    },
+    "libswresample.6.dylib": {
+      "bytes": 153600,
+      "component": "ffmpeg",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "869c4f0c725aadac8b5ca5fe8613b156aefd7d620161cf8a3635ca97c162f233"
+    },
+    "libswscale.9.dylib": {
+      "bytes": 1219376,
+      "component": "ffmpeg",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "b5715808b023bb1e7910582d99f2636806ecda0a02dea4f8e6b6a830a5682a15"
+    },
+    "libwebp.7.dylib": {
+      "bytes": 653296,
+      "component": "libwebp",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "14dca16e74a3c61f5c3e05f4ba67445d233a26796ab6c8b2b00569af3febc2f6"
+    },
+    "libzstd.1.dylib": {
+      "bytes": 980784,
+      "component": "zstd",
+      "kind": "bundled Frameworks dylib (pinned release member)",
+      "sha256": "c99e5de2ed30e126c78fa61b27de1c3d00206ea1604ef869bdf1edc1f586fb9d"
+    }
+  },
+  "recipe": "pinned build-dependencies.sh at PCSX2 release commit bc8151d2a46d4aba039ea5580afbfc7bfcf6d730",
+  "schema_version": 1,
+  "scope": "LC_LOAD_DYLIB closure of PCSX2 v2.6.3 executable + local offscreen plugin: 20 bundled dylibs + 1 locally built plugin. System libraries, 5 unused bundled dylibs, and 15 bundled Qt plugins are out of scope with recorded rationale.",
+  "unused_bundled": {
+    "libMoltenVK.dylib": {
+      "bytes": 7663088,
+      "disposition": "unused: no permission granted, excluded from profile closure",
+      "reason": "no LC_LOAD_DYLIB edge from PCSX2 executable or offscreen plugin; Vulkan backend unused by Null-renderer strict profile",
+      "sha256": "0f06705a6db9e73f584f55f4ac5c620a2ccd93aedd6366b706c7e3cdf2fd8dd2"
+    },
+    "libQt6Svg.6.dylib": {
+      "bytes": 661552,
+      "disposition": "unused: no permission granted, excluded from profile closure",
+      "reason": "no LC_LOAD_DYLIB edge from profile roots; loaded only by libqsvg plugins, which the strict profile never selects",
+      "sha256": "00cd2ed7940ebbaf62906125c9d007c19e2caabf14c387d875e0ad452770cead"
+    },
+    "libshaderc_shared.1.dylib": {
+      "bytes": 7210240,
+      "disposition": "unused: no permission granted, excluded from profile closure",
+      "reason": "no LC_LOAD_DYLIB edge from profile roots; shader compiler unused by Null-renderer strict profile",
+      "sha256": "08b0b4ae69676d7175e3716f9c21aceb01fc16b7991e89ba2883527aa01b0f47"
+    },
+    "libwebpdemux.2.dylib": {
+      "bytes": 43072,
+      "disposition": "unused: no permission granted, excluded from profile closure",
+      "reason": "no LC_LOAD_DYLIB edge from profile roots; demuxer unused by strict profile",
+      "sha256": "99201cf1396f9e1f38169a24b0afdfa9c0828ac40367d4f33e449e102a0fa9df"
+    },
+    "libwebpmux.3.dylib": {
+      "bytes": 66736,
+      "disposition": "unused: no permission granted, excluded from profile closure",
+      "reason": "no LC_LOAD_DYLIB edge from profile roots; muxer unused by strict profile",
+      "sha256": "c2af55ae53bc438684a1215de4a86f2db7a9f95ed167eebec7416161461a8806"
+    }
+  }
+}

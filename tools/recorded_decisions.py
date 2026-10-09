@@ -10,7 +10,7 @@ from pathlib import Path
 from evidence_common import Invalid
 
 ROOT = Path(__file__).resolve().parent.parent
-TABLE_PINS = {'flags.tsv': '8831fbab1f06b947faf542b1d299662cd47e800aaca82ffaf8b86a403997c248', 'not_functions.txt': '4aba80c3673f8fd6e062b337cac7e62cb4821f28232b3652de77567eedef1e57', 'sections.tsv': '3642008adbe537b2124e81fbbfa4ee1a2fd4bd322a6d7ab43e288841d49da29a', 'units.tsv': '2ce335a435466ef40cc9c6967e00221ae6e3f7fe984aaa3b7f8fcf22771b66f5'}
+TABLE_PINS = {'flags.tsv': '8831fbab1f06b947faf542b1d299662cd47e800aaca82ffaf8b86a403997c248', 'not_functions.txt': '4aba80c3673f8fd6e062b337cac7e62cb4821f28232b3652de77567eedef1e57', 'sections.tsv': '3642008adbe537b2124e81fbbfa4ee1a2fd4bd322a6d7ab43e288841d49da29a', 'units.tsv': 'f808ffe33823c754f3e9d3b4777a2cc630052dd7e8ed2f3d2315c40c3833c259'}
 
 
 def digest(path: Path) -> str:
@@ -53,3 +53,5 @@ DECISIONS = read_decisions()
 METADATA = tuple(x['section'] for x in DECISIONS['sections'] if x['scope'] == 'excluded')
 GAME_OWNED_RANGES = tuple((x['section'], int(x['start'], 16), int(x['end_exclusive'], 16))
                           for x in DECISIONS['units'] if x['scope'] == 'game_owned')
+SUBSTITUTE_RANGES = tuple((x['section'], int(x['start'], 16), int(x['end_exclusive'], 16))
+                          for x in DECISIONS['units'] if x['scope'] == 'substitute_region')

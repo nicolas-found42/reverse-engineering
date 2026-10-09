@@ -47,8 +47,19 @@ class OracleDependencyPreflight(unittest.TestCase):
         frameworks.mkdir()
         library_names = ("libQt6Core.6.dylib", "libQt6Gui.6.dylib",
                          "libQt6Widgets.6.dylib", "libkddockwidgets-qt6.3.dylib")
-        for name in library_names:
+        closure_names = ("libavutil.60.dylib", "libavcodec.62.dylib", "libavformat.62.dylib",
+                         "libswscale.9.dylib", "libswresample.6.dylib", "libSDL3.0.dylib",
+                         "libfreetype.6.dylib", "libharfbuzz.dylib", "libjpeg.62.dylib",
+                         "libpng16.16.dylib", "libwebp.7.dylib", "libsharpyuv.0.dylib",
+                         "liblz4.1.dylib", "libzstd.1.dylib", "libplutovg.1.dylib",
+                         "libplutosvg.0.dylib")
+        for name in library_names + closure_names:
             (frameworks / name).write_bytes(name.encode())
+        manifest_path = root / "dependency-manifest.json"
+        manifest_path.write_text(json.dumps({
+            "installed": {name: {"sha256": identity(frameworks / name)["sha256"],
+                                 "component": "fixture-component"}
+                          for name in library_names + closure_names}}))
         recipe = {key: identity(paths[flag]) for key, flag in (
             ("probe_elf", "--elf"), ("probe_source", "--probe-source"),
             ("linker_script", "--linker-script"))}
@@ -66,7 +77,7 @@ class OracleDependencyPreflight(unittest.TestCase):
             ("QT_SDK_ARCHIVE_SHA256", "--qt-sdk-archive"),
             ("QT_BUILD_COMMAND_SHA256", "--qt-build-command"),
             ("QT_PREPARATION_SHA256", "--qt-preparation-record"))}
-        pins.update(RECIPE=recipe_path,
+        pins.update(RECIPE=recipe_path, DEPENDENCY_MANIFEST=manifest_path,
                     QT_SOURCE_HASHES={name: identity(source_dir / name)["sha256"]
                                       for name in oracle.QT_SOURCE_HASHES})
         if hasattr(oracle, "QT_RUNTIME_LIBRARIES"):
@@ -143,6 +154,14 @@ class OracleDependencyPreflight(unittest.TestCase):
         self.assertEqual(code, 2)
         self.assertEqual(receipt["status"], "incomplete")
         self.assertIn("libQt6Core.6.dylib", " ".join(receipt["diagnostics"]))
+
+    def test_closure_library_change_fails_before_guest_launch(self):
+        with tempfile.TemporaryDirectory() as temp:
+            code, receipt = self.run_fixture(Path(temp), lambda directory:
+                (directory / "libavutil.60.dylib").write_bytes(b"changed ffmpeg"))
+        self.assertEqual(code, 1)
+        self.assertEqual(receipt["status"], "fail")
+        self.assertIn("libavutil.60.dylib", " ".join(receipt["diagnostics"]))
 
 
 class HeadlessOracleProfile(unittest.TestCase):

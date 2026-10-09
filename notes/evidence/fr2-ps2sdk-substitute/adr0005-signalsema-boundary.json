@@ -1,0 +1,448 @@
+{
+  "schema": "fr2-substitute-boundary/v1",
+  "corpus": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "range": {
+    "section": ".text",
+    "start": "001eab80",
+    "end_exclusive": "001eab90",
+    "bytes": 16,
+    "file_offset": "000ebb80",
+    "saved_function_entry": "001eab80",
+    "saved_function_name": "FUN_001eab80",
+    "sha256": "582e1e7cc46f248cc93ac09c60ee94a9d04ddac963c093d7acf9776a3ef9079e",
+    "scope": "substitute_region",
+    "basis": "measured syscall-stub shape plus pinned SDK number/name evidence under ADR-0005"
+  },
+  "stub_evidence": {
+    "shape": "addiu v1,zero,66; syscall; jr ra; nop",
+    "syscall_number": 66,
+    "number_hex": "0x42",
+    "sdk_names": [
+      "SignalSema"
+    ],
+    "sdk_commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "syscall_header": "ee/kernel/include/syscallnr.h",
+    "syscall_header_sha256": "573f0c3276eaae064f0da04990126133b434259b3b235e53ed8f013694300edc",
+    "ownership": "saved_function",
+    "claim_limit": "Shape plus pinned SDK number/name corroborate the decision; the BIOS behavior and the original kernel library version are not established."
+  },
+  "interface": {
+    "declaration": "s32 SignalSema(s32 sema_id);",
+    "sdk_declaration_source": "ee/kernel/include/kernel.h",
+    "calling_convention": "MIPS o32: sema_id in $a0; li $v1,66; syscall; jr $ra",
+    "sema_id_semantics": "opaque semaphore identifier created by CreateSema; call-site survey finds $a0 overwhelmingly loaded from memory (lw/lb family) or set outside the 8-instruction window, so no observed argument values are recorded",
+    "observed_call_site_arguments": "none observed: $a0 arrives from memory or distant setup at all 69 static sites, never a site-local immediate proving a value",
+    "side_effects": "Semaphore signal/wakeup of threads waiting via WaitSema/PollSema; unobserved guest behavior beyond the call contract.",
+    "claim_limit": "Call and signature contract only; no original symbol or behavior recovery is claimed."
+  },
+  "static_consumers": {
+    "distinct_saved_callers": 47,
+    "total_call_sites": 69,
+    "callers": [
+      {
+        "entry": "001eda40",
+        "name": "FUN_001eda40",
+        "size": 136,
+        "call_sites": [
+          "001eda8c",
+          "001edaa8"
+        ]
+      },
+      {
+        "entry": "001edac8",
+        "name": "FUN_001edac8",
+        "size": 108,
+        "call_sites": [
+          "001edaf8",
+          "001edb14"
+        ]
+      },
+      {
+        "entry": "001edf40",
+        "name": "FUN_001edf40",
+        "size": 12,
+        "call_sites": [
+          "001edf44"
+        ]
+      },
+      {
+        "entry": "001ee018",
+        "name": "FUN_001ee018",
+        "size": 516,
+        "call_sites": [
+          "001ee150"
+        ]
+      },
+      {
+        "entry": "001ee2e8",
+        "name": "FUN_001ee2e8",
+        "size": 644,
+        "call_sites": [
+          "001ee500",
+          "001ee530"
+        ]
+      },
+      {
+        "entry": "001ee6f0",
+        "name": "FUN_001ee6f0",
+        "size": 564,
+        "call_sites": [
+          "001ee84c"
+        ]
+      },
+      {
+        "entry": "001ee928",
+        "name": "FUN_001ee928",
+        "size": 608,
+        "call_sites": [
+          "001eea80"
+        ]
+      },
+      {
+        "entry": "001eeb88",
+        "name": "FUN_001eeb88",
+        "size": 700,
+        "call_sites": [
+          "001eecec"
+        ]
+      },
+      {
+        "entry": "001eee48",
+        "name": "candidate_ee_001eee48",
+        "size": 884,
+        "call_sites": [
+          "001eef70"
+        ]
+      },
+      {
+        "entry": "001efae8",
+        "name": "candidate_ee_001efae8",
+        "size": 200,
+        "call_sites": [
+          "001efb8c"
+        ]
+      },
+      {
+        "entry": "001f0888",
+        "name": "candidate_ee_001f0888",
+        "size": 564,
+        "call_sites": [
+          "001f09e4"
+        ]
+      },
+      {
+        "entry": "001f70a0",
+        "name": "FUN_001f70a0",
+        "size": 148,
+        "call_sites": [
+          "001f70c8"
+        ]
+      },
+      {
+        "entry": "001f7268",
+        "name": "FUN_001f7268",
+        "size": 784,
+        "call_sites": [
+          "001f7484",
+          "001f7540"
+        ]
+      },
+      {
+        "entry": "001f75a0",
+        "name": "FUN_001f75a0",
+        "size": 364,
+        "call_sites": [
+          "001f7630"
+        ]
+      },
+      {
+        "entry": "001f7710",
+        "name": "FUN_001f7710",
+        "size": 152,
+        "call_sites": [
+          "001f7770",
+          "001f778c"
+        ]
+      },
+      {
+        "entry": "001f78b8",
+        "name": "FUN_001f78b8",
+        "size": 364,
+        "call_sites": [
+          "001f7948"
+        ]
+      },
+      {
+        "entry": "001f7d08",
+        "name": "FUN_001f7d08",
+        "size": 500,
+        "call_sites": [
+          "001f7e90",
+          "001f7ec8"
+        ]
+      },
+      {
+        "entry": "001f7f00",
+        "name": "FUN_001f7f00",
+        "size": 196,
+        "call_sites": [
+          "001f7f84",
+          "001f7fa0"
+        ]
+      },
+      {
+        "entry": "001f7fc8",
+        "name": "FUN_001f7fc8",
+        "size": 480,
+        "call_sites": [
+          "001f815c"
+        ]
+      },
+      {
+        "entry": "001f81a8",
+        "name": "FUN_001f81a8",
+        "size": 152,
+        "call_sites": [
+          "001f8208",
+          "001f8224"
+        ]
+      },
+      {
+        "entry": "001f8240",
+        "name": "FUN_001f8240",
+        "size": 152,
+        "call_sites": [
+          "001f82a0",
+          "001f82bc"
+        ]
+      },
+      {
+        "entry": "001f82d8",
+        "name": "FUN_001f82d8",
+        "size": 184,
+        "call_sites": [
+          "001f8338",
+          "001f8354"
+        ]
+      },
+      {
+        "entry": "001f8390",
+        "name": "FUN_001f8390",
+        "size": 248,
+        "call_sites": [
+          "001f8418",
+          "001f8460"
+        ]
+      },
+      {
+        "entry": "001f8a68",
+        "name": "FUN_001f8a68",
+        "size": 432,
+        "call_sites": [
+          "001f8b90"
+        ]
+      },
+      {
+        "entry": "001f8c90",
+        "name": "candidate_ee_001f8c90",
+        "size": 184,
+        "call_sites": [
+          "001f8d24"
+        ]
+      },
+      {
+        "entry": "001f8d48",
+        "name": "candidate_ee_001f8d48",
+        "size": 196,
+        "call_sites": [
+          "001f8dd4",
+          "001f8de4"
+        ]
+      },
+      {
+        "entry": "001f8e10",
+        "name": "FUN_001f8e10",
+        "size": 292,
+        "call_sites": [
+          "001f8e84",
+          "001f8f00"
+        ]
+      },
+      {
+        "entry": "001f8f70",
+        "name": "FUN_001f8f70",
+        "size": 184,
+        "call_sites": [
+          "001f9004"
+        ]
+      },
+      {
+        "entry": "001f9028",
+        "name": "FUN_001f9028",
+        "size": 216,
+        "call_sites": [
+          "001f90d4"
+        ]
+      },
+      {
+        "entry": "001f9190",
+        "name": "FUN_001f9190",
+        "size": 276,
+        "call_sites": [
+          "001f9270"
+        ]
+      },
+      {
+        "entry": "001f92a8",
+        "name": "FUN_001f92a8",
+        "size": 372,
+        "call_sites": [
+          "001f93ec"
+        ]
+      },
+      {
+        "entry": "001f9490",
+        "name": "FUN_001f9490",
+        "size": 220,
+        "call_sites": [
+          "001f9540"
+        ]
+      },
+      {
+        "entry": "001f95c8",
+        "name": "FUN_001f95c8",
+        "size": 380,
+        "call_sites": [
+          "001f970c"
+        ]
+      },
+      {
+        "entry": "001f97b8",
+        "name": "candidate_ee_001f97b8",
+        "size": 328,
+        "call_sites": [
+          "001f9838",
+          "001f98c8"
+        ]
+      },
+      {
+        "entry": "001f9988",
+        "name": "FUN_001f9988",
+        "size": 320,
+        "call_sites": [
+          "001f9a00",
+          "001f9a90"
+        ]
+      },
+      {
+        "entry": "001f9ac8",
+        "name": "candidate_ee_001f9ac8",
+        "size": 204,
+        "call_sites": [
+          "001f9b6c"
+        ]
+      },
+      {
+        "entry": "001f9b98",
+        "name": "candidate_ee_001f9b98",
+        "size": 280,
+        "call_sites": [
+          "001f9c04",
+          "001f9c80"
+        ]
+      },
+      {
+        "entry": "001f9cb0",
+        "name": "FUN_001f9cb0",
+        "size": 184,
+        "call_sites": [
+          "001f9d44"
+        ]
+      },
+      {
+        "entry": "001f9d68",
+        "name": "candidate_ee_001f9d68",
+        "size": 456,
+        "call_sites": [
+          "001f9de4",
+          "001f9ef8"
+        ]
+      },
+      {
+        "entry": "001f9f30",
+        "name": "candidate_ee_001f9f30",
+        "size": 344,
+        "call_sites": [
+          "001f9fac",
+          "001fa054"
+        ]
+      },
+      {
+        "entry": "001fa088",
+        "name": "candidate_ee_001fa088",
+        "size": 204,
+        "call_sites": [
+          "001fa12c"
+        ]
+      },
+      {
+        "entry": "001fa158",
+        "name": "candidate_ee_001fa158",
+        "size": 264,
+        "call_sites": [
+          "001fa1c0",
+          "001fa234"
+        ]
+      },
+      {
+        "entry": "0020a518",
+        "name": "FUN_0020a518",
+        "size": 104,
+        "call_sites": [
+          "0020a564"
+        ]
+      },
+      {
+        "entry": "0020a5b0",
+        "name": "candidate_ee_0020a5b0",
+        "size": 104,
+        "call_sites": [
+          "0020a5fc"
+        ]
+      },
+      {
+        "entry": "0020a648",
+        "name": "FUN_0020a648",
+        "size": 188,
+        "call_sites": [
+          "0020a6b4",
+          "0020a6e4"
+        ]
+      },
+      {
+        "entry": "0020a9b8",
+        "name": "candidate_ee_0020a9b8",
+        "size": 416,
+        "call_sites": [
+          "0020aa38",
+          "0020aa7c",
+          "0020ab2c"
+        ]
+      },
+      {
+        "entry": "0020c940",
+        "name": "FUN_0020c940",
+        "size": 76,
+        "call_sites": [
+          "0020c978"
+        ]
+      }
+    ],
+    "claim_limit": "static direct-call references only; callers stay mixed/unresolved and no dynamic reachability is claimed"
+  },
+  "other_source_range_status": "All unlisted bytes and all other section ranges retain their existing mixed/unresolved status.",
+  "falsifier": "A byte-identical game-owned source claim, an overlapping non-substitute attribution, or disjoint CFG evidence placing these bytes in another unit invalidates this split."
+}

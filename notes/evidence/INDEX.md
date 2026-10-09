@@ -6,6 +6,7 @@ Commands and full hash/revision mentions are copied with their source context in
 [index.json](index.json). Missing fields are recorded rather than inferred.
 
 - [fr2-asset-consumer-contracts/README.md](fr2-asset-consumer-contracts/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
+- [fr2-audio-contracts/README.md](fr2-audio-contracts/README.md) — 2 command blocks; missing: none.
 - [fr2-clean-baseline/README.md](fr2-clean-baseline/README.md) — 1 command blocks; missing: none.
 - [fr2-combined-recovery/README.md](fr2-combined-recovery/README.md) — 0 command blocks; missing: reproduction_command.
 - [fr2-compiler-probe/README.md](fr2-compiler-probe/README.md) — 4 command blocks; missing: full_revision_mention.
@@ -63,6 +64,7 @@ Commands and full hash/revision mentions are copied with their source context in
 - [fr2-geometry-vu-dispatch/README.md](fr2-geometry-vu-dispatch/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-geometry-vu-input-provenance/README.md](fr2-geometry-vu-input-provenance/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
 - [fr2-gp-context/README.md](fr2-gp-context/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
+- [fr2-grammars-disposition/README.md](fr2-grammars-disposition/README.md) — 3 command blocks; missing: none.
 - [fr2-gs-address-audit/README.md](fr2-gs-address-audit/README.md) — 0 command blocks; missing: reproduction_command.
 - [fr2-gs-low-width-audit/README.md](fr2-gs-low-width-audit/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention.
 - [fr2-gs-mip-sampler-audit/README.md](fr2-gs-mip-sampler-audit/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
@@ -100,9 +102,10 @@ Commands and full hash/revision mentions are copied with their source context in
 - [fr2-progress-audit/README.md](fr2-progress-audit/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
 - [fr2-progress/README.md](fr2-progress/README.md) — 2 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-ps2sdk-substitute/README.md](fr2-ps2sdk-substitute/README.md) — 3 command blocks; missing: none.
+- [fr2-ptg-body-contracts/README.md](fr2-ptg-body-contracts/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-range-accounting/README.md](fr2-range-accounting/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-re-setup/README.md](fr2-re-setup/README.md) — 1 command blocks; missing: none.
-- [fr2-rpc-contracts/README.md](fr2-rpc-contracts/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
+- [fr2-rpc-contracts/README.md](fr2-rpc-contracts/README.md) — 1 command blocks; missing: full_revision_mention.
 - [fr2-setup-reliability/README.md](fr2-setup-reliability/README.md) — 2 command blocks; missing: none.
 - [fr2-small-data-types/README.md](fr2-small-data-types/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
 - [fr2-source-integration/README.md](fr2-source-integration/README.md) — 2 command blocks; missing: none.
@@ -112,7 +115,7 @@ Commands and full hash/revision mentions are copied with their source context in
 - [fr2-static-recovery/iop/README.md](fr2-static-recovery/iop/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-static-recovery/vif/README.md](fr2-static-recovery/vif/README.md) — 1 command blocks; missing: none.
 - [fr2-texture-mip-field-audit/README.md](fr2-texture-mip-field-audit/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
-- [fr2-texture-upload-audit/README.md](fr2-texture-upload-audit/README.md) — 0 command blocks; missing: reproduction_command.
+- [fr2-texture-upload-audit/README.md](fr2-texture-upload-audit/README.md) — 1 command blocks; missing: none.
 - [fr2-texture-upload-audit/independent-review/README.md](fr2-texture-upload-audit/independent-review/README.md) — 0 command blocks; missing: reproduction_command.
 - [fr2-texture-upload-audit/mip-upload-static-audit/README.md](fr2-texture-upload-audit/mip-upload-static-audit/README.md) — 0 command blocks; missing: reproduction_command, full_revision_mention.
 - [fr2-translator-semantics/README.md](fr2-translator-semantics/README.md) — 0 command blocks; missing: reproduction_command.

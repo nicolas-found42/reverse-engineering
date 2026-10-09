@@ -101,14 +101,28 @@ converts those imports into observed runtime registration or actual bases.
 
 ## Required frontier and next child
 
-The complete handoff inventory is not derived yet. `inventory.json` retains
-every candidate in this scan boundary and the named gaps; `parent_gaps` remains
-nonempty in the volume check even when the child passes. Required remaining
-work is service/client binding for the other EE candidates, IOP handler and
-registration argument recovery, indirect/data-carried dispatch domains,
-other STREAM subcommands, streaming shared records, DMA direction and length,
-reply/callback layout and buffer ownership/lifetime. Absence from this bounded
-scan is not proof that a protocol does not exist.
+The handoff join (`derive_handoffs` in `tools/inventory_rpc_handoffs.py`)
+now applies the conservative argument rules in ADR 0007. Re-running the
+inventory command above on the pinned corpus after the decoder repair yields
+14 candidate bind rows, all **incomplete**, with unresolved service/client
+arguments. It establishes no bound EE-to-IOP handoff. Branched lookback windows
+and unmodeled register writers cannot retain earlier constants as certainty.
+The old `handoff-join.json` is a historical pre-repair result; its bound service
+`0x12345` row is superseded and gives no current acceptance credit. The saved
+export observations and fixed STREAM volume-framing child above retain their
+bounded meaning; they do not replace the missing fresh join.
+
+Fresh receipt: `20261009T160140Z-b31117cd1bfa4bdf8a8cae8715ea95a0`,
+SHA-256 `9d6ad7bd6045cc24fe15f7c9b912c1365492ed0e3d20c2c4aabb22499423c62f`,
+public inventory exit 2. The local receipt was produced from the staged review
+fixes, not a clean committed revision. The exact clean revision must be checked
+again after publication. No historical receipt has been edited.
+
+Required remaining work begins with a control-flow-evidenced argument slice
+that re-establishes caller/service/handler and complete transfer buffers. Other
+STREAM subcommands, streaming shared records, DMA direction and length,
+reply/callback layout and buffer ownership/lifetime remain unresolved.
+Absence from this bounded scan is not proof that a protocol does not exist.
 
 Next bounded child: recover the STREAM reply and completion callback at EE
 `0x0013eac8`, join writes to IOP `aret` to EE reads of `0x00358380`, and establish

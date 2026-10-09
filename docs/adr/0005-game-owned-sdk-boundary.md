@@ -1,6 +1,6 @@
 # Game-owned and SDK regions: every loadable section is mixed until a range-level split is measured
 
-The byte gate is scoped to **game-owned** bytes ([ADR-0001](0001-completion-target.md), [ADR-0003](0003-open-source-only.md)), so the boundary must be a recorded decision. Decided: **no whole section is game-owned.** Every loadable code and data section of the retail EE executable remains **mixed** at section granularity. One local `.text` range is now attributed as `game_owned`; all other bytes remain mixed or unresolved until measured by address range.
+The byte gate is scoped to **game-owned** bytes ([ADR-0001](0001-completion-target.md), [ADR-0003](0003-open-source-only.md)), so the boundary must be a recorded decision. Decided: **no whole section is game-owned.** Every loadable code and data section of the retail EE executable remains **mixed** at section granularity. One local `.text` range is now attributed as `game_owned` and two local `.text` ranges as `substitute_region` (FlushCache `0x001eade0` + SignalSema `0x001eab80`); all other bytes remain mixed or unresolved until measured by address range.
 
 **Measured on the pinned executable** (reproduce: `python3.14 tools/boundary_measurements.py games/ford-racing-2 --output <dir>`; recorded in `notes/evidence/fr2-matching-harness/results/boundary-measurements.json`) (`SLES_517.05`, SHA-256 `2167…ea95`, 38 named sections):
 
@@ -47,3 +47,110 @@ other code in `.text`, or any other range.
 or a contradictory source-map/caller relationship for any byte in
 `0x001d1800–0x001d183b` revokes this split. Until such evidence appears, all
 remaining ranges keep their prior mixed/unresolved status.
+
+## Measured local split: `FlushCache` kernel stub (substitute)
+
+Assign `.text[0x001eade0, 0x001eadf0)` (16 bytes) to `substitute_region`.
+The span is the measured four-word kernel call wrapper `addiu v1,zero,100;
+syscall; jr ra; nop` at saved-function entry `FUN_001eade0`, with syscall
+number 100 (`0x64`) mapping to the single pinned-SDK name `FlushCache` in
+`ee/kernel/include/syscallnr.h` (ps2sdk `ac92a9f6`). Twenty-eight static
+direct `jal` transfers target this entry (25 in `.text`, 3 in executable
+init/user sections), grouped by saved-function ownership into 23 saved
+callers including retail `entry` at `0x00100008`; every other linked byte
+keeps its prior status. The recorded evidence is
+[`adr0005-flushcache-boundary.json`](../../notes/evidence/fr2-ps2sdk-substitute/adr0005-flushcache-boundary.json),
+which binds the range bytes, the syscall number/name evidence, the call/site
+contract (`void FlushCache(int operation)`, `$a0` operation, observed
+arguments 0 and 2), and the full static consumer list. Substitute bytes are
+never matched, even when a substitute build is coincidentally byte-identical.
+
+Reproduce the transfer total from the pinned executable with:
+
+```sh
+python3 - <<'PY'
+import struct
+import sys
+sys.path.insert(0, "tools")
+from ps2_executables import parse_elf
+data = open("games/ford-racing-2/extracted/SLES_517.05", "rb").read()
+elf = parse_elf(data)
+total, text = 0, 0
+for sec in elf["sections"]:
+    if not (sec["flags"] & 4) or not sec["size"] or not sec["offset"]:
+        continue
+    for k in range(0, sec["size"] - 3, 4):
+        word = struct.unpack_from("<I", data, sec["offset"] + k)[0]
+        if word >> 26 == 3:
+            target = ((sec["address"] + k + 4) & 0xF0000000) | ((word & 0x3FFFFFF) << 2)
+            if target == 0x001EADE0:
+                total += 1
+                text += sec["name"] == ".text"
+print("direct transfers to 0x001eade0:", total, "(.text:", str(text) + ")")
+PY
+```
+
+Reproduce the saved-caller grouping and the observed arguments from the
+committed evidence with:
+
+```sh
+python3 -c 'import json; d = json.load(open("notes/evidence/fr2-ps2sdk-substitute/adr0005-flushcache-boundary.json")); s = d["static_consumers"]; print("saved callers:", s["distinct_saved_callers"], "sites:", sum(len(c["call_sites"]) for c in s["callers"])); print("observed args:", d["interface"]["observed_call_site_arguments"])'
+```
+
+**Falsifier.** A game-owned source claim for any byte in
+`0x001eade0–0x001eadef`, an overlapping non-substitute attribution, or
+disjoint CFG evidence placing these bytes in another unit revokes this split.
+
+## Measured local split: `SignalSema` kernel stub (substitute)
+
+Assign `.text[0x001eab80, 0x001eab90)` (16 bytes) to `substitute_region`.
+The span is the measured four-word kernel call wrapper `addiu v1,zero,66;
+syscall; jr ra; nop` at saved-function entry `FUN_001eab80`, with syscall
+number 66 (`0x42`) mapping to the single pinned-SDK name `SignalSema` in
+`ee/kernel/include/syscallnr.h` (ps2sdk `ac92a9f6`). Sixty-nine static
+direct transfers target this entry (67 `jal`, 2 `j`, all in `.text`),
+grouped by saved-function ownership into 47 saved callers;
+the semaphore id arrives in `$a0`, overwhelmingly loaded from memory rather
+than an immediate, so no observed argument values are recorded. The recorded
+evidence is
+[`adr0005-signalsema-boundary.json`](../../notes/evidence/fr2-ps2sdk-substitute/adr0005-signalsema-boundary.json),
+which binds the range bytes, the syscall number/name evidence, the call/site
+contract (`s32 SignalSema(s32 sema_id)`, `$a0` semaphore id), and the full
+static consumer list. Substitute bytes are never matched, even when a
+substitute build is coincidentally byte-identical.
+
+Reproduce the transfer total from the pinned executable with:
+
+```sh
+python3 - <<'PY'
+import struct
+import sys
+sys.path.insert(0, "tools")
+from ps2_executables import parse_elf
+data = open("games/ford-racing-2/extracted/SLES_517.05", "rb").read()
+elf = parse_elf(data)
+jal, jmp = 0, 0
+for sec in elf["sections"]:
+    if not (sec["flags"] & 4) or not sec["size"] or not sec["offset"]:
+        continue
+    for k in range(0, sec["size"] - 3, 4):
+        word = struct.unpack_from("<I", data, sec["offset"] + k)[0]
+        if word >> 26 in (2, 3):
+            target = ((sec["address"] + k + 4) & 0xF0000000) | ((word & 0x3FFFFFF) << 2)
+            if target == 0x001EAB80:
+                jal += word >> 26 == 3
+                jmp += word >> 26 == 2
+print("direct transfers to 0x001eab80:", jal + jmp, "(jal:", str(jal) + ", j:", str(jmp) + ")")
+PY
+```
+
+Reproduce the saved-caller grouping from the committed evidence with:
+
+```sh
+python3 -c 'import json; d = json.load(open("notes/evidence/fr2-ps2sdk-substitute/adr0005-signalsema-boundary.json")); s = d["static_consumers"]; print("saved callers:", s["distinct_saved_callers"], "sites:", s["total_call_sites"])'
+```
+
+**Falsifier.** A game-owned source claim for any byte in
+`0x001eab80–0x001eab8f`, an overlapping non-substitute attribution, or
+disjoint CFG evidence placing these bytes in another unit revokes this split.
+

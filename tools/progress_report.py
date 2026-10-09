@@ -17,7 +17,7 @@ from recorded_decisions import read_decisions
 
 ROOT = Path(__file__).resolve().parent.parent
 LEDGER_PATH = 'notes/evidence/fr2-progress/structural-ledger.json'
-LEDGER_SHA256 = '23ab40493de5fd5c8582700635e8bd8e1e617ea6001d5a92d030bd4c34f73ba7'
+LEDGER_SHA256 = '7de5d5f22987e82afbecfc7e2d6287d565727b727b4a62137b65f56314762ba1'
 HISTORICAL_PATH = 'notes/evidence/fr2-completion/20261008-continuation-summary.json'
 CATEGORIES = (('game-owned', 'Game-owned'), ('mixed', 'Mixed'),
               ('substitute', 'Substitute'), ('unresolved', 'Unresolved'))

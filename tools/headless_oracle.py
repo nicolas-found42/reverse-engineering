@@ -48,6 +48,23 @@ QT_DEPENDENCY_BLOCKERS = (
     "The prebuilt Qt SDK's full corresponding source or applicable source offer is not bound to the pinned package.",
     "The installed Qt libraries and docking library lack exact package/source/build and complete notice bindings.",
 )
+DEPENDENCY_MANIFEST = TOOLS / "oracle_dependency_manifest.json"
+
+
+def closure_libraries() -> dict:
+    """Every bundled dylib in the strict-profile load closure with its source component, excluding libqoffscreen.dylib (checked separately via OFFSCREEN_SHA256)."""
+    manifest = json.loads(DEPENDENCY_MANIFEST.read_text())
+    libraries = {}
+    for name, record in manifest["installed"].items():
+        if name == "libqoffscreen.dylib":
+            continue
+        libraries[name] = {"sha256": record["sha256"], "component": record["component"]}
+    if set(QT_RUNTIME_LIBRARIES) - set(libraries):
+        raise Invalid("dependency manifest omits a pinned Qt runtime library")
+    for name, expected in QT_RUNTIME_LIBRARIES.items():
+        if libraries[name]["sha256"] != expected:
+            raise Invalid(f"dependency manifest contradicts the pinned profile: {name}")
+    return libraries
 EXPECTED_WORDS = [0x46523250, 21, 0x10DF30BF, 1]
 MAX_TIMEOUT_SECONDS = 60
 DESKTOP_SAMPLE_INTERVAL_MS = 50
@@ -213,13 +230,13 @@ def verify_inputs(emulator: Path, plugin: Path, elf: Path, source: Path,
                   qt_source_dir: Path, qt_build_command: Path,
                   qt_preparation: Path) -> dict:
     libraries, missing_libraries = {}, []
-    for name, expected in QT_RUNTIME_LIBRARIES.items():
+    for name, pinned in closure_libraries().items():
         path = emulator.parent.parent / "Frameworks" / name
         if not path.is_file():
             missing_libraries.append(f"required Qt runtime dependency is missing: {name}")
             continue
         libraries[name] = identity(path)
-        if libraries[name]["sha256"] != expected:
+        if libraries[name]["sha256"] != pinned["sha256"]:
             raise Invalid(f"Qt runtime dependency differs from the pinned installed profile: {name}")
     recipe = json.loads(RECIPE.read_text())
     for path in (emulator, plugin, elf, source, linker_script, probe_build_log,
@@ -545,7 +562,8 @@ def main() -> int:
               Path(args.qt_build_command), Path(args.qt_preparation_record),
               *(Path(args.qt_source_dir) / name for name in QT_SOURCE_HASHES),
               *(Path(args.emulator).parent.parent / "Frameworks" / name
-                for name in QT_RUNTIME_LIBRARIES),
+                for name in closure_libraries()),
+              DEPENDENCY_MANIFEST,
               TOOLS / "pcsx2_pine.py",
               TOOLS / "evidence_common.py"]
     return write_result(args.output, "fr2-headless-behavioral-oracle",

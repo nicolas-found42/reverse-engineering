@@ -28,6 +28,20 @@ VALIDATION_INPUTS = [ROOT/'tools'/name for name in (
     'compiler_probe.py', 'compiler_output.py')]
 
 
+STAGE_PREFIX = 'misc3d-loader-terminal-'
+
+
+def prepare_stage(tool_root: Path, name: str | None = None) -> Path:
+    """Fresh build stage. A named stage is deterministic so two clean builds agree byte for byte."""
+    if name is None:
+        return Path(tempfile.mkdtemp(prefix=STAGE_PREFIX, dir=tool_root))
+    stage = tool_root / (STAGE_PREFIX + name)
+    if stage.exists():
+        shutil.rmtree(stage)
+    stage.mkdir(parents=True)
+    return stage
+
+
 def provenance(game: Path, tool_root: Path) -> dict:
     missing = []
     executable = game/'extracted/SLES_517.05'
@@ -68,12 +82,12 @@ def compare(retail: bytes, linked: bytes) -> dict:
             'new_attributed_match_bytes': 0}
 
 
-def source_build(game: Path, tool_root: Path, source: Path = SOURCE) -> dict:
+def source_build(game: Path, tool_root: Path, source: Path = SOURCE, stage_name: str | None = None) -> dict:
     if sha256((game/'extracted/SLES_517.05').read_bytes()) != EE_CORPUS_SHA256:
         raise Invalid('terminal build requires the pinned executable')
     if not tool_root.is_dir():
         raise Incomplete('required terminal tool root is absent')
-    stage = Path(tempfile.mkdtemp(prefix='misc3d-loader-terminal-', dir=tool_root))
+    stage = prepare_stage(tool_root, stage_name)
     manifest_path, _ = build.prepare(game, tool_root, stage)
     run.validate_manifest_runtimes(manifest_path, tool_root)
     runtimes = run.validate_runtime_images()
