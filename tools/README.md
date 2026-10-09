@@ -193,6 +193,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_ps2_textures.py](test_ps2_textures.py) — Tests: Tests for the .PS2 texture-library section: parser, decoder and the verify_textures CLI.
 - [tools/test_ps2_vif.py](test_ps2_vif.py) — Tests: Python module; see source.
 - [tools/test_ps2_vu.py](test_ps2_vu.py) — Tests: Python module; see source.
+- [tools/test_ptg_body_census.py](test_ptg_body_census.py) — Tests: Corpus census guard for the PTG body-variant contract (issue #28, AC20).
 - [tools/test_ptg_verifier.py](test_ptg_verifier.py) — Tests: Tests at the verify_ptg.py CLI boundary; the real-corpus case skips when the corpus is absent.
 - [tools/test_publish_gate.py](test_publish_gate.py) — Tests: Tests for tools/publish_gate.py: positive, negative and incomplete controls.
 - [tools/test_r5900_shape.py](test_r5900_shape.py) — Tests: Python module; see source.

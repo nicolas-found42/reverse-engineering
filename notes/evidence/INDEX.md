@@ -99,6 +99,7 @@ Commands and full hash/revision mentions are copied with their source context in
 - [fr2-progress-audit/README.md](fr2-progress-audit/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
 - [fr2-progress/README.md](fr2-progress/README.md) — 2 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-ps2sdk-substitute/README.md](fr2-ps2sdk-substitute/README.md) — 3 command blocks; missing: none.
+- [fr2-ptg-body-contracts/README.md](fr2-ptg-body-contracts/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-range-accounting/README.md](fr2-range-accounting/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-re-setup/README.md](fr2-re-setup/README.md) — 1 command blocks; missing: none.
 - [fr2-rpc-contracts/README.md](fr2-rpc-contracts/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
