@@ -1,0 +1,60 @@
+{
+  "discovery_isolation": {
+    "calls": [
+      {
+        "mode": "ghidra",
+        "explicit_environment": null,
+        "inherited_profile": "/synthetic/candidate"
+      },
+      {
+        "mode": "rea",
+        "explicit_environment": null,
+        "inherited_profile": "/synthetic/candidate"
+      },
+      {
+        "mode": "r2",
+        "explicit_environment": null,
+        "inherited_profile": "/synthetic/candidate"
+      }
+    ],
+    "successful_catalogs": 3,
+    "result": "No explicit isolation environment; inherits candidate profile for shared launcher discovery."
+  },
+  "same_token_existing_backend": {
+    "requests": [
+      {
+        "path": "/mcp/schema",
+        "authenticated": true
+      },
+      {
+        "path": "/mcp/schema",
+        "authenticated": false
+      }
+    ],
+    "candidate_launches": 0,
+    "result": "Authenticated existing backend accepted without comparison of running instance to candidate installation."
+  },
+  "failed_bootstrap_cleanup": {
+    "exit_code": 1,
+    "retained_synthetic_token_file": true,
+    "mode": "0o600",
+    "report_successful": false,
+    "result": "Bootstrap failure retains synthetic token placeholder because unlink is success-only."
+  },
+  "failed_doctor_prelaunch_cleanup": {
+    "retained_synthetic_token_file": true,
+    "mode": "0o600",
+    "result": "Compiler failure before try/finally retains doctor synthetic token placeholder."
+  },
+  "activation_rollback_scope": {
+    "machine_config_restored": true,
+    "synthetic_client_remains": "candidate",
+    "result": "Machine configuration restoration meets documented claim; partial registration restoration is not implemented."
+  },
+  "safety": {
+    "real_runtime_started": false,
+    "real_credentials_read_or_copied": false,
+    "corpus_accessed": false,
+    "tracked_files_modified": false
+  }
+}

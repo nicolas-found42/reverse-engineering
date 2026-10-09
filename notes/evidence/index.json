@@ -304,6 +304,53 @@
       ]
     },
     {
+      "path": "notes/evidence/fr2-current-baseline-20261009/README.md",
+      "readme_sha256": "b12d715a2410e6b97343c00b61595f14da89c6a048ac05882ea049287dca2b0d",
+      "commands": [
+        "python3 tools/completion.py /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2 \\\n  --assembler /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new \\\n  --objdump /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump \\\n  --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate\npython3 tools/validate.py --revision 05a685a35ae429aaddacce1a7faceb6b6438ab44 \\\n  --output .scratch/baseline-20261009/validation"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "45d1186f03ca0fd3dbda4baa3f2ead84fe5ed12d06d2a065eabefe4da8ea2e5d",
+          "line": 36,
+          "context": "`45d1186f03ca0fd3dbda4baa3f2ead84fe5ed12d06d2a065eabefe4da8ea2e5d`."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "05a685a35ae429aaddacce1a7faceb6b6438ab44",
+          "line": 6,
+          "context": "`05a685a35ae429aaddacce1a7faceb6b6438ab44`, tree"
+        },
+        {
+          "value": "df462a8e58bf43d1ee9d0a32f16ebfc7ae77421d",
+          "line": 7,
+          "context": "`df462a8e58bf43d1ee9d0a32f16ebfc7ae77421d`, using the unchanged local corpus and"
+        },
+        {
+          "value": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+          "line": 48,
+          "context": "`d14fe24278ad66a479ccd4d70ede7150a5521fef`. Its head was"
+        },
+        {
+          "value": "a8c8798807af81927cfab975530ac2445eec6f27",
+          "line": 49,
+          "context": "`a8c8798807af81927cfab975530ac2445eec6f27`, with base"
+        },
+        {
+          "value": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+          "line": 50,
+          "context": "`717f78df689be4e16ddc891b2def18cbda3ce79d`. No readiness or merge operation was"
+        },
+        {
+          "value": "05a685a35ae429aaddacce1a7faceb6b6438ab44",
+          "line": 114,
+          "context": "python3 tools/validate.py --revision 05a685a35ae429aaddacce1a7faceb6b6438ab44 \\"
+        }
+      ],
+      "missing": []
+    },
+    {
       "path": "notes/evidence/fr2-dispatch-pair/README.md",
       "readme_sha256": "9fa322b98d29c546d8c02b202f9c7009160ada2e59e2f0d33cd077c9a964bc27",
       "commands": [],

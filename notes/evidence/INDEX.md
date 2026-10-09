@@ -14,6 +14,7 @@ Commands and full hash/revision mentions are copied with their source context in
 - [fr2-compiler-provenance-continuation/README.md](fr2-compiler-provenance-continuation/README.md) — 4 command blocks; missing: none.
 - [fr2-completion/README.md](fr2-completion/README.md) — 2 command blocks; missing: full_sha256_mention.
 - [fr2-continuation/README.md](fr2-continuation/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
+- [fr2-current-baseline-20261009/README.md](fr2-current-baseline-20261009/README.md) — 1 command blocks; missing: none.
 - [fr2-dispatch-pair/README.md](fr2-dispatch-pair/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
 - [fr2-dispatch-pair/warning-audit/README.md](fr2-dispatch-pair/warning-audit/README.md) — 1 command blocks; missing: full_revision_mention.
 - [fr2-ee-de0-recovery/README.md](fr2-ee-de0-recovery/README.md) — 0 command blocks; missing: reproduction_command, full_revision_mention.

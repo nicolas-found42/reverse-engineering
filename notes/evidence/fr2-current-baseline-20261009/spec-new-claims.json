@@ -1,0 +1,32 @@
+{
+  "input": {
+    "claims": [
+      "Fresh synthetic controls show shared discovery launches all three RE modes without an explicit environment and therefore inherits the ambient candidate profile; a simulated healthy authenticated backend is accepted without launching or checking candidate instance identity.",
+      "Fresh synthetic controls show that a failed bootstrap doctor retains a mode0600 synthetic token placeholder, and a doctor compiler failure before its try/finally also retains that placeholder. These are cleanup-path findings, not access to actual credentials.",
+      "Fresh targeted tests run 42 tests with zero failures, errors, skips or excluded modules. Their pass does not refute the new negative-control failures.",
+      "Activation restores the previous machine configuration after registration failure but does not restore the simulated partial client registration. The documentation promises machine configuration restoration, so full client rollback is an additional limitation rather than a failure of that narrower documented claim."
+    ],
+    "evidence": [
+      {
+        "id": "new-controls:a55e6a350392aa2319f70ca0fa59a78b716ff69a23961f41c7911680a0f85c1c",
+        "text": "CONTROL OUTPUT: discovery calls: ghidra env=null inherited_profile=/synthetic/candidate; rea env=null inherited_profile=/synthetic/candidate; r2 env=null inherited_profile=/synthetic/candidate. Existing-backend mock: health=True, authenticated /mcp/schema succeeds, unauthenticated /mcp/schema raises401, candidate_launches=0. Failed bootstrap: exit1 report_successful=false retained_synthetic_token_file=true mode0o600. Failed doctor prelaunch compiler: retained_synthetic_token_file=true mode0o600. Activation failure: machine_config_restored=true synthetic_client_remains=candidate. All runtime interfaces mocked; real_runtime_started=false real_credentials_read_or_copied=false corpus_accessed=false."
+      },
+      {
+        "id": "targeted-tests:54f69d7c90708e6d9c6aa2c1feea1caf6e85c0e708c076b3e8d7d1da70c240f4",
+        "text": "COMMAND tools/check.sh --summary .scratch/baseline-20261009/spec-targeted-tests.json test_re_doctor test_re_bootstrap test_re_mcp test_run_tests test_review_payload test_validate test_pre_push. EXIT0 tests_run42 failures0 errors0 skipped_tests[] excluded_modules[]."
+      },
+      {
+        "id": "documented-activation",
+        "text": "docs/agents/re-setup-maintenance.md: \"Registration failure restores the previous machine configuration.\" re_bootstrap.activate exception handler: if old: private_json(config, old) else: config.unlink(); raise. No client restoration handler."
+      }
+    ]
+  },
+  "raw_result": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_verify\",\n  \"model\": \"typesafe/jev-1.13-20260917\",\n  \"provider\": \"openrouter\",\n  \"auto_accept\": 0.8,\n  \"subject_at\": 0.5,\n  \"summary\": {\n    \"verified\": 4,\n    \"contradicted\": 0,\n    \"unsupported\": 0,\n    \"needs_review\": 0\n  },\n  \"results\": [\n    {\n      \"id\": \"claim0\",\n      \"claim\": \"Fresh synthetic controls show shared discovery launches all three RE modes without an explicit environment and therefore inherits the ambient candidate profile; a simulated healthy authenticated backend is accepted without launching or checking candidate instance identity.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"new-controls_a55e6a350392aa2319f70ca0fa59a78b716ff69a23961f41c79\",\n      \"same_subject\": 0.96\n    },\n    {\n      \"id\": \"claim1\",\n      \"claim\": \"Fresh synthetic controls show that a failed bootstrap doctor retains a mode0600 synthetic token placeholder, and a doctor compiler failure before its try/finally also retains that placeholder. These are cleanup-path findings, not access to actual credentials.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.98,\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 0.97,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"new-controls_a55e6a350392aa2319f70ca0fa59a78b716ff69a23961f41c79\",\n      \"same_subject\": 0.95\n    },\n    {\n      \"id\": \"claim2\",\n      \"claim\": \"Fresh targeted tests run 42 tests with zero failures, errors, skips or excluded modules. Their pass does not refute the new negative-control failures.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 0.88,\n        \"contradicts\": 0.02,\n        \"says_nothing\": 0.1\n      },\n      \"confidence\": 0.82,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"targeted-tests_54f69d7c90708e6d9c6aa2c1feea1caf6e85c0e708c076b3e\",\n      \"same_subject\": 0.97\n    },\n    {\n      \"id\": \"claim3\",\n      \"claim\": \"Activation restores the previous machine configuration after registration failure but does not restore the simulated partial client registration. The documentation promises machine configuration restoration, so full client rollback is an additional limitation rather than a failure of that narrower documented claim.\",\n      \"verdict\": \"verified\",\n      \"probabilities\": {\n        \"supports\": 1,\n        \"contradicts\": 0,\n        \"says_nothing\": 0\n      },\n      \"confidence\": 1,\n      \"action\": \"auto\",\n      \"supporting_evidence\": \"documented-activation\",\n      \"same_subject\": 0.93\n    }\n  ],\n  \"usage\": {\n    \"input_tokens\": 2710,\n    \"output_tokens\": 976\n  }\n}"
+      }
+    ]
+  }
+}

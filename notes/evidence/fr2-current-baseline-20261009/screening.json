@@ -1,0 +1,20 @@
+{
+  "canonical_criterion_intake": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13-20260917\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.33,\n    \"substance\": 0.98,\n    \"relevance\": 0.97\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"review\",\n    \"reason\": \"injection probability 0.33 >= review threshold 0.25\"\n  },\n  \"usage\": {\n    \"input_tokens\": 3647,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "initial_intake_screen": {
+    "content": [
+      {
+        "type": "text",
+        "text": "{\n  \"tool\": \"jev_screen\",\n  \"model\": \"typesafe/jev-1.13-20260917\",\n  \"provider\": \"openrouter\",\n  \"probabilities\": {\n    \"injection\": 0.73,\n    \"substance\": 0.99,\n    \"relevance\": 0.98\n  },\n  \"thresholds\": {\n    \"block_at\": 0.75,\n    \"review_at\": 0.25\n  },\n  \"recommendation\": {\n    \"action\": \"review\",\n    \"reason\": \"injection probability 0.73 >= review threshold 0.25\"\n  },\n  \"usage\": {\n    \"input_tokens\": 30017,\n    \"output_tokens\": 57\n  }\n}"
+      }
+    ]
+  },
+  "initial_intake_limit": "Initial broad PR/spec intake was fetched through a bounded shell output and used only for orientation. This explicit canonical-criterion screen and exact native GitHub fields govern final requirement/state evidence. Agent-side inspection discarded embedded bot instructions; no unresolved request for credentials or rule override was adopted.",
+  "inspection": "Live docs contain task-related example instructions and index navigation. Those are documentation data. GitHub bot instruction blocks are not operational authority."
+}

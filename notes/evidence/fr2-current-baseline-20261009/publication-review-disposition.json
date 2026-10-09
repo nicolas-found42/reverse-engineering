@@ -1,0 +1,751 @@
+{
+  "schema": "fr2-independent-publication-review-disposition/v1",
+  "disposition": "accepted",
+  "scope": "truthful incomplete static evidence publication only",
+  "rationale": "Independently inspected the exact staged README diff, all32 canonical criterion texts/statuses, raw aggregate and all twelve aggregate/child receipt hashes, lengths, runIDs and commands. Each matrix row has appropriate linked ticket, missing prerequisite and falsifier; incomplete statuses are preserved rather than promoted. All local README references exist. Original judgments/survey hashes and primary HEAD/status match their preserved snapshot. Staged files are bounded new evidence and generated indexes only; reconstruction source and acceptance definitions are unaffected. Native-readback frontier matches the stated nine ready unassigned agent leaves and blocker graph. Original Jev escalations remain visible with independent dispositions. README accurately separates fresh incomplete observations from historical/structural evidence and retains unresolved PR42 setup defects. Prior staged tree de660b22 passed full deterministic validation. The current index includes added review metadata; final deterministic validation must cover the final published tree. This independent acceptance authorizes evidence publication only and awards no game, runtime, setup-defect or matching completion.",
+  "original_review_identity": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/publication-review.json",
+    "bytes": 15118,
+    "sha256": "efc06ff12f1350b0d02bff04397750b39033572f3b0427f55a9dae29ee362622"
+  },
+  "original_judgment": {
+    "tool": "jev_review",
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "truncated": false,
+    "mode": "per-file",
+    "action": "review",
+    "composite": 0.8795,
+    "safe_to_apply": 0.54,
+    "reason_codes": [
+      "safe_to_apply_below_auto_accept",
+      "confidence_below_auto_accept"
+    ],
+    "limiting": [
+      {
+        "file": "notes/evidence/fr2-current-baseline-20261009/README.md",
+        "rubrics": [
+          "correctness"
+        ]
+      }
+    ],
+    "weights": {
+      "correctness": 0.4,
+      "spec_match": 0.3,
+      "test_gap": 0.15,
+      "blast_radius": 0.15
+    },
+    "thresholds": {
+      "auto_accept": 0.8,
+      "review_at": 0.5,
+      "composite_floor": 0.7
+    },
+    "files": [
+      {
+        "path": "notes/evidence/fr2-current-baseline-20261009/README.md",
+        "safe_to_apply": 0.54,
+        "scores": {
+          "correctness": {
+            "score": 1.72,
+            "confidence": 0.58,
+            "probabilities": {
+              "0": 0.04,
+              "1": 0.2,
+              "2": 0.76
+            }
+          },
+          "spec_match": {
+            "score": 1.79,
+            "confidence": 0.7,
+            "probabilities": {
+              "0": 0.01,
+              "1": 0.18,
+              "2": 0.81
+            }
+          },
+          "test_gap": {
+            "score": 0.22,
+            "confidence": 0.67,
+            "probabilities": {
+              "0": 0.85,
+              "1": 0.08,
+              "2": 0.07
+            }
+          },
+          "blast_radius": {
+            "score": 0.22,
+            "confidence": 0.68,
+            "probabilities": {
+              "0": 0.86,
+              "1": 0.07,
+              "2": 0.07
+            }
+          }
+        },
+        "weights": {
+          "correctness": 0.4,
+          "spec_match": 0.3,
+          "test_gap": 0.15,
+          "blast_radius": 0.15
+        },
+        "thresholds": {
+          "auto_accept": 0.8,
+          "review_at": 0.5,
+          "composite_floor": 0.7
+        },
+        "action": "review",
+        "composite": 0.8795,
+        "reason_codes": [
+          "safe_to_apply_below_auto_accept",
+          "confidence_below_auto_accept"
+        ],
+        "limiting_rubrics": [
+          "correctness"
+        ]
+      }
+    ],
+    "usage": {
+      "input_tokens": 4236,
+      "output_tokens": 95
+    }
+  },
+  "readme_raw_diff_sha256": "8a7d257ce0943aef0d095b0b2039e15cf96fd7ee292d2e993db7bdb9c0cea28b",
+  "readme_diff_matches_original_review": true,
+  "no_semantic_retry": true,
+  "prior_full_staged_validation_identity": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-final-validation/result.json",
+    "bytes": 963,
+    "sha256": "4ae62ac11aed819dc87127093c280d7a2cb8cf99e28dc677e857f550ec899529"
+  },
+  "prior_validated_tree": "de660b22da796219e1369fab42ef48e609e611cf",
+  "observed_current_staged_tree": "5488e958aa07936414c211d989d8b5831186fa94",
+  "final_deterministic_validation_required": true,
+  "canonical_spec_identity": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/spec.md",
+    "bytes": 67402,
+    "sha256": "a1a40db533e3f811b42d8eb61c363c234ed41036401ab87cccb428389a5bb08b"
+  },
+  "criterion_checks": [
+    {
+      "id": "AC01",
+      "status": "pass",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": null,
+      "falsifier": "An altered/missing EE, IOP, VU, archive or extracted identity must fail or be incomplete.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/5"
+      ]
+    },
+    {
+      "id": "AC02",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Full passing reconstruction and handoff remain unimplemented.",
+      "falsifier": "A child exit/result/report mismatch, omitted AC or overwritten receipt must prevent acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/33"
+      ]
+    },
+    {
+      "id": "AC03",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Full build/receipt negative controls remain unimplemented.",
+      "falsifier": "A scope/skip/denominator override, stale receipt or omitted required input must never yield pass.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/33"
+      ]
+    },
+    {
+      "id": "AC04",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Load-image inventory retained; all but the locally measured range remain unresolved.",
+      "falsifier": "An overlap, omitted load byte or contradictory game/SDK boundary invalidates the partition.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/23",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/16"
+      ]
+    },
+    {
+      "id": "AC05",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Exploratory candidate comparison retained; independent ownership and additional EE/IOP distinguishing probes are still required.",
+      "falsifier": "A distinguishing source unit mismatch, ambiguous candidates or package/source identity drift invalidates the pin.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/8",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/21"
+      ]
+    },
+    {
+      "id": "AC06",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Fresh GNU accessor/cell placement, relocation and load-layout checks retained; full EE/IOP layout remains incomplete.",
+      "falsifier": "A shifted address, changed relocation target, wrong initialized data or NOBITS placement fails.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/9"
+      ]
+    },
+    {
+      "id": "AC07",
+      "status": "pass",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": null,
+      "falsifier": "Changed accessor source or diagnostic placement must fail the 60-byte comparison.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/11"
+      ]
+    },
+    {
+      "id": "AC08",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Fresh misc3d code/cell checks retained; full EE ownership, source and ABI/consumer coverage remain incomplete.",
+      "falsifier": "Any required missing unit or one changed attributed rebuilt EE word prevents full matching.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/23",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/24",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/35",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/37"
+      ]
+    },
+    {
+      "id": "AC09",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Fresh misc3d code/cell checks retained; full EE ownership, source and ABI/consumer coverage remain incomplete.",
+      "falsifier": "A wrong caller signature, writer/alias, storage class or unresolved required ABI prevents acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/23",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/24",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/35",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/37"
+      ]
+    },
+    {
+      "id": "AC10",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Reconcile every required unlisted span and computed dispatch.",
+      "falsifier": "A required unlisted span or computed dispatch target remains unaccounted for.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/25"
+      ]
+    },
+    {
+      "id": "AC11",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Build pinned permitted substitutes with documented interfaces.",
+      "falsifier": "An undeclared/proprietary dependency, missing interface or substitute counted as matched prevents acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/12"
+      ]
+    },
+    {
+      "id": "AC12",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Clean source builds must produce EE and all 24 module outputs.",
+      "falsifier": "One missing EE/IOP output or source/build provenance binding prevents complete build.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/32"
+      ]
+    },
+    {
+      "id": "AC13",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Attribute and rebuild all game-owned IOP ranges.",
+      "falsifier": "One missing attributed IOP range or altered rebuilt word prevents matching.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/16"
+      ]
+    },
+    {
+      "id": "AC14",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Fresh all-module SIF table/candidate inventory retained; full module linking and provider contracts remain incomplete.",
+      "falsifier": "Wrong ordinal/version/provider/relocation or missing binding prevents contract acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/16",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/26"
+      ]
+    },
+    {
+      "id": "AC15",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Fresh STREAM static binding retained; complete handoff ownership, synchronization, replies and other services remain incomplete.",
+      "falsifier": "Missing service/caller/handler, changed packet/state or unresolved ownership/lifetime prevents acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/26"
+      ]
+    },
+    {
+      "id": "AC16",
+      "status": "pass",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": null,
+      "falsifier": "One altered VU word or missing overlay must fail the exact encoding gate.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/13"
+      ]
+    },
+    {
+      "id": "AC17",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Required entry/state interfaces remain unresolved.",
+      "falsifier": "A missing caller, overlay, entry or required VIF/DMA/TOP/mode/buffer state keeps the map incomplete.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/13"
+      ]
+    },
+    {
+      "id": "AC18",
+      "status": "pass",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": null,
+      "falsifier": "A missing extracted file, corrupt wrapper, overlap, short span or stale manifest must fail.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/15"
+      ]
+    },
+    {
+      "id": "AC19",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "falsifier": "An unsupported bank/stream variant or wrong sample/rate/interleave/loop consumer keeps incomplete.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/27"
+      ]
+    },
+    {
+      "id": "AC20",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "falsifier": "An unsupported body/tile/palette or wrong uppercase R/N profile prevents acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/28"
+      ]
+    },
+    {
+      "id": "AC21",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "falsifier": "Malformed geometry counts/endpoints/strides or missing transfer/VU handoff prevents acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/30"
+      ]
+    },
+    {
+      "id": "AC22",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "falsifier": "Wrong indices/dimensions/planes/upload sizes or missing mip/small-image variant prevents acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/29"
+      ]
+    },
+    {
+      "id": "AC23",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "falsifier": "Any archive file lacks a supported grammar or evidenced opaque consumer disposition.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/31"
+      ]
+    },
+    {
+      "id": "AC24",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Archive-derived contract catalog retained; required body/consumer/state semantics have not been proven by documentation coverage.",
+      "falsifier": "Changed consumer hash/profile, silent/contradictory evidence or required state omission cannot pass.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/15",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/23",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/26"
+      ]
+    },
+    {
+      "id": "AC25",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Prove a bounded windowless/audio-free/focus-free lifecycle.",
+      "falsifier": "A UI/display/audio/focus-capable configuration must be refused before guest launch; failed cleanup prevents pass.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/22",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/14"
+      ]
+    },
+    {
+      "id": "AC26",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Compare original and rebuilt observations with identical inputs.",
+      "falsifier": "Mismatching scenario inputs/output/state or absent original/rebuilt observations prevents behavioral acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/14"
+      ]
+    },
+    {
+      "id": "AC27",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "The current positive, mutation and placement controls cover one source unit only; controls for remaining acceptance gates are not complete.",
+      "falsifier": "A required mutation passes, or missing/malformed/no-match semantic evidence is accepted.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/33"
+      ]
+    },
+    {
+      "id": "AC28",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Compare two clean source builds in separate fresh work directories.",
+      "falsifier": "Credited outputs or normalized aggregate reports differ between two fresh separate builds.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/34"
+      ]
+    },
+    {
+      "id": "AC29",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "The current partition conserves all load-image bytes, but only one 60-byte owned range is attributed and matched.",
+      "falsifier": "A zero/steered denominator, missing byte or discovery/substitute byte counted as matched prevents complete ledger.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/23",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/16"
+      ]
+    },
+    {
+      "id": "AC30",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "These current child receipts support the bounded results above; required evidence and falsifiers for the remaining criteria are still incomplete.",
+      "falsifier": "A required claim lacks current reproducible evidence/disposition/falsifier or an escalation is overwritten.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/33"
+      ]
+    },
+    {
+      "id": "AC31",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "The exploratory compiler receipt records package provenance; redistribution terms remain unresolved and no compiler binaries are redistributed.",
+      "falsifier": "Tracked retail/generated/proprietary payload or unresolved required license/source binding prevents acceptance.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/21",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/22"
+      ]
+    },
+    {
+      "id": "AC32",
+      "status": "incomplete",
+      "canonical_text_command_receipt_checks": "pass",
+      "missing_prerequisite": "Current child receipts and the aggregate are retained, but required final acceptance and handoff evidence remains incomplete.",
+      "falsifier": "Any required reconstruction criterion remains fail/incomplete or final ticket/map receipt is missing.",
+      "tickets": [
+        "https://github.com/nicolas-found42/reverse-engineering/issues/34",
+        "https://github.com/nicolas-found42/reverse-engineering/issues/5"
+      ]
+    }
+  ],
+  "receipt_checks": [
+    {
+      "id": "A0",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/20261009T152126Z-718499d4bc88455280610996082435eb/result.json",
+        "bytes": 600216,
+        "sha256": "45d1186f03ca0fd3dbda4baa3f2ead84fe5ed12d06d2a065eabefe4da8ea2e5d"
+      },
+      "status": "incomplete",
+      "command_matches": true
+    },
+    {
+      "id": "C00",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/ranges/20261009T152126Z-c95f736589d44a6fb9e95fd3474db546/result.json",
+        "bytes": 95360,
+        "sha256": "1f6928f7e6d9ab4e9b0a41e2a0068f73ddeb47cc883da641636965062cffd95e"
+      },
+      "status": "pass",
+      "command_matches": true
+    },
+    {
+      "id": "C01",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/archive/20261009T152127Z-6a650f1953a84586a5b274f1598bf980/result.json",
+        "bytes": 4079980,
+        "sha256": "6d9b7671ebd7f020f53f5c4d8a4ac830469146a1134a92a5ff8a04c951a3b275"
+      },
+      "status": "pass",
+      "command_matches": true
+    },
+    {
+      "id": "C02",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/vu/20261009T152129Z-8c0e315b74ca481481d29ee15f76a960/result.json",
+        "bytes": 59746,
+        "sha256": "3b5248736296001b712d10d5ac944d946f31c2c4a978a3676a84e1c7c6e2b173"
+      },
+      "status": "incomplete",
+      "command_matches": true
+    },
+    {
+      "id": "C03",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/assets/20261009T152129Z-6269624029164e3d8cf919e51071831b/result.json",
+        "bytes": 56955,
+        "sha256": "8ef3cd8e00f7fdc846275b9f6b4b24817dc8f970334889f5b6f9cd14cbfbafd4"
+      },
+      "status": "incomplete",
+      "command_matches": true
+    },
+    {
+      "id": "C04",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/compiler/20261009T152132Z-853710317ed3414fabfb758bfa64070c/result.json",
+        "bytes": 76290,
+        "sha256": "ace04f76001e6691cec03388f9cdd5d1c04c74bf8c518793815be5ebc0a47bc9"
+      },
+      "status": "pass",
+      "command_matches": true
+    },
+    {
+      "id": "C05",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_cell/20261009T152224Z-2c586ca82ca94930a01760bc8cfd6888/result.json",
+        "bytes": 23681,
+        "sha256": "a20ab80d9416d383d389ffc81df938a61bcc5bef8792a80fe09bb12f016fd0ff"
+      },
+      "status": "pass",
+      "command_matches": true
+    },
+    {
+      "id": "C06",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_lifecycle/20261009T152228Z-1870e4be2a3049c1856a3807be6d0470/result.json",
+        "bytes": 49555,
+        "sha256": "ec265b839a09b62248ab95383729b6cd6929659e85c903949e46e611ce822b63"
+      },
+      "status": "pass",
+      "command_matches": true
+    },
+    {
+      "id": "C07",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc/20261009T152239Z-791808e7466b4e1d96eec44dcd3450ea/result.json",
+        "bytes": 67476,
+        "sha256": "27f6cc1071147f1f351dd02e8e079c2f40eb9870ccb41416f27a91b37cf13f68"
+      },
+      "status": "incomplete",
+      "command_matches": true
+    },
+    {
+      "id": "C08",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/layout/20261009T152239Z-0651bce38fc74796a4b68f6e291cb679/result.json",
+        "bytes": 40392,
+        "sha256": "b45b05671883fb589fc2408821c0981450c824b56e6dc09c1456cd8659e5d097"
+      },
+      "status": "pass",
+      "command_matches": true
+    },
+    {
+      "id": "C09",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc_inventory/20261009T152244Z-0c5d7ddc4bb0498f95415d6ab4d19f8e/result.json",
+        "bytes": 108113,
+        "sha256": "a2f95beb0ae7bdca672399e95fe054c3964be4a89dfac299568c9bb4641a457d"
+      },
+      "status": "incomplete",
+      "command_matches": true
+    },
+    {
+      "id": "C10",
+      "identity": {
+        "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_terminal/20261009T152244Z-de1b309484d54902b0c7b5e8b56af750/result.json",
+        "bytes": 14946,
+        "sha256": "80c361b6681f682372be7bb9046bb8335c4f22fd6890e77c397106d6fce294a7"
+      },
+      "status": "pass",
+      "command_matches": true
+    }
+  ],
+  "linked_metadata_identities": [
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/test-summary.json",
+      "bytes": 7192,
+      "sha256": "10d9bb980b9e94ea097ad22b05de3686c18c86a2dff5f9ea6ede4dd9fd0a9702"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/acceptance-matrix.md",
+      "bytes": 21579,
+      "sha256": "c59862b5da5e1fc1660f064338463cbeb2702e2fe59ac436fce75616d207caee"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/acceptance-matrix.json",
+      "bytes": 193207,
+      "sha256": "9b0cfaff38eab1e7514a577a5f9c9afab0e23fd57ad6fbaeafe4549661594342"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/receipts.json",
+      "bytes": 19164,
+      "sha256": "c73d3aa5849b21da5a172683678969861a04e81d351e1d9ec66af46f0cb41f19"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/standards-review.json",
+      "bytes": 68375,
+      "sha256": "30a618e2a1a6a926980397e9170277121e19473c1fdd13766298cf8700091c7d"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/spec-review.json",
+      "bytes": 77731,
+      "sha256": "1bfd77280fd4bad22b1156ea7050b5e9f95f306e44cf95624dba78b1fccf7475"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/baseline-claims-verification.json",
+      "bytes": 10161,
+      "sha256": "d2c35758a54bc169339ae51ebdfc09eae4b7f92887be308f2691eabd1e6bc467"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/frontier-verification.json",
+      "bytes": 6657,
+      "sha256": "9aa1f7bcaefc00fdfe46c0126e5799d1bdb8bb4090950308919b4a33ea2fbf4a"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/baseline-claim-dispositions.json",
+      "bytes": 13502,
+      "sha256": "ec2999ace31a27102999a3e1c8c0cf09a39cd32c495f645625fe68db231f4840"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/frontier-claim-dispositions.json",
+      "bytes": 4076,
+      "sha256": "203f5b28e036883430e2fdc139b9ccb7e7d5cc7b6d88dcea454b1731f6a1bc55"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/input-identities.json",
+      "bytes": 994,
+      "sha256": "6a2138b295e607c4b0930f6908ea1b82063f93b2bb485d0f3137054b97bc03f4"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/preserved-identities.json",
+      "bytes": 3682,
+      "sha256": "38c5b8627bee5967d5dee03853459b466759342d63ad31079f93c25ce01e6abf"
+    }
+  ],
+  "preservation_checks": [
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review-001.json",
+      "bytes": 5896,
+      "sha256": "3f45cc7c80b1e371d998d836db533cdb18f023ce9d21dd44b884c4d9873745da"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review-002.json",
+      "bytes": 1266,
+      "sha256": "4ad651805baebcdd3da956ea42787c2e87080115804ad9ad8f93d14d9e4e689c"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review-003.json",
+      "bytes": 2077,
+      "sha256": "eb389d4e37e03daac8a01c4ea085df8a1722e3e22c96056294d7926ae0c6c82c"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review-004.json",
+      "bytes": 3671,
+      "sha256": "d00b2107d3af6a05d84a2d049a98585ad68becd0966fe46a9e7c9d10a2787674"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review-005.json",
+      "bytes": 2842,
+      "sha256": "5fa0433dc656af777ad85098fde3207e63ec7eface02ec6af1e1df7a381ac81c"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review-006.json",
+      "bytes": 4379,
+      "sha256": "0e040ef654b09ce8a39c715f4ae4274fea7c037c1abb27a96659ffa4acebf2ad"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review-007.json",
+      "bytes": 2038,
+      "sha256": "ffa8ac34d48b4c2f65bda5db76e5f841ce1836e447d280bcbaedfbc414b395ad"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/completion-gate.json",
+      "bytes": 3539,
+      "sha256": "e4e050631fb116ea0666ca17c88fe86f6740fe41089461396bf0782e18b208cb"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-setup-reliability/review.json",
+      "bytes": 9084,
+      "sha256": "ab166f6099c668b5502ec52ae27ac47fdbcc5002167a7eeedb68adaae08858c4"
+    },
+    {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/research/re-ecosystem-survey-2026-10.md",
+      "bytes": 38527,
+      "sha256": "7ceef8fde00d9b73ec1170f37fe9e2b9a1269a95869675ca79136c76513fe74a"
+    }
+  ],
+  "primary_head_and_status_preserved": true,
+  "staged_paths": [
+    "notes/evidence/INDEX.md",
+    "notes/evidence/fr2-current-baseline-20261009/README.md",
+    "notes/evidence/fr2-current-baseline-20261009/acceptance-matrix.json",
+    "notes/evidence/fr2-current-baseline-20261009/acceptance-matrix.md",
+    "notes/evidence/fr2-current-baseline-20261009/baseline-claim-dispositions.json",
+    "notes/evidence/fr2-current-baseline-20261009/baseline-claims-verification.json",
+    "notes/evidence/fr2-current-baseline-20261009/claim-evidence.json",
+    "notes/evidence/fr2-current-baseline-20261009/frontier-claim-dispositions.json",
+    "notes/evidence/fr2-current-baseline-20261009/frontier-verification.json",
+    "notes/evidence/fr2-current-baseline-20261009/frontier.json",
+    "notes/evidence/fr2-current-baseline-20261009/input-identities.json",
+    "notes/evidence/fr2-current-baseline-20261009/judgment-policy-check.json",
+    "notes/evidence/fr2-current-baseline-20261009/live-docs.json",
+    "notes/evidence/fr2-current-baseline-20261009/pr42-state.json",
+    "notes/evidence/fr2-current-baseline-20261009/preserved-identities.json",
+    "notes/evidence/fr2-current-baseline-20261009/publication-checks.json",
+    "notes/evidence/fr2-current-baseline-20261009/publication-review.json",
+    "notes/evidence/fr2-current-baseline-20261009/readme-publish-gate.json",
+    "notes/evidence/fr2-current-baseline-20261009/receipts.json",
+    "notes/evidence/fr2-current-baseline-20261009/review-disposition.md",
+    "notes/evidence/fr2-current-baseline-20261009/screening.json",
+    "notes/evidence/fr2-current-baseline-20261009/spec-controls.json",
+    "notes/evidence/fr2-current-baseline-20261009/spec-new-claims.json",
+    "notes/evidence/fr2-current-baseline-20261009/spec-review.json",
+    "notes/evidence/fr2-current-baseline-20261009/spec-targeted-tests.json",
+    "notes/evidence/fr2-current-baseline-20261009/standards-reproduction.json",
+    "notes/evidence/fr2-current-baseline-20261009/standards-review.json",
+    "notes/evidence/fr2-current-baseline-20261009/standards-tests.json",
+    "notes/evidence/fr2-current-baseline-20261009/test-summary.json",
+    "notes/evidence/fr2-current-baseline-20261009/validation.json",
+    "notes/evidence/index.json"
+  ],
+  "dependency_ready_unassigned_agent_leaves": [
+    12,
+    22,
+    25,
+    26,
+    27,
+    28,
+    29,
+    31,
+    37
+  ],
+  "limits": [
+    "This retains original actionreview, composite0.8795, safe_to_apply0.54 and all distributions without modification.",
+    "Independent disposition does not approve PR42 defects, runtime activation or completion of any incomplete criterion.",
+    "Added disposition metadata changes the staged tree; retain fresh full deterministic validation of the publication tree."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "baseRefOid": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+  "headRefOid": "a8c8798807af81927cfab975530ac2445eec6f27",
+  "mergeCommit": {
+    "oid": "d14fe24278ad66a479ccd4d70ede7150a5521fef"
+  },
+  "mergedAt": "2026-10-09T03:09:57Z",
+  "state": "MERGED",
+  "isDraft": false,
+  "checks": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-09T02:14:10Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/nicolas-found42/reverse-engineering/actions/runs/37873579561/job/113636888491",
+      "name": "ip-rails (no corpus or Sony artifact is tracked)",
+      "startedAt": "2026-10-09T02:14:01Z",
+      "status": "COMPLETED",
+      "workflowName": "ci"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-09T02:14:28Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/nicolas-found42/reverse-engineering/actions/runs/37873579561/job/113636888515",
+      "name": "tests (tools/check.sh)",
+      "startedAt": "2026-10-09T02:14:01Z",
+      "status": "COMPLETED",
+      "workflowName": "ci"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-09T02:14:09Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/nicolas-found42/reverse-engineering/actions/runs/37873579561/job/113636888470",
+      "name": "lint (ruff, errors-only baseline)",
+      "startedAt": "2026-10-09T02:14:01Z",
+      "status": "COMPLETED",
+      "workflowName": "ci"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-10-09T02:14:09Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/nicolas-found42/reverse-engineering/actions/runs/37873579561/job/113636888345",
+      "name": "repository-hygiene (portable evidence and report freshness)",
+      "startedAt": "2026-10-09T02:14:01Z",
+      "status": "COMPLETED",
+      "workflowName": "ci"
+    }
+  ],
+  "branch_cleanup": {
+    "local_absent": true,
+    "remote_absent": true,
+    "action": "No branch deletion needed; branch already absent. Unrelated branches/worktrees retained."
+  }
+}
