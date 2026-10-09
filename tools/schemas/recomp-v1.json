@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://recomp.fyi/schema/v1.json",
+  "title": ".recomp.json",
+  "description": "What a recompilation or decompilation project says about itself, in a file at the root of its own repository. Specification: https://recomp.fyi/spec. Licence: CC BY 4.0, recomp.board.",
+  "type": "object",
+  "additionalProperties": false,
+  "patternProperties": {
+    "^x-": {
+      "description": "Extensions for one reader or tool. Readers that do not know them ignore them."
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "https://recomp.fyi/schema/v1.json lets editors check the file and complete field names."
+    },
+    "game": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The game's title as it shipped."
+    },
+    "wikidata": {
+      "type": "string",
+      "pattern": "^Q[1-9][0-9]*$",
+      "description": "The game's Wikidata item (Q followed by digits). Lets any database match the game without guessing from the title.",
+      "examples": ["Q3142278"]
+    },
+    "system": {
+      "description": "The platform of the original binary the project works from (recompiled, decompiled, or ported from its decompiled source), not where the result runs. A re-release on another console is that console. For a port of source code its authors released, the platform that source was written for. A list when the project works from several. Suggested spellings: https://recomp.fyi/spec#names",
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      ],
+      "examples": ["N64", "PS1", ["PS1", "Saturn"]]
+    },
+    "type": {
+      "description": "recomp: static recompilation of the original binary. port: a source port, the game built natively from decompiled, disassembled or rewritten source code, an engine rewritten from the game's file formats included. decomp: source code rebuilt from the binary. A list when one repository delivers two of them.",
+      "oneOf": [
+        { "enum": ["recomp", "port", "decomp"] },
+        { "type": "array", "items": { "enum": ["recomp", "port", "decomp"] }, "minItems": 1, "uniqueItems": true }
+      ]
+    },
+    "original": {
+      "description": "The release of the game the project works from: the one a user must own. One object, or a list when several are supported. Never a file or a link to one.",
+      "oneOf": [
+        { "$ref": "#/$defs/original" },
+        { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/original" } }
+      ]
+    },
+    "project": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The project's own name."
+    },
+    "status": {
+      "enum": ["exploring", "in-progress", "playable", "released", "complete", "paused", "unknown"],
+      "description": "exploring: feasibility, no promises. in-progress: actively worked on. playable: runs start to finish, rough edges remain. released: public build, still maintained. complete: finished, a decomp whose source fully rebuilds the original or a recomp or source port with no further work planned. paused: on hold. unknown means the same as leaving the field out."
+    },
+    "targets": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Where the project's build runs. A console is written with its system name. Suggested spellings: https://recomp.fyi/spec#names",
+      "examples": [["Windows", "Linux", "macOS", "Steam Deck"]]
+    },
+    "toolchain": {
+      "description": "The recompiler or decomp toolkit the project is built on; for a source port, the engine or layer it is built on. Not the decompilation a source port starts from: the type says that, and its address belongs in links. A list when the project is built on several.",
+      "oneOf": [
+        { "type": "string", "minLength": 1 },
+        { "type": "array", "minItems": 1, "items": { "type": "string", "minLength": 1 } }
+      ],
+      "examples": ["N64recomp", "XenonRecomp", "Splat", ["N64recomp", "RT64"]]
+    },
+    "approach": {
+      "type": "string",
+      "description": "The method in one line."
+    },
+    "maintainers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "link": { "type": "string", "pattern": "^https://" }
+        }
+      }
+    },
+    "links": {
+      "type": "array",
+      "description": "Devlog, Discord, forum thread. Never a game file or where to get one.",
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "additionalProperties": false,
+        "properties": {
+          "label": { "type": "string" },
+          "url": { "type": "string", "pattern": "^https://" }
+        }
+      }
+    },
+    "help": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Short phrases, one per thing the project would welcome a hand with."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Free text: what works, what is next."
+    }
+  },
+  "$defs": {
+    "original": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "region": { "type": "string", "description": "USA, Europe, Japan, World...", "examples": ["USA"] },
+        "revision": { "type": "string", "description": "The release's revision as the community names it.", "examples": ["1.0", "Rev A"] },
+        "serial": { "type": "string", "description": "Product code printed on the disc, cartridge or box, or shown on the store page." },
+        "sha1": { "type": "string", "pattern": "^[0-9a-fA-F]{40}$", "description": "SHA-1 of the file the project expects, so a user can check their own copy." }
+      }
+    }
+  }
+}

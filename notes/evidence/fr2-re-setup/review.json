@@ -1,0 +1,303 @@
+{
+  "documentation": {
+    "tool": "jev_review",
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "truncated": false,
+    "safe_to_apply": 0.23,
+    "scores": {
+      "correctness": {
+        "score": 1.1,
+        "confidence": 0.37,
+        "probabilities": {
+          "0": 0.16,
+          "1": 0.58,
+          "2": 0.26
+        }
+      },
+      "spec_match": {
+        "score": 1.72,
+        "confidence": 0.59,
+        "probabilities": {
+          "0": 0.01,
+          "1": 0.25,
+          "2": 0.74
+        }
+      },
+      "test_gap": {
+        "score": 1.11,
+        "confidence": 0.3,
+        "probabilities": {
+          "0": 0.18,
+          "1": 0.53,
+          "2": 0.29
+        }
+      },
+      "blast_radius": {
+        "score": 1.59,
+        "confidence": 0.37,
+        "probabilities": {
+          "0": 0.07,
+          "1": 0.28,
+          "2": 0.65
+        }
+      }
+    },
+    "weights": {
+      "correctness": 0.4,
+      "spec_match": 0.3,
+      "test_gap": 0.15,
+      "blast_radius": 0.15
+    },
+    "thresholds": {
+      "auto_accept": 0.8,
+      "review_at": 0.5,
+      "composite_floor": 0.7
+    },
+    "action": "escalate",
+    "composite": 0.5755,
+    "reason_codes": [
+      "confidence_below_review",
+      "safe_to_apply_below_review"
+    ],
+    "limiting_rubrics": [
+      "test_gap"
+    ],
+    "usage": {
+      "input_tokens": 15604,
+      "output_tokens": 79
+    }
+  },
+  "core_patch_and_claims": {
+    "tool": "jev_gate",
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "truncated": false,
+    "action": "escalate",
+    "reason_codes": [
+      "confidence_below_review",
+      "safe_to_apply_below_review",
+      "review_escalated",
+      "claims_contradicted",
+      "claim_confidence_low",
+      "claim_confidence_below_auto_accept"
+    ],
+    "review": {
+      "safe_to_apply": 0.48,
+      "scores": {
+        "correctness": {
+          "score": 1.62,
+          "confidence": 0.43,
+          "probabilities": {
+            "0": 0.1,
+            "1": 0.18,
+            "2": 0.72
+          }
+        },
+        "spec_match": {
+          "score": 1.67,
+          "confidence": 0.52,
+          "probabilities": {
+            "0": 0.04,
+            "1": 0.24,
+            "2": 0.72
+          }
+        },
+        "test_gap": {
+          "score": 0.79,
+          "confidence": 0.25,
+          "probabilities": {
+            "0": 0.35,
+            "1": 0.5,
+            "2": 0.15
+          }
+        },
+        "blast_radius": {
+          "score": 1.7,
+          "confidence": 0.55,
+          "probabilities": {
+            "0": 0.02,
+            "1": 0.26,
+            "2": 0.72
+          }
+        }
+      },
+      "weights": {
+        "correctness": 0.4,
+        "spec_match": 0.3,
+        "test_gap": 0.15,
+        "blast_radius": 0.15
+      },
+      "thresholds": {
+        "auto_accept": 0.8,
+        "review_at": 0.5,
+        "composite_floor": 0.7
+      },
+      "action": "escalate",
+      "composite": 0.68775,
+      "reason_codes": [
+        "confidence_below_review",
+        "safe_to_apply_below_review"
+      ],
+      "limiting_rubrics": [
+        "test_gap"
+      ]
+    },
+    "verification": {
+      "action": "escalate",
+      "summary": {
+        "verified": 3,
+        "contradicted": 1,
+        "unsupported": 0,
+        "needs_review": 3,
+        "invalid_response": 0
+      },
+      "thresholds": {
+        "auto_accept": 0.8,
+        "review_at": 0.5
+      },
+      "results": [
+        {
+          "claim": "The baseline suite ran 772 tests successfully with one optional SDK dependency skip; final targeted tests including runtime-identity controls passed. Ruff, IP rails and repository freshness checks pass.",
+          "verdict": "verified",
+          "confidence": 0.92,
+          "probabilities": {
+            "verified": 0.95,
+            "contradicted": 0.03,
+            "unsupported": 0.02
+          },
+          "action": "auto"
+        },
+        {
+          "claim": "The configured server launches initialize for all nine entries, with Ghidra 222 tools, REA 133 and radare2 27. Native Claude and omp discovery passed; native Codex discovered all three and decompiled the synthetic ARM probe.",
+          "verdict": "verified",
+          "confidence": 0.49,
+          "probabilities": {
+            "verified": 0.66,
+            "contradicted": 0.28,
+            "unsupported": 0.06
+          },
+          "action": "escalate"
+        },
+        {
+          "claim": "Runtime controls reject unauthenticated schema access, missing program selectors, arbitrary scripts, out-of-root project create/open and restore input/output paths, while authenticated schema and synthetic decompilation succeed.",
+          "verdict": "verified",
+          "confidence": 0.79,
+          "probabilities": {
+            "verified": 0.86,
+            "contradicted": 0.1,
+            "unsupported": 0.04
+          },
+          "action": "review"
+        },
+        {
+          "claim": "The committed structural progress report has zero fresh matched/completion bytes, only 60 owned bytes and 3,506,988 unresolved load-image bytes. Separate full completion returned incomplete/exit 2, retaining a bounded 60-byte fresh source match.",
+          "verdict": "contradicted",
+          "confidence": 0.79,
+          "probabilities": {
+            "verified": 0.13,
+            "contradicted": 0.86,
+            "unsupported": 0.01
+          },
+          "action": "review"
+        }
+      ]
+    },
+    "usage": {
+      "input_tokens": 20924,
+      "output_tokens": 241
+    }
+  },
+  "disposition": "Human review required before merge; no successful judgment was rephrased or retried.",
+  "deterministic_followup": {
+    "structural_report_measures": {
+      "total_code": "1665844",
+      "matched_code": "0",
+      "total_data": "1841204",
+      "matched_data": "0",
+      "complete_code": "0",
+      "complete_data": "0",
+      "total_functions": 0,
+      "matched_functions": 0,
+      "total_units": 149,
+      "complete_units": 0
+    },
+    "category_totals": {
+      "game-owned": 60,
+      "mixed": 3506988,
+      "substitute": 0,
+      "unresolved": 3506988
+    },
+    "separate_full_completion_status": "incomplete",
+    "separate_full_completion_matched_bytes": 60,
+    "result": "The structural export and full compiler run have different credit authority; their values were checked directly. The combined claim contradiction is preserved for human review."
+  },
+  "subsequent_portability_fix": {
+    "tool": "jev_review",
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "truncated": false,
+    "safe_to_apply": 0.73,
+    "scores": {
+      "correctness": {
+        "score": 1.92,
+        "confidence": 0.9,
+        "probabilities": {
+          "0": 0.01,
+          "1": 0.05,
+          "2": 0.93
+        }
+      },
+      "spec_match": {
+        "score": 1.95,
+        "confidence": 0.94,
+        "probabilities": {
+          "0": 0,
+          "1": 0.04,
+          "2": 0.96
+        }
+      },
+      "test_gap": {
+        "score": 0.22,
+        "confidence": 0.69,
+        "probabilities": {
+          "0": 0.8,
+          "1": 0.19,
+          "2": 0.01
+        }
+      },
+      "blast_radius": {
+        "score": 1.37,
+        "confidence": 0.07,
+        "probabilities": {
+          "0": 0.12,
+          "1": 0.38,
+          "2": 0.5
+        }
+      }
+    },
+    "weights": {
+      "correctness": 0.4,
+      "spec_match": 0.3,
+      "test_gap": 0.15,
+      "blast_radius": 0.15
+    },
+    "thresholds": {
+      "auto_accept": 0.8,
+      "review_at": 0.5,
+      "composite_floor": 0.7
+    },
+    "action": "escalate",
+    "composite": 0.8572500000000001,
+    "reason_codes": [
+      "confidence_below_review"
+    ],
+    "limiting_rubrics": [
+      "blast_radius"
+    ],
+    "usage": {
+      "input_tokens": 6714,
+      "output_tokens": 79
+    }
+  }
+}

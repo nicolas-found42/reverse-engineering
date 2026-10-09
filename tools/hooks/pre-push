@@ -1,0 +1,4 @@
+#!/bin/sh
+# Check introduced commit snapshots, not the mutable working tree.
+root=$(git rev-parse --show-toplevel) || exit 1
+exec python3 "$root/tools/pre_push.py"

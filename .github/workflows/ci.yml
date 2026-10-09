@@ -35,3 +35,18 @@ jobs:
         with:
           python-version: "3.12"
       - run: pip install ruff==0.16.10 && ruff check tools/
+
+  repository-hygiene:
+    name: repository-hygiene (portable evidence and report freshness)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - run: python tools/repository_hygiene.py check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: SLES_517.05_report
+          path: progress/report.json
+          if-no-files-found: error

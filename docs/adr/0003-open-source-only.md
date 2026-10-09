@@ -4,7 +4,7 @@ The owner set this as a hard constraint: **everything except the downloaded game
 
 Consequences, recorded so the target stays honest:
 
-- SDK/library regions **cannot be byte-matched**: Sony's `.a` objects are proprietary and public matching decomps (ICO, rac1, BFM) link them. Those regions get an **open-source substitute** (ps2sdk, GPL) and are labelled **"substitute, not matched"**, never counted as matched.
+- SDK/library regions **cannot be byte-matched**: Sony's `.a` objects are proprietary and public matching decomps (ICO, rac1, BFM) link them. Those regions get an **open-source substitute** (ps2sdk, Academic Free License 2.0) and are labelled **"substitute, not matched"**, never counted as matched.
 - The ELF-hash **gate is scoped to game-owned sections**, not the whole ELF.
 - If the game code itself was built with a **proprietary compiler** (Metrowerks MWCCPS2, SN ProDG), byte-exact game code is **unattainable under this constraint**. **Resolved 2026-10-05:** FR2's game code was built with **Sony/Cygnus GNU `ee-gcc`** (open source), not a proprietary compiler, so byte-exact game code *is* attainable. Evidence in `notes/research/fr2-toolchain-identification.md`. The exact `ee-gcc` id remains a probe, not an obstacle.
 

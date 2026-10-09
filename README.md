@@ -7,3 +7,8 @@ Ghidra project state, downloaded tools, and scratch files remain local and are
 excluded from version control.
 
 Issues and project maps are tracked in GitHub Issues. See [`docs/agents/issue-tracker.md`](docs/agents/issue-tracker.md).
+
+
+Navigation: [tools](tools/README.md), [docs](docs/README.md),
+[evidence](notes/evidence/INDEX.md), [progress](progress/README.md),
+[contributing](CONTRIBUTING.md), and [local RE setup](docs/RE-SETUP.md).

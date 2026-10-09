@@ -21,7 +21,7 @@ That deterministic scan finds 746 export pointer entries in 28 tables, versus 29
 
 The table and ordinal locations are relative to each module's base-zero `.text`; they are not runtime addresses. `R_MIPS_32` symbol-zero arithmetic is modeled at an explicit synthetic base only. This establishes pointer-slot structure for the measured file profile; it does not resolve export names, prove module registration or load order, establish actual IOP addresses, or prove runtime import binding.
 
-The metadata-only per-site receipt is [zero-export-site-audit.json](zero-export-site-audit.json); its independent Jev result is [jev-zero-export-verify.json](jev-zero-export-verify.json). The reproducible scanner and source/executable hashes are recorded by [index.json](index.json). The full crosswalk result remains in ignored scratch at [the pinned parent result](../../../.scratch/mesh/codex-root/iop-crosswalk-relocated-corpus-01/20261004T131815Z-9f7349ab06714a37b86fbca21b751331/result.json); this note does not duplicate its import-candidate graph.
+The metadata-only per-site receipt is [zero-export-site-audit.json](zero-export-site-audit.json); its independent Jev result is [jev-zero-export-verify.json](jev-zero-export-verify.json). The reproducible scanner and source/executable hashes are recorded by [index.json](index.json). The full crosswalk result remains in ignored scratch at the pinned parent result (local artifact `../../../.scratch/mesh/codex-root/iop-crosswalk-relocated-corpus-01/20261004T131815Z-9f7349ab06714a37b86fbca21b751331/result.json`); this note does not duplicate its import-candidate graph.
 
 
 ## Export targets against the saved Ghidra listing
