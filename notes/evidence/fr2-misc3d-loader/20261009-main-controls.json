@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "run_id": "20261009T191206Z-4675af4f7a584cbea805cc0736b91e7c",
+  "check": "misc3d-loader-main-controls",
+  "command": [
+    "tools/misc3d_loader_recipe/loader_controls.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "--output",
+    ".scratch/issue37/full-source-controls"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/loader_controls.py": {
+      "bytes": 5305,
+      "sha256": "f4578ba3adb0a0682e97254a08ccc941e104d7a6d891d7cedabd919290a52b9b"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/loader_build.py": {
+      "bytes": 9638,
+      "sha256": "4960223ea2ae6e44b311473f8137902f2f547bdf9b1bd719917f7e05807512e1"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader.c": {
+      "bytes": 2402,
+      "sha256": "b550a368c26a22da7a16b9b50122099cc63e14c17fc9c3f4c09f1700734fea06"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader.h": {
+      "bytes": 1255,
+      "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader_terminal.c": {
+      "bytes": 500,
+      "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/loader.ld": {
+      "bytes": 1173,
+      "sha256": "48b6494b74565fc5fc77141625ffe4899835d3682fbc713dfcccd60961ad1eca"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "results": {
+      "source_positive": {
+        "exit_code": 0,
+        "receipt": {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37/full-source-controls/source_positive/20261009T191206Z-bf7962bd4ba94e028a6a379890cab33a/result.json",
+          "bytes": 13196,
+          "sha256": "29aa940c9e4b3c15c5ae903d032d2daf3e985df860c88d80f152b9955ab7cb34"
+        }
+      },
+      "changed_source": {
+        "exit_code": 1,
+        "receipt": {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37/full-source-controls/changed_source/20261009T191208Z-6b993fa97fd54d24b483430a2e6aa871/result.json",
+          "bytes": 10952,
+          "sha256": "a6c3d861017a542a7adaf889e49102ab08ddd00d534843fd7ca75b0cc9bc10a2"
+        }
+      },
+      "changed_layout": {
+        "exit_code": 1,
+        "receipt": {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37/full-source-controls/changed_layout/20261009T191210Z-44891adbfb014c9b97f42feb39b9dffe/result.json",
+          "bytes": 2088,
+          "sha256": "b4399d935e4f27413d2ce17bc60dcaee93e49f9006b1439ec7143b374d9e34b0"
+        }
+      },
+      "missing_provenance": {
+        "exit_code": 2,
+        "receipt": {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37/full-source-controls/missing_provenance/20261009T191210Z-f534debb02ca473881341e9371b9ec90/result.json",
+          "bytes": 2087,
+          "sha256": "a3297c8ab086e927815fe3145fa9518ff6c066c014e89478008212f5cc52144d"
+        }
+      },
+      "stale_provenance": {
+        "exit_code": 1,
+        "receipt": {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37/full-source-controls/stale_provenance/20261009T191210Z-c8e9338368d343f09de4d61f7f609463/result.json",
+          "bytes": 2093,
+          "sha256": "a64a136a452c4e326563642d426ff93f45a556fe2dddfe153191e1da11204ef0"
+        }
+      },
+      "contradiction_over_missing": {
+        "exit_code": 1,
+        "receipt": {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37/full-source-controls/contradiction_over_missing/20261009T191210Z-67d6cc1ed07341b0b4127b2b8e13b062/result.json",
+          "bytes": 2103,
+          "sha256": "5c7ac6f69586849789a7f45611c9081319906cf407bae6347c5c4ec76cdf7009"
+        }
+      },
+      "reproducibility": {
+        "exit_code": 0,
+        "receipt": {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37/full-source-controls/reproducibility/20261009T191210Z-61a87fd9516142c785f762e6ea9e7e78/result.json",
+          "bytes": 9056,
+          "sha256": "3d0295d056b5eb95dcd31a06f5ab6dea66fcfbf7fc001688cd2a6facc1985e79"
+        }
+      }
+    },
+    "expected_exit_codes": {
+      "source_positive": 0,
+      "changed_source": 1,
+      "changed_layout": 1,
+      "missing_provenance": 2,
+      "stale_provenance": 1,
+      "contradiction_over_missing": 1,
+      "reproducibility": 0
+    },
+    "failures": [],
+    "scope": "Actual handwritten source builds; no guest execution or historical compiler claim."
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 3123,
+      "sha256": "3e08289e6fb94bcbf2bd015f5d5c832ca9b0664406e58379ef2e60d941b035b9"
+    }
+  }
+}

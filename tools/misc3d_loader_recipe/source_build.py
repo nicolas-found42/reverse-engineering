@@ -83,6 +83,7 @@ def compare(retail: bytes, linked: bytes) -> dict:
 
 
 def source_build(game: Path, tool_root: Path, source: Path = SOURCE, stage_name: str | None = None) -> dict:
+    game, tool_root, source = game.resolve(), tool_root.resolve(), source.resolve()
     if sha256((game/'extracted/SLES_517.05').read_bytes()) != EE_CORPUS_SHA256:
         raise Invalid('terminal build requires the pinned executable')
     if not tool_root.is_dir():
@@ -99,21 +100,24 @@ def source_build(game: Path, tool_root: Path, source: Path = SOURCE, stage_name:
     staged, obj, prepared, linked = [stage/name for name in ('terminal.c','terminal.o','prepared.o','terminal.elf')]
     shutil.copyfile(source, staged)
     shutil.copyfile(LINK, stage/'terminal.ld')
-    commands = [[*candidate['compile'], *candidate['flags'], '-c', str(staged), '-o', str(obj)],
+    # GCC 2.96 retains its input filename in object metadata. A relative source
+    # basename is stable across independent stages; the wrapper maps their cwd.
+    commands = [[*candidate['compile'], *candidate['flags'], '-c', staged.name, '-o', str(obj)],
                 [*candidate['prepare_object'][:-2], str(obj), str(prepared)],
                 [*candidate['link'][:4], '-m', 'elf32ltsmip', '-T', str(stage/'terminal.ld'),
                  '--defsym=misc3d_optional_object=0x0028f23c', '--defsym=_gp=0x00295d70',
                  '-o', str(linked), str(prepared)]]
     for argv in commands:
         try:
-            completed = subprocess.run(argv, capture_output=True, text=True, timeout=120)
+            completed = subprocess.run(argv, cwd=stage, capture_output=True, text=True, timeout=120)
         except (OSError, subprocess.TimeoutExpired) as error:
             raise Incomplete('terminal source tool execution unavailable', {'argv':argv, 'reason':str(error)}) from error
         if completed.returncode:
             raise Invalid('terminal source build failed', {'argv': argv, 'stderr': completed.stderr})
     comparison = stage/'terminal.comparison.bin'
     comparison.write_bytes(sections(linked.read_bytes())['.text.fr2_misc3d_loader_terminal'].data)
-    receipt = {'commands': commands, 'runtime_identity': runtimes,
+    receipt = {'commands': commands, 'working_directory': str(stage),
+               'runtime_identity': runtimes,
                'artifacts': {name:{'path':str(path),**identity(path)} for name,path in
                              [('source',staged),('object',obj),('prepared',prepared),('linked',linked),
                               ('comparison',comparison),('link_script',stage/'terminal.ld'),('manifest',manifest_path)]},

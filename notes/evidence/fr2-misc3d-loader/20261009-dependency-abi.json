@@ -1,0 +1,275 @@
+{
+  "schema_version": 1,
+  "run_id": "20261009T182334Z-37c8febe5ef9473782d985b9c1906795",
+  "check": "misc3d-loader-control-dependency_abi",
+  "command": [
+    "tools/misc3d_loader_recipe/controls.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+    "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json",
+    "notes/evidence/fr2-misc3d-loader/isolated-project.json",
+    "--output",
+    ".scratch/issue37/controls-final"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {},
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "scope": "Required raw argument/return and indexed-pointer sites only; static observation.",
+    "sites": [
+      {
+        "site": "001d1440",
+        "meaning": "database name upper address",
+        "word_sha256": "dcd6e4551eb6070340e617d47bc9ae5b53af4a95b8e978c935bb6a57d775173c"
+      },
+      {
+        "site": "001d1448",
+        "meaning": "database dependency call",
+        "word_sha256": "0afb7a3c24bb34c24417f064dc86473c4525587a7be6e3b971ab30e02a7d023e"
+      },
+      {
+        "site": "001d144c",
+        "meaning": "database name argument in call delay slot",
+        "word_sha256": "07ab00c6f9e72be1876a18490c262dee3191b267cdf3bbda0f4d2e7058936a59"
+      },
+      {
+        "site": "0011ed98",
+        "meaning": "dependency preserves A0 in S0",
+        "word_sha256": "68ad94d6becd65860b2dccaae3c7f4029c5fa7c60e54d0541c107ba66029a352"
+      },
+      {
+        "site": "001d1454",
+        "meaning": "dependency V0 becomes resource lookup A0",
+        "word_sha256": "b0ae7d1f251e7e5437b0527df519503d39dc4510e874f600be3a56eed1cd7804"
+      },
+      {
+        "site": "001d145c",
+        "meaning": "resource lookup consumes database result",
+        "word_sha256": "6e5995c413b5b51ca4b12fc223ab5589cb0b9d4f46edc9e93d57847083433856"
+      },
+      {
+        "site": "001d1460",
+        "meaning": "dependency V0 stored to misc3d database cell",
+        "word_sha256": "e864053b788d77dfe275c23059fa441f38cb1e01554d93cdf2b694b3b8d23e67"
+      },
+      {
+        "site": "00120588",
+        "meaning": "load dependency id cell",
+        "word_sha256": "d7197e56e5bb84b692e022430a5974c848c6f2fd93bc5b69b84464bd17a47424"
+      },
+      {
+        "site": "0012058c",
+        "meaning": "database mask upper half",
+        "word_sha256": "fa29977a661f3f08432db245ec5eb740e7289708237b9757c4f5675d2518769a"
+      },
+      {
+        "site": "00120590",
+        "meaning": "database mask lower half",
+        "word_sha256": "8bac6fc597e2e895d499d174810d01a27560cedb63cf60a9669b45950f252d1f"
+      },
+      {
+        "site": "00120594",
+        "meaning": "database tag upper half",
+        "word_sha256": "59d58f0269dd719fc2c7355496ed86e6264534f93f903fd7facadd684b78c07e"
+      },
+      {
+        "site": "00120598",
+        "meaning": "clear database kind bits",
+        "word_sha256": "625bd1b9c31c4edc6d51c853ab1591b1f05962af70839e9996ef3780231b9c9e"
+      },
+      {
+        "site": "0012059c",
+        "meaning": "resource-index discard mask",
+        "word_sha256": "a8f1c45e9fd1d4b17be7557c0977bb3b34163b447b22a1367a482de52f638fed"
+      },
+      {
+        "site": "001205a0",
+        "meaning": "set database kind tag",
+        "word_sha256": "d86ce174c2d93f47be54df278cc884af40a4ca4654b255633da440d2e5d19310"
+      },
+      {
+        "site": "001205ac",
+        "meaning": "discard resource index",
+        "word_sha256": "58fe6abe9adbd0ed6d62250c2dadf82f4eb272302c6920dcda5aa9482fd474a1"
+      },
+      {
+        "site": "001205a4",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "9c7462df8c9a2b38a16c203bfa0499c539f968c1953ee93ead52f99039835e0f"
+      },
+      {
+        "site": "001205a8",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "8e15aeb2f365059dd4992da0e44fb8db3bd4468ed4e0d67c1e70b6ff909900b6"
+      },
+      {
+        "site": "001205b0",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "1240a0eaceb76768ab966a23d2dfee5effa08bb5dafa2f4dfe5c9f241f8defbd"
+      },
+      {
+        "site": "001205b4",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "d3cf16fa7a3614439e85062808ee838ffd7e30db0e63071d56cbd124399b53d8"
+      },
+      {
+        "site": "001205b8",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "1729b12ef5249e8727fbb3b9e54565fe9976826437fc739f59df654e13080da1"
+      },
+      {
+        "site": "001205bc",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "ce8aa4c7376a423423d642064432b0d6a33c4cc10e9bc7ca27a5fe81f655892c"
+      },
+      {
+        "site": "001205c0",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "4ee58bc5f415f49db5eef8db648f1527367ccacda98178e72f739a20deb77037"
+      },
+      {
+        "site": "001205c4",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "e98120b5542f3b81c74ed6dc8ee5e9c09dd283b68f2cd31b06fd2c5a9531397f"
+      },
+      {
+        "site": "001205c8",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "7cb8420d02859c4e5aa60530eb36ac6efe2de54f75d8e028ee225ce6cc45f9c4"
+      },
+      {
+        "site": "001205cc",
+        "meaning": "frame restore preserves the returned V0",
+        "word_sha256": "963295cb9298853f47e23fb460451b7da1b67d77152e56b9f7b04e74663a0e59"
+      },
+      {
+        "site": "001205d0",
+        "meaning": "write returned id to dependency cell",
+        "word_sha256": "0c136547f6a81632b300e96c732c187c159d9d8b5fdb92beaf5569116184fc2c"
+      },
+      {
+        "site": "001205d4",
+        "meaning": "normal dependency return",
+        "word_sha256": "4ea0954debe12aa88cdafc66eb7e57fab8f80d338da3c9a6a15c0efc2687d1fb"
+      },
+      {
+        "site": "001205d8",
+        "meaning": "return delay slot restores frame without changing V0",
+        "word_sha256": "ecfa08c4967618313d60a6842a3b784a7641f74ca34f84136335d3b2fe524206"
+      },
+      {
+        "site": "0012506c",
+        "meaning": "resource sentinel",
+        "word_sha256": "9a044b9d35d8bfb12a7e9217ed346bc0ab65fcbd4c9390ee99e818bbbc4a4cab"
+      },
+      {
+        "site": "00125074",
+        "meaning": "preserve resource argument",
+        "word_sha256": "68ad94d6becd65860b2dccaae3c7f4029c5fa7c60e54d0541c107ba66029a352"
+      },
+      {
+        "site": "00125078",
+        "meaning": "sentinel branch to null return",
+        "word_sha256": "22c07cc2093cd5f587e64e55a2d437869a22f6bc7a39d7dad02e7d65ed219892"
+      },
+      {
+        "site": "00125080",
+        "meaning": "get shared resource context",
+        "word_sha256": "6ff16e7428613cc2bf9ab0c43b024951667ddf606a6f09c5e1e9ec9306aa1f83"
+      },
+      {
+        "site": "00125088",
+        "meaning": "resource low-word index",
+        "word_sha256": "de236d35849d6c5f364f43949e5c7693d6925dff0497e3ee3431efc006de3425"
+      },
+      {
+        "site": "0012508c",
+        "meaning": "load object pointer table from context",
+        "word_sha256": "25b86b2c0252ca42fa6bd3b10005bdb6c18a0d6da7965000fc23f0f9dd180521"
+      },
+      {
+        "site": "00125090",
+        "meaning": "scale resource index by four",
+        "word_sha256": "e329afa0c67e75bd887ac18075bbc7d1b3335a263ea081d58aedc4678ed4a237"
+      },
+      {
+        "site": "00125094",
+        "meaning": "compute indexed pointer slot",
+        "word_sha256": "f59f9fd7b06e84605f86ddd962c2b5171d4c9cd71be8577cfef767da93ae5113"
+      },
+      {
+        "site": "00125098",
+        "meaning": "loaded path skips null result",
+        "word_sha256": "ac898427d6060312eb5e6fa85431a80b28c0dc122462739ac74b07a9d1d0abde"
+      },
+      {
+        "site": "0012509c",
+        "meaning": "load object pointer in branch delay slot",
+        "word_sha256": "508177e956be083f4d721748bdc650f4dd641f6a457bafb2da96caebe071bb42"
+      },
+      {
+        "site": "001250a0",
+        "meaning": "null result for sentinel",
+        "word_sha256": "0bbcfabe4f744b83177052ede6c6d3ce28b253e826daf1cdc0ab10004562057f"
+      },
+      {
+        "site": "001250ac",
+        "meaning": "object helper returns V0",
+        "word_sha256": "4ea0954debe12aa88cdafc66eb7e57fab8f80d338da3c9a6a15c0efc2687d1fb"
+      },
+      {
+        "site": "001250b0",
+        "meaning": "object helper return delay slot",
+        "word_sha256": "f824be93db088944335cc05da29ee5955f6f9d6728f14179b012ea6fa9662c95"
+      },
+      {
+        "site": "0012507c",
+        "meaning": "sentinel branch delay slot preserves resource and result",
+        "word_sha256": "866c95b11d0e7e59f2f70af700fb42b45189400acb70aa74a38df0d1ce36a7c5"
+      },
+      {
+        "site": "00125084",
+        "meaning": "context-call delay slot preserves resource",
+        "word_sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+      },
+      {
+        "site": "001250a4",
+        "meaning": "object return restores S0 without changing V0",
+        "word_sha256": "0352b75212692ed1742f115399b046e6b47b5e4f840aed805dedb291a3b624bb"
+      },
+      {
+        "site": "001250a8",
+        "meaning": "object return restores RA without changing V0",
+        "word_sha256": "2cf772ef3144af396f44cba410f84406a3d26b37d59ca531527e25064aaafaad"
+      }
+    ],
+    "database_name_address": "00283208",
+    "database_return_low_word": "(old_id & 0xfff00000) | 0x00010000",
+    "dependency_id_cell": "0028f124",
+    "loader_id_cell": "00290ac4",
+    "resource_object": {
+      "sentinel": -1,
+      "sentinel_result": "null",
+      "context_table_offset": 236,
+      "index_mask": 65535,
+      "pointer_stride": 4
+    },
+    "required_unknown": [
+      "object-table-allocation-and-bounds",
+      "pointer-lifetime",
+      "computed-alias-closure",
+      "original-declarations-and-ownership"
+    ],
+    "new_attributed_match_bytes": 0
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 8861,
+      "sha256": "6b1d450edf9367ad9bd2f89e57a38907d9ff6bd4663edb2960101cb13e63a790"
+    }
+  }
+}

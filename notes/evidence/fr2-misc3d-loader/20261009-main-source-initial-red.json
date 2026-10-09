@@ -1,0 +1,196 @@
+{
+  "schema_version": 1,
+  "run_id": "20261009T190713Z-fc4dd7ca6e494a68acf78b245a58f759",
+  "check": "misc3d-loader-main-initial-source",
+  "command": [
+    "-"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "tools/misc3d_loader_recipe/loader_build.py": {
+      "bytes": 8907,
+      "sha256": "1e26fa3aded9ca19d5ed3865fe43ef1335d2adf7b5c06b3ea87befcab2da1455"
+    },
+    "tools/misc3d_loader_recipe/loader.ld": {
+      "bytes": 1173,
+      "sha256": "48b6494b74565fc5fc77141625ffe4899835d3682fbc713dfcccd60961ad1eca"
+    },
+    "reconstruction/ee/app3d/misc3d_loader.c": {
+      "bytes": 2068,
+      "sha256": "6940bc6932c07e2cc2b3ba89cbbf624598b8ff5821055655901ef4955bcbfeda"
+    },
+    "reconstruction/ee/app3d/misc3d_loader.h": {
+      "bytes": 1255,
+      "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+    }
+  },
+  "status": "fail",
+  "diagnostics": [
+    "Invalid: loader candidate main address/size differs"
+  ],
+  "details": {
+    "commands": [
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+        "-G8",
+        "-O2",
+        "-c",
+        "loader.c",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.prepared.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+        "-G8",
+        "-O2",
+        "-c",
+        "terminal.c",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/terminal.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/terminal.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/terminal.prepared.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.ld",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.elf",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.prepared.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/terminal.prepared.o"
+      ]
+    ],
+    "working_directory": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n",
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    },
+    "artifacts": {
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.c",
+        "bytes": 2068,
+        "sha256": "6940bc6932c07e2cc2b3ba89cbbf624598b8ff5821055655901ef4955bcbfeda"
+      },
+      "header": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/misc3d_loader.h",
+        "bytes": 1255,
+        "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+      },
+      "terminal_source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/terminal.c",
+        "bytes": 500,
+        "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+      },
+      "link_script": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.ld",
+        "bytes": 1173,
+        "sha256": "48b6494b74565fc5fc77141625ffe4899835d3682fbc713dfcccd60961ad1eca"
+      },
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/manifest.json",
+        "bytes": 26892,
+        "sha256": "316720c5d543234c40eeef1a318b93d23939670c857fb501c862d2fad06bded1"
+      },
+      "loader_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.o",
+        "bytes": 4524,
+        "sha256": "0ce9b61145ba2d8cc34488a37dd82d4efbe641756f0f4d84623d90c07f8255b8"
+      },
+      "loader_prepared": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.prepared.o",
+        "bytes": 4400,
+        "sha256": "8bd2334de48c33684eff5e5cdd5481cf84e2b4aaf53cdc56e42fe6133f99aa0b"
+      },
+      "terminal_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/terminal.o",
+        "bytes": 1608,
+        "sha256": "27e1a258b48e6d10913e8862aaed9e172d486479c9cb076d4c9aa112cb64bf3d"
+      },
+      "terminal_prepared": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/terminal.prepared.o",
+        "bytes": 1436,
+        "sha256": "a301c80e549aa3d8aad3db9a980f1d635aba4e981a0bfbf842715c8e210e27ee"
+      },
+      "linked": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-6pwg3z0n/loader.elf",
+        "bytes": 72704,
+        "sha256": "2f4c4f50e4dc725d9a8634992b948e35dac4dba1776e25beaeaa09f92813a42e"
+      }
+    },
+    "compiler": {
+      "id": "ee-gcc2.96",
+      "flags": [
+        "-G8",
+        "-O2"
+      ],
+      "executable": {
+        "bytes": 333402,
+        "sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b"
+      },
+      "tool_files": {
+        "cc1": {
+          "bytes": 5526661,
+          "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+        },
+        "cpp": {
+          "bytes": 421478,
+          "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+        },
+        "gnu_assembler": {
+          "bytes": 2169068,
+          "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+        },
+        "mips_linker": {
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      }
+    },
+    "scope": "Five main-loader instruction ranges and separate external leaf; holes and leaf ownership excluded.",
+    "historical_compiler_status": "incomplete"
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 6983,
+      "sha256": "dda59aa2942422b24ff64d4a6170ae7c981f1e7f6ce93e743d38ce1c7e5fd272"
+    }
+  }
+}

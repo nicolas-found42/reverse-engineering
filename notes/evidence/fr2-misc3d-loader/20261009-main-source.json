@@ -1,0 +1,277 @@
+{
+  "schema_version": 1,
+  "run_id": "20261009T191111Z-0bc430646ecd4f12bcb30d7de4051103",
+  "check": "misc3d-loader-main-readable-source",
+  "command": [
+    "-"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "tools/misc3d_loader_recipe/loader_build.py": {
+      "bytes": 9638,
+      "sha256": "4960223ea2ae6e44b311473f8137902f2f547bdf9b1bd719917f7e05807512e1"
+    },
+    "tools/misc3d_loader_recipe/loader.ld": {
+      "bytes": 1173,
+      "sha256": "48b6494b74565fc5fc77141625ffe4899835d3682fbc713dfcccd60961ad1eca"
+    },
+    "reconstruction/ee/app3d/misc3d_loader.c": {
+      "bytes": 2402,
+      "sha256": "b550a368c26a22da7a16b9b50122099cc63e14c17fc9c3f4c09f1700734fea06"
+    },
+    "reconstruction/ee/app3d/misc3d_loader.h": {
+      "bytes": 1255,
+      "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "commands": [
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+        "-G8",
+        "-O2",
+        "-c",
+        "loader.c",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.prepared.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/candidates/ee-gcc2.96/bin/ee-gcc",
+        "-G8",
+        "-O2",
+        "-c",
+        "terminal.c",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-objcopy",
+        "--strip-symbol=gcc2_compiled.",
+        "--strip-symbol=__gnu_compiled_c",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.prepared.o"
+      ],
+      [
+        "/bin/bash",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/docker-linux-exec.sh",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "mips-linux-gnu-ld",
+        "-m",
+        "elf32ltsmip",
+        "-T",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.ld",
+        "-o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.elf",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.prepared.o",
+        "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.prepared.o"
+      ]
+    ],
+    "working_directory": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1",
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    },
+    "artifacts": {
+      "source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.c",
+        "bytes": 2402,
+        "sha256": "b550a368c26a22da7a16b9b50122099cc63e14c17fc9c3f4c09f1700734fea06"
+      },
+      "header": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/misc3d_loader.h",
+        "bytes": 1255,
+        "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+      },
+      "terminal_source": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.c",
+        "bytes": 500,
+        "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+      },
+      "link_script": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.ld",
+        "bytes": 1173,
+        "sha256": "48b6494b74565fc5fc77141625ffe4899835d3682fbc713dfcccd60961ad1eca"
+      },
+      "manifest": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/manifest.json",
+        "bytes": 26892,
+        "sha256": "a92a6762c8149814424d247e2189762dfde4e26cb875068c49c9c60b8cf9c536"
+      },
+      "loader_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.o",
+        "bytes": 4552,
+        "sha256": "c9fd43ecdb4a7972ebad3e0c932a18e6bf9ff6a6dc57dfc620b1001c08011f85"
+      },
+      "loader_prepared": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.prepared.o",
+        "bytes": 4428,
+        "sha256": "ccb7b2922d5581bb32871296a92726c5e7f9af1e7228d19f8e11d06c7daec8c3"
+      },
+      "terminal_object": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.o",
+        "bytes": 1608,
+        "sha256": "27e1a258b48e6d10913e8862aaed9e172d486479c9cb076d4c9aa112cb64bf3d"
+      },
+      "terminal_prepared": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.prepared.o",
+        "bytes": 1436,
+        "sha256": "a301c80e549aa3d8aad3db9a980f1d635aba4e981a0bfbf842715c8e210e27ee"
+      },
+      "linked": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/loader.elf",
+        "bytes": 72732,
+        "sha256": "d430d8cd523af88f631eef5836ee82ca1c40bfc408d3318f7d6facdf09ca3537"
+      },
+      "comparison_001d1408": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/001d1408.comparison.bin",
+        "bytes": 52,
+        "sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961"
+      },
+      "comparison_001d1440": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/001d1440.comparison.bin",
+        "bytes": 316,
+        "sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312"
+      },
+      "comparison_001d1580": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/001d1580.comparison.bin",
+        "bytes": 52,
+        "sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9"
+      },
+      "comparison_001d15b8": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/001d15b8.comparison.bin",
+        "bytes": 20,
+        "sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80"
+      },
+      "comparison_001d15d0": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/001d15d0.comparison.bin",
+        "bytes": 88,
+        "sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f"
+      },
+      "terminal_comparison": {
+        "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-loader-main-uxyu62m1/terminal.comparison.bin",
+        "bytes": 8,
+        "sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8"
+      }
+    },
+    "compiler": {
+      "id": "ee-gcc2.96",
+      "flags": [
+        "-G8",
+        "-O2"
+      ],
+      "executable": {
+        "bytes": 333402,
+        "sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b"
+      },
+      "tool_files": {
+        "cc1": {
+          "bytes": 5526661,
+          "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+        },
+        "cpp": {
+          "bytes": 421478,
+          "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+        },
+        "gnu_assembler": {
+          "bytes": 2169068,
+          "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+        },
+        "mips_linker": {
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      }
+    },
+    "scope": "Five main-loader instruction ranges and separate external leaf; holes and leaf ownership excluded.",
+    "historical_compiler_status": "incomplete",
+    "comparison": {
+      "main_ranges": [
+        {
+          "start": "001d1408",
+          "end_exclusive": "001d143c",
+          "bytes": 52,
+          "reference_sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961",
+          "comparison_sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961"
+        },
+        {
+          "start": "001d1440",
+          "end_exclusive": "001d157c",
+          "bytes": 316,
+          "reference_sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312",
+          "comparison_sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312"
+        },
+        {
+          "start": "001d1580",
+          "end_exclusive": "001d15b4",
+          "bytes": 52,
+          "reference_sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9",
+          "comparison_sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9"
+        },
+        {
+          "start": "001d15b8",
+          "end_exclusive": "001d15cc",
+          "bytes": 20,
+          "reference_sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80",
+          "comparison_sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80"
+        },
+        {
+          "start": "001d15d0",
+          "end_exclusive": "001d1628",
+          "bytes": 88,
+          "reference_sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f",
+          "comparison_sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f"
+        }
+      ],
+      "main_instruction_bytes": 528,
+      "main_envelope_bytes": 544,
+      "excluded_main_hole_bytes": 16,
+      "terminal": {
+        "address": "0012c218",
+        "bytes": 8,
+        "reference_sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8",
+        "comparison_sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8",
+        "candidate_byte_identical_bytes": 8,
+        "new_attributed_match_bytes": 0
+      },
+      "candidate_byte_identical_bytes": 536,
+      "new_attributed_match_bytes": 0,
+      "claim_limit": "Instruction comparison only; ownership is the recorded ADR range decision. Holes and external leaf receive no matching credit."
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 10751,
+      "sha256": "94e71db8f5314885db0cea6ee8176ebb2c6d29b43b8c590be24cca867ef21dbf"
+    }
+  }
+}

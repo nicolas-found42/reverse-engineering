@@ -1,0 +1,230 @@
+{
+  "schema": "fr2-misc3d-loader-bounded-result/v2",
+  "status": "pass",
+  "diagnostics": [],
+  "full_receipt": {
+    "path": ".scratch/issue37-diagnosis/whitespace-green/20261009T194956Z-62397950460d48e58947f0b3b660306e/result.json",
+    "bytes": 5154816,
+    "sha256": "c4b191eac8341c174256b3b78a71e50e7d458b7b1aab0b783c125dded932205c"
+  },
+  "issue37_status": "complete",
+  "issue35_status": "incomplete",
+  "issue24_status": "incomplete",
+  "required_unknown": [],
+  "parent_unknown": [
+    "reset-release-sibling-ownership-and-caller-use",
+    "external-index-and-open-world-runtime-alias-domains",
+    "post-release-stale-id-and-pointer-use-domain",
+    "remaining-ee-source-data-groups"
+  ],
+  "new_attributed_match_bytes": 0,
+  "body_ranges": [
+    {
+      "start": "0012c218",
+      "end_exclusive": "0012c220",
+      "bytes": 8,
+      "sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8"
+    },
+    {
+      "start": "001d1408",
+      "end_exclusive": "001d143c",
+      "bytes": 52,
+      "sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961"
+    },
+    {
+      "start": "001d1440",
+      "end_exclusive": "001d157c",
+      "bytes": 316,
+      "sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312"
+    },
+    {
+      "start": "001d1580",
+      "end_exclusive": "001d15b4",
+      "bytes": 52,
+      "sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9"
+    },
+    {
+      "start": "001d15b8",
+      "end_exclusive": "001d15cc",
+      "bytes": 20,
+      "sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80"
+    },
+    {
+      "start": "001d15d0",
+      "end_exclusive": "001d1628",
+      "bytes": 88,
+      "sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f"
+    }
+  ],
+  "source_build": {
+    "comparison": {
+      "main_ranges": [
+        {
+          "start": "001d1408",
+          "end_exclusive": "001d143c",
+          "bytes": 52,
+          "reference_sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961",
+          "comparison_sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961"
+        },
+        {
+          "start": "001d1440",
+          "end_exclusive": "001d157c",
+          "bytes": 316,
+          "reference_sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312",
+          "comparison_sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312"
+        },
+        {
+          "start": "001d1580",
+          "end_exclusive": "001d15b4",
+          "bytes": 52,
+          "reference_sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9",
+          "comparison_sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9"
+        },
+        {
+          "start": "001d15b8",
+          "end_exclusive": "001d15cc",
+          "bytes": 20,
+          "reference_sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80",
+          "comparison_sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80"
+        },
+        {
+          "start": "001d15d0",
+          "end_exclusive": "001d1628",
+          "bytes": 88,
+          "reference_sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f",
+          "comparison_sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f"
+        }
+      ],
+      "main_instruction_bytes": 528,
+      "main_envelope_bytes": 544,
+      "excluded_main_hole_bytes": 16,
+      "terminal": {
+        "address": "0012c218",
+        "bytes": 8,
+        "reference_sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8",
+        "comparison_sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8",
+        "candidate_byte_identical_bytes": 8,
+        "new_attributed_match_bytes": 0
+      },
+      "candidate_byte_identical_bytes": 536,
+      "new_attributed_match_bytes": 0,
+      "claim_limit": "Instruction comparison only; main and external leaf ownership remain mixed. Holes are excluded; this comparison grants no matching credit."
+    },
+    "compiler": {
+      "id": "ee-gcc2.96",
+      "flags": [
+        "-G8",
+        "-O2"
+      ],
+      "executable": {
+        "bytes": 333402,
+        "sha256": "b8c284d16c9c0a0e8788e9522c46881e224ad01fa1c732aed43f821cc32f168b"
+      },
+      "tool_files": {
+        "cc1": {
+          "bytes": 5526661,
+          "sha256": "59ec92b3f9f3513e0633331af304733e3094de30884e662a8cb584a51c1c42b5"
+        },
+        "cpp": {
+          "bytes": 421478,
+          "sha256": "f6f6b598f39649edfe171d6da8c7f91d07f2b87c2aeeffffbc5f566bfb1a39a9"
+        },
+        "gnu_assembler": {
+          "bytes": 2169068,
+          "sha256": "b8cfdb6ecb6931642914020f92a62e653378f57230eed4895f69afa050d47b5e"
+        },
+        "mips_linker": {
+          "bytes": 1817176,
+          "sha256": "c4f8ab0708eef3a96b5cc0680d9455f557dcd2e08576f1c2a7abb631931cd271"
+        }
+      }
+    },
+    "runtime_identity": {
+      "linux-tools": {
+        "image_id": "sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+        "platform": "linux/amd64"
+      },
+      "wine-compiler": {
+        "image_id": "sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+        "platform": "linux/amd64"
+      }
+    }
+  },
+  "source_contract": {
+    "scope": "Synthetic services executing hand-written source; no retail execution/byte equivalence.",
+    "argv": [
+      "/usr/bin/clang",
+      "-std=c99",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-I",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader.c",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/app3d/misc3d_loader_terminal.c",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_loader_recipe/host_contract.c",
+      "-o",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue37-diagnosis/corrected-green/private-source-p5x0qxt7/loader-host-contract"
+    ],
+    "compiler": {
+      "bytes": 118928,
+      "sha256": "12bed4523661307059b879b9b54e77a73176e9d27d27a0e40363271d8f0668ba"
+    },
+    "source": {
+      "bytes": 2402,
+      "sha256": "b550a368c26a22da7a16b9b50122099cc63e14c17fc9c3f4c09f1700734fea06"
+    },
+    "header": {
+      "bytes": 1255,
+      "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+    },
+    "terminal_source": {
+      "bytes": 500,
+      "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+    },
+    "harness": {
+      "bytes": 3583,
+      "sha256": "926f5b49d8ef6e5e79ff4487d8917d0da3b3d148950cc6e7f36765a52c0365fa"
+    },
+    "binary": {
+      "bytes": 52168,
+      "sha256": "a533ba54591017ef3ccbc1413cf9ad0d8a20adda70a3845d489249b25d64b29b"
+    },
+    "exit_code": 0,
+    "stdout": "PASS synthetic loader call/state/flag/error/optional contracts (6 scenarios)\n",
+    "stderr": ""
+  },
+  "alias_disposition": {
+    "bounded_static_status": "pass",
+    "computed_alias_status": "conditional_static",
+    "incoming_domain_status": "pass",
+    "scoped_direct_transfers": 27,
+    "searched_allocated_file_bytes": 1638839,
+    "searched_executable_words": 311832,
+    "pointer_literals": 0,
+    "gp_sum_consumers": 143,
+    "gp_constructors": 357,
+    "saved_constructors": 318,
+    "raw_unowned_constructors": 39,
+    "memory_uses": 625,
+    "parent_required_unknown": [
+      "interprocedural-memory-and-CFG-address-fixed-point",
+      "external-script-index-bounds",
+      "open-world-indirect-and-runtime-addresses"
+    ],
+    "limits": [
+      "No fixed-point CFG or interprocedural constant/alias closure.",
+      "Raw executable opcode candidates do not establish instruction ownership or reachability.",
+      "Locally unknown GP indexes are candidates, not observed accesses to the misc3d cells.",
+      "No external direct sibling caller does not establish runtime unreachability."
+    ]
+  },
+  "checker_identity": {
+    "bytes": 16976,
+    "sha256": "649e1c3b80b42911a7758e3ee6212126da617bcf51fca9f280b5b808a89c3775"
+  },
+  "decision_identity": {
+    "bytes": 3746,
+    "sha256": "2c3ffb3fb221a8941dba1c5b7fb3cc7bb045caaad7dd31de0bb5fb9e9185eba0"
+  }
+}

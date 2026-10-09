@@ -1,0 +1,50 @@
+{
+  "schema": "fr2-misc3d-frontier-summary/v1",
+  "scope": "Bounded summary of retained private raw receipt; no omitted domain is accepted.",
+  "receipt": {
+    "path": ".scratch/issue37/controls-final/full_frontier/20261009T182334Z-a7148803f03e48caacd7269f16d94652/result.json",
+    "bytes": 27685,
+    "sha256": "a56a09e957a725aa3390f73013a0ba9d9616ebb872a5e0a1e02995ab2e31c176"
+  },
+  "status": "incomplete",
+  "diagnostics": [
+    "required loader/alias frontier remains unresolved"
+  ],
+  "details": {
+    "issue37_status": "incomplete",
+    "issue35_status": "incomplete",
+    "issue24_status": "incomplete",
+    "required_unknown": [
+      "computed-alias-closure",
+      "sibling-consumer-use",
+      "new-range-ownership",
+      "retail-loader-source-output"
+    ],
+    "new_attributed_match_bytes": 0
+  },
+  "dependency_dataflow": {
+    "scope": "Required raw argument/return and indexed-pointer sites only; static observation.",
+    "receipt": "20261009-dependency-abi.json"
+  },
+  "source_contract": {
+    "scope": "Synthetic services executing hand-written source; no retail execution/byte equivalence.",
+    "source": {
+      "bytes": 2068,
+      "sha256": "6940bc6932c07e2cc2b3ba89cbbf624598b8ff5821055655901ef4955bcbfeda"
+    },
+    "header": {
+      "bytes": 1255,
+      "sha256": "667eabc558489b7a959080ba55b5f6c1d1b47f0c922714ddfb1e937eb4d4d452"
+    },
+    "terminal_source": {
+      "bytes": 500,
+      "sha256": "7ee03c4794d89f45594b408c08e530e26766c00d832caa5cc06e90e38c8aa8b8"
+    },
+    "harness": {
+      "bytes": 3583,
+      "sha256": "926f5b49d8ef6e5e79ff4487d8917d0da3b3d148950cc6e7f36765a52c0365fa"
+    },
+    "exit_code": 0,
+    "stdout": "PASS synthetic loader call/state/flag/error/optional contracts (6 scenarios)\n"
+  }
+}

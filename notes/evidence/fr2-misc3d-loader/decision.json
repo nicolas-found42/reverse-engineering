@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "corpus_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
   "inputs": {
     "inventory": {
@@ -11,8 +11,8 @@
       "sha256": "0758d185833ee56a0f1d672a94305e68d2a6348d09bf3d06ea851ab43e00372e"
     },
     "source": {
-      "bytes": 2068,
-      "sha256": "6940bc6932c07e2cc2b3ba89cbbf624598b8ff5821055655901ef4955bcbfeda"
+      "bytes": 2402,
+      "sha256": "b550a368c26a22da7a16b9b50122099cc63e14c17fc9c3f4c09f1700734fea06"
     },
     "header": {
       "bytes": 1255,
@@ -35,16 +35,74 @@
       "sha256": "6f5f19d0095ea4a5766ff681f58519d908287b41386c217b46147c60e93ecc0e"
     },
     "terminal_recipe": {
-      "bytes": 7875,
-      "sha256": "727016093627de7b434bf96f24f1794c78f699a889bfa1d516033bb837d6f08d"
+      "bytes": 8178,
+      "sha256": "e8facdb05ef747e748435cc4cfff669bfe4ae42aa4fd7604e7b455e79b34b01f"
+    },
+    "abi_checker": {
+      "bytes": 7531,
+      "sha256": "9d44a0773792bc052ea8ff61fedecad26b30685efbf88b2fab8c609c2bdf6915"
+    },
+    "loader_link": {
+      "bytes": 1173,
+      "sha256": "48b6494b74565fc5fc77141625ffe4899835d3682fbc713dfcccd60961ad1eca"
+    },
+    "loader_recipe": {
+      "bytes": 9650,
+      "sha256": "ba4a32b0d79c56e2ec32a0c4922d1cf90c42e8ec797d8848d25731253d241d73"
+    },
+    "aliases": {
+      "bytes": 11457,
+      "sha256": "fc6a8a45a31b64b6b7f2edb0a487f9b59a8f5baa1e70b6fc86805320fd177d78"
+    },
+    "alias_checker": {
+      "bytes": 16061,
+      "sha256": "dc68e55107ac58b849baebbd14d6107ec44d292d16b3cb3d4d37bae98f8e31a3"
+    },
+    "lifetime_contract": {
+      "bytes": 9391,
+      "sha256": "0655a4acb1e39417a9ed65fcd793e15a18849316f8cb9aa77e30ce051f13602f"
+    },
+    "lifetime_checker": {
+      "bytes": 5668,
+      "sha256": "79ba6323903d420d7fe4988bc4941e8a88c295c99a97ed6f0203393350b9de03"
+    },
+    "attribution_contract": {
+      "bytes": 8534,
+      "sha256": "7fe505d22715b2e07bd26e4b414a0b1c44f3cc49b3064552a3f8251a73bde6ca"
+    },
+    "attribution_checker": {
+      "bytes": 7629,
+      "sha256": "ebcc01467535f5d1b8e0ae85789342ecd3f5fe4cb14f61273fcb78a3bf40a6e4"
+    },
+    "conditional_alias_checker": {
+      "bytes": 7707,
+      "sha256": "b125292008929083c4291cf1e5f16a95fab1850233f99c1ddcdc69e7b37b646f"
+    },
+    "constructor_alias_checker": {
+      "bytes": 12937,
+      "sha256": "6bb237c2423652c7ba4229224282ed62f0da3231ea9f4b658936af51b6e1b4d1"
+    },
+    "alias_script": {
+      "bytes": 5659,
+      "sha256": "7c55925a0cb32406bd42b85343e723c56475d5c26ad229db4e8e44eef7a8661d"
+    },
+    "ui_alias_checker": {
+      "bytes": 4202,
+      "sha256": "1d32e88dadef22544af3ce927522b92a9983688b86442d37df37e3d14e8544b5"
     }
   },
-  "required_unknown": [
-    "computed-alias-closure",
-    "sibling-consumer-use",
-    "new-range-ownership",
-    "retail-loader-source-output"
-  ],
   "new_attributed_match_bytes": 0,
-  "claim_limit": "Fixed bounded source/static frontier; never complete #37, #35, #24 or full-image acceptance."
+  "claim_limit": "Fixed loader source/static dependency and conditional-alias group; parent lifecycle ownership/caller use and runtime index domains remain separately incomplete. No envelope, shared-helper or external-leaf credit.",
+  "parent_unknown": [
+    "reset-release-sibling-ownership-and-caller-use",
+    "external-index-and-open-world-runtime-alias-domains",
+    "post-release-stale-id-and-pointer-use-domain",
+    "remaining-ee-source-data-groups"
+  ],
+  "ownership_disposition": {
+    "main": "mixed",
+    "external_leaf": "mixed",
+    "holes": "excluded_from_loader_body",
+    "shared_helpers": "separate"
+  }
 }

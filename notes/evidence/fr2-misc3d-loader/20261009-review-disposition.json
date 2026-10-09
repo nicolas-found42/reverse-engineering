@@ -1,0 +1,489 @@
+{
+  "schema": "fr2-independent-reasoner-resolution/v1",
+  "claim": "The bounded misc3d raw ABI checker and its controls are safe to commit as an explicitly incomplete continuation of issue #37, granting no new ownership/matching credit.",
+  "verdict": "accepted",
+  "rationale": "The original Jev escalation required independent review and was not an automatic pass. Direct inspection of the intact ABI source/test diff, raw immutable corpus, loader integration, changed build tooling, actual retained artifacts, and controls found no actionable correctness or standards defect for this explicitly incomplete continuation. Decoder masks and register fields agree with the selected R5900 operations; call/branch delay-slot effects and low-word masking agree with the stated bounded observations. All reviewed source/test bytes match the passing full-suite tree. Scope limits remain enforced in code and documentation, including unconditional incomplete parent status and zero fresh ownership/matching credit. This independent accepted disposition resolves the bounded commit claim without changing any original Jev score or asserting full issue completion.",
+  "original_judgment_ref": {
+    "path": ".scratch/issue37/abi-jev-review.json",
+    "bytes": 1270,
+    "sha256": "62b09826a77e85a184bd66f1b1f0bcd3e09ba9c0530eadceaf4d120bd63bb62a"
+  },
+  "source_bindings": [
+    {
+      "path": "tools/misc3d_abi.py",
+      "staged_blob": "79677515a75330bfe9a6bb12c9c911526de5fd9f",
+      "bytes": 7531,
+      "sha256": "9d44a0773792bc052ea8ff61fedecad26b30685efbf88b2fab8c609c2bdf6915"
+    },
+    {
+      "path": "tools/test_misc3d_abi.py",
+      "staged_blob": "0b7a809ee2f89aa59b883ff0e26f896a16c9aa1f",
+      "bytes": 5162,
+      "sha256": "04d25a4a41aa8bd3ebcbf7c0de8681de97215abcf3edc6773256753736b4e8f9"
+    },
+    {
+      "path": "tools/misc3d_loader.py",
+      "staged_blob": "1f9ca860015b4b2b658ae16d3c84c5d22bd23db6",
+      "bytes": 13193,
+      "sha256": "76ff31d4e39f81e9616d81edc4cbb05e65a4f7199a9ab6a7c9785cd444147cc5"
+    },
+    {
+      "path": "tools/misc3d_loader_recipe/controls.py",
+      "staged_blob": "c250b834ad0b36cb3d4de9a00b188e0ca9e2d384",
+      "bytes": 7545,
+      "sha256": "89a567dfac65032ab62d3fe23d9a6e365501fe3d3576ffe77a9c8cf3f5152f1b"
+    },
+    {
+      "path": "tools/misc3d_loader_recipe/source_build.py",
+      "staged_blob": "89b3b2780c5f3e51fb3087fc9b22705037b689c1",
+      "bytes": 8178,
+      "sha256": "e8facdb05ef747e748435cc4cfff669bfe4ae42aa4fd7604e7b455e79b34b01f"
+    },
+    {
+      "path": "tools/compiler_probe_recipe/docker-linux-exec.sh",
+      "staged_blob": "607771d23f5c36e8a8d82de9ca153722ee7beb6e",
+      "bytes": 912,
+      "sha256": "9c8e5523c49a999a70ed0a6c4a24e769c6b817f4e14350591d167322d8de729c"
+    },
+    {
+      "path": "tools/test_misc3d_loader.py",
+      "staged_blob": "7dcecfd8049f170b821327473716863c2a21051e",
+      "bytes": 9950,
+      "sha256": "bc89aad60b59801f0a5d66aaf0c676b8ab0b38f08799dc1ac4edd4d52ff57e72"
+    }
+  ],
+  "decoder_review": {
+    "instruction_sites": 45,
+    "real_corpus_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+    "real_result_equals_committed_abi_details": true,
+    "conclusions": [
+      "ELF storage is read only after whole-executable SHA-256 equality. Required instructions use allocated executable non-NOBITS sections, unique ownership, four-byte reads and little-endian decoding.",
+      "Opcode/register/immediate masks are correct for the selected operations. JAL target uses the PC+4 high nibble; checked sentinel and loaded-path branches reach the null-result and restore blocks respectively. Delay slots preserve or consume the stated values.",
+      "The checked normal return tail transforms the low word as (old_id & 0xfff00000) | 0x00010000. Frame restores do not overwrite V0; the same low word is stored before return. Fixed GP-relative cell addresses agree with the existing GP contract.",
+      "The shared object path masks the resource to sixteen index bits, scales by four, and loads from the table at context offset 236. Null is produced for the observed -1 sentinel path. This does not establish index validity or pointer lifetime.",
+      "Intervening raw sites omitted from the selected-site checker were inspected: loader argument setup and dependency/object prologues do not clobber the values claimed by the selected sites. The whole-corpus pin prevents alternate intervening bytes from being silently accepted.",
+      "Missing selected sites accumulate Incomplete; a later contradictory instruction still raises Invalid. No generic decoder or alternate-corpus acceptance is claimed."
+    ]
+  },
+  "tests": {
+    "independent_commands": [
+      {
+        "command": "tools/check.sh test_misc3d_abi",
+        "tests_run": 9,
+        "exit_code": 0
+      },
+      {
+        "command": "tools/check.sh test_misc3d_loader",
+        "tests_run": 19,
+        "exit_code": 0
+      }
+    ],
+    "retained_validation_tree": "dcb1e87bd5e92c6cb1d6c97f26af2701d38c43ca",
+    "retained_full_suite": {
+      "tests_run": 871,
+      "skipped": 37,
+      "excluded_modules": 3,
+      "failures": 0,
+      "errors": 0
+    },
+    "retained_focused_tests": 57,
+    "retained_pyright_errors": 0,
+    "all_13_control_receipt_hashes_verified": true,
+    "actual_positive_build_artifacts_verified": true,
+    "actual_both_clean_build_artifact_hashes_verified": true,
+    "limitation": "The full-suite receipt belongs to its recorded tree. The later compact frontier summary is separately checked against the raw receipt; final staged hygiene/publication validation remains a separate integration step."
+  },
+  "scope": {
+    "issue37_complete": false,
+    "issue35_complete": false,
+    "issue24_complete": false,
+    "new_attributed_match_bytes": 0,
+    "remaining_required_unknowns": [
+      "computed-alias-closure",
+      "sibling-consumer-use",
+      "new-range-ownership",
+      "retail-loader-source-output",
+      "object-table-allocation-and-bounds",
+      "pointer-lifetime",
+      "original-declarations-and-ownership"
+    ],
+    "guest_code_executed_in_this_review": false,
+    "raw_assembly_published": false
+  },
+  "standing_signal_disposition": "The ABI review, six additional review packets, and final gate remain escalations in their original records. Low confidence justified independent escalation; it is not itself a concrete contradicted claim or defect. After source, raw-data, artifact, and control inspection, no unresolved correctness or test-gap concern requires blocking this bounded continuation. No new Jev call was made by this reviewer and no score was replaced. A claim that #37 is complete would be rejected by the same evidence.",
+  "reasoner_model": "gpt-6-astra",
+  "complete_resolution_ref": {
+    "path": ".scratch/issue37/abi-reasoner-resolution.json",
+    "bytes": 71404,
+    "sha256": "57d226da0e8114c9f12c92c391e0bd3291c74416f6c49fb199af49448e29f8d0"
+  },
+  "extended_continuation_review": {
+    "claim": "The reviewed staged misc3d dependency-ABI and terminal reproducibility continuation is safe to commit with its explicitly incomplete scope and zero new ownership/matching credit.",
+    "verdict": "accepted",
+    "packets": [
+      {
+        "packet": {
+          "path": ".scratch/issue37/review-packets/review-001.json",
+          "bytes": 10704,
+          "sha256": "3ad73c5efbd5f5d5ccb663129b353b7f1f9836e30553259482840bcb900ad832"
+        },
+        "verdict": "accepted",
+        "rationale": "The 13 result paths and receipt SHA-256/size identities were independently recomputed and all matched. Observed exits equal the explicit expected exits, including changed-source/layout failures and incomplete frontier/provenance cases. The summary makes no whole-issue acceptance claim.",
+        "reviewed_files": [
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-controls.json",
+            "staged_blob": "6e920008883cb214de76a7bc42268e4c3a682d9c",
+            "bytes": 5380,
+            "sha256": "5ab3e0887aa8f7f55cb42eee5e51125836f954d811f4ba53efcd05ed21ab41ed"
+          }
+        ],
+        "original_signal": {
+          "action": "escalate",
+          "safe_to_apply": 0.65,
+          "composite": 0.7495,
+          "reason_codes": [
+            "confidence_below_review"
+          ],
+          "limiting": [
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-controls.json",
+              "rubrics": [
+                "spec_match"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "packet": {
+          "path": ".scratch/issue37/review-packets/review-002.json",
+          "bytes": 17400,
+          "sha256": "84f0639e11b20b688901cda3aac62df36b0444f6057938a47f40d81e7190477c"
+        },
+        "verdict": "accepted",
+        "rationale": "A fresh static invocation of misc3d_abi.check on the independently hash-confirmed real executable produced all 45 sites and exactly the committed ABI details. The retained focused log records 57 successful tests; it reports checker behavior only. Independent reruns passed all 9 ABI controls and all 19 loader tests. The checker and receipt retain pointer-lifetime/allocation/bounds/alias/ownership unknowns and zero credit.",
+        "reviewed_files": [
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-dependency-abi.json",
+            "staged_blob": "d456e6fe10fbe5385a290ee97b6c5f54d9861c2b",
+            "bytes": 10159,
+            "sha256": "717592409b9b847c614d197d654bbf7882740e91eb161acfbc6ddab1b998515d"
+          },
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-focused.log",
+            "staged_blob": "9259b156150c47a38b0896ff1e1307e66e0c7930",
+            "bytes": 843,
+            "sha256": "08dc06670f205397db31e246b458a0ab6cc85be3a5dd877332815e1ca640b964"
+          }
+        ],
+        "original_signal": {
+          "action": "escalate",
+          "safe_to_apply": 0.52,
+          "composite": 0.731125,
+          "reason_codes": [
+            "confidence_below_review"
+          ],
+          "limiting": [
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-dependency-abi.json",
+              "rubrics": [
+                "test_gap"
+              ]
+            },
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-focused.log",
+              "rubrics": [
+                "spec_match",
+                "test_gap"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "packet": {
+          "path": ".scratch/issue37/review-packets/review-003.json",
+          "bytes": 16511,
+          "sha256": "582f245a2b5b6383d498f2e9c2b5a3e0937f986d3bfa5e1c76750e75bd9cf7bb"
+        },
+        "verdict": "accepted",
+        "rationale": "The compact frontier status, diagnostics, required unknowns, zero credit, and source-contract fields were compared directly with the retained raw receipt; all match. Its raw receipt hash also matches. The actual terminal source/object/prepared/linked/comparison/link-script/manifest identities match the terminal receipt. Changed-source linked hash differs and the drift detector requires that difference. Pyright output reports zero errors without claiming issue completion.",
+        "reviewed_files": [
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-full-frontier.json",
+            "staged_blob": "3b37e52a7cf03996323c668edde325869ac57a9c",
+            "bytes": 1756,
+            "sha256": "8a4f79a7f533d2aa4088381d34b65f90203c29d1867cfe639b6fc4aa5b31d4ee"
+          },
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-pyright.log",
+            "staged_blob": "4fd42411a67ec4270b06c7f7f80c984fcfc9e081",
+            "bytes": 37,
+            "sha256": "6d88a1b220adb7a3d62092b6e38431f0b3fe8babe9864fab90e5849766260332"
+          },
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-real-terminal-source.json",
+            "staged_blob": "9cd8d910ac922efc097936ec97589b47e04c8172",
+            "bytes": 6611,
+            "sha256": "11c2614a8bb1a151b924784d5c13cde83b320b61c465c3becb812fe8618c02f5"
+          },
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-reproducibility-drift-detected.json",
+            "staged_blob": "350e3500bbb39b081db1c6687a5dba2c88b87836",
+            "bytes": 1104,
+            "sha256": "bf0e745b0a6b164870148cc98d220dc673b1239c7f210b911c0bcc5e6e446e21"
+          }
+        ],
+        "original_signal": {
+          "action": "escalate",
+          "safe_to_apply": 0.43,
+          "composite": 0.7354375,
+          "reason_codes": [
+            "confidence_below_review",
+            "safe_to_apply_below_review"
+          ],
+          "limiting": [
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-full-frontier.json",
+              "rubrics": [
+                "test_gap"
+              ]
+            },
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-pyright.log",
+              "rubrics": [
+                "spec_match"
+              ]
+            },
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-real-terminal-source.json",
+              "rubrics": [
+                "test_gap"
+              ]
+            },
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-reproducibility-drift-detected.json",
+              "rubrics": [
+                "spec_match"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "packet": {
+          "path": ".scratch/issue37/review-packets/review-004.json",
+          "bytes": 13697,
+          "sha256": "53b3d2be2a66ea0511456037682a336040d443999f738e126d0fd2774cd97d56"
+        },
+        "verdict": "accepted",
+        "rationale": "The wrapper quotes the mounted root, workdir, executable, and each argument; it maps exact-root or slash-bounded descendants and keeps the existing fallback for other directories. This implements the recipe basename/cwd pair without changing compiler flags, runtime pins, source bytes, or comparator. The actual copied wrapper equals the reviewed wrapper. Both retained fresh build directories contain object/prepared/linked/comparison files matching their respective recorded hashes. README explicitly limits reproducibility to the eight-byte candidate and keeps the full frontier incomplete. The decision binds actual ABI-checker and recipe identities; fixed required unknowns remain unchanged.",
+        "reviewed_files": [
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/20261009-reproducibility.json",
+            "staged_blob": "b69588124c7bc8409b85708dc89f8a9343bc6c02",
+            "bytes": 1914,
+            "sha256": "b12e7171afaf6822a4f95cd6a7adc537afe34f708e12fdcb2c5215bb44517238"
+          },
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/README.md",
+            "staged_blob": "ea6e700efeafa22eff3a321c128d368677421762",
+            "bytes": 13997,
+            "sha256": "d7cbefb6a196ff62aedb385016441761f29773db6abf64691e2b606b7fc6c2ae"
+          },
+          {
+            "path": "notes/evidence/fr2-misc3d-loader/decision.json",
+            "staged_blob": "ef8fdbea2ec4c9dc82d46a470ff8b76601f73222",
+            "bytes": 1735,
+            "sha256": "3fb66b0707c790b895713e6745dfe3760b62ac998b93c1e59720b54be7ba39eb"
+          },
+          {
+            "path": "tools/compiler_probe_recipe/docker-linux-exec.sh",
+            "staged_blob": "607771d23f5c36e8a8d82de9ca153722ee7beb6e",
+            "bytes": 912,
+            "sha256": "9c8e5523c49a999a70ed0a6c4a24e769c6b817f4e14350591d167322d8de729c"
+          }
+        ],
+        "original_signal": {
+          "action": "escalate",
+          "safe_to_apply": 0.53,
+          "composite": 0.787125,
+          "reason_codes": [
+            "confidence_below_review"
+          ],
+          "limiting": [
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/20261009-reproducibility.json",
+              "rubrics": [
+                "spec_match"
+              ]
+            },
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/README.md",
+              "rubrics": [
+                "correctness"
+              ]
+            },
+            {
+              "file": "notes/evidence/fr2-misc3d-loader/decision.json",
+              "rubrics": [
+                "blast_radius"
+              ]
+            },
+            {
+              "file": "tools/compiler_probe_recipe/docker-linux-exec.sh",
+              "rubrics": [
+                "test_gap"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "packet": {
+          "path": ".scratch/issue37/review-packets/review-005.json",
+          "bytes": 16705,
+          "sha256": "81ccc56f1dee46b047ac0a53f0bdab79fd0a1f23450c27fc57d219aa5b727be7"
+        },
+        "verdict": "accepted",
+        "rationale": "The loader independently runs the ABI check whenever the pinned corpus is available, even if inventory or isolated evidence is absent. It catches Incomplete but allows Invalid to fail, binds the checker in its decision and receipt inputs, and still unconditionally raises Incomplete with zero new credit. The new real dependency control expects only this bounded checker to pass. No missing evidence is promoted to ownership or matching.",
+        "reviewed_files": [
+          {
+            "path": "tools/misc3d_loader.py",
+            "staged_blob": "1f9ca860015b4b2b658ae16d3c84c5d22bd23db6",
+            "bytes": 13193,
+            "sha256": "76ff31d4e39f81e9616d81edc4cbb05e65a4f7199a9ab6a7c9785cd444147cc5"
+          },
+          {
+            "path": "tools/misc3d_loader_recipe/controls.py",
+            "staged_blob": "c250b834ad0b36cb3d4de9a00b188e0ca9e2d384",
+            "bytes": 7545,
+            "sha256": "89a567dfac65032ab62d3fe23d9a6e365501fe3d3576ffe77a9c8cf3f5152f1b"
+          }
+        ],
+        "original_signal": {
+          "action": "escalate",
+          "safe_to_apply": 0.55,
+          "composite": 0.75275,
+          "reason_codes": [
+            "confidence_below_review"
+          ],
+          "limiting": [
+            {
+              "file": "tools/misc3d_loader.py",
+              "rubrics": [
+                "test_gap"
+              ]
+            },
+            {
+              "file": "tools/misc3d_loader_recipe/controls.py",
+              "rubrics": [
+                "spec_match"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "packet": {
+          "path": ".scratch/issue37/review-packets/review-006.json",
+          "bytes": 15017,
+          "sha256": "212b485dcdb710ebd8a17691433df6c3a27e4f419811c4375deba8c590dd6003"
+        },
+        "verdict": "accepted",
+        "rationale": "Resolving game/tool-root/source paths before changing cwd preserves input identities for relative CLI paths. The compiler receives terminal.c from the fresh stage and the remaining commands retain absolute artifact/tool paths. Recording working_directory makes that choice inspectable. The new test exercises the actual child wrapper with a path containing spaces and verifies the mapped workdir and unchanged relative compiler argument; all 19 loader tests independently passed. Actual two-build artifacts and changed-source control provide evidence beyond this synthetic wrapper test.",
+        "reviewed_files": [
+          {
+            "path": "tools/misc3d_loader_recipe/source_build.py",
+            "staged_blob": "89b3b2780c5f3e51fb3087fc9b22705037b689c1",
+            "bytes": 8178,
+            "sha256": "e8facdb05ef747e748435cc4cfff669bfe4ae42aa4fd7604e7b455e79b34b01f"
+          },
+          {
+            "path": "tools/test_misc3d_loader.py",
+            "staged_blob": "7dcecfd8049f170b821327473716863c2a21051e",
+            "bytes": 9950,
+            "sha256": "bc89aad60b59801f0a5d66aaf0c676b8ab0b38f08799dc1ac4edd4d52ff57e72"
+          }
+        ],
+        "original_signal": {
+          "action": "escalate",
+          "safe_to_apply": 0.56,
+          "composite": 0.778375,
+          "reason_codes": [
+            "confidence_below_review"
+          ],
+          "limiting": [
+            {
+              "file": "tools/misc3d_loader_recipe/source_build.py",
+              "rubrics": [
+                "test_gap",
+                "blast_radius"
+              ]
+            },
+            {
+              "file": "tools/test_misc3d_loader.py",
+              "rubrics": [
+                "spec_match"
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "original_abi_summary": {
+    "action": "escalate",
+    "safe_to_apply": 0.42,
+    "composite": 0.76475,
+    "reason_codes": [
+      "confidence_below_review",
+      "safe_to_apply_below_review"
+    ],
+    "limiting_rubrics": [
+      "test_gap"
+    ]
+  },
+  "final_gate_disposition": {
+    "claim": "The reviewed staged misc3d dependency-ABI and terminal reproducibility continuation is safe to commit with its explicitly incomplete scope and zero new ownership/matching credit.",
+    "verdict": "accepted",
+    "rationale": "The final gate preserves three automatically verified bounded factual claims and escalates patch safety on low confidence, with no concrete prose findings or contradicted claims. Its five reviewed files are a subset of the exact source/test blobs independently inspected here. Loader contradiction/incomplete priority, wrapper argument/workdir mapping, unchanged runtime/compiler pins, the real copied wrapper, two distinct build directories and their actual artifact hashes, negative controls, the 19-test loader rerun, and the original tree-bound portable suite address the indicated test-gap/blast-radius uncertainty. No new defect or unreviewed source change appears in this gate. Independent review therefore accepts the bounded continuation while leaving the original gate escalation and all reconstruction unknowns intact.",
+    "reviewed_files": [
+      {
+        "path": "tools/misc3d_loader.py",
+        "staged_blob": "1f9ca860015b4b2b658ae16d3c84c5d22bd23db6",
+        "bytes": 13193,
+        "sha256": "76ff31d4e39f81e9616d81edc4cbb05e65a4f7199a9ab6a7c9785cd444147cc5"
+      },
+      {
+        "path": "tools/misc3d_loader_recipe/controls.py",
+        "staged_blob": "c250b834ad0b36cb3d4de9a00b188e0ca9e2d384",
+        "bytes": 7545,
+        "sha256": "89a567dfac65032ab62d3fe23d9a6e365501fe3d3576ffe77a9c8cf3f5152f1b"
+      },
+      {
+        "path": "tools/misc3d_loader_recipe/source_build.py",
+        "staged_blob": "89b3b2780c5f3e51fb3087fc9b22705037b689c1",
+        "bytes": 8178,
+        "sha256": "e8facdb05ef747e748435cc4cfff669bfe4ae42aa4fd7604e7b455e79b34b01f"
+      },
+      {
+        "path": "tools/compiler_probe_recipe/docker-linux-exec.sh",
+        "staged_blob": "607771d23f5c36e8a8d82de9ca153722ee7beb6e",
+        "bytes": 912,
+        "sha256": "9c8e5523c49a999a70ed0a6c4a24e769c6b817f4e14350591d167322d8de729c"
+      },
+      {
+        "path": "tools/test_misc3d_loader.py",
+        "staged_blob": "7dcecfd8049f170b821327473716863c2a21051e",
+        "bytes": 9950,
+        "sha256": "bc89aad60b59801f0a5d66aaf0c676b8ab0b38f08799dc1ac4edd4d52ff57e72"
+      }
+    ],
+    "original_judgment_ref": {
+      "path": ".scratch/issue37/final-gate.json",
+      "bytes": 11432,
+      "sha256": "e030c477edea7d04c1bc77676a15df2444aefa0736e2832931168f8bcd6caaf6"
+    }
+  }
+}

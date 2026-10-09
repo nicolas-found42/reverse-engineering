@@ -1,0 +1,312 @@
+{
+  "schema": "fr2-preserved-lifecycle-summary/v1",
+  "status": "pass",
+  "full_receipt": {
+    "path": ".scratch/issue37-diagnosis/lifecycle-regression/20261009T191605Z-2fb8f6a47d0246348c743499e18e6c0f/result.json",
+    "bytes": 48471,
+    "sha256": "da75b8ff3ebb695e1ffa41a15bf833157143dea60e99614a27a599d0f62ac68b"
+  },
+  "outputs": {
+    "spans": {
+      "reset": {
+        "status": "pass",
+        "address": "001d17a8",
+        "bytes": 28,
+        "reference_sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce",
+        "comparison_sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce"
+      },
+      "release": {
+        "status": "pass",
+        "address": "001d17c8",
+        "bytes": 56,
+        "reference_sha256": "d3a62c0821de04915f4227abba06fedc487b341c9bb6a450c5b97f7f806ea1c5",
+        "comparison_sha256": "d3a62c0821de04915f4227abba06fedc487b341c9bb6a450c5b97f7f806ea1c5"
+      },
+      "get_database_id": {
+        "status": "pass",
+        "address": "001d1800",
+        "bytes": 60,
+        "reference_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+        "comparison_sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+      },
+      "get_state_cc": {
+        "status": "pass",
+        "address": "001d1840",
+        "bytes": 64,
+        "reference_sha256": "46fcb75bad128dd0f7cbe683632af25f25a87f0f023dd1011b0ee501f8a2ed7e",
+        "comparison_sha256": "46fcb75bad128dd0f7cbe683632af25f25a87f0f023dd1011b0ee501f8a2ed7e"
+      },
+      "get_state_d4": {
+        "status": "pass",
+        "address": "001d1880",
+        "bytes": 64,
+        "reference_sha256": "d2022406a43a625853bbdd23deeabada52d06cb4bd5a67392eb2b84b06fdc257",
+        "comparison_sha256": "d2022406a43a625853bbdd23deeabada52d06cb4bd5a67392eb2b84b06fdc257"
+      },
+      "get_state_d0": {
+        "status": "pass",
+        "address": "001d18c0",
+        "bytes": 64,
+        "reference_sha256": "b0891c1d56cdb428aa6f4122c22c882f43c5a907f23a31e41ee93931a2eb088a",
+        "comparison_sha256": "b0891c1d56cdb428aa6f4122c22c882f43c5a907f23a31e41ee93931a2eb088a"
+      }
+    },
+    "cells": {
+      "db_id": {
+        "address": "00290ac4",
+        "bytes": 4,
+        "alignment": 4,
+        "type": "NOBITS",
+        "has_file_bytes": false,
+        "matched_file_bytes": 0
+      },
+      "state_c8": {
+        "address": "00290ac8",
+        "bytes": 4,
+        "alignment": 4,
+        "type": "NOBITS",
+        "has_file_bytes": false,
+        "matched_file_bytes": 0
+      },
+      "state_cc": {
+        "address": "00290acc",
+        "bytes": 4,
+        "alignment": 4,
+        "type": "NOBITS",
+        "has_file_bytes": false,
+        "matched_file_bytes": 0
+      },
+      "state_d0": {
+        "address": "00290ad0",
+        "bytes": 4,
+        "alignment": 4,
+        "type": "NOBITS",
+        "has_file_bytes": false,
+        "matched_file_bytes": 0
+      },
+      "state_d4": {
+        "address": "00290ad4",
+        "bytes": 4,
+        "alignment": 4,
+        "type": "NOBITS",
+        "has_file_bytes": false,
+        "matched_file_bytes": 0
+      }
+    }
+  },
+  "comparisons": {
+    "reset": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/reset.comparison.bin",
+      "bytes": 28,
+      "sha256": "d31428f0506f37cf1ba8c2e6d374474809fa0c1fa1644124bf83010aef4fc2ce"
+    },
+    "release": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/release.comparison.bin",
+      "bytes": 56,
+      "sha256": "d3a62c0821de04915f4227abba06fedc487b341c9bb6a450c5b97f7f806ea1c5"
+    },
+    "get_database_id": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/get_database_id.comparison.bin",
+      "bytes": 60,
+      "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+    },
+    "get_state_cc": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/get_state_cc.comparison.bin",
+      "bytes": 64,
+      "sha256": "46fcb75bad128dd0f7cbe683632af25f25a87f0f023dd1011b0ee501f8a2ed7e"
+    },
+    "get_state_d4": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/get_state_d4.comparison.bin",
+      "bytes": 64,
+      "sha256": "d2022406a43a625853bbdd23deeabada52d06cb4bd5a67392eb2b84b06fdc257"
+    },
+    "get_state_d0": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/get_state_d0.comparison.bin",
+      "bytes": 64,
+      "sha256": "b0891c1d56cdb428aa6f4122c22c882f43c5a907f23a31e41ee93931a2eb088a"
+    }
+  },
+  "common_definitions": {
+    "db_id": {
+      "symbol": "misc3d_db_id",
+      "bytes": 4,
+      "alignment": 4,
+      "storage": "common",
+      "has_file_bytes": false
+    },
+    "state_c8": {
+      "symbol": "misc3d_state_c8",
+      "bytes": 4,
+      "alignment": 4,
+      "storage": "common",
+      "has_file_bytes": false
+    },
+    "state_cc": {
+      "symbol": "misc3d_state_cc",
+      "bytes": 4,
+      "alignment": 4,
+      "storage": "common",
+      "has_file_bytes": false
+    },
+    "state_d0": {
+      "symbol": "misc3d_state_d0",
+      "bytes": 4,
+      "alignment": 4,
+      "storage": "common",
+      "has_file_bytes": false
+    },
+    "state_d4": {
+      "symbol": "misc3d_state_d4",
+      "bytes": 4,
+      "alignment": 4,
+      "storage": "common",
+      "has_file_bytes": false
+    }
+  },
+  "existing_attributed_match_bytes": 60,
+  "new_attributed_match_bytes": 0,
+  "issue24_status": "incomplete",
+  "issue35_status": "incomplete",
+  "artifacts": {
+    "lifecycle_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/lifecycle.c",
+      "bytes": 785,
+      "sha256": "c8fb1453ee12aef95cc82982eb621e7dc80f7bb8b78c344f1da85c9e59293220"
+    },
+    "lifecycle_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/lifecycle.o",
+      "bytes": 2404,
+      "sha256": "8c377dec95afad5e870e1f2a561748cd680f64eff0f14af5bc7c9a74bf9ff5ed"
+    },
+    "lifecycle_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/lifecycle-prepared.o",
+      "bytes": 2152,
+      "sha256": "7aea78df7f931946ae35a09138d53ac7423eb2563b956fd99672e7a43fbb29ef"
+    },
+    "siblings_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/siblings.c",
+      "bytes": 1303,
+      "sha256": "d72b17c5336c5c0a070336e27cbe7187127caea7ad83ad07ad6d424e1e92b6bf"
+    },
+    "siblings_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/siblings.o",
+      "bytes": 3336,
+      "sha256": "f6542ca6b221e9e816784c3136349723d122fdc39ad66a65da23688ebede96a7"
+    },
+    "siblings_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/siblings-prepared.o",
+      "bytes": 2960,
+      "sha256": "9db7fcb6c2108b14385fd0277f9a3a6c209453a1d12ec66b39764a73568caad4"
+    },
+    "db_id_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/db_id.c",
+      "bytes": 198,
+      "sha256": "5d023900745dcc4352cfbabc680545faea2dfd5a3d723f74942621d6842c708a"
+    },
+    "db_id_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/db_id.o",
+      "bytes": 1150,
+      "sha256": "98744440a0a24237d42c3d3c2c1b0605979860cb0c2fe9414399e7609bbd4a75"
+    },
+    "db_id_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/db_id-prepared.o",
+      "bytes": 1088,
+      "sha256": "561a19fadc5d3cf2aa724bb7f72d8c1e16e47f0df174bc6b5f75346605f154ba"
+    },
+    "state_c8_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_c8.c",
+      "bytes": 128,
+      "sha256": "94a85b41d66e74ab44752013bbe0d1f3b61f47f345135ae431cd809619ca87f4"
+    },
+    "state_c8_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_c8.o",
+      "bytes": 1157,
+      "sha256": "43da640dc29009ed7032b28747fb9600ed118b1cbc1e892123d5f3f08c97fd40"
+    },
+    "state_c8_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_c8-prepared.o",
+      "bytes": 1096,
+      "sha256": "0ba71506d1ce060cc12b1a4e443359ce7980b6cf6b617b64532fbd9fefe117a5"
+    },
+    "state_cc_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_cc.c",
+      "bytes": 128,
+      "sha256": "fe49643b9e53a3bc8ccfae5bb3cd7dc028a5ba963683a019576ba00ff7f2cb5d"
+    },
+    "state_cc_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_cc.o",
+      "bytes": 1157,
+      "sha256": "d4123311d05cb4469b3aac8805bcab1d2e673013734eac8183eda3b3b36e3891"
+    },
+    "state_cc_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_cc-prepared.o",
+      "bytes": 1096,
+      "sha256": "d4e4af0d9d94818e3ef91b35576f536f20f4f011b17b2e7ed7e39e54a9f26071"
+    },
+    "state_d0_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_d0.c",
+      "bytes": 128,
+      "sha256": "4639f88f98b10e0402f42cfc73025e957158edeb9b98a4b5c28bfa713c8d2808"
+    },
+    "state_d0_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_d0.o",
+      "bytes": 1157,
+      "sha256": "a30d032444ea4c6422818dd3c5c535187871c9b7a9dc06d471ddb96d2f7ff773"
+    },
+    "state_d0_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_d0-prepared.o",
+      "bytes": 1096,
+      "sha256": "cc9bfa1481c3e9958ff56262b041f3a9e0df16180d75d73aa67d012da1edd6ea"
+    },
+    "state_d4_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_d4.c",
+      "bytes": 128,
+      "sha256": "600c2c0c28c790b94441e970361d65021c089387182f14a28d1dc3116d21a40b"
+    },
+    "state_d4_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_d4.o",
+      "bytes": 1157,
+      "sha256": "6c9b2d3a4cf9fc26e78c073b0e2c799341b59c8942e77d104e404179149bb8fc"
+    },
+    "state_d4_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/state_d4-prepared.o",
+      "bytes": 1096,
+      "sha256": "511578b733161f39618262cb78d48688ab087c271333e7b45b1cbaefb07424f1"
+    },
+    "linked_output": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/accessor-probe/fr2-compiler-probe-tscmxw0v/linked.o",
+      "bytes": 18228,
+      "sha256": "d389f81ebed5499a86e16bd5d8491f2417b1b538baf95068179359045fe5d973"
+    },
+    "accessor_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/accessor-probe/fr2-compiler-probe-tscmxw0v/candidate.o",
+      "bytes": 2136,
+      "sha256": "58e3cb0047a0d2ef53538f5759d081741dfe02246e8e3529853bcecfc32212c2"
+    },
+    "accessor_prepared_object": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/accessor-probe/fr2-compiler-probe-tscmxw0v/prepared.o",
+      "bytes": 1960,
+      "sha256": "33765f90cd9ff79a50db082c475bbdf78166f175609c964bb229d7df2b960943"
+    },
+    "accessor_source": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/candidate.c",
+      "bytes": 627,
+      "sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc"
+    },
+    "comparison": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/accessor-probe/fr2-compiler-probe-tscmxw0v/function.bin",
+      "bytes": 60,
+      "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e"
+    },
+    "link_script": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/candidate.ld",
+      "bytes": 1639,
+      "sha256": "2d7be509621330c538012d246966f8206ccb25f2bea3f8fea6063f3b93f753db"
+    },
+    "manifest": {
+      "path": "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers/misc3d-lifecycle-i3gnfekz/manifest.json",
+      "bytes": 9504,
+      "sha256": "c27f89ea1d1b3d36f0b27f965d088132d9df5117c95e14481f0beb44b491c29c"
+    }
+  }
+}
