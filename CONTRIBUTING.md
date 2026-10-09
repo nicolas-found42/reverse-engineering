@@ -25,10 +25,8 @@ remains unresolved; a passing exploratory candidate is a bounded probe.
 
 ```sh
 tools/install_hooks.sh
-tools/check.sh
-python3 tools/ip_rails.py --tree
 python3 tools/repository_hygiene.py generate
-python3 tools/repository_hygiene.py check
+python3 tools/validate.py --staged
 ```
 
 Stage new files before regenerating indexes: the generators index Git's tracked
@@ -36,6 +34,13 @@ and staged paths, not ignored or unrelated untracked files. Include the generate
 outputs in the same commit. Use the [style guide](docs/STYLE.md) for claims and
 reproduction commands. Keep incomplete work explicit in the
 [reconstruction/drafts convention](reconstruction/README.md).
+
+`validate.py` runs IP, metadata freshness, Ruff and tests; `--staged` materializes
+the exact index with CI's documented local-input exclusions. Without a snapshot
+flag it checks the working tree and runs the available local tests. Full output
+and JSON counts/skip reasons stay in ignored validation receipts. The runtime
+[maintenance commands](docs/agents/re-setup-maintenance.md) and bounded
+[review inputs](docs/agents/review-payloads.md) are maintained separately.
 
 The installed pre-push hook checks newly introduced commit snapshots for IP
 violations and metadata freshness. It is an opt-in guard rail and `--no-verify`

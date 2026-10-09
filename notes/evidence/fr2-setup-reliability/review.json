@@ -1,0 +1,282 @@
+{
+  "schema": "fr2-setup-reliability-review/v1",
+  "base_revision": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+  "manifest": {
+    "schema": "fr2-review-payload/v1",
+    "base": "origin/main",
+    "base_revision": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+    "staged": true,
+    "budget": {
+      "context_tokens": 32000,
+      "template_reserve_tokens": 10000,
+      "output_reserve_tokens": 4096
+    },
+    "maximum_payload_bytes": 17904,
+    "reviewed_paths": [
+      ".github/workflows/ci.yml",
+      "AGENTS.md",
+      "CONTRIBUTING.md",
+      "docs/RE-SETUP.md",
+      "docs/agents/re-setup-maintenance.md",
+      "docs/agents/review-payloads.md",
+      "tools/pre_push.py",
+      "tools/re_bootstrap.py",
+      "tools/re_client_discovery.py",
+      "tools/re_doctor.py",
+      "tools/re_install_manifest.json",
+      "tools/re_mcp.py",
+      "tools/re_rpc.py",
+      "tools/re_static_probe.py",
+      "tools/review_payload.py",
+      "tools/run_tests.py",
+      "tools/test_pre_push.py",
+      "tools/test_re_bootstrap.py",
+      "tools/test_re_doctor.py",
+      "tools/test_re_mcp.py",
+      "tools/test_review_payload.py",
+      "tools/test_run_tests.py",
+      "tools/test_validate.py",
+      "tools/validate.py"
+    ],
+    "excluded": [
+      {
+        "path": "docs/README.md",
+        "reason": "generated; validated by repository_hygiene",
+        "raw_diff_sha256": "d09fbc094f1362180a13af63277203403dfc04f3ac82fa2931b574b3569fd18d"
+      },
+      {
+        "path": "tools/README.md",
+        "reason": "generated; validated by repository_hygiene",
+        "raw_diff_sha256": "15f7a2c1fc2b5eeefda34f70fb14bd3a733698385c613381db0183c4afd4eb93"
+      }
+    ],
+    "source_paths": [
+      "tools/pre_push.py",
+      "tools/re_bootstrap.py",
+      "tools/re_client_discovery.py",
+      "tools/re_doctor.py",
+      "tools/re_mcp.py",
+      "tools/re_rpc.py",
+      "tools/re_static_probe.py",
+      "tools/review_payload.py",
+      "tools/run_tests.py",
+      "tools/test_pre_push.py",
+      "tools/test_re_bootstrap.py",
+      "tools/test_re_doctor.py",
+      "tools/test_re_mcp.py",
+      "tools/test_review_payload.py",
+      "tools/test_run_tests.py",
+      "tools/test_validate.py",
+      "tools/validate.py"
+    ],
+    "review_packets": 7,
+    "claim_packets": 0,
+    "claim_authorities": [],
+    "limits": [
+      "No judgment is made by the builder; retain all resulting review dispositions.",
+      "Byte count is a conservative token upper bound; provider template reserve must be calibrated.",
+      "Full file diffs are preserved; oversized files fail instead of being truncated."
+    ]
+  },
+  "packets": [
+    {
+      "packet": 1,
+      "serialized_bytes": 14390,
+      "files": [
+        {
+          "path": ".github/workflows/ci.yml",
+          "raw_diff_sha256": "3c3b6d1d3131c720a392a27fd8ce4c3749f1597fd820edb10d4ec4bc52c08b39"
+        },
+        {
+          "path": "AGENTS.md",
+          "raw_diff_sha256": "85126e6a1681f9abe54f8987b0c5ea954eb02b03618d251199e70feec80faa2f"
+        },
+        {
+          "path": "CONTRIBUTING.md",
+          "raw_diff_sha256": "a27f9e8124cc8091a5b699478b1cd04595c9b0dfa8fb31e621153203d28028ad"
+        },
+        {
+          "path": "docs/RE-SETUP.md",
+          "raw_diff_sha256": "8e2b17d14dd85718ac07f0ea8a61fd034a946c890e042814ccd3aa86f0b6bf2b"
+        },
+        {
+          "path": "docs/agents/re-setup-maintenance.md",
+          "raw_diff_sha256": "41aa1fffd86a2d43943e489c052b89e034de5d7b11fbe377eddf930094f4ecbd"
+        },
+        {
+          "path": "docs/agents/review-payloads.md",
+          "raw_diff_sha256": "235db7539b21f017dda959d82d6491fa23955cc0ccf2a5541f503f49e985884b"
+        },
+        {
+          "path": "tools/pre_push.py",
+          "raw_diff_sha256": "10ef7156f095487f132891fd998978bdbf20e0366f51f2e8d52d2f3ab00f3371"
+        }
+      ]
+    },
+    {
+      "packet": 2,
+      "serialized_bytes": 16233,
+      "files": [
+        {
+          "path": "tools/re_bootstrap.py",
+          "raw_diff_sha256": "a51793aa1ae6de8484c6b968d3c519b488b31aac27ff0e16c479e0f70d1df2fc"
+        }
+      ]
+    },
+    {
+      "packet": 3,
+      "serialized_bytes": 16162,
+      "files": [
+        {
+          "path": "tools/re_client_discovery.py",
+          "raw_diff_sha256": "db4aca4ef76fc2e37152b449babde2d8e38fa0900b17e70d1eef86861c5a87ba"
+        },
+        {
+          "path": "tools/re_doctor.py",
+          "raw_diff_sha256": "4afc85cfa0a46b692d9dfb196cb2aaeceb1eda3c234e7494128899f828f7ebe5"
+        }
+      ]
+    },
+    {
+      "packet": 4,
+      "serialized_bytes": 14095,
+      "files": [
+        {
+          "path": "tools/re_install_manifest.json",
+          "raw_diff_sha256": "99c0204cbc60125b81ce1147452357caf228f2e6b901ffc97d4167eb6241538e"
+        },
+        {
+          "path": "tools/re_mcp.py",
+          "raw_diff_sha256": "56d74de0e21e4eb1317fc1dd072b275d59c161eaed7421c8470b9da96cccce75"
+        },
+        {
+          "path": "tools/re_rpc.py",
+          "raw_diff_sha256": "d204f4b506c620c2fc7f23674a8ec7a6acbd1b3216f466027830f5d158979f91"
+        },
+        {
+          "path": "tools/re_static_probe.py",
+          "raw_diff_sha256": "939deb78f1c63aba341f1a0503c9c9ea88f40d0014d4599cb21f3950c9176d97"
+        }
+      ]
+    },
+    {
+      "packet": 5,
+      "serialized_bytes": 15863,
+      "files": [
+        {
+          "path": "tools/review_payload.py",
+          "raw_diff_sha256": "1ed61c7c682b4dfcce8c7d389ffd6896674ba557026b1d45693b15152f748523"
+        },
+        {
+          "path": "tools/run_tests.py",
+          "raw_diff_sha256": "2842df0fb91afb01e4a63f859ebd58ee6ef85561d6d3164c4e0f72dda7168087"
+        },
+        {
+          "path": "tools/test_pre_push.py",
+          "raw_diff_sha256": "18b22c8b39697491c6ae69f5990bede85e08f742b728f249d01a9f92f8f9666f"
+        }
+      ]
+    },
+    {
+      "packet": 6,
+      "serialized_bytes": 16551,
+      "files": [
+        {
+          "path": "tools/test_re_bootstrap.py",
+          "raw_diff_sha256": "6f8efe48a420ab66be470698a34708c836aa8595604db702fa61b3aa8c0bd7fa"
+        },
+        {
+          "path": "tools/test_re_doctor.py",
+          "raw_diff_sha256": "f1d983bc3d4fea43e76149b589b8beec10f0e146d293b057b974bfe8b9d8ad82"
+        },
+        {
+          "path": "tools/test_re_mcp.py",
+          "raw_diff_sha256": "5e7421b55ae2974f47b82557955b7af2c18bfcbbdf13e92967337e9ae71a7ba5"
+        },
+        {
+          "path": "tools/test_review_payload.py",
+          "raw_diff_sha256": "9f672ab2a26ece7f14854882df2d2fc6812f7a99e49a3b571753bda312433cb8"
+        },
+        {
+          "path": "tools/test_run_tests.py",
+          "raw_diff_sha256": "debf3791d7ed3adf128f0c5436a4cb41bc4fec6dcb74e6d9ef73f3ad97b5da65"
+        }
+      ]
+    },
+    {
+      "packet": 7,
+      "serialized_bytes": 7385,
+      "files": [
+        {
+          "path": "tools/test_validate.py",
+          "raw_diff_sha256": "07195d6ddbd3604f9dcf4e666abacf08244e2911689aac3f78220fb6fd5ae7f7"
+        },
+        {
+          "path": "tools/validate.py",
+          "raw_diff_sha256": "44064abe374c8e73da3746bfe9928a60400820f16eb71010465468b325fbdcc3"
+        }
+      ]
+    }
+  ],
+  "gate_scope": [
+    "tools/validate.py",
+    "tools/test_validate.py"
+  ],
+  "disposition": "human review required; escalations retained; no retry or automatic acceptance",
+  "review_records": [
+    {
+      "path": "review-001.json",
+      "sha256": "3f45cc7c80b1e371d998d836db533cdb18f023ce9d21dd44b884c4d9873745da",
+      "action": "escalate",
+      "safe_to_apply": 0.37
+    },
+    {
+      "path": "review-002.json",
+      "sha256": "4ad651805baebcdd3da956ea42787c2e87080115804ad9ad8f93d14d9e4e689c",
+      "action": "escalate",
+      "safe_to_apply": 0.15
+    },
+    {
+      "path": "review-003.json",
+      "sha256": "eb389d4e37e03daac8a01c4ea085df8a1722e3e22c96056294d7926ae0c6c82c",
+      "action": "escalate",
+      "safe_to_apply": 0.16
+    },
+    {
+      "path": "review-004.json",
+      "sha256": "d00b2107d3af6a05d84a2d049a98585ad68becd0966fe46a9e7c9d10a2787674",
+      "action": "escalate",
+      "safe_to_apply": 0.33
+    },
+    {
+      "path": "review-005.json",
+      "sha256": "5fa0433dc656af777ad85098fde3207e63ec7eface02ec6af1e1df7a381ac81c",
+      "action": "escalate",
+      "safe_to_apply": 0.45
+    },
+    {
+      "path": "review-006.json",
+      "sha256": "0e040ef654b09ce8a39c715f4ae4274fea7c037c1abb27a96659ffa4acebf2ad",
+      "action": "escalate",
+      "safe_to_apply": 0.47
+    },
+    {
+      "path": "review-007.json",
+      "sha256": "ffa8ac34d48b4c2f65bda5db76e5f841ce1836e447d280bcbaedfbc414b395ad",
+      "action": "escalate",
+      "safe_to_apply": 0.48
+    }
+  ],
+  "claim_verification": {
+    "path": "claim-verification.json",
+    "sha256": "f4929049bced2e58fe341d8bb9d730408090a7e1942c654fb03982fdc18122a7"
+  },
+  "local_claim_verification": {
+    "path": "local-claim-verification.json",
+    "sha256": "d3b064791edd759ff43d5665af91dbd6e2a03636e27d2ee5717cc60acb4914f3"
+  },
+  "scoped_completion_gate": {
+    "path": "completion-gate.json",
+    "sha256": "e4e050631fb116ea0666ca17c88fe86f6740fe41089461396bf0782e18b208cb"
+  }
+}

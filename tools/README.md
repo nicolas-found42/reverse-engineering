@@ -110,7 +110,12 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/ptg_profile.py](ptg_profile.py) — Measured structure of FR2 .ptg files beyond the single-sprite profile.
 - [tools/ptg_render.py](ptg_render.py) — Decode a .ptg sprite to PNG (grayscale) and prove the layout.
 - [tools/r5900_shape.py](r5900_shape.py) — Structural plausibility of a 32-bit word as an R5900 instruction.
+- [tools/re_bootstrap.py](re_bootstrap.py) — Build the pinned macOS ARM static toolchain beside the active installation, then verify before activation.
+- [tools/re_client_discovery.py](re_client_discovery.py) — Check native RE client discovery separately, using isolated model-free Codex/omp profiles.
+- [tools/re_doctor.py](re_doctor.py) — Reproduce synthetic analysis and authority controls on an isolated static RE backend.
 - [tools/re_mcp.py](re_mcp.py) — Launch the local, pinned RE MCP servers using ignored machine configuration.
+- [tools/re_rpc.py](re_rpc.py) — Bounded stdlib JSON-RPC transport for synthetic MCP checks, without model calls.
+- [tools/re_static_probe.py](re_static_probe.py) — Exercise PyGhidra/EE and rabbitizer using generated R5900 bytes in the isolated utility environment.
 - [tools/re_tool.py](re_tool.py) — Run installed static utilities without adding dependencies to repository tools.
 - [tools/recomp/experimental/verify_ee_fpu_experiment.py](recomp/experimental/verify_ee_fpu_experiment.py) — Verify and compile the bounded experimental EE FPU emitter templates.
 - [tools/recomp/verify_integer_division.py](recomp/verify_integer_division.py) — Check four source-pinned integer division emitters using synthetic registers.
@@ -122,6 +127,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/recorded_decisions.py](recorded_decisions.py) — Read fixed repository decisions; reject changed pins and caller-supplied scope.
 - [tools/repository_hygiene.py](repository_hygiene.py) — Generate navigation/evidence indexes and check corpus-free repository freshness.
 - [tools/research_jev_battery.py](research_jev_battery.py) — Rerun a source-bound TypeSafe research battery (screen sources beforehand).
+- [tools/review_payload.py](review_payload.py) — Build bounded raw-diff review packets and individual claim/evidence packets.
 - [tools/rpc_contracts.py](rpc_contracts.py) — Hand-written bounded STREAM 6.2 channel-volume batch contract.
 - [tools/run_tests.py](run_tests.py) — Run the tool tests with the paths they expect, so green means green.
 - [tools/sdk_stamps.py](sdk_stamps.py) — Find Sony SDK library version stamps in the executable and IOP modules.
@@ -186,6 +192,8 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_ps2_vu.py](test_ps2_vu.py) — Tests: Python module; see source.
 - [tools/test_ptg_verifier.py](test_ptg_verifier.py) — Tests: Tests at the verify_ptg.py CLI boundary; the real-corpus case skips when the corpus is absent.
 - [tools/test_r5900_shape.py](test_r5900_shape.py) — Tests: Python module; see source.
+- [tools/test_re_bootstrap.py](test_re_bootstrap.py) — Tests: Controls for pinned distributions, unsafe archives and activation rollback.
+- [tools/test_re_doctor.py](test_re_doctor.py) — Tests: Controls for synthetic doctor failures, RPC framing and truthful status observations.
 - [tools/test_re_mcp.py](test_re_mcp.py) — Tests: Controls for private token handling and enforced backend environment defaults.
 - [tools/test_recomp_fpu_experimental.py](test_recomp_fpu_experimental.py) — Tests: Source-guarded tests for the isolated, manual-derived FPU experiment.
 - [tools/test_recomp_integer_division.py](test_recomp_integer_division.py) — Tests: Division source guards and native matrix checks, using synthetic inputs.
@@ -195,6 +203,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_recorded_decisions.py](test_recorded_decisions.py) — Tests: Controls for fixed-path decision tables and evidence/source binding failures.
 - [tools/test_repository_hygiene.py](test_repository_hygiene.py) — Tests: Controls for discovery schema, missing evidence fields, links and stale outputs.
 - [tools/test_research_jev_battery.py](test_research_jev_battery.py) — Tests: Failure-path checks for research acceptance; never make API requests.
+- [tools/test_review_payload.py](test_review_payload.py) — Tests: Controls for bounded reviews, intact diffs and separate claim authorities.
 - [tools/test_rpc_contracts.py](test_rpc_contracts.py) — Tests: Public STREAM record check controls; fixtures contain no corpus bytes.
 - [tools/test_rpc_handoff_inventory.py](test_rpc_handoff_inventory.py) — Tests: Public CLI priority controls; synthetic inputs contain no corpus bytes.
 - [tools/test_run_tests.py](test_run_tests.py) — Tests: Python module; see source.
@@ -207,11 +216,13 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_text_denominator.py](test_text_denominator.py) — Tests: Python module; see source.
 - [tools/test_text_references.py](test_text_references.py) — Tests: Python module; see source.
 - [tools/test_translator_semantics.py](test_translator_semantics.py) — Tests: Python module; see source.
+- [tools/test_validate.py](test_validate.py) — Tests: Controls for exact staged/revision validation and failed portable checks.
 - [tools/test_verify_geometry_bounds.py](test_verify_geometry_bounds.py) — Tests: Falsifiers for the six endpoint words consumed from 0x34-byte records.
 - [tools/test_verify_object_floats.py](test_verify_object_floats.py) — Tests: Synthetic controls for the serialized object-row float verifier.
 - [tools/test_verify_recompilation.py](test_verify_recompilation.py) — Tests: Python module; see source.
 - [tools/test_verify_vu.py](test_verify_vu.py) — Tests: Negative oracle checks for native-output validation, independent of GAS internals.
 - [tools/test_vu0_reference.py](test_vu0_reference.py) — Tests: Tests for the bounded VU0 0x268 arithmetic model and source guard.
+- [tools/validate.py](validate.py) — Run the existing portable checks and tests on a working tree or exact Git snapshot.
 - [tools/verify_asset_contracts.py](verify_asset_contracts.py) — Check archive-derived asset families against the fixed PAL consumer registry.
 - [tools/verify_audio.py](verify_audio.py) — Independent FR2 audio structure check; exits 0=pass, 1=fail, 2=incomplete.
 - [tools/verify_code_inventory.py](verify_code_inventory.py) — Check saved R5900 instruction bytes and expose executable inventory gaps.

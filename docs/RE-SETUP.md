@@ -1,5 +1,8 @@
 # Local static RE setup
 
+For repeatable runtime checks, candidate builds, activation and native discovery,
+use the [maintenance workflow](agents/re-setup-maintenance.md).
+
 The shared launchers are `tools/re_mcp.py` and `tools/re_tool.py`. Ignored
 `.scratch/re-setup/config.json` records machine paths and `.scratch/re-setup/ghidra-token`
 holds the dedicated local token with mode 0600. Client entries contain only the

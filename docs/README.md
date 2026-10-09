@@ -15,5 +15,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [docs/adr/0006-misc3d-cell-layout-and-abi.md](adr/0006-misc3d-cell-layout-and-abi.md) — misc3d database-id cell: game-owned NOBITS layout and bounded ABI
 - [docs/agents/domain.md](agents/domain.md) — Domain Docs
 - [docs/agents/issue-tracker.md](agents/issue-tracker.md) — Issue tracker: GitHub
+- [docs/agents/re-setup-maintenance.md](agents/re-setup-maintenance.md) — Static RE runtime maintenance
+- [docs/agents/review-payloads.md](agents/review-payloads.md) — Bounded semantic review inputs
 - [docs/agents/triage-labels.md](agents/triage-labels.md) — Triage Labels
 - [docs/idioms.md](idioms.md) — Confirmed bounded shapes

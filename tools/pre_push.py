@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import io
+import hashlib
 from pathlib import Path
 import re
 import subprocess
@@ -48,6 +49,25 @@ def materialize(commit: str, target: Path, root: Path = ROOT) -> None:
                 path.chmod(member.mode & 0o777)
     subprocess.run(['git', 'init', '-q', str(target)], check=True)
     subprocess.run(['git', '-C', str(target), 'add', '--force', '--all'], check=True)
+    expected = subprocess.check_output(['git', '-C', str(root), 'ls-tree', '-rz', '--name-only', commit])
+    actual = subprocess.check_output(['git', '-C', str(target), 'ls-files', '-z'])
+    if set(expected.split(b'\0')) != set(actual.split(b'\0')):
+        raise ValueError('archive does not preserve the exact tracked file set (check export-ignore attributes)')
+    entries = subprocess.check_output(['git', '-C', str(root), 'ls-tree', '-rz', commit])
+    for entry in entries.split(b'\0'):
+        if not entry:
+            continue
+        metadata, name = entry.split(b'\t', 1)
+        mode, kind, expected_hash = metadata.split()
+        path = target / name.decode()
+        hasher = hashlib.new('sha256' if len(expected_hash) == 64 else 'sha1')
+        hasher.update(('blob ' + str(path.stat().st_size) + '\0').encode())
+        with path.open('rb') as content:
+            for block in iter(lambda: content.read(1024 * 1024), b''):
+                hasher.update(block)
+        executable = mode == b'100755'
+        if kind != b'blob' or hasher.hexdigest().encode() != expected_hash or bool(path.stat().st_mode & 0o111) != executable:
+            raise ValueError('archive changes tracked bytes or mode: ' + name.decode())
 
 
 def main() -> int:
