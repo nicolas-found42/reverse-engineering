@@ -38,9 +38,10 @@ Total: 16 + 287 + 202 + 23 + 19 + 1 = 548.
 - EE loader `0x22a910` (`texgraph.c`: "Unable to load a texture graphic from
   a filename without a .psd extension") accepts `.psd`/`.ptg` requests
   (comparators `psd`/`ptg` at vaddr `0x28ef08`); 35 static call sites.
-- UI init `0x169cd8` issues 25 of those calls with static `GRAPHICS...PSD`
-  names (25 `lui a0,0x25` + `jal 0x22a910` pairs, e.g. `STARTEU.PSD` at
-  file `0x6ade0`); the remaining 10 call sites pass computed names.
+- UI init `0x169cd8` carries static `GRAPHICS...PSD` names (e.g.
+  `STARTEU.PSD` at file `0x6ade0`); its pinned bytes establish a consumer
+  candidate. No subdivision of the loader calls by static or computed names
+  is measured here.
 - All 39 static non-format `GRAPHICS...PSD` requests resolve
   case-insensitively (extension `.PSD` -> `.ptg`) to corpus files: 3
   `tiled_dd` (`StartEU`, `freq`, `loadEU`, all 300-tile 640x480) + 36
@@ -69,6 +70,6 @@ Anchor: EE loader 0x22a910 (texgraph.c) accepts .psd/.ptg requests; all 39 stati
 ## Reproduction
 
 ```sh
-bash tools/check.sh test_ptg_body_census
+bash tools/check.sh test_ptg_body_census test_ptg_consumer_binding
 python3 tools/verify_ptg.py corpus games/ford-racing-2 --output .scratch/evidence/ptg
 ```

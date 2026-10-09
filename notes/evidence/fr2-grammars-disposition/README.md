@@ -7,7 +7,8 @@ Committed this run: `tools/ui_contracts.py` + `tools/test_ui_contracts.py`
 Resolve the cited revisions and prove the merge base with:
 
 ```sh
-git cat-file -t 4580acd e46174a
+git cat-file -t 4580acd
+git cat-file -t e46174a
 git merge-base --is-ancestor 05a685a HEAD && echo "05a685a is an ancestor of HEAD"
 python3 tools/publish_gate.py --body notes/evidence/fr2-grammars-disposition/README.md
 ```

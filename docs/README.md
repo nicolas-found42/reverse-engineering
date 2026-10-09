@@ -13,6 +13,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [docs/adr/0004-license-and-ip-rails.md](adr/0004-license-and-ip-rails.md) — Repository licence and IP rails
 - [docs/adr/0005-game-owned-sdk-boundary.md](adr/0005-game-owned-sdk-boundary.md) — Game-owned and SDK regions: every loadable section is mixed until a range-level split is measured
 - [docs/adr/0006-misc3d-cell-layout-and-abi.md](adr/0006-misc3d-cell-layout-and-abi.md) — misc3d database-id cell: game-owned NOBITS layout and bounded ABI
+- [docs/adr/0007-static-rpc-argument-inference.md](adr/0007-static-rpc-argument-inference.md) — Static RPC argument inference scope
 - [docs/agents/domain.md](agents/domain.md) — Domain Docs
 - [docs/agents/issue-tracker.md](agents/issue-tracker.md) — Issue tracker: GitHub
 - [docs/agents/re-setup-maintenance.md](agents/re-setup-maintenance.md) — Static RE runtime maintenance

@@ -22,7 +22,7 @@ from format_contracts import archive
 
 ROOT = Path(__file__).resolve().parent.parent
 REGISTRY_PATH = ROOT / "notes/asset-loader-registry.json"
-REGISTRY_SHA256 = "0f03cbd389aae193681bbbbae5616f6b7c97d637b515414fc14ae8caaa751b16"
+REGISTRY_SHA256 = "04e0082dd33cba7ce45aa7fad9c51bd422491839dcd223310f3b2de0866aba2f"
 MANIFEST_PATH = ROOT / "notes/asset-consumer-contracts.json"
 CONFIG_EXPECTED_FILES = 16
 

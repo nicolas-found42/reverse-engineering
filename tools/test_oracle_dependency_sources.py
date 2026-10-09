@@ -6,7 +6,9 @@ import json
 import subprocess
 import sys
 import tempfile
+import tarfile
 import unittest
+from contextlib import ExitStack
 from unittest.mock import patch
 
 from evidence_common import Incomplete, Invalid
@@ -257,6 +259,107 @@ class OracleSourceRecords(unittest.TestCase):
                         sources=source_root,
                     )
             self.assertIn("closure_notice_inventory", caught.exception.details)
+
+    def test_changed_non_qt_notice_outranks_absent_qt_source_directory(self):
+        import oracle_dependency_sources as sources
+
+        manifest = json.loads(sources.DEPENDENCY_MANIFEST.read_text())
+        component = manifest["components"]["ffmpeg"]
+        notice = component["licenses"][0]
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source_root = root / "sources"
+            changed = (
+                source_root / component["archive"] / "ffmpeg-version" / notice["path"]
+            )
+            changed.parent.mkdir(parents=True)
+            changed.write_bytes(b"changed known notice")
+            with self.assertRaises(Invalid) as caught:
+                check(
+                    root / "evidence",
+                    root / "sdk",
+                    root / "sdk.7z",
+                    root / "app",
+                    sources=source_root,
+                )
+            self.assertIn("closure_notice_inventory", caught.exception.details)
+            self.assertTrue(caught.exception.details["missing"])
+            self.assertTrue(
+                caught.exception.details["closure_notice_inventory"]["changed"]
+            )
+
+    def test_absent_notice_root_is_incomplete_with_other_inputs_valid(self):
+        import oracle_dependency_sources as sources
+
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            evidence, sdk = root / "evidence", root / "sdk"
+            evidence.mkdir()
+            (sdk / "sbom").mkdir(parents=True)
+            release = evidence / "pcsx2-v2.6.3-macos-Qt.tar.xz"
+            with tarfile.open(release, "w:xz"):
+                pass
+            (sdk / sources.SOURCE_RECORD).write_bytes(self.RECORD)
+            (evidence / "qtbase-git").mkdir()
+            (evidence / "qtbase-git/source.c").write_bytes(b"abc")
+            sdk_archive = root / "sdk.7z"
+            sdk_archive.write_bytes(b"abc")
+            (evidence / "component.tar.xz").write_bytes(b"abc")
+            manifest = root / "manifest.json"
+            manifest.write_text(
+                json.dumps(
+                    {
+                        "components": {
+                            "component": {
+                                "archive": "component.tar.xz",
+                                "licenses": [
+                                    {
+                                        "path": "LICENSE",
+                                        "sha256": hashlib.sha256(b"notice").hexdigest(),
+                                    }
+                                ],
+                            }
+                        }
+                    }
+                )
+            )
+            replacements = {
+                "DEPENDENCY_MANIFEST": manifest,
+                "ARCHIVES": {
+                    release.name: hashlib.sha256(release.read_bytes()).hexdigest()
+                },
+                "RELEASE_MEMBERS": {},
+                "SOURCE_RECORD_SHA256": hashlib.sha256(self.RECORD).hexdigest(),
+                "QT_SDK_ARCHIVE_SHA256": hashlib.sha256(b"abc").hexdigest(),
+                "DEPENDENCY_PINS": {
+                    "shasums": {
+                        "component.tar.xz": hashlib.sha256(b"abc").hexdigest()
+                    }
+                },
+            }
+            notice_root = root / "sources"
+            with ExitStack() as stack:
+                for name, value in replacements.items():
+                    stack.enter_context(patch.object(sources, name, value))
+                with self.assertRaises(Incomplete) as caught:
+                    check(evidence, sdk, sdk_archive, root / "app", sources=notice_root)
+                self.assertEqual(caught.exception.details["changed"], [])
+                self.assertIn("closure_notice_inventory", caught.exception.details)
+                self.assertEqual(
+                    caught.exception.details["closure_notice_inventory"]["missing"],
+                    ["component: extracted source is absent"],
+                )
+                # Supplying exactly the missing notice completes the bounded
+                # inventory, while issue #22 itself remains incomplete.
+                notice = notice_root / "component.tar.xz/component/LICENSE"
+                notice.parent.mkdir(parents=True)
+                notice.write_bytes(b"notice")
+                result = check(
+                    evidence, sdk, sdk_archive, root / "app", sources=notice_root
+                )
+                self.assertEqual(result["missing"], [])
+                self.assertEqual(result["issue22_status"], "incomplete")
+                self.assertIn("closure_notice_inventory", result)
 
     def test_public_cli_negative_and_incomplete_controls(self):
         with tempfile.TemporaryDirectory() as directory:

@@ -280,13 +280,17 @@ def check(
         ),
         (
             "closure_notice_inventory",
-            source_root / manifest["components"]["qtbase"]["archive"],
+            None,
             lambda: verify_closure_licenses(manifest, source_root),
         ),
     ]
     failures = []
     for name, prerequisite, action in branches:
-        if not prerequisite.is_file() and not prerequisite.is_dir():
+        if (
+            prerequisite is not None
+            and not prerequisite.is_file()
+            and not prerequisite.is_dir()
+        ):
             continue
         try:
             details[name] = action()

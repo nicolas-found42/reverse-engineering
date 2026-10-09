@@ -1085,16 +1085,16 @@
     },
     {
       "path": "notes/evidence/fr2-grammars-disposition/README.md",
-      "readme_sha256": "279f65af79e92c2505351e79651922b1e8bb574d50e698d3f6ed4dd2d1286796",
+      "readme_sha256": "51ab7239ec6653e004a04b04071542d0cc41ab0356e3fc9a2f87843c9b421aab",
       "commands": [
-        "git cat-file -t 4580acd e46174a\ngit merge-base --is-ancestor 05a685a HEAD && echo \"05a685a is an ancestor of HEAD\"\npython3 tools/publish_gate.py --body notes/evidence/fr2-grammars-disposition/README.md",
+        "git cat-file -t 4580acd\ngit cat-file -t e46174a\ngit merge-base --is-ancestor 05a685a HEAD && echo \"05a685a is an ancestor of HEAD\"\npython3 tools/publish_gate.py --body notes/evidence/fr2-grammars-disposition/README.md",
         "sh tools/check.sh test_ui_contracts",
         "python3 - <<'PY'\nimport sys\nsys.path.insert(0, \"tools\")\nfrom pathlib import Path\nfrom corpus_binding import Baseline\nfrom ui_contracts import parse_ui_script\nentries = Baseline(Path(\"games/ford-racing-2\")).entries(\".ui;1\")\ntags, depth, failures = set(), 0, []\nfor e in entries:\n    try:\n        parsed = parse_ui_script(e.load())\n    except Exception as exc:\n        failures.append(str(exc))\n        continue\n    tags |= set(parsed.tags) | {rec.tag for rec in parsed.records}\n    for b in parsed.blocks:\n        depth = max(depth, b.depth)\nprint(\"ui files parsed:\", len(entries) - len(failures), \"/\", len(entries))\nprint(\"distinct tags:\", len(tags), \"max block depth:\", depth)\nPY"
       ],
       "sha256_mentions": [
         {
           "value": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
-          "line": 24,
+          "line": 25,
           "context": "`e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab`)"
         }
       ],
@@ -1890,9 +1890,9 @@
     },
     {
       "path": "notes/evidence/fr2-ptg-body-contracts/README.md",
-      "readme_sha256": "0af4f573bb401c473405fd85e24bc8036cb43b5a4ac6645f648e4b5f6b0a6ca0",
+      "readme_sha256": "1cd52f7a4ffcaa5a0e6eceabd96d96628789e7a4fa7008930379e8deeafe92a0",
       "commands": [
-        "bash tools/check.sh test_ptg_body_census\npython3 tools/verify_ptg.py corpus games/ford-racing-2 --output .scratch/evidence/ptg"
+        "bash tools/check.sh test_ptg_body_census test_ptg_consumer_binding\npython3 tools/verify_ptg.py corpus games/ford-racing-2 --output .scratch/evidence/ptg"
       ],
       "sha256_mentions": [],
       "revision_mentions": [],
@@ -1938,14 +1938,19 @@
     },
     {
       "path": "notes/evidence/fr2-rpc-contracts/README.md",
-      "readme_sha256": "1478f6de17cb2037f89f12bfe3a50ef82792039e0f6a894707a570e4320958a1",
+      "readme_sha256": "63e18c3999b61729bd2e4792e35a5e299fe71dcb131252bbc5cca83a06d6e73c",
       "commands": [
         "python3 tools/inventory_rpc_handoffs.py \\\n  /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted \\\n  --output .scratch/rpc-controls/inventory\n\ntools/check.sh test_rpc_contracts\n\npython3 - <<'PY'\nfrom pathlib import Path\nimport struct\nroot = Path('.scratch/rpc-controls')\nroot.mkdir(parents=True, exist_ok=True)\ncontrols = {\n    'positive': (62, 2, 2, 3, 0, 120, 240, 2, 3, 47, 600, 700),\n    'negative': (62, 1, 2, 4, 0, 120, 240, 0),\n    'incomplete': (62, 1, 9, 2, 65535, 0),\n}\nfor name, words in controls.items():\n    (root / (name + '.bin')).write_bytes(\n        struct.pack('<' + 'H' * len(words), *words).ljust(2048, b'\\xa5'))\nPY\n\npython3 tools/check_rpc_contracts.py \\\n  --ee /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05 \\\n  --stream /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX \\\n  --packet .scratch/rpc-controls/positive.bin \\\n  --output .scratch/rpc-controls/positive"
       ],
-      "sha256_mentions": [],
+      "sha256_mentions": [
+        {
+          "value": "9d6ad7bd6045cc24fe15f7c9b912c1365492ed0e3d20c2c4aabb22499423c62f",
+          "line": 116,
+          "context": "SHA-256 `9d6ad7bd6045cc24fe15f7c9b912c1365492ed0e3d20c2c4aabb22499423c62f`,"
+        }
+      ],
       "revision_mentions": [],
       "missing": [
-        "full_sha256_mention",
         "full_revision_mention"
       ]
     },

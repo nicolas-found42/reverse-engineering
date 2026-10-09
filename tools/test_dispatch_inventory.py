@@ -1,4 +1,9 @@
 import hashlib
+import json
+from pathlib import Path
+import subprocess
+import sys
+import tempfile
 import struct
 import unittest
 
@@ -101,6 +106,55 @@ class DispatchInventoryTest(unittest.TestCase):
         self.assertTrue(span["reason"])
         self.assertTrue(span["falsifier"])
         self.assertFalse(result["whole_game_decompiled"])
+
+
+class DispatchCliControls(unittest.TestCase):
+    def test_cli_valid_changed_and_missing_inputs_retain_status_and_exit(self):
+        data, static = build([ADDIU_SP, LW_RA, JR_RA, NOP], range(4))
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            executable, export = root / "fixture.elf", root / "static.json"
+            executable.write_bytes(data)
+            export.write_text(json.dumps(static))
+            command = [
+                sys.executable,
+                str(Path(__file__).with_name("dispatch_inventory.py")),
+                "--executable",
+                str(executable),
+                "--static-export",
+                str(export),
+                "--output",
+                str(root / "receipts"),
+            ]
+            for case, expected_exit, expected_status in (
+                ("valid", 0, "pass"),
+                ("changed", 1, "fail"),
+                ("missing executable", 2, "incomplete"),
+                ("missing static export", 2, "incomplete"),
+            ):
+                if case == "changed":
+                    static["executable_sha256"] = "0" * 64
+                    export.write_text(json.dumps(static))
+                elif case == "missing executable":
+                    executable.unlink()
+                elif case == "missing static export":
+                    executable.write_bytes(data)
+                    export.unlink()
+                with self.subTest(case=case):
+                    run = subprocess.run(
+                        command, capture_output=True, text=True, timeout=30
+                    )
+                    self.assertEqual(
+                        run.returncode, expected_exit, run.stdout + run.stderr
+                    )
+                    report = json.loads(
+                        Path(json.loads(run.stdout)["result"]).read_text()
+                    )
+                    self.assertEqual(report["status"], expected_status)
+                    if expected_exit:
+                        self.assertTrue(report["diagnostics"])
+                    else:
+                        self.assertFalse(report["details"]["whole_game_decompiled"])
 
 
 def switch_words(table_hi=0, table_lo=0x2000, count=2, branch_skip=9):

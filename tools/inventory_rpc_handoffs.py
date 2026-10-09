@@ -120,6 +120,12 @@ def derive_handoffs(ee: bytes | None, payloads: dict) -> list[dict]:
     for row in handoffs:
         if row.get("status") != "bound":
             continue
+        if row.get("module") != "STREAM.IRX":
+            row["status"] = "unresolved"
+            row["reason"] = (
+                "registration module is outside the evidenced STREAM dispatch domain"
+            )
+            continue
         handler_name = next(
             (
                 n
@@ -137,6 +143,16 @@ def derive_handoffs(ee: bytes | None, payloads: dict) -> list[dict]:
             row.get("service_id") == STREAM_CONTRACT["service_id"]
             and handler_name == STREAM_CONTRACT["handler"]
         ):
+            if any(
+                call[direction]["bytes"] != STREAM_CONTRACT["record"]["transfer_bytes"]
+                for call in row["call_candidates"]
+                for direction in ("send", "receive")
+            ):
+                row["status"] = "unresolved"
+                row["reason"] = (
+                    "decoded transfer size differs from the evidenced STREAM record contract"
+                )
+                continue
             row["contract"] = STREAM_CONTRACT
         else:
             row["status"] = "unresolved"
@@ -275,6 +291,7 @@ def main() -> int:
                 "inventory_rpc_handoffs.py",
                 "check_rpc_contracts.py",
                 "rpc_contracts.py",
+                "rpc_handoffs.py",
                 "rpc_profile.json",
                 "iop_symbols.py",
                 "ps2_executables.py",

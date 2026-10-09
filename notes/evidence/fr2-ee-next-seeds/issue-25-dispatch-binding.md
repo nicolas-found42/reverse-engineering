@@ -29,12 +29,12 @@ This ticket blocks #23; it claims no game-owned range and no compiler result
   listing delta equals newly decoded words).
 - `export_verify.sh` reopens the saved project read-only; `post_seed.py` /
   `post_batch.py` reconcile the new export against the pinned baseline
-  (17 checks for `00200d10`, 16/16 for batch `g3`).
+  (the retained receipts identify the checked candidates).
 - Retained receipts: `fr2-ee-next-seeds/00200d10-reconciliation.json`,
   `batch-g3-candidates/reconciliation.json` + `root-export-check.json`,
   `fr2-ee-unresolved-audit/recovery/` (three-seed union), and the
-  `fr2-dispatch-pair` containment receipts (3,837 entries, memory, and data
-  preserved; exactly two expected C files changed).
+  `fr2-dispatch-pair` containment receipts (compared entries, memory, data,
+  and C-file changes).
 
 ## Criterion 3 — controls (relaxed guard cannot silently admit)
 
@@ -51,24 +51,23 @@ This ticket blocks #23; it claims no game-owned range and no compiler result
   `JAL` requires the exact `CALL_TERMINATOR` shape with null fallthrough and a
   decoded callee body without terminal flows (`pinnedNoreturnCall`); the only
   body relaxation admits pinned post-delay NOP omissions at site+8
-  (`bodyDeltaIsPinnedNoreturnNops`). All paths are exercised by the 38-check
+  (`bodyDeltaIsPinnedNoreturnNops`). All paths are exercised by the
   Ghidra-API guard test (`CreateEeCandidateV5GuardTest`, via
   `test_ee_candidate_v5.py`).
 
 ## Criterion 4 — bindings and retained unknowns
 
 - Accepted discoveries: gap-fill batches `g1`/`g2`/`g3` (method + hold-out
-  basis in each bundle README; Jev decide 0.63 for `g3`), the two bounded
+  basis in each bundle README), the two bounded
   dispatch reconstructions at `001fbe48`/`001161a8` (`fr2-dispatch-pair`,
   Jev-verified containment), and the `00200d10` / three-seed union candidates
   (provisional, caller-evidenced).
 - Ownership evidence: every candidate edge is recorded as provisional static
-  structure; the overclaim "the 211 functions are the original game functions"
-  is explicitly unsupported/contradicted at 0.93 (`jev-verify-note.json`).
+  structure; the overclaim "the saved functions are the original game functions"
+  is explicitly unsupported/contradicted in the retained `jev-verify-note.json`.
   No recovered original identity is claimed anywhere.
-- Retained unresolved/failed: 155 unreferenced code-shaped spans after `g3`
-  (73,756 bytes); 56 anchored spans blocked by guard limits; 15 residual
-  computed-JR sites (10 recognized, 5 unrecognized) in
+- Retained unresolved/failed: unreferenced code-shaped spans after `g3`;
+  anchored spans blocked by guard limits; residual computed-JR sites classified in
   `jump-table-pipeline-review/residual-recognizer-measurement.json`;
   `failed-attempt-*`, `failed-attempt-untagged-NOTE.txt`,
   `broad-disassembly-superseded.json`, `pair-only-superseded.json`, and the
@@ -76,3 +75,15 @@ This ticket blocks #23; it claims no game-owned range and no compiler result
 
 No game code was executed. Generated C, full inventories, and Ghidra projects
 remain in ignored local storage.
+
+## Reproduction and historical scope
+
+```sh
+bash tools/check.sh test_dispatch_inventory test_pipeline_walker test_batch_switch_config test_ee_candidate_v5
+```
+
+The command checks the public inventory and synthetic guard controls. The
+save/reopen and discovery receipts above record historical local observations;
+this note does not certify their counts against the current corpus/revision.
+Reproducing those observations requires the corresponding ignored Ghidra
+projects and static exports, and the bundle commands named in their READMEs.
