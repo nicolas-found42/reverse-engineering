@@ -1,0 +1,265 @@
+{
+  "checks": [
+    {
+      "schema": "fr2-validation/v1",
+      "portable": true,
+      "successful": false,
+      "checks": [
+        {
+          "check": "ip",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-validation/ip.log"
+        },
+        {
+          "check": "hygiene",
+          "exit_code": 1,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-validation/hygiene.log"
+        },
+        {
+          "check": "lint",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-validation/lint.log"
+        },
+        {
+          "check": "tests",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-validation/tests.log"
+        }
+      ],
+      "tree": "ce5eda594c1845c8decf70d48e4aff701dd6aed1",
+      "scope": "staged",
+      "result_identity": {
+        "bytes": 940,
+        "sha256": "f229069042d60287aec9c5744ec2d39969ec0419363a9d5ab4f02f227bf60f27"
+      }
+    },
+    {
+      "schema": "fr2-validation/v1",
+      "portable": true,
+      "successful": true,
+      "checks": [
+        {
+          "check": "ip",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-repair-validation/ip.log"
+        },
+        {
+          "check": "hygiene",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-repair-validation/hygiene.log"
+        },
+        {
+          "check": "lint",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-repair-validation/lint.log"
+        }
+      ],
+      "tree": "551483a73cff564b4b7f69779456fa7ea684d00c",
+      "scope": "staged",
+      "result_identity": {
+        "bytes": 767,
+        "sha256": "977018e642f22f363e64caf2c3c67db14f9a3a5b0473117e7d6a2412a4ec81c1"
+      }
+    },
+    {
+      "schema": "fr2-validation/v1",
+      "portable": true,
+      "successful": true,
+      "checks": [
+        {
+          "check": "ip",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-final-validation/ip.log"
+        },
+        {
+          "check": "hygiene",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-final-validation/hygiene.log"
+        },
+        {
+          "check": "lint",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-final-validation/lint.log"
+        },
+        {
+          "check": "tests",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/publication-final-validation/tests.log"
+        }
+      ],
+      "tree": "de660b22da796219e1369fab42ef48e609e611cf",
+      "scope": "staged",
+      "result_identity": {
+        "bytes": 963,
+        "sha256": "4ae62ac11aed819dc87127093c280d7a2cb8cf99e28dc677e857f550ec899529"
+      }
+    }
+  ],
+  "initial_failure": "Snapshot was prepared before three independent-review artifacts arrived; repository-link hygiene failed. Files were added and a fresh complete staged validation passed. All original failing output is retained locally.",
+  "final_test_summary": {
+    "schema": "fr2-test-summary/v1",
+    "successful": true,
+    "tests_run": 792,
+    "failures": 0,
+    "errors": 0,
+    "skipped_tests": [
+      {
+        "test": "test_audio_verifier.AudioVerifier.test_corpus_audio_real_integration",
+        "reason": "real corpus integration; absent corpus is `incomplete` for the milestone"
+      },
+      {
+        "test": "test_completion.CompletionCli.test_real_corpus_cli_conserves_bytes_and_references_limited_ac30_evidence",
+        "reason": "real aggregate CLI control needs local corpus and compiler tools"
+      },
+      {
+        "test": "test_corpus_binding.CorpusBinding.test_altered_baseline_input_is_not_accepted",
+        "reason": "real corpus integration; absent corpus is `incomplete`"
+      },
+      {
+        "test": "test_corpus_binding.CorpusBinding.test_altered_file_content_fails_against_the_archive_hash",
+        "reason": "real corpus integration; absent corpus is `incomplete`"
+      },
+      {
+        "test": "test_corpus_binding.CorpusBinding.test_removed_files_make_the_run_incomplete",
+        "reason": "real corpus integration; absent corpus is `incomplete`"
+      },
+      {
+        "test": "test_corpus_binding.CorpusBinding.test_unpaired_header_or_payload_in_the_archive_baseline_is_reported",
+        "reason": "real corpus integration; absent corpus is `incomplete`"
+      },
+      {
+        "test": "test_ee_candidate_v5.EeCandidateV5Test.test_real_address_sets_and_flow_types_enforce_the_guard",
+        "reason": "requires Ghidra jars and a JDK (GHIDRA_HEADLESS, JAVA_HOME)"
+      },
+      {
+        "test": "test_evidence_pipeline.EvidenceCommands.test_corpus_reports_finder_metadata_but_still_fails_other_extras",
+        "reason": "real corpus integration; absent corpus is `incomplete` for the milestone"
+      },
+      {
+        "test": "test_matching_ranges.RangeCli.test_changed_module_fails_even_with_a_different_module_missing",
+        "reason": "real pinned module mutation requires local corpus"
+      },
+      {
+        "test": "test_matching_ranges.RangeCli.test_real_corpus_ownership_is_stable_when_candidate_source_changes",
+        "reason": "real corpus source mutation requires the local pinned corpus"
+      },
+      {
+        "test": "test_matching_ranges.RangeCli.test_real_corpus_splits_only_the_identity_pinned_source_unit_and_keeps_match_zero",
+        "reason": "real corpus range split requires the local pinned corpus"
+      },
+      {
+        "test": "test_model_verifier.ModelVerifier.test_corpus_real_integration",
+        "reason": "real corpus integration; absent corpus is `incomplete` for the milestone"
+      },
+      {
+        "test": "test_ps2_executables.ExecutablesTest.test_real_disc_boundaries",
+        "reason": "local game payload is unavailable"
+      },
+      {
+        "test": "test_ps2_sections.Cli.test_real_corpus_uses_hash_bound_profiles_for_56_exact_eof_results",
+        "reason": "real corpus absent; CLI reports incomplete"
+      },
+      {
+        "test": "test_ps2_textures.Cli.test_corpus_real_integration",
+        "reason": "real corpus integration; absent corpus is `incomplete` for the milestone"
+      },
+      {
+        "test": "test_ps2_vif.VifStaticMappingTest.test_pinned_game_has_eight_exact_overlay_matches_and_no_extras",
+        "reason": "private pinned game executable is not present in this checkout"
+      },
+      {
+        "test": "test_ptg_verifier.PtgVerifier.test_corpus_real_integration",
+        "reason": "real corpus integration; absent corpus is `incomplete` for the milestone"
+      },
+      {
+        "test": "test_recomp_integer_division.DivisionPinnedTest.test_dependency_drift_fails_before_output_creation",
+        "reason": "private pinned source/dependency is unavailable"
+      },
+      {
+        "test": "test_recomp_integer_division.DivisionPinnedTest.test_extraction_uses_actual_register_reads_and_both_banks",
+        "reason": "private pinned source/dependency is unavailable"
+      },
+      {
+        "test": "test_recomp_integer_division.DivisionPinnedTest.test_synthetic_matrix_and_corrupted_quotients",
+        "reason": "private pinned source/dependency is unavailable"
+      },
+      {
+        "test": "test_recomp_integer_multiply.MultiplyPinnedTest.test_actual_emitters_cover_signed_unsigned_both_banks_and_rd_zero",
+        "reason": "private pinned source/dependency/inventory is unavailable"
+      },
+      {
+        "test": "test_recomp_integer_multiply.MultiplyPinnedTest.test_actual_template_probe_and_corrupted_output_bit_mutant",
+        "reason": "private pinned source/dependency/inventory is unavailable"
+      },
+      {
+        "test": "test_recomp_integer_multiply.MultiplyPinnedTest.test_dependency_drift_fails_before_output_creation",
+        "reason": "private pinned source/dependency/inventory is unavailable"
+      },
+      {
+        "test": "test_recomp_integer_multiply.MultiplyPinnedTest.test_each_extracted_branch_has_the_expected_arithmetic_and_result_bank",
+        "reason": "private pinned source/dependency/inventory is unavailable"
+      },
+      {
+        "test": "test_recomp_mmi_packed.PackedMmiPinnedProbeTest.test_changed_dependency_is_rejected_before_output_creation",
+        "reason": "private pinned upstream/dependency checkout is unavailable"
+      },
+      {
+        "test": "test_recomp_mmi_packed.PackedMmiPinnedProbeTest.test_existing_output_is_rejected_without_overwrite",
+        "reason": "private pinned upstream/dependency checkout is unavailable"
+      },
+      {
+        "test": "test_recomp_mmi_packed.PackedMmiPinnedProbeTest.test_templates_extract_and_match_source_inventory",
+        "reason": "private pinned upstream/dependency checkout is unavailable"
+      },
+      {
+        "test": "test_recomp_shuffles.ShufflePinnedSourceTest.test_missing_or_changed_translation_template_is_rejected",
+        "reason": "private pinned tool checkout is unavailable"
+      },
+      {
+        "test": "test_recomp_shuffles.ShufflePinnedSourceTest.test_pinned_patch_constructs_exact_candidate_sources",
+        "reason": "private pinned tool checkout is unavailable"
+      },
+      {
+        "test": "test_recomp_shuffles.ShufflePinnedSourceTest.test_rejects_existing_output_directory",
+        "reason": "private pinned tool checkout is unavailable"
+      },
+      {
+        "test": "setUpClass (test_translator_semantics.TranslatorSemanticsTests)",
+        "reason": "set PS2RECOMP_SOURCE_ROOT to the pinned checkout for source-dependent tests"
+      },
+      {
+        "test": "test_verify_object_floats.ObjectFloats.test_real_corpus_result_is_archive_bound_and_reports_every_model",
+        "reason": "real corpus absent; parser-derived corpus verifier is not run"
+      },
+      {
+        "test": "test_vu0_reference.VU268PrivateSourceIntegrationTest.test_local_executable_matches_pinned_overlay_span_and_loads",
+        "reason": "private Ford Racing 2 executable is unavailable; synthetic guard mutation tests still run"
+      }
+    ],
+    "excluded_modules": [
+      {
+        "module": "test_research_jev_battery",
+        "reason": "optional_dependency",
+        "dependencies": [
+          "typesafe_sdk"
+        ]
+      },
+      {
+        "module": "test_batch_switch_config",
+        "reason": "local_inputs",
+        "inputs": [
+          ".scratch",
+          "corpus"
+        ]
+      },
+      {
+        "module": "test_recomp_fpu_experimental",
+        "reason": "local_inputs",
+        "inputs": [
+          ".scratch",
+          "corpus"
+        ]
+      }
+    ]
+  }
+}

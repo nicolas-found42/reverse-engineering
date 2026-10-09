@@ -1,0 +1,264 @@
+{
+  "schema": "fr2-independent-claim-dispositions/v1",
+  "reviewer": "independent Spec-axis reasoner",
+  "source_revision": "05a685a35ae429aaddacce1a7faceb6b6438ab44",
+  "original_verification_identity": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/baseline-claims-verification.json",
+    "bytes": 10161,
+    "sha256": "d2c35758a54bc169339ae51ebdfc09eae4b7f92887be308f2691eabd1e6bc467"
+  },
+  "original_judgments_retained": [
+    {
+      "id": "claim2",
+      "claim": "The fresh aggregate has eleven child receipts with no failed child, and reports eight exact VU encodings; entry/state maps and behavioral observations remain incomplete.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.5,
+        "contradicts": 0.47,
+        "says_nothing": 0.03
+      },
+      "confidence": 0.25,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.91
+    },
+    {
+      "id": "claim3",
+      "claim": "Exact-revision validation passes IP, hygiene, Ruff and the portable suite with 792 tests run, zero failures/errors, 33 skipped tests and three separately excluded modules.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.79,
+        "contradicts": 0.19,
+        "says_nothing": 0.02
+      },
+      "confidence": 0.69,
+      "action": "review",
+      "supporting_evidence": null,
+      "same_subject": 0.84
+    }
+  ],
+  "resolutions": [
+    {
+      "claim": "The fresh aggregate has eleven child receipts with no failed child, and reports eight exact VU encodings; entry/state maps and behavioral observations remain incomplete.",
+      "verdict": "accepted",
+      "rationale": "Independently read the raw aggregate and all eleven referenced child JSON receipts. Every referenced SHA256 and byte length matches the on-disk child, and statuses match (seven pass, four incomplete; no fail). VU child independently reports overlay_count=8, exact_roundtrip_overlays=8, encoding_status=pass; all eight records have exact_match=true, equal original/assembled SHA256 and byte lengths, successful assembler/objdump exit codes and passing byte gates. AC17 is incomplete with the explicit reason Required entry/state interfaces remain unresolved; VU interface_status and entry_map_disposition are incomplete. Behavioral status/readiness are incomplete with an empty observations list. This accepts the stated bounded reporting claim, without awarding VU interface, runtime or whole-game completion.",
+      "evidence": [
+        {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/20261009T152126Z-718499d4bc88455280610996082435eb/result.json",
+          "bytes": 600216,
+          "sha256": "45d1186f03ca0fd3dbda4baa3f2ead84fe5ed12d06d2a065eabefe4da8ea2e5d"
+        },
+        {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/vu/20261009T152129Z-8c0e315b74ca481481d29ee15f76a960/result.json",
+          "bytes": 59746,
+          "sha256": "3b5248736296001b712d10d5ac944d946f31c2c4a978a3676a84e1c7c6e2b173"
+        }
+      ],
+      "deterministic_observations": {
+        "child_count": 11,
+        "pass_children": 7,
+        "incomplete_children": 4,
+        "failed_children": 0,
+        "referenced_children": [
+          {
+            "child_id": "C00",
+            "status": "pass",
+            "check": "matching-range-inventory:corpus",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/ranges/20261009T152126Z-c95f736589d44a6fb9e95fd3474db546/result.json",
+              "bytes": 95360,
+              "sha256": "1f6928f7e6d9ab4e9b0a41e2a0068f73ddeb47cc883da641636965062cffd95e"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C01",
+            "status": "pass",
+            "check": "formats:corpus",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/archive/20261009T152127Z-6a650f1953a84586a5b274f1598bf980/result.json",
+              "bytes": 4079980,
+              "sha256": "6d9b7671ebd7f020f53f5c4d8a4ac830469146a1134a92a5ff8a04c951a3b275"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C02",
+            "status": "incomplete",
+            "check": "vu-roundtrip",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/vu/20261009T152129Z-8c0e315b74ca481481d29ee15f76a960/result.json",
+              "bytes": 59746,
+              "sha256": "3b5248736296001b712d10d5ac944d946f31c2c4a978a3676a84e1c7c6e2b173"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C03",
+            "status": "incomplete",
+            "check": "assets:consumer-contracts",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/assets/20261009T152129Z-6269624029164e3d8cf919e51071831b/result.json",
+              "bytes": 56955,
+              "sha256": "8ef3cd8e00f7fdc846275b9f6b4b24817dc8f970334889f5b6f9cd14cbfbafd4"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C04",
+            "status": "pass",
+            "check": "compiler-probe-exploratory",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/compiler/20261009T152132Z-853710317ed3414fabfb758bfa64070c/result.json",
+              "bytes": 76290,
+              "sha256": "ace04f76001e6691cec03388f9cdd5d1c04c74bf8c518793815be5ebc0a47bc9"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C05",
+            "status": "pass",
+            "check": "misc3d-contract",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_cell/20261009T152224Z-2c586ca82ca94930a01760bc8cfd6888/result.json",
+              "bytes": 23681,
+              "sha256": "a20ab80d9416d383d389ffc81df938a61bcc5bef8792a80fe09bb12f016fd0ff"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C06",
+            "status": "pass",
+            "check": "misc3d-lifecycle",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_lifecycle/20261009T152228Z-1870e4be2a3049c1856a3807be6d0470/result.json",
+              "bytes": 49555,
+              "sha256": "ec265b839a09b62248ab95383729b6cd6929659e85c903949e46e611ce822b63"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C07",
+            "status": "incomplete",
+            "check": "STREAM channel-volume contract",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc/20261009T152239Z-791808e7466b4e1d96eec44dcd3450ea/result.json",
+              "bytes": 67476,
+              "sha256": "27f6cc1071147f1f351dd02e8e079c2f40eb9870ccb41416f27a91b37cf13f68"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C08",
+            "status": "pass",
+            "check": "gnu-linker-layout",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/layout/20261009T152239Z-0651bce38fc74796a4b68f6e291cb679/result.json",
+              "bytes": 40392,
+              "sha256": "b45b05671883fb589fc2408821c0981450c824b56e6dc09c1456cd8659e5d097"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C09",
+            "status": "incomplete",
+            "check": "PAL RPC handoff frontier",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc_inventory/20261009T152244Z-0c5d7ddc4bb0498f95415d6ab4d19f8e/result.json",
+              "bytes": 108113,
+              "sha256": "a2f95beb0ae7bdca672399e95fe054c3964be4a89dfac299568c9bb4641a457d"
+            },
+            "reference_identity_matches": true
+          },
+          {
+            "child_id": "C10",
+            "status": "pass",
+            "check": "misc3d-loader-terminal-source",
+            "identity": {
+              "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_terminal/20261009T152244Z-de1b309484d54902b0c7b5e8b56af750/result.json",
+              "bytes": 14946,
+              "sha256": "80c361b6681f682372be7bb9046bb8335c4f22fd6890e77c397106d6fce294a7"
+            },
+            "reference_identity_matches": true
+          }
+        ],
+        "reported_exact_vu_encodings": 8,
+        "vu_encoding_status": "pass",
+        "entry_map_disposition": "incomplete",
+        "interface_status": "incomplete",
+        "AC17_status": "incomplete",
+        "AC17_reason": "Required entry/state interfaces remain unresolved.",
+        "behavioral": {
+          "status": "incomplete",
+          "readiness": "incomplete",
+          "observations": [],
+          "reason": "No verified headless original/rebuilt runner or observations."
+        }
+      }
+    },
+    {
+      "claim": "Exact-revision validation passes IP, hygiene, Ruff and the portable suite with 792 tests run, zero failures/errors, 33 skipped tests and three separately excluded modules.",
+      "verdict": "accepted",
+      "rationale": "Independently read validation/result.json, tests.json and the actual tests.log. The validation scope pins 05a685a35ae429aaddacce1a7faceb6b6438ab44 and its tree df462a8e58bf43d1ee9d0a32f16ebfc7ae77421d, resolved independently with git. The portable result is successful and all four named checks ip/hygiene/lint/tests returned exit0. tests.json records tests_run792, failures0, errors0, 33 unittest skips and three separately excluded modules; the actual log confirms Ran792 tests and OK(skipped=33). These are exact-revision tooling facts and do not close reconstruction criteria or exercise unavailable local-input tests.",
+      "evidence": [
+        {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/validation/result.json",
+          "bytes": 925,
+          "sha256": "7d44cdef134ccc6fe0958c5d2ddd8f2f0941846492e93dde594a7d74d2cc4a63"
+        },
+        {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/validation/tests.json",
+          "bytes": 7192,
+          "sha256": "10d9bb980b9e94ea097ad22b05de3686c18c86a2dff5f9ea6ede4dd9fd0a9702"
+        },
+        {
+          "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/validation/tests.log",
+          "bytes": 10852,
+          "sha256": "f0e68e151ed1abad851b63e307ac3d3818750646ccf521589b5380df09df5e02"
+        }
+      ],
+      "deterministic_observations": {
+        "scope": "05a685a35ae429aaddacce1a7faceb6b6438ab44",
+        "tree": "df462a8e58bf43d1ee9d0a32f16ebfc7ae77421d",
+        "check_exit_codes": {
+          "ip": 0,
+          "hygiene": 0,
+          "lint": 0,
+          "tests": 0
+        },
+        "tests_run": 792,
+        "failures": 0,
+        "errors": 0,
+        "skipped_tests": 33,
+        "excluded_modules": [
+          {
+            "module": "test_research_jev_battery",
+            "reason": "optional_dependency",
+            "dependencies": [
+              "typesafe_sdk"
+            ]
+          },
+          {
+            "module": "test_batch_switch_config",
+            "reason": "local_inputs",
+            "inputs": [
+              ".scratch",
+              "corpus"
+            ]
+          },
+          {
+            "module": "test_recomp_fpu_experimental",
+            "reason": "local_inputs",
+            "inputs": [
+              ".scratch",
+              "corpus"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "no_semantic_retry": true,
+  "contract": "tools/judgment_contract.py accepted(original, exact_claim, independent_resolution) passes for both",
+  "checks_command_description": "Python stdlib JSON/hash/count/assert inspection of aggregate result, each referenced child, VU result and all eight overlay report fields, validation/test summaries/log; git rev-parse exact source tree. No build or Jev judgment rerun."
+}

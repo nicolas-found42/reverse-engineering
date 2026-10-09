@@ -1,0 +1,101 @@
+{
+  "schema": "fr2-independent-frontier-claim-disposition/v1",
+  "reviewer": "GPT-6 Standards reviewer; independent stronger reasoner",
+  "claim": "Dependency-ready unassigned reconstruction agent leaves are #12 #22 #25 #26 #27 #28 #29 #31 #37; #8 and #13 are dependency-ready but assigned. #21 is unassigned and labeled ready-for-human; #43 is unassigned needs-triage and dependency-ready.",
+  "verdict": "accepted",
+  "rationale": "Independent deterministic join of native dependency edges, latest open issue labels/assignees and generated frontier matches all 26 issue identities. Filtering current ready-for-agent issues by no open native blockers and no assignee yields exactly nine claimed reconstruction leaves; filtering assigned yields exactly #8/#13. #21 has no open blockers but ready-for-human and no assignee; #43 has no open blockers but needs-triage and no assignee and is setup maintenance, so neither belongs to the reconstruction agent list. Readiness is dependency/label/assignment readiness, not a claim that underlying acceptance criteria are complete. Closed #10 fulfills #12's recorded blocker. Current canonical direct map-child order makes #12 the earliest eligible unassigned leaf. This reasoner disposition resolves the low-confidence semantic review without changing or retrying its original probabilities.",
+  "observed": {
+    "open_issue_count": 26,
+    "dependency_ready_unassigned_reconstruction_agent_leaf_count": 9,
+    "dependency_ready_unassigned_reconstruction_agent_leaves": [
+      12,
+      22,
+      25,
+      26,
+      27,
+      28,
+      29,
+      31,
+      37
+    ],
+    "dependency_ready_assigned_agent_leaves": [
+      8,
+      13
+    ],
+    "human_frontier": [
+      21
+    ],
+    "setup_frontier": [
+      43
+    ],
+    "map_order": [
+      2,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17
+    ],
+    "next_executable_unassigned_map_child": 12,
+    "native_closed_prerequisite_12": [
+      10
+    ],
+    "all_frontier_rows_match_raw_native_data": true
+  },
+  "original_judgment": {
+    "id": "claim0",
+    "claim": "Dependency-ready unassigned reconstruction agent leaves are #12 #22 #25 #26 #27 #28 #29 #31 #37; #8 and #13 are dependency-ready but assigned. #21 is unassigned and labeled ready-for-human; #43 is unassigned needs-triage and dependency-ready.",
+    "verdict": "verified",
+    "probabilities": {
+      "supports": 0.67,
+      "contradicts": 0.32,
+      "says_nothing": 0.01
+    },
+    "confidence": 0.51,
+    "action": "review",
+    "supporting_evidence": null,
+    "same_subject": 0.86
+  },
+  "source_identities": [
+    {
+      "path": ".scratch/baseline-20261009/clean/notes/evidence/fr2-current-baseline-20261009/frontier-verification.json",
+      "bytes": 6657,
+      "sha256": "9aa1f7bcaefc00fdfe46c0126e5799d1bdb8bb4090950308919b4a33ea2fbf4a"
+    },
+    {
+      "path": ".scratch/baseline-20261009/frontier.json",
+      "bytes": 8365,
+      "sha256": "23d5858f3ffad699424e9f4cd40545c027860bad395dd424d5f831a445fca58e"
+    },
+    {
+      "path": ".scratch/baseline-20261009/dependency-edges.json",
+      "bytes": 704347,
+      "sha256": "2fe99fe029f272b3eadb485f90a9f4aa614a50adb26eede0fe01f72de37fb1ee"
+    },
+    {
+      "path": ".scratch/baseline-20261009/open-latest.json",
+      "bytes": 9603,
+      "sha256": "53e9710d4597a5d4bdb3e39eef7c4de1ca5cc0bf67930fb938eef416840386ad"
+    },
+    {
+      "path": ".scratch/baseline-20261009/map-children.json",
+      "bytes": 337861,
+      "sha256": "67b2b3f47dbcbeae3e1123c3b475c1dec8256b5f09e33edb08ea7843101157f9"
+    },
+    {
+      "path": ".scratch/baseline-20261009/issue1-body-original.md",
+      "bytes": 15144,
+      "sha256": "028d7e0da5808395816ec79a058a6c3d1bbe2757333b6b38e6c47c8b1b5193e0"
+    }
+  ],
+  "falsifier": "A fresh native open blocker, assignment, label, child-order or issue-state readback changing any of these nine eligible leaves or preceding #12 would invalidate the snapshot; no root acceptance completion is inferred.",
+  "jev_retry_performed": false
+}

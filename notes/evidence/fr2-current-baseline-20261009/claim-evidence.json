@@ -1,0 +1,176 @@
+{
+  "source_revision": "05a685a35ae429aaddacce1a7faceb6b6438ab44",
+  "source_working_tree_dirty": false,
+  "aggregate_receipt": {
+    "id": "A0",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/20261009T152126Z-718499d4bc88455280610996082435eb/result.json",
+    "bytes": 600216,
+    "sha256": "45d1186f03ca0fd3dbda4baa3f2ead84fe5ed12d06d2a065eabefe4da8ea2e5d",
+    "run_id": "20261009T152126Z-718499d4bc88455280610996082435eb",
+    "status": "incomplete",
+    "exit_code": 2,
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/completion.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "--assembler",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+      "--objdump",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+      "--compiler-tools",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/20261009T152126Z-718499d4bc88455280610996082435eb/report.md",
+      "bytes": 560195,
+      "sha256": "70e67e8cf6c3d7dbb6c62dcce278394dc83c5f78b959e9bc55dfb567cce30448"
+    },
+    "authority": "fresh static aggregate; exit 2 observed by shell tool"
+  },
+  "statuses": {
+    "AC01": "pass",
+    "AC02": "incomplete",
+    "AC03": "incomplete",
+    "AC04": "incomplete",
+    "AC05": "incomplete",
+    "AC06": "incomplete",
+    "AC07": "pass",
+    "AC08": "incomplete",
+    "AC09": "incomplete",
+    "AC10": "incomplete",
+    "AC11": "incomplete",
+    "AC12": "incomplete",
+    "AC13": "incomplete",
+    "AC14": "incomplete",
+    "AC15": "incomplete",
+    "AC16": "pass",
+    "AC17": "incomplete",
+    "AC18": "pass",
+    "AC19": "incomplete",
+    "AC20": "incomplete",
+    "AC21": "incomplete",
+    "AC22": "incomplete",
+    "AC23": "incomplete",
+    "AC24": "incomplete",
+    "AC25": "incomplete",
+    "AC26": "incomplete",
+    "AC27": "incomplete",
+    "AC28": "incomplete",
+    "AC29": "incomplete",
+    "AC30": "incomplete",
+    "AC31": "incomplete",
+    "AC32": "incomplete"
+  },
+  "ledger": {
+    "file_backed_bytes": 2171407,
+    "zero_fill_bytes": 1335641,
+    "unresolved_bytes": 3506988,
+    "game_owned_bytes": 60,
+    "substitute_bytes": 0,
+    "matched_bytes": 60,
+    "substitute_disposition": "no ranges attributed as substitute",
+    "matched_fraction": 1.0,
+    "matched_fraction_scope": "attributed_game_owned_bytes",
+    "function_owned_bytes": null,
+    "function_owned_disposition": "Discovery accounting is not matching credit."
+  },
+  "vu_encoding_count": 8,
+  "children": [
+    {
+      "id": "C00",
+      "status": "pass",
+      "sha256": "1f6928f7e6d9ab4e9b0a41e2a0068f73ddeb47cc883da641636965062cffd95e"
+    },
+    {
+      "id": "C01",
+      "status": "pass",
+      "sha256": "6d9b7671ebd7f020f53f5c4d8a4ac830469146a1134a92a5ff8a04c951a3b275"
+    },
+    {
+      "id": "C02",
+      "status": "incomplete",
+      "sha256": "3b5248736296001b712d10d5ac944d946f31c2c4a978a3676a84e1c7c6e2b173"
+    },
+    {
+      "id": "C03",
+      "status": "incomplete",
+      "sha256": "8ef3cd8e00f7fdc846275b9f6b4b24817dc8f970334889f5b6f9cd14cbfbafd4"
+    },
+    {
+      "id": "C04",
+      "status": "pass",
+      "sha256": "ace04f76001e6691cec03388f9cdd5d1c04c74bf8c518793815be5ebc0a47bc9"
+    },
+    {
+      "id": "C05",
+      "status": "pass",
+      "sha256": "a20ab80d9416d383d389ffc81df938a61bcc5bef8792a80fe09bb12f016fd0ff"
+    },
+    {
+      "id": "C06",
+      "status": "pass",
+      "sha256": "ec265b839a09b62248ab95383729b6cd6929659e85c903949e46e611ce822b63"
+    },
+    {
+      "id": "C07",
+      "status": "incomplete",
+      "sha256": "27f6cc1071147f1f351dd02e8e079c2f40eb9870ccb41416f27a91b37cf13f68"
+    },
+    {
+      "id": "C08",
+      "status": "pass",
+      "sha256": "b45b05671883fb589fc2408821c0981450c824b56e6dc09c1456cd8659e5d097"
+    },
+    {
+      "id": "C09",
+      "status": "incomplete",
+      "sha256": "a2f95beb0ae7bdca672399e95fe054c3964be4a89dfac299568c9bb4641a457d"
+    },
+    {
+      "id": "C10",
+      "status": "pass",
+      "sha256": "80c361b6681f682372be7bb9046bb8335c4f22fd6890e77c397106d6fce294a7"
+    }
+  ],
+  "validation_exit_code": 0,
+  "validation": {
+    "schema": "fr2-validation/v1",
+    "portable": true,
+    "successful": true,
+    "checks": [
+      {
+        "check": "ip",
+        "exit_code": 0,
+        "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/validation/ip.log"
+      },
+      {
+        "check": "hygiene",
+        "exit_code": 0,
+        "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/validation/hygiene.log"
+      },
+      {
+        "check": "lint",
+        "exit_code": 0,
+        "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/validation/lint.log"
+      },
+      {
+        "check": "tests",
+        "exit_code": 0,
+        "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/validation/tests.log"
+      }
+    ],
+    "tree": "df462a8e58bf43d1ee9d0a32f16ebfc7ae77421d",
+    "scope": "05a685a35ae429aaddacce1a7faceb6b6438ab44"
+  },
+  "test_counts": {
+    "successful": true,
+    "tests_run": 792,
+    "failures": 0,
+    "errors": 0
+  },
+  "skipped_tests": 33,
+  "excluded_modules": 3
+}

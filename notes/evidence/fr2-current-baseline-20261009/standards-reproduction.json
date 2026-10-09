@@ -1,0 +1,91 @@
+{
+  "revision": "a8c8798807af81927cfab975530ac2445eec6f27",
+  "observations": [
+    {
+      "id": "targeted-tests",
+      "command": [
+        "tools/check.sh",
+        "test_re_bootstrap",
+        "test_re_doctor",
+        "test_re_mcp",
+        "test_review_payload",
+        "test_run_tests",
+        "test_pre_push",
+        "test_validate",
+        "--summary",
+        "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/standards-tests.json"
+      ],
+      "cwd": "exact materialized PR42 head",
+      "exit_code": 0,
+      "summary": {
+        "schema": "fr2-test-summary/v1",
+        "successful": true,
+        "tests_run": 42,
+        "failures": 0,
+        "errors": 0,
+        "skipped_tests": [],
+        "excluded_modules": []
+      }
+    },
+    {
+      "id": "same-token-backend",
+      "candidate_launch_count": 0,
+      "accepted_existing_backend": true,
+      "identity_verified": "local candidate file digest only, process instance not compared"
+    },
+    {
+      "id": "ambient-discovery",
+      "calls": [
+        {
+          "mode": "ghidra",
+          "env_supplied": null,
+          "ambient_candidate": "synthetic-candidate-profile"
+        },
+        {
+          "mode": "rea",
+          "env_supplied": null,
+          "ambient_candidate": "synthetic-candidate-profile"
+        },
+        {
+          "mode": "r2",
+          "env_supplied": null,
+          "ambient_candidate": "synthetic-candidate-profile"
+        }
+      ]
+    },
+    {
+      "id": "rollback",
+      "config": {
+        "old": true
+      },
+      "client": "new",
+      "limit": "client path is a synthetic fixture; no real registration executed"
+    },
+    {
+      "id": "actual-registration-sequence",
+      "old_config_restored": true,
+      "registered_servers": {},
+      "actual_client_commands_run": false,
+      "observed": "remove succeeded, add failed; machine config rolled back but old shared entry remained absent"
+    },
+    {
+      "id": "failed-token-cleanup",
+      "exit_code": 1,
+      "candidate_token_remains": true,
+      "token_mode": "0o600",
+      "token_value_read": false,
+      "real_token_accessed": false
+    },
+    {
+      "id": "activation-stale-pid",
+      "result": "Managed active backend is running; activation refuses to interrupt its project. Stop it after saving analysis.",
+      "process_liveness_checked": false
+    },
+    {
+      "id": "review-capacity",
+      "serialized_packet_bytes": 101,
+      "structural_expansion": "jev_review per-file template repeats request+tests per rubric/file; reserve is assumed not measured",
+      "disposition": "documented assumption; no deterministic capacity bypass reproduced"
+    }
+  ]
+}
