@@ -13,7 +13,13 @@ import re
 import tarfile
 
 from evidence_common import Incomplete, Invalid, identity, write_result
-from headless_oracle import PCSX2_SHA256, QT_RUNTIME_LIBRARIES, QT_SDK_ARCHIVE_SHA256
+from headless_oracle import (DEPENDENCY_MANIFEST, PCSX2_SHA256, QT_RUNTIME_LIBRARIES,
+                             QT_SDK_ARCHIVE_SHA256)
+import json
+
+TOOLS = Path(__file__).resolve().parent
+DEPENDENCY_PINS = json.loads((TOOLS / "oracle_dependency_pins.json").read_text())
+DEPENDENCY_MANIFEST_COMPONENTS = json.loads(DEPENDENCY_MANIFEST.read_text())["components"]
 
 ARCHIVES = {
     'pcsx2-v2.6.3-macos-Qt.tar.xz': 'cb7b9e6330f1abf0cf92c94065f7eb983d0fa8affcfe6b0ccb9c2a4ebf067f1a',
@@ -94,10 +100,79 @@ def verify_release_members(archive: Path, app: Path) -> dict:
     return details
 
 
-def check(evidence: Path, sdk: Path, sdk_archive: Path, app: Path) -> dict:
+def verify_closure_sources(manifest: dict, archive_dir: Path) -> dict:
+    """Bind every closure component's source archive to the pinned recipe SHASUMS."""
+    shasums = DEPENDENCY_PINS["shasums"]
+    observed, missing, changed = {}, [], []
+    for component, spec in sorted(manifest["components"].items()):
+        for key in ("archive", "patch"):
+            name = spec.get(key)
+            if name is None:
+                continue
+            expected = shasums[name]
+            path = archive_dir / name
+            if not path.is_file():
+                missing.append(f"{component} {key}: {name}")
+                continue
+            observed[name] = identity(path)
+            if observed[name]["sha256"] != expected:
+                changed.append(f"{component} {key}: {name}")
+    details = {"archives": observed, "missing": missing, "changed": changed,
+               "matched_bytes": 0,
+               "claim_limit": "Source-archive identity only; no dependency build or guest execution."}
+    if changed:
+        raise Invalid("available closure source archive differs from the pinned recipe: "
+                      + "; ".join(changed), details)
+    if missing:
+        raise Incomplete("required closure source archive is absent: " + "; ".join(missing), details)
+    return details
+
+
+def verify_closure_licenses(manifest: dict, source_root: Path) -> dict:
+    """Bind every closure component's license/notice files to the pinned manifest hashes."""
+    observed, missing, changed = {}, [], []
+    for component, spec in sorted(manifest["components"].items()):
+        top = source_root / spec["archive"]
+        if not top.is_dir():
+            missing.append(f"{component}: extracted source is absent")
+            continue
+        for notice in spec["licenses"]:
+            candidates = sorted(top.glob(f"*/{notice['path']}"))
+            if len(candidates) != 1:
+                missing.append(f"{component}: {notice['path']}")
+                continue
+            observed[f"{component}/{notice['path']}"] = identity(candidates[0])
+            expected = notice.get("sha256")
+            if expected is None:
+                missing.append(f"{component}: {notice['path']} has no pinned hash")
+            elif observed[f"{component}/{notice['path']}"]["sha256"] != expected:
+                changed.append(f"{component}: {notice['path']}")
+    details = {"notices": observed, "missing": missing, "changed": changed,
+               "matched_bytes": 0,
+               "claim_limit": "Notice-file identity only; no legal permission determination."}
+    if changed:
+        raise Invalid("available closure notice differs from the pinned manifest: "
+                      + "; ".join(changed), details)
+    if missing:
+        raise Incomplete("required closure notice is absent or unpinned: " + "; ".join(missing),
+                         details)
+    return details
+
+
+def check(evidence: Path, sdk: Path, sdk_archive: Path, app: Path,
+          archives: Path | None = None, sources: Path | None = None) -> dict:
+    manifest = json.loads(DEPENDENCY_MANIFEST.read_text())
+    closure_archives = sorted({spec["archive"] for spec in manifest["components"].values()}
+                              | {spec["patch"] for spec in manifest["components"].values()
+                                 if "patch" in spec})
     pins = {**{evidence / name: digest for name, digest in ARCHIVES.items()},
             sdk / SOURCE_RECORD: SOURCE_RECORD_SHA256, sdk_archive: QT_SDK_ARCHIVE_SHA256,
             **{app / name: digest for name, digest in RELEASE_MEMBERS.items()}}
+    archive_dir = archives if archives is not None else evidence
+    for name in closure_archives:
+        if archive_dir / name in pins or (evidence / name) in pins:
+            continue
+        pins[archive_dir / name] = DEPENDENCY_PINS["shasums"][name]
     missing, changed, identities = [], [], {}
     for path, digest in pins.items():
         if not path.is_file():
@@ -111,11 +186,16 @@ def check(evidence: Path, sdk: Path, sdk_archive: Path, app: Path) -> dict:
         raise Invalid('available fixed dependency input identity differs', details)
     # Missing prerequisites in one inventory cannot suppress a contradiction
     # in another admitted, independently pinned inventory.
+    source_root = sources if sources is not None else evidence / 'closure-sources'
     branches = [
         ('release_binding', evidence / 'pcsx2-v2.6.3-macos-Qt.tar.xz',
          lambda: verify_release_members(evidence / 'pcsx2-v2.6.3-macos-Qt.tar.xz', app)),
         ('sdk_source_inventory', sdk / SOURCE_RECORD,
          lambda: verify_source_records((sdk / SOURCE_RECORD).read_bytes(), evidence / 'qtbase-git')),
+        ('closure_source_inventory', archive_dir / closure_archives[0],
+         lambda: verify_closure_sources(manifest, archive_dir)),
+        ('closure_notice_inventory', source_root / manifest["components"]["qtbase"]["archive"],
+         lambda: verify_closure_licenses(manifest, source_root)),
     ]
     failures = []
     for name, prerequisite, action in branches:
@@ -134,9 +214,9 @@ def check(evidence: Path, sdk: Path, sdk_archive: Path, app: Path) -> dict:
     if missing:
         raise Incomplete('required fixed dependency input is absent', details)
     details.update(issue22_status='incomplete', matched_bytes=0,
-                   scope='Pinned source record and official release-member inventory only',
-                   remaining=['Complete installed dependency closure and component notices.',
-                              'Bind exact dependency build provenance; no local dependency rebuild here.',
+                   scope=('Pinned source record, official release-member inventory, closure '
+                          'source archives and closure notice files only'),
+                   remaining=['Bind exact dependency build provenance; no local dependency rebuild here.',
                               'Qualify strict window/display/audio/focus lifecycle separately.'])
     return details
 
@@ -147,12 +227,17 @@ def main() -> int:
     parser.add_argument('sdk_root', type=Path)
     parser.add_argument('sdk_archive', type=Path)
     parser.add_argument('--app', type=Path, default=Path('/Applications/PCSX2.app'))
+    parser.add_argument('--archives', type=Path, default=None)
+    parser.add_argument('--sources', type=Path, default=None)
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     return write_result(args.output, 'oracle-dependency-source-inventory',
-                        lambda: check(args.evidence_root, args.sdk_root, args.sdk_archive, args.app),
+                        lambda: check(args.evidence_root, args.sdk_root, args.sdk_archive, args.app,
+                                      archives=args.archives, sources=args.sources),
                         [Path(__file__), Path(__file__).with_name('headless_oracle.py'),
-                         Path(__file__).with_name('evidence_common.py')])
+                         Path(__file__).with_name('evidence_common.py'),
+                         Path(__file__).with_name('oracle_dependency_manifest.json'),
+                         Path(__file__).with_name('oracle_dependency_pins.json')])
 
 
 if __name__ == '__main__':

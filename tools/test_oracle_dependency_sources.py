@@ -73,6 +73,75 @@ class OracleSourceRecords(unittest.TestCase):
         self.assertEqual(caught.exception.details['sdk_source_inventory']['changed'][0]['path'], 'source.c')
         self.assertTrue(caught.exception.details['missing'])
 
+    def test_closure_source_gap_is_incomplete_and_changed_source_fails(self):
+        import oracle_dependency_sources as sources
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            archive_dir = root / "archives"
+            archive_dir.mkdir()
+            manifest = {"components": {
+                "qtbase": {"archive": "qtbase.tar.xz", "version": "6.10.1",
+                           "provides": ["libQt6Core.6.dylib"],
+                           "licenses": [{"path": "LICENSES/LGPL-3.0-only.txt"}]},
+                "missing": {"archive": "absent.tar.xz", "version": "0",
+                            "provides": ["libAbsent.1.dylib"],
+                            "licenses": [{"path": "LICENSE"}]}}}
+            (archive_dir / "qtbase.tar.xz").write_bytes(b"qtbase source bytes")
+            with patch.object(sources, "DEPENDENCY_PINS",
+                              {"shasums": {"qtbase.tar.xz": hashlib.sha256(b"qtbase source bytes").hexdigest(),
+                                           "absent.tar.xz": "0" * 64}}):
+                with self.assertRaises(Incomplete) as caught:
+                    sources.verify_closure_sources(manifest, archive_dir)
+            self.assertIn("absent.tar.xz", str(caught.exception))
+            (archive_dir / "absent.tar.xz").write_bytes(b"wrong bytes")
+            with patch.object(sources, "DEPENDENCY_PINS",
+                              {"shasums": {"qtbase.tar.xz": hashlib.sha256(b"qtbase source bytes").hexdigest(),
+                                           "absent.tar.xz": "0" * 64}}):
+                with self.assertRaises(Invalid):
+                    sources.verify_closure_sources(manifest, archive_dir)
+
+    def test_closure_license_gap_is_incomplete_and_changed_notice_fails(self):
+        import oracle_dependency_sources as sources
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            manifest = {"components": {
+                "qtbase": {"archive": "qtbase.tar.xz", "provides": ["libQt6Core.6.dylib"],
+                           "licenses": [{"path": "LICENSES/LGPL-3.0-only.txt",
+                                         "sha256": hashlib.sha256(b"lgpl text").hexdigest()}]},
+                "gap": {"archive": "gap.tar.xz", "provides": ["libGap.1.dylib"],
+                        "licenses": [{"path": "LICENSE"}]}}}
+            source_root = root / "sources"
+            (source_root / "qtbase.tar.xz" / "qtbase-6.10.1" / "LICENSES").mkdir(parents=True)
+            (source_root / "qtbase.tar.xz" / "qtbase-6.10.1" / "LICENSES" / "LGPL-3.0-only.txt").write_bytes(b"lgpl text")
+            with self.assertRaises(Incomplete) as caught:
+                sources.verify_closure_licenses(manifest, source_root)
+            self.assertIn("gap", str(caught.exception))
+            (source_root / "gap.tar.xz" / "gap-0").mkdir(parents=True)
+            (source_root / "gap.tar.xz" / "gap-0" / "LICENSE").write_bytes(b"changed notice")
+            with patch.object(sources, "DEPENDENCY_PINS", {"shasums": {}}):
+                with self.assertRaises(Invalid):
+                    sources.verify_closure_licenses(
+                        {"components": {"gap": {"archive": "gap.tar.xz", "provides": ["libGap.1.dylib"],
+                                                        "licenses": [{"path": "LICENSE",
+                                                                      "sha256": "0" * 64}]}}},
+                        source_root)
+
+    def test_missing_closure_branch_keeps_check_incomplete(self):
+        import oracle_dependency_sources as sources
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            archives = root / "archives"
+            archives.mkdir()
+            present = "KDDockWidgets-2.4.0.tar.gz"
+            (archives / present).write_bytes(b"admitted")
+            pins = {"shasums": {**sources.DEPENDENCY_PINS["shasums"],
+                                present: hashlib.sha256(b"admitted").hexdigest()}}
+            with patch.object(sources, "DEPENDENCY_PINS", pins):
+                with self.assertRaises(Incomplete) as caught:
+                    check(root / "evidence", root / "sdk", root / "sdk.7z", root / "app",
+                          archives=archives, sources=root / "sources")
+            self.assertIn("closure_source_inventory", caught.exception.details)
+
     def test_public_cli_negative_and_incomplete_controls(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
