@@ -253,3 +253,139 @@ receipts and both sets of actual build artifacts, then accepted the bounded
 continuation. Original judgments and distributions remain intact in the retained
 full resolution identified by hash; this is an independent disposition rather
 than an automatic Jev pass or full issue acceptance.
+
+## Diagnosis and full loader source (2026-10-09)
+
+The previous frontier had two separate causes. Its child always raised
+`Incomplete` after the available checks, and the behavioral C candidate had
+never been compared as a complete EE loader build. A terminal match and host
+service-contract pass could not discharge that source/output gap. The original
+feedback loop exited 2 twice with `required loader/alias frontier remains
+unresolved`; the retained historical receipts above remain valid observations
+of that earlier implementation.
+
+The [initial full-source control](20261009-main-source-initial-red.json) compiled
+the earlier candidate and failed its main address/size check. The revised
+hand-written C retains the initial unloaded sentinel, keeps the returned `d4`
+identifier in a local, expresses the evidenced 64-bit flag member at byte
+offset 56, and gives each required resource its success/error branches. It
+uses the existing non-returning error declaration. No instruction arrays,
+inline assembly, original-source identity or runtime equivalence are claimed.
+
+The [full-source build](20261009-main-source.json) compares the five main saved
+ranges, totaling 528 instruction bytes, and the separate eight-byte remote
+leaf. The four main holes total 16 bytes and receive no matching credit. All
+536 compared candidate bytes coincide with retail under `ee-gcc2.96`, `-G8
+-O2`, the recorded immutable runtime image and binutils substitution. This is
+an exploratory matching profile; historical compiler identity remains in #21.
+
+```sh
+python3 tools/misc3d_loader_recipe/loader_build.py games/ford-racing-2 \
+  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \
+  --output .scratch/evidence/misc3d-main-source-fresh
+python3 tools/misc3d_loader_recipe/loader_controls.py games/ford-racing-2 \
+  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \
+  --output .scratch/evidence/misc3d-main-controls-fresh
+```
+
+The [real full-source controls](20261009-main-controls.json) cover changed flag
+source, shifted main placement, missing decision, stale source identity,
+stale identity together with missing tools, and two independent clean builds.
+The recorded compiler, loader/terminal objects and prepared objects, linked
+output and six comparison artifacts reproduce identically. The controls are
+separate from corpus acceptance; their expected failure/incomplete cases do
+not count as successful reconstructions.
+
+The [lifetime contract](lifetime-contract.json) and
+[revalidated result](20261009-lifetime.json) join the database context allocator,
+resource-count-derived pointer-table allocation, lookup/index use and release.
+The object lookup helper does not check generation, context activity or the
+index against the table count. Its usable input contract therefore requires a
+current lookup-derived ID and a live context. Release frees the table and
+zeros the context; misc3d's release clears only its database ID. Four stored
+resource IDs and the optional pointer are not all cleared. Their possible
+post-release uses remain a parent caller-use question.
+
+```sh
+python3 tools/misc3d_lifetime.py games/ford-racing-2 \
+  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \
+  --output .scratch/evidence/misc3d-lifetime-fresh
+python3 tools/misc3d_attribution.py games/ford-racing-2 \
+  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \
+  --output .scratch/evidence/misc3d-attribution-fresh
+```
+
+The [attribution evidence](loader-attribution-candidate.json) binds the main
+loader's four `misc3d.c` diagnostics to actual startup caller edges and an
+independent `backrend.c` diagnostic on another startup-orchestrator callee.
+The immediate caller and orchestrator have no direct source-file diagnostic.
+This remains a proposed local range split, with explicit evidential limits;
+no additional ADR-0005 ownership or matching credit is granted here. The
+remote leaf is a separate external tail callee with mixed ownership, and the
+shared database dependency carries an independent `modules4/3d/3dobjdb.c`
+source lead. Neither receives loader ownership. The
+[semantic attribution check](20261009-attribution-judgment.json) verifies the
+bounded corroboration claim, not an original-source or whole-image claim.
+
+The [fresh lifecycle regression](20261009-preserved-lifecycle.json) recompiles
+the previous accessor/reset/release/sibling group and rechecks all five NOBITS
+cells. This preserves the existing 60-byte accessor comparison, the other
+candidate comparisons and zero fabricated NOBITS file bytes.
+
+## Complete bounded static disposition
+
+The [current public summary](20261009-complete-static.json) identifies the full
+private receipt by path, byte count and SHA-256. The full receipt retains the
+per-site ledgers; the public summary is deliberately a summary, not a truncated
+replacement for them. Reproduce the result with the original public child:
+
+```sh
+python3 tools/misc3d_loader.py games/ford-racing-2 \
+  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \
+  notes/evidence/fr2-misc3d-loader/isolated-project.json \
+  --output .scratch/evidence/misc3d-loader-static-fresh
+python3 tools/misc3d_aliases.py games/ford-racing-2 \
+  notes/evidence/fr2-misc3d-loader/isolated-aliases.json \
+  --output .scratch/evidence/misc3d-aliases-fresh
+```
+
+The loader child now returns 0 only when its fixed required source, raw body,
+ABI, lifetime, incoming and conditional-alias checks pass. Missing evidence
+remains incomplete and available contradictions fail. Its decision pins both
+alias helpers, the separate UI predicate helper and the fresh isolated export;
+changing an imported predicate cannot bypass provenance. Mixed ownership is a
+fixed recorded disposition, not a caller-selectable route to matching credit.
+The [final original control suite](20261009-final-controls.json) observed every
+expected exit code, including the now-passing bounded frontier.
+
+The alias command scans 1,638,839 initialized allocated file bytes at every byte
+offset, and 311,832 aligned executable words. It reconciles 27 direct transfers
+to every scoped body/cell byte and records no pointer literals into that scope.
+All 143 GP register sums have their immediate memory consumer and exact
+per-cell naturally aligned overlap conditions. All 357 GP immediate-address
+constructors have explicit local use/escape dispositions: 318 are saved
+instructions and 39 are raw candidates conditional on execution. Their ledger
+retains 625 memory-address uses, dynamic additions, stored values and
+control/unsupported-effect escapes. A concrete initial address outside the
+cells is never treated as proof that a derived pointer cannot reach them.
+
+The device-table formulas expose conditional misc3d reads at indices 293–297,
+or byte offsets 1172–1188 for the unscaled paths. Actual loop/callback paths
+constrain some uses to the disjoint two-slot domain; other externally supplied
+indices remain conditional may-alias. Three UI-table chains starting at
+`00290a00` similarly record indices 49–53 and the walking-loop counts needed to
+reach the cells. Every equation is conditioned on the actual path, alignment,
+valid address and recorded argument/register-preservation preconditions. The
+[scope judgment](20261009-alias-scope-judgment.json) supports retaining these
+conditional dispositions and parent uncertainty; it does not certify a
+universal runtime exclusion.
+
+The current sibling consumer at `001d1628` reads `00290acc` and `00290ad0` into
+A0/A1 and transfers to `001318a0`; its actual startup caller is included in the
+expanded incoming domain. Its complete source/data reconstruction is the next
+evidenced EE group. The loader/alias gaps retained by #24/#35 now have concrete
+bounded dispositions. Those parents remain incomplete for their own range
+ownership/caller-use review, possible post-release stale-ID/pointer use, open
+runtime/index domains and remaining EE groups. Global dispatch work remains
+in #25. No additional matched bytes, completed parent or guest behavior follows
+from this static group.

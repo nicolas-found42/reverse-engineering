@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "run_id": "20261009T194536Z-0630a715c10145e2a63f708dc2b33306",
+  "check": "misc3d-attribution",
+  "command": [
+    "tools/misc3d_attribution.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json",
+    "--output",
+    ".scratch/issue37-diagnosis/corrected-attribution"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_attribution.py": {
+      "bytes": 7629,
+      "sha256": "ebcc01467535f5d1b8e0ae85789342ecd3f5fe4cb14f61273fcb78a3bf40a6e4"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-misc3d-loader/loader-attribution-candidate.json": {
+      "bytes": 8534,
+      "sha256": "7fe505d22715b2e07bd26e4b414a0b1c44f3cc49b3064552a3f8251a73bde6ca"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json": {
+      "bytes": 54861366,
+      "sha256": "839076de9050e28a213002686c7a07dc121a15535216e65dc85eeee7bcf355ed"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "scope": "Fixed raw main-loader corroboration only; main ownership remains mixed pending an independent ADR split.",
+    "main_ranges": [
+      {
+        "start": "001d1408",
+        "end_exclusive": "001d143c",
+        "bytes": 52,
+        "sha256": "fa1396b5b1178e78d48a13c60f3e9c053c8a7397bfc449a53ee0e7fe4acc1961"
+      },
+      {
+        "start": "001d1440",
+        "end_exclusive": "001d157c",
+        "bytes": 316,
+        "sha256": "62c609079e72d573a470436e7a4c59896b11fb9e2848d8ea929b23b37382d312"
+      },
+      {
+        "start": "001d1580",
+        "end_exclusive": "001d15b4",
+        "bytes": 52,
+        "sha256": "0782fbd3bd6a83df8505fb108c634b66b6f10bfa0f8a4727b38997a0636a3ff9"
+      },
+      {
+        "start": "001d15b8",
+        "end_exclusive": "001d15cc",
+        "bytes": 20,
+        "sha256": "957cac81ba67de71440681484f693aba0770b9696a13cefc92f81b54b3a47b80"
+      },
+      {
+        "start": "001d15d0",
+        "end_exclusive": "001d1628",
+        "bytes": 88,
+        "sha256": "b8cc3b12625bcf334bbed3a4c059bd32e18957edc87ca5d48f20c65f7783eb0f"
+      }
+    ],
+    "main_bytes": 528,
+    "independent_game_anchor": "../fr2/source/backrend/backrend.c",
+    "external_leaf": {
+      "range": {
+        "start": "0012c218",
+        "end_exclusive": "0012c220",
+        "bytes": 8,
+        "sha256": "29747cb8b7b72a33889852771e705795cadb06c10e52647a71e7850e6864a8f8"
+      },
+      "ownership": "unresolved",
+      "reason": "Remote shared terminal must receive an independent domain/owner disposition; main misc3d diagnostic alone does not attribute it.",
+      "domain": "separate external leaf tail callee; game/engine authorship unresolved",
+      "call_site": "001d1610",
+      "call_word_sha256": "f7bcaf10bdebc3d9e590f93a9ead27c34eea76cb942cd7ef8d68c56d432afc09",
+      "entry_restore_sites": [
+        {
+          "site": "001d1600",
+          "word_sha256": "0352b75212692ed1742f115399b046e6b47b5e4f840aed805dedb291a3b624bb"
+        },
+        {
+          "site": "001d1608",
+          "word_sha256": "1695711c4158b369920beac79c9c2fd3cac8900efb01b157fd42a8b35ebb754b"
+        },
+        {
+          "site": "001d160c",
+          "word_sha256": "77fcc4467d1cb7edce934137de299a8afa6a645c0eedda01d4b9950666dee5d6"
+        },
+        {
+          "site": "001d1614",
+          "word_sha256": "6f83eaf1c6b95902fea942b9a420d1ac024e4fd725f9ecf761a5e6880950fed2"
+        }
+      ]
+    },
+    "shared_dependency_ownership": "excluded",
+    "direct_source_evidence": [
+      {
+        "saved_function": "001d1408",
+        "site": "001d142c",
+        "word_sha256": "a75d0cee2033c151ce0df876178a076a2a96a8e6bb5b9b339766bb78e067693f",
+        "source_string_address": "002831a8",
+        "source_path": "../fr2/source/app3d/misc3d.c",
+        "source_string_sha256": "b314b4a1683e48032dd4841279b144defd0f5819fba4b5e0b7cc38acfac69106",
+        "upper_address_site": "001d1424",
+        "upper_word_sha256": "dcd6e4551eb6070340e617d47bc9ae5b53af4a95b8e978c935bb6a57d775173c",
+        "diagnostic_transfer_site": "001d1434",
+        "diagnostic_word_sha256": "12fcf1d17dd7b7d6fc2282ff6df756813a6088ded490bd4726a15b8024158db1",
+        "line": 45
+      },
+      {
+        "saved_function": "001d1408",
+        "site": "001d14e0",
+        "word_sha256": "a75d0cee2033c151ce0df876178a076a2a96a8e6bb5b9b339766bb78e067693f",
+        "source_string_address": "002831a8",
+        "source_path": "../fr2/source/app3d/misc3d.c",
+        "source_string_sha256": "b314b4a1683e48032dd4841279b144defd0f5819fba4b5e0b7cc38acfac69106",
+        "upper_address_site": "001d14d8",
+        "upper_word_sha256": "dcd6e4551eb6070340e617d47bc9ae5b53af4a95b8e978c935bb6a57d775173c",
+        "diagnostic_transfer_site": "001d14e8",
+        "diagnostic_word_sha256": "12fcf1d17dd7b7d6fc2282ff6df756813a6088ded490bd4726a15b8024158db1",
+        "line": 104
+      },
+      {
+        "saved_function": "001d1408",
+        "site": "001d156c",
+        "word_sha256": "a75d0cee2033c151ce0df876178a076a2a96a8e6bb5b9b339766bb78e067693f",
+        "source_string_address": "002831a8",
+        "source_path": "../fr2/source/app3d/misc3d.c",
+        "source_string_sha256": "b314b4a1683e48032dd4841279b144defd0f5819fba4b5e0b7cc38acfac69106",
+        "upper_address_site": "001d154c",
+        "upper_word_sha256": "dcd6e4551eb6070340e617d47bc9ae5b53af4a95b8e978c935bb6a57d775173c",
+        "diagnostic_transfer_site": "001d1574",
+        "diagnostic_word_sha256": "12fcf1d17dd7b7d6fc2282ff6df756813a6088ded490bd4726a15b8024158db1",
+        "line": 131
+      },
+      {
+        "saved_function": "001d1408",
+        "site": "001d15bc",
+        "word_sha256": "a75d0cee2033c151ce0df876178a076a2a96a8e6bb5b9b339766bb78e067693f",
+        "source_string_address": "002831a8",
+        "source_path": "../fr2/source/app3d/misc3d.c",
+        "source_string_sha256": "b314b4a1683e48032dd4841279b144defd0f5819fba4b5e0b7cc38acfac69106",
+        "upper_address_site": "001d1598",
+        "upper_word_sha256": "dcd6e4551eb6070340e617d47bc9ae5b53af4a95b8e978c935bb6a57d775173c",
+        "diagnostic_transfer_site": "001d15c4",
+        "diagnostic_word_sha256": "12fcf1d17dd7b7d6fc2282ff6df756813a6088ded490bd4726a15b8024158db1",
+        "line": 144
+      },
+      {
+        "saved_function": "001dd630",
+        "site": "001dd734",
+        "word_sha256": "0f16170c76044b31ba86a0998ecc9624e24c9d662a8e538acf484a8053f8af9b",
+        "source_string_address": "00289f48",
+        "source_path": "../fr2/source/backrend/backrend.c",
+        "source_string_sha256": "b0866729895847256eb28fd4aa45f85bd3d4ba4f12fbf2d4fac7c7a202703db8",
+        "upper_address_site": "001dd728",
+        "upper_word_sha256": "8978234e379e484448bb71a334bc4ed04ef93d79173443ebe415b0805c85dde8",
+        "diagnostic_transfer_site": "001dd740",
+        "diagnostic_word_sha256": "f1a2598335d1a43367f64c345af3be5adc314e4460bd2f8d9224ff9d1205515d",
+        "line": 421
+      },
+      {
+        "saved_function": "0011ed90",
+        "site": "0011ee1c",
+        "word_sha256": "f46db50fedf88aa55c7eba36fa7da955de047832baa87b8b9e54dd4ae1b49258",
+        "source_string_address": "002527f8",
+        "source_path": "../modules4/3d/3dobjdb.c",
+        "source_string_sha256": "3ac6231c4d3127e68251ba5c32a7081bdd908d9a9778b1980e1149b665e241aa",
+        "upper_address_site": "0011ee14",
+        "upper_word_sha256": "30ccc4693f83e0ba2b0af9d59d405a4dde044b52bb2377084032698784b89242",
+        "diagnostic_transfer_site": "0011ee28",
+        "diagnostic_word_sha256": "12fcf1d17dd7b7d6fc2282ff6df756813a6088ded490bd4726a15b8024158db1",
+        "line": 415
+      }
+    ],
+    "startup_calls": [
+      {
+        "saved_caller": "001d3c58",
+        "site": "001d3ce0",
+        "word_sha256": "3a4967864853009a3468a314bdcc4fe4edb702a641dd8a389e34f3be20dc4d4b",
+        "target": "001ccbd8"
+      },
+      {
+        "saved_caller": "001ccbd8",
+        "site": "001ccc4c",
+        "word_sha256": "55a5823b5b4ab1451ba7fc2fe7752bb3139cfe4a51d044b807f5bb659b3478b1",
+        "target": "001d1408"
+      },
+      {
+        "saved_caller": "001d3c58",
+        "site": "001d3da8",
+        "word_sha256": "2d292ff90b04842b05f6740c1b47810320ef80d366db7dc460be38dd6e936490",
+        "target": "001dd630"
+      },
+      {
+        "saved_caller": "001d1408",
+        "site": "001d1448",
+        "word_sha256": "0afb7a3c24bb34c24417f064dc86473c4525587a7be6e3b971ab30e02a7d023e",
+        "target": "0011ed90"
+      }
+    ],
+    "new_attributed_match_bytes": 0,
+    "contract_identity": {
+      "bytes": 8534,
+      "sha256": "7fe505d22715b2e07bd26e4b414a0b1c44f3cc49b3064552a3f8251a73bde6ca"
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 7297,
+      "sha256": "77a8bc7480d5560c98d33e12fb1cb29b295a3cd4200f1a0fdfffc629dae361ac"
+    }
+  }
+}

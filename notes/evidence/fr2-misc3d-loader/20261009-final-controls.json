@@ -1,0 +1,143 @@
+{
+  "scope": "Executed real source, isolated static and two-clean-build reproducibility controls; bounded loader source/static disposition completes; parent runtime/ownership work remains incomplete.",
+  "results": {
+    "real_terminal_source": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/real_terminal_source/20261009T192844Z-ed4e9bd0fbee431fbac3c8148e7cd892/result.json",
+        "bytes": 6621,
+        "sha256": "122304a0649b60b9bbf4ea837ec09bf259e8e702f727a3c5dc541b60bf8dfaf1"
+      }
+    },
+    "changed_terminal_source": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/changed_terminal_source/20261009T192847Z-34b72600babd4df4b736a5e41c887081/result.json",
+        "bytes": 6343,
+        "sha256": "d3201fdb46ddc3432de4c182f0629cabaeccb2a076ab8d54c897ba9c954d1d86"
+      }
+    },
+    "host_source": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/host_source/20261009T192851Z-a08a3243d6174e8995d0cb7590c62bba/result.json",
+        "bytes": 2539,
+        "sha256": "476bef2f6038a58ec1e0bff57c7407e4dbfa5f330e26002ff7942fb80de4254c"
+      }
+    },
+    "changed_host_source": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/changed_host_source/20261009T192852Z-4581d4fd2f6a44aea88fe0c008d6aaf8/result.json",
+        "bytes": 2625,
+        "sha256": "6f343cdc7577e29090b6b50b01b470f849719a54f477e7263f956c7dfc3d04d8"
+      }
+    },
+    "changed_terminal_layout": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/changed_terminal_layout/20261009T192852Z-1de4038a8799413f80d4629027f8dd8e/result.json",
+        "bytes": 948,
+        "sha256": "0c9897f49cea3fe85591f547b315b26228a006bd55d557c2121b53b24e3db9cb"
+      }
+    },
+    "static_positive": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/static_positive/20261009T192852Z-92a9a2aed7c3404d9ef46c349d2e8bfb/result.json",
+        "bytes": 14739,
+        "sha256": "a658ddeb320182cc78058855a7bc49c595bf18af724ccfd7b2dcba913cc1dd31"
+      }
+    },
+    "dependency_abi": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/dependency_abi/20261009T192853Z-a342a89736d34d618eac58db9557ac60/result.json",
+        "bytes": 10169,
+        "sha256": "8cb8b5e83840b0dc9a8987710d7f32b82f5c5f4dbc8fb280a58aa9c7983e2325"
+      }
+    },
+    "full_frontier": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/full_frontier/20261009T192853Z-07d64ebc75d54457a147cc8ddede705b/result.json",
+        "bytes": 5150474,
+        "sha256": "ed95f11c37d1a642f19486a74e0e6f0d1c63d09c35d2baf8829fd708cae91078"
+      }
+    },
+    "missing_provenance": {
+      "exit_code": 2,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/missing_provenance/20261009T192902Z-173ebee1eab74f5f869d37a722e5a623/result.json",
+        "bytes": 5150578,
+        "sha256": "6b2e465ae18502eed495c1725560af735bca57cfe5e5a8a41230ad5245528cec"
+      }
+    },
+    "stale_provenance": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/stale_provenance/20261009T192910Z-13cc06fdfcc04673afe1bd46cea8cf15/result.json",
+        "bytes": 959,
+        "sha256": "bdb07c85d8def8ebeec08f067e72b3e4b606e3b216fc321085be397009b82d9c"
+      }
+    },
+    "contradiction_over_missing": {
+      "exit_code": 1,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/contradiction_over_missing/20261009T192910Z-f714a263b8974e149dc2cb01b66f6b15/result.json",
+        "bytes": 969,
+        "sha256": "5792e0439c503bfed473b5dfd89b417c235b43d58f2769dc001ce88276832370"
+      }
+    },
+    "reproducibility": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/reproducibility/20261009T192910Z-e8bfc86d7fa44e738a5844d55d0d28e2/result.json",
+        "bytes": 1924,
+        "sha256": "5ff8870b234af4a9074f7347df32297344c77ee5258121ce1cdb9d2423fe08c0"
+      }
+    },
+    "reproducibility_drift_detected": {
+      "exit_code": 0,
+      "receipt": {
+        "path": ".scratch/issue37-diagnosis/final-controls/reproducibility_drift_detected/20261009T192935Z-cef89973b5484eea8610661e90cef3cb/result.json",
+        "bytes": 1114,
+        "sha256": "c90eeb3e33d99dcc837f75af90eb2b17d755ffc842fbbaaecd727d1d610b6342"
+      }
+    }
+  },
+  "expected_exit_codes": {
+    "real_terminal_source": 0,
+    "changed_terminal_source": 1,
+    "host_source": 0,
+    "changed_host_source": 1,
+    "changed_terminal_layout": 1,
+    "static_positive": 0,
+    "dependency_abi": 0,
+    "full_frontier": 0,
+    "missing_provenance": 2,
+    "stale_provenance": 1,
+    "contradiction_over_missing": 1,
+    "reproducibility": 0,
+    "reproducibility_drift_detected": 0
+  },
+  "failures": [],
+  "public_inputs": {
+    "controls": {
+      "bytes": 7622,
+      "sha256": "b1a84d3b6354efd16c491b1ae7adf91467cec37b2110f04e827c425180125fbd"
+    },
+    "loader": {
+      "bytes": 16544,
+      "sha256": "b6f3821e502f7d0f0927e0858738d46d5d6bcfe314e47dbc5ec31a8845abb307"
+    },
+    "source_recipe": {
+      "bytes": 8178,
+      "sha256": "e8facdb05ef747e748435cc4cfff669bfe4ae42aa4fd7604e7b455e79b34b01f"
+    },
+    "decision": {
+      "bytes": 3449,
+      "sha256": "3a22ae686098aafd7774d7f9b51f121270e7d17cdf167151dc5e38004fdfb612"
+    }
+  }
+}

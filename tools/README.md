@@ -75,14 +75,22 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/matching_ranges.py](matching_ranges.py) — Inventory every PT_LOAD byte and apply the one identity-pinned ADR-0005 split.
 - [tools/matching_sections.py](matching_sections.py) — Corpus-pinned section extraction for the matching-decompilation harness.
 - [tools/misc3d_abi.py](misc3d_abi.py) — Validate bounded misc3d dependency argument, packed-id and pointer-use paths.
+- [tools/misc3d_aliases.py](misc3d_aliases.py) — Reconcile all scoped incoming references and expand bounded alias searches.
+- [tools/misc3d_attribution.py](misc3d_attribution.py) — Revalidate bounded misc3d main-range, independent caller and external-leaf evidence.
 - [tools/misc3d_contract.py](misc3d_contract.py) — Build the fixed misc3d accessor/cell scope and check its evidence and NOBITS layout.
 - [tools/misc3d_lifecycle.py](misc3d_lifecycle.py) — Compare the repository-recorded misc3d lifecycle scope, without crediting gaps.
 - [tools/misc3d_lifecycle_observation.py](misc3d_lifecycle_observation.py) — Recheck isolated misc3d boundary reconciliation and retain only safe metadata.
 - [tools/misc3d_lifecycle_recipe/controls.py](misc3d_lifecycle_recipe/controls.py) — Real source-output controls; public synthetic fixtures remain separate.
 - [tools/misc3d_lifecycle_recipe/experiments.py](misc3d_lifecycle_recipe/experiments.py) — Retain safe sizes and identities from private exploratory objects, never credit.
+- [tools/misc3d_lifetime.py](misc3d_lifetime.py) — Reconcile the fixed misc3d dependency producer/use/release contract to raw code.
 - [tools/misc3d_loader.py](misc3d_loader.py) — Recheck fixed loader static/source contracts without granting missing ownership.
+- [tools/misc3d_loader_recipe/conditional_aliases.py](misc3d_loader_recipe/conditional_aliases.py) — Fixed conditional GP alias, caller and sibling-value contracts.
+- [tools/misc3d_loader_recipe/constructor_aliases.py](misc3d_loader_recipe/constructor_aliases.py) — Conservative per-constructor GP address use and escape dispositions.
 - [tools/misc3d_loader_recipe/controls.py](misc3d_loader_recipe/controls.py) — Real source/layout/provenance controls, retained separately from acceptance.
+- [tools/misc3d_loader_recipe/loader_build.py](misc3d_loader_recipe/loader_build.py) — Compile handwritten misc3d loader source and compare its fixed raw instruction ranges.
+- [tools/misc3d_loader_recipe/loader_controls.py](misc3d_loader_recipe/loader_controls.py) — Execute real main-loader source, layout, provenance and independent-build controls.
 - [tools/misc3d_loader_recipe/source_build.py](misc3d_loader_recipe/source_build.py) — Compile the inferred loader terminal seam and compare its eight retail bytes.
+- [tools/misc3d_loader_recipe/ui_aliases.py](misc3d_loader_recipe/ui_aliases.py) — Fixed arithmetic and caller-predicate evidence for the indexed UI table.
 - [tools/misc3d_observation.py](misc3d_observation.py) — Bind a saved-project inventory to retail words and retain misc3d metadata only.
 - [tools/misc3d_recipe/controls.py](misc3d_recipe/controls.py) — Run real misc3d build, layout mutation and missing-provenance controls.
 - [tools/msh_msb_check.py](msh_msb_check.py) — Verify .msh/.msb pair relationship + .mib/.mih pair relationship.
@@ -179,10 +187,15 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_matching.py](test_matching.py) — Tests: Python module; see source.
 - [tools/test_matching_ranges.py](test_matching_ranges.py) — Tests: Python module; see source.
 - [tools/test_misc3d_abi.py](test_misc3d_abi.py) — Tests: Synthetic child-seam controls for the bounded misc3d raw ABI check.
+- [tools/test_misc3d_aliases.py](test_misc3d_aliases.py) — Tests: Public child controls for complete scoped incoming and pointer domains.
+- [tools/test_misc3d_attribution.py](test_misc3d_attribution.py) — Tests: Independent ELF controls for raw source/caller attribution evidence.
+- [tools/test_misc3d_constructor_aliases.py](test_misc3d_constructor_aliases.py) — Tests: Independent synthetic instruction controls for computed GP constructor aliases.
 - [tools/test_misc3d_contract.py](test_misc3d_contract.py) — Tests: Public output-check seam: layout and byte comparison, with synthetic ELF controls.
 - [tools/test_misc3d_lifecycle.py](test_misc3d_lifecycle.py) — Tests: Public linked-output seam; synthetic fixtures do not establish corpus acceptance.
 - [tools/test_misc3d_lifecycle_observation.py](test_misc3d_lifecycle_observation.py) — Tests: Public observation CLI priority controls; no retail payload is needed.
+- [tools/test_misc3d_lifetime.py](test_misc3d_lifetime.py) — Tests: Public raw-evidence lifetime seam, with independent synthetic ELF controls.
 - [tools/test_misc3d_loader.py](test_misc3d_loader.py) — Tests: Synthetic public controls; real corpus source acceptance stays separate.
+- [tools/test_misc3d_loader_build.py](test_misc3d_loader_build.py) — Tests: Synthetic ELF controls for the fixed main-loader source/output seam.
 - [tools/test_model_verifier.py](test_model_verifier.py) — Tests: Tests at the verify_model.py CLI boundary; the real-corpus case skips when the corpus is absent.
 - [tools/test_oracle_dependency_sources.py](test_oracle_dependency_sources.py) — Tests: Public source-record controls; inventories cannot qualify guest execution.
 - [tools/test_pipeline_walker.py](test_pipeline_walker.py) — Tests: Python module; see source.

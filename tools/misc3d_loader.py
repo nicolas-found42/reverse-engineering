@@ -14,6 +14,11 @@ from evidence_common import Incomplete, Invalid, identity, sha256, write_result
 from matching_ranges import EE_CORPUS_SHA256
 from ps2_executables import parse_elf
 import misc3d_abi
+import misc3d_aliases
+import misc3d_attribution
+import misc3d_lifetime
+import misc3d_lifecycle
+from misc3d_loader_recipe import conditional_aliases, constructor_aliases, loader_build, ui_aliases
 
 ROOT = Path(__file__).resolve().parent.parent
 DECISION = ROOT / 'notes/evidence/fr2-misc3d-loader/decision.json'
@@ -28,8 +33,14 @@ TARGETS = (0x1d1408, 0x11ed90, 0x124f58, 0x125068)
 LOADER_RANGES = ((0x12c218, 0x12c220), (0x1d1408, 0x1d143c),
                  (0x1d1440, 0x1d157c), (0x1d1580, 0x1d15b4),
                  (0x1d15b8, 0x1d15cc), (0x1d15d0, 0x1d1628))
-REQUIRED_UNKNOWN = ('computed-alias-closure', 'sibling-consumer-use',
-                    'new-range-ownership', 'retail-loader-source-output')
+ALIASES = ROOT / 'notes/evidence/fr2-misc3d-loader/isolated-aliases.json'
+DEFAULT_TOOL_ROOT = ROOT.parent / 'spec-5-tools/compilers'
+PARENT_UNKNOWN = ('reset-release-sibling-ownership-and-caller-use',
+                  'external-index-and-open-world-runtime-alias-domains',
+                  'post-release-stale-id-and-pointer-use-domain',
+                  'remaining-ee-source-data-groups')
+OWNERSHIP_DISPOSITION = {'main': 'mixed', 'external_leaf': 'mixed',
+                         'holes': 'excluded_from_loader_body', 'shared_helpers': 'separate'}
 
 
 def ranges(addresses: list[int]) -> list[tuple[int, int]]:
@@ -170,7 +181,8 @@ def source_contract(output: Path, source: Path = SOURCE) -> dict:
     return record
 
 
-def check(game: Path, inventory_path: Path, isolated_path: Path, output: Path) -> dict:
+def check(game: Path, inventory_path: Path, isolated_path: Path, output: Path,
+          tool_root: Path = DEFAULT_TOOL_ROOT) -> dict:
     """Available contradictions outrank missing provenance and required gaps."""
     missing, result = [], {}
     executable = game / 'extracted/SLES_517.05'
@@ -181,7 +193,16 @@ def check(game: Path, inventory_path: Path, isolated_path: Path, output: Path) -
         missing.append('required retail executable is absent')
     inputs = {'inventory': inventory_path, 'isolated': isolated_path,
               'source': SOURCE, 'header': HEADER, 'terminal_source': TERMINAL_SOURCE,
-              'harness': HARNESS, 'script': SCRIPT, 'abi_checker': Path(misc3d_abi.__file__)}
+              'harness': HARNESS, 'script': SCRIPT, 'abi_checker': Path(misc3d_abi.__file__),
+              'aliases': ALIASES, 'alias_checker': Path(misc3d_aliases.__file__),
+              'conditional_alias_checker': Path(conditional_aliases.__file__),
+              'constructor_alias_checker': Path(constructor_aliases.__file__),
+              'ui_alias_checker': Path(ui_aliases.__file__),
+              'alias_script': SCRIPT.with_name('InspectMisc3dAliases.java'),
+              'lifetime_contract': misc3d_lifetime.CONTRACT,
+              'lifetime_checker': Path(misc3d_lifetime.__file__),
+              'attribution_contract': misc3d_attribution.CONTRACT,
+              'attribution_checker': Path(misc3d_attribution.__file__)}
     if not DECISION.is_file():
         missing.append('loader recorded decision is absent')
         decision = None
@@ -189,13 +210,19 @@ def check(game: Path, inventory_path: Path, isolated_path: Path, output: Path) -
         decision = json.loads(DECISION.read_text())
         if decision.get('corpus_sha256') != EE_CORPUS_SHA256:
             raise Invalid('loader decision corpus differs')
-        if decision.get('required_unknown') != list(REQUIRED_UNKNOWN):
-            raise Invalid('loader required frontier differs from fixed checker scope')
+        if decision.get('schema_version') != 2 or decision.get('parent_unknown') != list(PARENT_UNKNOWN):
+            raise Invalid('loader disposition differs from fixed bounded scope')
+        if decision.get('ownership_disposition') != OWNERSHIP_DISPOSITION:
+            raise Invalid('loader ownership disposition differs from fixed conservative scope')
     for name, path in inputs.items():
         if not path.is_file():
             missing.append('required loader input absent: ' + name)
-        elif decision is not None and identity(path) != decision['inputs'][name]:
-            raise Invalid('loader input identity differs from recorded decision: ' + name)
+        elif decision is not None:
+            recorded = decision.get('inputs', {}).get(name)
+            if recorded is None:
+                missing.append('required loader input identity absent: ' + name)
+            elif identity(path) != recorded:
+                raise Invalid('loader input identity differs from recorded decision: ' + name)
     if data is not None and inventory_path.is_file() and isolated_path.is_file():
         try:
             result['observation'] = observe(data, json.loads(inventory_path.read_text()), json.loads(isolated_path.read_text()))
@@ -208,12 +235,44 @@ def check(game: Path, inventory_path: Path, isolated_path: Path, output: Path) -
         except Incomplete as error:
             missing.append(str(error))
             result['dependency_dataflow'] = error.details
+        for name, action in (
+            ('lifetime', lambda: misc3d_lifetime.check(data, inventory_path)),
+            ('attribution', lambda: misc3d_attribution.check(data, inventory_path)),
+            ('aliases', lambda: misc3d_aliases.observe(data, json.loads(ALIASES.read_text()) if ALIASES.is_file() else None)),
+        ):
+            try:
+                result[name] = action()
+                if name == 'aliases' and result[name].get('bounded_static_status') != 'pass':
+                    missing.append('required bounded static alias disposition is incomplete')
+            except Incomplete as error:
+                missing.append(str(error))
+                result[name] = error.details
+    try:
+        result['previous_lifecycle_provenance'] = misc3d_lifecycle.provenance()
+    except Incomplete as error:
+        missing.append(str(error))
+        result['previous_lifecycle_provenance'] = error.details
+    try:
+        result['build_provenance'] = loader_build.provenance(game, tool_root)
+    except Incomplete as error:
+        missing.append(str(error))
+        result['build_provenance'] = error.details
+    else:
+        try:
+            result['source_build'] = loader_build.source_build(game, tool_root)
+        except Incomplete as error:
+            missing.append(str(error))
+            result['source_build'] = error.details
     if all(path.is_file() for path in (SOURCE, HEADER, TERMINAL_SOURCE, HARNESS)):
         result['source_contract'] = source_contract(output)
-    result.update({'issue37_status': 'incomplete', 'issue35_status': 'incomplete',
-                   'issue24_status': 'incomplete', 'required_unknown': list(REQUIRED_UNKNOWN),
-                   'new_attributed_match_bytes': 0})
-    raise Incomplete('; '.join(missing + ['required loader/alias frontier remains unresolved']), result)
+    result.update({'issue37_status': 'incomplete' if missing else 'complete',
+                   'issue35_status': 'incomplete', 'issue24_status': 'incomplete',
+                   'required_unknown': missing, 'parent_unknown': list(PARENT_UNKNOWN),
+                   'new_attributed_match_bytes': 0,
+                   'scope': 'Bounded loader source/static dependency and conditional-alias disposition; no universal runtime alias proof.'})
+    if missing:
+        raise Incomplete('; '.join(missing), result)
+    return result
 
 
 def main() -> int:
@@ -222,12 +281,18 @@ def main() -> int:
     parser.add_argument('inventory', type=Path)
     parser.add_argument('isolated', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--tool-root', type=Path, default=DEFAULT_TOOL_ROOT)
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     temp = tempfile.mkdtemp(prefix='private-source-', dir=args.output)
     return write_result(args.output, 'misc3d-loader',
-                            lambda: check(args.game, args.inventory, args.isolated, Path(temp)),
-                            [p for p in (Path(__file__), Path(misc3d_abi.__file__), DECISION, SOURCE, HEADER, TERMINAL_SOURCE, HARNESS, SCRIPT,
+                            lambda: check(args.game, args.inventory, args.isolated, Path(temp), args.tool_root),
+                            [p for p in (Path(__file__), Path(misc3d_abi.__file__),
+                                         Path(misc3d_aliases.__file__), Path(conditional_aliases.__file__),
+                                         Path(constructor_aliases.__file__), Path(ui_aliases.__file__), Path(misc3d_lifetime.__file__),
+                                         Path(misc3d_attribution.__file__), ALIASES,
+                                         misc3d_lifetime.CONTRACT, misc3d_attribution.CONTRACT,
+                                         DECISION, SOURCE, HEADER, TERMINAL_SOURCE, HARNESS, SCRIPT,
                                          args.inventory, args.isolated, args.game/'extracted/SLES_517.05') if p.is_file()])
 
 

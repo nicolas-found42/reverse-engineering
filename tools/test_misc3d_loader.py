@@ -1,5 +1,6 @@
 """Synthetic public controls; real corpus source acceptance stays separate."""
 import struct
+import json
 import os
 import subprocess
 import tempfile
@@ -112,7 +113,7 @@ class LoaderSourceTests(unittest.TestCase):
         with tempfile.TemporaryDirectory()as temp:
             root=Path(temp)
             changed=root/'changed.c'
-            changed.write_text(loader.SOURCE.read_text().replace('*flags |= 32ULL;', '*flags |= 16ULL;'))
+            changed.write_text(loader.SOURCE.read_text().replace('flag_object->flags |= 32ULL;', 'flag_object->flags |= 16ULL;'))
             with self.assertRaisesRegex(Invalid,'call/state contract failed'):
                 loader.source_contract(root,changed)
 
@@ -131,6 +132,18 @@ class LoaderSourceTests(unittest.TestCase):
             with patch.object(loader,'SOURCE',changed):
                 with self.assertRaisesRegex(Invalid,'input identity differs.*source'):
                     loader.check(root/'game',root/'missing-inventory',root/'missing-isolated',root/'host')
+
+    def test_record_cannot_promote_mixed_loader_to_owned(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            record = json.loads(loader.DECISION.read_text())
+            record['ownership_disposition']['main'] = 'game_owned'
+            decision = root/'changed-decision.json'
+            decision.write_text(json.dumps(record))
+            with patch.object(loader, 'DECISION', decision):
+                with self.assertRaisesRegex(Invalid, 'ownership disposition differs'):
+                    loader.check(root/'game', root/'missing-inventory',
+                                 root/'missing-isolated', root/'host')
 
 
 class TerminalProvenanceTests(unittest.TestCase):

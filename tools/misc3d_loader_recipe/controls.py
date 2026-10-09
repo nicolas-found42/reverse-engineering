@@ -68,7 +68,7 @@ def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, outpu
     record('changed_terminal_source',lambda:source_build.source_build(game,tool_root,changed))
     record('host_source',lambda:loader.source_contract(output/'host-positive'))
     changed_loader=output/'changed-loader.c'
-    changed_loader.write_text(loader.SOURCE.read_text().replace('*flags |= 32ULL;','*flags |= 16ULL;'))
+    changed_loader.write_text(loader.SOURCE.read_text().replace('flag_object->flags |= 32ULL;','flag_object->flags |= 16ULL;'))
     record('changed_host_source',lambda:loader.source_contract(output/'host-negative',changed_loader))
     if positive['status']=='pass':
         linked_path=Path(positive['details']['artifacts']['linked']['path'])
@@ -109,11 +109,11 @@ def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, outpu
     expected={'real_terminal_source':0,'changed_terminal_source':1,'host_source':0,
               'changed_host_source':1,'changed_terminal_layout':1,'static_positive':0,
               'dependency_abi':0,
-              'full_frontier':2,'missing_provenance':2,'stale_provenance':1,
+              'full_frontier':0,'missing_provenance':2,'stale_provenance':1,
               'contradiction_over_missing':1,'reproducibility':0,
               'reproducibility_drift_detected':0}
     failures=[name for name,code in expected.items() if results.get(name,{}).get('exit_code')!=code]
-    summary={'scope':'Executed real source, isolated static and two-clean-build reproducibility controls; full loader/alias acceptance remains incomplete.',
+    summary={'scope':'Executed real source, isolated static and two-clean-build reproducibility controls; bounded loader source/static disposition completes; parent runtime/ownership work remains incomplete.',
              'results':results,'expected_exit_codes':expected,'failures':failures,
              'public_inputs':{name:identity(path)for name,path in [('controls',Path(__file__)),('loader',Path(loader.__file__)),('source_recipe',Path(source_build.__file__)),('decision',loader.DECISION)]}}
     (output/'summary.json').write_text(json.dumps(summary,indent=2)+'\n')

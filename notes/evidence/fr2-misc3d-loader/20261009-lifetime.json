@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "run_id": "20261009T185705Z-2fe2de7432924732a0592dbc35b9ccfd",
+  "check": "misc3d-lifetime",
+  "command": [
+    "tools/misc3d_lifetime.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json",
+    "--output",
+    ".scratch/issue37/lifetime"
+  ],
+  "tools": {
+    "python": "3.14.7",
+    "platform": "macOS-26.4.1-arm64-arm-64bit-Mach-O"
+  },
+  "inputs": {
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/misc3d_lifetime.py": {
+      "bytes": 5668,
+      "sha256": "79ba6323903d420d7fe4988bc4941e8a88c295c99a97ed6f0203393350b9de03"
+    },
+    "/Users/Nicolas/Documents/github/hermes/reverse-engineering/notes/evidence/fr2-misc3d-loader/lifetime-contract.json": {
+      "bytes": 9391,
+      "sha256": "0655a4acb1e39417a9ed65fcd793e15a18849316f8cb9aa77e30ce051f13602f"
+    },
+    "games/ford-racing-2/extracted/SLES_517.05": {
+      "bytes": 1662804,
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "/Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json": {
+      "bytes": 54861366,
+      "sha256": "839076de9050e28a213002686c7a07dc121a15535216e65dc85eeee7bcf355ed"
+    }
+  },
+  "status": "pass",
+  "diagnostics": [],
+  "details": {
+    "context": {
+      "base": "00233070",
+      "stride": 276,
+      "slots": 16,
+      "selector": "(id >> 20) & 15",
+      "generation_bits": "24..31",
+      "generation_check_in_object_helper": false,
+      "active_check_in_object_helper": false
+    },
+    "pointer_table": {
+      "offset": 236,
+      "count_offset": 228,
+      "allocation_bytes": "count << 2",
+      "allocation_call": "0022bc10",
+      "table_store": "0022bc1c",
+      "index": "id & 65535",
+      "index_check_in_object_helper": false,
+      "population": "Producer iteration s5 increments to context count; object name hash entry stores s5 at 0022bd88. Lookup reads its low16 at 00125024."
+    },
+    "release": {
+      "consumer_invalidation_call": "0022c4a4",
+      "free_table_call": "0022c518",
+      "table_clear": "0022c520",
+      "context_clear_call": "00120e18",
+      "context_clear_bytes": 276,
+      "database_sentinel_store": "001d17ec",
+      "sibling_resource_ids_cleared_by_misc3d_release": false,
+      "optional_pointer_cleared_by_misc3d_release": false
+    },
+    "caller_preconditions": [
+      "Resource index came from a successful current lookup in the same active context.",
+      "Use the object pointer only while that context and its object storage remain live.",
+      "A stale generation, arbitrary resource index, or released-context pointer is not validated by 00125068."
+    ],
+    "claim_limit": "Static producer/use/release contract, not successful guest execution, general memory safety, original declarations or shared-helper ownership.",
+    "new_attributed_match_bytes": 0,
+    "checked_functions": 10,
+    "checked_direct_calls": 9,
+    "raw_ranges": [
+      {
+        "entry": "0011ecd0",
+        "purpose": "Select one inactive context out of 16, mark active and construct slot/generation id.",
+        "ranges": [
+          {
+            "start": "0011ecd0",
+            "end_exclusive": "0011ed8c",
+            "bytes": 188,
+            "sha256": "1286a70ab1a7cb989735b32c91258696b7d64d28add60eb18f1c4c559b8db672"
+          }
+        ],
+        "saved_callers": [
+          "0011ed90"
+        ]
+      },
+      {
+        "entry": "0021b6e0",
+        "purpose": "Unchecked context selection from id bits 20..23, stride 276, base 00233070.",
+        "ranges": [
+          {
+            "start": "0021b6e0",
+            "end_exclusive": "0021b710",
+            "bytes": 48,
+            "sha256": "89d772fed6010d7372aa0060b4e4c4f2c10a882b52d4948789f3cf17bb2c4cb1"
+          }
+        ],
+        "saved_callers": [
+          "00125518",
+          "00123f18",
+          "00125458",
+          "00125640",
+          "0012d4b8",
+          "00125aa8",
+          "001220a8",
+          "00124c98",
+          "00124f58",
+          "00125990",
+          "00124e98",
+          "001258d0",
+          "00125dc8",
+          "0021d180",
+          "00130f90",
+          "00125a50",
+          "00125898",
+          "001242e0",
+          "00229080",
+          "00125700",
+          "00121f40",
+          "00131998",
+          "001288b0",
+          "00124d78",
+          "00125c70",
+          "001dabc8",
+          "00124cb8",
+          "00124a88",
+          "001250b8",
+          "001257d8",
+          "00125068",
+          "00126070",
+          "00125200",
+          "00121e10",
+          "00121950",
+          "00124e60",
+          "00125398",
+          "001248a0",
+          "001261a0",
+          "00125bb0",
+          "00121e48",
+          "00121ff8"
+        ]
+      },
+      {
+        "entry": "0022ba30",
+        "purpose": "Read object count, allocate four-byte pointer slots, populate indexed objects/name hash records.",
+        "ranges": [
+          {
+            "start": "0022ba30",
+            "end_exclusive": "0022bf24",
+            "bytes": 1268,
+            "sha256": "7f10049e966c29a63bb962204172f1e20a688a7c23164dd9e432427148649f00"
+          },
+          {
+            "start": "0022bf28",
+            "end_exclusive": "0022bfac",
+            "bytes": 132,
+            "sha256": "8b4cbe06f17baad47c109ecf1f8b42f681a23bea35a2332e21423cf75929fd5f"
+          },
+          {
+            "start": "0022bfb0",
+            "end_exclusive": "0022c044",
+            "bytes": 148,
+            "sha256": "9e2bb6471d91ad95d609ab48b08c2aa028ecb0309897a9d8c000ee63d9d24d4a"
+          }
+        ],
+        "saved_callers": [
+          "0011ed90"
+        ]
+      },
+      {
+        "entry": "00124f58",
+        "purpose": "Current name lookup returns kind 4 and low16 stored index or -1.",
+        "ranges": [
+          {
+            "start": "00124f58",
+            "end_exclusive": "00125034",
+            "bytes": 220,
+            "sha256": "f6b5ba4c948a32c2bd433fe6b9dc807665849e0ba2d41eab917e49f5de67d7c5"
+          },
+          {
+            "start": "00125038",
+            "end_exclusive": "00125068",
+            "bytes": 48,
+            "sha256": "d2b3e8ded0adaceec6143d3d8725461c98bd0553661e8a070caffdd5f163c55a"
+          }
+        ],
+        "saved_callers": [
+          "00132480",
+          "00130f90",
+          "001d1408",
+          "0012f630"
+        ]
+      },
+      {
+        "entry": "00125068",
+        "purpose": "Unchecked low16 indexed pointer load; sentinel -1 returns null.",
+        "ranges": [
+          {
+            "start": "00125068",
+            "end_exclusive": "001250b4",
+            "bytes": 76,
+            "sha256": "7d03fd4c2d9705427d04e24d141fdaeb364040e138db5aaaaaffec24b66caae4"
+          }
+        ],
+        "saved_callers": [
+          "001333a8",
+          "001d1a98",
+          "00132480",
+          "00130f90",
+          "001d1408",
+          "0012f630"
+        ]
+      },
+      {
+        "entry": "00120aa8",
+        "purpose": "Release context dependencies and clear the complete 276-byte context.",
+        "ranges": [
+          {
+            "start": "00120aa8",
+            "end_exclusive": "00120e30",
+            "bytes": 904,
+            "sha256": "63127cf443c2f6a1da0c028be50a15c5e416170a0f3730e0fb8100642df6fafa"
+          }
+        ],
+        "saved_callers": [
+          "001cf498",
+          "001d17c8",
+          "00121360",
+          "0012f1a0",
+          "001dbf20"
+        ]
+      },
+      {
+        "entry": "0022c498",
+        "purpose": "Free and clear pointer/name/hash storage; invoke consumer invalidation helper.",
+        "ranges": [
+          {
+            "start": "0022c498",
+            "end_exclusive": "0022c554",
+            "bytes": 188,
+            "sha256": "c492766de20b9fe158e162f51a65b8dc0e2907e289d1c6ed43425e666ac365e7"
+          }
+        ],
+        "saved_callers": [
+          "00120aa8"
+        ]
+      },
+      {
+        "entry": "00112168",
+        "purpose": "Clear object links in the tracked render-consumer records before table free.",
+        "ranges": [
+          {
+            "start": "00112168",
+            "end_exclusive": "001121ec",
+            "bytes": 132,
+            "sha256": "f2b3a8daae57255d91badb0b4bfc5f5d0b3eb0c4fe03b5af9732c9b6276987cf"
+          }
+        ],
+        "saved_callers": [
+          "0022aae0",
+          "0022fae0",
+          "0022ea48",
+          "0022c498"
+        ]
+      },
+      {
+        "entry": "001d17c8",
+        "purpose": "Misc3d release calls shared release and invalidates only database cell.",
+        "ranges": [
+          {
+            "start": "001d17c8",
+            "end_exclusive": "001d1800",
+            "bytes": 56,
+            "sha256": "d3a62c0821de04915f4227abba06fedc487b341c9bb6a450c5b97f7f806ea1c5"
+          }
+        ],
+        "saved_callers": []
+      },
+      {
+        "entry": "001ccbd8",
+        "purpose": "Startup caller invokes reset before main loader.",
+        "ranges": [
+          {
+            "start": "001ccbd8",
+            "end_exclusive": "001cce60",
+            "bytes": 648,
+            "sha256": "b54801f932b3559e7ff10a72ce2de370c85e59f6759931029dfd629815928bb7"
+          }
+        ],
+        "saved_callers": [
+          "001d3c58"
+        ]
+      }
+    ],
+    "contract_identity": {
+      "bytes": 9391,
+      "sha256": "0655a4acb1e39417a9ed65fcd793e15a18849316f8cb9aa77e30ce051f13602f"
+    }
+  },
+  "artifacts": {
+    "report.md": {
+      "bytes": 7598,
+      "sha256": "a587926fc03c9715ab5afbe48b15068f1b6a09d0d7776419f2b507070d5f1bf7"
+    }
+  }
+}
