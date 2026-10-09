@@ -1686,13 +1686,14 @@
     },
     {
       "path": "notes/evidence/fr2-misc3d-loader/README.md",
-      "readme_sha256": "a1f489e536192c7bd42f7d3e6b6ea23fc272ec6bb5a2c56f7d2dad80dacbebd6",
+      "readme_sha256": "33923b18384ba1da140865d380d5d1f33f70b46aec96018d516ba63041694e7b",
       "commands": [
         "python3 tools/misc3d_loader.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \\\n  notes/evidence/fr2-misc3d-loader/isolated-project.json \\\n  --output .scratch/evidence/misc3d-loader-fresh",
         "python3 tools/misc3d_loader_recipe/controls.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \\\n  notes/evidence/fr2-misc3d-loader/isolated-project.json \\\n  --output .scratch/evidence/misc3d-loader-controls-fresh",
         "mkdir -p ghidra-project/misc3d-loader-fresh\ncp -R /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35-copy/fr2.gpr \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35-copy/fr2.rep \\\n  ghidra-project/misc3d-loader-fresh/\nJAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home \\\n  .scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/support/analyzeHeadless \\\n  \"$PWD/ghidra-project/misc3d-loader-fresh\" fr2 -readOnly \\\n  -process SLES_517.05 -noanalysis -scriptPath \"$PWD/tools/misc3d_loader_recipe\" \\\n  -postScript InspectMisc3dLoader.java \"$PWD/.scratch/misc3d-loader-isolated.json\"",
         "python3 tools/misc3d_loader_recipe/source_build.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/misc3d-loader-terminal-fresh",
-        "tools/check.sh test_misc3d_loader test_misc3d_lifecycle \\\n  test_misc3d_lifecycle_observation test_misc3d_contract\npyright tools/misc3d_loader.py tools/misc3d_loader_recipe/source_build.py \\\n  tools/misc3d_loader_recipe/controls.py tools/test_misc3d_loader.py\npython3 tools/ip_rails.py --tree"
+        "tools/check.sh test_misc3d_loader test_misc3d_lifecycle \\\n  test_misc3d_lifecycle_observation test_misc3d_contract\npyright tools/misc3d_loader.py tools/misc3d_loader_recipe/source_build.py \\\n  tools/misc3d_loader_recipe/controls.py tools/test_misc3d_loader.py\npython3 tools/ip_rails.py --tree",
+        "python3 tools/misc3d_abi.py games/ford-racing-2 \\\n  --output .scratch/evidence/misc3d-abi-fresh\ntools/check.sh test_misc3d_abi test_misc3d_loader test_misc3d_lifecycle \\\n  test_misc3d_lifecycle_observation test_misc3d_contract\npyright tools/misc3d_abi.py tools/test_misc3d_abi.py tools/misc3d_loader.py \\\n  tools/misc3d_loader_recipe/source_build.py \\\n  tools/misc3d_loader_recipe/controls.py tools/test_misc3d_loader.py"
       ],
       "sha256_mentions": [],
       "revision_mentions": [],

@@ -177,4 +177,79 @@ verified, none contradicted/unsupported, with one low-confidence range-count
 claim marked for review. Its original judgment is preserved for independent
 disposition; a majority-support result alone does not settle that review.
 
-Docker unusable here, so the full two-build green proof was not run; unit suite 18/18 + byte-evidence (8 stage-name bytes the only cross-build diff) carried; reproducibility stays partially proven.
+## Continuation: dependency ABI and reproducibility (2026-10-09)
+
+The earlier integration could not run Docker and left the two-build proof
+partial. On this continuation Docker was available. The unchanged recipe's
+clean-build control failed: the comparison bytes agreed, but the object,
+prepared object and linked output differed because GCC retained each build
+directory in its source filename metadata. Naming the stages did not remove
+that difference. Those historical receipts above are preserved.
+
+The compiler recipe now compiles the basename `terminal.c` from each separate
+build directory. Its Linux child wrapper maps the caller's working directory
+inside the existing tool-root mount; callers outside that mount retain `/`.
+The source is still copied and hashed, and compiler flags, runtime image pins
+and the terminal comparison stay fixed. No metadata is stripped after compilation
+to obtain reproducibility. Relative CLI tool-root paths are resolved before
+building so that changing the compiler's working directory cannot redirect them.
+
+Run the controls command above to reproduce the
+[current control summary](20261009-controls.json). All thirteen expected exit
+codes were observed, including the added raw dependency check. The
+[two-clean-build receipt](20261009-reproducibility.json) records identical
+object, prepared-object, linked-output and comparison identities in separate
+directories. The [changed-source control](20261009-reproducibility-drift-detected.json)
+still detects a different linked artifact. This proves reproducibility for the
+bounded terminal candidate under the recorded tools, rather than a full-loader
+match or historical compiler identity.
+
+The new public child revalidates the database-name argument, low-word return
+transformation, return-register preservation, loader result use and shared
+object helper's indexed-pointer path from raw instructions:
+
+```sh
+python3 tools/misc3d_abi.py games/ford-racing-2 \
+  --output .scratch/evidence/misc3d-abi-fresh
+tools/check.sh test_misc3d_abi test_misc3d_loader test_misc3d_lifecycle \
+  test_misc3d_lifecycle_observation test_misc3d_contract
+pyright tools/misc3d_abi.py tools/test_misc3d_abi.py tools/misc3d_loader.py \
+  tools/misc3d_loader_recipe/source_build.py \
+  tools/misc3d_loader_recipe/controls.py tools/test_misc3d_loader.py
+```
+
+The [raw ABI receipt](20261009-dependency-abi.json) binds each checked instruction
+site by hash. On the dependency's observed normal return tail, the low word is
+`(old_id & 0xfff00000) | 0x00010000`, written to `0028f124` and consumed by the
+loader at its `00290ac4` store. The object helper returns null for `-1`; its
+non-sentinel path uses the resource's low sixteen bits to index four-byte
+pointer slots through the table at context offset 236. Names and type
+interpretations remain inferred. Table allocation, index bounds and pointer
+lifetime are unresolved, and no ownership of this shared helper follows.
+
+The loader frontier invokes this child and binds its checker identity in the
+updated decision. An available ABI contradiction fails even if inventory or
+isolated-project evidence is missing. Missing instruction sites stay incomplete;
+the synthetic controls also exercise changed tag, index stride, delay-slot
+argument and return-register restoration. Their success establishes checker
+behavior, not acceptance of a different corpus. The
+[focused log](20261009-focused.log) records 57 passing tests and
+[Pyright](20261009-pyright.log) records zero errors.
+
+The [current terminal build](20261009-real-terminal-source.json) remains an
+eight-byte candidate comparison with zero new attributed matching bytes. The
+[current frontier](20261009-full-frontier.json) still exits 2/incomplete with
+the same four required unknowns. Complete main-loader source/output comparison,
+independent range ownership, computed aliases and relevant sibling/lifetime
+domains remain required for #37/#35/#24. This continuation does not close them.
+
+The Standards and Spec reviews found no actionable defect in this continuation;
+the Spec review retained the parent acceptance gaps. Jev's original ABI review,
+six bounded patch packets and final gate escalated on low confidence without a
+concrete finding. The final gate independently verified the test/control/status
+claims. A [stronger independent review](20261009-review-disposition.json) checked
+the selected raw sites, unchanged source/test identities, original private
+receipts and both sets of actual build artifacts, then accepted the bounded
+continuation. Original judgments and distributions remain intact in the retained
+full resolution identified by hash; this is an independent disposition rather
+than an automatic Jev pass or full issue acceptance.

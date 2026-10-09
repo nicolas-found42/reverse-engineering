@@ -93,7 +93,7 @@ Commands and full hash/revision mentions are copied with their source context in
 - [fr2-matching-harness/README.md](fr2-matching-harness/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
 - [fr2-misc3d-cell/README.md](fr2-misc3d-cell/README.md) — 5 command blocks; missing: full_revision_mention.
 - [fr2-misc3d-lifecycle/README.md](fr2-misc3d-lifecycle/README.md) — 5 command blocks; missing: full_sha256_mention, full_revision_mention.
-- [fr2-misc3d-loader/README.md](fr2-misc3d-loader/README.md) — 5 command blocks; missing: full_sha256_mention, full_revision_mention.
+- [fr2-misc3d-loader/README.md](fr2-misc3d-loader/README.md) — 6 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-mmi-packed-operations/README.md](fr2-mmi-packed-operations/README.md) — 1 command blocks; missing: none.
 - [fr2-mmi-shuffles/README.md](fr2-mmi-shuffles/README.md) — 0 command blocks; missing: reproduction_command.
 - [fr2-oracle-dependencies/README.md](fr2-oracle-dependencies/README.md) — 2 command blocks; missing: full_revision_mention.

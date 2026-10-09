@@ -1,5 +1,7 @@
 """Synthetic public controls; real corpus source acceptance stays separate."""
 import struct
+import os
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -170,3 +172,25 @@ class TerminalStagingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
             self.assertNotEqual(source_build.prepare_stage(root), source_build.prepare_stage(root))
+
+
+class CompilerInputTests(unittest.TestCase):
+    def test_public_wrapper_maps_build_working_directory(self):
+        # Observe the real child CLI's Docker arguments without a daemon.
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp).resolve()
+            stage = root/'stage with spaces'
+            stage.mkdir()
+            docker = root/'docker'
+            docker.write_text('#!/bin/sh\nprintf "%s\\n" "$@"\n')
+            docker.chmod(0o755)
+            wrapper = Path(source_build.__file__).parents[1]/'compiler_probe_recipe/docker-linux-exec.sh'
+            env = dict(os.environ, PATH=str(root)+os.pathsep+os.environ['PATH'])
+            result = subprocess.run(['/bin/bash', str(wrapper), str(root), str(root/'cc'),
+                                     '-c', 'terminal.c'], cwd=stage,
+                                    capture_output=True, text=True, env=env)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            args = result.stdout.splitlines()
+            self.assertIn('--workdir', args)
+            self.assertEqual(args[args.index('--workdir') + 1], '/tools/stage with spaces')
+            self.assertEqual(args[-2:], ['-c', 'terminal.c'])

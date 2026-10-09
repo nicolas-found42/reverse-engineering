@@ -13,6 +13,7 @@ import tempfile
 from evidence_common import Incomplete, Invalid, identity, sha256, write_result
 from matching_ranges import EE_CORPUS_SHA256
 from ps2_executables import parse_elf
+import misc3d_abi
 
 ROOT = Path(__file__).resolve().parent.parent
 DECISION = ROOT / 'notes/evidence/fr2-misc3d-loader/decision.json'
@@ -180,7 +181,7 @@ def check(game: Path, inventory_path: Path, isolated_path: Path, output: Path) -
         missing.append('required retail executable is absent')
     inputs = {'inventory': inventory_path, 'isolated': isolated_path,
               'source': SOURCE, 'header': HEADER, 'terminal_source': TERMINAL_SOURCE,
-              'harness': HARNESS, 'script': SCRIPT}
+              'harness': HARNESS, 'script': SCRIPT, 'abi_checker': Path(misc3d_abi.__file__)}
     if not DECISION.is_file():
         missing.append('loader recorded decision is absent')
         decision = None
@@ -201,6 +202,12 @@ def check(game: Path, inventory_path: Path, isolated_path: Path, output: Path) -
         except Incomplete as error:
             missing.append(str(error))
             result['observation'] = error.details
+    if data is not None:
+        try:
+            result['dependency_dataflow'] = misc3d_abi.check(data)
+        except Incomplete as error:
+            missing.append(str(error))
+            result['dependency_dataflow'] = error.details
     if all(path.is_file() for path in (SOURCE, HEADER, TERMINAL_SOURCE, HARNESS)):
         result['source_contract'] = source_contract(output)
     result.update({'issue37_status': 'incomplete', 'issue35_status': 'incomplete',
@@ -220,7 +227,7 @@ def main() -> int:
     temp = tempfile.mkdtemp(prefix='private-source-', dir=args.output)
     return write_result(args.output, 'misc3d-loader',
                             lambda: check(args.game, args.inventory, args.isolated, Path(temp)),
-                            [p for p in (Path(__file__), DECISION, SOURCE, HEADER, TERMINAL_SOURCE, HARNESS, SCRIPT,
+                            [p for p in (Path(__file__), Path(misc3d_abi.__file__), DECISION, SOURCE, HEADER, TERMINAL_SOURCE, HARNESS, SCRIPT,
                                          args.inventory, args.isolated, args.game/'extracted/SLES_517.05') if p.is_file()])
 
 

@@ -74,6 +74,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/matching_diff.py](matching_diff.py) — The harness's per-unit byte-diff gate: the single seam of the matching rebuild.
 - [tools/matching_ranges.py](matching_ranges.py) — Inventory every PT_LOAD byte and apply the one identity-pinned ADR-0005 split.
 - [tools/matching_sections.py](matching_sections.py) — Corpus-pinned section extraction for the matching-decompilation harness.
+- [tools/misc3d_abi.py](misc3d_abi.py) — Validate bounded misc3d dependency argument, packed-id and pointer-use paths.
 - [tools/misc3d_contract.py](misc3d_contract.py) — Build the fixed misc3d accessor/cell scope and check its evidence and NOBITS layout.
 - [tools/misc3d_lifecycle.py](misc3d_lifecycle.py) — Compare the repository-recorded misc3d lifecycle scope, without crediting gaps.
 - [tools/misc3d_lifecycle_observation.py](misc3d_lifecycle_observation.py) — Recheck isolated misc3d boundary reconciliation and retain only safe metadata.
@@ -177,6 +178,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_linker_layout.py](test_linker_layout.py) — Tests: Public ELF fixture controls for GNU placement, relocation and zero-fill.
 - [tools/test_matching.py](test_matching.py) — Tests: Python module; see source.
 - [tools/test_matching_ranges.py](test_matching_ranges.py) — Tests: Python module; see source.
+- [tools/test_misc3d_abi.py](test_misc3d_abi.py) — Tests: Synthetic child-seam controls for the bounded misc3d raw ABI check.
 - [tools/test_misc3d_contract.py](test_misc3d_contract.py) — Tests: Public output-check seam: layout and byte comparison, with synthetic ELF controls.
 - [tools/test_misc3d_lifecycle.py](test_misc3d_lifecycle.py) — Tests: Public linked-output seam; synthetic fixtures do not establish corpus acceptance.
 - [tools/test_misc3d_lifecycle_observation.py](test_misc3d_lifecycle_observation.py) — Tests: Public observation CLI priority controls; no retail payload is needed.

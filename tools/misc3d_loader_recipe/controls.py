@@ -81,6 +81,7 @@ def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, outpu
         shifted=output/'shifted-terminal.elf';shifted.write_bytes(data)
         record('changed_terminal_layout',lambda:source_build.compare((game/'extracted/SLES_517.05').read_bytes(),bytes(data)))
     record('static_positive',lambda:loader.observe((game/'extracted/SLES_517.05').read_bytes(),json.loads(inventory.read_text()),json.loads(isolated.read_text())))
+    record('dependency_abi',lambda:loader.misc3d_abi.check((game/'extracted/SLES_517.05').read_bytes()))
     record('full_frontier',lambda:loader.check(game,inventory,isolated,output/'frontier-host'))
     with patch.object(loader,'DECISION',output/'missing-decision.json'):
         record('missing_provenance',lambda:loader.check(game,inventory,isolated,output/'missing-host'))
@@ -107,6 +108,7 @@ def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, outpu
     record('reproducibility_drift_detected',drift)
     expected={'real_terminal_source':0,'changed_terminal_source':1,'host_source':0,
               'changed_host_source':1,'changed_terminal_layout':1,'static_positive':0,
+              'dependency_abi':0,
               'full_frontier':2,'missing_provenance':2,'stale_provenance':1,
               'contradiction_over_missing':1,'reproducibility':0,
               'reproducibility_drift_detected':0}

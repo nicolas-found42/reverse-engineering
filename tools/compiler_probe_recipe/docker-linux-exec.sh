@@ -18,4 +18,11 @@ for arg in "$@"; do
   esac
   args+=("$arg")
 done
-exec docker run --platform linux/amd64 --rm -v "$host_root:/tools" "$runtime_image" "$executable" "${args[@]}"
+# Relative compiler inputs retain a stable basename in GCC's object metadata.
+# Map a caller's cwd only when it is inside the one mounted tool root.
+workdir=/
+case "$PWD" in
+  "$host_root") workdir=/tools ;;
+  "$host_root"/*) workdir="/tools/${PWD#"$host_root"/}" ;;
+esac
+exec docker run --platform linux/amd64 --rm --workdir "$workdir" -v "$host_root:/tools" "$runtime_image" "$executable" "${args[@]}"
