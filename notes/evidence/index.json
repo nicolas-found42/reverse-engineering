@@ -1858,7 +1858,7 @@
     },
     {
       "path": "notes/evidence/fr2-progress/README.md",
-      "readme_sha256": "e05f1466efe93c147db3f3310f86f0b61b31bee4037d0da5ffe25840e98a1c25",
+      "readme_sha256": "cdddeda8c85a526f80bf004a7747c305f9ab609b34b9834bda03e9691417a627",
       "commands": [
         "python3 tools/matching_ranges.py corpus games/ford-racing-2 --output .scratch/progress-inventory",
         "python3 tools/repository_hygiene.py generate\npython3 tools/repository_hygiene.py check\ntools/check.sh test_progress_report test_repository_hygiene"
@@ -1872,68 +1872,69 @@
     },
     {
       "path": "notes/evidence/fr2-ps2sdk-substitute/README.md",
-      "readme_sha256": "b1e86a836db1e58011dfa098852f8c484b58bc1e1bc9d795222a400e62a1e392",
+      "readme_sha256": "454f538b1eb20198e77224cb7ef10d4cf1ea96cb3f1f15bbead438ca6d3d63c5",
       "commands": [
         "mkdir -p \"$WORK/toolchain\" \"$WORK/build\"\ngit clone --no-checkout https://github.com/ps2dev/ps2sdk.git \"$WORK/ps2sdk\"\ngit -C \"$WORK/ps2sdk\" checkout --detach 2c670453980fcc3fe46ead6399b730b12c8556eb\ncurl -L --fail --show-error \\\n  -o \"$WORK/toolchain/ps2dev-ubuntu-24.04-arm.tar.gz\" \\\n  https://github.com/ps2dev/ps2dev/releases/download/v2.0.0/ps2dev-ubuntu-24.04-arm.tar.gz\necho 'ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622  '\"$WORK/toolchain/ps2dev-ubuntu-24.04-arm.tar.gz\" | shasum -a 256 -c -\ncp \"$REPO/notes/evidence/fr2-ps2sdk-substitute/download_dependencies.pinned.sh\" \\\n  \"$WORK/ps2sdk/download_dependencies.sh\"",
         "docker run --rm --platform linux/arm64 \\\n  -v \"$WORK/toolchain:/toolchain:ro\" \\\n  -v \"$WORK/ps2sdk:/src\" \\\n  -v \"$WORK/build:/out\" \\\n  -w /src \\\n  ubuntu@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 \\\n  bash -lc '\nset -eux\napt-get update\napt-get install -y --no-install-recommends build-essential make perl python3 ca-certificates git\ntar -xzf /toolchain/ps2dev-ubuntu-24.04-arm.tar.gz -C /opt\nexport PS2DEV=/opt/ps2dev\nexport PS2SDKSRC=/src\nexport PS2SDK=/out/ps2sdk\nexport PATH=\"$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PATH\"\ncd /src\nmake clean\nmake -j1\ntest \"$(git -C common/external_deps/lwip rev-parse HEAD)\" = 77dcd25a72509eb83f72b033d219b1d40cd8eb95\ntest \"$(git -C common/external_deps/fatfs rev-parse HEAD)\" = 18cc3d9e07473a6aa3d783a66224b243a7b4974c\nmake install\npython3 -c \"from pathlib import Path; import sys; print('installed file count:', sum(path.is_file() for path in Path(sys.argv[1]).rglob('*')))\" \"$PS2SDK\"\ncd \"$PS2SDK/samples/debug/helloworld\"\nmake -B\n'",
-        "python3 - \"$PS2SDK\" <<'PY'\nfrom collections import Counter\nfrom pathlib import Path\nimport json, sys\nroot = Path(sys.argv[1])\nfiles = [path for path in root.rglob('*') if path.is_file()]\ncounts = Counter(path.suffix.lower() for path in files)\nprint(json.dumps({\n    'files': len(files), 'archives': counts['.a'], 'irx': counts['.irx'],\n    'headers': counts['.h'],\n}, sort_keys=True))\nPY\nsha256sum \"$PS2SDK/samples/debug/helloworld/helloworld.elf\""
+        "python3 - \"$PS2SDK\" <<'PY'\nfrom collections import Counter\nfrom pathlib import Path\nimport json, sys\nroot = Path(sys.argv[1])\nfiles = [path for path in root.rglob('*') if path.is_file()]\ncounts = Counter(path.suffix.lower() for path in files)\nprint(json.dumps({\n    'files': len(files), 'archives': counts['.a'], 'irx': counts['.irx'],\n    'headers': counts['.h'],\n}, sort_keys=True))\nPY\nsha256sum \"$PS2SDK/samples/debug/helloworld/helloworld.elf\"",
+        "docker build --platform linux/arm64 -t fr2-ps2sdk-kernel-runtime tools/kernel_substitute_recipe\npython3 tools/kernel_substitutes.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/sdk \\\n  --output .scratch/issue12/reproduced-build\n# Use consumer.elf from the fresh receipt's build_directory.\npython3 tools/kernel_substitute_recipe/experiments.py games/ford-racing-2 \\\n  <build-directory>/consumer.elf --output .scratch/issue12/reproduced-controls\ntools/check.sh test_kernel_substitutes test_substitute_ranges test_matching_ranges"
       ],
       "sha256_mentions": [
         {
           "value": "ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622",
-          "line": 14,
+          "line": 15,
           "context": "  `ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622`."
         },
         {
           "value": "534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
-          "line": 17,
+          "line": 18,
           "context": "  `sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55`."
         },
         {
           "value": "ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622",
-          "line": 41,
+          "line": 42,
           "context": "echo 'ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622  '\"$WORK/toolchain/ps2dev-ubuntu-24.04-arm.tar.gz\" | shasum -a 256 -c -"
         },
         {
           "value": "534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
-          "line": 56,
+          "line": 57,
           "context": "  ubuntu@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 \\"
         },
         {
           "value": "30590eb0a67a8ae5bcfb8bfaffd87738336b0a18cebbe9cef68e4192bd816386",
-          "line": 117,
+          "line": 118,
           "context": "`30590eb0a67a8ae5bcfb8bfaffd87738336b0a18cebbe9cef68e4192bd816386`; the ELF"
         }
       ],
       "revision_mentions": [
         {
           "value": "2c670453980fcc3fe46ead6399b730b12c8556eb",
-          "line": 10,
+          "line": 11,
           "context": "  `2c670453980fcc3fe46ead6399b730b12c8556eb`, license `LICENSE` (Academic"
         },
         {
           "value": "77dcd25a72509eb83f72b033d219b1d40cd8eb95",
-          "line": 19,
+          "line": 20,
           "context": "  lwIP `77dcd25a72509eb83f72b033d219b1d40cd8eb95` and FatFs"
         },
         {
           "value": "18cc3d9e07473a6aa3d783a66224b243a7b4974c",
-          "line": 20,
+          "line": 21,
           "context": "  `18cc3d9e07473a6aa3d783a66224b243a7b4974c`. Their licenses remain with"
         },
         {
           "value": "2c670453980fcc3fe46ead6399b730b12c8556eb",
-          "line": 37,
+          "line": 38,
           "context": "git -C \"$WORK/ps2sdk\" checkout --detach 2c670453980fcc3fe46ead6399b730b12c8556eb"
         },
         {
           "value": "77dcd25a72509eb83f72b033d219b1d40cd8eb95",
-          "line": 69,
+          "line": 70,
           "context": "test \"$(git -C common/external_deps/lwip rev-parse HEAD)\" = 77dcd25a72509eb83f72b033d219b1d40cd8eb95"
         },
         {
           "value": "18cc3d9e07473a6aa3d783a66224b243a7b4974c",
-          "line": 70,
+          "line": 71,
           "context": "test \"$(git -C common/external_deps/fatfs rev-parse HEAD)\" = 18cc3d9e07473a6aa3d783a66224b243a7b4974c"
         }
       ],

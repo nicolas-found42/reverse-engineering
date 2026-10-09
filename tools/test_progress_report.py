@@ -20,6 +20,9 @@ class ProgressReportTests(unittest.TestCase):
         self.assertEqual(int(report['measures']['total_code']) + int(report['measures']['total_data']), 3507048)
         owned = next(c for c in report['categories'] if c['id'] == 'game-owned')
         self.assertEqual(owned['measures']['total_code'], '60')
+        substitutes = next(c for c in report['categories'] if c['id'] == 'substitute')
+        self.assertEqual(substitutes['measures']['total_code'], '64')
+        self.assertEqual(substitutes['measures']['matched_code'], '0')
         unit = next(u for u in report['units'] if u['metadata']['progress_categories'] == ['game-owned'])
         item = unit['sections'][0]
         self.assertEqual(item['address'], str(0x1d1800 - 0x100000))
@@ -28,6 +31,13 @@ class ProgressReportTests(unittest.TestCase):
     def test_imported_historical_credit_is_rejected(self):
         self.snapshot['details']['matched_bytes'] = 60
         with self.assertRaisesRegex(Invalid, 'cannot earn'):
+            build_report(self.snapshot)
+
+    def test_substitute_range_cannot_expand_or_disappear(self):
+        row = next(x for x in self.snapshot['details']['artifacts'][0]['ranges']
+                   if x['classification'] == 'substitute_region')
+        row['classification'] = 'mixed_unresolved'
+        with self.assertRaisesRegex(Invalid, 'substitute denominator'):
             build_report(self.snapshot)
 
     def test_expanded_owned_range_is_rejected(self):

@@ -1,0 +1,195 @@
+{
+  "schema": "fr2-kernel-substitute-controls/v1",
+  "status": "pass",
+  "command": [
+    "tools/kernel_substitute_recipe/experiments.py",
+    "games/ford-racing-2",
+    "/Users/Nicolas/Documents/github/hermes/spec-5-tools/sdk/kernel-substitutes-stxgzb86/consumer.elf",
+    "--output",
+    ".scratch/issue12/controls-reviewed"
+  ],
+  "details": {
+    "authority": "host_model_and_static_output_controls",
+    "matched_bytes": 0,
+    "host_cases_per_execution": 90,
+    "host": [
+      {
+        "case": "positive",
+        "compile_exit": 0,
+        "exit_code": 0,
+        "expected": "pass",
+        "source": {
+          "bytes": 1739,
+          "sha256": "8d5d30a3854f8ff72955500c63b2ecf1768a85f6fef14de39a231995da3de113"
+        },
+        "command": [
+          "cc",
+          "-std=c11",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-fsanitize=undefined",
+          "-I",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/system",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/positive.c",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/kernel_substitute_recipe/host_controls.c",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/positive"
+        ]
+      },
+      {
+        "case": "reversed_semaphore_condition",
+        "compile_exit": 0,
+        "exit_code": -6,
+        "expected": "fail",
+        "source": {
+          "bytes": 1739,
+          "sha256": "2027f5f783a633f0f7b1fa11eadbe72e205e58dacf732feaa6111f883dd0a5c8"
+        },
+        "command": [
+          "cc",
+          "-std=c11",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-fsanitize=undefined",
+          "-I",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/system",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/reversed_semaphore_condition.c",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/kernel_substitute_recipe/host_controls.c",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/reversed_semaphore_condition"
+        ]
+      },
+      {
+        "case": "wrong_cache_operation",
+        "compile_exit": 0,
+        "exit_code": -6,
+        "expected": "fail",
+        "source": {
+          "bytes": 1739,
+          "sha256": "ee9a702d875cb07ae789c7021f36b0ea2d825d976456525c4a9bad3a4743cca1"
+        },
+        "command": [
+          "cc",
+          "-std=c11",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-fsanitize=undefined",
+          "-I",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/system",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/wrong_cache_operation.c",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/kernel_substitute_recipe/host_controls.c",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/wrong_cache_operation"
+        ]
+      },
+      {
+        "case": "reversed_dma_source",
+        "compile_exit": 0,
+        "exit_code": -6,
+        "expected": "fail",
+        "source": {
+          "bytes": 1739,
+          "sha256": "54fa84749be96518da769808da61291bc097ab819a756ee0f41b33255f755837"
+        },
+        "command": [
+          "cc",
+          "-std=c11",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-fsanitize=undefined",
+          "-I",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/system",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/reversed_dma_source.c",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/kernel_substitute_recipe/host_controls.c",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/reversed_dma_source"
+        ]
+      },
+      {
+        "case": "missing_poll",
+        "compile_exit": 0,
+        "exit_code": -6,
+        "expected": "fail",
+        "source": {
+          "bytes": 1715,
+          "sha256": "8307ebf5041d7ac3fcc706cdef517c17b44b78543996fbf72fe9c37c5b224d56"
+        },
+        "command": [
+          "cc",
+          "-std=c11",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-fsanitize=undefined",
+          "-I",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/system",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/missing_poll.c",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/kernel_substitute_recipe/host_controls.c",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/missing_poll"
+        ]
+      },
+      {
+        "case": "zero_size_submitted",
+        "compile_exit": 0,
+        "exit_code": -6,
+        "expected": "fail",
+        "source": {
+          "bytes": 1738,
+          "sha256": "aac48aedf685c3206caf1434f539a717ad36ec165519769a52030336e37f5c23"
+        },
+        "command": [
+          "cc",
+          "-std=c11",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-fsanitize=undefined",
+          "-I",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/reconstruction/ee/system",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/zero_size_submitted.c",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/kernel_substitute_recipe/host_controls.c",
+          "-o",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/issue12/controls-reviewed/controls-j27734to/zero_size_submitted"
+        ]
+      }
+    ],
+    "linked_controls": [
+      {
+        "case": "changed_wrapper",
+        "status": "fail",
+        "expected": "fail"
+      },
+      {
+        "case": "missing_wrapper",
+        "status": "incomplete",
+        "expected": "incomplete"
+      },
+      {
+        "case": "shifted_wrapper",
+        "status": "fail",
+        "expected": "fail"
+      },
+      {
+        "case": "uncalled_interface",
+        "status": "fail",
+        "expected": "fail"
+      },
+      {
+        "case": "changed_consumer_preserving_calls",
+        "status": "fail",
+        "expected": "fail"
+      }
+    ],
+    "linked": {
+      "bytes": 195988,
+      "sha256": "a680b14a5dfca9e7ab1494b9da4fe2422fb2ca0790648b82f39e9691f3c73a1b"
+    },
+    "host_compiler": "/usr/bin/cc",
+    "guest_observations": 0
+  }
+}

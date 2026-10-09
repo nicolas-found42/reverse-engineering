@@ -93,7 +93,7 @@ class RangeCli(unittest.TestCase):
                           (0x100010, 16, '.bss')])
         self.assertEqual(d['evidence_authority'], 'structural_file_inventory')
 
-    def test_real_corpus_splits_only_the_identity_pinned_source_unit_and_keeps_match_zero(self):
+    def test_real_corpus_splits_recorded_owned_and_substitute_ranges_without_match_credit(self):
         game = TOOLS.parent / 'games/ford-racing-2'
         if not (game / 'extracted/IRX/USBD.IRX').is_file():
             self.skipTest('real corpus range split requires the local pinned corpus')
@@ -110,8 +110,12 @@ class RangeCli(unittest.TestCase):
         self.assertEqual([(row['address'], row['length'], row['section'], row['unit'])
                           for row in owned], [(0x1D1800, 60, '.text', 'misc3d_db_id')])
         self.assertEqual((ee['matched_bytes'], details['matched_bytes']), (0, 0))
+        self.assertEqual(details['substitute_bytes'], 64)
+        substitutes = [row for row in ee['ranges'] if row['classification'] == 'substitute_region']
+        self.assertEqual([(row['address'], row['length']) for row in substitutes],
+                         [(0x1eab80, 16), (0x1eade0, 16), (0x1eaf00, 16), (0x1eaf20, 16)])
         self.assertEqual((details['game_owned_bytes'], details['unresolved_bytes']),
-                         (60, details['file_backed_bytes'] + details['zero_fill_bytes'] - 60))
+                         (60, 3506924))
 
     def test_real_corpus_ownership_is_stable_when_candidate_source_changes(self):
         game = TOOLS.parent / 'games/ford-racing-2'
@@ -133,7 +137,7 @@ class RangeCli(unittest.TestCase):
         self.assertEqual((run.returncode, result['status']), (0, 'pass'), result['diagnostics'])
         details = result['details']
         self.assertEqual((details['game_owned_bytes'], details['matched_bytes'],
-                          details['unresolved_bytes']), (60, 0, 3506988))
+                          details['unresolved_bytes']), (60, 0, 3506924))
         self.assertEqual(details['file_backed_bytes'] + details['zero_fill_bytes'],
                          details['unresolved_bytes'] + details['game_owned_bytes']
                          + details['substitute_bytes'])

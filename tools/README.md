@@ -65,6 +65,8 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/iso_walk.py](iso_walk.py) — Walk the Ford Racing 2 PS2 disc image and dump the ISO9660 tree + SYSTEM.CNF.
 - [tools/judgment_contract.py](judgment_contract.py) — Fail-closed policy for retained semantic decisions, separate from deterministic facts.
 - [tools/jump_table.py](jump_table.py) — Recognise the compiler's switch jump through a table, from the instruction words before a jr.
+- [tools/kernel_substitute_recipe/experiments.py](kernel_substitute_recipe/experiments.py) — Run consumer boundary controls and mutations of a real linked substitute output.
+- [tools/kernel_substitutes.py](kernel_substitutes.py) — Build the recorded kernel substitutes through actual reconstructed consumers.
 - [tools/linker_layout.py](linker_layout.py) — Prove bounded GNU placement, relocation and zero-fill contracts without byte credit.
 - [tools/linker_layout_recipe/controls.py](linker_layout_recipe/controls.py) — Run one fresh GNU build and retained artifact/provenance negative controls.
 - [tools/linker_layout_recipe/fixture.py](linker_layout_recipe/fixture.py) — Exercise the pinned GNU assembler's native R5900 tag and linker HI/LO carry.
@@ -177,6 +179,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_iop_symbols.py](test_iop_symbols.py) — Tests: Python module; see source.
 - [tools/test_ip_rails.py](test_ip_rails.py) — Tests: Python module; see source.
 - [tools/test_jump_table.py](test_jump_table.py) — Tests: Python module; see source.
+- [tools/test_kernel_substitutes.py](test_kernel_substitutes.py) — Tests: Exercise the public substitute command and its output-verification seam.
 - [tools/test_linker_layout.py](test_linker_layout.py) — Tests: Public ELF fixture controls for GNU placement, relocation and zero-fill.
 - [tools/test_matching.py](test_matching.py) — Tests: Python module; see source.
 - [tools/test_matching_ranges.py](test_matching_ranges.py) — Tests: Python module; see source.

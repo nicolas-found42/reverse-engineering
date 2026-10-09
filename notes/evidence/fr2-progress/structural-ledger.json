@@ -61,7 +61,7 @@
             "reconstruction_source_sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc",
             "candidate_source_sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc",
             "build_unit": "reconstruction/ee/app3d/misc3d_db_id.c",
-            "decision_sha256": "74c7cb6a9c9e6718133fe62bf1c31a9f229fcdf1be888b8e68307b1acb459ff2",
+            "decision_sha256": "47b019fbf954d1e8be1feb8e3ad21f5d1382960e37fccdf9e520a2c7a28016a5",
             "evidence_inputs": {
               "metadata": {
                 "bytes": 3635,
@@ -80,14 +80,142 @@
           {
             "program": 1,
             "address": 1906748,
-            "length": 287640,
+            "length": 103236,
             "section": ".text",
             "file_offset": 862268,
             "storage": "initialized",
             "classification": "mixed_unresolved",
             "decision": "ADR-0005",
             "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
-            "sha256": "0ab99ca8fcceddecf1acae13f39938b89772e87320e13c4f1b8914bc0513996b"
+            "sha256": "4cccf3daa2fffbddbe74f6a011c1688ae467d54bc679fb049e8ea50869a659af"
+          },
+          {
+            "program": 1,
+            "address": 2009984,
+            "length": 16,
+            "section": ".text",
+            "file_offset": 965504,
+            "storage": "initialized",
+            "classification": "substitute_region",
+            "decision": "ADR-0005",
+            "evidence": "corpus-bound kernel wrapper and consumer contract",
+            "sha256": "582e1e7cc46f248cc93ac09c60ee94a9d04ddac963c093d7acf9776a3ef9079e",
+            "unit": "SignalSema",
+            "decision_sha256": "47b019fbf954d1e8be1feb8e3ad21f5d1382960e37fccdf9e520a2c7a28016a5",
+            "evidence_inputs": {
+              "consumer_contract": {
+                "bytes": 3985,
+                "sha256": "eb398c70524a54e410a379d2a596abdacbc546ca3f0a4ebc7150fd0434f461dc"
+              }
+            }
+          },
+          {
+            "program": 1,
+            "address": 2010000,
+            "length": 592,
+            "section": ".text",
+            "file_offset": 965520,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "bc84993d179a56dc2efc95b927f488414f9a2d2cba211df098295d05f59e73de"
+          },
+          {
+            "program": 1,
+            "address": 2010592,
+            "length": 16,
+            "section": ".text",
+            "file_offset": 966112,
+            "storage": "initialized",
+            "classification": "substitute_region",
+            "decision": "ADR-0005",
+            "evidence": "corpus-bound kernel wrapper and consumer contract",
+            "sha256": "5981c1e46292010b462c1aa96986db0e142b6d8d72e68d4ed765af16db6ee74f",
+            "unit": "FlushCache",
+            "decision_sha256": "47b019fbf954d1e8be1feb8e3ad21f5d1382960e37fccdf9e520a2c7a28016a5",
+            "evidence_inputs": {
+              "consumer_contract": {
+                "bytes": 3985,
+                "sha256": "eb398c70524a54e410a379d2a596abdacbc546ca3f0a4ebc7150fd0434f461dc"
+              }
+            }
+          },
+          {
+            "program": 1,
+            "address": 2010608,
+            "length": 272,
+            "section": ".text",
+            "file_offset": 966128,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "f970132332b5a321931ace84206d9331725326d6323c90f1c29950a79aa8a82c"
+          },
+          {
+            "program": 1,
+            "address": 2010880,
+            "length": 16,
+            "section": ".text",
+            "file_offset": 966400,
+            "storage": "initialized",
+            "classification": "substitute_region",
+            "decision": "ADR-0005",
+            "evidence": "corpus-bound kernel wrapper and consumer contract",
+            "sha256": "735b6d7d635fd6f5250dad1db348db6a4df5ef66efd2d8d3c9cbeaa6b4d0f10e",
+            "unit": "sceSifDmaStat",
+            "decision_sha256": "47b019fbf954d1e8be1feb8e3ad21f5d1382960e37fccdf9e520a2c7a28016a5",
+            "evidence_inputs": {
+              "consumer_contract": {
+                "bytes": 3985,
+                "sha256": "eb398c70524a54e410a379d2a596abdacbc546ca3f0a4ebc7150fd0434f461dc"
+              }
+            }
+          },
+          {
+            "program": 1,
+            "address": 2010896,
+            "length": 16,
+            "section": ".text",
+            "file_offset": 966416,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "8e1cb196dde9ab36c7b1c047bf6ce05a7cea4ba0124f15211461b830553670b0"
+          },
+          {
+            "program": 1,
+            "address": 2010912,
+            "length": 16,
+            "section": ".text",
+            "file_offset": 966432,
+            "storage": "initialized",
+            "classification": "substitute_region",
+            "decision": "ADR-0005",
+            "evidence": "corpus-bound kernel wrapper and consumer contract",
+            "sha256": "41cb12c03fa12fd2d62b7d7b48b255c3576515aee1677b29c754c24f774434b2",
+            "unit": "sceSifSetDma",
+            "decision_sha256": "47b019fbf954d1e8be1feb8e3ad21f5d1382960e37fccdf9e520a2c7a28016a5",
+            "evidence_inputs": {
+              "consumer_contract": {
+                "bytes": 3985,
+                "sha256": "eb398c70524a54e410a379d2a596abdacbc546ca3f0a4ebc7150fd0434f461dc"
+              }
+            }
+          },
+          {
+            "program": 1,
+            "address": 2010928,
+            "length": 183460,
+            "section": ".text",
+            "file_offset": 966448,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7c7c7805bcabd1e86c25703f790cccad9bca48b9997561fe33b1d39a8a0f5c62"
           },
           {
             "program": 1,
@@ -585,11 +713,11 @@
         "allocated_sections_outside_load_images": [],
         "file_backed_bytes": 1639759,
         "zero_fill_bytes": 1078609,
-        "unresolved_bytes": 2718308,
+        "unresolved_bytes": 2718244,
         "game_owned_bytes": 60,
         "matched_bytes": 0,
-        "substitute_bytes": 0,
-        "substitute_disposition": "no ranges attributed as substitute",
+        "substitute_bytes": 64,
+        "substitute_disposition": "substitute, not matched",
         "evidence_authority": "structural_file_inventory",
         "claim_limits": [
           "Complete declared load-image accounting only; no attribution or rebuild.",
@@ -2455,15 +2583,15 @@
     ],
     "file_backed_bytes": 2171407,
     "zero_fill_bytes": 1335641,
-    "unresolved_bytes": 3506988,
+    "unresolved_bytes": 3506924,
     "game_owned_bytes": 60,
     "matched_bytes": 0,
-    "substitute_bytes": 0,
-    "substitute_disposition": "no ranges attributed as substitute",
+    "substitute_bytes": 64,
+    "substitute_disposition": "substitute, not matched",
     "evidence_authority": "pinned_corpus_structural_inventory",
     "attribution_status": "partial",
     "claim_limits": [
-      "Only the exact identity-pinned EE source unit recorded in ADR-0005 is split.",
+      "The identity-pinned EE source unit and four recorded kernel wrappers are split.",
       "Structural inventory records zero matched bytes; source-build evidence is separate.",
       "All other initialized load bytes and zero-fill layout remain mixed/unresolved.",
       "IOP addresses are link-relative; runtime load bases remain unobserved."
@@ -2471,15 +2599,17 @@
   },
   "schema": "fr2-structural-ledger/v1",
   "source_pins": {
-    "docs/adr/0005-game-owned-sdk-boundary.md": "bd70322c2375c7557a9c173bc0ec4bf14baccec72cc2e1820a3e07ddbebd7aee",
+    "docs/adr/0005-game-owned-sdk-boundary.md": "47b019fbf954d1e8be1feb8e3ad21f5d1382960e37fccdf9e520a2c7a28016a5",
     "notes/evidence/fr2-first-unit/adr0005-misc3d-boundary.json": "5297888940ad2a67f26b8761eed70de40b18d4f46a6eca3ff2da4535e156987e",
     "notes/evidence/fr2-first-unit/saved-function-inventory-digest.json": "d0424aad2eeddc58ead3f164ec2f49195e1d102282647603dbc407fec55b374b",
     "notes/evidence/fr2-source-map/source-map-result.json": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a",
     "reconstruction/ee/app3d/misc3d_db_id.c": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc",
-    "tools/matching_ranges.py": "f362c5693784103094ffaf083867f481969cc7cef4ebd4510afe82ce050a45be",
-    "tools/recorded_decisions.py": "771f4d6a4a37b89ca8b943c7afae32a3452dfaaa84abd5f3097bd93b82cfe494"
+    "tools/matching_ranges.py": "7074e402cf9c25aec938c6ad31796607fd2843820863cb1fda5d7059c845f7b1",
+    "tools/recorded_decisions.py": "c7325c3631be6f011a26b3153ce49ce96b0052e978e2a518fb7a2747dc3024be",
+    "tools/kernel_substitutes.py": "94eb138adb9d1b36be1a713d1c6d239e9c353a77ee62b32283af86a3972392af",
+    "notes/evidence/fr2-ps2sdk-substitute/kernel-consumer-contract.json": "eb398c70524a54e410a379d2a596abdacbc546ca3f0a4ebc7150fd0434f461dc"
   },
-  "source_revision": "f7ac32b16b770d6511392c760ad5251785beae42",
-  "source_working_tree_dirty": false,
+  "source_revision": "e1ef2e196e377676fb520099577fc716f605d96f",
+  "source_working_tree_dirty": true,
   "status": "pass"
 }

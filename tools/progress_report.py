@@ -17,7 +17,7 @@ from recorded_decisions import read_decisions
 
 ROOT = Path(__file__).resolve().parent.parent
 LEDGER_PATH = 'notes/evidence/fr2-progress/structural-ledger.json'
-LEDGER_SHA256 = '7de5d5f22987e82afbecfc7e2d6287d565727b727b4a62137b65f56314762ba1'
+LEDGER_SHA256 = 'f86859b9a7a2019445f6b2275d7bd44d7425bd3b2f7ee908abc733e9920e78a6'
 HISTORICAL_PATH = 'notes/evidence/fr2-completion/20261008-continuation-summary.json'
 CATEGORIES = (('game-owned', 'Game-owned'), ('mixed', 'Mixed'),
               ('substitute', 'Substitute'), ('unresolved', 'Unresolved'))
@@ -43,12 +43,16 @@ def validate_ledger(snapshot: dict) -> None:
     if snapshot.get('status') != 'pass':
         raise Invalid('structural inventory did not pass')
     ledger = snapshot['details']
-    if ledger['matched_bytes'] != 0 or ledger['substitute_bytes'] != 0:
-        raise Invalid('structural inventory cannot earn matching/substitute credit')
+    if ledger['matched_bytes'] != 0:
+        raise Invalid('structural inventory cannot earn matching credit')
     measured = sum(r['length'] for a in ledger['artifacts'] for r in a['ranges'])
     if measured != ledger['file_backed_bytes'] + ledger['zero_fill_bytes']:
         raise Invalid('load-image byte conservation failed')
     owned = 0
+    expected_substitutes = {(row['section'], int(row['start'], 16),
+                             int(row['end_exclusive'], 16) - int(row['start'], 16))
+                            for row in read_decisions()['units'] if row['scope'] == 'substitute_region'}
+    substitutes = set()
     for artifact in ledger['artifacts']:
         previous = -1
         for row in artifact['ranges']:
@@ -62,11 +66,19 @@ def validate_ledger(snapshot: dict) -> None:
                         or address != 0x001D1800 or length != 60):
                     raise Invalid('ownership exceeds the recorded ADR-0005 split')
                 owned += length
+            elif classification == 'substitute_region':
+                key = (row['section'], address, length)
+                if artifact['artifact'] != 'EE' or key not in expected_substitutes or key in substitutes:
+                    raise Invalid('substitute attribution exceeds the recorded ranges')
+                substitutes.add(key)
             elif classification != 'mixed_unresolved':
                 raise Invalid('unsupported load-image attribution')
     if owned != 60 or ledger['game_owned_bytes'] != owned:
         raise Invalid('owned denominator disagrees with ADR-0005')
-    if ledger['unresolved_bytes'] != measured - owned:
+    substitute_bytes = sum(row[2] for row in substitutes)
+    if substitutes != expected_substitutes or ledger['substitute_bytes'] != substitute_bytes:
+        raise Invalid('substitute denominator disagrees with recorded ranges')
+    if ledger['unresolved_bytes'] != measured - owned - substitute_bytes:
         raise Invalid('unresolved-byte conservation failed')
 
 
@@ -80,6 +92,7 @@ def build_report(snapshot: dict) -> dict:
                 bases.setdefault(row['section'], row['address'])
         for row in artifact['ranges']:
             categories = (['game-owned'] if row['classification'] == 'game_owned'
+                          else ['substitute'] if row['classification'] == 'substitute_region'
                           else ['mixed', 'unresolved'])
             name = row['section'] or '<unmapped-load-image>'
             code = name in ('.text', '.vutext', '.init', '.fini') or name.startswith('.text.')
@@ -124,6 +137,7 @@ def outputs(root: Path = ROOT) -> dict[str, str]:
                   'report_match_credit': 0, 'report_completion_credit': 0,
                   'total_load_image_bytes': snapshot['details']['file_backed_bytes'] + snapshot['details']['zero_fill_bytes'],
                   'game_owned_bytes': snapshot['details']['game_owned_bytes'],
+                  'substitute_bytes': snapshot['details']['substitute_bytes'],
                   'unresolved_bytes': snapshot['details']['unresolved_bytes'],
                   'historical_summary': {'path': HISTORICAL_PATH, 'sha256': digest(history),
                                          'authority': 'archived result; not a fresh build verification'},
