@@ -1,0 +1,22 @@
+name: Research question
+description: Record an unresolved question with a falsifiable finish line.
+labels: [needs-triage]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Question and bounded scope
+    validations:
+      required: true
+  - type: textarea
+    id: established
+    attributes:
+      label: Established evidence and what remains unresolved
+    validations:
+      required: true
+  - type: textarea
+    id: finish
+    attributes:
+      label: Reproducing commands, acceptance criteria and falsifier
+    validations:
+      required: true

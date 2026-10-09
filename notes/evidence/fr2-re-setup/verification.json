@@ -1,0 +1,729 @@
+{
+  "schema": "fr2-static-re-setup/v1",
+  "recorded_at": "2026-10-09T00:57:07.374804+00:00",
+  "scope": "local static toolchain and MCP setup; synthetic target analysis, no game execution",
+  "base_revision": "75c406a125534bce1229c5b7c3598f892e4cd3ab",
+  "working_tree_dirty": true,
+  "versions": {
+    "ghidra": "12.1.4",
+    "ee_reloaded": "2.1.38",
+    "ghidra_mcp": "6.0.0 + local file-scope patch",
+    "pyghidra": "3.1.0",
+    "rabbitizer": "1.16.2",
+    "objdiff_cli": "3.8.2",
+    "rea": "5.0.0",
+    "radare2": "6.2.4 +1",
+    "r2mcp": "1.8.8",
+    "java_runtime": "OpenJDK 21.0.12.1",
+    "omp_native": "18.8.6"
+  },
+  "source_commits": {
+    "ghidra_mcp": "8cd2078e10b9ba28b188cb84ce5b9051a904b995",
+    "ccc": "c025ca94735d75cd366b29a10f924010ce43353d",
+    "radare2": "485e5e205b190fc297a2a95a6f982ff5d9f54039",
+    "r2mcp": "d48078bb5440d5564374e102c28e1c8892784de8"
+  },
+  "distribution_sha256": {
+    "ghidra_12.1.4": "ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db",
+    "ee_2.1.38": "e389ff3e921d9f7d4db2ece9906f808545ce4ff519d9e25a019b72ea509f240b",
+    "objdiff_3.8.2_arm64": "767c67e13b7b5e6ca545e7d2235e47c7bceac07d47a52776f74a52914cb4085a"
+  },
+  "local_extension": {
+    "patch_sha256": "57759d2350f3b2cd98725339cb905daf7ea5c76e37ba6abba44d6189880df9fb",
+    "jar_sha256": "2c04b702254a257ce43f948ac76623f4c1d8d4c911d36ce44e3e22165eee9412",
+    "build_patch_sha256": "cc2afa63dcf8ba2ab46a2a81f58e443601f2316b1b2a8ae3ecc1ca38ed88b4a8",
+    "patch_normalization": "Blank context lines represented as unchanged remove/add lines; patched Java source and installed JAR unchanged."
+  },
+  "configured_stdio_launches": {
+    "results": [
+      {
+        "client_entry": "codex",
+        "server": "ghidra",
+        "initialized": true,
+        "tool_count": 222,
+        "server_info": {
+          "name": "ghidra-mcp",
+          "title": null,
+          "version": "1.30.0",
+          "websiteUrl": null,
+          "icons": null
+        },
+        "calls": [
+          {
+            "tool": "create_project",
+            "arguments": {
+              "parentDir": "/Users/Nicolas/Documents/RE-Toolchain/ghidra-projects",
+              "name": "re-setup-verification-56616"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"success\": true, \"name\": \"re-setup-verification-56616\", \"path\": \"/Users/Nicolas/Documents/RE-Toolchain/ghidra-projects/re-setup-verification-56616\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"success\": true, \"name\": \"re-setup-verification-56616\", \"path\": \"/Users/Nicolas/Documents/RE-Toolchain/ghidra-projects/re-setup-verification-56616\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "load_program",
+            "arguments": {
+              "file": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/re-setup/probe"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"success\":true,\"program\":\"probe\",\"language\":\"AARCH64:LE:64:AppleSilicon\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"success\":true,\"program\":\"probe\",\"language\":\"AARCH64:LE:64:AppleSilicon\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "run_analysis",
+            "arguments": {
+              "program": "probe"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"success\":true,\"duration_ms\":671,\"total_functions\":2,\"new_functions\":1,\"program\":\"probe\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"success\":true,\"duration_ms\":671,\"total_functions\":2,\"new_functions\":1,\"program\":\"probe\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "get_metadata",
+            "arguments": {
+              "program": "probe"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "Program Name: probe\nExecutable Path: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/re-setup/probe\nArchitecture: AARCH64\nCompiler: default\nLanguage: AARCH64:LE:64:AppleSilicon\nEndian: Little\nAddress Size: 64 bits\nBase Address: 100000000\nMemory Blocks: 5\nTotal Memory Size: 32768 bytes\nFunction Count: 2\nSymbol Count: 14\n",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "Program Name: probe\nExecutable Path: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/re-setup/probe\nArchitecture: AARCH64\nCompiler: default\nLanguage: AARCH64:LE:64:AppleSilicon\nEndian: Little\nAddress Size: 64 bits\nBase Address: 100000000\nMemory Blocks: 5\nTotal Memory Size: 32768 bytes\nFunction Count: 2\nSymbol Count: 14\n"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "list_functions",
+            "arguments": {
+              "program": "probe"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "re_setup_probe at 100000328\nmain at 100000348\n",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "re_setup_probe at 100000328\nmain at 100000348\n"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "decompile_function",
+            "arguments": {
+              "program": "probe",
+              "address": "100000328"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "\nint re_setup_probe(int value)\n\n{\n  return value * 3 + 7;\n}\n\n",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "\nint re_setup_probe(int value)\n\n{\n  return value * 3 + 7;\n}\n\n"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "get_metadata",
+            "arguments": {},
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"error\": \"Missing required program selector(s): `program=` (GHIDRA_MCP_REQUIRE_PROGRAM_SELECTORS is set). Pass each explicitly to target the intended open program(s).\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"error\": \"Missing required program selector(s): `program=` (GHIDRA_MCP_REQUIRE_PROGRAM_SELECTORS is set). Pass each explicitly to target the intended open program(s).\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "run_script_inline",
+            "arguments": {
+              "program": "probe",
+              "code": "invalid synthetic Java, must never execute"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"error\":\"Script execution disabled. Set GHIDRA_MCP_ALLOW_SCRIPTS=1 (and GHIDRA_MCP_AUTH_TOKEN if exposing beyond loopback) to enable. /run_script_inline executes arbitrary Java against the Ghidra process.\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"error\":\"Script execution disabled. Set GHIDRA_MCP_ALLOW_SCRIPTS=1 (and GHIDRA_MCP_AUTH_TOKEN if exposing beyond loopback) to enable. /run_script_inline executes arbitrary Java against the Ghidra process.\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "create_project",
+            "arguments": {
+              "parentDir": "/tmp",
+              "name": "re-setup-verification-56616-denied"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"error\":\"Access denied: path is outside the configured file root\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"error\":\"Access denied: path is outside the configured file root\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "open_project",
+            "arguments": {
+              "path": "/tmp/re-setup-denied.gpr"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"error\":\"Access denied: path is outside the configured file root\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"error\":\"Access denied: path is outside the configured file root\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "restore_project",
+            "arguments": {
+              "gar_path": "/tmp/re-setup-denied.gar",
+              "parent_dir": "/Users/Nicolas/Documents/RE-Toolchain/ghidra-projects",
+              "project_name": "re-setup-verification-56616-restore-denied"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"error\":\"Access denied: path is outside the configured file root\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"error\":\"Access denied: path is outside the configured file root\"}"
+              },
+              "isError": false
+            }
+          },
+          {
+            "tool": "restore_project",
+            "arguments": {
+              "gar_path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/re-setup/nonexistent-synthetic.gar",
+              "parent_dir": "/tmp",
+              "project_name": "re-setup-verification-56616-write-denied"
+            },
+            "result": {
+              "meta": null,
+              "content": [
+                {
+                  "type": "text",
+                  "text": "{\"error\":\"Access denied: path is outside the configured file root\"}",
+                  "annotations": null,
+                  "meta": null
+                }
+              ],
+              "structuredContent": {
+                "result": "{\"error\":\"Access denied: path is outside the configured file root\"}"
+              },
+              "isError": false
+            }
+          }
+        ],
+        "patched_open_and_restore_scope_verified": true,
+        "synthetic_decompile_verified": true,
+        "script_and_file_scope_rejections_verified": true,
+        "strict_program_routing_verified": true
+      },
+      {
+        "client_entry": "omp",
+        "server": "radare2",
+        "initialized": true,
+        "tool_count": 27,
+        "server_info": {
+          "name": "Radare2 MCP Connector",
+          "title": null,
+          "version": "1.8.8",
+          "websiteUrl": null,
+          "icons": null
+        },
+        "tool_names": [
+          "calculate",
+          "decompile_function",
+          "disassemble",
+          "disassemble_function",
+          "get_current_address",
+          "get_function_prototype",
+          "hexdump",
+          "list_all_strings",
+          "list_classes",
+          "list_decompilers",
+          "list_entrypoints",
+          "list_exports",
+          "list_files",
+          "list_functions",
+          "list_functions_tree",
+          "list_imports",
+          "list_libraries",
+          "list_methods",
+          "list_sections",
+          "list_strings",
+          "list_symbols",
+          "lookup_address",
+          "lookup_export",
+          "lookup_symbol",
+          "show_function_details",
+          "show_info",
+          "xrefs_to"
+        ]
+      },
+      {
+        "client_entry": "claude",
+        "server": "radare2",
+        "initialized": true,
+        "tool_count": 27,
+        "server_info": {
+          "name": "Radare2 MCP Connector",
+          "title": null,
+          "version": "1.8.8",
+          "websiteUrl": null,
+          "icons": null
+        },
+        "tool_names": [
+          "calculate",
+          "decompile_function",
+          "disassemble",
+          "disassemble_function",
+          "get_current_address",
+          "get_function_prototype",
+          "hexdump",
+          "list_all_strings",
+          "list_classes",
+          "list_decompilers",
+          "list_entrypoints",
+          "list_exports",
+          "list_files",
+          "list_functions",
+          "list_functions_tree",
+          "list_imports",
+          "list_libraries",
+          "list_methods",
+          "list_sections",
+          "list_strings",
+          "list_symbols",
+          "lookup_address",
+          "lookup_export",
+          "lookup_symbol",
+          "show_function_details",
+          "show_info",
+          "xrefs_to"
+        ]
+      },
+      {
+        "client_entry": "codex",
+        "server": "radare2",
+        "initialized": true,
+        "tool_count": 27,
+        "server_info": {
+          "name": "Radare2 MCP Connector",
+          "title": null,
+          "version": "1.8.8",
+          "websiteUrl": null,
+          "icons": null
+        },
+        "tool_names": [
+          "calculate",
+          "decompile_function",
+          "disassemble",
+          "disassemble_function",
+          "get_current_address",
+          "get_function_prototype",
+          "hexdump",
+          "list_all_strings",
+          "list_classes",
+          "list_decompilers",
+          "list_entrypoints",
+          "list_exports",
+          "list_files",
+          "list_functions",
+          "list_functions_tree",
+          "list_imports",
+          "list_libraries",
+          "list_methods",
+          "list_sections",
+          "list_strings",
+          "list_symbols",
+          "lookup_address",
+          "lookup_export",
+          "lookup_symbol",
+          "show_function_details",
+          "show_info",
+          "xrefs_to"
+        ]
+      },
+      {
+        "client_entry": "claude",
+        "server": "ghidra",
+        "initialized": true,
+        "tool_count": 222,
+        "server_info": {
+          "name": "ghidra-mcp",
+          "title": null,
+          "version": "1.30.0",
+          "websiteUrl": null,
+          "icons": null
+        }
+      },
+      {
+        "client_entry": "omp",
+        "server": "ghidra",
+        "initialized": true,
+        "tool_count": 222,
+        "server_info": {
+          "name": "ghidra-mcp",
+          "title": null,
+          "version": "1.30.0",
+          "websiteUrl": null,
+          "icons": null
+        }
+      },
+      {
+        "client_entry": "codex",
+        "server": "rea",
+        "initialized": true,
+        "tool_count": 133,
+        "server_info": {
+          "name": "rea",
+          "title": null,
+          "version": "5.0.0",
+          "websiteUrl": null,
+          "icons": null
+        }
+      },
+      {
+        "client_entry": "omp",
+        "server": "rea",
+        "initialized": true,
+        "tool_count": 133,
+        "server_info": {
+          "name": "rea",
+          "title": null,
+          "version": "5.0.0",
+          "websiteUrl": null,
+          "icons": null
+        }
+      },
+      {
+        "client_entry": "claude",
+        "server": "rea",
+        "initialized": true,
+        "tool_count": 133,
+        "server_info": {
+          "name": "rea",
+          "title": null,
+          "version": "5.0.0",
+          "websiteUrl": null,
+          "icons": null
+        }
+      }
+    ],
+    "token_auth_verified": true,
+    "all_nine_configured_launches_verified": true
+  },
+  "native_clients": {
+    "claude": {
+      "model_inference_invoked": false,
+      "results": [
+        {
+          "server": "ghidra",
+          "command": [
+            "claude",
+            "mcp",
+            "get",
+            "ghidra"
+          ],
+          "native_connected": true,
+          "output": "ghidra:\n  Scope: User config (available in all your projects)\n  Status: \u2714 Connected\n  Type: stdio\n  Command: /opt/homebrew/opt/python@3.14/bin/python3.14\n  Args: /Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py ghidra\n  Environment:\n\nTo remove this server, run: claude mcp remove ghidra -s user\n"
+        },
+        {
+          "server": "rea",
+          "command": [
+            "claude",
+            "mcp",
+            "get",
+            "rea"
+          ],
+          "native_connected": true,
+          "output": "rea:\n  Scope: User config (available in all your projects)\n  Status: \u2714 Connected\n  Type: stdio\n  Command: /opt/homebrew/opt/python@3.14/bin/python3.14\n  Args: /Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py rea\n  Environment:\n\nTo remove this server, run: claude mcp remove rea -s user\n"
+        },
+        {
+          "server": "radare2",
+          "command": [
+            "claude",
+            "mcp",
+            "get",
+            "radare2"
+          ],
+          "native_connected": true,
+          "output": "radare2:\n  Scope: User config (available in all your projects)\n  Status: \u2714 Connected\n  Type: stdio\n  Command: /opt/homebrew/opt/python@3.14/bin/python3.14\n  Args: /Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py r2\n  Environment:\n\nTo remove this server, run: claude mcp remove radare2 -s user\n"
+        }
+      ]
+    },
+    "codex": {
+      "native_client": "Codex app-server",
+      "model_inference_invoked": false,
+      "servers": [
+        {
+          "name": "ghidra",
+          "tool_count": 222
+        },
+        {
+          "name": "rea",
+          "tool_count": 133
+        },
+        {
+          "name": "radare2",
+          "tool_count": 27
+        }
+      ],
+      "calls": [
+        {
+          "tool": "get_metadata",
+          "arguments": {
+            "program": "probe"
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "Program Name: probe\nExecutable Path: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/re-setup/probe\nArchitecture: AARCH64\nCompiler: default\nLanguage: AARCH64:LE:64:AppleSilicon\nEndian: Little\nAddress Size: 64 bits\nBase Address: 100000000\nMemory Blocks: 5\nTotal Memory Size: 32768 bytes\nFunction Count: 2\nSymbol Count: 14\n"
+              }
+            ],
+            "structuredContent": {
+              "result": "Program Name: probe\nExecutable Path: /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/re-setup/probe\nArchitecture: AARCH64\nCompiler: default\nLanguage: AARCH64:LE:64:AppleSilicon\nEndian: Little\nAddress Size: 64 bits\nBase Address: 100000000\nMemory Blocks: 5\nTotal Memory Size: 32768 bytes\nFunction Count: 2\nSymbol Count: 14\n"
+            },
+            "isError": false
+          }
+        },
+        {
+          "tool": "list_functions",
+          "arguments": {
+            "program": "probe"
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "re_setup_probe at 100000328\nmain at 100000348\n"
+              }
+            ],
+            "structuredContent": {
+              "result": "re_setup_probe at 100000328\nmain at 100000348\n"
+            },
+            "isError": false
+          }
+        },
+        {
+          "tool": "decompile_function",
+          "arguments": {
+            "program": "probe",
+            "address": "100000328"
+          },
+          "result": {
+            "content": [
+              {
+                "type": "text",
+                "text": "\nint re_setup_probe(int value)\n\n{\n  return value * 3 + 7;\n}\n\n"
+              }
+            ],
+            "structuredContent": {
+              "result": "\nint re_setup_probe(int value)\n\n{\n  return value * 3 + 7;\n}\n\n"
+            },
+            "isError": false
+          }
+        }
+      ],
+      "synthetic_decompile_verified": true
+    },
+    "omp": {
+      "installed_client": "/opt/homebrew/Cellar/omp/18.8.6/bin/omp",
+      "method": "installed native RPC local /mcp test commands initialize and list_tools",
+      "profile": "isolated provider/auth/cache state; exact current three RE MCP entries copied",
+      "credentials": "Literal synthetic unused model key; no existing provider env/auth files copied",
+      "model_calls": 0,
+      "results": {
+        "ghidra": {
+          "native_command": "/mcp test ghidra",
+          "response": {
+            "id": "native-test-ghidra",
+            "type": "response",
+            "command": "prompt",
+            "success": true,
+            "data": {
+              "agentInvoked": false
+            }
+          },
+          "status": "connected",
+          "tool_count": 222
+        },
+        "rea": {
+          "native_command": "/mcp test rea",
+          "response": {
+            "id": "native-test-rea",
+            "type": "response",
+            "command": "prompt",
+            "success": true,
+            "data": {
+              "agentInvoked": false
+            }
+          },
+          "status": "connected",
+          "tool_count": 133
+        },
+        "radare2": {
+          "native_command": "/mcp test radare2",
+          "response": {
+            "id": "native-test-radare2",
+            "type": "response",
+            "command": "prompt",
+            "success": true,
+            "data": {
+              "agentInvoked": false
+            }
+          },
+          "status": "connected",
+          "tool_count": 27
+        }
+      },
+      "timing": "Native discovery checked before local file-scope patch; fresh launches of the same exact configured entries checked after patch."
+    }
+  },
+  "utility_checks": {
+    "pyghidra_rabbitizer": [
+      "PASS PyGhidra 3.1.0 starts Ghidra 12.1.4 and finds EE r5900:LE:32:default",
+      "PASS rabbitizer R5900 decodes synthetic instruction: jr          $ra"
+    ],
+    "ee_synthetic": [
+      "PASS EE:Reloaded r5900:LE:32:default disassembles synthetic jr ra",
+      "P-code operations: 1"
+    ],
+    "ccc_ctest": "Test project /Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/setup-2026-10-08/ccc/build\n    Start 1: tests\n1/1 Test #1: tests ............................   Passed    0.02 sec\n\n100% tests passed out of 1\n\nTotal Test time (real) =   0.03 sec\n",
+    "r2_synthetic_metadata": "fd       3\nfile     .scratch/re-setup/probe\nsize     0x4368\nhumansz  16.9K\nmode     r-x\niorw     false\nblock    0x100\n",
+    "stdump_identify": "                                                        games/ford-racing-2/extracted/IRX/STREAM.IRX: .mdebug .symtab\n",
+    "rea_ghidra_doctor_healthy": true
+  },
+  "full_completion": {
+    "path": ".scratch/full-completion/20261009T004731Z-4701a1f9502f41fa9f977f749ff978f2/result.json",
+    "sha256": "c3babdabf428b2c7e3d760bdbb5d59bea3df9046fe98b12685f5ad459aada21b",
+    "status": "incomplete",
+    "exit_code": 2,
+    "ledger": {
+      "file_backed_bytes": 2171407,
+      "zero_fill_bytes": 1335641,
+      "unresolved_bytes": 3506988,
+      "game_owned_bytes": 60,
+      "substitute_bytes": 0,
+      "matched_bytes": 60,
+      "substitute_disposition": "no ranges attributed as substitute",
+      "matched_fraction": 1.0,
+      "matched_fraction_scope": "attributed_game_owned_bytes",
+      "function_owned_bytes": null,
+      "function_owned_disposition": "Discovery accounting is not matching credit."
+    },
+    "real_corpus_completion": false
+  },
+  "security_controls": {
+    "unauthenticated_schema_status": 401,
+    "authenticated_schema_status": 200,
+    "scripts_disabled": true,
+    "required_program_selector": true,
+    "file_root": "/Users/Nicolas/Documents",
+    "project_folder_scope": "/",
+    "old_unauthenticated_8089_listener_retired": true
+  },
+  "limits": [
+    "Historical local validation, not an assertion about future client sessions or installations.",
+    "Ghidra database edit tools remain available; the server is not universally read-only.",
+    "REA audit-wide doctor flags missing optional proprietary engines and noncanonical wrapper registrations; scoped Ghidra readiness passes.",
+    "No dashboard registration was performed; CI only uploads the report artifact.",
+    "Full reconstruction and behavioral criteria remain incomplete."
+  ]
+}

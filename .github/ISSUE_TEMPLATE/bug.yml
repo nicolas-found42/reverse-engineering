@@ -1,0 +1,29 @@
+name: Tool or evidence bug
+description: Report a reproducible failure without uploading corpus material.
+labels: [needs-triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem and expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction command, revision and input identities
+      description: Include hashes and paths, never retail bytes or credentials.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Actual result and bounded evidence
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Testable acceptance criteria and negative control
+    validations:
+      required: true

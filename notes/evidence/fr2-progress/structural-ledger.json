@@ -1,0 +1,2485 @@
+{
+  "authority": "structural inventory; zero matching credit",
+  "command": "python3 tools/matching_ranges.py corpus games/ford-racing-2 --output <local-dir>",
+  "details": {
+    "provenance": {
+      "profile": "fr2-pal-sles-517.05",
+      "sources": {
+        "ford-racing-2.bin": {
+          "bytes": 678667248,
+          "sha256": "ae8d5a32c9d832f34a08fad6f0e97ce6e89e6b040597011f6362d886145b9d3d"
+        },
+        "ford-racing-2.cue": {
+          "bytes": 79,
+          "sha256": "c2e0aaf75a43150567f4ffe02ac863c8d1bda8f2fdf744012361436ec582edb6"
+        },
+        "extracted/SLES_517.05": {
+          "bytes": 1662804,
+          "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+        },
+        "extracted/FILES.HDR": {
+          "bytes": 29428,
+          "sha256": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d"
+        },
+        "extracted/FILES.DAT": {
+          "bytes": 334641152,
+          "sha256": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722"
+        }
+      },
+      "corpus_id": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab"
+    },
+    "module_inventory_sha256": "025e309506e9922574bd644635eb20df26ab3a874a8de642aacfbddfb641fb23",
+    "artifacts": [
+      {
+        "artifact": "EE",
+        "artifact_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 1048576,
+            "length": 858112,
+            "section": ".text",
+            "file_offset": 4096,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "0d8a236f839318b2e4cab0e7ac8862ee7d32cef8b6727212b72f6696bd74858e"
+          },
+          {
+            "program": 1,
+            "address": 1906688,
+            "length": 60,
+            "section": ".text",
+            "file_offset": 862208,
+            "storage": "initialized",
+            "classification": "game_owned",
+            "decision": "ADR-0005",
+            "evidence": "identity-pinned source-built unit range",
+            "sha256": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+            "unit": "misc3d_db_id",
+            "reconstruction_source_sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc",
+            "candidate_source_sha256": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc",
+            "build_unit": "reconstruction/ee/app3d/misc3d_db_id.c",
+            "decision_sha256": "b3bddcf38d783a1066e17f8d5100887c694c80847af9a8e682456511d67895ae",
+            "evidence_inputs": {
+              "metadata": {
+                "bytes": 3635,
+                "sha256": "5297888940ad2a67f26b8761eed70de40b18d4f46a6eca3ff2da4535e156987e"
+              },
+              "source_map": {
+                "bytes": 131306,
+                "sha256": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a"
+              },
+              "saved_function_inventory": {
+                "bytes": 696,
+                "sha256": "d0424aad2eeddc58ead3f164ec2f49195e1d102282647603dbc407fec55b374b"
+              }
+            }
+          },
+          {
+            "program": 1,
+            "address": 1906748,
+            "length": 287640,
+            "section": ".text",
+            "file_offset": 862268,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "0ab99ca8fcceddecf1acae13f39938b89772e87320e13c4f1b8914bc0513996b"
+          },
+          {
+            "program": 1,
+            "address": 2194388,
+            "length": 12,
+            "section": null,
+            "file_offset": 1149908,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+          },
+          {
+            "program": 1,
+            "address": 2194400,
+            "length": 13696,
+            "section": ".vutext",
+            "file_offset": 1149920,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "be08c8c66f6ed84ec82cd000209741b22bb79ed68cb6d85b1bee6357e0ffc2c9"
+          },
+          {
+            "program": 1,
+            "address": 2208096,
+            "length": 8,
+            "section": ".ctors",
+            "file_offset": 1163616,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "72a4fa3544e43a836ffcb268ce06ccdbc55d44d5e6b1b1c19216a53ea98301fd"
+          },
+          {
+            "program": 1,
+            "address": 2208104,
+            "length": 8,
+            "section": ".dtors",
+            "file_offset": 1163624,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "72a4fa3544e43a836ffcb268ce06ccdbc55d44d5e6b1b1c19216a53ea98301fd"
+          },
+          {
+            "program": 1,
+            "address": 2208112,
+            "length": 24,
+            "section": ".reginfo",
+            "file_offset": 1163632,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "c42665d011907f152218428753a5b4cb295b6eaf907eff0c2dbae0a8904250d6"
+          },
+          {
+            "program": 2,
+            "address": 2208256,
+            "length": 7944,
+            "section": ".user_section1",
+            "file_offset": 1163776,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7102cf99c05be042253d5beb60ad1f58a88e5d24e96d18a4e20481d8bbbda62a"
+          },
+          {
+            "program": 2,
+            "address": 2216200,
+            "length": 120,
+            "section": null,
+            "file_offset": 1171720,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "6edd9f6f9cc92cded36e6c4a580933f9c9f1b90562b46903b806f21902a1a54f"
+          },
+          {
+            "program": 2,
+            "address": 2216320,
+            "length": 272,
+            "section": ".user_section2",
+            "file_offset": 1171840,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "44c08ec753e08a2a79f67aad2a43ef10bc3463892b474083b813a4d6e4fffbca"
+          },
+          {
+            "program": 2,
+            "address": 2216592,
+            "length": 112,
+            "section": null,
+            "file_offset": 1172112,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "b5fdab78d8947eacc864bfeecb4d2100780e5afe1cd8efafb124887913ac49fa"
+          },
+          {
+            "program": 2,
+            "address": 2216704,
+            "length": 1768,
+            "section": ".user_section3",
+            "file_offset": 1172224,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "af635865be34635a09c2b7c9ed7ea0f2195c2fc876e2dcbd09a9889c00ce1bfe"
+          },
+          {
+            "program": 2,
+            "address": 2218472,
+            "length": 24,
+            "section": null,
+            "file_offset": 1173992,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "9d908ecfb6b256def8b49a7c504e6c889c4b0e41fe6ce3e01863dd7b61a20aa0"
+          },
+          {
+            "program": 2,
+            "address": 2218496,
+            "length": 1108,
+            "section": ".user_section4",
+            "file_offset": 1174016,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "f2242e76429ab82e3a03c80a93754fcf8f064e2c697c8f9a4f07fd3cf9c5d71a"
+          },
+          {
+            "program": 2,
+            "address": 2219604,
+            "length": 44,
+            "section": null,
+            "file_offset": 1175124,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "85759b3811ff7dc47b03792ac85317be51431a3f9e01dcafce317ed736a391b0"
+          },
+          {
+            "program": 2,
+            "address": 2219648,
+            "length": 14348,
+            "section": ".user_section5",
+            "file_offset": 1175168,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "2ad7712ae483faaaae4a3c4721c7cf503e17a638c0ef0d3ce976562ccf882104"
+          },
+          {
+            "program": 2,
+            "address": 2233996,
+            "length": 116,
+            "section": null,
+            "file_offset": 1189516,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5b517952cbe9c4c147bc3f3434f9d82409e76d09ea58905aefe7fb5415912d9a"
+          },
+          {
+            "program": 2,
+            "address": 2234112,
+            "length": 2352,
+            "section": ".user_section6",
+            "file_offset": 1189632,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "45f6b99da0ec3698e1db06d096da88a2cf0930ec12fbf488f70a75d3b25fca79"
+          },
+          {
+            "program": 2,
+            "address": 2236464,
+            "length": 80,
+            "section": null,
+            "file_offset": 1191984,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5b6fb58e61fa475939767d68a446f97f1bff02c0e5935a3ea8bb51e6515783d8"
+          },
+          {
+            "program": 2,
+            "address": 2236544,
+            "length": 2624,
+            "section": ".user_section7",
+            "file_offset": 1192064,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "342f9b1d63d2ec7f2c63f38532b1a8d7bd174d8ad232381e98e90676c2beb6b1"
+          },
+          {
+            "program": 2,
+            "address": 2239168,
+            "length": 64,
+            "section": null,
+            "file_offset": 1194688,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b"
+          },
+          {
+            "program": 2,
+            "address": 2239232,
+            "length": 25904,
+            "section": ".user_section8",
+            "file_offset": 1194752,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "c3f6697b9b0a18d8985a4a2555738ca55d1897ffbc60e00461ed513e42ac31ad"
+          },
+          {
+            "program": 2,
+            "address": 2265136,
+            "length": 80,
+            "section": null,
+            "file_offset": 1220656,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5b6fb58e61fa475939767d68a446f97f1bff02c0e5935a3ea8bb51e6515783d8"
+          },
+          {
+            "program": 2,
+            "address": 2265216,
+            "length": 4308,
+            "section": ".user_section19",
+            "file_offset": 1220736,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "fd3732d862a187654466cb79415d4653f99bb68179438ce2a4844144286ff074"
+          },
+          {
+            "program": 2,
+            "address": 2269524,
+            "length": 44,
+            "section": null,
+            "file_offset": 1225044,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "85759b3811ff7dc47b03792ac85317be51431a3f9e01dcafce317ed736a391b0"
+          },
+          {
+            "program": 2,
+            "address": 2269568,
+            "length": 10228,
+            "section": ".user_section_uncommon",
+            "file_offset": 1225088,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "097b7a00259712250134d0f145379dfab06f230a869340217b3812f6b192393e"
+          },
+          {
+            "program": 2,
+            "address": 2279796,
+            "length": 12,
+            "section": null,
+            "file_offset": 1235316,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+          },
+          {
+            "program": 2,
+            "address": 2279808,
+            "length": 16964,
+            "section": ".user_section_init",
+            "file_offset": 1235328,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7a2d6d95ba3323504dafc75ddcdaa6b7ac44001ee213c7b8ebcc14df438e11f2"
+          },
+          {
+            "program": 2,
+            "address": 2296772,
+            "length": 60,
+            "section": null,
+            "file_offset": 1252292,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5dcc1b5872dd9ff1c234501f1fefda01f664164e1583c3e1bb3dbea47588ab31"
+          },
+          {
+            "program": 2,
+            "address": 2296832,
+            "length": 126188,
+            "section": ".data",
+            "file_offset": 1252352,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "eecbfea06de9fce9516a41a806743db4b6f72d246ad768495787050fb75ad7ef"
+          },
+          {
+            "program": 2,
+            "address": 2423020,
+            "length": 4,
+            "section": null,
+            "file_offset": 1378540,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+          },
+          {
+            "program": 2,
+            "address": 2423024,
+            "length": 4,
+            "section": ".eh_frame",
+            "file_offset": 1378544,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119"
+          },
+          {
+            "program": 2,
+            "address": 2423028,
+            "length": 12,
+            "section": null,
+            "file_offset": 1378548,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "15ec7bf0b50732b49f8228e07d24365338f9e3ab994b00af08e5a3bffe55fd8b"
+          },
+          {
+            "program": 2,
+            "address": 2423040,
+            "length": 255028,
+            "section": ".rodata",
+            "file_offset": 1378560,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "297925b687190a35c6cecfb26a96596a2a57885016c7c21f70e84426d7377a9e"
+          },
+          {
+            "program": 2,
+            "address": 2678068,
+            "length": 76,
+            "section": null,
+            "file_offset": 1633588,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "f2c0d5456a983ecd12e314fcfa19879179fc8424343baeb1325457472ae85601"
+          },
+          {
+            "program": 2,
+            "address": 2678144,
+            "length": 3652,
+            "section": ".lit4",
+            "file_offset": 1633664,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7eb59618a0147610d0421b0cce282f021bb7e19e8a3c32e28dbc8ccef4478746"
+          },
+          {
+            "program": 2,
+            "address": 2681796,
+            "length": 60,
+            "section": null,
+            "file_offset": 1637316,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5dcc1b5872dd9ff1c234501f1fefda01f664164e1583c3e1bb3dbea47588ab31"
+          },
+          {
+            "program": 2,
+            "address": 2681856,
+            "length": 6599,
+            "section": ".sdata",
+            "file_offset": 1637376,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "0cd2bab2868de351bf402331cba0143bfaad1df6d3ba31782f378f5ce6e5e5d5"
+          },
+          {
+            "program": 2,
+            "address": 2688455,
+            "length": 57,
+            "section": null,
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 2,
+            "address": 2688512,
+            "length": 1316,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 2,
+            "address": 2689828,
+            "length": 92,
+            "section": null,
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 2,
+            "address": 2689920,
+            "length": 1075656,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 3,
+            "address": 1879060480,
+            "length": 1488,
+            "section": ".spad",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 1639759,
+        "zero_fill_bytes": 1078609,
+        "unresolved_bytes": 2718308,
+        "game_owned_bytes": 60,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:LGDEV.IRX",
+        "artifact_sha256": "d42471dd8145e2ba0dce371f1b66d6ba49a7a50834b2d322788bc7c6b0acfd4f",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 40064,
+            "section": ".text",
+            "file_offset": 176,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "86693c76ebbe7506d959017547dc79cc87580252d364924fa28e79c2d768f9cd"
+          },
+          {
+            "program": 1,
+            "address": 40064,
+            "length": 2608,
+            "section": ".rodata",
+            "file_offset": 40240,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "f9623b7c8e850ac30207bc355f70cf2a366c2470c2bc2a630d8158f53d7a3dda"
+          },
+          {
+            "program": 1,
+            "address": 42672,
+            "length": 928,
+            "section": ".data",
+            "file_offset": 42848,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "55e88827e49f3773bd464eaf184dac2bb5657b8995ad443bb1e061b211ec3a27"
+          },
+          {
+            "program": 1,
+            "address": 43600,
+            "length": 1472,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 43600,
+        "zero_fill_bytes": 1472,
+        "unresolved_bytes": 45072,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:LIBSD.IRX",
+        "artifact_sha256": "89e2322522f30fe5631c2e6c72ef82ac948377f5005331989165a5751297bc10",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 18496,
+            "section": ".text",
+            "file_offset": 176,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "394f8466b9781c6fd7cce442a398c6f9e3bbe050e1c0c278fd41e19eb3aefadc"
+          },
+          {
+            "program": 1,
+            "address": 18496,
+            "length": 464,
+            "section": ".rodata",
+            "file_offset": 18672,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5944bb255a4d276e5bc43501b6d85ed14331617435f82c6760d01138a5ec061b"
+          },
+          {
+            "program": 1,
+            "address": 18960,
+            "length": 2288,
+            "section": ".data",
+            "file_offset": 19136,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "15ad9dd50640c29f7b4295c7a645aae725f4c3f8ec1f4af9304bb5e5b5e14b95"
+          },
+          {
+            "program": 1,
+            "address": 21248,
+            "length": 1632,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 21248,
+        "zero_fill_bytes": 1632,
+        "unresolved_bytes": 22880,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:MCMAN.IRX",
+        "artifact_sha256": "7ff6f7af1d410b8b8d382d868ddcb8a5c996b5f0d037df42919f0ce6433183d5",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 72272,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "509f1f93f78f3c6050475ec1c611b67be65b55d98238ef195274c101ce9ae216"
+          },
+          {
+            "program": 1,
+            "address": 72272,
+            "length": 464,
+            "section": ".rodata",
+            "file_offset": 72432,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "fe82cb6b3b7d0b9d9a03fd54f600e132224054ee8f2e92b16f0d4a55d567bdd8"
+          },
+          {
+            "program": 1,
+            "address": 72736,
+            "length": 512,
+            "section": ".data",
+            "file_offset": 72896,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "82ae958b3c797c586a6cdc89721f88ef5d43396e8ec5c1191872024343928eb9"
+          },
+          {
+            "program": 1,
+            "address": 73248,
+            "length": 86852,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 73248,
+        "zero_fill_bytes": 86852,
+        "unresolved_bytes": 160100,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:MCSERV.IRX",
+        "artifact_sha256": "e2c86f0a108041f655a85b8d7c0b39edbf2a1e7c23037ecca481089a14be8bb2",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 4704,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5e251ee45ee75b6da1763d5b1b41d45c0e9244918790768f69e521e772b09a17"
+          },
+          {
+            "program": 1,
+            "address": 4704,
+            "length": 64,
+            "section": ".rodata",
+            "file_offset": 4864,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "20266b5ef5bd83d256207d597cb0e03ba109aaeb4a6d77d7831aa538c4d25362"
+          },
+          {
+            "program": 1,
+            "address": 4768,
+            "length": 32,
+            "section": ".data",
+            "file_offset": 4928,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "e74800c62c880377859e14704f71d759d295856050c2fe0e11c41a2bd30f1003"
+          },
+          {
+            "program": 1,
+            "address": 4800,
+            "length": 9376,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 4800,
+        "zero_fill_bytes": 9376,
+        "unresolved_bytes": 14176,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:PADMAN.IRX",
+        "artifact_sha256": "196044d9535e6d346ad5f2d1ea75be111d0cbe516fac5a7240a21b1a4f90fa4f",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 32192,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "ce8029ed16fc5bed03cc089f31ab1ea012c34a8c8981f3e11ea0f4ffc334fa70"
+          },
+          {
+            "program": 1,
+            "address": 32192,
+            "length": 672,
+            "section": ".rodata",
+            "file_offset": 32352,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "2c07a52d3f865e5c0cc665c8f9a18895b76294494ecbbdd7876c716d310c8ade"
+          },
+          {
+            "program": 1,
+            "address": 32864,
+            "length": 64,
+            "section": ".data",
+            "file_offset": 33024,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "28c198a9ffaca2280a1934842b20241c30b6a5d40ff0336f682afeeb87b1a8a9"
+          },
+          {
+            "program": 1,
+            "address": 32928,
+            "length": 7248,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 32928,
+        "zero_fill_bytes": 7248,
+        "unresolved_bytes": 40176,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:SDRDRV.IRX",
+        "artifact_sha256": "b49a26a7f1801689f84e7e4cc92a286eb7e0ba3c3d4fb7855c994e0d20e3afa2",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 4400,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "22e10494dc10c9daf83ac0e60fec60bdc3a3fc78c9a9918e5ee85e377614d706"
+          },
+          {
+            "program": 1,
+            "address": 4400,
+            "length": 352,
+            "section": ".rodata",
+            "file_offset": 4560,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "4821fee4c0559cc8dde21fae20d702fabd2394c329681824b3bfefb8a61767c0"
+          },
+          {
+            "program": 1,
+            "address": 4752,
+            "length": 48,
+            "section": ".data",
+            "file_offset": 4912,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "66a3c9dc7165b43af01fe9ba469b528fcd3171d7992e1e403d40cc89adf3f849"
+          },
+          {
+            "program": 1,
+            "address": 4800,
+            "length": 1896,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 4800,
+        "zero_fill_bytes": 1896,
+        "unresolved_bytes": 6696,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:SIO2MAN.IRX",
+        "artifact_sha256": "1964b83bcc8c0cab9dfcf9b9637e0e313e69c23fd5c73408fe889ace91f13708",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 3856,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "b52fd2e75c54b62de663d397d058d6928d9cb3d45a6cc8385b35a3ea06cbc9e7"
+          },
+          {
+            "program": 1,
+            "address": 3856,
+            "length": 96,
+            "section": ".rodata",
+            "file_offset": 4016,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "74896e2092f5684c1992f4dcd58a801cc5adb5200469b40aced928999caac242"
+          },
+          {
+            "program": 1,
+            "address": 3952,
+            "length": 32,
+            "section": ".data",
+            "file_offset": 4112,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "b26d1dfd4fe9ef7c2fa1793d951afe987d94b44f64d2896cd6f85d3cef2f3590"
+          },
+          {
+            "program": 1,
+            "address": 3984,
+            "length": 48,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 3984,
+        "zero_fill_bytes": 48,
+        "unresolved_bytes": 4032,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:STREAM.IRX",
+        "artifact_sha256": "8cc55823925e92dbe59f5b60617979528b6f0a4052968319de79d6a461d557e3",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 141632,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "39c3ee6885ed2a1ce5366dd7d2958b671681b8c0be39582fd2ca1a80cdf77f20"
+          },
+          {
+            "program": 1,
+            "address": 141632,
+            "length": 992,
+            "section": ".rodata",
+            "file_offset": 141792,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "aad3432491f383ab5b745894ee7c8987d78a743d2fd721dc6d5a6c654d71643c"
+          },
+          {
+            "program": 1,
+            "address": 142624,
+            "length": 1200,
+            "section": ".data",
+            "file_offset": 142784,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "3cf9d7f3dd7e322c3522a39564ff77cdac45dd0a0367e74618311d2719cb5fb4"
+          },
+          {
+            "program": 1,
+            "address": 143824,
+            "length": 208,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 144032,
+            "length": 35744,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 143824,
+        "zero_fill_bytes": 35952,
+        "unresolved_bytes": 179776,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:USBD.IRX",
+        "artifact_sha256": "61821c2c182a5feaa931a7447426b097eec99b3b9d198e3a35b6f434e0960255",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 25296,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7090b9dc4d73270ebbe9b600af6df45f6a51de01604249579d06f1157bdfa2ca"
+          },
+          {
+            "program": 1,
+            "address": 25296,
+            "length": 464,
+            "section": ".rodata",
+            "file_offset": 25456,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "310610b0c97fcc8f5ace394f7a632390c55612697dada15fa64a0ed2a80af40e"
+          },
+          {
+            "program": 1,
+            "address": 25760,
+            "length": 336,
+            "section": ".data",
+            "file_offset": 25920,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "2a91c3df2aa81d77c0f4630fdb672af103be3b2d62833a216585eb15240e1e10"
+          },
+          {
+            "program": 1,
+            "address": 26096,
+            "length": 16,
+            "section": ".sdata",
+            "file_offset": 26256,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "07bae3e9c618b6e2741eea80df78e48a978d5bb07364107a31c2505fb313a89f"
+          },
+          {
+            "program": 1,
+            "address": 26112,
+            "length": 16,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 26112,
+        "zero_fill_bytes": 16,
+        "unresolved_bytes": 26128,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:LOADCORE",
+        "artifact_sha256": "488187ab52ec98dc6c13ba53601ab016636c678a1469826461a6f8dd041f6b38",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 7568,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "f70015a489983b1ad173d4cc78f8aa80863ddd9a0ea93b3e7bd197792fa8bc71"
+          },
+          {
+            "program": 1,
+            "address": 7568,
+            "length": 16,
+            "section": ".rodata",
+            "file_offset": 7728,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "d736ea9e3766dfa260633c4cb0c4d1b41782d4b2c06a281656e13d58dbb4b65c"
+          },
+          {
+            "program": 1,
+            "address": 7584,
+            "length": 32,
+            "section": ".data",
+            "file_offset": 7744,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "92bb53408e0091dafd10f32503fe9b7d52031523b158032149a3889c1b4d7fd4"
+          },
+          {
+            "program": 1,
+            "address": 7616,
+            "length": 100,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 7616,
+        "zero_fill_bytes": 100,
+        "unresolved_bytes": 7716,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:SIFCMD",
+        "artifact_sha256": "24f0d50f174f25083388cafffe334afc6afa9b0bb196181bb9be36030b53762f",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 6960,
+            "section": ".text",
+            "file_offset": 176,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "c5e96b44acaa0c176a2055bddc104f65fbd3fbd6a28b02de3c17ebe580ca1f72"
+          },
+          {
+            "program": 1,
+            "address": 6960,
+            "length": 80,
+            "section": ".rodata",
+            "file_offset": 7136,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7e7cd955ece27d09c6a3e3fa0b108ffe2335dd7479750215555c2858ce371ba3"
+          },
+          {
+            "program": 1,
+            "address": 7040,
+            "length": 48,
+            "section": ".data",
+            "file_offset": 7216,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "d10225a3c467b2a434dcb20f2a70d8fea5da1f02d0ad97e266b49c3519f94d71"
+          },
+          {
+            "program": 1,
+            "address": 7088,
+            "length": 6832,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 7088,
+        "zero_fill_bytes": 6832,
+        "unresolved_bytes": 13920,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:SIFMAN",
+        "artifact_sha256": "8edc7d0dbf0bfb8669c62544b0c915485ee022794adfdf5270e44d3df4dc05ec",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 4160,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "e80d4f7e1bc96132141e2a2d6ba0bb6e34af753eaafe2c5ad687deb2f27ea0c4"
+          },
+          {
+            "program": 1,
+            "address": 4160,
+            "length": 160,
+            "section": ".rodata",
+            "file_offset": 4320,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "c37604da419f8a7fbdcdcef3aa1b997a1449b575472be7ddea42016638cac291"
+          },
+          {
+            "program": 1,
+            "address": 4320,
+            "length": 32,
+            "section": ".data",
+            "file_offset": 4480,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "a9585e6e304cc968a04660f92fc31248fb3dd5b90c1ad05afdcf0e64d19015a5"
+          },
+          {
+            "program": 1,
+            "address": 4352,
+            "length": 1600,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 4352,
+        "zero_fill_bytes": 1600,
+        "unresolved_bytes": 5952,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:THREADMAN",
+        "artifact_sha256": "479f4a2ebf58b3f4470ba454d81842cf36b3a6b3976bfb524382550e87c0ab2b",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 27808,
+            "section": ".text",
+            "file_offset": 176,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "be754feffdaddfc279ed4fc0e988cf45ac97bc47756d306f471f14f4b17565c9"
+          },
+          {
+            "program": 1,
+            "address": 27808,
+            "length": 976,
+            "section": ".rodata",
+            "file_offset": 27984,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "62275bbe5734e02bfd2596be3740a5c1518e5a59b021c53b46f302f10a3ffefb"
+          },
+          {
+            "program": 1,
+            "address": 28784,
+            "length": 32,
+            "section": ".data",
+            "file_offset": 28960,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "15789791988c3a8eb16ccfba95ef00a320f45c8c6a60f9606494a183913c106c"
+          },
+          {
+            "program": 1,
+            "address": 28816,
+            "length": 1236,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 28816,
+        "zero_fill_bytes": 1236,
+        "unresolved_bytes": 30052,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:IOMAN",
+        "artifact_sha256": "b0b6eff43cedd2176657bfacef75178e75fadc15bcf18984775fb78bb422740c",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 7776,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "036670b9948d8052a5c0adbde01fcbb14ff55bd4e0ea5911e67aa3f3b8614f80"
+          },
+          {
+            "program": 1,
+            "address": 7776,
+            "length": 192,
+            "section": ".rodata",
+            "file_offset": 7936,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "ad4e38673d264217639172c924c025bc130347d4328dc9b003691f711960fc98"
+          },
+          {
+            "program": 1,
+            "address": 7968,
+            "length": 304,
+            "section": ".data",
+            "file_offset": 8128,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "ca9f7f58c93b8bbda06001d3e3f02ed536517eefedd72652e92abf288331aef7"
+          },
+          {
+            "program": 1,
+            "address": 8272,
+            "length": 16,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 8288,
+            "length": 640,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 8272,
+        "zero_fill_bytes": 656,
+        "unresolved_bytes": 8928,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:MODLOAD",
+        "artifact_sha256": "a2d1d57c78b94d5079206877564d03af7205db99e51a775573a8c0a8428f7519",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 12896,
+            "section": ".text",
+            "file_offset": 176,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "1424cd6e68a67fa8716e2f3346a4791dfa1f126f16bbe8b6bff24725387699cd"
+          },
+          {
+            "program": 1,
+            "address": 12896,
+            "length": 832,
+            "section": ".rodata",
+            "file_offset": 13072,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "99c3ec6c9d1a4b68d5854d5075be85de1f9a513a455116fafcb030666ff03efe"
+          },
+          {
+            "program": 1,
+            "address": 13728,
+            "length": 64,
+            "section": ".data",
+            "file_offset": 13904,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "e85717b402be4f5e699702d06201dac8f633619ad5fe0b6262609525f49958f7"
+          },
+          {
+            "program": 1,
+            "address": 13792,
+            "length": 36,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 13792,
+        "zero_fill_bytes": 36,
+        "unresolved_bytes": 13828,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:FILEIO",
+        "artifact_sha256": "ffe84d90c36c80457fa92facf18ea3891317cd95a27142e594d1e3715b49c824",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 10736,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "017df3bb12c5602b2752bfe9cb6c98884568b81616413fa5f78cc9ec4cf0343e"
+          },
+          {
+            "program": 1,
+            "address": 10736,
+            "length": 848,
+            "section": ".rodata",
+            "file_offset": 10896,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "b99a56e0d6ebdd9cec875f90ac77df24bc84d222bbe4aa8c54408fc2c659aca8"
+          },
+          {
+            "program": 1,
+            "address": 11584,
+            "length": 192,
+            "section": ".data",
+            "file_offset": 11744,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "80ab5dc9d78532d33c8baa37dbb99bcd38cac5cc4c3c6d4da6684fe85c034944"
+          },
+          {
+            "program": 1,
+            "address": 11776,
+            "length": 8,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 11784,
+            "length": 8,
+            "section": null,
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 11792,
+            "length": 3968,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 11776,
+        "zero_fill_bytes": 3984,
+        "unresolved_bytes": 15760,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:CDVDMAN",
+        "artifact_sha256": "0440edf8b1457ea321a16acace9b33c1ed17ebdd9b74576c76a75ff72aeb17ca",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 40944,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "70c10b097bd07285660508e5c1db604d64f721851fb88c4ce00e919735ec4999"
+          },
+          {
+            "program": 1,
+            "address": 40944,
+            "length": 4832,
+            "section": ".rodata",
+            "file_offset": 41104,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "2e5f0e6141e20cb411a072fc46a9d08299297eeda4e27770b26a09169c4ae610"
+          },
+          {
+            "program": 1,
+            "address": 45776,
+            "length": 352,
+            "section": ".data",
+            "file_offset": 45936,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "bdd6a07069d87e23d8dfbbe43b12f5ba65fc9334f71a22bd02606500af20e544"
+          },
+          {
+            "program": 1,
+            "address": 46128,
+            "length": 72,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 46200,
+            "length": 8,
+            "section": null,
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 46208,
+            "length": 51936,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 46128,
+        "zero_fill_bytes": 52016,
+        "unresolved_bytes": 98144,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:CDVDFSV",
+        "artifact_sha256": "b743eed34c13cc3bc35117dcbeea7e96a68956c7247753d1d390598ecd914861",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 22624,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7506480569b4c865337871052725476124ffb504e4ee66b7c6fe90a9b9d643f7"
+          },
+          {
+            "program": 1,
+            "address": 22624,
+            "length": 2064,
+            "section": ".rodata",
+            "file_offset": 22784,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "d33226178f3f49785c3cb502a5640d7a76cb55aa66b41c12070b3969fa447198"
+          },
+          {
+            "program": 1,
+            "address": 24688,
+            "length": 96,
+            "section": ".data",
+            "file_offset": 24848,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "3cbd64b98f2178c391a3a62e5e5ba0892bbec4185ceb977a3f781d351b4324e3"
+          },
+          {
+            "program": 1,
+            "address": 24784,
+            "length": 12,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 24796,
+            "length": 4,
+            "section": null,
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 24800,
+            "length": 45172,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 24784,
+        "zero_fill_bytes": 45188,
+        "unresolved_bytes": 69972,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:LOADFILE",
+        "artifact_sha256": "12967a07fcb21ed067c19dfc9ed9e67f694594b1e04fd364987260fed541d71f",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 7168,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "fce5270d164896056e704739bf4b5545fd9476ac33396ed9af7de1c1a616ba40"
+          },
+          {
+            "program": 1,
+            "address": 7168,
+            "length": 944,
+            "section": ".rodata",
+            "file_offset": 7328,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "5235045259362c5716d9bd5e4193130d541b4eb3c71ab6955df8762b8fe70406"
+          },
+          {
+            "program": 1,
+            "address": 8112,
+            "length": 128,
+            "section": ".data",
+            "file_offset": 8272,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "d47e44eef2de6da111607a098dc5db6a025e16baffe9a45abebf0798647fef01"
+          },
+          {
+            "program": 1,
+            "address": 8240,
+            "length": 4,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 8244,
+            "length": 12,
+            "section": null,
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 8256,
+            "length": 652,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 8240,
+        "zero_fill_bytes": 668,
+        "unresolved_bytes": 8908,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:TIMEMANI",
+        "artifact_sha256": "95c0df47fabd3e62553b320f88a084ed499df31d50c256a066b5c4937df71a35",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 3760,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "630194a90f3e8dbd6aad58fd054dd6bed23a2b5692703cdb44cf649b731e7d97"
+          },
+          {
+            "program": 1,
+            "address": 3760,
+            "length": 48,
+            "section": ".rodata",
+            "file_offset": 3920,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "64054153a2d7cb9e53c2d04842236f6133d1a5db33c1586d76ce23a461023f44"
+          },
+          {
+            "program": 1,
+            "address": 3808,
+            "length": 336,
+            "section": ".data",
+            "file_offset": 3968,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "bdbcaeb3cc168f772cfdd85868eaec0d45170535d9d91996fc38937bbc1ae8f7"
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 4144,
+        "zero_fill_bytes": 0,
+        "unresolved_bytes": 4144,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:ROMDRV",
+        "artifact_sha256": "0aa9eeacc3a400e4f22bef3844c89cfaea516d7dfd89b0fa1bb0e603ecb9ce1a",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 2128,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "490c9ada961721d515aafd358883b51dd2685bd3a0f4ae766a1e62104c48a7e9"
+          },
+          {
+            "program": 1,
+            "address": 2128,
+            "length": 32,
+            "section": ".rodata",
+            "file_offset": 2288,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "023c89eed35681a03aed76967b7fdbc3150e57d5544a3b7e32daafd46240e5d7"
+          },
+          {
+            "program": 1,
+            "address": 2160,
+            "length": 160,
+            "section": ".data",
+            "file_offset": 2320,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "7f6d331c0a949fdf09826d8acf017771eecc5eab64aeac34f32f6bae937a2261"
+          },
+          {
+            "program": 1,
+            "address": 2320,
+            "length": 208,
+            "section": ".bss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 2320,
+        "zero_fill_bytes": 208,
+        "unresolved_bytes": 2528,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:EESYNC",
+        "artifact_sha256": "0cb97a16720ffa9b147e8e7689cb704de83330e03aaf53fcd719ea46b97ef59e",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 640,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "6278b3ad197397217a6f3d5948579d1fe2e418fd270cc682c768e491d936530a"
+          },
+          {
+            "program": 1,
+            "address": 640,
+            "length": 16,
+            "section": ".rodata",
+            "file_offset": 800,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "18cd68f83e145e50fadb2c3f3217dcc0b126cfd7fedcf584870cc793f553931d"
+          },
+          {
+            "program": 1,
+            "address": 656,
+            "length": 32,
+            "section": ".data",
+            "file_offset": 816,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "fcb4e707870ec0ba7b8635b9dc1bd6d7f83edfd4282020cbadf719e90d7835c4"
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 688,
+        "zero_fill_bytes": 0,
+        "unresolved_bytes": 688,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:SYSCLIB",
+        "artifact_sha256": "2e3b82ecc6bba3d8c14fb6a55c6d68ecb643de3094305608ecbcd260dd49f447",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 6400,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "28b40a8606e632db3c0e658419841d247572ab19c2e3213b3f330465ac30e261"
+          },
+          {
+            "program": 1,
+            "address": 6400,
+            "length": 560,
+            "section": ".rodata",
+            "file_offset": 6560,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "c53a85a444c4eb7be574badbfc8667d4b7f788d999ca2aa67a14942070ddc212"
+          },
+          {
+            "program": 1,
+            "address": 6960,
+            "length": 192,
+            "section": ".data",
+            "file_offset": 7120,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "0d95020a8cb58262c96ee96a7ad4f86b8501dbe487fa06c744077a55ba87c8ec"
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 7152,
+        "zero_fill_bytes": 0,
+        "unresolved_bytes": 7152,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      },
+      {
+        "artifact": "IOP:STDIO",
+        "artifact_sha256": "05051433d89083ff93a6a4399326790f10d8fc2ae90492e65516eb4560289081",
+        "ranges": [
+          {
+            "program": 1,
+            "address": 0,
+            "length": 1856,
+            "section": ".text",
+            "file_offset": 160,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "8e4f1fea7b44483c5638ac925616e9f568f22b70535df9d873a8667e8c3c8b92"
+          },
+          {
+            "program": 1,
+            "address": 1856,
+            "length": 48,
+            "section": ".rodata",
+            "file_offset": 2016,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "4a20bfd2e2c68a2b38f7d8e61ef24fddc274143579d3c3d2767339e15e6ca616"
+          },
+          {
+            "program": 1,
+            "address": 1904,
+            "length": 32,
+            "section": ".data",
+            "file_offset": 2064,
+            "storage": "initialized",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": "65060b0ea21fb911b35b6e367da3da3f7d8914f44e4d14f34ca011c6a7bd2868"
+          },
+          {
+            "program": 1,
+            "address": 1936,
+            "length": 4,
+            "section": ".sbss",
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          },
+          {
+            "program": 1,
+            "address": 1940,
+            "length": 12,
+            "section": null,
+            "file_offset": null,
+            "storage": "zero_fill",
+            "classification": "mixed_unresolved",
+            "decision": "ADR-0005",
+            "evidence": "ELF PT_LOAD and SHF_ALLOC boundaries",
+            "sha256": null
+          }
+        ],
+        "allocated_sections_outside_load_images": [],
+        "file_backed_bytes": 1936,
+        "zero_fill_bytes": 16,
+        "unresolved_bytes": 1952,
+        "game_owned_bytes": 0,
+        "matched_bytes": 0,
+        "substitute_bytes": 0,
+        "substitute_disposition": "no ranges attributed as substitute",
+        "evidence_authority": "structural_file_inventory",
+        "claim_limits": [
+          "Complete declared load-image accounting only; no attribution or rebuild.",
+          "Zero-fill layout has no retail file bytes to compare.",
+          "All ranges remain unresolved; this inventory cannot pass reconstruction."
+        ]
+      }
+    ],
+    "iop_modules": 24,
+    "vu_programs": [
+      {
+        "index": 0,
+        "name": ".DVP.overlay..0x0.4149910390.48.0",
+        "load_address": 2194416,
+        "vu_byte_address": 0,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1149936,
+        "sha256": "44dc920cd4ae5ca3acfb27d75abf5e97977f12671d95782396bb9736e4656f78",
+        "placeholder_offset": 1646996,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "index": 1,
+        "name": ".DVP.overlay..unknvma.4149910390.784.1",
+        "load_address": 2196472,
+        "vu_byte_address": 2048,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1151992,
+        "sha256": "0f538b0e4eb49ed1111b083b5723c6c19dd664db2d8a119bd8b77259fb5c0f3d",
+        "placeholder_offset": 1649044,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "index": 2,
+        "name": ".DVP.overlay..unknvma.4149910390.1384.2",
+        "load_address": 2198528,
+        "vu_byte_address": 4096,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1154048,
+        "sha256": "afbaaa5303b7b41f32cf58c4c83fa3610a13dc89f66bd056361bd9ff98fc0326",
+        "placeholder_offset": 1651092,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "index": 3,
+        "name": ".DVP.overlay..unknvma.4149910390.1992.3",
+        "load_address": 2200584,
+        "vu_byte_address": 6144,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1156104,
+        "sha256": "555e44d8172793c545f91864b1f868e6568517e727c281a7788560c5b205326b",
+        "placeholder_offset": 1653140,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "index": 4,
+        "name": ".DVP.overlay..unknvma.4149910390.2613.4",
+        "load_address": 2202640,
+        "vu_byte_address": 8192,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1158160,
+        "sha256": "1a3f4ad92125a228e8edc0de1307c2cc1d670388fa2ae50a8228d1e446795f97",
+        "placeholder_offset": 1655188,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "index": 5,
+        "name": ".DVP.overlay..unknvma.4149910390.3243.5",
+        "load_address": 2204696,
+        "vu_byte_address": 10240,
+        "bytes": 2048,
+        "instruction_pairs": 256,
+        "source_section": ".vutext",
+        "source_offset": 1160216,
+        "sha256": "4d9dfc5c917746997f2bf4bd95068deca7fce6c3b447dc591fa74f537798ef0c",
+        "placeholder_offset": 1657236,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "e5a00aa9991ac8a5ee3109844d84a55583bd20572ad3ffcd42792f3c36b183ad"
+      },
+      {
+        "index": 6,
+        "name": ".DVP.overlay..unknvma.4149910390.3827.6",
+        "load_address": 2206752,
+        "vu_byte_address": 12288,
+        "bytes": 176,
+        "instruction_pairs": 22,
+        "source_section": ".vutext",
+        "source_offset": 1162272,
+        "sha256": "8fa890c10982c4f03092aea57a77a5f31e140497c5747027c56a67a9daf155d8",
+        "placeholder_offset": 1659284,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "86d2cf5b090f43ee54d8f7c1dcf746a853951191457ff6dac96269a9d24860b9"
+      },
+      {
+        "index": 7,
+        "name": ".DVP.overlay..0x0.495278677.35.0",
+        "load_address": 2206960,
+        "vu_byte_address": 0,
+        "bytes": 1120,
+        "instruction_pairs": 140,
+        "source_section": ".vutext",
+        "source_offset": 1162480,
+        "sha256": "2093b6946baea64312037ec6a6dce16a7451b7729f4cf7e88042ac90895422e1",
+        "placeholder_offset": 1659460,
+        "placeholder_nonzero_bytes": 0,
+        "placeholder_sha256": "5cc201eb697e57027dcf74bac0995467bc9b787848be4c0d740956a97ddf65a5"
+      }
+    ],
+    "file_backed_bytes": 2171407,
+    "zero_fill_bytes": 1335641,
+    "unresolved_bytes": 3506988,
+    "game_owned_bytes": 60,
+    "matched_bytes": 0,
+    "substitute_bytes": 0,
+    "substitute_disposition": "no ranges attributed as substitute",
+    "evidence_authority": "pinned_corpus_structural_inventory",
+    "attribution_status": "partial",
+    "claim_limits": [
+      "Only the exact identity-pinned EE source unit recorded in ADR-0005 is split.",
+      "Structural inventory records zero matched bytes; source-build evidence is separate.",
+      "All other initialized load bytes and zero-fill layout remain mixed/unresolved.",
+      "IOP addresses are link-relative; runtime load bases remain unobserved."
+    ]
+  },
+  "schema": "fr2-structural-ledger/v1",
+  "source_pins": {
+    "docs/adr/0005-game-owned-sdk-boundary.md": "b3bddcf38d783a1066e17f8d5100887c694c80847af9a8e682456511d67895ae",
+    "notes/evidence/fr2-first-unit/adr0005-misc3d-boundary.json": "5297888940ad2a67f26b8761eed70de40b18d4f46a6eca3ff2da4535e156987e",
+    "notes/evidence/fr2-first-unit/saved-function-inventory-digest.json": "d0424aad2eeddc58ead3f164ec2f49195e1d102282647603dbc407fec55b374b",
+    "notes/evidence/fr2-source-map/source-map-result.json": "6cdb377dd00a682954cf3322de35396c2470f4271168eead3e0be98f31ea316a",
+    "reconstruction/ee/app3d/misc3d_db_id.c": "44b17bacf38c4a9befdb77dca2b137ac1e0826cb595ad7dd87c4775dfa5375bc",
+    "tools/matching_ranges.py": "f362c5693784103094ffaf083867f481969cc7cef4ebd4510afe82ce050a45be",
+    "tools/recorded_decisions.py": "47c0f535c5c9d2000d98397dbea562c02a80743643fe39c91dcfb3f8ba860652"
+  },
+  "source_revision": "75c406a125534bce1229c5b7c3598f892e4cd3ab",
+  "source_working_tree_dirty": true,
+  "status": "pass"
+}

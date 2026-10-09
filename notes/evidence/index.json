@@ -1,0 +1,2245 @@
+{
+  "schema": "fr2-evidence-index/v1",
+  "limits": [
+    "Pins are verbatim mentions with source line/context, not semantic assignments.",
+    "Missing fields are unresolved; commands are indexed, never executed.",
+    "An indexed README is not independent verification of its measurements."
+  ],
+  "entries": [
+    {
+      "path": "notes/evidence/fr2-asset-consumer-contracts/README.md",
+      "readme_sha256": "f00b3982b28f7ec60797ca596c341e9b697ca4bf31e05d3d072aebd39422f85c",
+      "commands": [
+        "python3 tools/verify_asset_contracts.py archive games/ford-racing-2/extracted/FILES.HDR games/ford-racing-2/extracted/FILES.DAT --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/assets/fr2-asset-contracts/final-recheck"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-combined-recovery/README.md",
+      "readme_sha256": "1a31f75e56a2cd063c95244d31599c508f788ded1517595f06b70e21616237cf",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "63976c1463dd7ab7d17cb791cc0f521abf76e45bd833d9c06886ae88738100b2",
+          "line": 7,
+          "context": "All 4,746 function units compiled in 16 balanced batches against the combined headers. The registration unit was separately compiled against those same headers, taking 94.4 seconds. The archive has 4,746 distinct defined generated function symbols, occupies 83,517,880 bytes, and has SHA-256 `63976c1463dd7ab7d17cb791cc0f521abf76e45bd833d9c06886ae88738100b2`. It remains ignored local scratch. No generated game function was linked or executed."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 3,
+          "context": "The three bounded PS2Recomp corrections were applied together to an isolated copy of upstream commit `c5a9d02573410a2085a4b4b831b0b68ba3515440`: defined 32-bit overflow arithmetic, scalar translator exception/64-bit arithmetic changes, and packed-word shuffle mappings. The baseline tool checkout and all game payloads remain unchanged."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-compiler-probe/README.md",
+      "readme_sha256": "8fe80e0624c5465b2d30daf034807b5ae7e7b19473470ba5af0742cb2f0c3836",
+      "commands": [
+        "python3 tools/compiler_probe_recipe/run.py \\\n  games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+        "tools/check.sh test_compiler_probe test_compiler_probe_recipe",
+        "python3 tools/compiler_probe_recipe/run.py \\\n  games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --profile --output .scratch/evidence/compiler-profile",
+        "tools/check.sh test_compiler_probe test_compiler_probe_recipe \\\n  test_compiler_output test_compiler_profile test_compiler_packages"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+          "line": 56,
+          "context": "SHA-256 (`1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e`)"
+        },
+        {
+          "value": "fa7ea650cef3912987dc216aeb499ecb4bdfa817f7b65101de88b221068d6703",
+          "line": 72,
+          "context": "`fa7ea650cef3912987dc216aeb499ecb4bdfa817f7b65101de88b221068d6703`; its"
+        },
+        {
+          "value": "b88c4c77a351e79e77ff1019a73ca077b873ce7c7894858181df6b29969863cc",
+          "line": 74,
+          "context": "`b88c4c77a351e79e77ff1019a73ca077b873ce7c7894858181df6b29969863cc`. It"
+        },
+        {
+          "value": "4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca",
+          "line": 76,
+          "context": "`sha256:4fbdbf2a3bdeb29e3a9fff22f322e6cf5dd45131af51b89501352bd2ef7402ca`"
+        },
+        {
+          "value": "ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba",
+          "line": 78,
+          "context": "`sha256:ef74eccc9bb960737d53d635a6b67692e8eef92c01b0dc8980ed9bc539f4a4ba`,"
+        },
+        {
+          "value": "296389363958c9b08af1584371e234694684ecbd3cfcc3a7b22c39164a0bc931",
+          "line": 176,
+          "context": "Its SHA-256 is `296389363958c9b08af1584371e234694684ecbd3cfcc3a7b22c39164a0bc931`."
+        },
+        {
+          "value": "851d0fe14b33da779b01f6222ea7881f4889e362b1ef792041d3a970fce5ed5c",
+          "line": 199,
+          "context": "Its SHA-256 is `851d0fe14b33da779b01f6222ea7881f4889e362b1ef792041d3a970fce5ed5c`;"
+        },
+        {
+          "value": "88fa2308f54928b9db30712f66477840afefe922eb0a460bfc6f3c8c246b1007",
+          "line": 200,
+          "context": "its report SHA-256 is `88fa2308f54928b9db30712f66477840afefe922eb0a460bfc6f3c8c246b1007`."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-compiler-probe/acceptance-20261008/README.md",
+      "readme_sha256": "fc69a9356967b8bff67f9c9fa59b13bcf6b123962e888168539805089b2488b0",
+      "commands": [
+        "python3 tools/compiler_probe_recipe/run.py \\\n  /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --profile --output .scratch/evidence/compiler-profile-acceptance",
+        "tools/check.sh test_compiler_probe test_compiler_probe_recipe \\\n  test_compiler_output test_compiler_profile test_compiler_packages",
+        "python3 - <<'PY'\nimport hashlib, json\nfrom pathlib import Path\nroot = Path('/Users/Nicolas/Documents/github/hermes/reverse-engineering')\ndecision = json.loads(Path('notes/evidence/fr2-compiler-probe/profile-units.json').read_text())\npin = decision['evidence_inputs']['static_inventory']\npath = root / pin['path']\nassert hashlib.sha256(path.read_bytes()).hexdigest() == pin['sha256']\nfunctions = {f['entry']: f for f in json.loads(path.read_text())['functions']}\nfor unit in decision['units']:\n    function = functions[unit['vaddr']]\n    assert function['callers'] == unit['static_callers']\n    assert function['blocks'] == unit['body_ranges']\n    print(unit['id'], function['size'], unit['bytes'], 'metadata matches')\nPY"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a",
+          "line": 120,
+          "context": "`0590d2ca9da8f5903889d66761220d14b47a8d14ba987ca53db84a1650a1fd0a`"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "e8b65417bc5d80f4fb85c91dacefe761a6d9f236",
+          "line": 4,
+          "context": "revision `e8b65417bc5d80f4fb85c91dacefe761a6d9f236`, on 2026-10-08. It reproduces"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-compiler-provenance-continuation/README.md",
+      "readme_sha256": "7562f0298975388159876248f35c6e6f28da858158369248c72837a8e072c8aa",
+      "commands": [
+        "python3 tools/compiler_provenance.py \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  .scratch/compiler-provenance-continuation/ssx-source.zip \\\n  --output .scratch/compiler-provenance-continuation/receipts",
+        "python3 tools/compiler_provenance_iop.py \\\n  .scratch/compiler-provenance-continuation/ssx-source.zip \\\n  .scratch/compiler-provenance-continuation \\\n  --output .scratch/compiler-provenance-continuation/iop-receipts",
+        "docker run --rm --network none --entrypoint /bin/sh \\\n  sha256:dd5847a04b0deee391fa145f1f4c6d214196668b6bcc7988ebed67249f226844 \\\n  -c 'printf \"int f(void) { return 1; }\\n\" | gcc -m32 -x c -c - -o /tmp/probe.o'",
+        "tools/check.sh test_compiler_provenance test_compiler_packages test_compiler_profile\npyright tools/compiler_provenance.py tools/compiler_provenance_iop.py tools/test_compiler_provenance.py\npython3 tools/ip_rails.py --tree"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "b33ac7197cc8d4d28eb42275a05d800c126ff32ac3915624470ee55cdb5ee6ad",
+          "line": 51,
+          "context": "`b33ac7197cc8d4d28eb42275a05d800c126ff32ac3915624470ee55cdb5ee6ad`."
+        },
+        {
+          "value": "3b30fbfdf93e628373d90d174243f3267b0eec9ebe792bb64fd15b8828c2ea4c",
+          "line": 72,
+          "context": "| GCC 2.8.1 | [GNU GCC archive](https://ftp.gnu.org/gnu/gcc/gcc-2.8.1.tar.gz) | `3b30fbfdf93e628373d90d174243f3267b0eec9ebe792bb64fd15b8828c2ea4c` |"
+        },
+        {
+          "value": "58d01daa576d8779e064922171276795f00ff1388b1b0f87aa1a00eb0da6c6bb",
+          "line": 73,
+          "context": "| binutils 2.9.1 | [GNU binutils archive](https://ftp.gnu.org/gnu/binutils/binutils-2.9.1.tar.gz) | `58d01daa576d8779e064922171276795f00ff1388b1b0f87aa1a00eb0da6c6bb` |"
+        },
+        {
+          "value": "dd5847a04b0deee391fa145f1f4c6d214196668b6bcc7988ebed67249f226844",
+          "line": 100,
+          "context": "  sha256:dd5847a04b0deee391fa145f1f4c6d214196668b6bcc7988ebed67249f226844 \\"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "b595ded606227e93b8c4a447446c1d2ac093827d",
+          "line": 11,
+          "context": "[SSXModding/ps2-ee-toolchain at b595ded606227e93b8c4a447446c1d2ac093827d](https://github.com/SSXModding/ps2-ee-toolchain/tree/b595ded606227e93b8c4a447446c1d2ac093827d)."
+        },
+        {
+          "value": "b595ded606227e93b8c4a447446c1d2ac093827d",
+          "line": 11,
+          "context": "[SSXModding/ps2-ee-toolchain at b595ded606227e93b8c4a447446c1d2ac093827d](https://github.com/SSXModding/ps2-ee-toolchain/tree/b595ded606227e93b8c4a447446c1d2ac093827d)."
+        },
+        {
+          "value": "b595ded606227e93b8c4a447446c1d2ac093827d",
+          "line": 76,
+          "context": "pinned [IOP retargeting patch](https://github.com/SSXModding/ps2-ee-toolchain/blob/b595ded606227e93b8c4a447446c1d2ac093827d/iop/original/iop-gcc.patch)"
+        },
+        {
+          "value": "b595ded606227e93b8c4a447446c1d2ac093827d",
+          "line": 86,
+          "context": "permission. [GCC COPYING](https://github.com/SSXModding/ps2-ee-toolchain/blob/b595ded606227e93b8c4a447446c1d2ac093827d/iop/gcc-2.8.1/COPYING)"
+        },
+        {
+          "value": "b595ded606227e93b8c4a447446c1d2ac093827d",
+          "line": 93,
+          "context": "The candidate [build script](https://github.com/SSXModding/ps2-ee-toolchain/blob/b595ded606227e93b8c4a447446c1d2ac093827d/build.sh)"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-completion/README.md",
+      "readme_sha256": "7bcc0304e6c8164b25ebd51869710bdc375e6cea6a7cab780aa6483abc6dd981",
+      "commands": [
+        "python3 tools/completion.py games/ford-racing-2 \\\n  --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new \\\n  --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump \\\n  --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/completion",
+        "tools/check.sh test_completion test_matching_ranges test_matching test_corpus_binding"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-continuation/README.md",
+      "readme_sha256": "d6ba1b51d1ec1d4ce8a2af4562c89a7557e23a155ddf00e060f39bdab7defd14",
+      "commands": [
+        "python3 tools/verify_audio.py corpus games/ford-racing-2 --oracle ffmpeg\npython3 tools/verify_ptg.py corpus games/ford-racing-2\npython3 tools/verify_model.py corpus games/ford-racing-2\npython3 tools/verify_textures.py corpus games/ford-racing-2"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-dispatch-pair/README.md",
+      "readme_sha256": "9fa322b98d29c546d8c02b202f9c7009160ada2e59e2f0d33cd077c9a964bc27",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-dispatch-pair/warning-audit/README.md",
+      "readme_sha256": "c5224abe3a6399671759f69b369526ed6c2ee8e0085c0457384f179e25aa51cd",
+      "commands": [
+        "python3 .scratch/mesh/codex-root/firecrawl_fetch.py search .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-delay-search-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-delay-search-01.json\npython3 .scratch/mesh/codex-root/firecrawl_fetch.py search .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-release-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-release-01.json\npython3 .scratch/mesh/codex-root/firecrawl_fetch.py scrape .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-source-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-source-01.json\npython3 .scratch/mesh/codex-root/firecrawl_fetch.py scrape .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-flow-source-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-flow-source-01.json\npython3 .scratch/mesh/codex-root/firecrawl_fetch.py scrape .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-sleigh-source-01-args.json .scratch/mesh/codex-audit/warnings/firecrawl-ghidra-sleigh-source-01.json\njgrep --json \"reports when a branch destination falls inside the byte range previously consumed by a translated instruction\" .scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/src/decompile/cpp/flow.cc .scratch/mesh/codex-geometry/ghidra-patched/Ghidra/Features/Decompiler/src/decompile/cpp/sleigh.cc"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 5,
+          "context": "Provenance: executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`; inventory SHA-256 `1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8`; manifest SHA-256 `b94a74ec4e82a4dcb93e60a2bcd66ab0ae644e54ea31fe2b2a6ba3879b1a35ad`; verifier-result SHA-256 `8166bfe8d56ac43c979b4d28d92c3a9bab18e039bb59818a4dece717f382670e`."
+        },
+        {
+          "value": "1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8",
+          "line": 5,
+          "context": "Provenance: executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`; inventory SHA-256 `1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8`; manifest SHA-256 `b94a74ec4e82a4dcb93e60a2bcd66ab0ae644e54ea31fe2b2a6ba3879b1a35ad`; verifier-result SHA-256 `8166bfe8d56ac43c979b4d28d92c3a9bab18e039bb59818a4dece717f382670e`."
+        },
+        {
+          "value": "b94a74ec4e82a4dcb93e60a2bcd66ab0ae644e54ea31fe2b2a6ba3879b1a35ad",
+          "line": 5,
+          "context": "Provenance: executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`; inventory SHA-256 `1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8`; manifest SHA-256 `b94a74ec4e82a4dcb93e60a2bcd66ab0ae644e54ea31fe2b2a6ba3879b1a35ad`; verifier-result SHA-256 `8166bfe8d56ac43c979b4d28d92c3a9bab18e039bb59818a4dece717f382670e`."
+        },
+        {
+          "value": "8166bfe8d56ac43c979b4d28d92c3a9bab18e039bb59818a4dece717f382670e",
+          "line": 5,
+          "context": "Provenance: executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`; inventory SHA-256 `1253eed69b20d9d6ffcd9e585a0963faa9a4725d506e0d1babc47a4274fdf3b8`; manifest SHA-256 `b94a74ec4e82a4dcb93e60a2bcd66ab0ae644e54ea31fe2b2a6ba3879b1a35ad`; verifier-result SHA-256 `8166bfe8d56ac43c979b4d28d92c3a9bab18e039bb59818a4dece717f382670e`."
+        },
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 38,
+          "context": "The copied-project probe used Ghidra 12.1.3, language `r5900:LE:32:default`, and reports executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. It decoded 43 instructions in the selected function and queried its basic blocks and decompilation. The resulting function artifact is byte-for-byte identical to the already exported one: SHA-256 `d33302df1a5d5c895fe6b987e12a92fea08299b7b69e5a364dd963928db35fe6`, 1,140 bytes. The overlap warning reproduces."
+        },
+        {
+          "value": "d33302df1a5d5c895fe6b987e12a92fea08299b7b69e5a364dd963928db35fe6",
+          "line": 38,
+          "context": "The copied-project probe used Ghidra 12.1.3, language `r5900:LE:32:default`, and reports executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. It decoded 43 instructions in the selected function and queried its basic blocks and decompilation. The resulting function artifact is byte-for-byte identical to the already exported one: SHA-256 `d33302df1a5d5c895fe6b987e12a92fea08299b7b69e5a364dd963928db35fe6`, 1,140 bytes. The overlap warning reproduces."
+        },
+        {
+          "value": "8f8acdf9a433ae072f212616335ebe5a9b7ff407e5850df8d7dcadd0d3fd290e",
+          "line": 42,
+          "context": "Primary-source comparison: Firecrawl fetched the official Ghidra 12.1.3 release source at [`mips32Instructions.sinc`](https://raw.githubusercontent.com/NationalSecurityAgency/ghidra/Ghidra_12.1.3_build/Ghidra/Processors/MIPS/data/languages/mips32Instructions.sinc), HTTP 200, scrape ID `01a106b9-85eb-73c9-852e-77146f45401a`. The fetched text SHA-256 and local processor-language source SHA-256 are both `8f8acdf9a433ae072f212616335ebe5a9b7ff407e5850df8d7dcadd0d3fd290e`. The official `beq` and `bgtz` patterns each declare `delayslot(1)` before their conditional branch. This confirms the listing's delay-slot marking against the exact Ghidra release source used by the experiment."
+        },
+        {
+          "value": "bde7bed05b3cd01b0032610b517533e0414f2bb008cf87d81b7c9e577ad860ad",
+          "line": 68,
+          "context": "The official release sources were fetched from the pinned Ghidra 12.1.3 tag and pass Jev screening. `flow.cc` is HTTP 200, scrape ID `01a106c0-d84e-7230-9d1c-c6c146b90060`, SHA-256 `bde7bed05b3cd01b0032610b517533e0414f2bb008cf87d81b7c9e577ad860ad`; `sleigh.cc` is HTTP 200, scrape ID `01a106c1-2174-7588-9a7b-297987d53c82`, SHA-256 `613c0a2d1bc0715c7b382737286cb96f1514f55ccb4069afbb3f00078c30ce99`. Both fetched texts match the corresponding local source files byte-for-byte. The full Firecrawl arguments and responses are retained under `.scratch/mesh/codex-audit/warnings/` (files prefixed `firecrawl-ghidra-flow-source-01` and `firecrawl-ghidra-sleigh-source-01`)."
+        },
+        {
+          "value": "613c0a2d1bc0715c7b382737286cb96f1514f55ccb4069afbb3f00078c30ce99",
+          "line": 68,
+          "context": "The official release sources were fetched from the pinned Ghidra 12.1.3 tag and pass Jev screening. `flow.cc` is HTTP 200, scrape ID `01a106c0-d84e-7230-9d1c-c6c146b90060`, SHA-256 `bde7bed05b3cd01b0032610b517533e0414f2bb008cf87d81b7c9e577ad860ad`; `sleigh.cc` is HTTP 200, scrape ID `01a106c1-2174-7588-9a7b-297987d53c82`, SHA-256 `613c0a2d1bc0715c7b382737286cb96f1514f55ccb4069afbb3f00078c30ce99`. Both fetched texts match the corresponding local source files byte-for-byte. The full Firecrawl arguments and responses are retained under `.scratch/mesh/codex-audit/warnings/` (files prefixed `firecrawl-ghidra-flow-source-01` and `firecrawl-ghidra-sleigh-source-01`)."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-de0-recovery/README.md",
+      "readme_sha256": "566d17bc03013f9bbef4f6f31bab05af8ea8d310aa6d7eb5c8c7bdae69607777",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "5cfd509032d8c80b12270ca07516600f5c82f992435abca90be8cea38544d88f",
+          "line": 5,
+          "context": "The maximum ELF interval is `[00200de0,00200e70)`, SHA256 `5cfd509032d8c80b12270ca07516600f5c82f992435abca90be8cea38544d88f`. All36 source-comment rows match the pinned ELF. The raw structural CFG reaches all36 words, including delay slots. Likely branches at `00200e08` and `00200e28` include the delay word on the taken path and annul it on the not-taken path; the body is their reachability union. The sole allowed register return is exact JRRA at `00200e68`. Other computed calls/jumps, traps and control transfers in delay words are rejected. The independent [root CFG check](root-cfg-validation.json) confirms this bounded structure."
+        },
+        {
+          "value": "2c0f893344ee76fcd968dec0db063631419498f90463eefc40ec10f53a3021a6",
+          "line": 7,
+          "context": "Two saved incoming JALs (`001fc04c`, `001fc210`) target the entry. The revised guard checks references to every byte of the entire interval and rejects interior targets or any additional/non-call reference. It compares loaded callsite bytes with the ELF, raw CFG flow with the Ghidra decoder, exact instruction-start-plus-three body ranges, all old function names/sources/bodies, instruction text/bytes, defined data and initialized memory. The only expected mutation is one analysis-sourced function. The fresh copy\u2019s nine files match the source tree before opening; [fresh-copy-precheck.json](fresh-copy-precheck.json) records the digest. The guard is `tools/ghidra/experimental/CreateEeClosureCandidate00200de0V2.java`, SHA256 `2c0f893344ee76fcd968dec0db063631419498f90463eefc40ec10f53a3021a6`."
+        },
+        {
+          "value": "3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8",
+          "line": 11,
+          "context": "The new manifest SHA is `3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8`; inventory SHA is `41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716`; coverage SHA is `5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44`. Full generated C, instruction inventories, ELF and projects remain ignored. [verifier-summary.json](verifier-summary.json) retains the reusable verifier result and full-report pin, including606 warning comments rather than treating successful API output as semantic correctness."
+        },
+        {
+          "value": "41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716",
+          "line": 11,
+          "context": "The new manifest SHA is `3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8`; inventory SHA is `41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716`; coverage SHA is `5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44`. Full generated C, instruction inventories, ELF and projects remain ignored. [verifier-summary.json](verifier-summary.json) retains the reusable verifier result and full-report pin, including606 warning comments rather than treating successful API output as semantic correctness."
+        },
+        {
+          "value": "5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44",
+          "line": 11,
+          "context": "The new manifest SHA is `3716978f8352119e6f413ba61305c4e0ae28f3bf9a3115ee36a26fec183486a8`; inventory SHA is `41bde5a7b57f0044d1a7276d762f24500bb50e8611e18ffd7de3ceddf8a14716`; coverage SHA is `5019d3e1919eee5ba7801ef7e06ef1c0146081132dfdb0128519f2d390d49e44`. Full generated C, instruction inventories, ELF and projects remain ignored. [verifier-summary.json](verifier-summary.json) retains the reusable verifier result and full-report pin, including606 warning comments rather than treating successful API output as semantic correctness."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001fce10-candidate/README.md",
+      "readme_sha256": "3c159d9de8537173b25bb34b5828e1c27626967926d1ebda367273a2f5eb6a16",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001fd060-candidate/README.md",
+      "readme_sha256": "a2c0df6f6fcfba7345c7183f7919e4400a72c18eaafecf2f315641bf0081d338",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001fd768-candidate/README.md",
+      "readme_sha256": "4f377691d2a79415052c7ace589a472c06d37bba4da4a580d46e6f37603e27be",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001feb80-candidate/README.md",
+      "readme_sha256": "98af89d3a0cfc4ebfef7486dd9172d4a59523adf1c19d38f5225c0d266638533",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001fed80-candidate/README.md",
+      "readme_sha256": "25c2825e7aa17e219d51b66cf3b4f94b031d16f859a1ba2023452c300d6ae8a6",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001feda0-candidate/README.md",
+      "readme_sha256": "79a1bbdb7706d8b489e60409d8136cd29badfcf0059e58b3980f0e1af5f7217f",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001fef28-candidate/README.md",
+      "readme_sha256": "bc16a61caa2c479dd042e2fa66b9697539de4c48e5d5622e5a1f209f63505537",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ff038-candidate/README.md",
+      "readme_sha256": "5e112522256766e133e4fb377b365cb7e6a04a7f9ed59741e8db875fdbfeb5dc",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ff140-candidate/README.md",
+      "readme_sha256": "d829bfa12f5060f3c4e08488ae6cd3ac72c525f8280e5ea6650cb521029a608a",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ff270-candidate/README.md",
+      "readme_sha256": "0b0df1a001cc3d4bd91c082001efb1d96d132962fc6735afc9c8cea55e097189",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ff460-candidate/README.md",
+      "readme_sha256": "81bb296a59408985e5386fab95c111239314403671235a19a0e38c59c753919a",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ff520-candidate/README.md",
+      "readme_sha256": "81d4f73ceb697ae2a93ca04a43726a2c5f64aa8f9ff654b3629486d876760752",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ff9c8-candidate/README.md",
+      "readme_sha256": "d807e55d81b4f86066075c9aa644576fcafc8123b2226f8e42cabd63badb8d2d",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ffa50-candidate/README.md",
+      "readme_sha256": "7c0be96aacabe8f11f5df8d27c7a8d4eebcec1a5a36cb600576f86d498627824",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ffbf0-candidate/README.md",
+      "readme_sha256": "8076d01e0d88df076f207a6f14e8842bec3c15d0ff829c5ed13ad873fc829284",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/001ffec8-candidate/README.md",
+      "readme_sha256": "ecb58cbe346f90dfe71b5c56b93c7013d9d2000ddc21b17bf816bbe3aa862385",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/00200408-candidate/README.md",
+      "readme_sha256": "ff034d209d9862b82c8952efd617d27fd889a21ede7efff2a0023e5a45da970e",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/00200e70-candidate/README.md",
+      "readme_sha256": "a7a2b0533d1160a5cc8c66851baf5a5ea1ff3b13df699f1720d04c3a09d8b868",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "846d590519f58c3444679ce7afcfe007a15949dcebb61e37697ffb6c3da3cf96",
+          "line": 3,
+          "context": "This evidence records one root-authorized, isolated Ghidra transaction on a fresh project copy matching the exact 3843-function baseline. The authorized source is `tools/ghidra/experimental/CreateEeClosureCandidate00200e70V1.java`, SHA-256 `846d590519f58c3444679ce7afcfe007a15949dcebb61e37697ffb6c3da3cf96`. The transaction was invoked from the identical source in scratch; all calls, logs, result objects, reconciliation attempts, and Jev argument/result envelopes are preserved here and under `.scratch/mesh/codex-audit/ee-00200e70-candidate-01/`."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/002018d8-candidate/README.md",
+      "readme_sha256": "05c2422712a25c4e84d7488a0570fb513a48ef24eb72f1ae7682431d6483d7fc",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/00201a48-candidate/README.md",
+      "readme_sha256": "de5a448d2742bc2787c14ebb45fb076690947bff5b203b9f7b1bfd10990faff0",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/README.md",
+      "readme_sha256": "7524c6f2692d112d123da5271c2058bb8e58eb7a9a0bcff9922892d555878a4a",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "02317983878b82f066990b3b511e7012c3101be73e737276edc060a27b7f475f",
+          "line": 15,
+          "context": "The exact historical input and source pins, callsites, interval-file hashes, scan counts, and raw-word crosswalk checks are in [next-seeds.json](next-seeds.json). The source-only PS2Recomp search receipts remain in scratch: `jgrep-function-intervals.json` (hit `ps2xRecomp/src/lib/function_emitter.cpp:71\u2013130`, SHA-256 `02317983878b82f066990b3b511e7012c3101be73e737276edc060a27b7f475f`) and `jgrep-function-entry-discovery.json` (hit `ps2xRecomp/src/lib/elf_parser.cpp:1612\u20131671`, SHA-256 `f530fb125e9e2bca6b81b80e79c6f42a2ba108405e1f35151c8bb5cc396c7d43`). The historical scan script and full output are in `.scratch/mesh/codex-audit/next-seeds-01/`; its first report had an integer/string address comparison bug, preserved as `scan-result-attempt01-bug-failed.json`, and was corrected before the durable 3841 result."
+        },
+        {
+          "value": "f530fb125e9e2bca6b81b80e79c6f42a2ba108405e1f35151c8bb5cc396c7d43",
+          "line": 15,
+          "context": "The exact historical input and source pins, callsites, interval-file hashes, scan counts, and raw-word crosswalk checks are in [next-seeds.json](next-seeds.json). The source-only PS2Recomp search receipts remain in scratch: `jgrep-function-intervals.json` (hit `ps2xRecomp/src/lib/function_emitter.cpp:71\u2013130`, SHA-256 `02317983878b82f066990b3b511e7012c3101be73e737276edc060a27b7f475f`) and `jgrep-function-entry-discovery.json` (hit `ps2xRecomp/src/lib/elf_parser.cpp:1612\u20131671`, SHA-256 `f530fb125e9e2bca6b81b80e79c6f42a2ba108405e1f35151c8bb5cc396c7d43`). The historical scan script and full output are in `.scratch/mesh/codex-audit/next-seeds-01/`; its first report had an integer/string address comparison bug, preserved as `scan-result-attempt01-bug-failed.json`, and was corrected before the durable 3841 result."
+        },
+        {
+          "value": "fe8d595d173df212e30e79ce3cc655d3cee226a225d23cce0b70f70f2ffa4939",
+          "line": 24,
+          "context": "The candidate was subsequently added in one guarded transaction to a fresh copy of the 3841 project, producing a reopened 3842-function export. See [00200d10-preflight.md](00200d10-preflight.md) for the bounded CFG and transaction evidence. The final reconciliation has **17 checks**. The root's independent validation is `.scratch/mesh/codex-root/root-ee-3842-validation-01.json` (SHA-256 `fe8d595d173df212e30e79ce3cc655d3cee226a225d23cce0b70f70f2ffa4939`): it recomputed 7,683 C artifact hashes, confirmed the three expected caller-label substitutions, preserved prior function names/bodies/instruction text and bytes plus memory/string inventories, and matched all 51 new words to the ELF. These checks support only the documented static candidate; they do not establish identity or semantics."
+        },
+        {
+          "value": "773d149608167f900e8980002a3dbcd41fc7bfb6ab3487eb2d73946a5715a428",
+          "line": 26,
+          "context": "The first read-only CFG report for `00200d10` had SHA-256 `773d149608167f900e8980002a3dbcd41fc7bfb6ab3487eb2d73946a5715a428`. The report was corrected after finding that the scratch traversal treated unconditional `beq $zero,$zero` at `00200d70` as having a fallthrough. The corrected report is the one cited in the preflight below; the first JSON was overwritten and could not be recovered from the workspace search. No Ghidra project data was changed during that CFG-only correction. The later guarded Ghidra candidate transaction is documented separately."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 17,
+          "context": "The generator source is PS2Recomp base revision `c5a9d02573410a2085a4b4b831b0b68ba3515440` with the recorded working-tree patch hash in the JSON. jgrep located its fallback entry scanner, which adds starts from direct JALs and other address heuristics, and its emitter's interval comment. Therefore the boundary listing is a second tool's static hypothesis, not fully independent evidence of function identity; the exact per-word ELF comparisons validate only that the emitted instruction comments correspond to the bytes. This does not prove PS2Recomp semantic equivalence, correct original function identities, runtime reachability, or whole-game completeness."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/batch-all-1-candidates/README.md",
+      "readme_sha256": "2b0ed1c4b74671fe52cc1e1c0d01134e22224353b459fe016dea369995507faf",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/batch-g1-candidates/README.md",
+      "readme_sha256": "3fe45b1186a08c38bcffadfb5608b940c133414c2140eb092edeef6a0ddd39f9",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/batch-g2-candidates/README.md",
+      "readme_sha256": "0fa02356ef8216db102696e92874dd379f5a05017b4d7b2d7ee069ef63c7ffbd",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/batch-g3-candidates/README.md",
+      "readme_sha256": "bd5cbf9707d70ac7c515c6652cee21d4cc9ee1e7dc3fb1638a056e330a28e201",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/batch-r2-candidates/README.md",
+      "readme_sha256": "e9896eb15652b9d365a4c21eaad2f7fc65d673651428e6a8b65f07106525407d",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/batch-r3-candidates/README.md",
+      "readme_sha256": "17943a51474db4d86d27fa70e111ea2fad6a55513560e4d711c78c767ac7ee5a",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/batch-trial-candidates/README.md",
+      "readme_sha256": "a1d6a5d36f281cc6581ce1da4439f984a2a30fe6f48f476a7372008a5139c9f6",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/jump-table-pipeline-review/README.md",
+      "readme_sha256": "e6b4a04218000cdc5ce26de639a76ada2a500e8ae6d5cbb040c0ed7d184fe9ca",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-next-seeds/jump-table-recognizer-review/README.md",
+      "readme_sha256": "e89c7048f92c8b9432c86d9e3f7622c0e58e7408b4aeb50f285f83df5a38ec95",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ee-unresolved-audit/README.md",
+      "readme_sha256": "76979ded14d2ebb4b2b76d5acbc5e8cd3ebaff29c1450cbb2ae159e651995c3c",
+      "commands": [
+        "python3 notes/evidence/fr2-ee-unresolved-audit/audit_static_coverage.py"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 69,
+          "context": "`c5a9d02573410a2085a4b4b831b0b68ba3515440` with the working-tree patch set"
+        }
+      ],
+      "missing": [
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-first-unit/README.md",
+      "readme_sha256": "cdf7282d250dde0baa46269d0a56742ff0219f8394639719fa6e4d1a75efba7e",
+      "commands": [
+        "tools/check.sh test_matching_ranges test_matching",
+        "python3 tools/compiler_probe_recipe/run.py \\\n  games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/first-unit/final-credited",
+        "tools/check.sh test_compiler_probe_recipe test_compiler_probe test_matching"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+          "line": 5,
+          "context": "`1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e`. The"
+        },
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 7,
+          "context": "`216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-fpu-control-audit/README.md",
+      "readme_sha256": "b00a71bd4de968c18bf85cd1e1007687e037f7141323a1d04ade2f852b26c28f",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 5,
+          "context": "The pinned PS2Recomp revision is `c5a9d02573410a2085a4b4b831b0b68ba3515440`. Its `C.EQ.S`, `C.LT.S`, and `C.LE.S` translations set or clear FCR31 bit 23 from host `==`, `<`, and `<=` comparisons, preserving other FCR31 bits. The Sony manual specifies those predicates, states that +0 equals -0, and assigns the comparison flag to FCR31 bit 23. PCSX2's pinned FPU implementation also models the condition flag as `0x00800000` and updates that bit for comparisons. For finite supported operands, the inspected predicate and flag behavior agrees with the manual and the software comparator."
+        }
+      ],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-fpu-static-audit/README.md",
+      "readme_sha256": "28f3358056282d042879dc6908e9a6af2ba58066570225aeb9af5d0c369bee35",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 7,
+          "context": "The pinned combined Ghidra inventory contains 3,837 saved function records for executable SHA-256 216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95. It records 487 CVT.W.S, 264 MIN.S, 105 MAX.S, and 14 SQRT.S instructions, alongside 1,235 ADD.S, 1,160 SUB.S, 2,258 MUL.S, and 391 DIV.S. Full normalized counts are in metadata.json."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 11,
+          "context": "Pinned PS2Recomp commit c5a9d02573410a2085a4b4b831b0b68ba3515440 emits CVT.W.S through nearbyintf and a cast, SQRT.S through sqrtf, and MIN.S/MAX.S through std::min/std::max. Sony's manuals specify toward-zero conversion with saturation above biased exponent 0x9d, signed-zero min/max results, and negative SQRT.S as SQRT(ABS(x)) with I/SI set and D cause cleared. See exact manuals, page references, pinned source hashes, and scope in metadata.json. The conversion-overflow flag semantics remain unresolved because Sony\u2019s manuals conflict: Table 8-4 says no cause flag, the instruction page does not list flag writes, but Table 8-6 says I/SI. The experiment leaves CVT.W.S FCR31 behavior unchanged."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-fpu-static-audit/root-integration/README.md",
+      "readme_sha256": "a213c34283ac0774ffbb8608ff4fc940e94927a29d3c2df20cb06271f013bb5a",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "26592f274eeb1961d4f61f7d8f5d5d4707a7a67becaf32ebe292e1efe99f0ed8",
+          "line": 7,
+          "context": "All function units compiled in 16 batches against the four-patch headers. The registration unit also compiled against those headers in 105.265 seconds and has the same object hash as the earlier registration. The resulting private archive is 83,527,016 bytes, SHA-256 `26592f274eeb1961d4f61f7d8f5d5d4707a7a67becaf32ebe292e1efe99f0ed8`, with 4,746 distinct defined generated function symbols. No generated game function was linked or executed."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 3,
+          "context": "Root independently passed the hardened actual-template FPU probe, then applied all four bounded patches to a fresh shared clone of PS2Recomp commit `c5a9d02573410a2085a4b4b831b0b68ba3515440`. The earlier three-patch checkout and pristine checkout remain separate. The generator-only CMake build uses the existing pinned dependency sources with fetching disconnected; it does not build or launch a game runtime."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-consumer-audit/README.md",
+      "readme_sha256": "e0bd908e1c414732cd5bb53006da7fe0ab04ed7ba7e4a75b414af42d1600d77b",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "62e3de6688791e6af88d65bebe7156ee2d1f1ec83911316cafddf3173259f381",
+          "line": 9,
+          "context": "For an exact corpus anchor, `3DDATA/CARS/49COUPE.PS2;1` has SHA-256 `62e3de6688791e6af88d65bebe7156ee2d1f1ec83911316cafddf3173259f381`. Its geometry table begins at byte `933940` with 39 records of `0x34` bytes, geometry headers begin at `935968`, payload begins at `938880`, and the next section begins at `1143232`. The first header has count 64, flags `0xc008`, and third halfword 0. Its measured spans are 384 bytes at `938880` (stride 6), 256 bytes at `939264` (stride 4), and 256 bytes at `939520` (stride 4). Four in-memory mutations of that header (count +1, toggling `0x40`, toggling `0x800`, and changing the third halfword to `0xffff`) were rejected by the existing section parser; see `metadata.json` for the exact failure classes. These are alignment/count falsifiers, not semantic identification tests."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-consumer-audit/root-correction/README.md",
+      "readme_sha256": "f1f2b92b6957d71f1ab7b02644994dba629b58d3ced6796eeca6b3ba93b9d2a2",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-consumer-audit/superseded-field-map-01/README.md",
+      "readme_sha256": "adaa2bda852921b631974f73773c61c5499ff97e646adfe276cc3af1ac0a1a3b",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "62e3de6688791e6af88d65bebe7156ee2d1f1ec83911316cafddf3173259f381",
+          "line": 7,
+          "context": "For an exact corpus anchor, `3DDATA/CARS/49COUPE.PS2;1` has SHA-256 `62e3de6688791e6af88d65bebe7156ee2d1f1ec83911316cafddf3173259f381`. Its geometry table begins at byte `933940` with 39 records of `0x34` bytes, geometry headers begin at `935968`, payload begins at `938880`, and the next section begins at `1143232`. The first header has count 64, flags `0xc008`, and third halfword 0. Its measured spans are 384 bytes at `938880` (stride 6), 256 bytes at `939264` (stride 4), and 256 bytes at `939520` (stride 4). Four in-memory mutations of that header (count +1, toggling `0x40`, toggling `0x800`, and changing the third halfword to `0xffff`) were rejected by the existing section parser; see `metadata.json` for the exact failure classes. These are alignment/count falsifiers, not semantic identification tests."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-endpoints/README.md",
+      "readme_sha256": "0f8a09d9f6c1375eab03ee2aa578158222982cf8f3d3010d6ca2cc898be2100b",
+      "commands": [
+        "python3 tools/verify_geometry_bounds.py corpus games/ford-racing-2\npython3 notes/evidence/fr2-geometry-endpoints/check_corner_provenance.py"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vif-contract/README.md",
+      "readme_sha256": "ccf3000602fef1a82e2eb488e2ab476bca34f71124587832c36f45cb96210f19",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 12,
+          "context": "`216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. Its"
+        },
+        {
+          "value": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+          "line": 14,
+          "context": "`554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383`."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 79,
+          "context": "`ac92a9f657d2e531dd8f060250b07f2a5ac6dea5`. It defines the VIF encoding and"
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vif-preamble/README.md",
+      "readme_sha256": "8a688181dd414c82dc005c69741bc1d6cf67a1f525ff7d67c7506b1d42843679",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 19,
+          "context": "Sony\u2019s VU User\u2019s Manual v6.0 \u00a73.4 / Figure 3-19 defines the single E-bit delay instruction and TPC continuation. The online mirror used for the bounded check is [VU User\u2019s Manual](https://docs.alexrp.com/mips/ee_vu.pdf). PCSX2 source is pinned to commit `81526d4dc7cc70e4ae75abb35a789417456c6d43`; PS2SDK command field definitions and hashes appear in `source-provenance.json`."
+        }
+      ],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vif-tag-audit/README.md",
+      "readme_sha256": "27218314276064d2d6dccde511f80c80e2358d62dba50cb2434ead8a29724758",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 6,
+          "context": "for executable `SLES_517.05` (`216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`)"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 116,
+          "context": "[`Vif1_Dma.cpp` at `81526d4dc7cc70e4ae75abb35a789417456c6d43`](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/Vif1_Dma.cpp)."
+        },
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 116,
+          "context": "[`Vif1_Dma.cpp` at `81526d4dc7cc70e4ae75abb35a789417456c6d43`](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/Vif1_Dma.cpp)."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vu-consumer/README.md",
+      "readme_sha256": "4e9347cda1467b23b2b824cf7b58aebe798da830f0028a2e227cbf474b2be92c",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vu-dispatch/README.md",
+      "readme_sha256": "5d1813f49e0acf62fd21b54de6287e382fc141390f794c786ea0a78c0ed9138a",
+      "commands": [
+        "python3 tools/verify_vu.py \\\n  games/ford-racing-2/extracted/SLES_517.05 \\\n  --objdump /path/to/dvp-objdump \\\n  --assembler /path/to/dvp-as"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-geometry-vu-input-provenance/README.md",
+      "readme_sha256": "0a892d66b3e066e663bae4b1e3c412710a9e802db0716ea30acbd2246d1082e2",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-gp-context/README.md",
+      "readme_sha256": "50d5c0ea479294cb74a35f6144ef121159e78143babb90980d352b9f9f5cf4d9",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-gs-address-audit/README.md",
+      "readme_sha256": "0697b394eae7d3a9221f5bd2e2a134f5642094b79c8a03fefffc07da20a7f1ce",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "a9a226297ede32b89177d7bdb04e9d8e21728e7d55799405f6112e97fe4969e8",
+          "line": 11,
+          "context": "`a9a226297ede32b89177d7bdb04e9d8e21728e7d55799405f6112e97fe4969e8`."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 6,
+          "context": "`c5a9d02573410a2085a4b4b831b0b68ba3515440`. Each header's current bytes also"
+        },
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 10,
+          "context": "`81526d4dc7cc70e4ae75abb35a789417456c6d43`, raw source SHA256"
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-gs-low-width-audit/README.md",
+      "readme_sha256": "9b12fa6042f6a26c8e8103c57d02a3ba15e48b8339ee2d3a636f0765eaa2864c",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 26,
+          "context": "Public references are PS2Recomp revision `c5a9d02573410a2085a4b4b831b0b68ba3515440` ([backend source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp), [GSMem source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h)) and PCSX2 revision `81526d4dc7cc70e4ae75abb35a789417456c6d43` ([GS tables](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/GS/GSTables.cpp)). Both are public GPL sources; no upstream source body is copied here. The probes are authored experiment harnesses that include/link those sources locally. Source pins, compiler arguments, library hashes and process records are in [backend-result.json](backend-result.json) and [standalone-helper-result.json](standalone-helper-result.json)."
+        },
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 26,
+          "context": "Public references are PS2Recomp revision `c5a9d02573410a2085a4b4b831b0b68ba3515440` ([backend source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp), [GSMem source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h)) and PCSX2 revision `81526d4dc7cc70e4ae75abb35a789417456c6d43` ([GS tables](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/GS/GSTables.cpp)). Both are public GPL sources; no upstream source body is copied here. The probes are authored experiment harnesses that include/link those sources locally. Source pins, compiler arguments, library hashes and process records are in [backend-result.json](backend-result.json) and [standalone-helper-result.json](standalone-helper-result.json)."
+        },
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 26,
+          "context": "Public references are PS2Recomp revision `c5a9d02573410a2085a4b4b831b0b68ba3515440` ([backend source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp), [GSMem source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h)) and PCSX2 revision `81526d4dc7cc70e4ae75abb35a789417456c6d43` ([GS tables](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/GS/GSTables.cpp)). Both are public GPL sources; no upstream source body is copied here. The probes are authored experiment harnesses that include/link those sources locally. Source pins, compiler arguments, library hashes and process records are in [backend-result.json](backend-result.json) and [standalone-helper-result.json](standalone-helper-result.json)."
+        },
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 26,
+          "context": "Public references are PS2Recomp revision `c5a9d02573410a2085a4b4b831b0b68ba3515440` ([backend source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp), [GSMem source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h)) and PCSX2 revision `81526d4dc7cc70e4ae75abb35a789417456c6d43` ([GS tables](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/GS/GSTables.cpp)). Both are public GPL sources; no upstream source body is copied here. The probes are authored experiment harnesses that include/link those sources locally. Source pins, compiler arguments, library hashes and process records are in [backend-result.json](backend-result.json) and [standalone-helper-result.json](standalone-helper-result.json)."
+        },
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 26,
+          "context": "Public references are PS2Recomp revision `c5a9d02573410a2085a4b4b831b0b68ba3515440` ([backend source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/src/lib/gs/gs_cpu_backend.cpp), [GSMem source](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/include/runtime/gs/ps2_gs_memory.h)) and PCSX2 revision `81526d4dc7cc70e4ae75abb35a789417456c6d43` ([GS tables](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/GS/GSTables.cpp)). Both are public GPL sources; no upstream source body is copied here. The probes are authored experiment harnesses that include/link those sources locally. Source pins, compiler arguments, library hashes and process records are in [backend-result.json](backend-result.json) and [standalone-helper-result.json](standalone-helper-result.json)."
+        },
+        {
+          "value": "a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369",
+          "line": 34,
+          "context": "The root independently downloaded and hashed the Sony GS User\u2019s Manual v6.0 from the [pinned PS2Docs mirror](https://github.com/ninjadynamics/PS2Docs/blob/a8c2585cb13d7ed5cf4bd4a0e8047aeca23f9369/GS_Users_Manual.pdf), then extracted, rendered and viewed page101. The BITBLTBUF table places DBW at bits53:48 and directly attaches the range1..32 footnote to that width field. This validates the packet-builder shift48 label and establishes that serializedDBW0 is outside the documented range. The reviewed table does not specify the zero-value response. Its undefined-operation footnote belongs to the source-format field and is not a zero-width rule."
+        }
+      ],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-gs-mip-sampler-audit/README.md",
+      "readme_sha256": "03043af28557b3aec5f456bac16f75ebc8d609c299164f610b748ce3b7bc294b",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-gs-mip-sampler-audit/q-sweep-02/README.md",
+      "readme_sha256": "e7989169c3a8ba6afde4a5c646e704a029e970fba992e644848d3f0659a1f072",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "7d7143919204d642968b75e672d128af5a64a02e83462ab69c8ce5037ec9f427",
+          "line": 7,
+          "context": "Process exit 0, empty stderr. All six Q-based cases read the level-0 TEX0 base plane (`0x800000ff`) for all four output pixels. The manual Q-based formula (GS User's Manual pp62/127, per root's visual review in the parent directory) predicts levels 0, 1, 2 for Q = 1, 0.5, 0.25, so four Q cases disagree. With the four fixed-LOD disagreements the run has 8 manual disagreements in 16 cases. Result SHA-256 `7d7143919204d642968b75e672d128af5a64a02e83462ab69c8ce5037ec9f427`."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-headless-oracle/README.md",
+      "readme_sha256": "73db856aac150f12f0bd286e3cc0cc71a5addd9063a3bab006777a1d6870aded",
+      "commands": [
+        "python3 tools/headless_oracle.py \\\n  --emulator /Applications/PCSX2.app/Contents/MacOS/PCSX2 \\\n  --platform-plugin /path/to/qt-platform/plugins/platforms/libqoffscreen.dylib \\\n  --elf /path/to/controlled-probe.elf \\\n  --probe-source /path/to/controlled-probe.c \\\n  --linker-script /path/to/controlled-probe.ld \\\n  --probe-build-log /path/to/controlled-probe-build-02.log \\\n  --bios /path/to/ps2-bios.bin \\\n  --desktop-observer /path/to/observe-desktop \\\n  --desktop-observer-source /path/to/observe-desktop.m \\\n  --qt-sdk-archive /path/to/qtbase.7z \\\n  --qt-source-dir /path/to/qt-offscreen-src \\\n  --qt-build-command /path/to/plugin-build-command-03.json \\\n  --qt-preparation-record /path/to/offscreen-plugin-preparation.json \\\n  --output /path/to/fresh-evidence-directory",
+        "clang -fobjc-arc tools/observe-desktop.m -framework AppKit -framework CoreGraphics -o /path/to/private/observe-desktop\ntools/check.sh test_headless_oracle"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "90b845d15ffb97693dba527385db83510ebd121a",
+          "line": 88,
+          "context": "SBOM points to qtbase commit `90b845d15ffb97693dba527385db83510ebd121a`; the"
+        }
+      ],
+      "missing": [
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-independent-recovery/README.md",
+      "readme_sha256": "0319c3c6dc5cdbf64534c06554842451409b9abf1b4b387d982af297fdb52f1e",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 5,
+          "context": "The command-line PS2Recomp generator at GitHub commit `c5a9d02573410a2085a4b4b831b0b68ba3515440` built on macOS ARM64. `native-tool-provenance.json` pins the executable and six fetched dependency commits. The generator used the exact PAL executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`, no function map, no configured stubs or skips, and disabled instruction patching. Its report records 4,746 generated functions, zero decode failures and unhandled instructions, and 1,178 unresolved control-flow warnings. Its 88,104 resumable entry points and 145,340 fallback-entry promotions are tool heuristics, not recovered original functions."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 5,
+          "context": "The command-line PS2Recomp generator at GitHub commit `c5a9d02573410a2085a4b4b831b0b68ba3515440` built on macOS ARM64. `native-tool-provenance.json` pins the executable and six fetched dependency commits. The generator used the exact PAL executable SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`, no function map, no configured stubs or skips, and disabled instruction patching. Its report records 4,746 generated functions, zero decode failures and unhandled instructions, and 1,178 unresolved control-flow warnings. Its 88,104 resumable entry points and 145,340 fallback-entry promotions are tool heuristics, not recovered original functions."
+        },
+        {
+          "value": "89b9d8cf249f927192c57804ce5e55e99e34002d",
+          "line": 21,
+          "context": "The private relocation model processed 24,783 rows at base zero and synthetic base `0x00100000`; base zero was an identity control and the synthetic base changed all 24 modules. It is a comparative experiment against PS2SDK Loadcore commit `89b9d8cf249f927192c57804ce5e55e99e34002d`, whose version has not been matched to the game's loader. Its out-of-range section-loop read and the model's deliberate in-range-only handling remain documented. Runtime placement, import resolution, cache behavior, and equivalence to the target loader are unproved."
+        },
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 23,
+          "context": "Firecrawl fetched the exact pinned [PS2Recomp README](https://raw.githubusercontent.com/ran-j/PS2Recomp/c5a9d02573410a2085a4b4b831b0b68ba3515440/README.md) and the [LLVM UBSan reference](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html). Jev screened these primary sources, checked bounded results and deliberate overclaims, and reviewed the artifact checker and raw-string fix. Full model results are preserved under `jev/`; default thresholds were retained. Several patch reviews escalated on confidence rather than supplying a concrete defect, and those outcomes remain escalated. The independently reproduced lexer defect was fixed and retested. A positive bounded compilation claim was marked review, and claims that compilation proves equivalent behavior were contradicted. Some early screen receipts retain input/result but omit the complete purpose argument; their tool invocations remain in the chat history. No failed or low-confidence result is presented as model approval."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-integer-division/README.md",
+      "readme_sha256": "a54bb79eba1735def70f4c146f0a70b81ce003d0e74384e3af5d18c7539bdb56",
+      "commands": [
+        "python3 tools/recomp/verify_integer_division.py \\\n  --upstream .scratch/mesh/codex-root/PS2Recomp \\\n  --fresh-output-dir .scratch/mesh/codex-root/integer-div-fresh-output \\\n  --sse2neon .scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src\nPYTHONPATH=tools python3 -m unittest tools.test_recomp_integer_division -v"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 5,
+          "context": "The verifier checks PS2Recomp commit `c5a9d02573410a2085a4b4b831b0b68ba3515440`, three source SHA-256 values, and the pinned SSE2NEON header before compiling. It extracts the actual four `fmt::format` templates, low-word register extractor, and signed/unsigned register-read macros. It refuses an existing output directory. It compiles only these public translator expressions against a synthetic context; it never executes original game code."
+        },
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 9,
+          "context": "Sony's [EE Core Instruction Set Manual](https://docs.alexrp.com/mips/ee_insns.pdf), printed pp. 67\u201368, 138, and 140, specifies the sign-extended quotient/remainder and the signed overflow result. It explicitly leaves a zero divisor's arithmetic result undefined. Zero-divisor checks therefore establish agreement with the pinned software policy only. [PCSX2's pinned interpreter](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/R5900OpcodeImpl.cpp) supplies an independent software comparison for signed/unsigned divide-by-zero results. Its nearby DIVU comments disagree with the signed cast in its implementation; the audit uses the expression, not the comment. Firecrawl fetched that exact source revision and Jev screened it with recommendation `pass`; receipt identities are in `source-provenance.json`."
+        }
+      ],
+      "missing": [
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-integer-multiply/README.md",
+      "readme_sha256": "cd031bb5e6324b31304df8e4c84a0d22d6044d97a01bdcf59b55ce0d23295505",
+      "commands": [
+        "python3 -m tools.recomp.verify_integer_multiply \\\n  --upstream .scratch/mesh/codex-root/PS2Recomp \\\n  --static-export .scratch/evidence/static-export.json \\\n  --fresh-output-dir .scratch/mesh/codex-root/integer-multiply-audit-NN \\\n  --sse2neon .scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-integer-multiply/root-hardening/README.md",
+      "readme_sha256": "c2ef9c3273edb184e1f9e1e9f24b0c39fc81da7c99cc4488f820613dc88569b4",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-iop-api-catalog/README.md",
+      "readme_sha256": "26383e9d15c5eec3ee5457f27778125cc1ba77fb14d89aee921c7c7abab815e1",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 5,
+          "context": "`tools/ps2_irx_catalog.py` reads literal export macro declarations from [PS2SDK commit ac92a9f657d2e531dd8f060250b07f2a5ac6dea5](https://github.com/ps2dev/ps2sdk/tree/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5). It verifies checkout HEAD and compares all 83 tracked `exports.tab` files to the pinned Git objects before reading declarations. Source hashes are retained. Fourteen files with preprocessor-dependent or unsupported declarations are excluded rather than choosing a build variant; the remaining files produce 77 table records. Source helper C outside tables is never evaluated. No SDK preprocessing, compilation, loading, or machine-code execution occurs."
+        },
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 5,
+          "context": "`tools/ps2_irx_catalog.py` reads literal export macro declarations from [PS2SDK commit ac92a9f657d2e531dd8f060250b07f2a5ac6dea5](https://github.com/ps2dev/ps2sdk/tree/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5). It verifies checkout HEAD and compares all 83 tracked `exports.tab` files to the pinned Git objects before reading declarations. Source hashes are retained. Fourteen files with preprocessor-dependent or unsupported declarations are excluded rather than choosing a build variant; the remaining files produce 77 table records. Source helper C outside tables is never evaluated. No SDK preprocessing, compilation, loading, or machine-code execution occurs."
+        },
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 11,
+          "context": "`catalog.json` records source files, exclusions, table versions and declared names. `module-annotations.json` records every import tuple and its candidate status. The source is [PS2SDK's IOP export declarations](https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/threadman/src/exports.tab); PS2SDK is published under the [Academic Free License 2.0](https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/LICENSE). This bundle extracts factual table names/ordinals and provenance; it does not include the SDK implementation."
+        },
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 11,
+          "context": "`catalog.json` records source files, exclusions, table versions and declared names. `module-annotations.json` records every import tuple and its candidate status. The source is [PS2SDK's IOP export declarations](https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/threadman/src/exports.tab); PS2SDK is published under the [Academic Free License 2.0](https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/LICENSE). This bundle extracts factual table names/ordinals and provenance; it does not include the SDK implementation."
+        }
+      ],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-iop-entry-recovery/README.md",
+      "readme_sha256": "744206efedd25d4962223144bed97bb0e036bd928fe8ffd340e73bc9ec89008e",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-iop-export-recovery/README.md",
+      "readme_sha256": "d02bddcfa26d0cffb1d878827e374ecda3820e3230282eba833415e14cd6b685",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-iop-game-modules/README.md",
+      "readme_sha256": "0e19b00faa8db71fe87236c967e2bb265d5bbae349f0f6ef5e69e1cc0c786eec",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-iop-observed-crosswalk/README.md",
+      "readme_sha256": "f7b05fbe52952a45356941cad2097fecc7d594f5226a70ce1b80c406c6b37835",
+      "commands": [
+        "python3 tools/ps2_irx_crosswalk.py games/ford-racing-2/extracted \\\n  --inventory .scratch/mesh/codex-root/executable-inventory-01.json \\\n  --boundaries .scratch/mesh/codex-root/executable-boundaries-01.json \\\n  --out .scratch/evidence/iop-observed-crosswalk\npython3 -m unittest discover -s tools -p test_ps2_irx_crosswalk.py"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-iop-recovery-gap/README.md",
+      "readme_sha256": "4c4576478435d75a75995135f17722c5446395d27dfc5c68bb86b6d3f52783ef",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 9,
+          "context": "The clearest boundary gap is at the module entry points. Thirteen `.iopmod` entry offsets are zero but no saved Ghidra function starts at zero. Each offset is inside `.text`, not at a parsed import/export table header. Twelve start with a MIPS `addiu sp,sp,negative` prologue word; LOADCORE starts with `0x40806000` (a COP0 instruction), followed by the raw words `0x8c820000`, `0x00000000`, and `0x0002ed00`. The other eleven module entry offsets do have saved function starts. This makes the 13 offset-zero locations concrete function-boundary candidates. It does not prove the game invokes these modules or that the candidate's complete function extent is known. The pinned [PS2SDK Loadcore source](https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/loadcore/src/loadcore.c) adds `text_start` to the IRX metadata `EntryPoint`, but is mechanism evidence, not proof the game uses that runtime loader revision."
+        }
+      ],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-iop-relocated-exports/README.md",
+      "readme_sha256": "705a90ad147906cbf09cbafa20491b8ea678ad5c43ffafcb4c3824da0c5a6e11",
+      "commands": [
+        "python3 tools/ps2_irx_crosswalk.py games/ford-racing-2/extracted \\\n  --inventory .scratch/mesh/codex-root/executable-inventory-01.json \\\n  --boundaries .scratch/mesh/codex-root/executable-boundaries-01.json \\\n  --synthetic-load-base 0x1000 \\\n  --out .scratch/evidence/iop-relocated-exports"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "2eb29f11cce431de18f8d5f64c64e4eda22507bfca26487a57b53b63750e0d78",
+          "line": 7,
+          "context": "[Pinned ps2sdk loadcore source](https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/loadcore/src/loadcore.c) supports this arithmetic: its loader adds the start address at an `R_MIPS_32` site, and its client linker scans export pointers after loading until a null pointer. A fresh Firecrawl scrape of that exact primary source returned HTTP 200; [r073](r073-source-screen.json) passed the source screen. The source hash is `2eb29f11cce431de18f8d5f64c64e4eda22507bfca26487a57b53b63750e0d78`. This is a software comparator and static byte model, with no claim of observed runtime allocation or hardware equivalence."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 7,
+          "context": "[Pinned ps2sdk loadcore source](https://github.com/ps2dev/ps2sdk/blob/ac92a9f657d2e531dd8f060250b07f2a5ac6dea5/iop/system/loadcore/src/loadcore.c) supports this arithmetic: its loader adds the start address at an `R_MIPS_32` site, and its client linker scans export pointers after loading until a null pointer. A fresh Firecrawl scrape of that exact primary source returned HTTP 200; [r073](r073-source-screen.json) passed the source screen. The source hash is `2eb29f11cce431de18f8d5f64c64e4eda22507bfca26487a57b53b63750e0d78`. This is a software comparator and static byte model, with no claim of observed runtime allocation or hardware equivalence."
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-iop-relocated-exports/independent-review/README.md",
+      "readme_sha256": "e50c36815e02d6cb3de0fb4300d97d198c45948fdf730904e290ef1f95169e6e",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2",
+          "line": 26,
+          "context": "The `corpus()` route calls `verify_corpus` on the exact inventory and boundary records, reads only module slices returned by that verification, checks every slice length and SHA-256, prevents paths escaping the extracted root, then compares inventory and boundary bytes again. The saved scan is pinned to inventory SHA `ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2` and boundaries SHA `1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102`. I found no source/path/slice mismatch."
+        },
+        {
+          "value": "1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102",
+          "line": 26,
+          "context": "The `corpus()` route calls `verify_corpus` on the exact inventory and boundary records, reads only module slices returned by that verification, checks every slice length and SHA-256, prevents paths escaping the extracted root, then compares inventory and boundary bytes again. The saved scan is pinned to inventory SHA `ad865a50ff602156659bd4322f5ad60b5ff531e7c141535bd9e491c85aca96a2` and boundaries SHA `1891b2be5869d48da161388601788ae9849cbf9fd1c2229be413185ffe06c102`. I found no source/path/slice mismatch."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+          "line": 28,
+          "context": "The loader source comparator is the local `ps2sdk` checkout at commit `ac92a9f657d2e531dd8f060250b07f2a5ac6dea5`; the existing source screen is [r073](../r073-source-screen.json). Its `aLinkClient` counts export pointers until null and reads each import stub\u2019s immediate as a positional index. This is a software-source comparison, not proof of runtime behavior for this title."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-issue-5-continuation/README.md",
+      "readme_sha256": "9a7593e3e915bc57d5145b58a7d3194e14e47fc2bde729cba3dc3cb7ec10a9eb",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-link-interface-audit/README.md",
+      "readme_sha256": "f27e7b4736ba6d67cdbe81475c37ba7be59b1a3805f4c1513b1569ba1b4e02dd",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "26592f274eeb1961d4f61f7d8f5d5d4707a7a67becaf32ebe292e1efe99f0ed8",
+          "line": 5,
+          "context": "The archive `.scratch/mesh/codex-root/libfr2_recompiled-fpu-01.a` (83,527,016 bytes; SHA-256 `26592f274eeb1961d4f61f7d8f5d5d4707a7a67becaf32ebe292e1efe99f0ed8`) has 4,746 distinct generated `sub_...` definitions and includes its registration object. `nm -u` lists 4,767 distinct undefined names across archive members. Comparing those names with archive-wide global definitions resolves all 4,746 generated-function references. The 21 names that remain are 18 `PS2Runtime` methods and three Darwin stack-check ABI symbols (`___chkstk_darwin`, `___stack_chk_fail`, and `___stack_chk_guard`). The 18 runtime methods have declarations in `ps2xRuntime/include/ps2_runtime.h` and definitions in `ps2xRuntime/src/lib/ps2_runtime.cpp` in clone HEAD `c5a9d02573410a2085a4b4b831b0b68ba3515440`. The generated registration object defines the four `g_ps2RecompiledFunctionTable*` globals referenced by the runtime. Repeated helper definitions in object members are marked weak by `nm -m`, not strong duplicate definitions."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 5,
+          "context": "The archive `.scratch/mesh/codex-root/libfr2_recompiled-fpu-01.a` (83,527,016 bytes; SHA-256 `26592f274eeb1961d4f61f7d8f5d5d4707a7a67becaf32ebe292e1efe99f0ed8`) has 4,746 distinct generated `sub_...` definitions and includes its registration object. `nm -u` lists 4,767 distinct undefined names across archive members. Comparing those names with archive-wide global definitions resolves all 4,746 generated-function references. The 21 names that remain are 18 `PS2Runtime` methods and three Darwin stack-check ABI symbols (`___chkstk_darwin`, `___stack_chk_fail`, and `___stack_chk_guard`). The 18 runtime methods have declarations in `ps2xRuntime/include/ps2_runtime.h` and definitions in `ps2xRuntime/src/lib/ps2_runtime.cpp` in clone HEAD `c5a9d02573410a2085a4b4b831b0b68ba3515440`. The generated registration object defines the four `g_ps2RecompiledFunctionTable*` globals referenced by the runtime. Repeated helper definitions in object members are marked weak by `nm -m`, not strong duplicate definitions."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-link-interface-audit/build-02/20261004T131946Z-fc90d3da777d417592e2d98ac95bad77/README.md",
+      "readme_sha256": "5a7e64b2a217a29f11e16a088bde2904abdcfcebcb5456f3f2596d1e451e2c2b",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "c1ab645ca298a2801097931d1079b10ff7eb9df8",
+          "line": 7,
+          "context": "Raylib's CMake pin is tag `5.5` at commit `c1ab645ca298a2801097931d1079b10ff7eb9df8`; the shallow checkout is clean. Its `LICENSE` SHA-256 is recorded in `result.json`. Existing generator dependency source directories were provided as local FetchContent overrides; recompilation itself was disabled for this runtime-link check. FFmpeg and debug UI were disabled. Raylib was still built and linked as required by the desktop host backend."
+        }
+      ],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-link-interface-audit/build-02/20261004T132045Z-5db988e837614c16975a04a519cc3433/README.md",
+      "readme_sha256": "f9af6e735af96f4d7e8b476119fe5eec7543c910212ffea3b2c5d37a43138f43",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-link-interface-audit/build-03/20261004T132336Z-15e0e2ec81eb4d19bcf27760c39e30c9/README.md",
+      "readme_sha256": "f2240013cd61e5f1c12c0723f348a3c97fd8c635b4b02c1a846abf156e8ba46b",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "ecfa7280d4be2be36467cce068f1927c001c15732f57d0cb4932bbd6fb3870e2",
+          "line": 3,
+          "context": "The bundled CMake 3.31.6 and Unix Makefiles built and linked the actual pinned PS2Recomp runtime with the 16 generated function batches and generated registration object. The final output is an arm64 Mach-O executable, 81,438,416 bytes, SHA-256 `ecfa7280d4be2be36467cce068f1927c001c15732f57d0cb4932bbd6fb3870e2`. The final link has 4,746 distinct guest entry addresses and exactly one strong definition each of the four `g_ps2RecompiledFunctionTable*` globals."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 7,
+          "context": "The private PS2Recomp source clone is based on `c5a9d02573410a2085a4b4b831b0b68ba3515440` with experiment modifications recorded in the result metadata. Raylib is source-pinned to tag 5.5 / commit `c1ab645ca298a2801097931d1079b10ff7eb9df8`, with its license identity recorded. The wrapper points FetchContent at the six existing generator dependency trees. Because recompilation is disabled, only the arm64 configuration consumed `sse2neon`; the other five generator dependencies (ELFIO, fmt, libdwarf, rabbitizer, and toml11) were not fetched or built for this runtime-only target. FFmpeg, debug UI, unity, PCH, and sccache are disabled. Raylib and the runtime IOP library still compiled and linked as desktop backend dependencies."
+        },
+        {
+          "value": "c1ab645ca298a2801097931d1079b10ff7eb9df8",
+          "line": 7,
+          "context": "The private PS2Recomp source clone is based on `c5a9d02573410a2085a4b4b831b0b68ba3515440` with experiment modifications recorded in the result metadata. Raylib is source-pinned to tag 5.5 / commit `c1ab645ca298a2801097931d1079b10ff7eb9df8`, with its license identity recorded. The wrapper points FetchContent at the six existing generator dependency trees. Because recompilation is disabled, only the arm64 configuration consumed `sse2neon`; the other five generator dependencies (ELFIO, fmt, libdwarf, rabbitizer, and toml11) were not fetched or built for this runtime-only target. FFmpeg, debug UI, unity, PCH, and sccache are disabled. Raylib and the runtime IOP library still compiled and linked as desktop backend dependencies."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-link-interface-audit/build/README.md",
+      "readme_sha256": "602ac702f5913c47d7cc8560f5c4089e8cefa836bb262e325d4971f36f00f7aa",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-linker-layout-continuation/README.md",
+      "readme_sha256": "6668ef5993c61d4c94f03ce20a28702d21cd1cccf94a6741beb9d298687959b3",
+      "commands": [
+        "python3 tools/linker_layout.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/linker-layout-new",
+        "python3 tools/linker_layout_recipe/controls.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/linker-layout-controls-new",
+        "tools/check.sh test_linker_layout\npyright tools/linker_layout.py tools/linker_layout_recipe tools/test_linker_layout.py"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-m2c-audit/README.md",
+      "readme_sha256": "36f666cc9336a0da22254ea0ef714ed968687ccf1948887bb34fec5e0a9f5c16",
+      "commands": [
+        ".scratch/mesh/codex-root/recomp-venv/bin/python \\\n  .scratch/mesh/codex-root/m2c/m2c.py \\\n  -t mipsee-gcc-c --no-cache --valid-syntax --stop-on-error \\\n  --context notes/evidence/fr2-m2c-audit/vector-pointer/context.h \\\n  notes/evidence/fr2-m2c-audit/synthetic.s\n\n.scratch/mesh/codex-root/recomp-venv/bin/python \\\n  .scratch/mesh/codex-root/m2c/m2c.py \\\n  -t mipsee-gcc-c --no-cache --valid-syntax --stop-on-error \\\n  --context notes/evidence/fr2-m2c-audit/byte-pointer/context.h \\\n  notes/evidence/fr2-m2c-audit/synthetic.s"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-matching-harness/README.md",
+      "readme_sha256": "2256740c03b3aef04e0da5dc92e4eaa11ce47da130dc978be295208e7a2574e1",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-misc3d-cell/README.md",
+      "readme_sha256": "ef095bd2e3e7ddb4bf25cdef3764f994efdb89852f4b87342ea08f700dc3b86b",
+      "commands": [
+        "python3 tools/misc3d_contract.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/misc3d-contract",
+        "python3 tools/misc3d_recipe/controls.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/misc3d-controls",
+        "mkdir -p ghidra-project/misc3d-observation\ncp -R ghidra-project/codex-audit-ee-types-t2-proposal-01/fr2.gpr \\\n  ghidra-project/codex-audit-ee-types-t2-proposal-01/fr2.rep \\\n  ghidra-project/misc3d-observation/\nJAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home \\\n  .scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/support/analyzeHeadless \\\n  \"$PWD/ghidra-project/misc3d-observation\" fr2 -readOnly \\\n  -process SLES_517.05 -noanalysis -scriptPath \"$PWD/tools/ghidra\" \\\n  -postScript ExportEvidence.java \"$PWD/.scratch/misc3d-inventory.json\"\npython3 tools/misc3d_observation.py games/ford-racing-2 \\\n  .scratch/misc3d-inventory.json --output .scratch/evidence/misc3d-observation",
+        "tools/check.sh test_misc3d_contract test_elf_fixture test_compiler_probe_recipe test_matching_ranges\npyright tools/misc3d_contract.py tools/misc3d_observation.py \\\n  tools/misc3d_recipe/controls.py tools/test_misc3d_contract.py tools/elf_fixture.py",
+        "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python \\\nPS2RECOMP_SOURCE_ROOT=\"$PWD/.scratch/mesh/codex-root/PS2Recomp\" tools/check.sh"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+          "line": 43,
+          "context": "`1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e`."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-misc3d-lifecycle/README.md",
+      "readme_sha256": "4c7e4dabda89625c0641a8ba263308f2227b0f7f5902f47d37dd4ab30d2dc127",
+      "commands": [
+        "python3 tools/misc3d_lifecycle.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/misc3d-lifecycle",
+        "python3 tools/misc3d_lifecycle_recipe/controls.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/misc3d-lifecycle-controls",
+        "mkdir -p ghidra-project/misc3d-lifecycle-copy\ncp -R ghidra-project/codex-audit-ee-types-t2-proposal-01/fr2.gpr \\\n  ghidra-project/codex-audit-ee-types-t2-proposal-01/fr2.rep \\\n  ghidra-project/misc3d-lifecycle-copy/\nJAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home \\\n  .scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/support/analyzeHeadless \\\n  \"$PWD/ghidra-project/misc3d-lifecycle-copy\" fr2 -readOnly \\\n  -process SLES_517.05 -noanalysis -scriptPath \"$PWD/tools/ghidra\" \\\n  -postScript ReconcileMisc3dBoundary.java \"$PWD/.scratch/misc3d-boundary.json\" \\\n  -postScript ExportEvidence.java \"$PWD/.scratch/misc3d-reconciled-inventory.json\"\npython3 tools/misc3d_lifecycle_observation.py games/ford-racing-2 \\\n  .scratch/issue-24/inventory.json .scratch/misc3d-reconciled-inventory.json \\\n  .scratch/misc3d-boundary.json --output .scratch/evidence/misc3d-lifecycle-observation",
+        "tools/check.sh test_misc3d_lifecycle test_misc3d_contract \\\n  test_compiler_probe_recipe test_matching_ranges\npyright tools/misc3d_lifecycle.py tools/misc3d_lifecycle_observation.py \\\n  tools/misc3d_lifecycle_recipe/controls.py tools/test_misc3d_lifecycle.py \\\n  tools/misc3d_contract.py\nPYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python \\\nPS2RECOMP_SOURCE_ROOT=\"$PWD/.scratch/mesh/codex-root/PS2Recomp\" tools/check.sh\npython3 tools/ip_rails.py --tree",
+        "python3 - <<'PY'\nimport hashlib, json, struct\nfrom pathlib import Path\nreceipt = json.loads(Path('notes/evidence/fr2-misc3d-lifecycle/reviewed_source_build.json').read_text())\n\ndef load(name):\n    record = receipt['details']['artifacts'][name]\n    data = Path(record['path']).read_bytes()\n    assert hashlib.sha256(data).hexdigest() == record['sha256']\n    assert data[:6] == b'\\x7fELF\\x01\\x01'\n    offset = struct.unpack_from('<I', data, 32)[0]\n    stride, count, names = struct.unpack_from('<HHH', data, 46)\n    assert stride == 40\n    rows = [struct.unpack_from('<10I', data, offset + i * stride) for i in range(count)]\n    strings = rows[names]\n    section_names = data[strings[4]:strings[4] + strings[5]]\n    return data, rows, section_names\n\nfor cell in ('db_id', 'state_c8', 'state_cc', 'state_d0', 'state_d4'):\n    data, rows, _ = load(cell + '_object')\n    found = []\n    for row in rows:\n        if row[1] != 2:\n            continue\n        assert row[9] == 16\n        strings = rows[row[6]]\n        names = data[strings[4]:strings[4] + strings[5]]\n        for offset in range(row[4], row[4] + row[5], 16):\n            name, value, size, info, other, index = struct.unpack_from('<IIIBBH', data, offset)\n            if names[name:].split(b'\\0', 1)[0] == ('misc3d_' + cell).encode():\n                found.append((value, size, info, index))\n    assert found == [(4, 4, 17, 0xff03)], (cell, found)\n    print(cell, 'MIPS small-common', found)\n\ndata, rows, names = load('linked_output')\nfor cell, address in (('db_id', 0x290ac4), ('state_c8', 0x290ac8),\n                      ('state_cc', 0x290acc), ('state_d0', 0x290ad0), ('state_d4', 0x290ad4)):\n    selected = [row for row in rows if names[row[0]:].split(b'\\0', 1)[0]\n                == ('.sbss.fr2_misc3d_' + cell).encode()]\n    assert len(selected) == 1\n    row = selected[0]\n    assert (row[1], row[2], row[3], row[5], row[8]) == (8, 3, address, 4, 4)\n    print(cell, 'NOBITS', hex(address), 'flags', row[2], 'size/alignment', row[5], row[8])\nPY"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-misc3d-loader/README.md",
+      "readme_sha256": "e959a45eaf5a2e6782475617a407b7d693ceeda2b849aecb93b27d091ead2a88",
+      "commands": [
+        "python3 tools/misc3d_loader.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \\\n  notes/evidence/fr2-misc3d-loader/isolated-project.json \\\n  --output .scratch/evidence/misc3d-loader-fresh",
+        "python3 tools/misc3d_loader_recipe/controls.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \\\n  notes/evidence/fr2-misc3d-loader/isolated-project.json \\\n  --output .scratch/evidence/misc3d-loader-controls-fresh",
+        "mkdir -p ghidra-project/misc3d-loader-fresh\ncp -R /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35-copy/fr2.gpr \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35-copy/fr2.rep \\\n  ghidra-project/misc3d-loader-fresh/\nJAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home \\\n  .scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/support/analyzeHeadless \\\n  \"$PWD/ghidra-project/misc3d-loader-fresh\" fr2 -readOnly \\\n  -process SLES_517.05 -noanalysis -scriptPath \"$PWD/tools/misc3d_loader_recipe\" \\\n  -postScript InspectMisc3dLoader.java \"$PWD/.scratch/misc3d-loader-isolated.json\"",
+        "python3 tools/misc3d_loader_recipe/source_build.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/misc3d-loader-terminal-fresh",
+        "tools/check.sh test_misc3d_loader test_misc3d_lifecycle \\\n  test_misc3d_lifecycle_observation test_misc3d_contract\npyright tools/misc3d_loader.py tools/misc3d_loader_recipe/source_build.py \\\n  tools/misc3d_loader_recipe/controls.py tools/test_misc3d_loader.py\npython3 tools/ip_rails.py --tree"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-packed-operations/README.md",
+      "readme_sha256": "e7fa9b605049bcb91378131d6eaec51815d1e624b22fa2e0ce4dd7dcad6f66c6",
+      "commands": [
+        "python3 tools/recomp/verify_mmi_packed.py \\\n  --upstream .scratch/mesh/codex-root/PS2Recomp \\\n  --fresh-output-dir .scratch/mesh/codex-root/mmi-packed-promoted-fixed-01 \\\n  --sse2neon .scratch/mesh/codex-root/recomp-build/_deps/sse2neon-src"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e",
+          "line": 21,
+          "context": "- `ps2xRuntime/include/ps2_runtime_macros.h`: SHA-256 `c0dfe8104803a380ff4f38a3ba3d5ed1979c68ad7234d83230863f079f354c4e`"
+        },
+        {
+          "value": "1402bdb9f81923a8c91c7fa790399a2563ebc5f7cd0c899b7c29cb7c6bafc5ee",
+          "line": 22,
+          "context": "- `ps2xRecomp/src/lib/mmi_translation_helpers.cpp`: SHA-256 `1402bdb9f81923a8c91c7fa790399a2563ebc5f7cd0c899b7c29cb7c6bafc5ee`"
+        },
+        {
+          "value": "78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed",
+          "line": 23,
+          "context": "- `sse2neon.h`: SHA-256 `78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed`"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 20,
+          "context": "- PS2Recomp commit: `c5a9d02573410a2085a4b4b831b0b68ba3515440`"
+        },
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 34,
+          "context": "The primary instruction reference is Sony's EE Core Instruction Set Manual v6.0, https://docs.alexrp.com/mips/ee_insns.pdf (printed pages: PAND 176; PCPYH 189, PCPYLD 190, PCPYUD 191; PEXTLB 203, PEXTLH 204, PEXTLW 205, PEXTUW 208; PNOR 252, POR 253, PSUBB 270, PSUBW 284, PXOR 285). The independent implementation comparison is pinned PCSX2 MMI.cpp commit `81526d4dc7cc70e4ae75abb35a789417456c6d43`, https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/MMI.cpp. Fetch provenance from the earlier shuffle audit is retained at `notes/evidence/fr2-mmi-shuffles/source-provenance.json`."
+        },
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 34,
+          "context": "The primary instruction reference is Sony's EE Core Instruction Set Manual v6.0, https://docs.alexrp.com/mips/ee_insns.pdf (printed pages: PAND 176; PCPYH 189, PCPYLD 190, PCPYUD 191; PEXTLB 203, PEXTLH 204, PEXTLW 205, PEXTUW 208; PNOR 252, POR 253, PSUBB 270, PSUBW 284, PXOR 285). The independent implementation comparison is pinned PCSX2 MMI.cpp commit `81526d4dc7cc70e4ae75abb35a789417456c6d43`, https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/MMI.cpp. Fetch provenance from the earlier shuffle audit is retained at `notes/evidence/fr2-mmi-shuffles/source-provenance.json`."
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-mmi-shuffles/README.md",
+      "readme_sha256": "2c18074aafeb140599d2e2ae65239c68cd7078b618cec834af61d03ed114ee42",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed",
+          "line": 17,
+          "context": "The hashes in `index.json` describe the sources as audited. After that, code review noted that `tools/recomp/verify_shuffles.py` compiled against any supplied `sse2neon.h` and only recorded its hash. It now rejects a header that differs from the pinned SHA-256 (`78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed`, the value already in `native-probe-result.json`) before creating output or compiling. `tools/test_recomp_shuffles.py` gained a test for a missing or changed header. Current SHA-256: `verify_shuffles.py` `f8dcabae26b45c6cc069fc74d58ce96e5402f5dbea02747a34ff360c33ed4449`, `test_recomp_shuffles.py` `f93afd045a973f9d81ec09ab917e07040d5088d6e2ef2cbbde3d395c20314e87`. Rerunning the verifier with the pinned header against the pinned PS2Recomp checkout reproduced `native-probe-result.json` field for field (status pass, same extracted-source and run-log hashes, baseline mismatches present, candidate mismatches zero). The pins in `index.json` were left as the audited record."
+        },
+        {
+          "value": "f8dcabae26b45c6cc069fc74d58ce96e5402f5dbea02747a34ff360c33ed4449",
+          "line": 17,
+          "context": "The hashes in `index.json` describe the sources as audited. After that, code review noted that `tools/recomp/verify_shuffles.py` compiled against any supplied `sse2neon.h` and only recorded its hash. It now rejects a header that differs from the pinned SHA-256 (`78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed`, the value already in `native-probe-result.json`) before creating output or compiling. `tools/test_recomp_shuffles.py` gained a test for a missing or changed header. Current SHA-256: `verify_shuffles.py` `f8dcabae26b45c6cc069fc74d58ce96e5402f5dbea02747a34ff360c33ed4449`, `test_recomp_shuffles.py` `f93afd045a973f9d81ec09ab917e07040d5088d6e2ef2cbbde3d395c20314e87`. Rerunning the verifier with the pinned header against the pinned PS2Recomp checkout reproduced `native-probe-result.json` field for field (status pass, same extracted-source and run-log hashes, baseline mismatches present, candidate mismatches zero). The pins in `index.json` were left as the audited record."
+        },
+        {
+          "value": "f93afd045a973f9d81ec09ab917e07040d5088d6e2ef2cbbde3d395c20314e87",
+          "line": 17,
+          "context": "The hashes in `index.json` describe the sources as audited. After that, code review noted that `tools/recomp/verify_shuffles.py` compiled against any supplied `sse2neon.h` and only recorded its hash. It now rejects a header that differs from the pinned SHA-256 (`78632498a57bf7e080e84cb8d74c47ce93b204cece77eab79de2908eb8bc92ed`, the value already in `native-probe-result.json`) before creating output or compiling. `tools/test_recomp_shuffles.py` gained a test for a missing or changed header. Current SHA-256: `verify_shuffles.py` `f8dcabae26b45c6cc069fc74d58ce96e5402f5dbea02747a34ff360c33ed4449`, `test_recomp_shuffles.py` `f93afd045a973f9d81ec09ab917e07040d5088d6e2ef2cbbde3d395c20314e87`. Rerunning the verifier with the pinned header against the pinned PS2Recomp checkout reproduced `native-probe-result.json` field for field (status pass, same extracted-source and run-log hashes, baseline mismatches present, candidate mismatches zero). The pins in `index.json` were left as the audited record."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 5,
+          "context": "Numbering four 32-bit words from low to high, the required source indices are PEXEW `[2,1,0,3]`, PEXCW `[0,2,1,3]`, and PROT3W `[1,2,0,3]`. These follow the explicit Operation assignments in Sony's [EE Core Instruction Set Manual v6.0](https://docs.alexrp.com/mips/ee_insns.pdf), PDF pages 201, 199, and 260. The pinned [PCSX2 implementation](https://github.com/PCSX2/pcsx2/blob/81526d4dc7cc70e4ae75abb35a789417456c6d43/pcsx2/MMI.cpp) independently agrees. The fix updates the PEXEW and PROT3W runtime macros and the emitted PROT3W/PEXCW templates. It preserves the fourth word for each operation."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-oracle-dependencies/README.md",
+      "readme_sha256": "668869a16dc6c1c62eab8f349db5712a4eb6aa067b9c3aef90b842cfc1a5c8f7",
+      "commands": [
+        "otool -L /Applications/PCSX2.app/Contents/MacOS/PCSX2\notool -L /Applications/PCSX2.app/Contents/Frameworks/libQt6Core.6.dylib\notool -L /Applications/PCSX2.app/Contents/Frameworks/libQt6Gui.6.dylib\notool -L /Applications/PCSX2.app/Contents/Frameworks/libQt6Widgets.6.dylib\notool -L /Applications/PCSX2.app/Contents/Frameworks/libkddockwidgets-qt6.3.dylib\notool -L /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qt-platform/plugins/platforms/libqoffscreen.dylib",
+        "clang -fobjc-arc tools/observe-desktop.m -framework AppKit -framework CoreGraphics -o .scratch/issue-22/observe-desktop\noracle_root=/Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle\npython3 tools/headless_oracle.py \\\n  --emulator /Applications/PCSX2.app/Contents/MacOS/PCSX2 \\\n  --platform-plugin \"$oracle_root/qt-platform/plugins/platforms/libqoffscreen.dylib\" \\\n  --elf \"$oracle_root/controlled-probe.elf\" \\\n  --probe-source \"$oracle_root/controlled-probe.c\" \\\n  --linker-script \"$oracle_root/controlled-probe.ld\" \\\n  --probe-build-log \"$oracle_root/controlled-probe-build-02.log\" \\\n  --bios .scratch/issue-22/bios.bin \\\n  --desktop-observer .scratch/issue-22/observe-desktop \\\n  --desktop-observer-source tools/observe-desktop.m \\\n  --qt-sdk-archive \"$oracle_root/qtbase.7z\" \\\n  --qt-source-dir \"$oracle_root/qt-offscreen-src\" \\\n  --qt-build-command \"$oracle_root/plugin-build-command-03.json\" \\\n  --qt-preparation-record \"$oracle_root/offscreen-plugin-preparation.json\" \\\n  --output .scratch/issue-22/preflight\ntools/check.sh test_headless_oracle"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "7af24916f45f85a3befc9bc987d3b1b64c4ffa9a51847698ab6fd7646c9511a5",
+          "line": 11,
+          "context": "`ev_7af24916f45f85a3befc9bc987d3b1b64c4ffa9a51847698ab6fd7646c9511a5`."
+        },
+        {
+          "value": "a9253cb54fd9c8921205d5f914309b0beeeca754411b8efb265135407129e466",
+          "line": 14,
+          "context": "returned `ev_a9253cb54fd9c8921205d5f914309b0beeeca754411b8efb265135407129e466`;"
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-oracle-source-provenance/README.md",
+      "readme_sha256": "162419b8faaaa62ff9f154cff5744e5055f60d448f82543b31fedd7215d93b66",
+      "commands": [
+        "python3 tools/oracle_dependency_sources.py \\\n  .scratch/continuation-oracle-provenance \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qt-sdk \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/oracle/qtbase.7z \\\n  --output .scratch/oracle-source-inventory-new"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "90b845d15ffb97693dba527385db83510ebd121a",
+          "line": 15,
+          "context": "checkout at `90b845d15ffb97693dba527385db83510ebd121a` (v6.10.1)."
+        },
+        {
+          "value": "bc8151d2a46d4aba039ea5580afbfc7bfcf6d730",
+          "line": 30,
+          "context": "- [PCSX2 dependency recipe at the release commit](https://github.com/PCSX2/pcsx2/blob/bc8151d2a46d4aba039ea5580afbfc7bfcf6d730/.github/workflows/scripts/macos/build-dependencies.sh)."
+        }
+      ],
+      "missing": [
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-prerequisite-priority/README.md",
+      "readme_sha256": "285f93ee61b193708829f238bf25e65600e3a5309be996b5b61982345234bc14",
+      "commands": [
+        "PYTHON=/Users/Nicolas/Documents/github/hermes/coder-prompt-evals/.venv/bin/python \\\n  tools/check.sh test_headless_oracle test_misc3d_lifecycle test_misc3d_contract \\\n  test_misc3d_lifecycle_observation test_compiler_probe_recipe test_matching_ranges \\\n  test_rpc_contracts test_rpc_handoff_inventory\npython3 tools/ip_rails.py --tree\ngit diff --check\npyright tools/misc3d_lifecycle.py tools/test_misc3d_lifecycle.py \\\n  tools/misc3d_lifecycle_observation.py tools/test_misc3d_lifecycle_observation.py \\\n  tools/check_rpc_contracts.py tools/test_rpc_contracts.py \\\n  tools/inventory_rpc_handoffs.py tools/test_rpc_handoff_inventory.py"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "fe44c0c0357fb988ee24b657dd0f473734bdf3b8",
+          "line": 52,
+          "context": "`fe44c0c0357fb988ee24b657dd0f473734bdf3b8` reproduces the same messages and rules."
+        }
+      ],
+      "missing": [
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-progress-audit/README.md",
+      "readme_sha256": "481fb26b47bb578e13792d8a397789f2cb25e06726aa9c58ff8ff32e81d16f9a",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-progress/README.md",
+      "readme_sha256": "e05f1466efe93c147db3f3310f86f0b61b31bee4037d0da5ffe25840e98a1c25",
+      "commands": [
+        "python3 tools/matching_ranges.py corpus games/ford-racing-2 --output .scratch/progress-inventory",
+        "python3 tools/repository_hygiene.py generate\npython3 tools/repository_hygiene.py check\ntools/check.sh test_progress_report test_repository_hygiene"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-ps2sdk-substitute/README.md",
+      "readme_sha256": "b1e86a836db1e58011dfa098852f8c484b58bc1e1bc9d795222a400e62a1e392",
+      "commands": [
+        "mkdir -p \"$WORK/toolchain\" \"$WORK/build\"\ngit clone --no-checkout https://github.com/ps2dev/ps2sdk.git \"$WORK/ps2sdk\"\ngit -C \"$WORK/ps2sdk\" checkout --detach 2c670453980fcc3fe46ead6399b730b12c8556eb\ncurl -L --fail --show-error \\\n  -o \"$WORK/toolchain/ps2dev-ubuntu-24.04-arm.tar.gz\" \\\n  https://github.com/ps2dev/ps2dev/releases/download/v2.0.0/ps2dev-ubuntu-24.04-arm.tar.gz\necho 'ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622  '\"$WORK/toolchain/ps2dev-ubuntu-24.04-arm.tar.gz\" | shasum -a 256 -c -\ncp \"$REPO/notes/evidence/fr2-ps2sdk-substitute/download_dependencies.pinned.sh\" \\\n  \"$WORK/ps2sdk/download_dependencies.sh\"",
+        "docker run --rm --platform linux/arm64 \\\n  -v \"$WORK/toolchain:/toolchain:ro\" \\\n  -v \"$WORK/ps2sdk:/src\" \\\n  -v \"$WORK/build:/out\" \\\n  -w /src \\\n  ubuntu@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 \\\n  bash -lc '\nset -eux\napt-get update\napt-get install -y --no-install-recommends build-essential make perl python3 ca-certificates git\ntar -xzf /toolchain/ps2dev-ubuntu-24.04-arm.tar.gz -C /opt\nexport PS2DEV=/opt/ps2dev\nexport PS2SDKSRC=/src\nexport PS2SDK=/out/ps2sdk\nexport PATH=\"$PS2DEV/bin:$PS2DEV/ee/bin:$PS2DEV/iop/bin:$PS2DEV/dvp/bin:$PATH\"\ncd /src\nmake clean\nmake -j1\ntest \"$(git -C common/external_deps/lwip rev-parse HEAD)\" = 77dcd25a72509eb83f72b033d219b1d40cd8eb95\ntest \"$(git -C common/external_deps/fatfs rev-parse HEAD)\" = 18cc3d9e07473a6aa3d783a66224b243a7b4974c\nmake install\npython3 -c \"from pathlib import Path; import sys; print('installed file count:', sum(path.is_file() for path in Path(sys.argv[1]).rglob('*')))\" \"$PS2SDK\"\ncd \"$PS2SDK/samples/debug/helloworld\"\nmake -B\n'",
+        "python3 - \"$PS2SDK\" <<'PY'\nfrom collections import Counter\nfrom pathlib import Path\nimport json, sys\nroot = Path(sys.argv[1])\nfiles = [path for path in root.rglob('*') if path.is_file()]\ncounts = Counter(path.suffix.lower() for path in files)\nprint(json.dumps({\n    'files': len(files), 'archives': counts['.a'], 'irx': counts['.irx'],\n    'headers': counts['.h'],\n}, sort_keys=True))\nPY\nsha256sum \"$PS2SDK/samples/debug/helloworld/helloworld.elf\""
+      ],
+      "sha256_mentions": [
+        {
+          "value": "ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622",
+          "line": 14,
+          "context": "  `ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622`."
+        },
+        {
+          "value": "534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+          "line": 17,
+          "context": "  `sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55`."
+        },
+        {
+          "value": "ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622",
+          "line": 41,
+          "context": "echo 'ed69330f235d421754196acf866f8590e5f92e8b92571f1c7e05e853900e7622  '\"$WORK/toolchain/ps2dev-ubuntu-24.04-arm.tar.gz\" | shasum -a 256 -c -"
+        },
+        {
+          "value": "534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55",
+          "line": 56,
+          "context": "  ubuntu@sha256:534baea6a22c03a63003dbc8dbe78fe34bc0d7e595d9a9dc9834884ff530eb55 \\"
+        },
+        {
+          "value": "30590eb0a67a8ae5bcfb8bfaffd87738336b0a18cebbe9cef68e4192bd816386",
+          "line": 117,
+          "context": "`30590eb0a67a8ae5bcfb8bfaffd87738336b0a18cebbe9cef68e4192bd816386`; the ELF"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "2c670453980fcc3fe46ead6399b730b12c8556eb",
+          "line": 10,
+          "context": "  `2c670453980fcc3fe46ead6399b730b12c8556eb`, license `LICENSE` (Academic"
+        },
+        {
+          "value": "77dcd25a72509eb83f72b033d219b1d40cd8eb95",
+          "line": 19,
+          "context": "  lwIP `77dcd25a72509eb83f72b033d219b1d40cd8eb95` and FatFs"
+        },
+        {
+          "value": "18cc3d9e07473a6aa3d783a66224b243a7b4974c",
+          "line": 20,
+          "context": "  `18cc3d9e07473a6aa3d783a66224b243a7b4974c`. Their licenses remain with"
+        },
+        {
+          "value": "2c670453980fcc3fe46ead6399b730b12c8556eb",
+          "line": 37,
+          "context": "git -C \"$WORK/ps2sdk\" checkout --detach 2c670453980fcc3fe46ead6399b730b12c8556eb"
+        },
+        {
+          "value": "77dcd25a72509eb83f72b033d219b1d40cd8eb95",
+          "line": 69,
+          "context": "test \"$(git -C common/external_deps/lwip rev-parse HEAD)\" = 77dcd25a72509eb83f72b033d219b1d40cd8eb95"
+        },
+        {
+          "value": "18cc3d9e07473a6aa3d783a66224b243a7b4974c",
+          "line": 70,
+          "context": "test \"$(git -C common/external_deps/fatfs rev-parse HEAD)\" = 18cc3d9e07473a6aa3d783a66224b243a7b4974c"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-range-accounting/README.md",
+      "readme_sha256": "5ec9233b55243057f19cb4a0580f19214aba29e318c7f47eb298e75e68953ba1",
+      "commands": [
+        "python3 tools/matching_ranges.py corpus games/ford-racing-2 --output .scratch/evidence/range-accounting\ntools/check.sh test_matching_ranges"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-re-setup/README.md",
+      "readme_sha256": "03ba8c566afab0412aeb3bbb9d236a5e03793520e41c88d7f55dbd7bd6fe4919",
+      "commands": [
+        "claude mcp get ghidra\nclaude mcp get rea\nclaude mcp get radare2\npython3 tools/re_mcp.py status\nre-python .scratch/setup-2026-10-08/pyghidra-rabbitizer-check.py\nre-python .scratch/setup-2026-10-08/ee-synthetic-check.py\nctest --test-dir .scratch/setup-2026-10-08/ccc/build --output-on-failure\nrea doctor --provider ghidra\nr2 -n -N -q -c 'i;afl' .scratch/re-setup/probe\nstdump identify games/ford-racing-2/extracted/IRX/STREAM.IRX"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "94f60b3056b167bf088d1f87a3a653bd6a35e9d817600b016344d5a4090ed579",
+          "line": 49,
+          "context": "`94f60b3056b167bf088d1f87a3a653bd6a35e9d817600b016344d5a4090ed579`. This snapshot includes explicit source/distribution pins rather"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "75c406a125534bce1229c5b7c3598f892e4cd3ab",
+          "line": 48,
+          "context": "`75c406a125534bce1229c5b7c3598f892e4cd3ab`; verification JSON SHA-256 is"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-rpc-contracts/README.md",
+      "readme_sha256": "afc4ee1ee73e1c290896aa693ee9ee6f4b6a0948780cf679a9990b788dcd804e",
+      "commands": [
+        "python3 tools/inventory_rpc_handoffs.py \\\n  /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted \\\n  --output .scratch/rpc-controls/inventory\n\ntools/check.sh test_rpc_contracts\n\npython3 - <<'PY'\nfrom pathlib import Path\nimport struct\nroot = Path('.scratch/rpc-controls')\nroot.mkdir(parents=True, exist_ok=True)\ncontrols = {\n    'positive': (62, 2, 2, 3, 0, 120, 240, 2, 3, 47, 600, 700),\n    'negative': (62, 1, 2, 4, 0, 120, 240, 0),\n    'incomplete': (62, 1, 9, 2, 65535, 0),\n}\nfor name, words in controls.items():\n    (root / (name + '.bin')).write_bytes(\n        struct.pack('<' + 'H' * len(words), *words).ljust(2048, b'\\xa5'))\nPY\n\npython3 tools/check_rpc_contracts.py \\\n  --ee /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05 \\\n  --stream /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX \\\n  --packet .scratch/rpc-controls/positive.bin \\\n  --output .scratch/rpc-controls/positive"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-small-data-types/README.md",
+      "readme_sha256": "120a9fc0329de3d7dcce02f79da03c68d20bde3ece0c19bd352d47ff0d1ff425",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-source-integration/README.md",
+      "readme_sha256": "42dc04438673e221c9cb078e8286f58db766d72b2ee734d3780215b04156c661",
+      "commands": [
+        "python3 tools/completion.py games/ford-racing-2 \\\n  --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output /Users/Nicolas/Documents/github/hermes/spec-5-context/continuation-20261008/source-integration",
+        "tools/check.sh test_matching_ranges test_completion test_compiler_probe_recipe test_compiler_probe test_matching"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e",
+          "line": 5,
+          "context": "`1dc86d826f214003c72279c975fcb246a45a5383f407ee0d96f81e987333522e`. The"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "181c705731b715725af48679e09728bd6e605898",
+          "line": 42,
+          "context": "`181c705731b715725af48679e09728bd6e605898`, retained at"
+        },
+        {
+          "value": "734b7ae2148ba7be424b1d5c02bd11e07df377d7",
+          "line": 55,
+          "context": "`734b7ae2148ba7be424b1d5c02bd11e07df377d7`. The altered source fails its fixed"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-source-map/README.md",
+      "readme_sha256": "5bb96d608991299e97759145b6146374e763224de0dc3f784f57299df08ed939",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-static-recovery/README.md",
+      "readme_sha256": "408d00779fb5bab390e19455c61d20753514a9f87dff9afcb9e5825589f06998",
+      "commands": [
+        "python3 tools/verify_executables.py games/ford-racing-2/extracted --output .scratch/evidence/executables\npython3 tools/verify_sections.py corpus games/ford-racing-2\npython3 tools/verify_code_inventory.py \\\n  --static-export .scratch/mesh/codex-helpers/data-table-static-inventory-01.json \\\n  --executable games/ford-racing-2/extracted/SLES_517.05\npython3 tools/verify_decompilation.py \\\n  --manifest .scratch/mesh/codex-root/decompile-guarded-3837-01/manifest.json \\\n  --static-export .scratch/mesh/codex-helpers/data-table-static-inventory-01.json \\\n  --executable games/ford-racing-2/extracted/SLES_517.05\npython3 tools/verify_vu.py games/ford-racing-2/extracted/SLES_517.05 \\\n  --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump \\\n  --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new\npython3 tools/verify_vif.py --output .scratch/evidence/vif",
+        "../binutils-dvp/configure --target=dvp --disable-nls --disable-gdb \\\n  --disable-gdbserver --disable-gprofng --disable-sim --disable-werror \\\n  --disable-gprof --without-zstd --disable-shared --with-system-zlib\nmake -j8 all-binutils all-gas MAKEINFO=true"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 5,
+          "context": "The input executable is `games/ford-racing-2/extracted/SLES_517.05`, SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. All work was static and offline after fetching tool research. Full generated game C, assembly, binaries, and Ghidra projects remain in ignored local scratch. This directory preserves metadata and judgments rather than those dumps."
+        },
+        {
+          "value": "f028f42715840233c2685351e6a01ca291e4090aefc48e2e33fd2d9e5965a759",
+          "line": 64,
+          "context": "The native macOS Ghidra decompiler was built from the Ghidra 12.1.3 release source with `make -j8 ghidra_opt CXX=clang++ ARCH_TYPE= OSDIR=mac_arm_64`. The baseline executable hash is `f028f42715840233c2685351e6a01ca291e4090aefc48e2e33fd2d9e5965a759`; the private duplicate-target experiment hash is `cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd`. No patch was applied to the baseline release or original saved game project."
+        },
+        {
+          "value": "cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd",
+          "line": 64,
+          "context": "The native macOS Ghidra decompiler was built from the Ghidra 12.1.3 release source with `make -j8 ghidra_opt CXX=clang++ ARCH_TYPE= OSDIR=mac_arm_64`. The baseline executable hash is `f028f42715840233c2685351e6a01ca291e4090aefc48e2e33fd2d9e5965a759`; the private duplicate-target experiment hash is `cd6d7e92061f7e47c7eaa86f82cb7045b4c3e624d1764832283f00b8dca57acd`. No patch was applied to the baseline release or original saved game project."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "3eb45ea37f0efd498d1de3cf9562de07197aefa8",
+          "line": 66,
+          "context": "VU tools come from [ps2dev binutils DVP](https://github.com/ps2dev/binutils-gdb/tree/3eb45ea37f0efd498d1de3cf9562de07197aefa8), branch `dvp-v2.45.1`. The build follows [ps2toolchain DVP](https://github.com/ps2dev/ps2toolchain-dvp/tree/d8aa68a0295dcc480255826b1320857278ffdfc2), including `--with-system-zlib` to avoid the old bundled zlib's macOS SDK failure. From a separate build directory:"
+        },
+        {
+          "value": "d8aa68a0295dcc480255826b1320857278ffdfc2",
+          "line": 66,
+          "context": "VU tools come from [ps2dev binutils DVP](https://github.com/ps2dev/binutils-gdb/tree/3eb45ea37f0efd498d1de3cf9562de07197aefa8), branch `dvp-v2.45.1`. The build follows [ps2toolchain DVP](https://github.com/ps2dev/ps2toolchain-dvp/tree/d8aa68a0295dcc480255826b1320857278ffdfc2), including `--with-system-zlib` to avoid the old bundled zlib's macOS SDK failure. From a separate build directory:"
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-static-recovery/discovery/README.md",
+      "readme_sha256": "31e57cc5360a9f8448cc704804a76aa5c5f0db7e30745557a0680aeda8affb86",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 7,
+          "context": "The executable used throughout is ELF32 little-endian MIPS, SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95` (`games/ford-racing-2/extracted/SLES_517.05`). The original saved Ghidra inventory had 3,453 functions. A first isolated discovery pass added 381 provisional analysis functions at exact address-taken `LAB_` targets. The pass required an unowned pre-state, an explicit source-side address store, matching raw executable bytes, an existing instruction decode, and a negative-frame `addiu sp,sp,imm` opcode. Reanalysis retained all 381. A separate pass then added three provisional functions at file-backed `.rodata` dispatch-table entries 2, 4, and 8. The resulting isolated static inventory has 3,837 functions: `3,453 + 381 + 3 = 3,837`."
+        },
+        {
+          "value": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+          "line": 25,
+          "context": "The corpus run is pinned to corpus id `e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab`, executable SHA-256 above, archive header SHA-256 `f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d`, and archive data SHA-256 `357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722`. The bounded corpus run parsed all 56 models to exact EOF, with no unsupported files or failures:"
+        },
+        {
+          "value": "f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d",
+          "line": 25,
+          "context": "The corpus run is pinned to corpus id `e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab`, executable SHA-256 above, archive header SHA-256 `f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d`, and archive data SHA-256 `357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722`. The bounded corpus run parsed all 56 models to exact EOF, with no unsupported files or failures:"
+        },
+        {
+          "value": "357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722",
+          "line": 25,
+          "context": "The corpus run is pinned to corpus id `e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab`, executable SHA-256 above, archive header SHA-256 `f4e4a4f91cd89bcaa8c2772e6cba2a839d92fbe222290c8c751777a81963731d`, and archive data SHA-256 `357fc371f47e366bf507b721e26eed9f1205516c19b793e0316ccecc2175a722`. The bounded corpus run parsed all 56 models to exact EOF, with no unsupported files or failures:"
+        },
+        {
+          "value": "0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8",
+          "line": 32,
+          "context": "The two measured legacy files are `3DDATA/TRACKS/Brands.PS2;1` (5,449,792 bytes, SHA-256 `0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8`) and `3DDATA/TRACKS/Canyon.PS2;1` (4,249,888 bytes, SHA-256 `bf689b86a426489f84e24a250a5fb26ea1655bcaba907f17769ba4d601ed5f48`). Both match the measured 60-byte profile and pass the same allocation checks, final zero-padding check, and exact-EOF check. Neither match proves that the current executable loader accepts or selects the profile."
+        },
+        {
+          "value": "bf689b86a426489f84e24a250a5fb26ea1655bcaba907f17769ba4d601ed5f48",
+          "line": 32,
+          "context": "The two measured legacy files are `3DDATA/TRACKS/Brands.PS2;1` (5,449,792 bytes, SHA-256 `0b6235f545e870c7237a256952f4ab1ee261528ab466b2d403e9fb393b31fbb8`) and `3DDATA/TRACKS/Canyon.PS2;1` (4,249,888 bytes, SHA-256 `bf689b86a426489f84e24a250a5fb26ea1655bcaba907f17769ba4d601ed5f48`). Both match the measured 60-byte profile and pass the same allocation checks, final zero-padding check, and exact-EOF check. Neither match proves that the current executable loader accepts or selects the profile."
+        },
+        {
+          "value": "68cedd349d0ffb13f5132aaf4bed5971721443d1b7c5322a7e9214d76c305e9d",
+          "line": 51,
+          "context": "This remains experimental and copy-only. It does not alter the installed Ghidra binary or original project. A positive run using the pinned native/script/patch hashes generated all 3,837 functions with zero API errors; the recovered `0017f510` C hash exactly matches the guarded function output (`68cedd349d0ffb13f5132aaf4bed5971721443d1b7c5322a7e9214d76c305e9d`) and all eight assertions passed. A baseline-native negative run was rejected on hash mismatch before writing source, object, or manifest. Jev's narrowed review escalated with low confidence (`safe_to_apply=0.17`); that is advisory review, not approval. Continue to restrict execution to a disposable copied project and retain the exact run manifest and adjacent native build/source provenance."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-static-recovery/iop/README.md",
+      "readme_sha256": "92e64a996e88137242218084b1926ae6669f0b4149a473f2b1538da305fb1b9e",
+      "commands": [
+        "python3 tools/verify_irx.py games/ford-racing-2/extracted \\\n  --inventory .scratch/mesh/codex-root/executable-inventory-01.json \\\n  --boundaries .scratch/mesh/codex-root/executable-boundaries-01.json \\\n  --output notes/evidence/fr2-static-recovery/iop/results\npython3 tools/test_ps2_irx.py"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-static-recovery/vif/README.md",
+      "readme_sha256": "e3a9228b3f94355d3978d4557a231c0fd721bb108a227a04ab2e1cb69e3580fa",
+      "commands": [
+        "PYTHONPATH=tools python3 -m unittest test_ps2_vif test_ps2_vu test_ps2_executables -v\npython3 tools/verify_vif.py --output .scratch/mesh/codex-vif/reproduced"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 9,
+          "context": "The pinned executable is `games/ford-racing-2/extracted/SLES_517.05`, SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. Raw instruction guards cover the complete byte spans for `0022fd48`, `00114fe0`, `001f4138`, `001f4468`, and `001f40d8`; the VIF channel pointer table at `0024d0b8` is guarded as words `10008000, 10009000`. They support only conditional ownership: if the respective call paths run, the first packet is submitted through VIF1 and the second through VIF0. The helper's guarded code retains CHCR bit `0x40`, installs CHCR bits `0x105`, and uses the checked packet pointers. No runtime event is observed."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "3eb45ea37f0efd498d1de3cf9562de07197aefa8",
+          "line": 7,
+          "context": "The DVP encoding basis is pinned to `ps2dev/binutils-gdb` revision `3eb45ea37f0efd498d1de3cf9562de07197aefa8`. `opcodes/dvp-opc.c:1454-1455` defines MPG opcode `0x4a`; `1759-1773` decodes NUM, with zero representing 256; `2041-2058` gives the variable command length; `gas/config/tc-dvp.c:806-818` converts the MPG location from dwords to byte addresses by multiplying by eight. Local source clone: `.scratch/mesh/codex-root/binutils-dvp`."
+        }
+      ],
+      "missing": []
+    },
+    {
+      "path": "notes/evidence/fr2-texture-mip-field-audit/README.md",
+      "readme_sha256": "1cadfeac8e931e25b4546a03b6074ceca5fb4be550f32819b340980160a7bc05",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-texture-upload-audit/README.md",
+      "readme_sha256": "4bc0a226d9ebf0352a672aa197b386b0861433ef536c1c210d905acf1ab0fe80",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "d6782d76949eff05aa214b7d35bd5f1722a3109596bd765a2c55153923d331d0",
+          "line": 112,
+          "context": "The hashes pinned in `source-pins.json` describe the sources as audited. After that, code review noted that `tools/ps2_container.py` accepted mip counts larger than an image can halve (a 1x1 texture with one mip produced a zero-byte level). The parser now rejects such descriptors, and `tools/test_ps2_textures.py` gained a regression test. Current SHA-256: `ps2_container.py` `d6782d76949eff05aa214b7d35bd5f1722a3109596bd765a2c55153923d331d0`, `test_ps2_textures.py` `7aa29e342cf1905d42e13185ad27294deacec0f2f3ad0583a815703397a5548d`. The real-corpus integration test (56 models, 2,370 textures, all level-0 images decoded) and the 25 texture and texture-index tests passed on the changed code, so no corpus texture used an over-long mip chain. The pins above were left as the audited record."
+        },
+        {
+          "value": "7aa29e342cf1905d42e13185ad27294deacec0f2f3ad0583a815703397a5548d",
+          "line": 112,
+          "context": "The hashes pinned in `source-pins.json` describe the sources as audited. After that, code review noted that `tools/ps2_container.py` accepted mip counts larger than an image can halve (a 1x1 texture with one mip produced a zero-byte level). The parser now rejects such descriptors, and `tools/test_ps2_textures.py` gained a regression test. Current SHA-256: `ps2_container.py` `d6782d76949eff05aa214b7d35bd5f1722a3109596bd765a2c55153923d331d0`, `test_ps2_textures.py` `7aa29e342cf1905d42e13185ad27294deacec0f2f3ad0583a815703397a5548d`. The real-corpus integration test (56 models, 2,370 textures, all level-0 images decoded) and the 25 texture and texture-index tests passed on the changed code, so no corpus texture used an over-long mip chain. The pins above were left as the audited record."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 38,
+          "context": "`81526d4dc7cc70e4ae75abb35a789417456c6d43` supply a pinned, independently"
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-texture-upload-audit/independent-review/README.md",
+      "readme_sha256": "a404d52680f38881b9b8ea92e39edab6b0c59f8c8e0266c24e764b791449d71a",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "a25e3285b3f8d5cdf3eac8d01260fff9f8b2158b9ca8ac1ec8d61e8c7dba196e",
+          "line": 15,
+          "context": "The corrected script SHA256 is `a25e3285b3f8d5cdf3eac8d01260fff9f8b2158b9ca8ac1ec8d61e8c7dba196e`;"
+        },
+        {
+          "value": "eba8ded52faee5a46b75374a07f786f5e105bd6ec189e559c4d651726482acb0",
+          "line": 16,
+          "context": "the corrected result SHA256 is `eba8ded52faee5a46b75374a07f786f5e105bd6ec189e559c4d651726482acb0`."
+        },
+        {
+          "value": "b7f8142b3899b7d3963edbd46360803b5c7e7e78a6fce0297b2c45127cffc6b7",
+          "line": 62,
+          "context": "script SHA256 was `b7f8142b3899b7d3963edbd46360803b5c7e7e78a6fce0297b2c45127cffc6b7`;"
+        },
+        {
+          "value": "9dd8ef261238037e17240799dc650067d97cfa52e8ed174e540db6fcde440c49",
+          "line": 63,
+          "context": "its output SHA256 was `9dd8ef261238037e17240799dc650067d97cfa52e8ed174e540db6fcde440c49`."
+        },
+        {
+          "value": "a80c2316066d4712a7bb44c8f23fe9948e7d2a6bb401ea953fa723a31c8f7330",
+          "line": 79,
+          "context": "and hash `a80c2316066d4712a7bb44c8f23fe9948e7d2a6bb401ea953fa723a31c8f7330`."
+        },
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 83,
+          "context": "- Game executable SHA256: `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`."
+        },
+        {
+          "value": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+          "line": 84,
+          "context": "- Static instruction export SHA256: `554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383`."
+        },
+        {
+          "value": "4fc8ae3ef65d610ef8c1f8059b3a9ef8ae7fce5762a77e71410c7d0f0b12306b",
+          "line": 85,
+          "context": "- `GSTables-pinned.cpp` SHA256: `4fc8ae3ef65d610ef8c1f8059b3a9ef8ae7fce5762a77e71410c7d0f0b12306b`."
+        },
+        {
+          "value": "9f4ed253c162855bc4d2838c08b522cbd28b6af96d03abd44cf0f83415bb1e32",
+          "line": 86,
+          "context": "- `GSClut-pinned.cpp` SHA256: `9f4ed253c162855bc4d2838c08b522cbd28b6af96d03abd44cf0f83415bb1e32`."
+        },
+        {
+          "value": "5814409b86b13ffb68952e318f314464881ddad38edc3115a6a44d84e27df20a",
+          "line": 87,
+          "context": "- `GSLocalMemory-pinned.h` SHA256: `5814409b86b13ffb68952e318f314464881ddad38edc3115a6a44d84e27df20a`."
+        },
+        {
+          "value": "b063ccbf49f8b3cc351dbd32ea1ae9a60950c72f4ac4c3acb7465e30b8ceee32",
+          "line": 88,
+          "context": "- `GSRegs-pinned.h` SHA256: `b063ccbf49f8b3cc351dbd32ea1ae9a60950c72f4ac4c3acb7465e30b8ceee32`."
+        },
+        {
+          "value": "e503af1edfd591567b12f2b3ac7600ebc659eec660578cd6667a8bc65c88986a",
+          "line": 92,
+          "context": "(SHA256 `e503af1edfd591567b12f2b3ac7600ebc659eec660578cd6667a8bc65c88986a`)"
+        },
+        {
+          "value": "2605c3b3e2ec5d37784213bb49c54393e30a5eb566210fc879aceb3e061df3ec",
+          "line": 95,
+          "context": "(SHA256 `2605c3b3e2ec5d37784213bb49c54393e30a5eb566210fc879aceb3e061df3ec`)."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "81526d4dc7cc70e4ae75abb35a789417456c6d43",
+          "line": 18,
+          "context": "`81526d4dc7cc70e4ae75abb35a789417456c6d43`, maps row-major PSMCT32 upload"
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-texture-upload-audit/mip-upload-static-audit/README.md",
+      "readme_sha256": "8d4405a7561e7a3df02a2e9caebdacdb036ad7f9cf79e47d3f24a36f341044e7",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "f92d8087c2fca237197ed59e1f62eebdaee5c8f4008aa70f700a119b08734d4c",
+          "line": 92,
+          "context": "(SHA256 `f92d8087c2fca237197ed59e1f62eebdaee5c8f4008aa70f700a119b08734d4c`)."
+        },
+        {
+          "value": "7b47a504feddeed90aeec1862320ade9b323a2a12949e78dd07da34b1d98f05a",
+          "line": 95,
+          "context": "(SHA256 `7b47a504feddeed90aeec1862320ade9b323a2a12949e78dd07da34b1d98f05a`)."
+        },
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 101,
+          "context": "`216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`; the"
+        },
+        {
+          "value": "554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383",
+          "line": 103,
+          "context": "`554f29697a3569e10b466e18caea5260d96b5a3a8741b586d811fa26beaa6383`."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-translator-semantics/README.md",
+      "readme_sha256": "53aae8e94bedfcc7d9dab0107071412a5084b13423cf0e85ea717ed1d7d70ecc",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006",
+          "line": 5,
+          "context": "The patch is `tools/recomp/translator-semantics.patch`, SHA-256 `339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006`. It applies to upstream [`ran-j/PS2Recomp`](https://github.com/ran-j/PS2Recomp) commit `c5a9d02573410a2085a4b4b831b0b68ba3515440`. The patch modifies only `instruction_translator.cpp` and `special_translator.cpp`; it does not modify the upstream checkout in place."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 5,
+          "context": "The patch is `tools/recomp/translator-semantics.patch`, SHA-256 `339f19be5a65ed63a11ab21f44bc548bb66210b45c2fe2648f629b2240d6d006`. It applies to upstream [`ran-j/PS2Recomp`](https://github.com/ran-j/PS2Recomp) commit `c5a9d02573410a2085a4b4b831b0b68ba3515440`. The patch modifies only `instruction_translator.cpp` and `special_translator.cpp`; it does not modify the upstream checkout in place."
+        }
+      ],
+      "missing": [
+        "reproduction_command"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-vif-header-synthetic-audit/README.md",
+      "readme_sha256": "71e8ac43a977a3b216c50ce01e4674232494c5f89ad3d49f33626a0c748140ad",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-vif-vu-synthetic-audit/README.md",
+      "readme_sha256": "0946c7d6dcf6fd6c6a47d44b8d1415d79b36163de0691db5a1b9c666fcc1314d",
+      "commands": [],
+      "sha256_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 29,
+          "context": "[`ran-j/PS2Recomp` c5a9d02573410a2085a4b4b831b0b68ba3515440](https://github.com/ran-j/PS2Recomp/tree/c5a9d02573410a2085a4b4b831b0b68ba3515440)."
+        },
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 29,
+          "context": "[`ran-j/PS2Recomp` c5a9d02573410a2085a4b4b831b0b68ba3515440](https://github.com/ran-j/PS2Recomp/tree/c5a9d02573410a2085a4b4b831b0b68ba3515440)."
+        },
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 31,
+          "context": "[VIF interpreter](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/src/lib/ps2_vif1_interpreter.cpp)"
+        },
+        {
+          "value": "c5a9d02573410a2085a4b4b831b0b68ba3515440",
+          "line": 32,
+          "context": "and [VU core](https://github.com/ran-j/PS2Recomp/blob/c5a9d02573410a2085a4b4b831b0b68ba3515440/ps2xRuntime/src/lib/vu/ps2_vu1_core.cpp)."
+        }
+      ],
+      "missing": [
+        "reproduction_command",
+        "full_sha256_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2-vu0-math/README.md",
+      "readme_sha256": "c397f53ccc2e8dba289ae089d98aba4ab2fbee6212ebbd885e8bd7d9c6a02320",
+      "commands": [],
+      "sha256_mentions": [
+        {
+          "value": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+          "line": 5,
+          "context": "The PAL executable identity is SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. `parse_overlays` maps overlay 7 to VMA 0 at file offset `1162480`; the exact pair span `[77,102)` starts at `1163096`, is 200 bytes, and has SHA-256 `24fbedaf59f41ea50e1f3507e7ca7a2ad15642e22c7a05b3cd955576c4b83611`. The guard checks raw LOI payload words and the model bit table."
+        },
+        {
+          "value": "24fbedaf59f41ea50e1f3507e7ca7a2ad15642e22c7a05b3cd955576c4b83611",
+          "line": 5,
+          "context": "The PAL executable identity is SHA-256 `216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95`. `parse_overlays` maps overlay 7 to VMA 0 at file offset `1162480`; the exact pair span `[77,102)` starts at `1163096`, is 200 bytes, and has SHA-256 `24fbedaf59f41ea50e1f3507e7ca7a2ad15642e22c7a05b3cd955576c4b83611`. The guard checks raw LOI payload words and the model bit table."
+        }
+      ],
+      "revision_mentions": [],
+      "missing": [
+        "reproduction_command",
+        "full_revision_mention"
+      ]
+    },
+    {
+      "path": "notes/evidence/fr2/README.md",
+      "readme_sha256": "61bdecc94e1e2acd30484d516f617f1d76306ff5be3224e930ff25c366d7d403",
+      "commands": [
+        "python3 tools/verify_static.py \\\n  --export .scratch/evidence/static-export.json \\\n  --loader-map notes/evidence/fr2/loader-map.json\n\npython3 tools/verify_runtime.py \\\n  --captures .scratch/evidence/captures/capture-070130502b3f4c228bfdca3e2bbca221/captures.json \\\n  --pcsx2-executable \"$PCSX2_EXECUTABLE\" --firmware \"$LOCAL_FIRMWARE\"\n\npython3 tools/verify_formats.py corpus games/ford-racing-2",
+        "JAVA_HOME=/opt/homebrew/opt/openjdk \\\n  .scratch/ghidra-12.1.3/ghidra_12.1.3_PUBLIC/support/analyzeHeadless \\\n  \"$PWD/ghidra-project\" fr2 -process SLES_517.05 -noanalysis -readOnly \\\n  -scriptPath \"$PWD/tools/ghidra\" \\\n  -postScript ExportEvidence.java \"$PWD/.scratch/evidence/static-export.json\"",
+        "python3 tools/capture_runtime.py --allow-debugger-windows --firmware \"$LOCAL_FIRMWARE\"",
+        "python3 -m unittest discover -s tools -p 'test_*.py'\npyright tools/evidence_common.py tools/format_contracts.py tools/corpus_contract.py \\\n  tools/judgment_contract.py tools/pcsx2_pine.py tools/capture_runtime.py \\\n  tools/verify_static.py tools/verify_runtime.py tools/verify_formats.py \\\n  tools/test_evidence_pipeline.py tools/extract_tree.py tools/msh_verify.py \\\n  tools/ps2_pairs2.py tools/ptg_render.py"
+      ],
+      "sha256_mentions": [],
+      "revision_mentions": [],
+      "missing": [
+        "full_sha256_mention",
+        "full_revision_mention"
+      ]
+    }
+  ]
+}

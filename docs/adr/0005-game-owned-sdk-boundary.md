@@ -19,7 +19,7 @@ The byte gate is scoped to **game-owned** bytes ([ADR-0001](0001-completion-targ
 Assign `.text[0x001d1800, 0x001d183c)` (60 bytes) to `game_owned`. Keep the
 referenced `.sbss` address `0x00290ac4` unresolved and mixed; this decision
 covers only the code bytes. The evidence and the commands used to reproduce the
-range check are in [`notes/evidence/fr2-first-unit/README.md`](../evidence/fr2-first-unit/README.md).
+range check are in [`notes/evidence/fr2-first-unit/README.md`](../../notes/evidence/fr2-first-unit/README.md).
 
 The source map identifies entry `0x001d1800` at line 188 of
 `../fr2/source/app3d/misc3d.c`. In that bounded span, the code checks a

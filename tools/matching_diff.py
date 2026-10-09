@@ -18,10 +18,12 @@ from __future__ import annotations
 import argparse
 from dataclasses import dataclass, replace
 from enum import Enum
+from fnmatch import fnmatchcase
 from pathlib import Path
 
 from evidence_common import Incomplete, Invalid, sha256, write_result
 from matching_sections import Section, pinned_executable, sections
+from recorded_decisions import GAME_OWNED_RANGES, METADATA
 
 MAX_UNIT_BYTES = 64 * 1024 * 1024
 
@@ -38,12 +40,10 @@ class Scope(str, Enum):
 # ADR-0005 records the measured local game-owned range below. All other loadable
 # code/data bytes remain mixed until a range-level attribution exists. Scope is
 # recorded here, never declared by the caller of the gate.
-METADATA = (".shstrtab", ".mdebug", ".reginfo", ".DVP.ovlytab", ".DVP.ovlystrtab")
-GAME_OWNED_RANGES = ((".text", 0x001D1800, 0x001D183C),)
 
 
 def scope_of(name: str) -> Scope:
-    if name in METADATA or name.startswith(".mdebug"):
+    if any(fnmatchcase(name, pattern) for pattern in METADATA):
         return Scope.EXCLUDED
     return Scope.MIXED
 
