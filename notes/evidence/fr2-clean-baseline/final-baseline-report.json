@@ -1,0 +1,402 @@
+{
+  "schema": "fr2-clean-baseline-final/v1",
+  "canonical_spec": "https://github.com/nicolas-found42/reverse-engineering/issues/5",
+  "accepted_source_revision": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+  "clean_revision_matches": true,
+  "aggregate_receipt": {
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/aggregate/20261009T024336Z-912656da77d443829c8376b5200febdf/result.json",
+    "sha256": "2aab9ae17f36311f6a91543b53efb673aa52955ddcc23e5385dbe6d26db5fdfb",
+    "reconstruction_status": "incomplete",
+    "observed_exit_code": 2,
+    "source_working_tree_dirty": false
+  },
+  "baseline": {
+    "passes": [
+      "AC01",
+      "AC07",
+      "AC16",
+      "AC18"
+    ],
+    "incomplete": 28,
+    "ledger": {
+      "file_backed_bytes": 2171407,
+      "zero_fill_bytes": 1335641,
+      "unresolved_bytes": 3506988,
+      "game_owned_bytes": 60,
+      "substitute_bytes": 0,
+      "matched_bytes": 60,
+      "substitute_disposition": "no ranges attributed as substitute",
+      "matched_fraction": 1.0,
+      "matched_fraction_scope": "attributed_game_owned_bytes",
+      "function_owned_bytes": null,
+      "function_owned_disposition": "Discovery accounting is not matching credit."
+    },
+    "vu_exact_overlays": 8,
+    "guest_execution": false,
+    "behavioral": {
+      "status": "incomplete",
+      "readiness": "incomplete",
+      "observations": [],
+      "reason": "No verified headless original/rebuilt runner or observations."
+    }
+  },
+  "tooling_checks": {
+    "clean_check_sh": {
+      "exit_code": 0,
+      "tests_run": 756,
+      "unittest_skips": 33,
+      "excluded_modules": 3
+    },
+    "ip_rails_tree": {
+      "exit_code": 0
+    }
+  },
+  "pr42": {
+    "state": "OPEN",
+    "draft": false,
+    "mergeStateStatus": "CLEAN",
+    "checks": [
+      {
+        "name": "ip-rails (no corpus or Sony artifact is tracked)",
+        "conclusion": "SUCCESS"
+      },
+      {
+        "name": "tests (tools/check.sh)",
+        "conclusion": "SUCCESS"
+      },
+      {
+        "name": "lint (ruff, errors-only baseline)",
+        "conclusion": "SUCCESS"
+      },
+      {
+        "name": "repository-hygiene (portable evidence and report freshness)",
+        "conclusion": "SUCCESS"
+      }
+    ],
+    "disposition": "Checks pass; consequential review unresolved; not marked ready, not merged, no branch cleanup. Concrete decision published in evidence."
+  },
+  "tracker_publication": {
+    "issues_updated": [
+      5,
+      1,
+      37,
+      35,
+      34,
+      33,
+      32,
+      31,
+      30,
+      29,
+      28,
+      27,
+      26,
+      25,
+      24,
+      23,
+      22,
+      21,
+      16,
+      15,
+      14,
+      13,
+      12,
+      9,
+      8
+    ],
+    "canonical_spec_unchanged": true,
+    "body_only": true,
+    "states_preserved": true,
+    "evidence_url": "https://gist.github.com/nicolas-found42/80e7646011d5de11bd8e1940982b3381/488ce11e6fbdf9408e3e04022a58c09a51f2bd92"
+  },
+  "wip_preserved": [
+    "?? notes/research/re-ecosystem-survey-2026-10.md"
+  ],
+  "ecosystem_survey_intact": true,
+  "ticket_frontier": [
+    {
+      "ticket": 8,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/8",
+      "title": "EE compiler probe: pin the matching profile with independent distinguishing units",
+      "open_blockers": [],
+      "assignees": [
+        "nicolas-found42"
+      ],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": false
+    },
+    {
+      "ticket": 9,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/9",
+      "title": "GNU linker and layout: prove placement, relocations and zero-fill contracts",
+      "open_blockers": [
+        8
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 12,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/12",
+      "title": "Build and link actual game-facing ps2sdk substitute regions",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 13,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/13",
+      "title": "Complete VU exact reassembly and caller, entry and state contracts",
+      "open_blockers": [],
+      "assignees": [
+        "nicolas-found42"
+      ],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": false
+    },
+    {
+      "ticket": 14,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/14",
+      "title": "Qualify strict headless oracle and compare declared behavioral scenarios",
+      "open_blockers": [
+        22
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 15,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/15",
+      "title": "Complete executable consumer contracts for every archive family and variant",
+      "open_blockers": [
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "assignees": [
+        "nicolas-found42"
+      ],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 16,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/16",
+      "title": "Rebuild all 24 IOP modules with attributed ranges and interface contracts",
+      "open_blockers": [
+        8,
+        9,
+        26
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 21,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/21",
+      "title": "Bind historical EE compiler package to notices and corresponding source",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "human",
+      "dependency_ready": true,
+      "runnable": false
+    },
+    {
+      "ticket": 22,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/22",
+      "title": "Resolve or replace the strict oracle Qt SDK dependency",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 23,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/23",
+      "title": "Reconstruct all game-owned EE ranges with evidenced data and ABI contracts",
+      "open_blockers": [
+        8,
+        9,
+        24,
+        25
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 24,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/24",
+      "title": "Reconstruct misc3d accessor global and resolve its ABI dependencies",
+      "open_blockers": [
+        35
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 25,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/25",
+      "title": "Reconcile required EE unlisted spans and computed dispatch domains",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 26,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/26",
+      "title": "Recover required EE-to-IOP RPC and shared-buffer contracts",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 27,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/27",
+      "title": "Complete sound-bank and music loader, playback and loop contracts",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 28,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/28",
+      "title": "Complete PTG body, tile, palette and descriptor consumer profiles",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 29,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/29",
+      "title": "Complete texture formats, small-image layouts and mip consumers",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 30,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/30",
+      "title": "Complete model geometry and loader-to-transfer-to-VU contracts",
+      "open_blockers": [
+        29,
+        13
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 31,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/31",
+      "title": "Complete UI, text, configuration and remaining archive grammars",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    },
+    {
+      "ticket": 32,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/32",
+      "title": "Link the complete EE and all 24 IOP reconstruction outputs",
+      "open_blockers": [
+        23,
+        12,
+        16,
+        21
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 33,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/33",
+      "title": "Complete aggregate scope, evidence and integration gate controls",
+      "open_blockers": [
+        32,
+        13,
+        15
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 34,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/34",
+      "title": "Prove two clean full builds and retain final reconstruction acceptance",
+      "open_blockers": [
+        33
+      ],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 35,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/35",
+      "title": "Reconstruct misc3d lifecycle and reconcile sibling accessor boundaries",
+      "open_blockers": [
+        37
+      ],
+      "assignees": [
+        "nicolas-found42"
+      ],
+      "role": "agent",
+      "dependency_ready": false,
+      "runnable": false
+    },
+    {
+      "ticket": 37,
+      "url": "https://github.com/nicolas-found42/reverse-engineering/issues/37",
+      "title": "Reconstruct misc3d loader state and resolve computed aliases",
+      "open_blockers": [],
+      "assignees": [],
+      "role": "agent",
+      "dependency_ready": true,
+      "runnable": true
+    }
+  ],
+  "next_task": {
+    "ticket": 12,
+    "action": "Earliest unassigned agent leaf with no open native blockers; compiler tickets #8/#13 assigned, #21 human frontier, #35 blocked by #37."
+  },
+  "claim_limits": [
+    "Incomplete aggregate is baseline, not game completion.",
+    "Matched fraction 1.0 is only the attributed 60-byte scope.",
+    "Clean checkout tests omit local private dependencies.",
+    "Aggregate child RPC omits --packet; its incomplete status is distinct from prior standalone receipts."
+  ]
+}

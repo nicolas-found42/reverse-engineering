@@ -1,0 +1,57 @@
+{
+  "activation_partial_registration": {
+    "config_after": {
+      "installation": "old"
+    },
+    "client_after": "new",
+    "expected": "restore both",
+    "observed": "config restored, client remains candidate"
+  },
+  "discovery_profile": {
+    "calls": [
+      {
+        "args": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py",
+          "ghidra"
+        ],
+        "explicit_env": null
+      },
+      {
+        "args": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py",
+          "rea"
+        ],
+        "explicit_env": null
+      },
+      {
+        "args": [
+          "/opt/homebrew/opt/python@3.14/bin/python3.14",
+          "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py",
+          "r2"
+        ],
+        "explicit_env": null
+      }
+    ],
+    "observed": "all three inherit ambient candidate RE_SETUP_HOME; no isolation env passed"
+  },
+  "existing_backend_acceptance": {
+    "request_calls": [
+      [
+        "/check_connection",
+        true
+      ],
+      [
+        "/mcp/schema",
+        true
+      ],
+      [
+        "/mcp/schema",
+        false
+      ]
+    ],
+    "candidate_launch_count": 0,
+    "observed": "existing same-token backend accepted without candidate instance identity"
+  }
+}

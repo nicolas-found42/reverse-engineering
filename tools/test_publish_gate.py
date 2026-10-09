@@ -24,11 +24,26 @@ class PublishGateTest(unittest.TestCase):
         # being a checkout (validate.py materializes trees outside any repository).
         self.repository = self.root / "repository"
         self.repository.mkdir()
+        # Host git config is ignored so the fixture cannot depend on it; the
+        # identity is carried in the environment instead, because a checkout on
+        # CI has no user or committer configured.
+        environment = dict(
+            os.environ,
+            GIT_CONFIG_GLOBAL="/dev/null",
+            GIT_CONFIG_SYSTEM="/dev/null",
+            GIT_AUTHOR_NAME="gate",
+            GIT_AUTHOR_EMAIL="gate@example.invalid",
+            GIT_COMMITTER_NAME="gate",
+            GIT_COMMITTER_EMAIL="gate@example.invalid",
+            GIT_AUTHOR_DATE="2026-01-01T00:00:00Z",
+            GIT_COMMITTER_DATE="2026-01-01T00:00:00Z",
+        )
         subprocess.run(
             ["git", "init", "-q", str(self.repository)],
             check=True,
             timeout=60,
             capture_output=True,
+            env=environment,
         )
         subprocess.run(
             [
@@ -40,17 +55,11 @@ class PublishGateTest(unittest.TestCase):
                 "--allow-empty",
                 "-m",
                 "synthetic",
-                "--author",
-                "gate <gate@example.invalid>",
-                "--date",
-                "2026-01-01T00:00:00Z",
             ],
             check=True,
             timeout=60,
             capture_output=True,
-            env=dict(
-                os.environ, GIT_CONFIG_GLOBAL="/dev/null", GIT_CONFIG_SYSTEM="/dev/null"
-            ),
+            env=environment,
         )
         self.revision = subprocess.check_output(
             ["git", "-C", str(self.repository), "rev-parse", "HEAD"], text=True

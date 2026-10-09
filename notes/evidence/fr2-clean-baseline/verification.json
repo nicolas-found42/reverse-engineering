@@ -1,0 +1,258 @@
+{
+  "schema": "fr2-baseline-verification/v1",
+  "accepted_source": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+  "aggregate": {
+    "command": [
+      "python3",
+      "tools/completion.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "--assembler",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+      "--objdump",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+      "--compiler-tools",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/aggregate"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/clean",
+    "exit_code": 2,
+    "receipt": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/aggregate/20261009T024336Z-912656da77d443829c8376b5200febdf/result.json",
+    "identity": {
+      "bytes": 600948,
+      "sha256": "2aab9ae17f36311f6a91543b53efb673aa52955ddcc23e5385dbe6d26db5fdfb"
+    }
+  },
+  "main_tests": {
+    "command": [
+      "tools/check.sh"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/clean",
+    "exit_code": 0,
+    "tests_run": 756,
+    "unittest_skips": 33,
+    "excluded_modules": [
+      "test_research_jev_battery (typesafe_sdk)",
+      "test_batch_switch_config (local .scratch/corpus)",
+      "test_recomp_fpu_experimental (local .scratch/corpus)"
+    ],
+    "authority": "session-observed check output; not full private-input profile"
+  },
+  "main_ip": {
+    "command": [
+      "python3",
+      "tools/ip_rails.py",
+      "--tree"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/clean",
+    "exit_code": 0
+  },
+  "pr42_validation": {
+    "command": [
+      "python3",
+      "tools/validate.py",
+      "--revision",
+      "a8c8798807af81927cfab975530ac2445eec6f27",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation"
+    ],
+    "result": {
+      "schema": "fr2-validation/v1",
+      "portable": true,
+      "successful": true,
+      "checks": [
+        {
+          "check": "ip",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/ip.log"
+        },
+        {
+          "check": "hygiene",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/hygiene.log"
+        },
+        {
+          "check": "lint",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/lint.log"
+        },
+        {
+          "check": "tests",
+          "exit_code": 0,
+          "log": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/tests.log"
+        }
+      ],
+      "tree": "6fe93267b01ca701ceecf66030503bb072c47add",
+      "scope": "a8c8798807af81927cfab975530ac2445eec6f27"
+    },
+    "identity": {
+      "bytes": 953,
+      "sha256": "04d5de56e09199e5d4c019ac1603b2a503a9bfaeaa3d713bf2ec18ef7c8f7382"
+    },
+    "test_summary_identity": {
+      "bytes": 7192,
+      "sha256": "6fbf602afb393d62af8e36fa37a4cf88f36be17abe3c3cc27ce40107c27e5c71"
+    }
+  },
+  "integrity_checks": [
+    {
+      "id": "A0",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C00",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C01",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C02",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C03",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C04",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C05",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C06",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C07",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C08",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C09",
+      "sha256_matches": true,
+      "bytes_match": true
+    },
+    {
+      "id": "C10",
+      "sha256_matches": true,
+      "bytes_match": true
+    }
+  ],
+  "protected_wip": {
+    "notes/research/re-ecosystem-survey-2026-10.md": {
+      "bytes": 38527,
+      "sha256": "7ceef8fde00d9b73ec1170f37fe9e2b9a1269a95869675ca79136c76513fe74a"
+    },
+    "notes/research/dev-tooling-survey-2026-10.md": {
+      "bytes": 20693,
+      "sha256": "4dc3891d35ce1920eb70535af1b6278c8b203589fd9a3d9e30a4e6bfe483064c"
+    }
+  },
+  "application_policy_smoke": [
+    {
+      "claim_id": "claim0",
+      "semantic_verdict": "contradicted",
+      "application_policy": "Invalid"
+    },
+    {
+      "claim_id": "claim1",
+      "semantic_verdict": "verified",
+      "application_policy": "accepted"
+    },
+    {
+      "claim_id": "claim2",
+      "semantic_verdict": "contradicted",
+      "application_policy": "Invalid"
+    },
+    {
+      "claim_id": "claim3",
+      "semantic_verdict": "contradicted",
+      "application_policy": "Invalid"
+    },
+    {
+      "claim_id": "claim4",
+      "semantic_verdict": "verified",
+      "application_policy": "accepted"
+    },
+    {
+      "claim_id": "claim5",
+      "semantic_verdict": "contradicted",
+      "application_policy": "Invalid"
+    },
+    {
+      "claim_id": "claim6",
+      "semantic_verdict": "verified",
+      "application_policy": "accepted"
+    },
+    {
+      "claim_id": "claim7",
+      "semantic_verdict": "contradicted",
+      "application_policy": "Invalid"
+    },
+    {
+      "claim_id": "claim8",
+      "semantic_verdict": "unsupported",
+      "application_policy": "Incomplete"
+    },
+    {
+      "claim_id": "claim9",
+      "semantic_verdict": "verified",
+      "application_policy": "accepted"
+    },
+    {
+      "claim_id": "missing",
+      "application_policy": "Invalid"
+    },
+    {
+      "claim_id": "malformed-probability",
+      "application_policy": "Invalid"
+    }
+  ],
+  "semantic_scope": "Use existing bounded evidence verification and judgment policy; no new inference in deterministic completion/byte/ownership gates; no stack/dependency change.",
+  "command_fidelity": {
+    "documented_recipe": "docs/RE-SETUP.md#full-local-verification and notes/evidence/fr2-completion/README.md",
+    "actual_command": [
+      "python3",
+      "tools/completion.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "--assembler",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+      "--objdump",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+      "--compiler-tools",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/aggregate"
+    ],
+    "differences": [
+      {
+        "documented": "--output .scratch/full-completion",
+        "actual": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/aggregate",
+        "reason": "Preserved existing local receipts; the aggregate command has no scope, skip, receipt-import or denominator switches, so the output destination is not an acceptance input."
+      }
+    ],
+    "corpus_ee_identity": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "tracked_tree_mutations": 0,
+  "untracked_wip_preserved": [
+    "notes/research/re-ecosystem-survey-2026-10.md"
+  ]
+}

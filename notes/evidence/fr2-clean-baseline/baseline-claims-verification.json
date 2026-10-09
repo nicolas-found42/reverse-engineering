@@ -1,0 +1,185 @@
+{
+  "tool": "xd://mcp__jev_verify",
+  "arguments": {
+    "claims": [
+      "Clean accepted main 717f78df689be4e16ddc891b2def18cbda3ce79d produced a fresh static aggregate exit2/incomplete, with all 32 criteria and eleven independent child receipts.",
+      "AC01, AC07, AC16 and AC18 pass; all remaining criteria are incomplete.",
+      "The ledger conserves 2,171,407 initialized bytes and 1,335,641 zero-fill bytes; only 60 attributed game-owned bytes are source-built and matched, with 3,506,988 unresolved and zero substitutes attributed.",
+      "Eight VU encodings match; required entry/state interfaces remain incomplete.",
+      "No guest execution was performed, and behavioral readiness and observations remain incomplete.",
+      "#12 is the first unassigned dependency-ready agent leaf in canonical map order; #8 and #13 are assigned, #21 is a human frontier, #35 is blocked by #37.",
+      "Exact PR42 revision validation passes the checks, but actual-code synthetic smoke exposes partial registration rollback and acceptance of a same-token existing backend without a candidate launch.",
+      "The clean main suite ran 756 tests, with 33 unittest skips and three separately excluded modules, not the full private-input profile.",
+      "The aggregate RPC child is incomplete because its documented aggregate command supplies no required packet observation/control; this does not invalidate historical standalone packet results."
+    ],
+    "evidence": [
+      {
+        "id": "fresh-aggregate-sha256:2aab9ae17f36311f6a91543b53efb673aa52955ddcc23e5385dbe6d26db5fdfb",
+        "text": "{\"source_revision\": \"717f78df689be4e16ddc891b2def18cbda3ce79d\", \"dirty\": false, \"status\": \"incomplete\", \"ledger\": {\"file_backed_bytes\": 2171407, \"zero_fill_bytes\": 1335641, \"unresolved_bytes\": 3506988, \"game_owned_bytes\": 60, \"substitute_bytes\": 0, \"matched_bytes\": 60, \"substitute_disposition\": \"no ranges attributed as substitute\", \"matched_fraction\": 1.0, \"matched_fraction_scope\": \"attributed_game_owned_bytes\", \"function_owned_bytes\": null, \"function_owned_disposition\": \"Discovery accounting is not matching credit.\"}, \"criteria\": [{\"id\": \"AC01\", \"status\": \"pass\"}, {\"id\": \"AC02\", \"status\": \"incomplete\"}, {\"id\": \"AC03\", \"status\": \"incomplete\"}, {\"id\": \"AC04\", \"status\": \"incomplete\"}, {\"id\": \"AC05\", \"status\": \"incomplete\"}, {\"id\": \"AC06\", \"status\": \"incomplete\"}, {\"id\": \"AC07\", \"status\": \"pass\"}, {\"id\": \"AC08\", \"status\": \"incomplete\"}, {\"id\": \"AC09\", \"status\": \"incomplete\"}, {\"id\": \"AC10\", \"status\": \"incomplete\"}, {\"id\": \"AC11\", \"status\": \"incomplete\"}, {\"id\": \"AC12\", \"status\": \"incomplete\"}, {\"id\": \"AC13\", \"status\": \"incomplete\"}, {\"id\": \"AC14\", \"status\": \"incomplete\"}, {\"id\": \"AC15\", \"status\": \"incomplete\"}, {\"id\": \"AC16\", \"status\": \"pass\"}, {\"id\": \"AC17\", \"status\": \"incomplete\"}, {\"id\": \"AC18\", \"status\": \"pass\"}, {\"id\": \"AC19\", \"status\": \"incomplete\"}, {\"id\": \"AC20\", \"status\": \"incomplete\"}, {\"id\": \"AC21\", \"status\": \"incomplete\"}, {\"id\": \"AC22\", \"status\": \"incomplete\"}, {\"id\": \"AC23\", \"status\": \"incomplete\"}, {\"id\": \"AC24\", \"status\": \"incomplete\"}, {\"id\": \"AC25\", \"status\": \"incomplete\"}, {\"id\": \"AC26\", \"status\": \"incomplete\"}, {\"id\": \"AC27\", \"status\": \"incomplete\"}, {\"id\": \"AC28\", \"status\": \"incomplete\"}, {\"id\": \"AC29\", \"status\": \"incomplete\"}, {\"id\": \"AC30\", \"status\": \"incomplete\"}, {\"id\": \"AC31\", \"status\": \"incomplete\"}, {\"id\": \"AC32\", \"status\": \"incomplete\"}], \"behavioral\": {\"status\": \"incomplete\", \"readiness\": \"incomplete\", \"observations\": [], \"reason\": \"No verified headless original/rebuilt runner or observations.\"}, \"children\": [{\"command\": \"matching_ranges.py\", \"status\": \"pass\", \"sha256\": \"8feee4fdfe662c6aa2bdcb9c152f571af206c682b90cb032bbadf32bd7d7cda2\", \"diagnostics\": []}, {\"command\": \"verify_formats.py\", \"status\": \"pass\", \"sha256\": \"1a3260632e17b8ee729b3d9829a0336682febb39d3206029ff859ee64a4a07d8\", \"diagnostics\": []}, {\"command\": \"verify_vu.py\", \"status\": \"incomplete\", \"sha256\": \"d4391cfdb94b11c7d208cc2526c69f1e0d0f0c784f4bd757b8b661e1e1feaf85\", \"diagnostics\": [\"VU byte reassembly passed; required entry or interface maps remain incomplete\"]}, {\"command\": \"verify_asset_contracts.py\", \"status\": \"incomplete\", \"sha256\": \"dd59f79854833c79e2de1838975b2b051674948d7cacb2666e14c85f20842fab\", \"diagnostics\": [\"fixed registry contains candidate or unresolved consumer profiles\"]}, {\"command\": \"run.py\", \"status\": \"pass\", \"sha256\": \"2b53b35fd263a9ddcd46f27e602546538931aeee4f6e0a308884557850adb96e\", \"diagnostics\": []}, {\"command\": \"misc3d_contract.py\", \"status\": \"pass\", \"sha256\": \"60cc5e32664d222cb28797cf601cf98a8bb927f50a82b18cb272795e8e91b7a4\", \"diagnostics\": []}, {\"command\": \"misc3d_lifecycle.py\", \"status\": \"pass\", \"sha256\": \"7d780e9e22227a51fac0ea0d81c0c28b1b3367723e29009d0c5dcad94d6f1683\", \"diagnostics\": []}, {\"command\": \"check_rpc_contracts.py\", \"status\": \"incomplete\", \"sha256\": \"ad977ee7024ac558a1b3f5e910b70fb1c64a8395c3c8b93529c217eaefc3dfd9\", \"diagnostics\": [\"required channel-volume packet observation/control is absent\"]}, {\"command\": \"linker_layout.py\", \"status\": \"pass\", \"sha256\": \"cf22d5b8b9e7e4873ce81d302b96b690c58c0aadda0cdac504145fc9200a8409\", \"diagnostics\": []}, {\"command\": \"inventory_rpc_handoffs.py\", \"status\": \"incomplete\", \"sha256\": \"2bd681a6afb005797dbe14901cf5b8746c0b89ec3c33c127e85c99b9e38f63f9\", \"diagnostics\": [\"required parent handoff inventory is not yet reconciled\"]}, {\"command\": \"source_build.py\", \"status\": \"pass\", \"sha256\": \"d471565f569bd3bb14942fadbeaf4bbb48f943120a7930c50c4a8ccf9e90e9a6\", \"diagnostics\": []}]}"
+      },
+      {
+        "id": "native-graph-snapshot",
+        "text": "[{\"ticket\": 8, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/8\", \"title\": \"EE compiler probe: pin the matching profile with independent distinguishing units\", \"open_blockers\": [], \"assignees\": [\"nicolas-found42\"], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": false}, {\"ticket\": 9, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/9\", \"title\": \"GNU linker and layout: prove placement, relocations and zero-fill contracts\", \"open_blockers\": [8], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 12, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/12\", \"title\": \"Build and link actual game-facing ps2sdk substitute regions\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 13, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/13\", \"title\": \"Complete VU exact reassembly and caller, entry and state contracts\", \"open_blockers\": [], \"assignees\": [\"nicolas-found42\"], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": false}, {\"ticket\": 14, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/14\", \"title\": \"Qualify strict headless oracle and compare declared behavioral scenarios\", \"open_blockers\": [22], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 15, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/15\", \"title\": \"Complete executable consumer contracts for every archive family and variant\", \"open_blockers\": [27, 28, 29, 30, 31], \"assignees\": [\"nicolas-found42\"], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 16, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/16\", \"title\": \"Rebuild all 24 IOP modules with attributed ranges and interface contracts\", \"open_blockers\": [8, 9, 26], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 21, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/21\", \"title\": \"Bind historical EE compiler package to notices and corresponding source\", \"open_blockers\": [], \"assignees\": [], \"role\": \"human\", \"dependency_ready\": true, \"runnable\": false}, {\"ticket\": 22, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/22\", \"title\": \"Resolve or replace the strict oracle Qt SDK dependency\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 23, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/23\", \"title\": \"Reconstruct all game-owned EE ranges with evidenced data and ABI contracts\", \"open_blockers\": [8, 9, 24, 25], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 24, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/24\", \"title\": \"Reconstruct misc3d accessor global and resolve its ABI dependencies\", \"open_blockers\": [35], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 25, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/25\", \"title\": \"Reconcile required EE unlisted spans and computed dispatch domains\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 26, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/26\", \"title\": \"Recover required EE-to-IOP RPC and shared-buffer contracts\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 27, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/27\", \"title\": \"Complete sound-bank and music loader, playback and loop contracts\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 28, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/28\", \"title\": \"Complete PTG body, tile, palette and descriptor consumer profiles\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 29, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/29\", \"title\": \"Complete texture formats, small-image layouts and mip consumers\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 30, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/30\", \"title\": \"Complete model geometry and loader-to-transfer-to-VU contracts\", \"open_blockers\": [29, 13], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 31, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/31\", \"title\": \"Complete UI, text, configuration and remaining archive grammars\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}, {\"ticket\": 32, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/32\", \"title\": \"Link the complete EE and all 24 IOP reconstruction outputs\", \"open_blockers\": [23, 12, 16, 21], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 33, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/33\", \"title\": \"Complete aggregate scope, evidence and integration gate controls\", \"open_blockers\": [32, 13, 15], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 34, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/34\", \"title\": \"Prove two clean full builds and retain final reconstruction acceptance\", \"open_blockers\": [33], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 35, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/35\", \"title\": \"Reconstruct misc3d lifecycle and reconcile sibling accessor boundaries\", \"open_blockers\": [37], \"assignees\": [\"nicolas-found42\"], \"role\": \"agent\", \"dependency_ready\": false, \"runnable\": false}, {\"ticket\": 37, \"url\": \"https://github.com/nicolas-found42/reverse-engineering/issues/37\", \"title\": \"Reconstruct misc3d loader state and resolve computed aliases\", \"open_blockers\": [], \"assignees\": [], \"role\": \"agent\", \"dependency_ready\": true, \"runnable\": true}]"
+      },
+      {
+        "id": "pr42-deterministic-validation",
+        "text": "{\"command\": [\"python3\", \"tools/validate.py\", \"--revision\", \"a8c8798807af81927cfab975530ac2445eec6f27\", \"--output\", \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation\"], \"result\": {\"schema\": \"fr2-validation/v1\", \"portable\": true, \"successful\": true, \"checks\": [{\"check\": \"ip\", \"exit_code\": 0, \"log\": \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/ip.log\"}, {\"check\": \"hygiene\", \"exit_code\": 0, \"log\": \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/hygiene.log\"}, {\"check\": \"lint\", \"exit_code\": 0, \"log\": \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/lint.log\"}, {\"check\": \"tests\", \"exit_code\": 0, \"log\": \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/pr42-validation/tests.log\"}], \"tree\": \"6fe93267b01ca701ceecf66030503bb072c47add\", \"scope\": \"a8c8798807af81927cfab975530ac2445eec6f27\"}, \"identity\": {\"bytes\": 953, \"sha256\": \"04d5de56e09199e5d4c019ac1603b2a503a9bfaeaa3d713bf2ec18ef7c8f7382\"}, \"test_summary_identity\": {\"bytes\": 7192, \"sha256\": \"6fbf602afb393d62af8e36fa37a4cf88f36be17abe3c3cc27ce40107c27e5c71\"}}"
+      },
+      {
+        "id": "actual-review-smoke",
+        "text": "{\"activation_partial_registration\": {\"config_after\": {\"installation\": \"old\"}, \"client_after\": \"new\", \"expected\": \"restore both\", \"observed\": \"config restored, client remains candidate\"}, \"discovery_profile\": {\"calls\": [{\"args\": [\"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py\", \"ghidra\"], \"explicit_env\": null}, {\"args\": [\"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py\", \"rea\"], \"explicit_env\": null}, {\"args\": [\"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py\", \"r2\"], \"explicit_env\": null}], \"observed\": \"all three inherit ambient candidate RE_SETUP_HOME; no isolation env passed\"}, \"existing_backend_acceptance\": {\"request_calls\": [[\"/check_connection\", true], [\"/mcp/schema\", true], [\"/mcp/schema\", false]], \"candidate_launch_count\": 0, \"observed\": \"existing same-token backend accepted without candidate instance identity\"}}"
+      },
+      {
+        "id": "real-main-check-output",
+        "text": "tools/check.sh at clean source 717f78df689be4e16ddc891b2def18cbda3ce79d: Ran 756 tests in 16.201s; OK (skipped=33). Separately excluded test_research_jev_battery (typesafe_sdk), test_batch_switch_config and test_recomp_fpu_experimental (local inputs .scratch/corpus). Exit0. python3 tools/ip_rails.py --tree: exit0."
+      }
+    ]
+  },
+  "input_sha256": "35b2dfc19ee0dea0527d9469099d725221dc4f3f70eec98fcedcb5256b6d949e",
+  "seconds": 0.3225310000125319,
+  "result": {
+    "tool": "jev_verify",
+    "model": "typesafe/jev-1.13-20260917",
+    "provider": "openrouter",
+    "auto_accept": 0.8,
+    "subject_at": 0.5,
+    "summary": {
+      "verified": 7,
+      "contradicted": 1,
+      "unsupported": 1,
+      "needs_review": 2
+    },
+    "results": [
+      {
+        "id": "claim0",
+        "claim": "Clean accepted main 717f78df689be4e16ddc891b2def18cbda3ce79d produced a fresh static aggregate exit2/incomplete, with all 32 criteria and eleven independent child receipts.",
+        "verdict": "contradicted",
+        "probabilities": {
+          "supports": 0.49,
+          "contradicts": 0.5,
+          "says_nothing": 0.01
+        },
+        "confidence": 0.25,
+        "action": "review",
+        "supporting_evidence": "fresh-aggregate-sha256_2aab9ae17f36311f6a91543b53efb673aa52955dd",
+        "same_subject": 0.91
+      },
+      {
+        "id": "claim1",
+        "claim": "AC01, AC07, AC16 and AC18 pass; all remaining criteria are incomplete.",
+        "verdict": "verified",
+        "probabilities": {
+          "supports": 0.99,
+          "contradicts": 0.01,
+          "says_nothing": 0
+        },
+        "confidence": 0.98,
+        "action": "auto",
+        "supporting_evidence": "fresh-aggregate-sha256_2aab9ae17f36311f6a91543b53efb673aa52955dd",
+        "same_subject": 0.97
+      },
+      {
+        "id": "claim2",
+        "claim": "The ledger conserves 2,171,407 initialized bytes and 1,335,641 zero-fill bytes; only 60 attributed game-owned bytes are source-built and matched, with 3,506,988 unresolved and zero substitutes attributed.",
+        "verdict": "verified",
+        "probabilities": {
+          "supports": 1,
+          "contradicts": 0,
+          "says_nothing": 0
+        },
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "fresh-aggregate-sha256_2aab9ae17f36311f6a91543b53efb673aa52955dd",
+        "same_subject": 0.96
+      },
+      {
+        "id": "claim3",
+        "claim": "Eight VU encodings match; required entry/state interfaces remain incomplete.",
+        "verdict": "unsupported",
+        "probabilities": {
+          "supports": 0.27,
+          "contradicts": 0.36,
+          "says_nothing": 0.37
+        },
+        "confidence": 0.06,
+        "action": "review",
+        "supporting_evidence": "fresh-aggregate-sha256_2aab9ae17f36311f6a91543b53efb673aa52955dd",
+        "same_subject": 0.66
+      },
+      {
+        "id": "claim4",
+        "claim": "No guest execution was performed, and behavioral readiness and observations remain incomplete.",
+        "verdict": "verified",
+        "probabilities": {
+          "supports": 1,
+          "contradicts": 0,
+          "says_nothing": 0
+        },
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "fresh-aggregate-sha256_2aab9ae17f36311f6a91543b53efb673aa52955dd",
+        "same_subject": 0.92
+      },
+      {
+        "id": "claim5",
+        "claim": "#12 is the first unassigned dependency-ready agent leaf in canonical map order; #8 and #13 are assigned, #21 is a human frontier, #35 is blocked by #37.",
+        "verdict": "verified",
+        "probabilities": {
+          "supports": 0.98,
+          "contradicts": 0.02,
+          "says_nothing": 0
+        },
+        "confidence": 0.97,
+        "action": "auto",
+        "supporting_evidence": "native-graph-snapshot",
+        "same_subject": 0.93
+      },
+      {
+        "id": "claim6",
+        "claim": "Exact PR42 revision validation passes the checks, but actual-code synthetic smoke exposes partial registration rollback and acceptance of a same-token existing backend without a candidate launch.",
+        "verdict": "verified",
+        "probabilities": {
+          "supports": 0.98,
+          "contradicts": 0.01,
+          "says_nothing": 0.01
+        },
+        "confidence": 0.97,
+        "action": "auto",
+        "supporting_evidence": "actual-review-smoke",
+        "same_subject": 0.91
+      },
+      {
+        "id": "claim7",
+        "claim": "The clean main suite ran 756 tests, with 33 unittest skips and three separately excluded modules, not the full private-input profile.",
+        "verdict": "verified",
+        "probabilities": {
+          "supports": 1,
+          "contradicts": 0,
+          "says_nothing": 0
+        },
+        "confidence": 1,
+        "action": "auto",
+        "supporting_evidence": "real-main-check-output",
+        "same_subject": 0.97
+      },
+      {
+        "id": "claim8",
+        "claim": "The aggregate RPC child is incomplete because its documented aggregate command supplies no required packet observation/control; this does not invalidate historical standalone packet results.",
+        "verdict": "verified",
+        "probabilities": {
+          "supports": 0.89,
+          "contradicts": 0.02,
+          "says_nothing": 0.09
+        },
+        "confidence": 0.83,
+        "action": "auto",
+        "supporting_evidence": "fresh-aggregate-sha256_2aab9ae17f36311f6a91543b53efb673aa52955dd",
+        "same_subject": 0.95
+      }
+    ],
+    "usage": {
+      "input_tokens": 9300,
+      "output_tokens": 1953
+    }
+  }
+}

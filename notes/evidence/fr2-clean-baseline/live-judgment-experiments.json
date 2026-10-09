@@ -1,0 +1,61 @@
+{
+  "frontier-decision": {
+    "tool": "xd://mcp__jev_decide",
+    "arguments": {
+      "decision": "Select the next unassigned dependency-ready task to prepare now (not necessarily implement).",
+      "evidence": "Decision: where can a developer execute the first remaining unassigned native-blocker-free task in the project map? Facts: #8 compiler work and #13 VU entry maps have no blockers but are assigned. #21 human provenance is ready but gated to human. The verified unassigned agent-ready leaves are #12 SDK substitute ranges, #22 oracle Qt, #25 EE unlisted spans, #26 EE/IOP RPC, #27 audio, #28 PTG, #29 textures, #31 grammars, and #37 loader. #35 is blocked by #37, #24 by #35, #23 by #8/#9/#24/#25, #33 by #32/#13/#15, #34 by #33, and final spec #5 by #34. Priorities: canonical map order first, because that order is the project\u2019s execution recommendation; preserve dependencies and assignments unchanged.",
+      "priorities": "Follow canonical map order. Respect existing dependencies. Do not choose assigned/human-only work. Prefer the earliest concrete implementation ticket unless a different ticket has a materially stronger unblocking argument.",
+      "candidates": [
+        {
+          "id": "ticket8",
+          "description": "Begin or reassign compiler probing work (assigned, dependency-ready)."
+        },
+        {
+          "id": "ticket12",
+          "description": "Prepare #12 substitute ranges as earliest unassigned agent-ready leaf."
+        },
+        {
+          "id": "ticket37",
+          "description": "Prepare #37 loader/alias child as frontier EE reconstruction prerequisite."
+        },
+        {
+          "id": "no-ticket",
+          "description": "Prepare nothing; collect broader evidence first."
+        }
+      ]
+    },
+    "input_sha256": "ef187f74de8b38c1a2f0c8cd3122bbf932a366537432732aded3f29c8488a9f4",
+    "seconds": 0.34565120897605084,
+    "result": {
+      "tool": "jev_decide",
+      "model": "typesafe/jev-1.13-20260917",
+      "provider": "openrouter",
+      "recommendation": {
+        "selected": "ticket12",
+        "escaped": false,
+        "confidence": 1,
+        "probabilities": {
+          "ticket8": 0,
+          "ticket12": 1,
+          "ticket37": 0,
+          "no-ticket": 0,
+          "ask_user": 0,
+          "investigate": 0,
+          "none": 0
+        },
+        "contradicted_requirements": []
+      },
+      "requirements_checked": 0,
+      "checks": [],
+      "warnings": [],
+      "usage": {
+        "input_tokens": 917,
+        "output_tokens": 83
+      }
+    }
+  },
+  "limitations": [
+    "TypeSafe SDK not installed in this environment; the project battery module remains excluded by run_tests policy. Jev MCP tools used as the available judgment surface.",
+    "Provider cost is not returned by the MCP tool interface; token usage and latency are retained."
+  ]
+}

@@ -1,10 +1,17 @@
 # Reconstruction completion command
 
-The [current continuation](../fr2-issue-5-continuation/aggregate-summary.json) records
-the fresh eleven-child aggregate and all 32 criteria after PR #36 merged. The
-[criterion plan](../fr2-issue-5-continuation/criterion-plan.md) retains remaining
-work and ticket links. This reviewed working-tree run exits 2 with the same
-60-byte credit and 3,506,988 unresolved bytes; it is not clean-build acceptance.
+**Current measured state (2026-10-09):** [the clean static baseline](../fr2-clean-baseline/README.md)
+records a fresh run of the documented aggregate on accepted main
+`d14fe24278ad66a479ccd4d70ede7150a5521fef` (clean checkout): exit **2/incomplete**, AC01, AC07,
+AC16 and AC18 passing, 60 attributed/source-built matched bytes, 3,506,988 unresolved bytes, zero
+substitutes, eight exact VU encodings, eleven fresh child receipts. Use that record as the current
+state; the historical runs below are retained as dated observations, not as the present frontier.
+
+The earlier note described a working-tree continuation after PR #36 merged. The fresh eleven-child
+aggregate and all 32 criteria it reported exited 2 with the same 60-byte credit and 3,506,988
+unresolved bytes. Those were working-tree runs with pre-existing unrelated WIP, not clean-build
+acceptance.
+
 The [historical implementation summary](20261008-implementation-summary.json)
 records the earlier bounded progress delivered by PR #36. Its clean real-corpus aggregate at
 source revision `9c4f9fa` exits 2: AC01, AC07, AC16 and AC18 pass, with 60

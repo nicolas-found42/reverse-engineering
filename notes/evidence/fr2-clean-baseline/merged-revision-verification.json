@@ -1,0 +1,85 @@
+{
+  "schema": "fr2-merged-revision-verification/v1",
+  "canonical_spec": "https://github.com/nicolas-found42/reverse-engineering/issues/5",
+  "merged_source_revision": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+  "merge_commit": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+  "merged_at": "2026-10-09T03:09:57Z",
+  "aggregate": {
+    "command": [
+      "python3",
+      "tools/completion.py",
+      "games/ford-racing-2",
+      "--assembler",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+      "--objdump",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+      "--compiler-tools",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "<fresh dir>"
+    ],
+    "cwd": "clean detached checkout of the merged revision",
+    "observed_exit_code": 2,
+    "receipt": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/merged-aggregate2/20261009T031130Z-c255981757964f84a88b184cded1dd7f/result.json",
+    "identity": {
+      "bytes": 604077,
+      "sha256": "ebb63100132f995d4fa34c53fb08780a6a868f07c3159c679f1c2b9224b2cda7"
+    },
+    "ledger": {
+      "file_backed_bytes": 2171407,
+      "zero_fill_bytes": 1335641,
+      "unresolved_bytes": 3506988,
+      "game_owned_bytes": 60,
+      "substitute_bytes": 0,
+      "matched_bytes": 60,
+      "substitute_disposition": "no ranges attributed as substitute",
+      "matched_fraction": 1.0,
+      "matched_fraction_scope": "attributed_game_owned_bytes",
+      "function_owned_bytes": null,
+      "function_owned_disposition": "Discovery accounting is not matching credit."
+    },
+    "passes": [
+      "AC01",
+      "AC07",
+      "AC16",
+      "AC18"
+    ],
+    "children": 11,
+    "source_working_tree_dirty": false
+  },
+  "tooling_checks": {
+    "validate_exact_revision": {
+      "command": [
+        "python3",
+        "tools/validate.py",
+        "--revision",
+        "d14fe24278ad66a479ccd4d70ede7150a5521fef"
+      ],
+      "scope": [
+        "ip",
+        "hygiene",
+        "ruff",
+        "tests"
+      ],
+      "exit_code": 0,
+      "tests_run": 785,
+      "skipped_tests": 33,
+      "excluded_modules": 3,
+      "tree": "6fe93267b01ca701ceecf66030503bb072c47add",
+      "receipt": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-2026-10-08/merged-validation/result.json",
+      "identity": {
+        "bytes": 961,
+        "sha256": "61d33104485488de57a98263b7b79f8e1bab0673d72691bdc92de3c068190948"
+      },
+      "summary_identity": {
+        "bytes": 7192,
+        "sha256": "6fbf602afb393d62af8e36fa37a4cf88f36be17abe3c3cc27ce40107c27e5c71"
+      }
+    }
+  },
+  "claim_limits": [
+    "Merged installation-tooling changes do not alter reconstruction acceptance; the aggregate remains incomplete.",
+    "Matched fraction 1.0 is still the attributed 60-byte scope only.",
+    "PR #42 shipped unresolved consequential findings; they are recorded as follow-up and do not retract any original judgment."
+  ]
+}

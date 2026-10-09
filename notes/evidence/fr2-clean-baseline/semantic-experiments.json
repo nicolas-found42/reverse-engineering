@@ -1,0 +1,767 @@
+{
+  "schema": "fr2-semantic-baseline-experiments/v1",
+  "records": [
+    {
+      "tool": "xd://mcp__jev_classify",
+      "arguments": {
+        "items": [
+          {
+            "id": "fresh-clean-aggregate",
+            "text": "Executed completion.py on clean source 717f78d with local corpus/tools. Newly created child receipts; incomplete, 60 matched bytes."
+          },
+          {
+            "id": "prior-continuation",
+            "text": "Retained documentation summary from working-tree run after PR36; no fresh execution in this record."
+          },
+          {
+            "id": "saved-function-count",
+            "text": "Ghidra saved functions and their owned executable bytes; structural candidates only."
+          },
+          {
+            "id": "lifecycle-candidate",
+            "text": "Fresh source-output child: 336 identical candidate bytes; only independently owned accessor gives 60 bytes of credit."
+          },
+          {
+            "id": "CI",
+            "text": "Portable synthetic tests and IP rails green, retail inputs absent."
+          },
+          {
+            "id": "unqualified-oracle",
+            "text": "No guest launch in this session. Prior preflight refused missing Qt qualification."
+          },
+          {
+            "id": "contradiction-case",
+            "text": "A copied retail-byte range is declared source reconstruction without source/build provenance."
+          },
+          {
+            "id": "ambiguous-record",
+            "text": "A report says success, without a command, source revision, receipt or scope."
+          }
+        ],
+        "classes": [
+          {
+            "id": "fresh_bounded",
+            "description": "Newly executed source/corpus-bound static check; bounded scope, not game completion."
+          },
+          {
+            "id": "historical",
+            "description": "Retained prior result not executed now; no freshness authority."
+          },
+          {
+            "id": "structural",
+            "description": "Discovery, inventory or structural report, no source matching authority."
+          },
+          {
+            "id": "tooling_only",
+            "description": "Synthetic/public tests lacking real-corpus acceptance."
+          },
+          {
+            "id": "unobserved_behavior",
+            "description": "Runtime prerequisites/refusal or no execution; no behavioral result."
+          },
+          {
+            "id": "invalid_claim",
+            "description": "Explicit copied or unsupported provenance claim contradicts source-rebuild requirement."
+          },
+          {
+            "id": "manual_review",
+            "description": "Missing or ambiguous command/scope/evidence prevents authority assignment."
+          }
+        ],
+        "purpose": "Classify evidence authority, never assign byte credit or change deterministic acceptance"
+      },
+      "input_sha256": "5622341f9d24b2a11a94661c5da4fc41c89fa68058e89b6fcb893b34812e6552",
+      "seconds": 0.31579424999654293,
+      "result": {
+        "tool": "jev_classify",
+        "model": "typesafe/jev-1.13-20260917",
+        "provider": "openrouter",
+        "summary": {
+          "items": 8,
+          "auto": 7,
+          "review": 1,
+          "invalid_response": 0,
+          "by_class": {
+            "fresh_bounded": 2,
+            "historical": 1,
+            "structural": 1,
+            "tooling_only": 1,
+            "unobserved_behavior": 1,
+            "invalid_claim": 1,
+            "manual_review": 1
+          }
+        },
+        "thresholds": {
+          "auto_accept": 0.85,
+          "minimum_margin": 0.5
+        },
+        "results": [
+          {
+            "id": "fresh-clean-aggregate",
+            "classification": "fresh_bounded",
+            "probabilities": {
+              "fresh_bounded": 0.99,
+              "historical": 0,
+              "structural": 0,
+              "tooling_only": 0,
+              "unobserved_behavior": 0,
+              "invalid_claim": 0,
+              "manual_review": 0.01
+            },
+            "confidence": 0.99,
+            "margin": 0.98,
+            "top_probability": 0.99,
+            "decision": "auto"
+          },
+          {
+            "id": "prior-continuation",
+            "classification": "historical",
+            "probabilities": {
+              "fresh_bounded": 0,
+              "historical": 1,
+              "structural": 0,
+              "tooling_only": 0,
+              "unobserved_behavior": 0,
+              "invalid_claim": 0,
+              "manual_review": 0
+            },
+            "confidence": 1,
+            "margin": 1,
+            "top_probability": 1,
+            "decision": "auto"
+          },
+          {
+            "id": "saved-function-count",
+            "classification": "structural",
+            "probabilities": {
+              "fresh_bounded": 0.02,
+              "historical": 0.06,
+              "structural": 0.92,
+              "tooling_only": 0,
+              "unobserved_behavior": 0,
+              "invalid_claim": 0,
+              "manual_review": 0
+            },
+            "confidence": 0.91,
+            "margin": 0.8600000000000001,
+            "top_probability": 0.92,
+            "decision": "auto"
+          },
+          {
+            "id": "lifecycle-candidate",
+            "classification": "fresh_bounded",
+            "probabilities": {
+              "fresh_bounded": 0.66,
+              "historical": 0.01,
+              "structural": 0.01,
+              "tooling_only": 0.01,
+              "unobserved_behavior": 0.01,
+              "invalid_claim": 0.1,
+              "manual_review": 0.2
+            },
+            "confidence": 0.6,
+            "margin": 0.46,
+            "top_probability": 0.66,
+            "decision": "review"
+          },
+          {
+            "id": "CI",
+            "classification": "tooling_only",
+            "probabilities": {
+              "fresh_bounded": 0,
+              "historical": 0,
+              "structural": 0,
+              "tooling_only": 0.99,
+              "unobserved_behavior": 0.01,
+              "invalid_claim": 0,
+              "manual_review": 0
+            },
+            "confidence": 0.99,
+            "margin": 0.98,
+            "top_probability": 0.99,
+            "decision": "auto"
+          },
+          {
+            "id": "unqualified-oracle",
+            "classification": "unobserved_behavior",
+            "probabilities": {
+              "fresh_bounded": 0,
+              "historical": 0,
+              "structural": 0,
+              "tooling_only": 0,
+              "unobserved_behavior": 1,
+              "invalid_claim": 0,
+              "manual_review": 0
+            },
+            "confidence": 1,
+            "margin": 1,
+            "top_probability": 1,
+            "decision": "auto"
+          },
+          {
+            "id": "contradiction-case",
+            "classification": "invalid_claim",
+            "probabilities": {
+              "fresh_bounded": 0,
+              "historical": 0,
+              "structural": 0,
+              "tooling_only": 0,
+              "unobserved_behavior": 0,
+              "invalid_claim": 1,
+              "manual_review": 0
+            },
+            "confidence": 1,
+            "margin": 1,
+            "top_probability": 1,
+            "decision": "auto"
+          },
+          {
+            "id": "ambiguous-record",
+            "classification": "manual_review",
+            "probabilities": {
+              "fresh_bounded": 0,
+              "historical": 0,
+              "structural": 0.01,
+              "tooling_only": 0,
+              "unobserved_behavior": 0,
+              "invalid_claim": 0,
+              "manual_review": 0.99
+            },
+            "confidence": 0.99,
+            "margin": 0.98,
+            "top_probability": 0.99,
+            "decision": "auto"
+          }
+        ],
+        "usage": {
+          "input_tokens": 1433,
+          "output_tokens": 579
+        }
+      }
+    },
+    {
+      "tool": "xd://mcp__jev_find",
+      "arguments": {
+        "query": "Which evidence establishes the current clean static completion baseline rather than historical, structural or candidate progress?",
+        "candidates": [
+          {
+            "id": "fresh-aggregate-2aab9ae1",
+            "text": "Clean source 717f78df689be4e16ddc891b2def18cbda3ce79d; newly executed completion.py exited 2, retained 32 criteria and 11 independent child receipts; 60 source-built attributed matching bytes; required incomplete criteria remain."
+          },
+          {
+            "id": "old-summary",
+            "text": "Historical working-tree continuation summary at earlier revision, same bounded byte ledger."
+          },
+          {
+            "id": "saved-inventory",
+            "text": "Saved-function structural inventory, no source-built matching authority."
+          },
+          {
+            "id": "candidate-build",
+            "text": "Fresh lifecycle candidate byte comparisons, no additional ownership decision."
+          }
+        ],
+        "top_k": 4
+      },
+      "input_sha256": "2955f20d79682bcbed393d4122e1866b4334135565143de48082adb0e9d2dea0",
+      "seconds": 0.28686354201636277,
+      "result": {
+        "tool": "jev_find",
+        "model": "typesafe/jev-1.13-20260917",
+        "provider": "openrouter",
+        "query": "Which evidence establishes the current clean static completion baseline rather than historical, structural or candidate progress?",
+        "exists": 0.92,
+        "exists_verdict": "answered",
+        "top": [
+          {
+            "id": "fresh-aggregate-2aab9ae1",
+            "probability": 1,
+            "text": "Clean source 717f78df689be4e16ddc891b2def18cbda3ce79d; newly executed completion.py exited 2, retained 32 criteria and 11 independent child receipts; 60 source-built attributed matching bytes; required incomplete criteria remain."
+          },
+          {
+            "id": "old-summary",
+            "probability": 0,
+            "text": "Historical working-tree continuation summary at earlier revision, same bounded byte ledger."
+          },
+          {
+            "id": "saved-inventory",
+            "probability": 0,
+            "text": "Saved-function structural inventory, no source-built matching authority."
+          },
+          {
+            "id": "candidate-build",
+            "probability": 0,
+            "text": "Fresh lifecycle candidate byte comparisons, no additional ownership decision."
+          }
+        ],
+        "usage": {
+          "input_tokens": 627,
+          "output_tokens": 89
+        }
+      }
+    },
+    {
+      "tool": "xd://mcp__jev_verify",
+      "arguments": {
+        "claims": [
+          "The aggregate proves the game complete.",
+          "AC16 establishes VU encoding, not hardware behavior.",
+          "All 336 lifecycle candidate bytes earn matching credit.",
+          "A structural function-owned byte count establishes source matching.",
+          "No guest execution was performed in this aggregate.",
+          "The native dependency graph makes #35 ready for execution.",
+          "#8 has no open native blocker.",
+          "Failed activation restores every changed client entry.",
+          "The first matched unit identifies the exact historical compiler.",
+          "The current partial receipt says nothing about whole-image source build success."
+        ],
+        "evidence": [
+          {
+            "id": "synthetic-baseline-v1",
+            "text": "Receipt synthetic-baseline: source clean, reconstruction incomplete, exit 2. AC01 identity, AC07 first source unit, AC16 eight VU encodings and AC18 archive accounting pass. 60 attributed source-built matched bytes; 3,506,988 unresolved bytes. 0 substitute bytes attributed. No guest execution. Historical lifecycle receipt: 336 candidate bytes compare identically, 276 add no ownership credit. Structural report: function-owned discovery bytes are not matched bytes. Native graph: #35 is blocked by open #37; #8 has no open blockers. PR smoke: machine config restored but client entry remains changed after failed registration. Nothing reports whole-image source builds or hardware fidelity."
+          }
+        ]
+      },
+      "input_sha256": "d5220b70b0c76242e29354c71063603fecb43ca65f7c13760f98b27b91ce6357",
+      "seconds": 0.5673457500233781,
+      "result": {
+        "tool": "jev_verify",
+        "model": "typesafe/jev-1.13-20260917",
+        "provider": "openrouter",
+        "auto_accept": 0.8,
+        "subject_at": 0.5,
+        "summary": {
+          "verified": 4,
+          "contradicted": 5,
+          "unsupported": 1,
+          "needs_review": 1
+        },
+        "results": [
+          {
+            "id": "claim0",
+            "claim": "The aggregate proves the game complete.",
+            "verdict": "contradicted",
+            "probabilities": {
+              "supports": 0.01,
+              "contradicts": 0.98,
+              "says_nothing": 0.01
+            },
+            "confidence": 0.97,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.76
+          },
+          {
+            "id": "claim1",
+            "claim": "AC16 establishes VU encoding, not hardware behavior.",
+            "verdict": "verified",
+            "probabilities": {
+              "supports": 0.87,
+              "contradicts": 0.01,
+              "says_nothing": 0.12
+            },
+            "confidence": 0.8,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.83
+          },
+          {
+            "id": "claim2",
+            "claim": "All 336 lifecycle candidate bytes earn matching credit.",
+            "verdict": "contradicted",
+            "probabilities": {
+              "supports": 0.01,
+              "contradicts": 0.99,
+              "says_nothing": 0
+            },
+            "confidence": 0.98,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.92
+          },
+          {
+            "id": "claim3",
+            "claim": "A structural function-owned byte count establishes source matching.",
+            "verdict": "contradicted",
+            "probabilities": {
+              "supports": 0.01,
+              "contradicts": 0.99,
+              "says_nothing": 0
+            },
+            "confidence": 0.98,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.89
+          },
+          {
+            "id": "claim4",
+            "claim": "No guest execution was performed in this aggregate.",
+            "verdict": "verified",
+            "probabilities": {
+              "supports": 1,
+              "contradicts": 0,
+              "says_nothing": 0
+            },
+            "confidence": 1,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.93
+          },
+          {
+            "id": "claim5",
+            "claim": "The native dependency graph makes #35 ready for execution.",
+            "verdict": "contradicted",
+            "probabilities": {
+              "supports": 0,
+              "contradicts": 1,
+              "says_nothing": 0
+            },
+            "confidence": 1,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.94
+          },
+          {
+            "id": "claim6",
+            "claim": "#8 has no open native blocker.",
+            "verdict": "verified",
+            "probabilities": {
+              "supports": 1,
+              "contradicts": 0,
+              "says_nothing": 0
+            },
+            "confidence": 1,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.94
+          },
+          {
+            "id": "claim7",
+            "claim": "Failed activation restores every changed client entry.",
+            "verdict": "contradicted",
+            "probabilities": {
+              "supports": 0,
+              "contradicts": 1,
+              "says_nothing": 0
+            },
+            "confidence": 1,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.92
+          },
+          {
+            "id": "claim8",
+            "claim": "The first matched unit identifies the exact historical compiler.",
+            "verdict": "unsupported",
+            "probabilities": {
+              "supports": 0.28,
+              "contradicts": 0.33,
+              "says_nothing": 0.39
+            },
+            "confidence": 0.09,
+            "action": "review",
+            "supporting_evidence": null,
+            "same_subject": 0.66
+          },
+          {
+            "id": "claim9",
+            "claim": "The current partial receipt says nothing about whole-image source build success.",
+            "verdict": "verified",
+            "probabilities": {
+              "supports": 0.99,
+              "contradicts": 0,
+              "says_nothing": 0.01
+            },
+            "confidence": 0.98,
+            "action": "auto",
+            "supporting_evidence": null,
+            "same_subject": 0.78
+          }
+        ],
+        "usage": {
+          "input_tokens": 3193,
+          "output_tokens": 628
+        }
+      }
+    },
+    {
+      "tool": "xd://mcp__jev_compare",
+      "arguments": {
+        "passage_a": "Historical source 181c705: aggregate incomplete, AC01/07/16/18 pass, 60 matched bytes, 3,506,988 unresolved bytes. PR20 pending; planned flow says merge PR20 and start #24.",
+        "passage_b": "Current source 717f78d: clean aggregate incomplete, AC01/07/16/18 pass, 60 matched bytes, 3,506,988 unresolved bytes. PR20 and PR36 are merged. #24 remains open blocked by #35, which is blocked by #37.",
+        "aspects": [
+          "static acceptance scope",
+          "matching ledger",
+          "PR and execution readiness"
+        ],
+        "purpose": "Identify materially stale present-tense planning while preserving valid historical measurements"
+      },
+      "input_sha256": "021d51955d5f956645ac76e5d529e6b0502a7d76d6d5bd076458355cbcfb6335",
+      "seconds": 0.22973387499223463,
+      "result": {
+        "tool": "jev_compare",
+        "model": "typesafe/jev-1.13-20260917",
+        "provider": "openrouter",
+        "overall": {
+          "relation": "contradicts",
+          "probabilities": {
+            "same_fact": 0.06,
+            "contradicts": 0.87,
+            "different_facts": 0.07
+          },
+          "confidence": 0.8,
+          "margin": 0.8,
+          "decision": "auto"
+        },
+        "aspects": [
+          {
+            "aspect": "static acceptance scope",
+            "relation": "same_fact",
+            "probabilities": {
+              "same_fact": 0.94,
+              "contradicts": 0.03,
+              "different_facts": 0.03
+            },
+            "confidence": 0.91,
+            "margin": 0.9099999999999999,
+            "decision": "auto"
+          },
+          {
+            "aspect": "matching ledger",
+            "relation": "same_fact",
+            "probabilities": {
+              "same_fact": 0.99,
+              "contradicts": 0.01,
+              "different_facts": 0
+            },
+            "confidence": 0.98,
+            "margin": 0.98,
+            "decision": "auto"
+          },
+          {
+            "aspect": "PR and execution readiness",
+            "relation": "contradicts",
+            "probabilities": {
+              "same_fact": 0.01,
+              "contradicts": 0.95,
+              "different_facts": 0.04
+            },
+            "confidence": 0.92,
+            "margin": 0.9099999999999999,
+            "decision": "auto"
+          }
+        ],
+        "thresholds": {
+          "auto_accept": 0.85,
+          "minimum_margin": 0.5
+        },
+        "usage": {
+          "input_tokens": 944,
+          "output_tokens": 175
+        }
+      }
+    },
+    {
+      "tool": "xd://mcp__jev_find",
+      "arguments": {
+        "query": "Which candidate establishes original-versus-rebuilt guest rendering behavior on PS2 hardware?",
+        "candidates": [
+          {
+            "id": "fresh-aggregate-2aab9ae1",
+            "text": "Clean source 717f78df689be4e16ddc891b2def18cbda3ce79d; newly executed completion.py exited 2, retained 32 criteria and 11 independent child receipts; 60 source-built attributed matching bytes; required incomplete criteria remain."
+          },
+          {
+            "id": "old-summary",
+            "text": "Historical working-tree continuation summary at earlier revision, same bounded byte ledger."
+          },
+          {
+            "id": "saved-inventory",
+            "text": "Saved-function structural inventory, no source-built matching authority."
+          },
+          {
+            "id": "candidate-build",
+            "text": "Fresh lifecycle candidate byte comparisons, no additional ownership decision."
+          }
+        ],
+        "top_k": 4
+      },
+      "input_sha256": "1f92e1d5d1b2558b30f6c332c60a9b714bfe562ae0844b9d13e29e8190217387",
+      "seconds": 0.23240374997840263,
+      "result": {
+        "tool": "jev_find",
+        "model": "typesafe/jev-1.13-20260917",
+        "provider": "openrouter",
+        "query": "Which candidate establishes original-versus-rebuilt guest rendering behavior on PS2 hardware?",
+        "exists": 0.11,
+        "exists_verdict": "absent",
+        "top": [
+          {
+            "id": "fresh-aggregate-2aab9ae1",
+            "probability": 0.79,
+            "text": "Clean source 717f78df689be4e16ddc891b2def18cbda3ce79d; newly executed completion.py exited 2, retained 32 criteria and 11 independent child receipts; 60 source-built attributed matching bytes; required incomplete criteria remain."
+          },
+          {
+            "id": "candidate-build",
+            "probability": 0.12,
+            "text": "Fresh lifecycle candidate byte comparisons, no additional ownership decision."
+          },
+          {
+            "id": "old-summary",
+            "probability": 0.07,
+            "text": "Historical working-tree continuation summary at earlier revision, same bounded byte ledger."
+          },
+          {
+            "id": "saved-inventory",
+            "probability": 0.02,
+            "text": "Saved-function structural inventory, no source-built matching authority."
+          }
+        ],
+        "usage": {
+          "input_tokens": 627,
+          "output_tokens": 89
+        }
+      }
+    },
+    {
+      "tool": "xd://mcp__jev_noul",
+      "arguments": {
+        "propositions": [
+          "A failed activation can leave client registrations changed although the machine config was restored.",
+          "Shared discovery can accept an existing authenticated backend rather than launch the candidate backend.",
+          "Green synthetic tests alone establish candidate runtime isolation."
+        ],
+        "context": [
+          {
+            "id": "review-smoke-sha256:d17ccb0dfd6ff46729f5e5f716154d65ecb83e7b5314174331b85ad87f41d3ff",
+            "text": "{\"activation_partial_registration\": {\"config_after\": {\"installation\": \"old\"}, \"client_after\": \"new\", \"expected\": \"restore both\", \"observed\": \"config restored, client remains candidate\"}, \"discovery_profile\": {\"calls\": [{\"args\": [\"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py\", \"ghidra\"], \"explicit_env\": null}, {\"args\": [\"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py\", \"rea\"], \"explicit_env\": null}, {\"args\": [\"/opt/homebrew/opt/python@3.14/bin/python3.14\", \"/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py\", \"r2\"], \"explicit_env\": null}], \"observed\": \"all three inherit ambient candidate RE_SETUP_HOME; no isolation env passed\"}, \"existing_backend_acceptance\": {\"request_calls\": [[\"/check_connection\", true], [\"/mcp/schema\", true], [\"/mcp/schema\", false]], \"candidate_launch_count\": 0, \"observed\": \"existing same-token backend accepted without candidate instance identity\"}}"
+          }
+        ]
+      },
+      "input_sha256": "a0cf7b6eeac48c4650fdfad417899917cca281b0aae44c625865ae3231ca2e9b",
+      "seconds": 0.19183537497883663,
+      "result": {
+        "tool": "jev_noul",
+        "model": "typesafe/jev-1.13-20260917",
+        "provider": "openrouter",
+        "status": "ok",
+        "results": [
+          {
+            "id": "proposition0",
+            "proposition": "A failed activation can leave client registrations changed although the machine config was restored.",
+            "probability": 0.95,
+            "label": "likely",
+            "auto": true
+          },
+          {
+            "id": "proposition1",
+            "proposition": "Shared discovery can accept an existing authenticated backend rather than launch the candidate backend.",
+            "probability": 0.94,
+            "label": "likely",
+            "auto": true
+          },
+          {
+            "id": "proposition2",
+            "proposition": "Green synthetic tests alone establish candidate runtime isolation.",
+            "probability": 0.05,
+            "label": "unlikely",
+            "auto": true
+          }
+        ],
+        "thresholds": {
+          "auto_accept": 0.85
+        },
+        "usage": {
+          "input_tokens": 954,
+          "output_tokens": 67
+        }
+      }
+    }
+  ],
+  "labels": {
+    "verify": [
+      "contradicted",
+      "verified",
+      "contradicted",
+      "contradicted",
+      "verified",
+      "contradicted",
+      "verified",
+      "contradicted",
+      "unsupported",
+      "verified"
+    ],
+    "classify": [
+      "fresh_bounded",
+      "historical",
+      "structural",
+      "fresh_bounded",
+      "tooling_only",
+      "unobserved_behavior",
+      "invalid_claim",
+      "manual_review"
+    ],
+    "find": [
+      "answered",
+      "absent"
+    ]
+  },
+  "observed": {
+    "verify_correct": 10,
+    "verify_total": 10,
+    "verify_review": 1,
+    "classify_correct": 8,
+    "classify_total": 8,
+    "classify_review": 1,
+    "find_correct": 2,
+    "find_total": 2,
+    "no_match_top_candidate_probability": 0.79,
+    "no_match_exists_probability": 0.11
+  },
+  "threshold_experiment": [
+    {
+      "confidence_floor": 0.8,
+      "accepted_correct_verify_cases": 9,
+      "review_cases": 1
+    },
+    {
+      "confidence_floor": 0.9,
+      "accepted_correct_verify_cases": 8,
+      "review_cases": 2
+    },
+    {
+      "confidence_floor": 0.95,
+      "accepted_correct_verify_cases": 8,
+      "review_cases": 2
+    }
+  ],
+  "usage": {
+    "input_tokens": 7778,
+    "output_tokens": 1627,
+    "seconds": 1.8239765419857576,
+    "provider_cost": "MCP tool responses do not expose charged cost; unavailable, not inferred from token counts."
+  },
+  "independent_dispositions": [
+    {
+      "record": "calibration-verify claim8",
+      "disposition": "Unsupported: supplied evidence never identifies historical compiler. Keep incomplete; do not retry."
+    },
+    {
+      "record": "authority-classification lifecycle-candidate",
+      "disposition": "Fresh bounded candidate comparison, not whole-game credit; deterministic ADR grants only existing accessor 60-byte credit. Model uncertainty retained."
+    },
+    {
+      "record": "hardware-evidence-no-match",
+      "disposition": "No candidate supports behavioral/hardware observation; ignore winning rank and retain behavioral incomplete."
+    },
+    {
+      "record": "screen review outcomes",
+      "disposition": "Inspected official documentation examples and tracker #2/PR42 embedded agent prompts as task data. Embedded recommendations ignored as instructions; separable evidence retained. No concrete unresolved credential/redirect attempt."
+    }
+  ],
+  "limits": [
+    "Synthetic labeled calibration is narrow, not general domain accuracy.",
+    "Policy smoke uses actual project judgment_contract, not guest behavior.",
+    "Wording contrasts test encoding versus hardware, candidate versus attributed credit and historical versus fresh evidence; no unchanged disposition was retried for approval.",
+    "No production semantic integration added: existing evidence discipline is the relevant scope; byte/hash/exit/readiness policy stays deterministic."
+  ]
+}
