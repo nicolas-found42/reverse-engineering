@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import io
 import hashlib
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -13,6 +14,11 @@ import tempfile
 
 ROOT = Path(__file__).resolve().parent.parent
 SHA = re.compile(r'(?:[0-9a-f]{40}|[0-9a-f]{64})\Z')
+
+
+def isolated_environment() -> dict[str, str]:
+    """Drop inherited Git overrides; each child discovers its repository from cwd/-C."""
+    return {name: value for name, value in os.environ.items() if not name.startswith('GIT_')}
 
 
 def introduced_commits(lines: list[str], root: Path = ROOT) -> list[str]:
@@ -26,13 +32,14 @@ def introduced_commits(lines: list[str], root: Path = ROOT) -> list[str]:
         args = ['git', '-C', str(root), 'rev-list', local_sha, '--not', '--remotes']
         if set(remote_sha) != {'0'}:
             args.append(remote_sha)
-        output = subprocess.check_output(args, text=True)
+        output = subprocess.check_output(args, text=True, env=isolated_environment())
         commits.update(output.splitlines())
     return sorted(commits)
 
 
 def materialize(commit: str, target: Path, root: Path = ROOT) -> None:
-    archive = subprocess.check_output(['git', '-C', str(root), 'archive', '--format=tar', commit])
+    env = isolated_environment()
+    archive = subprocess.check_output(['git', '-C', str(root), 'archive', '--format=tar', commit], env=env)
     with tarfile.open(fileobj=io.BytesIO(archive)) as stream:
         for member in stream.getmembers():
             path = target / member.name
@@ -47,13 +54,13 @@ def materialize(commit: str, target: Path, root: Path = ROOT) -> None:
                     raise ValueError('archive member has no content')
                 path.write_bytes(content.read())
                 path.chmod(member.mode & 0o777)
-    subprocess.run(['git', 'init', '-q', str(target)], check=True)
-    subprocess.run(['git', '-C', str(target), 'add', '--force', '--all'], check=True)
-    expected = subprocess.check_output(['git', '-C', str(root), 'ls-tree', '-rz', '--name-only', commit])
-    actual = subprocess.check_output(['git', '-C', str(target), 'ls-files', '-z'])
+    subprocess.run(['git', 'init', '-q', str(target)], check=True, env=env)
+    subprocess.run(['git', '-C', str(target), 'add', '--force', '--all'], check=True, env=env)
+    expected = subprocess.check_output(['git', '-C', str(root), 'ls-tree', '-rz', '--name-only', commit], env=env)
+    actual = subprocess.check_output(['git', '-C', str(target), 'ls-files', '-z'], env=env)
     if set(expected.split(b'\0')) != set(actual.split(b'\0')):
         raise ValueError('archive does not preserve the exact tracked file set (check export-ignore attributes)')
-    entries = subprocess.check_output(['git', '-C', str(root), 'ls-tree', '-rz', commit])
+    entries = subprocess.check_output(['git', '-C', str(root), 'ls-tree', '-rz', commit], env=env)
     for entry in entries.split(b'\0'):
         if not entry:
             continue
@@ -81,7 +88,8 @@ def main() -> int:
                     path = snapshot / 'tools' / script
                     if not path.is_file():
                         raise ValueError('pushed revision lacks required check: ' + script)
-                    subprocess.run([sys.executable, str(path), *args], cwd=snapshot, check=True)
+                    subprocess.run([sys.executable, str(path), *args], cwd=snapshot, check=True,
+                                   env=isolated_environment())
                 print('PASS pushed revision ' + commit)
     except (ValueError, OSError, subprocess.CalledProcessError) as error:
         print('pre-push refused: ' + str(error), file=sys.stderr)
