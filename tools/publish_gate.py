@@ -56,12 +56,16 @@ def unmerged_claims(text: str) -> list[int]:
 
 
 def resolve_revision(root: Path, revision: str) -> bool:
-    result = subprocess.run(
-        ["git", "-C", str(root), "cat-file", "-e", revision + "^{commit}"],
-        capture_output=True,
-        timeout=30,
-    )
-    return result.returncode == 0
+    """A cited identifier may name a commit or a tree; either resolves."""
+    for kind in ("commit", "tree"):
+        result = subprocess.run(
+            ["git", "-C", str(root), "cat-file", "-e", revision + "^{" + kind + "}"],
+            capture_output=True,
+            timeout=30,
+        )
+        if result.returncode == 0:
+            return True
+    return False
 
 
 def fetch(url: str) -> int:

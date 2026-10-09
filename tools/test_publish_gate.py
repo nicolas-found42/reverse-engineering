@@ -92,6 +92,16 @@ class PublishGateTest(unittest.TestCase):
         self.assertEqual(code, 0, report)
         self.assertEqual(report["results"][0]["status"], "pass")
 
+    def test_tree_identifier_passes(self):
+        """A cited tree id resolves; only commits are not the sole accepted form."""
+        tree = subprocess.check_output(
+            ["git", "-C", str(self.repository), "rev-parse", "HEAD^{tree}"], text=True
+        ).strip()
+        path = self.body("tree.md", f"Validated against tree `{tree}`.\n")
+        code, report = self.cli(["--body", str(path), "--offline"])
+        self.assertEqual(code, 0, report)
+        self.assertEqual(report["results"][0]["status"], "pass")
+
     def test_unresolved_revision_fails(self):
         """Negative control: a cited revision that does not exist must fail."""
         dead = "0" * 40
