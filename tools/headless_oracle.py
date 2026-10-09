@@ -52,7 +52,7 @@ DEPENDENCY_MANIFEST = TOOLS / "oracle_dependency_manifest.json"
 
 
 def closure_libraries() -> dict:
-    """Every bundled dylib in the strict-profile load closure with its source component."""
+    """Every bundled dylib in the strict-profile load closure with its source component, excluding libqoffscreen.dylib (checked separately via OFFSCREEN_SHA256)."""
     manifest = json.loads(DEPENDENCY_MANIFEST.read_text())
     libraries = {}
     for name, record in manifest["installed"].items():

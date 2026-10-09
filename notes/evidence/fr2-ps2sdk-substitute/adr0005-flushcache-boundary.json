@@ -1,0 +1,241 @@
+{
+  "schema": "fr2-substitute-boundary/v1",
+  "corpus": {
+    "path": "games/ford-racing-2/extracted/SLES_517.05",
+    "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+  },
+  "range": {
+    "section": ".text",
+    "start": "001eade0",
+    "end_exclusive": "001eadf0",
+    "bytes": 16,
+    "file_offset": "000ebde0",
+    "saved_function_entry": "001eade0",
+    "saved_function_name": "FUN_001eade0",
+    "sha256": "5981c1e46292010b462c1aa96986db0e142b6d8d72e68d4ed765af16db6ee74f",
+    "scope": "substitute_region",
+    "basis": "measured syscall-stub shape plus pinned SDK number/name evidence under ADR-0005"
+  },
+  "stub_evidence": {
+    "shape": "addiu v1,zero,100; syscall; jr ra; nop",
+    "syscall_number": 100,
+    "number_hex": "0x64",
+    "sdk_names": [
+      "FlushCache"
+    ],
+    "sdk_commit": "ac92a9f657d2e531dd8f060250b07f2a5ac6dea5",
+    "syscall_header": "ee/kernel/include/syscallnr.h",
+    "syscall_header_sha256": "573f0c3276eaae064f0da04990126133b434259b3b235e53ed8f013694300edc",
+    "ownership": "saved_function",
+    "claim_limit": "Shape plus pinned SDK number/name corroborate the decision; the BIOS behavior and the original kernel library version are not established."
+  },
+  "interface": {
+    "declaration": "void FlushCache(int operation);",
+    "sdk_declaration_source": "ee/kernel/include/kernel.h",
+    "calling_convention": "MIPS o32: operation in $a0; li $v1,100; syscall; jr $ra",
+    "operation_semantics": "0 = writeback dcache, 1 = invalidate dcache, 2 = invalidate icache (WRITEBACK_DCACHE, INVALIDATE_DCACHE, INVALIDATE_ICACHE)",
+    "observed_call_site_arguments": [
+      0,
+      2
+    ],
+    "side_effects": "Cache maintenance before code upload/setup; unobserved guest behavior beyond the call contract.",
+    "claim_limit": "Call and signature contract only; no original symbol or behavior recovery is claimed."
+  },
+  "static_consumers": {
+    "distinct_saved_callers": 23,
+    "callers": [
+      {
+        "entry": "001f8488",
+        "name": "FUN_001f8488",
+        "size": 164,
+        "call_sites": [
+          "001f8508"
+        ]
+      },
+      {
+        "entry": "001f9f30",
+        "name": "candidate_ee_001f9f30",
+        "size": 344,
+        "call_sites": [
+          "001fa008"
+        ]
+      },
+      {
+        "entry": "001f2d50",
+        "name": "FUN_001f2d50",
+        "size": 212,
+        "call_sites": [
+          "001f2dc8",
+          "001f2dd0"
+        ]
+      },
+      {
+        "entry": "0010c540",
+        "name": "FUN_0010c540",
+        "size": 332,
+        "call_sites": [
+          "0010c5ac"
+        ]
+      },
+      {
+        "entry": "001f2998",
+        "name": "FUN_001f2998",
+        "size": 172,
+        "call_sites": [
+          "001f29e8",
+          "001f29f0"
+        ]
+      },
+      {
+        "entry": "001f92a8",
+        "name": "FUN_001f92a8",
+        "size": 372,
+        "call_sites": [
+          "001f93a4"
+        ]
+      },
+      {
+        "entry": "00100008",
+        "name": "entry",
+        "size": 448,
+        "call_sites": [
+          "001001a0"
+        ]
+      },
+      {
+        "entry": "0022d278",
+        "name": "FUN_0022d278",
+        "size": 748,
+        "call_sites": [
+          "0022d36c",
+          "0022d460"
+        ]
+      },
+      {
+        "entry": "0011a114",
+        "name": "candidate_ee_0011a114",
+        "size": 424,
+        "call_sites": [
+          "0011a274"
+        ]
+      },
+      {
+        "entry": "001fc538",
+        "name": "candidate_ee_001fc538",
+        "size": 256,
+        "call_sites": [
+          "001fc5d4"
+        ]
+      },
+      {
+        "entry": "0010d560",
+        "name": "FUN_0010d560",
+        "size": 88,
+        "call_sites": [
+          "0010d5a0"
+        ]
+      },
+      {
+        "entry": "001ec020",
+        "name": "FUN_001ec020",
+        "size": 188,
+        "call_sites": [
+          "001ec034"
+        ]
+      },
+      {
+        "entry": "00106ef8",
+        "name": "FUN_00106ef8",
+        "size": 872,
+        "call_sites": [
+          "0010722c"
+        ]
+      },
+      {
+        "entry": "001f38a0",
+        "name": "FUN_001f38a0",
+        "size": 196,
+        "call_sites": [
+          "001f38e8",
+          "001f38f0"
+        ]
+      },
+      {
+        "entry": "001f9d68",
+        "name": "candidate_ee_001f9d68",
+        "size": 456,
+        "call_sites": [
+          "001f9eac"
+        ]
+      },
+      {
+        "entry": "00221c60",
+        "name": "FUN_00221c60",
+        "size": 276,
+        "call_sites": [
+          "00221d34"
+        ]
+      },
+      {
+        "entry": "00107960",
+        "name": "FUN_00107960",
+        "size": 136,
+        "call_sites": [
+          "00107990"
+        ]
+      },
+      {
+        "entry": "00107fd0",
+        "name": "FUN_00107fd0",
+        "size": 224,
+        "call_sites": [
+          "00108094"
+        ]
+      },
+      {
+        "entry": "0010d330",
+        "name": "FUN_0010d330",
+        "size": 252,
+        "call_sites": [
+          "0010d3dc"
+        ]
+      },
+      {
+        "entry": "0010d430",
+        "name": "FUN_0010d430",
+        "size": 264,
+        "call_sites": [
+          "0010d4e4"
+        ]
+      },
+      {
+        "entry": "0011b780",
+        "name": "FUN_0011b780",
+        "size": 108,
+        "call_sites": [
+          "0011b7b0"
+        ]
+      },
+      {
+        "entry": "001f3080",
+        "name": "FUN_001f3080",
+        "size": 640,
+        "call_sites": [
+          "001f31b4"
+        ]
+      },
+      {
+        "entry": "0013cb78",
+        "name": "candidate_ee_0013cb78",
+        "size": 232,
+        "call_sites": [
+          "0013cbc4",
+          "0013cbf0"
+        ]
+      }
+    ],
+    "claim_limit": "static direct-call references only; callers stay mixed/unresolved and no dynamic reachability is claimed"
+  },
+  "other_source_range_status": "All unlisted bytes and all other section ranges retain their existing mixed/unresolved status.",
+  "falsifier": "A byte-identical game-owned source claim, an overlapping non-substitute attribution, or disjoint CFG evidence placing these bytes in another unit invalidates this split."
+}

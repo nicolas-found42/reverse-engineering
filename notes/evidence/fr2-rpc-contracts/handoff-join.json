@@ -1,0 +1,96 @@
+{
+ "claim_limits": "Deterministic CLI output and unit tests carry acceptance; Jev judgments are retained observations only, never approval.",
+ "commands_tested": [
+  "bash tools/check.sh test_rpc_contracts test_rpc_handoff_inventory",
+  "python3 tools/inventory_rpc_handoffs.py <extracted> --output .scratch/rpc-join-check",
+  "check_handoff_contract(ee, stream) on fixed PAL corpus"
+ ],
+ "disposition": "Fail-closed: no semantic claim accepted on Jev authority. Join-binds needed a verbatim-row retry to reach supports, still below auto thresholds; negatives and no-runtime verified at auto grade. Deterministic evidence (bound row fields, exit codes, 25 green tests) is the acceptance basis.",
+ "handoffs": [
+  {
+   "call_sites": [
+    "0x001397e0",
+    "0x0013bb84"
+   ],
+   "client_record": "0x00359280",
+   "commands": [
+    0,
+    1
+   ],
+   "contract_keys": [
+    "consumer",
+    "consumer_address",
+    "dispatch_command",
+    "handler",
+    "handler_address",
+    "module",
+    "outputs",
+    "ownership",
+    "record",
+    "runtime",
+    "service_id",
+    "shared_objects",
+    "synchronization"
+   ],
+   "handler": "ProcessEECommand@0xd410 (ELF function symbol)",
+   "queue": "0x232a0 (rpc_arg)",
+   "register_site": "0xd4f0",
+   "service_id": "0x12345",
+   "status": "bound"
+  },
+  {
+   "count": 13,
+   "reason": "no IOP registration binds this service id",
+   "status": "incomplete"
+  }
+ ],
+ "inventory": {
+  "diagnostics": [
+   "required parent handoff inventory is not yet reconciled"
+  ],
+  "exit": 2,
+  "handoffs": 14
+ },
+ "jev": [
+  {
+   "claim": "EE-to-IOP join binds 0x12345 to STREAM ProcessEECommand with record, sites and symbol-bound handler",
+   "confidence": 0.64,
+   "retry_with_verbatim_row": {
+    "choice": "supports",
+    "confidence": 0.49,
+    "probabilities": {
+     "contradicts": 0.26,
+     "says_nothing": 0.08,
+     "supports": 0.66
+    }
+   },
+   "first_choice": "contradicts",
+   "first_confidence": 0.64,
+   "first_supports": 0.02,
+   "retry_choice": "supports",
+   "retry_confidence": 0.49,
+   "retry_supports": 0.66
+  },
+  {
+   "claim": "groups with no registration or missing handler/state stay incomplete",
+   "confidence": 1.0,
+   "verdict": "supports@1.0"
+  },
+  {
+   "claim": "load bases and registration order stay unobserved; no runtime registration claimed",
+   "confidence": 0.83,
+   "verdict": "supports@0.89"
+  }
+ ],
+ "model": "typesafe/jev-1.13",
+ "runtime": {
+  "load_base": null,
+  "registration": "unobserved",
+  "registration_order": "unobserved"
+ },
+ "tests": {
+  "errors": 0,
+  "failures": 0,
+  "run": 25
+ }
+}

@@ -51,7 +51,10 @@ def _executable_words(data: bytes):
     return get
 
 
-def _dispatch_rows(data: bytes, static: dict) -> list[dict]:
+# Row addresses stay hex strings: tests pin that presentation form, so int math lives only in owned/span locals.
+
+
+def _dispatch_rows(data: bytes, static: dict) -> tuple[list[dict], list[dict]]:
     get = _executable_words(data)
     pieces = segments(data, _unlisted(data, static))
     owned = {
@@ -59,7 +62,7 @@ def _dispatch_rows(data: bytes, static: dict) -> list[dict]:
         for function in static["functions"]
         for row in function["instructions"]
     }
-    rows = []
+    rows, refused = [], []
 
     def scan(pc: int, floor: int, owner: str | None, span: dict | None) -> None:
         word = get(pc)
@@ -70,7 +73,19 @@ def _dispatch_rows(data: bytes, static: dict) -> list[dict]:
             return
         try:
             targets = read_table(data, pin["table"], pin["count"])
-        except (Invalid, ValueError):
+        except (Invalid, ValueError) as failed:
+            refused.append(
+                {
+                    "site": f"{pin['site']:08x}",
+                    "table": f"{pin['table']:08x}",
+                    "count": pin["count"],
+                    "guard_site": f"{pin['guard_site']:08x}",
+                    "owner_entry": owner,
+                    "span": f"{span['address']:08x}" if span else None,
+                    "reason": f"table unreadable: {failed}",
+                    "falsifier": "a data-section table read that pins ordered targets",
+                }
+            )
             return
         if span is None:
             domain = "owned" if all(t in owned for t in targets) else "split"
@@ -100,7 +115,7 @@ def _dispatch_rows(data: bytes, static: dict) -> list[dict]:
             continue
         for index in range(len(piece["words"])):
             scan(piece["address"] + index * WORD, piece["address"], None, piece)
-    return rows
+    return rows, refused
 
 
 def _span_rows(data: bytes, static: dict) -> list[dict]:
@@ -140,13 +155,17 @@ def _span_rows(data: bytes, static: dict) -> list[dict]:
 def inventory(data: bytes, static: dict) -> dict:
     details = _unlisted(data, static)
     spans = _span_rows(data, static)
+    dispatches, refused = _dispatch_rows(data, static)
     return {
         "executable_sha256": details["executable_sha256"],
         "inventory_count": details["inventory_count"],
         "spans": spans,
-        "dispatches": _dispatch_rows(data, static),
+        "dispatches": dispatches,
+        "refused_dispatches": refused,
         "summary": {
             "spans": len(spans),
+            "dispatches": len(dispatches),
+            "refused_dispatches": len(refused),
             "unresolved_bytes": sum(
                 s["bytes"] for s in spans if s["disposition"] == "unresolved"
             ),

@@ -110,3 +110,36 @@ receipt remain explicitly historical.
 ## Later source change (PR review)
 
 The hashes pinned in `source-pins.json` describe the sources as audited. After that, code review noted that `tools/ps2_container.py` accepted mip counts larger than an image can halve (a 1x1 texture with one mip produced a zero-byte level). The parser now rejects such descriptors, and `tools/test_ps2_textures.py` gained a regression test. Current SHA-256: `ps2_container.py` `d6782d76949eff05aa214b7d35bd5f1722a3109596bd765a2c55153923d331d0`, `test_ps2_textures.py` `7aa29e342cf1905d42e13185ad27294deacec0f2f3ad0583a815703397a5548d`. The real-corpus integration test (56 models, 2,370 textures, all level-0 images decoded) and the 25 texture and texture-index tests passed on the changed code, so no corpus texture used an over-long mip chain. The pins above were left as the audited record.
+
+## Per-variant coverage (issue #29)
+
+`tools/verify_textures.py` now publishes archive-derived per-variant coverage
+in-tree: every texture's format, packed/direct route, mip count, per-level
+plane spans and predicted upload sizes, plus palette class spans and index
+bounds. Reproduce against the local PAL corpus (payloads stay local):
+
+```sh
+python3 tools/verify_textures.py corpus games/ford-racing-2 --output .scratch/evidence/textures
+```
+
+Observed all-56 corpus result: 56 models, 2,370 textures, 4,941 levels,
+79,708,000 equal source/predicted-transfer bytes, 2,370 decoded level-zero
+images, 50 small images (min dimension below 16), zero rejected levels and
+zero rejected palette references. Variant rows (format, route, mips, count):
+(1,direct,0,77), (1,direct,1,40), (1,direct,2,233), (3,direct,0,70),
+(3,direct,1,31), (3,direct,2,129), (3,packed,0,784), (3,packed,1,41),
+(3,packed,2,496), (4,direct,0,10), (4,direct,2,18), (4,packed,0,86),
+(4,packed,1,3), (4,packed,2,352). Format 2 is absent; palette classes are
+A/C 256-entry for format 3 and B 16-entry (plus 19 format-4 references to
+256-entry blocks, first 16 raw colors) for format 4.
+
+Unresolved, explicitly retained: mip pixels above level 0, palette block
+contents, descriptor opaque words (+0x4/+0xc..+0x18/+0x1c/+0x2c, extra word
+after the texture count), mip-record word semantics beyond the zero word at
+record +8, GS runtime state, rendered output and allocation release lifetime.
+Current SHA-256: `ps2_container.py`
+`e90bd40437aa40c215a308daf80ff73c6af5c3aae3e642c2b6da72593c48c160`,
+`verify_textures.py`
+`804507b48b349ebf8936b53f2f8d2ac0f46cbcf36d2d9e8d33a546ff05b7a23a`,
+`test_ps2_textures.py`
+`9b34df13fc411bd4fcbeb0fdefb73397d8a4bba06dadd9074224e85c865503a1`.

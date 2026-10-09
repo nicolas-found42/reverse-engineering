@@ -18,14 +18,27 @@ def tiled_dd(width=80, height=40, cell=32, **overrides):
     """A synthetic file with the measured 0xDDDDDDDD-trailer layout."""
     cols, rows = -(-width // cell), -(-height // cell)
     count = cols * rows
-    out = bytearray(struct.pack("<8I", count, cols, rows, cell, cell, width, height, DD))
+    out = bytearray(
+        struct.pack("<8I", count, cols, rows, cell, cell, width, height, DD)
+    )
     out += bytes([0xAA]) * 48
     for i in range(count):
         fu = min(cell, width - (i % cols) * cell) / cell
         fv = min(cell, height - (i // cols) * cell) / cell
         out += struct.pack("<IIII", F32(fu), F32(fv), 0x07C00000 + i * 0x1000, DD)
     for i in range(count):
-        out += struct.pack("<16I", 0x01C905E0, 0, *([DD] * 8), 0x08020000 + i, DD, 0xD0820004, 0xDDDDDD03, 0xAAAA8C45, DD)
+        out += struct.pack(
+            "<16I",
+            0x01C905E0,
+            0,
+            *([DD] * 8),
+            0x08020000 + i,
+            DD,
+            0xD0820004,
+            0xDDDDDD03,
+            0xAAAA8C45,
+            DD,
+        )
     out += bytes((i * 7 + 3) & 0xFF for i in range(count * 1024))
     out += bytes([0xFE]) * 1040
     data = bytearray(out)
@@ -44,7 +57,13 @@ class PtgVerifier(unittest.TestCase):
     def command(self, *args):
         out = self.root / "results"
         p = subprocess.run(
-            [sys.executable, str(TOOLS / "verify_ptg.py"), *map(str, args), "--output", str(out)],
+            [
+                sys.executable,
+                str(TOOLS / "verify_ptg.py"),
+                *map(str, args),
+                "--output",
+                str(out),
+            ],
             capture_output=True,
             text=True,
         )
@@ -63,12 +82,21 @@ class PtgVerifier(unittest.TestCase):
         self.assertEqual((code, result["status"]), (0, "pass"), result["diagnostics"])
         details = result["details"]
         self.assertEqual(details["profile"], "tiled_dd")
-        self.assertEqual((details["tiles"]["columns"], details["tiles"]["rows"], details["tiles"]["count"]), (3, 2, 6))
+        self.assertEqual(
+            (
+                details["tiles"]["columns"],
+                details["tiles"]["rows"],
+                details["tiles"]["count"],
+            ),
+            (3, 2, 6),
+        )
         self.assertEqual(details["tiles"]["order"], "row-major")
         self.assertEqual(len(details["pixel_sha256"]), 64)
         self.assertEqual(details["pointer_values_within_file"], False)
         for topic in ("palette", "tile pointer values", "descriptor words"):
-            self.assertTrue(any(topic in u for u in details["unresolved"]), details["unresolved"])
+            self.assertTrue(
+                any(topic in u for u in details["unresolved"]), details["unresolved"]
+            )
 
     def test_tile_extent_floats_follow_row_major_position(self):
         data = bytearray(tiled_dd())
@@ -77,7 +105,10 @@ class PtgVerifier(unittest.TestCase):
         data[80:88], data[112:120] = b, a
         code, result = self.command("file", self.file(bytes(data)))
         self.assertEqual((code, result["status"]), (1, "fail"))
-        self.assertTrue(any("tile 0" in d and "extent" in d for d in result["diagnostics"]), result["diagnostics"])
+        self.assertTrue(
+            any("tile 0" in d and "extent" in d for d in result["diagnostics"]),
+            result["diagnostics"],
+        )
 
     def test_header_relations_are_enforced(self):
         for overrides, text in (
@@ -87,13 +118,19 @@ class PtgVerifier(unittest.TestCase):
         ):
             code, result = self.command("file", self.file(tiled_dd(**overrides)))
             self.assertEqual((code, result["status"]), (1, "fail"), overrides)
-            self.assertTrue(any(text in d for d in result["diagnostics"]), (overrides, result["diagnostics"]))
+            self.assertTrue(
+                any(text in d for d in result["diagnostics"]),
+                (overrides, result["diagnostics"]),
+            )
 
     def test_size_model_is_exact(self):
         for data in (tiled_dd() + b"\0", tiled_dd()[:-16]):
             code, result = self.command("file", self.file(data))
             self.assertEqual((code, result["status"]), (1, "fail"))
-            self.assertTrue(any("1120 + 1104" in d for d in result["diagnostics"]), result["diagnostics"])
+            self.assertTrue(
+                any("1120 + 1104" in d for d in result["diagnostics"]),
+                result["diagnostics"],
+            )
 
     def test_descriptor_padding_and_constancy_are_enforced(self):
         count = 6
@@ -102,12 +139,47 @@ class PtgVerifier(unittest.TestCase):
         broken[base + 64 * 2 + 8] = 0x00  # a word that must be 0xDDDDDDDD
         code, result = self.command("file", self.file(bytes(broken)))
         self.assertEqual((code, result["status"]), (1, "fail"))
-        self.assertTrue(any("descriptor 2" in d for d in result["diagnostics"]), result["diagnostics"])
+        self.assertTrue(
+            any("descriptor 2" in d for d in result["diagnostics"]),
+            result["diagnostics"],
+        )
         varying = bytearray(tiled_dd())
         varying[base + 64 * 4 + 48] ^= 0x01  # word 12 differs in one tile
         code, result = self.command("file", self.file(bytes(varying)))
         self.assertEqual((code, result["status"]), (1, "fail"))
-        self.assertTrue(any("not constant" in d for d in result["diagnostics"]), result["diagnostics"])
+        self.assertTrue(
+            any("not constant" in d for d in result["diagnostics"]),
+            result["diagnostics"],
+        )
+
+    def test_wrong_pointer_pad_word_fails(self):
+        broken = bytearray(tiled_dd())
+        struct.pack_into("<I", broken, 80 + 12, 0x00)  # record pad must be 0xDDDDDDDD
+        code, result = self.command("file", self.file(bytes(broken)))
+        self.assertEqual((code, result["status"]), (1, "fail"))
+        self.assertTrue(
+            any("tile 0" in d and "extent" in d for d in result["diagnostics"]),
+            result["diagnostics"],
+        )
+
+    def test_truncated_pixel_plane_fails_size_model(self):
+        data = tiled_dd()[: 1120 + 1104 * 6 - 1024]  # one tile plane missing
+        code, result = self.command("file", self.file(data))
+        self.assertEqual((code, result["status"]), (1, "fail"))
+        self.assertTrue(
+            any("1120 + 1104" in d for d in result["diagnostics"]),
+            result["diagnostics"],
+        )
+
+    def test_corrupt_index_table_row_fails_sprite_contract(self):
+        header = struct.pack("<8I", 1, 0, 0, 4, 32, 2, 2, 1)
+        order = bytes((i & ~24) | ((i & 8) << 1) | ((i & 16) >> 1) for i in range(256))
+        table = b"".join(bytes([227, 227, 227, v]) for v in order)
+        good = header + table + bytes([1, 2, 221, 221, 3, 4, 221, 221])
+        bad = bytearray(good)
+        bad[len(header) + 7] ^= 0x01  # wrong palette index byte in the table
+        code, result = self.command("file", self.file(bytes(bad)))
+        self.assertEqual((code, result["status"]), (1, "fail"), result["diagnostics"])
 
     def test_truncated_and_oversized_inputs_fail(self):
         code, result = self.command("file", self.file(b"\0" * 20))
@@ -126,11 +198,15 @@ class PtgVerifier(unittest.TestCase):
         self.assertEqual(result["details"]["profile"], "tiled_header_only")
         self.assertTrue(any("layout" in u for u in result["details"]["unresolved"]))
 
-    def test_single_tile_file_outside_the_sprite_contract_is_incomplete_in_file_mode(self):
+    def test_single_tile_file_outside_the_sprite_contract_is_incomplete_in_file_mode(
+        self,
+    ):
         header = struct.pack("<8I", 1, 1, 1, 32, 32, 28, 28, 1) + bytes(300)
         code, result = self.command("file", self.file(header))
         self.assertEqual((code, result["status"]), (2, "incomplete"))
-        self.assertTrue(any("sprite" in d for d in result["diagnostics"]), result["diagnostics"])
+        self.assertTrue(
+            any("sprite" in d for d in result["diagnostics"]), result["diagnostics"]
+        )
         self.assertEqual(result["details"]["profile"], "single_unsupported")
 
     def test_missing_input_is_incomplete(self):
@@ -139,14 +215,23 @@ class PtgVerifier(unittest.TestCase):
 
     def test_corpus_real_integration(self):
         if not (GAME / "extracted" / "FILES.HDR").exists():
-            self.skipTest("real corpus integration; absent corpus is `incomplete` for the milestone")
+            self.skipTest(
+                "real corpus integration; absent corpus is `incomplete` for the milestone"
+            )
         code, result = self.command("corpus", GAME)
-        self.assertEqual((code, result["status"]), (0, "pass"), result["diagnostics"][:5])
+        self.assertEqual(
+            (code, result["status"]), (0, "pass"), result["diagnostics"][:5]
+        )
         details = result["details"]
         self.assertEqual(details["files"], 548)
         self.assertEqual(
             details["profiles"],
-            {"sprite": 16, "single_unsupported": 24, "tiled_dd": 17, "tiled_header_only": 491},
+            {
+                "sprite": 16,
+                "single_unsupported": 24,
+                "tiled_dd": 17,
+                "tiled_header_only": 491,
+            },
         )
         self.assertEqual(details["header_relation_violations"], 0)
 

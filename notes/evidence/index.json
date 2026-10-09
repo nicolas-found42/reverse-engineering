@@ -20,6 +20,34 @@
       ]
     },
     {
+      "path": "notes/evidence/fr2-audio-contracts/README.md",
+      "readme_sha256": "f7e87f6ae441f5a2132ca6e5fe03b8e432cee8d6a4c655d1b2b0cc20f925cd4b",
+      "commands": [
+        "python3 -c 'import json; d = json.load(open(\"notes/evidence/fr2-audio-contracts/variant-census.json\")); print(\"corpus:\", d[\"corpus_id\"][:8]); print(\"banks:\", {k: v[\"banks\"] for k, v in d[\"variants\"][\"bank\"].items()}); print(\"streams:\", {k: v[\"streams\"] for k, v in d[\"variants\"][\"stream\"].items()}); print(\"playlists:\", {k: (v[\"files\"], v[\"lines\"]) for k, v in d[\"variants\"][\"playlist\"].items()})'",
+        "sh tools/check.sh test_audio_census\npython3 tools/publish_gate.py --body notes/evidence/fr2-audio-contracts/README.md"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+          "line": 27,
+          "context": "  `e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab`"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "c8abdab114c9bb3dd6986cd42afb9e910024d32c",
+          "line": 5,
+          "context": "`c8abdab114c9bb3dd6986cd42afb9e910024d32c`, index fix"
+        },
+        {
+          "value": "cc6baa0f615d861baef3a6de7fe0642d8c17a9e9",
+          "line": 6,
+          "context": "`cc6baa0f615d861baef3a6de7fe0642d8c17a9e9`) with:"
+        }
+      ],
+      "missing": []
+    },
+    {
       "path": "notes/evidence/fr2-clean-baseline/README.md",
       "readme_sha256": "e197cdc55d97efc4bd84ccbaadb0d182543c39084e3ea42703bb71b464d4ec5f",
       "commands": [
@@ -1056,6 +1084,35 @@
       ]
     },
     {
+      "path": "notes/evidence/fr2-grammars-disposition/README.md",
+      "readme_sha256": "279f65af79e92c2505351e79651922b1e8bb574d50e698d3f6ed4dd2d1286796",
+      "commands": [
+        "git cat-file -t 4580acd e46174a\ngit merge-base --is-ancestor 05a685a HEAD && echo \"05a685a is an ancestor of HEAD\"\npython3 tools/publish_gate.py --body notes/evidence/fr2-grammars-disposition/README.md",
+        "sh tools/check.sh test_ui_contracts",
+        "python3 - <<'PY'\nimport sys\nsys.path.insert(0, \"tools\")\nfrom pathlib import Path\nfrom corpus_binding import Baseline\nfrom ui_contracts import parse_ui_script\nentries = Baseline(Path(\"games/ford-racing-2\")).entries(\".ui;1\")\ntags, depth, failures = set(), 0, []\nfor e in entries:\n    try:\n        parsed = parse_ui_script(e.load())\n    except Exception as exc:\n        failures.append(str(exc))\n        continue\n    tags |= set(parsed.tags) | {rec.tag for rec in parsed.records}\n    for b in parsed.blocks:\n        depth = max(depth, b.depth)\nprint(\"ui files parsed:\", len(entries) - len(failures), \"/\", len(entries))\nprint(\"distinct tags:\", len(tags), \"max block depth:\", depth)\nPY"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab",
+          "line": 24,
+          "context": "`e69a2afbd6db606d166e40bae32c436691e134722ad153200859961a5f517dab`)"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "4580acdb41f7ecd00df3eb6fe1d2cf8282f95e2e",
+          "line": 4,
+          "context": "(`4580acdb41f7ecd00df3eb6fe1d2cf8282f95e2e`, green: 8 tests) plus regenerated"
+        },
+        {
+          "value": "e46174a7cd0db9717886f44cd63ff38964a3d212",
+          "line": 5,
+          "context": "`tools/README.md` index (`e46174a7cd0db9717886f44cd63ff38964a3d212`)."
+        }
+      ],
+      "missing": []
+    },
+    {
       "path": "notes/evidence/fr2-gs-address-audit/README.md",
       "readme_sha256": "0697b394eae7d3a9221f5bd2e2a134f5642094b79c8a03fefffc07da20a7f1ce",
       "commands": [],
@@ -1582,7 +1639,7 @@
     },
     {
       "path": "notes/evidence/fr2-misc3d-loader/README.md",
-      "readme_sha256": "e959a45eaf5a2e6782475617a407b7d693ceeda2b849aecb93b27d091ead2a88",
+      "readme_sha256": "a1f489e536192c7bd42f7d3e6b6ea23fc272ec6bb5a2c56f7d2dad80dacbebd6",
       "commands": [
         "python3 tools/misc3d_loader.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \\\n  notes/evidence/fr2-misc3d-loader/isolated-project.json \\\n  --output .scratch/evidence/misc3d-loader-fresh",
         "python3 tools/misc3d_loader_recipe/controls.py games/ford-racing-2 \\\n  /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  /Users/Nicolas/Documents/github/hermes/fr2-implementation-context/issue-35-evidence/issue-35/reconciled-inventory.json \\\n  notes/evidence/fr2-misc3d-loader/isolated-project.json \\\n  --output .scratch/evidence/misc3d-loader-controls-fresh",
@@ -1833,7 +1890,7 @@
     },
     {
       "path": "notes/evidence/fr2-ptg-body-contracts/README.md",
-      "readme_sha256": "0d85a6afd32e9095b078a523f988dff165f20814c14b58bf4091b213e76739cc",
+      "readme_sha256": "0af4f573bb401c473405fd85e24bc8036cb43b5a4ac6645f648e4b5f6b0a6ca0",
       "commands": [
         "bash tools/check.sh test_ptg_body_census\npython3 tools/verify_ptg.py corpus games/ford-racing-2 --output .scratch/evidence/ptg"
       ],
@@ -1881,7 +1938,7 @@
     },
     {
       "path": "notes/evidence/fr2-rpc-contracts/README.md",
-      "readme_sha256": "afc4ee1ee73e1c290896aa693ee9ee6f4b6a0948780cf679a9990b788dcd804e",
+      "readme_sha256": "1478f6de17cb2037f89f12bfe3a50ef82792039e0f6a894707a570e4320958a1",
       "commands": [
         "python3 tools/inventory_rpc_handoffs.py \\\n  /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted \\\n  --output .scratch/rpc-controls/inventory\n\ntools/check.sh test_rpc_contracts\n\npython3 - <<'PY'\nfrom pathlib import Path\nimport struct\nroot = Path('.scratch/rpc-controls')\nroot.mkdir(parents=True, exist_ok=True)\ncontrols = {\n    'positive': (62, 2, 2, 3, 0, 120, 240, 2, 3, 47, 600, 700),\n    'negative': (62, 1, 2, 4, 0, 120, 240, 0),\n    'incomplete': (62, 1, 9, 2, 65535, 0),\n}\nfor name, words in controls.items():\n    (root / (name + '.bin')).write_bytes(\n        struct.pack('<' + 'H' * len(words), *words).ljust(2048, b'\\xa5'))\nPY\n\npython3 tools/check_rpc_contracts.py \\\n  --ee /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05 \\\n  --stream /Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX \\\n  --packet .scratch/rpc-controls/positive.bin \\\n  --output .scratch/rpc-controls/positive"
       ],
@@ -2111,8 +2168,10 @@
     },
     {
       "path": "notes/evidence/fr2-texture-upload-audit/README.md",
-      "readme_sha256": "4bc0a226d9ebf0352a672aa197b386b0861433ef536c1c210d905acf1ab0fe80",
-      "commands": [],
+      "readme_sha256": "0cfa74fe5ab20a84f94583416f846d9be411cc59ff43be19081faaf93e535c05",
+      "commands": [
+        "python3 tools/verify_textures.py corpus games/ford-racing-2 --output .scratch/evidence/textures"
+      ],
       "sha256_mentions": [
         {
           "value": "d6782d76949eff05aa214b7d35bd5f1722a3109596bd765a2c55153923d331d0",
@@ -2123,6 +2182,21 @@
           "value": "7aa29e342cf1905d42e13185ad27294deacec0f2f3ad0583a815703397a5548d",
           "line": 112,
           "context": "The hashes pinned in `source-pins.json` describe the sources as audited. After that, code review noted that `tools/ps2_container.py` accepted mip counts larger than an image can halve (a 1x1 texture with one mip produced a zero-byte level). The parser now rejects such descriptors, and `tools/test_ps2_textures.py` gained a regression test. Current SHA-256: `ps2_container.py` `d6782d76949eff05aa214b7d35bd5f1722a3109596bd765a2c55153923d331d0`, `test_ps2_textures.py` `7aa29e342cf1905d42e13185ad27294deacec0f2f3ad0583a815703397a5548d`. The real-corpus integration test (56 models, 2,370 textures, all level-0 images decoded) and the 25 texture and texture-index tests passed on the changed code, so no corpus texture used an over-long mip chain. The pins above were left as the audited record."
+        },
+        {
+          "value": "e90bd40437aa40c215a308daf80ff73c6af5c3aae3e642c2b6da72593c48c160",
+          "line": 141,
+          "context": "`e90bd40437aa40c215a308daf80ff73c6af5c3aae3e642c2b6da72593c48c160`,"
+        },
+        {
+          "value": "804507b48b349ebf8936b53f2f8d2ac0f46cbcf36d2d9e8d33a546ff05b7a23a",
+          "line": 143,
+          "context": "`804507b48b349ebf8936b53f2f8d2ac0f46cbcf36d2d9e8d33a546ff05b7a23a`,"
+        },
+        {
+          "value": "9b34df13fc411bd4fcbeb0fdefb73397d8a4bba06dadd9074224e85c865503a1",
+          "line": 145,
+          "context": "`9b34df13fc411bd4fcbeb0fdefb73397d8a4bba06dadd9074224e85c865503a1`."
         }
       ],
       "revision_mentions": [
@@ -2132,9 +2206,7 @@
           "context": "`81526d4dc7cc70e4ae75abb35a789417456c6d43` supply a pinned, independently"
         }
       ],
-      "missing": [
-        "reproduction_command"
-      ]
+      "missing": []
     },
     {
       "path": "notes/evidence/fr2-texture-upload-audit/independent-review/README.md",

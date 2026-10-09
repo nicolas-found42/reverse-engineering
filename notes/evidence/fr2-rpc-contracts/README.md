@@ -101,14 +101,20 @@ converts those imports into observed runtime registration or actual bases.
 
 ## Required frontier and next child
 
-The complete handoff inventory is not derived yet. `inventory.json` retains
-every candidate in this scan boundary and the named gaps; `parent_gaps` remains
-nonempty in the volume check even when the child passes. Required remaining
-work is service/client binding for the other EE candidates, IOP handler and
-registration argument recovery, indirect/data-carried dispatch domains,
-other STREAM subcommands, streaming shared records, DMA direction and length,
-reply/callback layout and buffer ownership/lifetime. Absence from this bounded
-scan is not proof that a protocol does not exist.
+The decoded handoff join (`derive_handoffs` in `tools/inventory_rpc_handoffs.py`,
+`check_handoff_contract` in `tools/check_rpc_contracts.py`) links EE bind/call
+groups to IOP `sceSifRegisterRpc` registrations by service id. Service `0x12345`
+is **bound**: client record `0x00359280`, call sites `0x001397e0` (command 0)
+and `0x0013bb84` (command 1), registration site `0xd4f0`, handler
+`ProcessEECommand` (`0xd410`, ELF function symbol), queue object `0x232a0`
+(`rpc_arg`), with the record/ownership/synchronization/outputs contract and
+explicitly unobserved runtime registration/load base. The other 13 decoded EE
+service groups stay **incomplete** (no IOP registration binds their service
+id); handler-name-only or unbound-buffer rows never pass, and indirect/data-
+carried dispatch domains remain unreconciled. `parent_gaps` remains nonempty.
+Required remaining work is other STREAM subcommands, streaming shared records,
+DMA direction and length, reply/callback layout and buffer ownership/lifetime.
+Absence from this bounded scan is not proof that a protocol does not exist.
 
 Next bounded child: recover the STREAM reply and completion callback at EE
 `0x0013eac8`, join writes to IOP `aret` to EE reads of `0x00358380`, and establish

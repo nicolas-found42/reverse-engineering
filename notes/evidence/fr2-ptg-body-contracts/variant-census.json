@@ -3,7 +3,38 @@
   "files": 548,
   "tool_sources": {
     "ptg_profile.py": "b659112a2110ddc580a2e2ee13c1745b1437ee30f5bce934f66620cf3b86bb9e",
-    "verify_ptg.py": "ccf74aa855cf8acb8ba8b5694becffa1dba2c46169c84671e8b8264e24b01c1d"
+    "verify_ptg.py": "ccf74aa855cf8acb8ba8b5694becffa1dba2c46169c84671e8b8264e24b01c1d",
+    "test_ptg_consumer_binding.py": "9d2bb0312250cb8416672bead64591f3f3af001b5d458edcffb6ce7cc4a0b6af"
+  },
+  "consumer": {
+    "executable": {
+      "path": "games/ford-racing-2/extracted/SLES_517.05",
+      "sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95"
+    },
+    "loader": {
+      "entry": "0x22a910",
+      "words": 115,
+      "sha16": "7ae37e9b694990d0",
+      "prologue_hex": "d0ffbd272300023c"
+    },
+    "extension_check": {
+      "psd_string_vaddr": "0x28ef08",
+      "accepts": [
+        "psd",
+        "ptg"
+      ]
+    },
+    "callers": 35,
+    "static_requests": 39,
+    "resolved_profiles": {
+      "tiled_dd": 3,
+      "tiled_header_only": 36
+    },
+    "ui_init": {
+      "entry": "0x169cd8",
+      "words": 221,
+      "sha16": "adfe277e6f10d073"
+    }
   },
   "variants": {
     "barsub512": {

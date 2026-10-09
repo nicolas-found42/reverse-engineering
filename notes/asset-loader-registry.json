@@ -37,7 +37,7 @@
       },
       {
         "path": "notes/evidence/fr2-texture-upload-audit/README.md",
-        "sha256": "4bc0a226d9ebf0352a672aa197b386b0861433ef536c1c210d905acf1ab0fe80"
+        "sha256": "0cfa74fe5ab20a84f94583416f846d9be411cc59ff43be19081faaf93e535c05"
       },
       {
         "path": "notes/evidence/fr2-continuation/README.md",
@@ -49,7 +49,7 @@
       },
       {
         "path": "tools/verify_textures.py",
-        "sha256": "e3c22e2801bbe04c7d492e81cebe6c4720f5c63ddf1d09dafccf3e33dc4e0661"
+        "sha256": "804507b48b349ebf8936b53f2f8d2ac0f46cbcf36d2d9e8d33a546ff05b7a23a"
       },
       {
         "path": "tools/verify_ptg.py",
@@ -629,7 +629,7 @@
           "id": "texture-level0-formats-1-3-4",
           "asset_type": "texture library",
           "disposition": "candidate_structure",
-          "basis": "bounded level-zero format observations do not establish complete upload behavior",
+          "basis": "level-zero pixels for formats 1/3/4 plus per-level plane spans, palette index bounds and upload byte counts under the traced uploader contract; mip pixels above level 0, palette entry contents and runtime state stay unresolved",
           "evidence_sources": [
             "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
             "tools/verify_model.py",
@@ -642,7 +642,7 @@
           "id": "texture-mips-palettes",
           "asset_type": "texture library",
           "disposition": "unresolved",
-          "basis": "mip pixels, palette state and complete body coverage are unresolved",
+          "basis": "mip pixels above level 0, palette block contents, descriptor opaque words and GS runtime state are unresolved; plane spans, index bounds and byte counts are covered",
           "evidence_sources": [
             "notes/evidence/fr2-continuation/jev/d031-decide-mesh-method.json",
             "tools/verify_model.py",
@@ -704,11 +704,12 @@
           "consumer": "FUN_0022ba30 expands texture records and FUN_00222358 submits level-zero and active extra levels through the GS transfer builder.",
           "bounds": "Descriptors are 0x40 bytes. The loader reads mip count at +0x35, places 0x10-byte extra-level records at +0x2c, and stores level-zero image pointer at +0x28.",
           "field_effects": "Format and descriptor bit 8 select the measured direct or packed upload route; exponent fields provide logical and transfer dimensions. An extra-level source pointer is read at record +8 after allocation.",
-          "transformations": "The loader allocates level-zero and extra-level image planes, and the upload path builds transfer descriptors. Static arithmetic matched all 4,941 levels and 79,708,000 source/transfer bytes in 56 archive-pinned models.",
+          "transformations": "The loader allocates level-zero and extra-level image planes, and the upload path builds transfer descriptors. Static arithmetic matched all 4,941 levels and 79,708,000 source/transfer bytes in 56 archive-pinned models; all 2,370 level-zero images decode and all indexed palette references stay within their block entry bounds.",
           "allocation_lifetime": "Allocation and submission are statically traced; release/lifetime and GS execution effects remain unresolved.",
           "handoffs": "FUN_00222358 passes image planes and derived dimensions/format fields to the GS transfer builder. This does not prove final GS state or rendered output.",
           "unknowns": [
-            "Some palette/mip field meanings",
+            "Mip pixels above level 0",
+            "Palette block contents and descriptor opaque words",
             "GS runtime state",
             "rendered output",
             "allocation release lifetime"
@@ -778,9 +779,11 @@
         "notes/evidence/fr2-continuation/README.md"
       ],
       "limits": [
-        "Structural PTG evidence is not a consumer contract; 491 bodies remain unsupported."
+        "Static EE request binding only; tile units, pointer/descriptor meanings, decoded planes, upload and lifetime stay unresolved."
       ],
-      "binding_ids": [],
+      "binding_ids": [
+        "ptg-texgraph-request-consumer"
+      ],
       "profiles": [
         {
           "id": "ptg-header",
@@ -817,20 +820,22 @@
         {
           "contract_id": "ptg-sprite",
           "asset_type": "PTG sprite",
-          "consumer": "unresolved",
-          "bounds": "Header structure is measured for all files; only the 17 tiled bodies have bounded descriptor and pixel layout evidence.",
-          "field_effects": "Tiled pointer-record floats measure row-major tile coverage; pointer and descriptor meanings remain unresolved.",
+          "consumer": "EE 0x22a910 (texgraph.c) serves .psd/.ptg requests; UI init 0x169cd8 issues 25 static GRAPHICS requests; 35 call sites total.",
+          "bounds": "All 39 static non-format GRAPHICS...PSD requests resolve to corpus .ptg files (3 tiled_dd + 36 tiled_header_only). Header structure measured for all files.",
+          "field_effects": "Tiled pointer-record floats measure row-major tile coverage; pointer units and descriptor meanings remain unresolved.",
           "transformations": "The archive wrapper is decompressed before format checks; palette and image interpretation are incomplete.",
           "allocation_lifetime": "unresolved",
-          "handoffs": "unresolved",
+          "handoffs": "0x22a910 loads via 0x107628 after extension check; downstream upload/decode unmapped.",
           "unknowns": [
-            "No executable consumer is bound",
+            "Tile address units, pointer/descriptor meanings, decoded planes, upload/lifetime",
             "491 non-tiled bodies lack supported body profiles",
-            "palette and tile pointer meanings"
+            "format-string (%s) and computed-name requests resolve outside this binding"
           ],
-          "evidence_bindings": [],
+          "evidence_bindings": [
+            "ptg-texgraph-request-consumer"
+          ],
           "evidence_sources": [
-            "notes/evidence/fr2-continuation/README.md"
+            "notes/evidence/fr2-ptg-body-contracts/README.md"
           ]
         }
       ]
@@ -951,7 +956,7 @@
       "function": "00222358",
       "claim_id": "texture.descriptor-to-upload-fields",
       "source": "notes/evidence/fr2-texture-upload-audit/README.md",
-      "source_sha256": "4bc0a226d9ebf0352a672aa197b386b0861433ef536c1c210d905acf1ab0fe80",
+      "source_sha256": "0cfa74fe5ab20a84f94583416f846d9be411cc59ff43be19081faaf93e535c05",
       "anchor": "`00222358` selects primary row fields +9/+2 for direct upload",
       "disposition": "accepted_static_contract"
     },
@@ -965,6 +970,18 @@
       "source": "notes/evidence/fr2-asset-consumer-contracts/configuration-consumer.md",
       "source_sha256": "8c391014ace0148c88ed0dd437fd2b7e91c525e0b09768088b6b7d6dc84079de",
       "anchor": "The PAL executable has a static configuration path rooted at function",
+      "disposition": "accepted_static_contract"
+    },
+    {
+      "id": "ptg-texgraph-request-consumer",
+      "profile_id": "fr2-pal-sles-517.05",
+      "contract_id": "sprite-ptg",
+      "asset_type": "PTG sprite",
+      "function": "0022a910",
+      "claim_id": "ptg.texgraph-request-resolution",
+      "source": "notes/evidence/fr2-ptg-body-contracts/README.md",
+      "source_sha256": "0af4f573bb401c473405fd85e24bc8036cb43b5a4ac6645f648e4b5f6b0a6ca0",
+      "anchor": "EE loader 0x22a910 (texgraph.c) accepts .psd/.ptg requests; all 39 static GRAPHICS requests resolve to corpus .ptg files",
       "disposition": "accepted_static_contract"
     }
   ],

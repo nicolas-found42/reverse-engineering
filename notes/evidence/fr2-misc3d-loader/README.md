@@ -176,3 +176,5 @@ whole-suite check after combining independent work. The
 verified, none contradicted/unsupported, with one low-confidence range-count
 claim marked for review. Its original judgment is preserved for independent
 disposition; a majority-support result alone does not settle that review.
+
+Docker unusable here, so the full two-build green proof was not run; unit suite 18/18 + byte-evidence (8 stage-name bytes the only cross-build diff) carried; reproducibility stays partially proven.

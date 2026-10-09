@@ -154,3 +154,19 @@ class TerminalProvenanceTests(unittest.TestCase):
             with patch.object(source_build, 'SOURCE', changed):
                 with self.assertRaisesRegex(Invalid, 'source/recipe identity differs'):
                     source_build.provenance(root/'game', root/'tools')
+
+class TerminalStagingTests(unittest.TestCase):
+    def test_named_stage_is_fresh_and_deterministic(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            first = source_build.prepare_stage(root, 'repro-first')
+            self.assertEqual(first, root/'misc3d-loader-terminal-repro-first')
+            first.joinpath('stale.o').write_text('stale')
+            second = source_build.prepare_stage(root, 'repro-first')
+            self.assertEqual(second, first)
+            self.assertFalse(second.joinpath('stale.o').exists())
+
+    def test_unnamed_stage_stays_unique(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self.assertNotEqual(source_build.prepare_stage(root), source_build.prepare_stage(root))

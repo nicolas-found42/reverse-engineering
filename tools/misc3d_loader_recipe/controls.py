@@ -90,8 +90,8 @@ def controls(game: Path, tool_root: Path, inventory: Path, isolated: Path, outpu
     record('stale_provenance',lambda:loader.check(game,inventory,stale,output/'stale-host'))
     record('contradiction_over_missing',lambda:loader.check(game,output/'missing-inventory.json',stale,output/'contradiction-host'))
     record('reproducibility',lambda:compare_builds(
-        source_build.source_build(game,tool_root),
-        source_build.source_build(game,tool_root)))
+        source_build.source_build(game,tool_root,stage_name='repro-first'),
+        source_build.source_build(game,tool_root,stage_name='repro-second')))
 
     def drift():
         real=source_build.source_build(game,tool_root)

@@ -23,7 +23,7 @@ from pathlib import Path
 
 from evidence_common import Incomplete, Invalid, sha256, write_result
 from matching_sections import Section, pinned_executable, sections
-from recorded_decisions import GAME_OWNED_RANGES, METADATA
+from recorded_decisions import GAME_OWNED_RANGES, METADATA, SUBSTITUTE_RANGES
 
 MAX_UNIT_BYTES = 64 * 1024 * 1024
 
@@ -56,6 +56,9 @@ def scope_of_range(name: str, address: int, size: int) -> Scope:
     for section, first, end in GAME_OWNED_RANGES:
         if section == name and first <= address and address + size <= end:
             return Scope.GAME_OWNED
+    for section, first, end in SUBSTITUTE_RANGES:
+        if section == name and first <= address and address + size <= end:
+            return Scope.SUBSTITUTE_REGION
     return section_scope
 
 

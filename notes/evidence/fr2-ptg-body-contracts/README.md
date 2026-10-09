@@ -33,6 +33,25 @@ Total: 16 + 287 + 202 + 23 + 19 + 1 = 548.
   a valid record plus a `d0820004`-family descriptor at bytes 80..160; their
   pixel span is row-structured (index table + stride rows with `0xDD` padding),
   not an opaque tile block. Gear pins: gear0 = uppercase R, gear1 = uppercase N.
+## EE consumer binding (static only; `tools/test_ptg_consumer_binding.py`, 7 tests)
+
+- EE loader `0x22a910` (`texgraph.c`: "Unable to load a texture graphic from
+  a filename without a .psd extension") accepts `.psd`/`.ptg` requests
+  (comparators `psd`/`ptg` at vaddr `0x28ef08`); 35 static call sites.
+- UI init `0x169cd8` issues 25 of those calls with static `GRAPHICS...PSD`
+  names (25 `lui a0,0x25` + `jal 0x22a910` pairs, e.g. `STARTEU.PSD` at
+  file `0x6ade0`); the remaining 10 call sites pass computed names.
+- All 39 static non-format `GRAPHICS...PSD` requests resolve
+  case-insensitively (extension `.PSD` -> `.ptg`) to corpus files: 3
+  `tiled_dd` (`StartEU`, `freq`, `loadEU`, all 300-tile 640x480) + 36
+  `tiled_header_only`. Format requests (`MATRIX/%s`, `LIVERY/%s`, ...) and
+  the gear `70gear%d`/`gear%d` speedo strings resolve through computed
+  names, not pinned here.
+- Negative control: a `.XYZ` extension resolves to no corpus file and
+  matches neither loader comparator.
+Anchor: EE loader 0x22a910 (texgraph.c) accepts .psd/.ptg requests; all 39 static GRAPHICS requests resolve to corpus .ptg files.
+- No palette, tile-pointer-unit, descriptor-constant, decoded-plane, upload,
+  or lifetime semantics are claimed; those stay unresolved.
 
 ## Falsifiers
 
@@ -40,6 +59,10 @@ Total: 16 + 287 + 202 + 23 + 19 + 1 = 548.
   row, or a gear pixel-hash change fails `tools/test_ptg_body_census.py`.
 - Mutating any pinned tool source fails the same test (source pins in
   variant-census.json).
+- A loader-byte change, a new `0x22a910` caller, an unresolving static
+  request, or a comparator change fails `tools/test_ptg_consumer_binding.py`.
+- Wrong pointer-pad words, truncated pixel planes, and corrupt sprite index
+  tables fail `tools/test_ptg_verifier.py` (criterion 3 controls).
 - Claiming palette/pointer/descriptor/upload meaning from this census alone is
   an overclaim: the test pins no such semantics.
 
