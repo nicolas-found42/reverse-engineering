@@ -14,4 +14,8 @@ Use the single-context `GLOSSARY.md` and `docs/adr/` layout. See `docs/agents/do
 
 ### Tests and review
 
-Run `tools/check.sh` (whole suite) or `tools/check.sh test_matching` (one module). Review against `CODING_STANDARDS.md`.
+Before publication, run `python3 tools/validate.py --staged`; use `tools/check.sh test_matching` for targeted tests. Review against `CODING_STANDARDS.md`; prepare semantic review inputs using `docs/agents/review-payloads.md`.
+
+### Local RE runtime
+
+For installation, upgrade, runtime controls or client discovery, use `docs/agents/re-setup-maintenance.md`.

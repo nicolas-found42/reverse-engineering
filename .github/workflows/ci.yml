@@ -24,7 +24,13 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - run: tools/check.sh
+      - run: tools/check.sh --summary .scratch/test-summary.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tool-test-summary
+          path: .scratch/test-summary.json
+          if-no-files-found: error
 
   lint:
     name: lint (ruff, errors-only baseline)

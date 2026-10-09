@@ -1813,6 +1813,39 @@
       ]
     },
     {
+      "path": "notes/evidence/fr2-setup-reliability/README.md",
+      "readme_sha256": "23558498511ca5e4a18d5834d2220bd6b112d1c4c35287e3944aae5ef5391e1e",
+      "commands": [
+        "python3 tools/validate.py --staged --output .scratch/reliability-reproduce/staged\npython3 tools/validate.py --output .scratch/reliability-reproduce/local\ntools/check.sh test_re_doctor test_re_bootstrap test_re_mcp test_run_tests test_review_payload test_validate test_pre_push\npython3 tools/re_bootstrap.py --apply --cache .scratch/setup-2026-10-08 --destination .scratch/reliability-reproduce/candidate\npython3 tools/re_doctor.py --discovery --output .scratch/reliability-reproduce/doctor\npython3 tools/re_client_discovery.py --output .scratch/reliability-reproduce/native",
+        "python3 tools/review_payload.py --base 717f78df689be4e16ddc891b2def18cbda3ce79d --staged --request-file .scratch/reliability/review-request.txt --tests-file .scratch/reliability/review-tests.txt --claims-file .scratch/reliability/completion-claims.json --output .scratch/reliability-reproduce/review"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "a7fe7cb8629182653daf72d135b6b146e11dbcdd16e5e3662533f9b451d3bac3",
+          "line": 12,
+          "context": "`a7fe7cb8629182653daf72d135b6b146e11dbcdd16e5e3662533f9b451d3bac3`."
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+          "line": 8,
+          "context": "The source review base is `717f78df689be4e16ddc891b2def18cbda3ce79d`."
+        },
+        {
+          "value": "f0d0013f456ec4ba0485ff6353c2222d59b899f0",
+          "line": 9,
+          "context": "The tested staged code tree is `f0d0013f456ec4ba0485ff6353c2222d59b899f0`;"
+        },
+        {
+          "value": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+          "line": 85,
+          "context": "python3 tools/review_payload.py --base 717f78df689be4e16ddc891b2def18cbda3ce79d --staged --request-file .scratch/reliability/review-request.txt --tests-file .scratch/reliability/review-tests.txt --claims-file .scratch/reliability/completion-claims.json --output .scratch/reliability-reproduce/review"
+        }
+      ],
+      "missing": []
+    },
+    {
       "path": "notes/evidence/fr2-small-data-types/README.md",
       "readme_sha256": "120a9fc0329de3d7dcce02f79da03c68d20bde3ece0c19bd352d47ff0d1ff425",
       "commands": [],

@@ -20,7 +20,7 @@ import urllib.error
 import urllib.request
 
 ROOT = Path(__file__).resolve().parent.parent
-LOCAL = ROOT / '.scratch/re-setup'
+LOCAL = Path(os.environ.get('RE_SETUP_HOME', ROOT / '.scratch/re-setup'))
 SCOPE_PATCH_SHA256 = '57759d2350f3b2cd98725339cb905daf7ea5c76e37ba6abba44d6189880df9fb'
 
 
@@ -45,6 +45,8 @@ def backend_env(settings: dict) -> dict:
                GHIDRA_MCP_FILE_ROOT=settings['file_root'], GHIDRA_MCP_PROJECT_FOLDER='/',
                GHIDRA_MCP_REQUIRE_PROGRAM_SELECTORS='1', GHIDRA_MCP_URL=settings['url'])
     env['PATH'] = settings['java_home'] + '/bin:' + env.get('PATH', '')
+    if settings.get('settings_dir'):
+        env['XDG_CONFIG_HOME'] = settings['settings_dir']
     return env
 
 
@@ -61,6 +63,27 @@ def health() -> bool:
         return b'Headless' in request('/check_connection')
     except (OSError, urllib.error.URLError):
         return False
+
+
+def status() -> dict:
+    settings = config()
+    observed = {'healthy': health(), 'authenticated_schema': False, 'rejects_unauthenticated': False,
+                'runtime_identity': False}
+    try:
+        validate_runtime(settings)
+        observed['runtime_identity'] = True
+        request('/mcp/schema')
+        observed['authenticated_schema'] = True
+        try:
+            request('/mcp/schema', authenticated=False)
+        except urllib.error.HTTPError as error:
+            observed['rejects_unauthenticated'] = error.code == 401
+    except (OSError, RuntimeError, urllib.error.URLError):
+        pass
+    return {'url': settings['url'], 'ghidra': settings['ghidra'], 'observed': observed,
+            'configured_policy': {'scripts_allowed': False, 'require_program_selectors': True,
+                                  'file_root': settings['file_root']},
+            'behavioral_controls': 'not probed by status; run tools/re_doctor.py'}
 
 
 def validate_runtime(settings: dict) -> None:
@@ -91,9 +114,10 @@ def start() -> None:
                 raise
             raise RuntimeError('Existing backend does not enforce token authentication')
         with (LOCAL / 'backend.log').open('a') as log:
+            vm_args = ['-Djava.awt.headless=true']
             proc = subprocess.Popen([
                 str(Path(settings['ghidra']) / 'support/launch.sh'), 'fg', 'jdk',
-                'GhidraMCP', '4G', '-Djava.awt.headless=true',
+                'GhidraMCP', '4G', *vm_args,
                 'com.xebyte.headless.GhidraMCPHeadlessServer', '--bind', '127.0.0.1',
                 '--port', str(settings['port'])], cwd=settings['bridge_root'],
                 env=backend_env(settings), stdin=subprocess.DEVNULL, stdout=log,
@@ -116,8 +140,12 @@ def stop() -> None:
         if not pid_file.exists():
             return
         pid = int(pid_file.read_text())
-        args = subprocess.run(['/bin/ps', '-p', str(pid), '-o', 'args='],
-                              capture_output=True, text=True, check=True).stdout
+        process = subprocess.run(['/bin/ps', '-p', str(pid), '-o', 'args='], capture_output=True, text=True)
+        if process.returncode == 1 and not process.stdout.strip():
+            pid_file.unlink()
+            return
+        process.check_returncode()
+        args = process.stdout
         if 'GhidraMCPHeadlessServer' not in args or 'launch.sh' not in args:
             raise RuntimeError('Saved backend PID does not identify our launcher')
         os.killpg(pid, signal.SIGTERM)
@@ -130,8 +158,10 @@ def main() -> None:
     args = parser.parse_args()
     settings = config()
     if args.server == 'status':
-        print(json.dumps({'healthy': health(), 'url': settings['url'],
-                          'ghidra': settings['ghidra'], 'scripts_allowed': False}))
+        report = status()
+        print(json.dumps(report))
+        if not all(report['observed'].values()):
+            raise SystemExit(1)
         return
     if args.server == 'stop':
         stop()

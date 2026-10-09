@@ -1,0 +1,58 @@
+{
+  "schema": "fr2-static-install/v1",
+  "platform": "darwin-arm64",
+  "versions": {
+    "ghidra": "12.1.4",
+    "ee_reloaded": "2.1.38",
+    "ghidra_mcp": "6.0.0 + local file-scope patch",
+    "pyghidra": "3.1.0",
+    "rabbitizer": "1.16.2",
+    "objdiff_cli": "3.8.2",
+    "rea": "5.0.0",
+    "radare2": "6.2.4 +1",
+    "r2mcp": "1.8.8",
+    "java_runtime": "OpenJDK 21.0.12.1",
+    "omp_native": "18.8.6"
+  },
+  "assets": [
+    {
+      "file": "ghidra.zip",
+      "url": "https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.4_build/ghidra_12.1.4_PUBLIC_20260921.zip",
+      "sha256": "ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db"
+    },
+    {
+      "file": "ee.zip",
+      "url": "https://github.com/chaoticgd/ghidra-emotionengine-reloaded/releases/download/v2.1.38/ghidra_12.1.4_PUBLIC_20261004_ghidra-emotionengine-reloaded.zip",
+      "sha256": "e389ff3e921d9f7d4db2ece9906f808545ce4ff519d9e25a019b72ea509f240b"
+    },
+    {
+      "file": "objdiff-cli",
+      "url": "https://github.com/encounter/objdiff/releases/download/v3.8.2/objdiff-cli-macos-arm64",
+      "sha256": "767c67e13b7b5e6ca545e7d2235e47c7bceac07d47a52776f74a52914cb4085a"
+    }
+  ],
+  "sources": {
+    "ghidra-mcp": {
+      "url": "https://github.com/bethington/ghidra-mcp.git",
+      "commit": "8cd2078e10b9ba28b188cb84ce5b9051a904b995"
+    },
+    "ccc": {
+      "url": "https://github.com/chaoticgd/ccc.git",
+      "commit": "c025ca94735d75cd366b29a10f924010ce43353d"
+    },
+    "radare2": {
+      "url": "https://github.com/radareorg/radare2.git",
+      "commit": "485e5e205b190fc297a2a95a6f982ff5d9f54039"
+    },
+    "radare2-mcp": {
+      "url": "https://github.com/radareorg/radare2-mcp.git",
+      "commit": "d48078bb5440d5564374e102c28e1c8892784de8"
+    }
+  },
+  "python_packages": [
+    "rabbitizer==1.16.2",
+    "mcp==1.30.0"
+  ],
+  "scope_patch_sha256": "57759d2350f3b2cd98725339cb905daf7ea5c76e37ba6abba44d6189880df9fb",
+  "provenance": "notes/evidence/fr2-re-setup/verification.json"
+}

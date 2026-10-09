@@ -1,5 +1,6 @@
 """Controls for private token handling and enforced backend environment defaults."""
 import json
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -31,6 +32,12 @@ class ReMcpTests(unittest.TestCase):
             self.assertEqual(env['GHIDRA_MCP_AUTH_TOKEN'], 'synthetic')
             self.assertEqual(env['GHIDRA_MCP_FILE_ROOT'], '/inputs')
 
+    def test_isolated_settings_override_ambient_user_extensions(self):
+        settings = {'java_home': '/jdk', 'ghidra': '/ghidra', 'file_root': '/inputs',
+                    'url': 'http://127.0.0.1:8090', 'settings_dir': '/candidate settings'}
+        with patch.object(re_mcp, 'token', return_value='synthetic'):
+            self.assertEqual(re_mcp.backend_env(settings)['XDG_CONFIG_HOME'], '/candidate settings')
+
     def test_scoped_runtime_identity(self):
         import hashlib
         with tempfile.TemporaryDirectory() as directory:
@@ -53,6 +60,25 @@ class ReMcpTests(unittest.TestCase):
             with patch.object(re_mcp, 'validate_runtime'), patch.object(re_mcp, 'health', return_value=True), patch.object(re_mcp, 'request', return_value=b'{}'):
                 with self.assertRaisesRegex(RuntimeError, 'does not enforce'):
                     re_mcp.start()
+
+    def test_dead_owned_pid_is_cleaned_without_signalling(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(re_mcp, 'LOCAL', Path(directory)):
+            pid = Path(directory) / 'backend.pid'
+            pid.write_text('12345')
+            gone = subprocess.CompletedProcess([], 1, stdout='', stderr='')
+            with patch('re_mcp.subprocess.run', return_value=gone), patch('re_mcp.os.killpg') as signal:
+                re_mcp.stop()
+            self.assertFalse(pid.exists())
+            signal.assert_not_called()
+
+    def test_unrelated_pid_is_not_signalled(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(re_mcp, 'LOCAL', Path(directory)):
+            (Path(directory) / 'backend.pid').write_text('12345')
+            unrelated = subprocess.CompletedProcess([], 0, stdout='unrelated user service', stderr='')
+            with patch('re_mcp.subprocess.run', return_value=unrelated), patch('re_mcp.os.killpg') as signal:
+                with self.assertRaisesRegex(RuntimeError, 'does not identify'):
+                    re_mcp.stop()
+            signal.assert_not_called()
 
 
 if __name__ == '__main__':
