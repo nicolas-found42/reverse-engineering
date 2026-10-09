@@ -1,0 +1,41 @@
+{
+  "command": "python3 using tools/judgment_contract.accepted over retained exact claims/dispositions",
+  "results": [
+    {
+      "id": "baseline-claims-verification.json:claim0",
+      "accepted": true,
+      "independent_resolution_used": false,
+      "original_action": "auto"
+    },
+    {
+      "id": "baseline-claims-verification.json:claim1",
+      "accepted": true,
+      "independent_resolution_used": false,
+      "original_action": "auto"
+    },
+    {
+      "id": "baseline-claims-verification.json:claim2",
+      "accepted": true,
+      "independent_resolution_used": true,
+      "original_action": "review"
+    },
+    {
+      "id": "baseline-claims-verification.json:claim3",
+      "accepted": true,
+      "independent_resolution_used": true,
+      "original_action": "review"
+    },
+    {
+      "id": "frontier-verification.json:claim0",
+      "accepted": true,
+      "independent_resolution_used": true,
+      "original_action": "review"
+    },
+    {
+      "id": "frontier-verification.json:claim1",
+      "accepted": true,
+      "independent_resolution_used": false,
+      "original_action": "auto"
+    }
+  ]
+}

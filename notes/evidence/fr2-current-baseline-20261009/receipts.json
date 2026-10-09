@@ -1,0 +1,308 @@
+[
+  {
+    "id": "A0",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/20261009T152126Z-718499d4bc88455280610996082435eb/result.json",
+    "bytes": 600216,
+    "sha256": "45d1186f03ca0fd3dbda4baa3f2ead84fe5ed12d06d2a065eabefe4da8ea2e5d",
+    "run_id": "20261009T152126Z-718499d4bc88455280610996082435eb",
+    "status": "incomplete",
+    "exit_code": 2,
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/completion.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "--assembler",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+      "--objdump",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+      "--compiler-tools",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/20261009T152126Z-718499d4bc88455280610996082435eb/report.md",
+      "bytes": 560195,
+      "sha256": "70e67e8cf6c3d7dbb6c62dcce278394dc83c5f78b959e9bc55dfb567cce30448"
+    },
+    "authority": "fresh static aggregate; exit 2 observed by shell tool"
+  },
+  {
+    "id": "C00",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/ranges/20261009T152126Z-c95f736589d44a6fb9e95fd3474db546/result.json",
+    "bytes": 95360,
+    "sha256": "1f6928f7e6d9ab4e9b0a41e2a0068f73ddeb47cc883da641636965062cffd95e",
+    "run_id": "20261009T152126Z-c95f736589d44a6fb9e95fd3474db546",
+    "status": "pass",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/matching_ranges.py",
+      "corpus",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/ranges"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/ranges/20261009T152126Z-c95f736589d44a6fb9e95fd3474db546/report.md",
+      "bytes": 87971,
+      "sha256": "ce48445ca3c0c538e3f610dcb669ef0bc1554c6f2827d0a8d56b5ea0b3bdcf7f"
+    },
+    "diagnostics": [],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C01",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/archive/20261009T152127Z-6a650f1953a84586a5b274f1598bf980/result.json",
+    "bytes": 4079980,
+    "sha256": "6d9b7671ebd7f020f53f5c4d8a4ac830469146a1134a92a5ff8a04c951a3b275",
+    "run_id": "20261009T152127Z-6a650f1953a84586a5b274f1598bf980",
+    "status": "pass",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/verify_formats.py",
+      "corpus",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/archive"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/archive/20261009T152127Z-6a650f1953a84586a5b274f1598bf980/report.md",
+      "bytes": 3778670,
+      "sha256": "e1d1b6731db97d2acef563c7d46a0a78b7c635399c0082638f161c83f0766673"
+    },
+    "diagnostics": [],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C02",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/vu/20261009T152129Z-8c0e315b74ca481481d29ee15f76a960/result.json",
+    "bytes": 59746,
+    "sha256": "3b5248736296001b712d10d5ac944d946f31c2c4a978a3676a84e1c7c6e2b173",
+    "run_id": "20261009T152129Z-8c0e315b74ca481481d29ee15f76a960",
+    "status": "incomplete",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/verify_vu.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--assembler",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/gas/as-new",
+      "--objdump",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/vu"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/vu/20261009T152129Z-8c0e315b74ca481481d29ee15f76a960/report.md",
+      "bytes": 55574,
+      "sha256": "0c367ed545b7dbcfd9c42b87826fc76c6c13341ca30cce5622eff8d880fc71f2"
+    },
+    "diagnostics": [
+      "VU byte reassembly passed; required entry or interface maps remain incomplete"
+    ],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C03",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/assets/20261009T152129Z-6269624029164e3d8cf919e51071831b/result.json",
+    "bytes": 56955,
+    "sha256": "8ef3cd8e00f7fdc846275b9f6b4b24817dc8f970334889f5b6f9cd14cbfbafd4",
+    "run_id": "20261009T152129Z-6269624029164e3d8cf919e51071831b",
+    "status": "incomplete",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/verify_asset_contracts.py",
+      "archive",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/FILES.HDR",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/FILES.DAT",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/assets"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/assets/20261009T152129Z-6269624029164e3d8cf919e51071831b/report.md",
+      "bytes": 52097,
+      "sha256": "069aff4f3ac5ee1d81ec20c773a08c4a346de8f92e8e1f3be123d93200846e30"
+    },
+    "diagnostics": [
+      "fixed registry contains candidate or unresolved consumer profiles"
+    ],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C04",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/compiler/20261009T152132Z-853710317ed3414fabfb758bfa64070c/result.json",
+    "bytes": 76290,
+    "sha256": "ace04f76001e6691cec03388f9cdd5d1c04c74bf8c518793815be5ebc0a47bc9",
+    "run_id": "20261009T152132Z-853710317ed3414fabfb758bfa64070c",
+    "status": "pass",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/compiler_probe_recipe/run.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/compiler"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/compiler/20261009T152132Z-853710317ed3414fabfb758bfa64070c/report.md",
+      "bytes": 68012,
+      "sha256": "e427d558d11d45d5064fa56bb3db26dbe8c85d184bc20291fa0ed1307ed3aeb7"
+    },
+    "diagnostics": [],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C05",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_cell/20261009T152224Z-2c586ca82ca94930a01760bc8cfd6888/result.json",
+    "bytes": 23681,
+    "sha256": "a20ab80d9416d383d389ffc81df938a61bcc5bef8792a80fe09bb12f016fd0ff",
+    "run_id": "20261009T152224Z-2c586ca82ca94930a01760bc8cfd6888",
+    "status": "pass",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/misc3d_contract.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_cell"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_cell/20261009T152224Z-2c586ca82ca94930a01760bc8cfd6888/report.md",
+      "bytes": 21204,
+      "sha256": "9e899f567494606c06f1249301e3c21002657f655e25d0368eda9468ad5c21c7"
+    },
+    "diagnostics": [],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C06",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_lifecycle/20261009T152228Z-1870e4be2a3049c1856a3807be6d0470/result.json",
+    "bytes": 49555,
+    "sha256": "ec265b839a09b62248ab95383729b6cd6929659e85c903949e46e611ce822b63",
+    "run_id": "20261009T152228Z-1870e4be2a3049c1856a3807be6d0470",
+    "status": "pass",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/misc3d_lifecycle.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_lifecycle"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_lifecycle/20261009T152228Z-1870e4be2a3049c1856a3807be6d0470/report.md",
+      "bytes": 40756,
+      "sha256": "3d2d5442e8a6bff3f3c805f5dbf2ad7d3c21acef7079805b374cfde67ebc3ff7"
+    },
+    "diagnostics": [],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C07",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc/20261009T152239Z-791808e7466b4e1d96eec44dcd3450ea/result.json",
+    "bytes": 67476,
+    "sha256": "27f6cc1071147f1f351dd02e8e079c2f40eb9870ccb41416f27a91b37cf13f68",
+    "run_id": "20261009T152239Z-791808e7466b4e1d96eec44dcd3450ea",
+    "status": "incomplete",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/check_rpc_contracts.py",
+      "--ee",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/SLES_517.05",
+      "--stream",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted/IRX/STREAM.IRX",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc/20261009T152239Z-791808e7466b4e1d96eec44dcd3450ea/report.md",
+      "bytes": 58372,
+      "sha256": "b6b2f8492fe930f9c614288f16de037233a69b76ce4608e08f51f42dcf7a6f04"
+    },
+    "diagnostics": [
+      "required channel-volume packet observation/control is absent"
+    ],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C08",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/layout/20261009T152239Z-0651bce38fc74796a4b68f6e291cb679/result.json",
+    "bytes": 40392,
+    "sha256": "b45b05671883fb589fc2408821c0981450c824b56e6dc09c1456cd8659e5d097",
+    "run_id": "20261009T152239Z-0651bce38fc74796a4b68f6e291cb679",
+    "status": "pass",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/linker_layout.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/layout"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/layout/20261009T152239Z-0651bce38fc74796a4b68f6e291cb679/report.md",
+      "bytes": 35960,
+      "sha256": "1246f73b1119e47560a957b12d940357381f0bc9641e0a9c4c3e601a02747193"
+    },
+    "diagnostics": [],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C09",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc_inventory/20261009T152244Z-0c5d7ddc4bb0498f95415d6ab4d19f8e/result.json",
+    "bytes": 108113,
+    "sha256": "a2f95beb0ae7bdca672399e95fe054c3964be4a89dfac299568c9bb4641a457d",
+    "run_id": "20261009T152244Z-0c5d7ddc4bb0498f95415d6ab4d19f8e",
+    "status": "incomplete",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/inventory_rpc_handoffs.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2/extracted",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc_inventory"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/rpc_inventory/20261009T152244Z-0c5d7ddc4bb0498f95415d6ab4d19f8e/report.md",
+      "bytes": 92874,
+      "sha256": "098a664e763220bc4b25250139961ac3b6616f452197e4e1f30c97570909294f"
+    },
+    "diagnostics": [
+      "required parent handoff inventory is not yet reconciled"
+    ],
+    "authority": "fresh child; bounded result does not complete parent"
+  },
+  {
+    "id": "C10",
+    "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_terminal/20261009T152244Z-de1b309484d54902b0c7b5e8b56af750/result.json",
+    "bytes": 14946,
+    "sha256": "80c361b6681f682372be7bb9046bb8335c4f22fd6890e77c397106d6fce294a7",
+    "run_id": "20261009T152244Z-de1b309484d54902b0c7b5e8b56af750",
+    "status": "pass",
+    "command": [
+      "/opt/homebrew/opt/python@3.14/bin/python3.14",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean/tools/misc3d_loader_recipe/source_build.py",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/games/ford-racing-2",
+      "/Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers",
+      "--output",
+      "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_terminal"
+    ],
+    "cwd": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/clean",
+    "report": {
+      "path": "/Users/Nicolas/Documents/github/hermes/reverse-engineering/.scratch/baseline-20261009/aggregate/children-e1e542cf3b2642ca9247389ff1d90b79/misc3d_terminal/20261009T152244Z-de1b309484d54902b0c7b5e8b56af750/report.md",
+      "bytes": 9231,
+      "sha256": "da038e15318992af1df605ea6544fe2f7a65a5c8a71fd6a81199dd4ca7120a8d"
+    },
+    "diagnostics": [],
+    "authority": "fresh child; bounded result does not complete parent"
+  }
+]
