@@ -20,6 +20,68 @@
       ]
     },
     {
+      "path": "notes/evidence/fr2-clean-baseline/README.md",
+      "readme_sha256": "e197cdc55d97efc4bd84ccbaadb0d182543c39084e3ea42703bb71b464d4ec5f",
+      "commands": [
+        "python3 tools/completion.py games/ford-racing-2 \\\n  --assembler <local dvp as-new> \\\n  --objdump <local dvp objdump> \\\n  --compiler-tools <local compiler-tools directory> \\\n  --output <fresh directory>\npython3 tools/validate.py --revision d14fe24278ad66a479ccd4d70ede7150a5521fef"
+      ],
+      "sha256_mentions": [
+        {
+          "value": "ebb63100132f995d4fa34c53fb08780a6a868f07c3159c679f1c2b9224b2cda7",
+          "line": 99,
+          "context": "Current aggregate receipt SHA-256 `ebb63100132f995d4fa34c53fb08780a6a868f07c3159c679f1c2b9224b2cda7`;"
+        },
+        {
+          "value": "2aab9ae17f36311f6a91543b53efb673aa52955ddcc23e5385dbe6d26db5fdfb",
+          "line": 101,
+          "context": "`2aab9ae17f36311f6a91543b53efb673aa52955ddcc23e5385dbe6d26db5fdfb`. Receipt command lines inside the"
+        }
+      ],
+      "revision_mentions": [
+        {
+          "value": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+          "line": 5,
+          "context": "**Current accepted source: `d14fe24278ad66a479ccd4d70ede7150a5521fef`** (squash merge of PR #42). The"
+        },
+        {
+          "value": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+          "line": 18,
+          "context": "- `python3 tools/validate.py --revision d14fe24278ad66a479ccd4d70ede7150a5521fef` passes IP,"
+        },
+        {
+          "value": "6fe93267b01ca701ceecf66030503bb072c47add",
+          "line": 20,
+          "context": "  `6fe93267b01ca701ceecf66030503bb072c47add`."
+        },
+        {
+          "value": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+          "line": 23,
+          "context": "`717f78df689be4e16ddc891b2def18cbda3ce79d` (`tools/check.sh` 756 tests, OK, 33 skips, three excluded"
+        },
+        {
+          "value": "a8c8798807af81927cfab975530ac2445eec6f27",
+          "line": 73,
+          "context": "Exact tested head `a8c8798807af81927cfab975530ac2445eec6f27`, base"
+        },
+        {
+          "value": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+          "line": 74,
+          "context": "`717f78df689be4e16ddc891b2def18cbda3ce79d`, squash-merged at"
+        },
+        {
+          "value": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+          "line": 75,
+          "context": "`d14fe24278ad66a479ccd4d70ede7150a5521fef` on owner decision after exact-head checks passed and"
+        },
+        {
+          "value": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+          "line": 96,
+          "context": "python3 tools/validate.py --revision d14fe24278ad66a479ccd4d70ede7150a5521fef"
+        }
+      ],
+      "missing": []
+    },
+    {
       "path": "notes/evidence/fr2-combined-recovery/README.md",
       "readme_sha256": "1a31f75e56a2cd063c95244d31599c508f788ded1517595f06b70e21616237cf",
       "commands": [],
@@ -183,16 +245,21 @@
     },
     {
       "path": "notes/evidence/fr2-completion/README.md",
-      "readme_sha256": "7bcc0304e6c8164b25ebd51869710bdc375e6cea6a7cab780aa6483abc6dd981",
+      "readme_sha256": "4d131de343737b8f8b1e24d496d2331eb86583674f2007c58e8145e851ca252c",
       "commands": [
         "python3 tools/completion.py games/ford-racing-2 \\\n  --assembler .scratch/mesh/codex-root/binutils-dvp-build/gas/as-new \\\n  --objdump .scratch/mesh/codex-root/binutils-dvp-build/binutils/objdump \\\n  --compiler-tools /Users/Nicolas/Documents/github/hermes/spec-5-tools/compilers \\\n  --output .scratch/evidence/completion",
         "tools/check.sh test_completion test_matching_ranges test_matching test_corpus_binding"
       ],
       "sha256_mentions": [],
-      "revision_mentions": [],
+      "revision_mentions": [
+        {
+          "value": "d14fe24278ad66a479ccd4d70ede7150a5521fef",
+          "line": 5,
+          "context": "`d14fe24278ad66a479ccd4d70ede7150a5521fef` (clean checkout): exit **2/incomplete**, AC01, AC07,"
+        }
+      ],
       "missing": [
-        "full_sha256_mention",
-        "full_revision_mention"
+        "full_sha256_mention"
       ]
     },
     {

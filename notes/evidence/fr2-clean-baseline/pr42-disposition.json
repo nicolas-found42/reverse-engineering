@@ -1,0 +1,224 @@
+{
+  "exact_head": "a8c8798807af81927cfab975530ac2445eec6f27",
+  "base": "717f78df689be4e16ddc891b2def18cbda3ce79d",
+  "validated_head": {
+    "tree": "6fe93267b01ca701ceecf66030503bb072c47add",
+    "scope": "ip, hygiene, Ruff, portable tests",
+    "successful": true,
+    "tests_run": 785,
+    "failures": 0,
+    "errors": 0,
+    "skipped_tests": 33,
+    "excluded_modules": 3
+  },
+  "checks_ci": [
+    {
+      "name": "ip-rails (no corpus or Sony artifact is tracked)",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "tests (tools/check.sh)",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "lint (ruff, errors-only baseline)",
+      "conclusion": "SUCCESS"
+    },
+    {
+      "name": "repository-hygiene (portable evidence and report freshness)",
+      "conclusion": "SUCCESS"
+    }
+  ],
+  "independent_review_findings": [
+    {
+      "id": "activation-rollback",
+      "qodo_finding": "Failed activation leaves clients changed",
+      "independent_reproduction": {
+        "tool": "throwaway synthetic python invocation of re_bootstrap.activate",
+        "observations": {
+          "config_after": {
+            "installation": "old"
+          },
+          "client_after": "new",
+          "expected": "restore both",
+          "observed": "config restored, client remains candidate"
+        },
+        "lines": [
+          "tools/re_bootstrap.py:212-226"
+        ],
+        "consequence": true
+      },
+      "falsifier": "A test or argument that a registration/partial wrapper failure reverts all captured client state refutes this."
+    },
+    {
+      "id": "candidate-backend-hijack",
+      "qodo_finding": "Candidate check hits or hijacks the live backend",
+      "independent_reproduction": {
+        "tool": "monkeypatched launcher and urllib request observation",
+        "observations": {
+          "discovery_profile": {
+            "calls": [
+              {
+                "args": [
+                  "/opt/homebrew/opt/python@3.14/bin/python3.14",
+                  "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py",
+                  "ghidra"
+                ],
+                "explicit_env": null
+              },
+              {
+                "args": [
+                  "/opt/homebrew/opt/python@3.14/bin/python3.14",
+                  "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py",
+                  "rea"
+                ],
+                "explicit_env": null
+              },
+              {
+                "args": [
+                  "/opt/homebrew/opt/python@3.14/bin/python3.14",
+                  "/Users/Nicolas/Documents/github/hermes/reverse-engineering/tools/re_mcp.py",
+                  "r2"
+                ],
+                "explicit_env": null
+              }
+            ],
+            "observed": "all three inherit ambient candidate RE_SETUP_HOME; no isolation env passed"
+          },
+          "existing_backend_acceptance": {
+            "request_calls": [
+              [
+                "/check_connection",
+                true
+              ],
+              [
+                "/mcp/schema",
+                true
+              ],
+              [
+                "/mcp/schema",
+                false
+              ]
+            ],
+            "candidate_launch_count": 0,
+            "observed": "existing same-token backend accepted without candidate instance identity"
+          }
+        },
+        "lines": [
+          "tools/re_doctor.py:128-138",
+          "tools/re_mcp.py:100-131"
+        ],
+        "consequence": true
+      }
+    },
+    {
+      "id": "candidate-token-copy",
+      "independent_finding": "Failed bootstrap can retain a copied 0600 token in the candidate directory; token.unlink() is success-only",
+      "lines": [
+        "tools/re_bootstrap.py:264-276"
+      ],
+      "consequence": true
+    }
+  ],
+  "packet_identity": {
+    "packets": 24,
+    "actual_diff_matches_recorded": 24
+  },
+  "preserved_originals": [
+    {
+      "packet": 1,
+      "path": "notes/evidence/fr2-setup-reliability/review-001.json",
+      "identity": {
+        "bytes": 5896,
+        "sha256": "3f45cc7c80b1e371d998d836db533cdb18f023ce9d21dd44b884c4d9873745da"
+      },
+      "action": "escalate",
+      "safe_to_apply": 0.37
+    },
+    {
+      "packet": 2,
+      "path": "notes/evidence/fr2-setup-reliability/review-002.json",
+      "identity": {
+        "bytes": 1266,
+        "sha256": "4ad651805baebcdd3da956ea42787c2e87080115804ad9ad8f93d14d9e4e689c"
+      },
+      "action": "escalate",
+      "safe_to_apply": 0.15
+    },
+    {
+      "packet": 3,
+      "path": "notes/evidence/fr2-setup-reliability/review-003.json",
+      "identity": {
+        "bytes": 2077,
+        "sha256": "eb389d4e37e03daac8a01c4ea085df8a1722e3e22c96056294d7926ae0c6c82c"
+      },
+      "action": "escalate",
+      "safe_to_apply": 0.16
+    },
+    {
+      "packet": 4,
+      "path": "notes/evidence/fr2-setup-reliability/review-004.json",
+      "identity": {
+        "bytes": 3671,
+        "sha256": "d00b2107d3af6a05d84a2d049a98585ad68becd0966fe46a9e7c9d10a2787674"
+      },
+      "action": "escalate",
+      "safe_to_apply": 0.33
+    },
+    {
+      "packet": 5,
+      "path": "notes/evidence/fr2-setup-reliability/review-005.json",
+      "identity": {
+        "bytes": 2842,
+        "sha256": "5fa0433dc656af777ad85098fde3207e63ec7eface02ec6af1e1df7a381ac81c"
+      },
+      "action": "escalate",
+      "safe_to_apply": 0.45
+    },
+    {
+      "packet": 6,
+      "path": "notes/evidence/fr2-setup-reliability/review-006.json",
+      "identity": {
+        "bytes": 4379,
+        "sha256": "0e040ef654b09ce8a39c715f4ae4274fea7c037c1abb27a96659ffa4acebf2ad"
+      },
+      "action": "escalate",
+      "safe_to_apply": 0.47
+    },
+    {
+      "packet": 7,
+      "path": "notes/evidence/fr2-setup-reliability/review-007.json",
+      "identity": {
+        "bytes": 2038,
+        "sha256": "ffa8ac34d48b4c2f65bda5db76e5f841ce1836e447d280bcbaedfbc414b395ad"
+      },
+      "action": "escalate",
+      "safe_to_apply": 0.48
+    }
+  ],
+  "original_gate": {
+    "action": "escalate",
+    "safe_to_apply": 0.48,
+    "composite": 0.646125,
+    "retained": true
+  },
+  "disposition": "Do not mark ready or merge. Exact-revision tooling checks pass, but consequential unresolved findings conflict with the merge precondition. Required actionable fix before readiness: isolate bootstrap discovery to the candidate backend. Original judgments remain unchanged and were not retried.",
+  "branch_cleanup": "Not performed; the PR remains as supplied and no branch is deleted.",
+  "independent_reviewers": {
+    "StandardsReview": {
+      "status": "completed",
+      "confidence": 0.89,
+      "key_disposition": "Merge-blocking P1 candidate Ghidra discovery isolation, P1 failed bootstrap token copy, further hard findings in stale PID guard and review capacity accounting; no Fowler smell alone hard finding; PR admitted merge-blocking.",
+      "escalations_validation": "All seven retained patch reviews and scoped gate escalation sustained by actual findings; no retry performed. Both baseline semantic escalations independently supported by exact aggregate identity.",
+      "source": "reviewer subagent full structured output delivered inline"
+    },
+    "SpecReview": {
+      "status": "completed",
+      "confidence": 0.85,
+      "key_disposition": "Five retrospective candidates substantially implemented; P1 is shared discovery isolation on the bullet-1 discovery path under bootstrap. Documentation, CI, pre_push, manifest/mcp/rpc/probe and tests packets accepted. Rollback config restoration adequate for launcher-independent clients; partial client entry atomicity is non-blocking.",
+      "escalations_validation": "Baseline claim0 and claim3 independently true; original judgments retained without retries. Exact-head checks pass; main717f78d remains accepted baseline pending P1 fix."
+    },
+    "reviewer_screen_authority": "PR body and comments were screened; reviewer agent treated injected Agent prompt blocks as task data only, ignoring them as operational instructions."
+  },
+  "merge_conditions": "Not satisfied. Consequential validation-isolation finding invalidates the candidate verification claim before merge. Prepare concrete decision for user; no merge, readiness mark, branch cleanup or tracker publication blocking."
+}

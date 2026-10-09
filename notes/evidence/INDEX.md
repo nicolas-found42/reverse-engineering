@@ -6,11 +6,12 @@ Commands and full hash/revision mentions are copied with their source context in
 [index.json](index.json). Missing fields are recorded rather than inferred.
 
 - [fr2-asset-consumer-contracts/README.md](fr2-asset-consumer-contracts/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
+- [fr2-clean-baseline/README.md](fr2-clean-baseline/README.md) — 1 command blocks; missing: none.
 - [fr2-combined-recovery/README.md](fr2-combined-recovery/README.md) — 0 command blocks; missing: reproduction_command.
 - [fr2-compiler-probe/README.md](fr2-compiler-probe/README.md) — 4 command blocks; missing: full_revision_mention.
 - [fr2-compiler-probe/acceptance-20261008/README.md](fr2-compiler-probe/acceptance-20261008/README.md) — 3 command blocks; missing: none.
 - [fr2-compiler-provenance-continuation/README.md](fr2-compiler-provenance-continuation/README.md) — 4 command blocks; missing: none.
-- [fr2-completion/README.md](fr2-completion/README.md) — 2 command blocks; missing: full_sha256_mention, full_revision_mention.
+- [fr2-completion/README.md](fr2-completion/README.md) — 2 command blocks; missing: full_sha256_mention.
 - [fr2-continuation/README.md](fr2-continuation/README.md) — 1 command blocks; missing: full_sha256_mention, full_revision_mention.
 - [fr2-dispatch-pair/README.md](fr2-dispatch-pair/README.md) — 0 command blocks; missing: reproduction_command, full_sha256_mention, full_revision_mention.
 - [fr2-dispatch-pair/warning-audit/README.md](fr2-dispatch-pair/warning-audit/README.md) — 1 command blocks; missing: full_revision_mention.
