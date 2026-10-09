@@ -24,6 +24,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/corpus_contract.py](corpus_contract.py) — Identity and full input accounting for the issue #2 PAL corpus.
 - [tools/dat_scan.py](dat_scan.py) — Scan FILES.DAT for zlib stream headers (78 01/5e/9c/da) and try decompressing from each.
 - [tools/differential.py](differential.py) — Differential analysis of FILES.HDR string/record layout + FILES.DAT zlib chain.
+- [tools/dispatch_inventory.py](dispatch_inventory.py) — Join every unlisted executable span and computed-dispatch domain into one bound inventory.
 - [tools/ecoff_mdebug.py](ecoff_mdebug.py) — Bounds-checked reader for the ECOFF symbolic header (.mdebug) of a little-endian MIPS ELF.
 - [tools/elf_fixture.py](elf_fixture.py) — Build a minimal little-endian MIPS ELF32 from named sections, for tests.
 - [tools/evidence_common.py](evidence_common.py) — Provenance and immutable result directories shared by the three checks.
@@ -154,6 +155,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_corpus_binding.py](test_corpus_binding.py) — Tests: Corpus-mode verifiers derive the expected files and hashes from the pinned archive baseline.
 - [tools/test_decompilation_quality.py](test_decompilation_quality.py) — Tests: Python module; see source.
 - [tools/test_decompilation_verifier.py](test_decompilation_verifier.py) — Tests: Tests for the public decompilation export verifier boundary.
+- [tools/test_dispatch_inventory.py](test_dispatch_inventory.py) — Tests: Python module; see source.
 - [tools/test_ecoff_mdebug.py](test_ecoff_mdebug.py) — Tests: Python module; see source.
 - [tools/test_ee_candidate_v5.py](test_ee_candidate_v5.py) — Tests: Compile and execute V5 guard controls against a locally installed Ghidra API.
 - [tools/test_elf_fixture.py](test_elf_fixture.py) — Tests: Python module; see source.
