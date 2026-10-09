@@ -109,6 +109,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/ptg_probe.py](ptg_probe.py) — Deep probe of .ptg: dump small file fully, look for sub-block structure.
 - [tools/ptg_profile.py](ptg_profile.py) — Measured structure of FR2 .ptg files beyond the single-sprite profile.
 - [tools/ptg_render.py](ptg_render.py) — Decode a .ptg sprite to PNG (grayscale) and prove the layout.
+- [tools/publish_gate.py](publish_gate.py) — Check draft publication text against what its cited references say today.
 - [tools/r5900_shape.py](r5900_shape.py) — Structural plausibility of a 32-bit word as an R5900 instruction.
 - [tools/re_bootstrap.py](re_bootstrap.py) — Build the pinned macOS ARM static toolchain beside the active installation, then verify before activation.
 - [tools/re_client_discovery.py](re_client_discovery.py) — Check native RE client discovery separately, using isolated model-free Codex/omp profiles.
@@ -191,6 +192,7 @@ Each entry links to its source. Test modules are marked explicitly.
 - [tools/test_ps2_vif.py](test_ps2_vif.py) — Tests: Python module; see source.
 - [tools/test_ps2_vu.py](test_ps2_vu.py) — Tests: Python module; see source.
 - [tools/test_ptg_verifier.py](test_ptg_verifier.py) — Tests: Tests at the verify_ptg.py CLI boundary; the real-corpus case skips when the corpus is absent.
+- [tools/test_publish_gate.py](test_publish_gate.py) — Tests: Tests for tools/publish_gate.py: positive, negative and incomplete controls.
 - [tools/test_r5900_shape.py](test_r5900_shape.py) — Tests: Python module; see source.
 - [tools/test_re_bootstrap.py](test_re_bootstrap.py) — Tests: Controls for pinned distributions, unsafe archives and activation rollback.
 - [tools/test_re_doctor.py](test_re_doctor.py) — Tests: Controls for synthetic doctor failures, RPC framing and truthful status observations.
