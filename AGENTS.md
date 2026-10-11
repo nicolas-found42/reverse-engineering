@@ -22,4 +22,4 @@ When you rely on a Jev/TypeSafe judgment yourself — verifying a claim, classif
 
 ### Local RE runtime
 
-For installation, upgrade, runtime controls or client discovery, use `docs/agents/re-setup-maintenance.md`.
+For repository verification, use `docs/agents/re-setup-maintenance.md`; `docs/RE-SETUP.md` records the local RE installation. RE launchers, bootstrap and client registration are no longer in the repository.

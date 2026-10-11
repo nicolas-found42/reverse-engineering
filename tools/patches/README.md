@@ -15,8 +15,7 @@ patch with `git apply`, and rebuild the extension against Ghidra 12.1.4 using
 `mvn clean package assembly:single -DskipTests -Dghidra.version=12.1.4` after
 installing the required Ghidra JARs in the local Maven repository. The installed
 extension properties must name the same Ghidra host version. Record the built
-JAR path/hash in the ignored machine configuration; the launcher checks it at
-startup. Native components require the bundled `support/gradle` build on macOS.
+JAR path/hash with your installation notes; no in-repo launcher checks it. Native components require the bundled `support/gradle` build on macOS.
 
 The [setup receipt](../../notes/evidence/fr2-re-setup/README.md) records actual
 synthetic decompilation and rejected open/restore paths. This targeted correction
