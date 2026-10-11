@@ -14,6 +14,19 @@ from unittest.mock import patch
 from pre_push import ROOT, introduced_commits, isolated_environment, materialize
 
 
+def fixture_tree(root):
+    """Tree for a known-valid fixture: the committed HEAD, never staged edits in a live index.
+
+    Validation snapshots have an index but no HEAD commit; their index is the pushed tree.
+    """
+    head = subprocess.run(['git', '-C', str(root), 'rev-parse', '--verify', '--quiet', 'HEAD^{tree}'],
+                          env=isolated_environment(), capture_output=True, text=True)
+    if head.returncode == 0:
+        return head.stdout.strip()
+    return subprocess.check_output(['git', '-C', str(root), 'write-tree'],
+                                   env=isolated_environment(), text=True).strip()
+
+
 class PrePushTests(unittest.TestCase):
     def test_linked_worktree_environment_cannot_change_source_repository(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -88,10 +101,7 @@ class PrePushTests(unittest.TestCase):
     def push_fixture(self, base, failure=None):
         root = base / 'repo'
         root.mkdir()
-        # Validation snapshots have an index but no HEAD commit.
-        tree = subprocess.check_output(['git', '-C', str(ROOT), 'write-tree'],
-                                       env=isolated_environment(), text=True).strip()
-        materialize(tree, root, ROOT)
+        materialize(fixture_tree(ROOT), root, ROOT)
         # Run the current implementation with the repository's actual hook and checks.
         shutil.copy2(ROOT / 'tools/pre_push.py', root / 'tools/pre_push.py')
         if failure == 'ip':
@@ -174,6 +184,27 @@ class PrePushTests(unittest.TestCase):
         subprocess.run(['git', '-C', str(root), '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
                         '-c', 'commit.gpgsign=false', 'commit', '-qm', 'fixture'], check=True)
         return subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'], text=True).strip()
+
+    def test_fixture_tree_ignores_staged_edits_to_the_live_index(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / 'repo'
+            root.mkdir()
+            commit = self.repository(root)
+            committed = subprocess.check_output(['git', '-C', str(root), 'rev-parse', commit + '^{tree}'],
+                                                text=True).strip()
+            (root / 'example.txt').write_text('staged local edit\n')
+            subprocess.run(['git', '-C', str(root), 'add', 'example.txt'], check=True)
+            self.assertEqual(fixture_tree(root), committed)
+
+    def test_fixture_tree_uses_the_index_of_a_snapshot_without_a_commit(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory) / 'snapshot'
+            root.mkdir()
+            subprocess.run(['git', 'init', '-q', str(root)], check=True)
+            (root / 'example.txt').write_text('snapshot content\n')
+            subprocess.run(['git', '-C', str(root), 'add', 'example.txt'], check=True)
+            expected = subprocess.check_output(['git', '-C', str(root), 'write-tree'], text=True).strip()
+            self.assertEqual(fixture_tree(root), expected)
 
     def test_new_ref_snapshot_ignores_working_tree_mutation(self):
         with tempfile.TemporaryDirectory() as directory:
