@@ -54,6 +54,15 @@ class CompletionCli(unittest.TestCase):
                 self.assertEqual(details['criteria'][criterion - 1]['status'], 'fail')
                 self.assertEqual(details['criteria'][11]['status'], 'incomplete')
 
+    def test_substitute_failure_is_not_hidden_by_missing_full_reconstruction(self):
+        with patch.object(completion, 'run_child',
+                          side_effect=self.fixture_children(('kernel_substitutes.py',))), \
+             patch.object(completion, 'source_unit_credit', return_value=0):
+            with self.assertRaises(Invalid) as caught:
+                completion.check(Path('/fixture/game'), self.root, None, None, self.root)
+        self.assertEqual(caught.exception.details['criteria'][10]['status'], 'fail')
+        self.assertEqual(caught.exception.details['ledger']['matched_bytes'], 0)
+
     def test_malformed_child_receipt_is_retained_as_failure_instead_of_losing_criteria(self):
         script = self.root / 'bad_child.py'
         script.write_text('''import json, pathlib, sys
@@ -93,7 +102,7 @@ root.mkdir(parents=True)
                 'entry_map': {'status': 'fail', 'diagnostic': 'changed evidence'}}},
             {'status': 'incomplete', 'details': {}},
             {'status': 'incomplete', 'details': {}},
-            *[{'status': 'incomplete', 'details': {}} for _ in range(6)],
+            *[{'status': 'incomplete', 'details': {}} for _ in range(7)],
         ]
         children = [({'status': result['status']}, result) for result in results]
         with patch.object(completion, 'run_child', side_effect=children), \
@@ -201,7 +210,8 @@ root.mkdir(parents=True)
         self.assertEqual(total, ledger['unresolved_bytes'] + ledger['game_owned_bytes']
                          + ledger['substitute_bytes'])
         self.assertEqual((ledger['game_owned_bytes'], ledger['matched_bytes'],
-                          ledger['unresolved_bytes']), (60, 60, total - 60))
+                          ledger['unresolved_bytes']), (60, 60, total - 124))
+        self.assertEqual(ledger['substitute_bytes'], 64)
         self.assertEqual(ledger['matched_fraction_scope'], 'attributed_game_owned_bytes')
         self.assertEqual(details['criteria'][6]['status'], 'pass')
         self.assertEqual(details['criteria'][4]['status'], 'incomplete')

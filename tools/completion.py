@@ -237,7 +237,7 @@ def aggregate_ledger(range_details: dict, credited: int) -> dict:
 
 
 def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None,
-          compiler_tools: Path) -> dict:
+          compiler_tools: Path, sdk_work: Path | None = None) -> dict:
     children_root = output / ('children-' + uuid.uuid4().hex)
     jobs = [('ranges', 'matching_ranges.py', ['corpus', str(game)]),
             ('archive', 'verify_formats.py', ['corpus', str(game)])]
@@ -259,6 +259,8 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
         ('rpc_inventory', 'inventory_rpc_handoffs.py', [str(game / 'extracted')]),
         ('misc3d_terminal', 'misc3d_loader_recipe/source_build.py',
          [str(game), str(compiler_tools)]),
+        ('substitutes', 'kernel_substitutes.py',
+         [str(game), str(sdk_work or TOOLS.parent / '.scratch/ps2sdk-substitute')]),
     ])
     children, results = [], {}
     for key, tool, arguments in jobs:
@@ -307,6 +309,9 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
     record(14, 'fail' if results['rpc_inventory']['status'] == 'fail' else 'incomplete',
            'Fresh all-module SIF table/candidate inventory retained; full module '
            'linking and provider contracts remain incomplete.', [9])
+    record(11, 'fail' if results['substitutes']['status'] == 'fail' else 'incomplete',
+           'The fresh kernel-interface/two-consumer check is recorded in its child receipt; '
+           'complete EE/IOP required substitute coverage remains incomplete.', [11])
     record(15, 'fail' if any(results[key]['status'] == 'fail'
                            for key in ('rpc', 'rpc_inventory')) else 'incomplete',
            'Fresh STREAM static binding retained; complete handoff ownership, '
@@ -328,7 +333,7 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
                'Archive-derived contract catalog retained; required body/consumer/state semantics '
                'have not been proven by documentation coverage.', [1, 3])
     record(27, 'incomplete',
-           'The current positive, mutation and placement controls cover one source unit only; '
+           'The recorded controls cover bounded reconstructed source units and interfaces; '
            'controls for remaining acceptance gates are not complete.', [0, 4])
     range_details = ranges['details']
     ledger = aggregate_ledger(range_details, credited)
@@ -362,6 +367,7 @@ def check(game: Path, output: Path, assembler: Path | None, objdump: Path | None
         'layout_coverage': results['layout']['details'],
         'rpc_coverage': results['rpc']['details'],
         'rpc_frontier': results['rpc_inventory']['details'],
+        'substitute_coverage': results['substitutes']['details'],
         'behavioral': {'status': 'incomplete', 'readiness': 'incomplete', 'observations': [],
                        'reason': 'No verified headless original/rebuilt runner or observations.'},
         'real_corpus_completion': status == 'pass',
@@ -392,11 +398,13 @@ def main() -> int:
     parser.add_argument('--objdump', type=Path)
     parser.add_argument('--compiler-tools', type=Path,
                         default=TOOLS.parent / '.scratch/compiler-probe-tools')
+    parser.add_argument('--sdk-work', type=Path,
+                        default=TOOLS.parent / '.scratch/ps2sdk-substitute')
     args = parser.parse_args()
     compiler_recipe = TOOLS / 'compiler_probe_recipe'
     return write_result(args.output, 'fr2-completion',
                         lambda: check(args.game, args.output, args.assembler, args.objdump,
-                                      args.compiler_tools),
+                                      args.compiler_tools, args.sdk_work),
                         [Path(__file__), *(TOOLS / name for name in
                           ('matching_ranges.py', 'verify_formats.py', 'verify_vu.py',
                            'verify_asset_contracts.py', 'corpus_contract.py',
@@ -407,6 +415,7 @@ def main() -> int:
                             'check_rpc_contracts.py', 'rpc_contracts.py', 'rpc_profile.json',
                             'linker_layout.py', 'inventory_rpc_handoffs.py',
                             'misc3d_loader_recipe/source_build.py')),
+                         TOOLS / 'kernel_substitutes.py',
                          TOOLS.parent / 'reconstruction/ee/app3d/misc3d_db_id.c',
                          TOOLS.parent / 'docs/adr/0005-game-owned-sdk-boundary.md',
                          SOURCE_MAP,

@@ -114,6 +114,50 @@ def attribute_first_source_unit(artifact: dict, executable: bytes) -> None:
     artifact['matched_bytes'] = 0
 
 
+def attribute_kernel_substitutes(artifact: dict, executable: bytes) -> None:
+    """Split only recorded, corpus-bound wrappers; no source-match credit."""
+    if sha256(executable) != EE_CORPUS_SHA256:
+        return
+    from kernel_substitutes import STUBS, consumer_contract, span
+    contract = consumer_contract()
+    bindings = {int(row['entry'], 16): row for row in contract['retail_ranges']}
+    for name, (address, _) in STUBS.items():
+        expected = bindings[address]['corpus_instruction_sha256']
+        if sha256(span(executable, address, 16)) != expected:
+            raise Invalid('recorded kernel substitute bytes differ')
+        output = []
+        found = False
+        for row in artifact['ranges']:
+            lower, upper = row['address'], row['address'] + row['length']
+            if lower <= address and address + 16 <= upper:
+                if row['section'] != '.text' or row['storage'] != 'initialized':
+                    raise Invalid('recorded kernel substitute layout differs')
+                for start, end in ((lower, address), (address, address + 16), (address + 16, upper)):
+                    if start >= end:
+                        continue
+                    offset = row['file_offset'] + start - lower
+                    child = dict(row, address=start, length=end - start, file_offset=offset,
+                                 sha256=sha256(executable[offset:offset + end - start]))
+                    if start == address:
+                        child.update(classification='substitute_region', unit=name,
+                                     decision_sha256=identity(ADR0005)['sha256'],
+                                     evidence_inputs={'consumer_contract': identity(
+                                         ROOT / 'notes/evidence/fr2-ps2sdk-substitute/kernel-consumer-contract.json')},
+                                     evidence='corpus-bound kernel wrapper and consumer contract')
+                        found = True
+                    output.append(child)
+            else:
+                output.append(row)
+        if not found:
+            raise Invalid('recorded kernel substitute is absent from load partition')
+        artifact['ranges'] = output
+    artifact['substitute_bytes'] = sum(row['length'] for row in artifact['ranges']
+                                       if row['classification'] == 'substitute_region')
+    artifact['unresolved_bytes'] = sum(row['length'] for row in artifact['ranges']
+                                       if row['classification'] == 'mixed_unresolved')
+    artifact['substitute_disposition'] = 'substitute, not matched'
+
+
 def load_image_partition(data: bytes) -> dict:
     """Return section-mapped ranges covering the declared load images."""
     elf = parse_elf(data)
@@ -225,6 +269,7 @@ def corpus_load_images(game: Path) -> dict:
     executable = (extracted / 'SLES_517.05').read_bytes()
     ee_artifact = {'artifact': 'EE', **load_image_partition(executable)}
     attribute_first_source_unit(ee_artifact, executable)
+    attribute_kernel_substitutes(ee_artifact, executable)
     artifacts = [ee_artifact]
     for name, payload in payloads:
         artifacts.append({'artifact': 'IOP:' + name, **load_image_partition(payload)})
@@ -236,11 +281,11 @@ def corpus_load_images(game: Path) -> dict:
         'zero_fill_bytes': sum(a['zero_fill_bytes'] for a in artifacts),
         'unresolved_bytes': sum(a['unresolved_bytes'] for a in artifacts),
         'game_owned_bytes': sum(a.get('game_owned_bytes', 0) for a in artifacts),
-        'matched_bytes': 0, 'substitute_bytes': 0,
-        'substitute_disposition': 'no ranges attributed as substitute',
+        'matched_bytes': 0, 'substitute_bytes': sum(a['substitute_bytes'] for a in artifacts),
+        'substitute_disposition': ee_artifact['substitute_disposition'],
         'evidence_authority': 'pinned_corpus_structural_inventory',
         'attribution_status': 'partial' if ee_artifact['game_owned_bytes'] else 'incomplete',
-        'claim_limits': ['Only the exact identity-pinned EE source unit recorded in ADR-0005 is split.',
+        'claim_limits': ['The identity-pinned EE source unit and four recorded kernel wrappers are split.',
                          'Structural inventory records zero matched bytes; source-build evidence is separate.',
                          'All other initialized load bytes and zero-fill layout remain mixed/unresolved.',
                          'IOP addresses are link-relative; runtime load bases remain unobserved.'],

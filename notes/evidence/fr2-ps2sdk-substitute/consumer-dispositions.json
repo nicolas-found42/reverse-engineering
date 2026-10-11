@@ -1,0 +1,89 @@
+{
+  "reviewer": "consumer_evidence independent reasoner",
+  "corpus_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "byte_bindings": [
+    {
+      "entry": "0011b780",
+      "verified_instruction_bytes": 108,
+      "corpus_instruction_sha256": "77797011b16a155cbfb57cf87c9aba6e4efecd1df6d3febd7cb893a178513f8e",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eab80",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "582e1e7cc46f248cc93ac09c60ee94a9d04ddac963c093d7acf9776a3ef9079e",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eade0",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "5981c1e46292010b462c1aa96986db0e142b6d8d72e68d4ed765af16db6ee74f",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eaf00",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "735b6d7d635fd6f5250dad1db348db6a4df5ef66efd2d8d3c9cbeaa6b4d0f10e",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eaf20",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "41cb12c03fa12fd2d62b7d7b48b255c3576515aee1677b29c754c24f774434b2",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "0020c940",
+      "verified_instruction_bytes": 76,
+      "corpus_instruction_sha256": "0e263a9e5ffea0f7abede3f424f65c9ff71cc5cdc4416b7437cd4e0cdf09d8b7",
+      "all_inventory_bytes_match_corpus": true
+    }
+  ],
+  "resolutions": [
+    {
+      "claim": "The 0020c940 consumer decrements the 32-bit word at 0024f8e4; only on zero it stores -1 to 0024f8e0 and tail-calls SignalSema with the word at 0024bad8.",
+      "verdict": "accepted",
+      "rationale": "0020c944/94c computes 0024f8e4; lw/addiu/sw at 950/954/95c performs 32-bit wrapping decrement. Branch 958 selects nonzero return path; zero path loads word 0024bad8 into a0 at 968, stores -1 to 0024f8e0 at 974, restores ra and tail jumps at 978 to 001eab80. Its corpus-bound stub syscall number 0x42 equals pinned SDK __NR_SignalSema. Delay-slot stores/restores are included. The claim deliberately excludes a recovered source return type."
+    },
+    {
+      "claim": "The 0011b780 consumer returns zero for nonpositive byte counts. For positive counts it constructs a 16-byte DMA descriptor (source a1, destination a0, size a2, attr zero), calls FlushCache(0), submits one descriptor, waits while sceSifDmaStat returns nonnegative, and returns the byte count.",
+      "verdict": "accepted",
+      "rationale": "0011b78c saves a2 into s1, 794 initializes v0=0, and signed blez at 798 returns directly. Positive branch stores a1/v1/s1/zero at stack offsets 0/4/8/12; v1 was original a0. This agrees with pinned SDK four-field SifDmaTransfer_t on PS2 32-bit pointers. 7a0 passes FlushCache operation zero to 001eade0 (syscall 0x64). 7b8 passes descriptor pointer and 7c0 passes count one to 001eaf20 (syscall 0x77). 7c4 retains returned transfer ID in s0; 7c8 polls 001eaf00 (syscall 0x76) with s0. bgez at 7d0 loops on nonnegative status; its delay slot 7d4 puts original size in v0 on every iteration, including final negative status. No timeout, submit retry, transfer-ID validity check or success discrimination appears."
+    }
+  ],
+  "abi_notes": [
+    "0020c940 nonzero return register v0 contains sign-extended low32 decremented counter; zero tail call propagates SignalSema return. Preserve with int result and uint32 wrapping arithmetic, avoiding signed C overflow. Original declared return type remains unproven.",
+    "All directly calling listed callers overwrite/ignore v0 after return; 0020bc98 saves its earlier result in s1 in the call delay slot and restores it afterward. Tail callers 0020bcf0 and 00213cb0 propagate v0, so caller inventory alone does not prove void.",
+    "DMA descriptor is 16 bytes for PS2 32-bit pointers; a host build using native 64-bit pointers must explicitly distinguish its testing ABI or model pointer words.",
+    "DMA helper returns original positive byte count when status first becomes negative; evidence does not establish successful transfer for every negative status."
+  ],
+  "limitations": [
+    "No original source declaration or whole-game runtime equivalence proved.",
+    "Independent byte checks prove six bounded instruction ranges, not whole executable coverage.",
+    "Retain original Jev distributions and confidence; these accepted resolutions bind exact claims without replacing model signals."
+  ],
+  "original_judgments": [
+    {
+      "claim": "The 0020c940 consumer decrements the 32-bit word at 0024f8e4; only on zero it stores -1 to 0024f8e0 and tail-calls SignalSema with the word at 0024bad8.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.66,
+        "contradicts": 0.33,
+        "says_nothing": 0.01
+      },
+      "confidence": 0.49,
+      "action": "review"
+    },
+    {
+      "claim": "The 0011b780 consumer returns zero for nonpositive byte counts. For positive counts it constructs a 16-byte DMA descriptor (source a1, destination a0, size a2, attr zero), calls FlushCache(0), submits one descriptor, waits while sceSifDmaStat returns nonnegative, and returns the byte count.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.8,
+        "contradicts": 0.19,
+        "says_nothing": 0.01
+      },
+      "confidence": 0.7,
+      "action": "review"
+    }
+  ]
+}

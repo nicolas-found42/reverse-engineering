@@ -1,6 +1,6 @@
 # Game-owned and SDK regions: every loadable section is mixed until a range-level split is measured
 
-The byte gate is scoped to **game-owned** bytes ([ADR-0001](0001-completion-target.md), [ADR-0003](0003-open-source-only.md)), so the boundary must be a recorded decision. Decided: **no whole section is game-owned.** Every loadable code and data section of the retail EE executable remains **mixed** at section granularity. One local `.text` range is now attributed as `game_owned` and two local `.text` ranges as `substitute_region` (FlushCache `0x001eade0` + SignalSema `0x001eab80`); all other bytes remain mixed or unresolved until measured by address range.
+The byte gate is scoped to **game-owned** bytes ([ADR-0001](0001-completion-target.md), [ADR-0003](0003-open-source-only.md)), so the boundary must be a recorded decision. Decided: **no whole section is game-owned.** Every loadable code and data section of the retail EE executable remains **mixed** at section granularity. One local `.text` range is attributed as `game_owned` and four kernel wrapper ranges as `substitute_region` (SignalSema, FlushCache, sceSifDmaStat and sceSifSetDma); all other bytes remain mixed or unresolved until measured by address range.
 
 **Measured on the pinned executable** (reproduce: `python3.14 tools/boundary_measurements.py games/ford-racing-2 --output <dir>`; recorded in `notes/evidence/fr2-matching-harness/results/boundary-measurements.json`) (`SLES_517.05`, SHA-256 `2167…ea95`, 38 named sections):
 
@@ -100,6 +100,38 @@ python3 -c 'import json; d = json.load(open("notes/evidence/fr2-ps2sdk-substitut
 **Falsifier.** A game-owned source claim for any byte in
 `0x001eade0–0x001eadef`, an overlapping non-substitute attribution, or
 disjoint CFG evidence placing these bytes in another unit revokes this split.
+
+## Measured local split: DMA wrappers and reconstructed kernel consumers
+
+Assign `.text[0x001eaf00, 0x001eaf10)` and
+`.text[0x001eaf20, 0x001eaf30)` to `substitute_region`. Each is a complete
+four-word syscall wrapper: numbers 118 and 119 respectively, with its return
+and delay-slot boundary checked against the pinned executable. At ps2sdk commit
+`2c670453980fcc3fe46ead6399b730b12c8556eb`, `syscallnr.h` maps those numbers to
+`sceSifDmaStat` and `sceSifSetDma` (the older names are aliases).
+
+The actual consumer at `0x0011b780` constructs a 16-byte transfer descriptor,
+calls FlushCache with operation zero, submits one transfer and polls the
+returned identifier until status is negative. The consumer at `0x0020c940`
+decrements the word at `0x0024f8e4`; on zero it stores -1 to `0x0024f8e0` and
+tail-calls SignalSema with the word at `0x0024bad8`. These consumers and data
+remain mixed/unresolved. Source-path evidence is a lead, not their ownership.
+
+The [consumer contract](../../notes/evidence/fr2-ps2sdk-substitute/kernel-consumer-contract.json)
+binds all six instruction ranges, hand-written consumer source, SDK/build pins,
+original Jev uncertainty and independent reasoner dispositions. Reproduce with
+`python3 tools/kernel_substitutes.py games/ford-racing-2 <sdk-work> --output <dir>`.
+The command compiles upstream `kernel.S` from its pinned Git object, links both
+actual consumer groups and preserves the SDK license. All four wrapper ranges
+are substitutes even if their bytes coincide with retail. The source build
+uses modern n32; its measured integer/pointer argument registers and descriptor
+layout do not identify the original whole-program ABI or matching compiler.
+Guest DMA success, cache fidelity and semaphore scheduling remain unobserved.
+
+**Falsifier.** A contradictory range boundary, syscall number/header mapping,
+consumer transfer or overlapping game-owned attribution revokes the affected
+split. Missing or changed source/interface/output prevents the scoped check;
+remaining required EE/IOP interfaces prevent full AC11 acceptance.
 
 ## Measured local split: `SignalSema` kernel stub (substitute)
 

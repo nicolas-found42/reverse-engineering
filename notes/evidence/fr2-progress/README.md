@@ -2,7 +2,8 @@
 
 Established: [structural-ledger.json](structural-ledger.json) records a passing
 load-image partition from the pinned corpus, including the one 60-byte owned
-range. Its initialized and zero-fill byte totals are conserved. This run earns
+range and four 16-byte kernel substitute ranges. Its initialized and zero-fill
+byte totals are conserved. Substitute categories carry zero matched credit. This run earns
 zero matched bytes: no compiler or fresh build receipt was run for this snapshot.
 
 Not established: original compiler/linker identity, complete game/SDK attribution,

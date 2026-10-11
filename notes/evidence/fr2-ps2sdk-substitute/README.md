@@ -1,8 +1,9 @@
 # ps2sdk source build as an SDK substitute
 
-This evidence records a real build of the permitted open-source ps2sdk source.
-It establishes a buildable substitute interface; it does **not** attribute any
-retail address range to the SDK and supplies no matching credit.
+The bootstrap sections below record the historical 2026-10-08 source build and
+upstream interface sample. The current consumer delivery at the end adds four
+recorded substitute ranges and two actual reconstructed consumer groups. Neither
+delivery supplies game-owned matching credit or completes AC11.
 
 ## Pinned inputs
 
@@ -148,3 +149,88 @@ not a retail range count.
 
 No game-owned bytes, actual substitute address ranges, full ELF, EE source-built
 game, or 24-module game rebuild is claimed by this evidence.
+
+## Current actual consumer delivery — 2026-10-09
+
+The hand-written [consumer source](../../../reconstruction/ee/system/sdk_consumers.c)
+reconstructs two bounded retail paths: the DMA descriptor/submission/polling
+routine at `0x0011b780` and the counter/semaphore routine at `0x0020c940`.
+These are source candidates with inferred names, not credited matching units.
+The three file-state words retain their measured initialized values and addresses.
+
+The [consumer contract](kernel-consumer-contract.json) binds the complete
+instruction hashes, source/header/build inputs and accepted source-verification
+judgments. [Original interpretation uncertainty and independent review](consumer-dispositions.json)
+remain visible: the first Jev interpretation judgments were verified but required
+review (support/confidence 0.66/0.49 and 0.80/0.70). Independent instruction and
+caller checks resolved them, including the integer return that tail callers
+propagate. [Source verification](source-verification.json) separately supports
+the resulting implementation. The program checks these retained, source-bound
+judgments through `judgment_contract.py`; changed evidence, invalid judgments
+and missing inputs cannot silently pass. Probabilities never determine byte credit.
+
+`kernel_substitutes.py` snapshots the pinned SDK Git source and compiles only
+`kernel.S` plus the actual consumer source. It consumes neither installed SDK
+objects nor retail code as build inputs. The link binds SignalSema, FlushCache,
+sceSifDmaStat and sceSifSetDma at their four recorded addresses and has no
+undefined symbols. Its orphan check rejects unexpected code/data inputs.
+The output verifier checks each wrapper, initialized cell, consumer placement
+and direct interface transfer. The [scoped build receipt](scoped-build-receipt.json)
+records source, dependency, tool, command and output identities.
+
+The build reuses the pinned archive and SDK checkout described above. Its modern
+n32 ABI keeps the tested 32-bit pointer/descriptor and integer argument/return
+contracts; it does not identify the retail compiler or full original ABI.
+The host controls use native pointers and therefore test logic at the kernel
+boundary; the cross-build separately asserts the target descriptor is 16 bytes.
+The image in `tools/kernel_substitute_recipe/Dockerfile` adds exact Ubuntu MPC,
+MPFR and GMP runtime versions to the pinned base. Their package copyright
+notices, the SDK Academic Free License and build artifacts remain in the external
+build directory, with hashes in the receipt. Dependency licenses are preserved.
+
+Reproduce from this checkout with the existing local SDK input root:
+
+```sh
+docker build --platform linux/arm64 -t fr2-ps2sdk-kernel-runtime tools/kernel_substitute_recipe
+python3 tools/kernel_substitutes.py games/ford-racing-2 \
+  /Users/Nicolas/Documents/github/hermes/spec-5-tools/sdk \
+  --output .scratch/issue12/reproduced-build
+# Use consumer.elf from the fresh receipt's build_directory.
+python3 tools/kernel_substitute_recipe/experiments.py games/ford-racing-2 \
+  <build-directory>/consumer.elf --output .scratch/issue12/reproduced-controls
+tools/check.sh test_kernel_substitutes test_substitute_ranges test_matching_ranges
+```
+
+The command requires the recorded immutable runtime image identity. A rebuilt
+image with another identity remains unavailable until its inputs are reviewed;
+the mutable tag does not select the accepted image.
+
+[Host and real-output controls](control-receipt.json) run 90 representative
+boundary cases, five source mutations, and changed/missing/shifted/uncalled
+interface controls. Negative source cases include a reversed semaphore
+condition, wrong cache operation, reversed DMA pointers, missing polling and
+submission for a zero byte count. Nonpositive sizes make no kernel calls;
+negative transaction IDs and statuses retain the measured absence of retry or
+success validation. No guest hardware observation is inferred.
+
+[Semantic controls](semantic-controls.json) retain six labeled claims: all six
+verdict labels matched the independently stated expectations, but three needed
+review under the fixed threshold. The one batched call used 4,105 input and 382
+output tokens and took 327 ms as measured around the tool invocation. This is a
+six-case diagnostic sample, not a calibrated accuracy guarantee. No reported
+provider charge or Jev-1.13 price was available from the current model listing,
+so billed cost remains unmeasured. Reproduce the semantic request using its
+retained `request` via `node tools/jev_call.mjs --run <dir> --id <id> --tool
+jev_verify --args <request.json>`; the original response is retained, not rerun
+to seek a preferred outcome.
+
+All 64 wrapper bytes are **substitute, not matched**, including their identical
+retail encodings. The current load ledger retains 60 game-owned bytes and
+3,506,924 unresolved bytes; reproduce with `python3 tools/matching_ranges.py
+corpus games/ford-racing-2 --output <dir>`. The aggregate gains a fresh independent
+substitute child and keeps AC11 incomplete; a child failure makes AC11 fail.
+Run the usual completion recipe with the additional `--sdk-work` path above.
+Full required EE/IOP substitute/interface coverage, whole-game builds and guest
+cache/DMA/semaphore behavior remain unresolved. Issue #12 stays open.
+
+Independent spec review found that call-target checks alone allowed consumer instructions to be removed. The final verifier pins both entire consumer section hashes from the fixed permitted recipe; the additional mutation preserves every J/JAL target while removing other instructions and is rejected. These pins establish substitute build integrity, not original game matching.

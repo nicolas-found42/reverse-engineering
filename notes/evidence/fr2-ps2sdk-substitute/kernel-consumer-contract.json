@@ -1,0 +1,88 @@
+{
+  "schema": "fr2-kernel-consumer-contract/v1",
+  "scope": "two current reconstructed consumer groups; full AC11 incomplete",
+  "corpus_sha256": "216711210898aee296eed73d0776e7f733bac04c334002683bce769c86beea95",
+  "sdk_commit": "2c670453980fcc3fe46ead6399b730b12c8556eb",
+  "files": {
+    "reconstruction/ee/system/sdk_consumers.c": "8d5d30a3854f8ff72955500c63b2ecf1768a85f6fef14de39a231995da3de113",
+    "reconstruction/ee/system/sdk_consumers.h": "8356d1395170e4ba9c2cd93be092c38627aff60af50ccf9aa19d358fafca005b",
+    "tools/kernel_substitute_recipe/build.sh": "933b4f0aae1d8ddc1396c6ced3082fb790d8eb10960e2dc5d9c585903fa7b62f",
+    "tools/kernel_substitute_recipe/consumer.ld": "6387069f765b65ce37671193695125b5ba80e12b69f6d1e0e002a866a1825771",
+    "tools/kernel_substitute_recipe/Dockerfile": "a16bc9c3aa3a72dde6d5c9bc00f788255e09592d33ce18af13c1ff1773c9c018",
+    "notes/evidence/fr2-ps2sdk-substitute/consumer-dispositions.json": "7cea28184a261b57157a01c00fbc023c32ea4287f06521bd3d313c79e996ea20",
+    "notes/evidence/fr2-ps2sdk-substitute/source-verification.json": "e30e3acf282dddd35a39004450127280e6a99d7758ab7aae1817c1b77916754d"
+  },
+  "retail_ranges": [
+    {
+      "entry": "0011b780",
+      "verified_instruction_bytes": 108,
+      "corpus_instruction_sha256": "77797011b16a155cbfb57cf87c9aba6e4efecd1df6d3febd7cb893a178513f8e",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eab80",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "582e1e7cc46f248cc93ac09c60ee94a9d04ddac963c093d7acf9776a3ef9079e",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eade0",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "5981c1e46292010b462c1aa96986db0e142b6d8d72e68d4ed765af16db6ee74f",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eaf00",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "735b6d7d635fd6f5250dad1db348db6a4df5ef66efd2d8d3c9cbeaa6b4d0f10e",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "001eaf20",
+      "verified_instruction_bytes": 16,
+      "corpus_instruction_sha256": "41cb12c03fa12fd2d62b7d7b48b255c3576515aee1677b29c754c24f774434b2",
+      "all_inventory_bytes_match_corpus": true
+    },
+    {
+      "entry": "0020c940",
+      "verified_instruction_bytes": 76,
+      "corpus_instruction_sha256": "0e263a9e5ffea0f7abede3f424f65c9ff71cc5cdc4416b7437cd4e0cdf09d8b7",
+      "all_inventory_bytes_match_corpus": true
+    }
+  ],
+  "judgments": [
+    {
+      "id": "claim0",
+      "claim": "The reconstructed fr2_mfile_release preserves 32-bit wrapping decrement; it stores -1 and signals the recorded semaphore only on zero, preserving the signed counter result or SignalSema result.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 0.99,
+        "contradicts": 0.01,
+        "says_nothing": 0
+      },
+      "confidence": 0.98,
+      "action": "auto",
+      "supporting_evidence": "independent-consumer-review",
+      "same_subject": 0.86
+    },
+    {
+      "id": "claim1",
+      "claim": "The reconstructed fr2_dma_copy preserves the measured guard, 16-byte target descriptor, FlushCache(0), one DMA submission and polling until negative; it returns the input positive count without claiming DMA success.",
+      "verdict": "verified",
+      "probabilities": {
+        "supports": 1,
+        "contradicts": 0,
+        "says_nothing": 0
+      },
+      "confidence": 1,
+      "action": "auto",
+      "supporting_evidence": "independent-consumer-review",
+      "same_subject": 0.86
+    }
+  ],
+  "claim_limits": [
+    "No original source declaration or whole-game runtime equivalence proved.",
+    "Independent byte checks prove six bounded instruction ranges, not whole executable coverage.",
+    "Retain original Jev distributions and confidence; these accepted resolutions bind exact claims without replacing model signals."
+  ]
+}
